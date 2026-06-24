@@ -26,5 +26,26 @@
       "question": "Why called touch?",
       "answer": "Because its original purpose in Unix was simply to 'touch' a file to update its timestamp. Creating a blank file was just a side-effect if the file didn't already exist, but it became the most popular way to use it."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-c",
+        "No create. Do not create any files if they don't exist."
+      ],
+      [
+        "-m",
+        "Change only the modification time."
+      ],
+      [
+        "-d [String]",
+        "Parse string and use it instead of current time."
+      ]
+    ]
+  }
 }

@@ -26,5 +26,7 @@
       "answer": "Git will pause the terminal and open your default text editor (like Vim or Nano) so you can type a much longer, multi-line commit message."
     }
   ],
-  "codeExample": "# Standard commit with a message\n$ git commit -m \"Fix navigation bug on mobile\"\n\n# Shortcut! Add ALL tracked files and commit them in one single command\n$ git commit -a -m \"Quickly save all my changes\"\n# (Note: -a does NOT include brand new, untracked files!)\n\n# Oh no, I made a typo in my last commit message!\n# --amend lets you overwrite the very last commit message:\n$ git commit --amend -m \"Fix navigation bug on mobile (for real this time)\""
+  "codeExample": "# Standard commit with a message\n$ git commit -m \"Fix navigation bug on mobile\"\n\n# Shortcut! Add ALL tracked files and commit them in one single command\n$ git commit -a -m \"Quickly save all my changes\"\n# (Note: -a does NOT include brand new, untracked files!)\n\n# Oh no, I made a typo in my last commit message!\n# --amend lets you overwrite the very last commit message:\n$ git commit --amend -m \"Fix navigation bug on mobile (for real this time)\"",
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph LR\n  Working[Working Directory] -->|git add| Staging[Staging Area]\n  Staging -->|git commit| Repo[(Local Repository)]\n  \n  style Working fill:#e8f0fe,stroke:#1a73e8\n  style Staging fill:#e6f4ea,stroke:#1e8e3e\n  style Repo fill:#fce8e6,stroke:#d93025\n      "
 }

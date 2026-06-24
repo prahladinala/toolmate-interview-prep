@@ -26,5 +26,40 @@
       "question": "PaaS patching?",
       "answer": "No. In a PaaS model, the cloud provider manages the underlying operating system, networking, and runtime. You only manage your application code and data."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Cloud Service Models Comparison",
+    "headers": [
+      "Model",
+      "You Manage",
+      "Cloud Provider Manages",
+      "Analogy"
+    ],
+    "rows": [
+      [
+        "On-Premises",
+        "Everything (Networking, Storage, Servers, OS, App)",
+        "Nothing",
+        "Building a car from scratch in your garage."
+      ],
+      [
+        "IaaS (Infrastructure)",
+        "OS, Runtime, Data, App",
+        "Networking, Storage, Servers, Virtualization",
+        "Leasing a car. You drive it and put gas in it."
+      ],
+      [
+        "PaaS (Platform)",
+        "Data, App",
+        "Everything else (OS, servers, runtime)",
+        "Taking a taxi. You just tell them where to go."
+      ],
+      [
+        "SaaS (Software)",
+        "Nothing (Just configuration)",
+        "Everything",
+        "Riding a bus. Pre-set route, you just sit down."
+      ]
+    ]
+  }
 }

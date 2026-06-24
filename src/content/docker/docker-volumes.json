@@ -27,5 +27,7 @@
       "question": "Advantage over Bind Mounts?",
       "answer": "Volumes are fully managed by Docker and use 'Volume Drivers'. This means you can install a plugin to instantly push the Volume data to an AWS S3 bucket or Google Cloud Storage, something Bind Mounts cannot easily do."
     }
-  ]
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph TD\n  subgraph Docker Host\n    Vol[(Docker Volume \n /var/lib/docker/volumes)]\n    Bind[Bind Mount \n /home/user/my_code]\n  end\n\n  subgraph Container 1\n    App1(Database App)\n  end\n\n  subgraph Container 2\n    App2(Node.js App)\n  end\n\n  Vol <-->|Persistent DB Data| App1\n  Bind <-->|Live Code Editing| App2\n      "
 }

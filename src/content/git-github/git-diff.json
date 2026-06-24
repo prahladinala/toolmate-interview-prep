@@ -27,5 +27,26 @@
       "answer": "You must use the command `git diff --staged` (or `--cached`). This compares the Staging Area to the last Commit."
     }
   ],
-  "codeExample": "# 1. You edit index.html.\n# See what you changed (Working Directory vs Staging Area)\n$ git diff\n\n# 2. You run 'git add index.html'. \n# Now 'git diff' outputs nothing! It's staged.\n\n# 3. See what is staged (Staging Area vs Last Commit)\n$ git diff --staged\n\n# Compare two different branches to see how they differ\n$ git diff main feature-branch"
+  "codeExample": "# 1. You edit index.html.\n# See what you changed (Working Directory vs Staging Area)\n$ git diff\n\n# 2. You run 'git add index.html'. \n# Now 'git diff' outputs nothing! It's staged.\n\n# 3. See what is staged (Staging Area vs Last Commit)\n$ git diff --staged\n\n# Compare two different branches to see how they differ\n$ git diff main feature-branch",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--staged / --cached",
+        "Show changes that are staged but not yet committed."
+      ],
+      [
+        "HEAD",
+        "Show all changes (staged and unstaged) since the last commit."
+      ],
+      [
+        "--name-only",
+        "Show only the names of changed files, not the actual code changes."
+      ]
+    ]
+  }
 }

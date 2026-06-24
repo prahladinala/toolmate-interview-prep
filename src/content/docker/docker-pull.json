@@ -26,5 +26,22 @@
       "question": "Run five times?",
       "answer": "The first time it downloads the layers. The next four times, Docker checks the internet, sees the image hasn't changed, and instantly says 'Image is up to date' without downloading anything again."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-a / --all-tags",
+        "Download all tagged images in the repository."
+      ],
+      [
+        "--quiet",
+        "Suppress verbose output (progress bars)."
+      ]
+    ]
+  }
 }

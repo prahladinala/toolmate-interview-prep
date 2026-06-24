@@ -27,5 +27,26 @@
       "answer": "Because `git checkout` does too many things. It can switch branches, but it can ALSO overwrite and delete uncommitted files (e.g., `git checkout -- file.txt`). This dual-purpose was highly confusing for beginners."
     }
   ],
-  "codeExample": "# Switch to an existing branch\n$ git checkout main\n\n# CREATE and SWITCH to a new branch in one command (Extremely common!)\n$ git checkout -b feature/shopping-cart\n\n# Teleport back in time to an old commit (Detached HEAD state)\n$ git checkout a1b2c3d\n\n# Danger: Discard any unsaved changes made to index.html and revert it to the last commit\n$ git checkout -- index.html"
+  "codeExample": "# Switch to an existing branch\n$ git checkout main\n\n# CREATE and SWITCH to a new branch in one command (Extremely common!)\n$ git checkout -b feature/shopping-cart\n\n# Teleport back in time to an old commit (Detached HEAD state)\n$ git checkout a1b2c3d\n\n# Danger: Discard any unsaved changes made to index.html and revert it to the last commit\n$ git checkout -- index.html",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-b",
+        "Create and immediately switch to a new branch."
+      ],
+      [
+        "-f",
+        "Force. Throw away local changes and force checkout."
+      ],
+      [
+        "-- [file]",
+        "Discard local modifications to a specific file."
+      ]
+    ]
+  }
 }

@@ -4,7 +4,8 @@ import { RetroBadge } from "@/components/retro/retro-badge";
 import { CodePlayground } from "@/components/learn/CodePlayground";
 import { CompleteTopicButton } from "@/components/learn/CompleteTopicButton";
 import { FlashCard } from "@/components/learn/FlashCard";
-import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2 } from "lucide-react";
+import { MermaidDiagram } from "@/components/learn/MermaidDiagram";
+import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2, Network, Table } from "lucide-react";
 
 export default async function TopicPage({
   params,
@@ -84,6 +85,49 @@ export default async function TopicPage({
           </ul>
         </div>
       </section>
+
+      {/* Visual Data / Tables */}
+      {topicContent.tableData && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Table className="text-primary" /> {topicContent.tableData.title || "Parameter Breakdown"}
+          </h2>
+          <div className="overflow-x-auto rounded-xl border-2 border-border retro-shadow-sm bg-card">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-muted border-b-2 border-border">
+                  {topicContent.tableData.headers.map((header, i) => (
+                    <th key={i} className="p-4 font-black text-muted-foreground whitespace-nowrap">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y-2 divide-border">
+                {topicContent.tableData.rows.map((row, i) => (
+                  <tr key={i} className="hover:bg-muted/50 transition-colors">
+                    {row.map((cell, j) => (
+                      <td key={j} className="p-4 align-top">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {/* Visual Aids / Flowcharts */}
+      {topicContent.diagramContent && topicContent.diagramType === "mermaid" && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Network className="text-secondary" /> Architecture & Flow
+          </h2>
+          <MermaidDiagram chart={topicContent.diagramContent} />
+        </section>
+      )}
 
       {/* Code Example (if any) */}
       {topicContent.codeExample && (

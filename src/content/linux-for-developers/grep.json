@@ -27,5 +27,40 @@
       "question": "Piping into grep?",
       "answer": "Instead of searching a file, `grep` filters the live output of the `ls` command. It will only print the files that were modified in February, effectively filtering the list."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Important `grep` Command Flags",
+    "headers": [
+      "Flag",
+      "Command",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-i",
+        "`grep -i 'error' log.txt`",
+        "Ignore case. Matches 'Error', 'error', and 'ERROR' equally."
+      ],
+      [
+        "-v",
+        "`grep -v 'warning' log.txt`",
+        "Invert match. Shows every line that does NOT contain the word."
+      ],
+      [
+        "-r",
+        "`grep -r 'api_key' /var/www`",
+        "Recursive. Searches through all files in all subdirectories."
+      ],
+      [
+        "-c",
+        "`grep -c 'failed' auth.log`",
+        "Count. Instead of printing the lines, it just prints the total number of matches."
+      ],
+      [
+        "-n",
+        "`grep -n 'function' app.js`",
+        "Line number. Prints the exact line number where the match was found."
+      ]
+    ]
+  }
 }

@@ -26,5 +26,26 @@
       "question": "What is Load Average?",
       "answer": "It shows the system load over the last 1, 5, and 15 minutes. A load of 1.0 on a single-core CPU means the CPU is exactly 100% utilized. A load of 2.0 means it is overwhelmed and tasks are waiting in line."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-d [sec]",
+        "Delay. Update the screen every [sec] seconds."
+      ],
+      [
+        "-u [user]",
+        "Monitor only processes owned by a specific user."
+      ],
+      [
+        "-i",
+        "Idle. Ignore idle or zombie processes."
+      ]
+    ]
+  }
 }

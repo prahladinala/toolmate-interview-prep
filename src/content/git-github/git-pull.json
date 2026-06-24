@@ -26,5 +26,22 @@
       "answer": "`git fetch` (download) + `git merge` (integrate)."
     }
   ],
-  "codeExample": "# 1. You are on your 'main' branch locally.\n\n# 2. You pull the latest changes from the GitHub server.\n$ git pull origin main\n\n# Under the hood, Git did this:\n# $ git fetch origin main\n# $ git merge origin/main\n\n# If there are no conflicts, your local files instantly update!"
+  "codeExample": "# 1. You are on your 'main' branch locally.\n\n# 2. You pull the latest changes from the GitHub server.\n$ git pull origin main\n\n# Under the hood, Git did this:\n# $ git fetch origin main\n# $ git merge origin/main\n\n# If there are no conflicts, your local files instantly update!",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--rebase",
+        "Fetch and then rebase local commits on top of the fetched branch instead of merging."
+      ],
+      [
+        "--ff-only",
+        "Only update if it can be fast-forwarded (aborts if a merge commit is required)."
+      ]
+    ]
+  }
 }

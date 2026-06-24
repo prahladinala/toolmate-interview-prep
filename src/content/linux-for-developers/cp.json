@@ -26,5 +26,30 @@
       "question": "Why error on folders?",
       "answer": "Because `cp` only copies single files by default. To copy an entire directory and all the files inside it, you must use the Recursive flag: `cp -r folder1 folder2`."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-r / -R",
+        "Recursive. Copy directories and their contents."
+      ],
+      [
+        "-i",
+        "Interactive. Prompt before overwrite."
+      ],
+      [
+        "-v",
+        "Verbose. Explain what is being done."
+      ],
+      [
+        "-p",
+        "Preserve. Keep original file attributes (time, ownership)."
+      ]
+    ]
+  }
 }

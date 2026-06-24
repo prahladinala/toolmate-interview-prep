@@ -26,5 +26,40 @@
       "question": "Create vs Run?",
       "answer": "`docker create` prepares the container but leaves it dormant (Stopped). `docker run` creates the container AND instantly starts it. (`docker run` = `create` + `start`)."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial `docker run` Flags",
+    "headers": [
+      "Flag",
+      "Example",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-d",
+        "`docker run -d nginx`",
+        "Detached mode. Runs the container safely in the background instead of freezing your terminal."
+      ],
+      [
+        "-p",
+        "`docker run -p 8080:80 nginx`",
+        "Port mapping. Maps Port 8080 on your laptop to Port 80 inside the container."
+      ],
+      [
+        "-v",
+        "`docker run -v /data:/app db`",
+        "Volume mounting. Maps a folder on your laptop's hard drive directly into the container."
+      ],
+      [
+        "--name",
+        "`docker run --name web nginx`",
+        "Assigns a custom, human-readable name to the container instead of a random hash."
+      ],
+      [
+        "-e",
+        "`docker run -e DB_PASS=123 db`",
+        "Environment variables. Passes secret passwords or configs directly into the running container."
+      ]
+    ]
+  }
 }

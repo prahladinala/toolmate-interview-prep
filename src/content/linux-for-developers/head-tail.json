@@ -26,5 +26,26 @@
       "question": "What is tail -f?",
       "answer": "The 'follow' flag. It prints the bottom of the file, but keeps the terminal open. As new lines are written to the file (like a live server log), they are instantly printed to your screen in real-time."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-n [num]",
+        "Output the first/last [num] lines (default is 10)."
+      ],
+      [
+        "-c [bytes]",
+        "Output the first/last [bytes] bytes."
+      ],
+      [
+        "-f (tail only)",
+        "Follow. Output appended data as the file grows."
+      ]
+    ]
+  }
 }

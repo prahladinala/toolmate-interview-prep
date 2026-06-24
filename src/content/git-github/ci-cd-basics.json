@@ -27,5 +27,7 @@
       "answer": "In Continuous Delivery, the robot prepares the code, but a human must click a final 'Approve' button to push it live. In Continuous Deployment, there is NO human interaction. The moment the PR merges, it goes live instantly."
     }
   ],
-  "codeExample": "// A typical CI/CD Pipeline Flow\n\n/*\n  1. Developer pushes branch to GitHub.\n  2. [CI RUNS]: Linter checks for messy code.\n  3. [CI RUNS]: Unit Tests run.\n  4. [CI RUNS]: Integration Tests run.\n  5. Reviewer approves PR.\n  6. PR Merged to Main.\n  7. [CD RUNS]: Docker image built.\n  8. [CD RUNS]: Docker image pushed to AWS.\n  9. Users see the new feature!\n*/"
+  "codeExample": "// A typical CI/CD Pipeline Flow\n\n/*\n  1. Developer pushes branch to GitHub.\n  2. [CI RUNS]: Linter checks for messy code.\n  3. [CI RUNS]: Unit Tests run.\n  4. [CI RUNS]: Integration Tests run.\n  5. Reviewer approves PR.\n  6. PR Merged to Main.\n  7. [CD RUNS]: Docker image built.\n  8. [CD RUNS]: Docker image pushed to AWS.\n  9. Users see the new feature!\n*/",
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph LR\n  subgraph Continuous Integration (CI)\n    Commit(Git Push) --> Build(Compile Code)\n    Build --> Test(Run Automated Tests)\n  end\n\n  subgraph Continuous Deployment (CD)\n    Test --> Pack(Build Docker Image)\n    Pack --> Deploy(Deploy to Production)\n  end\n\n  style Commit fill:#4285f4,stroke:#fff,color:#fff\n  style Test fill:#34a853,stroke:#fff,color:#fff\n  style Deploy fill:#ea4335,stroke:#fff,color:#fff\n      "
 }

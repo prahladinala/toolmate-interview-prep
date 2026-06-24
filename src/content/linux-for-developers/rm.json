@@ -26,5 +26,26 @@
       "question": "What does rm -rf / do?",
       "answer": "It is the self-destruct sequence. `-r` means recursively delete all folders. `-f` means force (don't ask for confirmation). `/` is the root of the computer. It literally deletes the entire operating system and all your data."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-r / -R",
+        "Recursive. Remove directories and their contents."
+      ],
+      [
+        "-f",
+        "Force. Ignore nonexistent files, never prompt."
+      ],
+      [
+        "-i",
+        "Interactive. Prompt before every removal."
+      ]
+    ]
+  }
 }

@@ -27,5 +27,26 @@
       "question": "What does -i do?",
       "answer": "In-place editing. By default, `sed` only prints the changed text to the screen without actually modifying the file. The `-i` flag tells `sed` to permanently save the changes directly into the original file."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-i",
+        "In-place. Edit files directly instead of outputting to terminal."
+      ],
+      [
+        "-e",
+        "Expression. Add the script to the commands to be executed."
+      ],
+      [
+        "-n",
+        "Quiet. Suppress automatic printing of pattern space."
+      ]
+    ]
+  }
 }

@@ -26,5 +26,26 @@
       "question": "Why called ps?",
       "answer": "It is inherited from Unix/Linux terminology, where `ps` stands for 'Process Status'."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-a / --all",
+        "Show all containers (default shows just running)."
+      ],
+      [
+        "-q / --quiet",
+        "Only display container IDs (useful for piping to other commands)."
+      ],
+      [
+        "-s / --size",
+        "Display the total file sizes."
+      ]
+    ]
+  }
 }

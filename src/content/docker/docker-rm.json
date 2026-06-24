@@ -26,5 +26,22 @@
       "question": "What does --rm do?",
       "answer": "It tells Docker to act like a self-destructing message. The absolute second the container stops running, Docker automatically deletes the container from the hard drive. Perfect for quick, one-off tasks."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-f / --force",
+        "Force the removal of a running container (uses SIGKILL)."
+      ],
+      [
+        "-v / --volumes",
+        "Remove anonymous volumes associated with the container."
+      ]
+    ]
+  }
 }

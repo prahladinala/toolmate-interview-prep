@@ -26,5 +26,38 @@
       "question": "start vs restart?",
       "answer": "`start` turns a stopped service on. If the service is already running, it does nothing. `restart` forcefully kills the currently running service and boots it back up fresh, which is required after changing configuration files."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Service Management Commands",
+    "headers": [
+      "Command",
+      "What it does"
+    ],
+    "rows": [
+      [
+        "`start`",
+        "Turns the service on immediately."
+      ],
+      [
+        "`stop`",
+        "Turns the service off immediately."
+      ],
+      [
+        "`restart`",
+        "Kills the service and completely boots it up fresh. Drops all active user connections."
+      ],
+      [
+        "`reload`",
+        "Tells the active service to gracefully re-read its config file while keeping users connected."
+      ],
+      [
+        "`enable`",
+        "Configures the service to turn on automatically every time the server boots up."
+      ],
+      [
+        "`status`",
+        "Prints out if the service is running, failed, or dead, along with recent error logs."
+      ]
+    ]
+  }
 }

@@ -40,5 +40,30 @@
       "answer": "No, it actually makes the component it is defined inside slightly SLOWER because of the hook overhead. Its only purpose is to make CHILD components render faster by skipping renders via `React.memo`."
     }
   ],
-  "codeExample": "import React, { useState, useCallback } from 'react';\n\n// A child component heavily optimized with React.memo\n// It will ONLY re-render if 'title' or 'onAction' changes in memory.\nconst HeavyChild = React.memo(({ title, onAction }) => {\n  console.log(\"HeavyChild rendered!\");\n  return <button onClick={onAction}>{title}</button>;\n});\n\nexport default function ParentComponent() {\n  const [count, setCount] = useState(0);\n\n  // BAD: This creates a brand new function in memory every time Parent renders.\n  // If we passed this, HeavyChild would re-render every time 'count' changes.\n  // const handleAction = () => console.log(\"Action!\");\n\n  // GOOD: useCallback caches the function in memory.\n  // It will always be the exact same function reference.\n  const handleAction = useCallback(() => {\n    console.log(\"Action clicked!\");\n  }, []); // Empty array means it never needs to be recreated\n\n  return (\n    <div>\n      <h2>Parent Count: {count}</h2>\n      <button onClick={() => setCount(c => c + 1)}>Increment Parent</button>\n      \n      <hr />\n      {/* Passing the cached function to the optimized child */}\n      <HeavyChild title=\"Click Me\" onAction={handleAction} />\n    </div>\n  );\n}"
+  "codeExample": "import React, { useState, useCallback } from 'react';\n\n// A child component heavily optimized with React.memo\n// It will ONLY re-render if 'title' or 'onAction' changes in memory.\nconst HeavyChild = React.memo(({ title, onAction }) => {\n  console.log(\"HeavyChild rendered!\");\n  return <button onClick={onAction}>{title}</button>;\n});\n\nexport default function ParentComponent() {\n  const [count, setCount] = useState(0);\n\n  // BAD: This creates a brand new function in memory every time Parent renders.\n  // If we passed this, HeavyChild would re-render every time 'count' changes.\n  // const handleAction = () => console.log(\"Action!\");\n\n  // GOOD: useCallback caches the function in memory.\n  // It will always be the exact same function reference.\n  const handleAction = useCallback(() => {\n    console.log(\"Action clicked!\");\n  }, []); // Empty array means it never needs to be recreated\n\n  return (\n    <div>\n      <h2>Parent Count: {count}</h2>\n      <button onClick={() => setCount(c => c + 1)}>Increment Parent</button>\n      \n      <hr />\n      {/* Passing the cached function to the optimized child */}\n      <HeavyChild title=\"Click Me\" onAction={handleAction} />\n    </div>\n  );\n}",
+  "tableData": {
+    "title": "React Performance Hooks Comparison",
+    "headers": [
+      "Hook",
+      "What it caches",
+      "Primary Use Case"
+    ],
+    "rows": [
+      [
+        "`useCallback`",
+        "A Function Definition",
+        "Preventing a child component from unnecessarily re-rendering when you pass it a callback function as a prop."
+      ],
+      [
+        "`useMemo`",
+        "A Computed Value",
+        "Preventing an expensive math calculation or data filtering operation from running on every single render."
+      ],
+      [
+        "`useEffect`",
+        "Nothing (Runs side-effects)",
+        "Fetching data, setting up subscriptions, or manually changing the DOM."
+      ]
+    ]
+  }
 }

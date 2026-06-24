@@ -26,5 +26,30 @@
       "question": "How to combine?",
       "answer": "Using the redirect operator: `cat file1.txt file2.txt > file3.txt`."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-n",
+        "Number all output lines."
+      ],
+      [
+        "-b",
+        "Number non-empty output lines."
+      ],
+      [
+        "-E",
+        "Display $ at the end of each line."
+      ],
+      [
+        "-s",
+        "Squeeze multiple empty lines into one."
+      ]
+    ]
+  }
 }

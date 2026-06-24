@@ -26,5 +26,26 @@
       "question": "Why is it instant?",
       "answer": "Because Linux doesn't actually move the 100GB of physical data on the disk. It simply updates the 'address' pointing to that data in the file system tree. It just changes the label."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-i",
+        "Interactive. Prompt before overwriting an existing file."
+      ],
+      [
+        "-f",
+        "Force. Overwrite existing files without prompting."
+      ],
+      [
+        "-v",
+        "Verbose. Explain what is being done."
+      ]
+    ]
+  }
 }

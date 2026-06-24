@@ -26,5 +26,26 @@
       "question": "What is -s?",
       "answer": "Summarize. Instead of printing the size of every individual file inside a folder, it just prints one single grand total size for the folder itself."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-h",
+        "Human-readable sizes."
+      ],
+      [
+        "-s",
+        "Summarize. Display only a total for each argument."
+      ],
+      [
+        "-a",
+        "Write counts for all files, not just directories."
+      ]
+    ]
+  }
 }

@@ -27,5 +27,26 @@
       "answer": "The `-p` stands for 'patch'. It is a powerful feature that allows you to review your changes block by block, and stage specific lines of code within a file, rather than staging the entire file."
     }
   ],
-  "codeExample": "# Add a single specific file\n$ git add index.html\n\n# Add two specific files\n$ git add style.css script.js\n\n# Add an entire folder\n$ git add src/\n\n# THE NUCLEAR OPTION: Add EVERYTHING in the current directory and below\n$ git add .\n\n# Add all files across the entire repository, regardless of current directory\n$ git add -A"
+  "codeExample": "# Add a single specific file\n$ git add index.html\n\n# Add two specific files\n$ git add style.css script.js\n\n# Add an entire folder\n$ git add src/\n\n# THE NUCLEAR OPTION: Add EVERYTHING in the current directory and below\n$ git add .\n\n# Add all files across the entire repository, regardless of current directory\n$ git add -A",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-A / --all",
+        "Add all new, modified, and deleted files to the staging area."
+      ],
+      [
+        ".",
+        "Add all new and modified files in the current directory."
+      ],
+      [
+        "-p",
+        "Patch mode. Interactively choose chunks of files to add."
+      ]
+    ]
+  }
 }

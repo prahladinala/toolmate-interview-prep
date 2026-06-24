@@ -27,5 +27,35 @@
       "answer": "If the `main` branch hasn't changed at all since you created your feature branch, Git doesn't need to do any complex math. It just instantly moves the `main` pointer forward to match your feature branch. No extra 'Merge Commit' is required."
     }
   ],
-  "codeExample": "# Scenario: You finished 'feature-login' and want to merge it into 'main'\n\n# Step 1: Switch to the receiving branch (main)\n$ git checkout main\n\n# Step 2: Merge the feature branch INTO main\n$ git merge feature-login\n\n# Step 3 (Optional): Delete the feature branch now that it is merged\n$ git branch -d feature-login"
+  "codeExample": "# Scenario: You finished 'feature-login' and want to merge it into 'main'\n\n# Step 1: Switch to the receiving branch (main)\n$ git checkout main\n\n# Step 2: Merge the feature branch INTO main\n$ git merge feature-login\n\n# Step 3 (Optional): Delete the feature branch now that it is merged\n$ git branch -d feature-login",
+  "tableData": {
+    "title": "Merge vs Rebase",
+    "headers": [
+      "Feature",
+      "git merge",
+      "git rebase"
+    ],
+    "rows": [
+      [
+        "History",
+        "Preserves absolute history. Creates a new 'Merge Commit' tying the two branches together.",
+        "Rewrites history. Moves your entire branch to the very tip of the main branch, creating a perfectly straight line."
+      ],
+      [
+        "Traceability",
+        "Excellent. You can see exactly when the branches diverged and came back together.",
+        "Poor. It lies about history, making it look like you wrote your code after the main branch finished, even if you didn't."
+      ],
+      [
+        "Conflict Resolution",
+        "You resolve all merge conflicts at once in a single massive merge commit.",
+        "You resolve conflicts one-by-one for every single commit you are rebasing."
+      ],
+      [
+        "Safety Rule",
+        "100% safe to use on public branches shared with other developers.",
+        "DANGER: Never rebase a public branch. It rewrites history and will break your coworkers' local repositories."
+      ]
+    ]
+  }
 }

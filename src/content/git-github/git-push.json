@@ -28,5 +28,7 @@
       "answer": "It stands for 'set-upstream'. It links your local branch to the remote branch permanently. After using `-u` once, you can just type `git push` in the future instead of typing out `git push origin main` every time."
     }
   ],
-  "codeExample": "# 1. Save your work locally FIRST\n$ git commit -am \"Finish the homepage\"\n\n# 2. Upload that commit to the 'origin' server, on the 'main' branch\n$ git push origin main\n\n# 3. Create a brand new branch, and push it to the server for the first time\n# (-u sets the upstream link so Git remembers where to push next time)\n$ git checkout -b my-new-feature\n$ git push -u origin my-new-feature\n\n# 4. In the future, you can just type:\n$ git push"
+  "codeExample": "# 1. Save your work locally FIRST\n$ git commit -am \"Finish the homepage\"\n\n# 2. Upload that commit to the 'origin' server, on the 'main' branch\n$ git push origin main\n\n# 3. Create a brand new branch, and push it to the server for the first time\n# (-u sets the upstream link so Git remembers where to push next time)\n$ git checkout -b my-new-feature\n$ git push -u origin my-new-feature\n\n# 4. In the future, you can just type:\n$ git push",
+  "diagramType": "mermaid",
+  "diagramContent": "\nsequenceDiagram\n    participant Dev as Developer\n    participant Local as Local Repo (.git)\n    participant Remote as Remote Repo (GitHub)\n    \n    Dev->>Local: git commit -m \"update\"\n    Local-->>Dev: Snapshot Saved\n    Dev->>Remote: git push origin main\n    Remote-->>Dev: Success (Code is live on GitHub)\n      "
 }

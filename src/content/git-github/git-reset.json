@@ -27,5 +27,26 @@
       "answer": "`git reset <filename>` (or `git restore --staged <filename>` in newer Git versions). It pulls the file off the Stage, but leaves the edits in your Working Directory perfectly safe."
     }
   ],
-  "codeExample": "# Scenario 1: Unstaging a file\n$ git add .\n# Oops, I didn't mean to stage secret.txt!\n$ git reset secret.txt\n\n# Scenario 2: Erasing the last commit, but KEEPING the code in VS Code\n$ git reset HEAD~1\n\n# Scenario 3: DANGER! Erasing the last commit, and DELETING the code permanently\n$ git reset --hard HEAD~1"
+  "codeExample": "# Scenario 1: Unstaging a file\n$ git add .\n# Oops, I didn't mean to stage secret.txt!\n$ git reset secret.txt\n\n# Scenario 2: Erasing the last commit, but KEEPING the code in VS Code\n$ git reset HEAD~1\n\n# Scenario 3: DANGER! Erasing the last commit, and DELETING the code permanently\n$ git reset --hard HEAD~1",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--soft",
+        "Move HEAD back, but keep all changes safely in the Staging Area."
+      ],
+      [
+        "--mixed",
+        "(Default) Move HEAD back, unstage changes, but keep them in the Working Directory."
+      ],
+      [
+        "--hard",
+        "DANGER: Move HEAD back and violently destroy all uncommitted local changes."
+      ]
+    ]
+  }
 }

@@ -26,5 +26,7 @@
       "question": "Daemon crashes?",
       "answer": "Your Docker Client commands will immediately start failing with 'Cannot connect to the Docker daemon', and all currently running containers will generally stop (unless configured for live-restore)."
     }
-  ]
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph LR\n  subgraph Client [Docker Client]\n    CLI(docker build/run)\n  end\n\n  subgraph Host [Docker Host]\n    Daemon(Docker Daemon / dockerd)\n    Containers[(Containers)]\n    Images([Images])\n    \n    Daemon --> Containers\n    Daemon --> Images\n  end\n\n  subgraph Registry [Docker Registry]\n    Hub(Docker Hub)\n  end\n\n  CLI -- API calls --> Daemon\n  Daemon -- pulls/pushes --> Hub\n      "
 }

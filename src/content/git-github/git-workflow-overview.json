@@ -26,5 +26,35 @@
       "answer": "It allows you to group related changes together. If you edited 10 files, but 5 are for a 'Login Bug' and 5 are for a 'Color Change', you don't want to save them all at once. The staging area lets you stage and commit just the 5 login files, and then do a separate commit for the color changes."
     }
   ],
-  "codeExample": "/*\n  THE THREE TREES OF GIT:\n  \n  1. Working Directory \n     (You edit files here)\n          ↓\n     `git add`\n          ↓\n  2. Staging Area (Index)\n     (Files ready to be saved)\n          ↓\n     `git commit`\n          ↓\n  3. .git Repository\n     (Files permanently saved in history)\n*/"
+  "codeExample": "/*\n  THE THREE TREES OF GIT:\n  \n  1. Working Directory \n     (You edit files here)\n          ↓\n     `git add`\n          ↓\n  2. Staging Area (Index)\n     (Files ready to be saved)\n          ↓\n     `git commit`\n          ↓\n  3. .git Repository\n     (Files permanently saved in history)\n*/",
+  "tableData": {
+    "title": "The Four Areas of Git",
+    "headers": [
+      "Area",
+      "Location",
+      "Description"
+    ],
+    "rows": [
+      [
+        "Working Directory",
+        "Local Computer",
+        "Your actual files on your hard drive. Where you make changes, write code, and delete files."
+      ],
+      [
+        "Staging Area (Index)",
+        "Local Computer",
+        "A rough draft space. Where you place files (using `git add`) that you want to include in your next commit."
+      ],
+      [
+        "Local Repository",
+        "Local Computer",
+        "The hidden `.git` folder. Where Git permanently saves your snapshots (commits) on your local hard drive."
+      ],
+      [
+        "Remote Repository",
+        "Cloud (e.g. GitHub)",
+        "A version of your project hosted on the internet or network, used for backing up and sharing code with a team."
+      ]
+    ]
+  }
 }

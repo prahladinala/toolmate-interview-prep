@@ -26,5 +26,26 @@
       "question": "What does it actually do?",
       "answer": "It sends a 'Signal' to a process. By default, it sends SIGTERM (Signal 15: please terminate gracefully). You can use it to send other signals, like SIGSTOP (pause the process without killing it)."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-9",
+        "SIGKILL. Forcefully kill the process immediately."
+      ],
+      [
+        "-15",
+        "SIGTERM. Gracefully ask the process to terminate (default)."
+      ],
+      [
+        "-l",
+        "List all available signal names."
+      ]
+    ]
+  }
 }

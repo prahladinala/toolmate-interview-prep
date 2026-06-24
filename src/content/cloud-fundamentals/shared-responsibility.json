@@ -27,5 +27,7 @@
       "question": "More or less in PaaS?",
       "answer": "Less. In PaaS, the provider takes over responsibility for updating the Operating System and Network firewalls. The customer is only responsible for their App Code and Data."
     }
-  ]
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph TD\n  subgraph Customer Responsibility (Security IN the Cloud)\n    Data[Customer Data]\n    IAM[Identity & Access Management]\n    OS[Operating System / Firewall Rules]\n  end\n\n  subgraph AWS/GCP Responsibility (Security OF the Cloud)\n    Compute[Compute & Storage Hardware]\n    Network[Global Infrastructure]\n    Physical[Datacenter Security Guards]\n  end\n\n  Data --> IAM\n  IAM --> OS\n  OS -.-> Compute\n      "
 }

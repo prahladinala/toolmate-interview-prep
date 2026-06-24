@@ -26,5 +26,22 @@
       "question": "Create parent and child?",
       "answer": "Use the `-p` (parents) flag: `mkdir -p parent/child`. It automatically creates any missing parent directories required."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-p",
+        "Parents. Create parent directories as needed, no error if existing."
+      ],
+      [
+        "-v",
+        "Verbose. Print a message for each created directory."
+      ]
+    ]
+  }
 }

@@ -27,5 +27,26 @@
       "answer": "`origin`. Git automatically creates a bookmark pointing back to the URL you cloned from, and names that bookmark 'origin'."
     }
   ],
-  "codeExample": "# Clone a repository from GitHub\n$ git clone https://github.com/facebook/react.git\n\n# This creates a folder named 'react' in your current directory.\n# Navigate into it:\n$ cd react\n\n# You now have the entire React source code and history on your machine!\n\n# You can also clone it and give the folder a custom name:\n$ git clone https://github.com/facebook/react.git my-react-folder"
+  "codeExample": "# Clone a repository from GitHub\n$ git clone https://github.com/facebook/react.git\n\n# This creates a folder named 'react' in your current directory.\n# Navigate into it:\n$ cd react\n\n# You now have the entire React source code and history on your machine!\n\n# You can also clone it and give the folder a custom name:\n$ git clone https://github.com/facebook/react.git my-react-folder",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--depth 1",
+        "Shallow clone. Only clone the very last commit (saves time/space)."
+      ],
+      [
+        "--branch [name]",
+        "Clone only a specific branch instead of the default."
+      ],
+      [
+        "--bare",
+        "Make a bare Git repository (no working directory)."
+      ]
+    ]
+  }
 }

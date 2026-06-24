@@ -27,5 +27,35 @@
       "answer": "No. GET requests are strictly for 'getting' information, not sending large payloads of data. All necessary data in a GET request is usually appended to the URL as query parameters (e.g., `?search=shoes`)."
     }
   ],
-  "codeExample": "/* \n  Anatomy of an HTTP POST Request:\n*/\n\n// 1. REQUEST LINE (Method, Path, Protocol Version)\nPOST /api/users/create HTTP/1.1\n\n// 2. HEADERS (Key-Value pairs providing metadata)\nHost: myapi.com\nContent-Type: application/json\nAuthorization: Bearer my_secret_token_123\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X)\n\n// 3. BLANK LINE (Mandatory to separate headers from body)\n\n// 4. BODY (The actual data being sent to the server)\n{\n  \"username\": \"johndoe\",\n  \"age\": 25\n}"
+  "codeExample": "/* \n  Anatomy of an HTTP POST Request:\n*/\n\n// 1. REQUEST LINE (Method, Path, Protocol Version)\nPOST /api/users/create HTTP/1.1\n\n// 2. HEADERS (Key-Value pairs providing metadata)\nHost: myapi.com\nContent-Type: application/json\nAuthorization: Bearer my_secret_token_123\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X)\n\n// 3. BLANK LINE (Mandatory to separate headers from body)\n\n// 4. BODY (The actual data being sent to the server)\n{\n  \"username\": \"johndoe\",\n  \"age\": 25\n}",
+  "tableData": {
+    "title": "Anatomy of an HTTP Request",
+    "headers": [
+      "Component",
+      "Purpose",
+      "Example"
+    ],
+    "rows": [
+      [
+        "Method (Verb)",
+        "Defines the action you want to perform (e.g., Get data, Create data).",
+        "`GET`, `POST`, `PUT`, `DELETE`"
+      ],
+      [
+        "URL (Endpoint)",
+        "The specific web address you are sending the request to.",
+        "`https://api.github.com/users`"
+      ],
+      [
+        "Headers",
+        "Hidden metadata sent with the request (authentication tokens, content types).",
+        "`Authorization: Bearer xyz123`"
+      ],
+      [
+        "Body (Payload)",
+        "The actual data being sent to the server (Usually in JSON). Not used in GET requests.",
+        "`{ \"username\": \"alice\" }`"
+      ]
+    ]
+  }
 }

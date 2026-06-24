@@ -26,5 +26,26 @@
       "question": "Does it show folders?",
       "answer": "No. `df` only shows the summary of the entire physical hard drive partition. To find out *which* folder is full, you must use the `du` command."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-h",
+        "Human-readable (e.g., 1K 234M 2G)."
+      ],
+      [
+        "-i",
+        "List inode information instead of block usage."
+      ],
+      [
+        "-T",
+        "Print file system type."
+      ]
+    ]
+  }
 }

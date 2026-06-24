@@ -26,5 +26,26 @@
       "question": "What happens on file deletion?",
       "answer": "Standard `tail -f` tracks the file's 'inode' (physical location on disk), so if the file is deleted and replaced, `tail` will freeze and stop showing new logs. You must use `tail -F` (capital F) to force it to track the file by Name, allowing it to survive file rotations."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-f",
+        "Follow by file descriptor (breaks if file is rotated)."
+      ],
+      [
+        "-F",
+        "Follow by filename (survives log rotations/deletions)."
+      ],
+      [
+        "-n [num]",
+        "Start by showing the last [num] lines before following."
+      ]
+    ]
+  }
 }

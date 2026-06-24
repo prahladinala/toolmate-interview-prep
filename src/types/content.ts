@@ -17,6 +17,11 @@ export interface TopicContent {
   codeExample?: string;
   diagramType?: "mermaid" | "svg";
   diagramContent?: string;
+  tableData?: {
+    title?: string;
+    headers: string[];
+    rows: string[][];
+  };
 }
 
 export interface Category {

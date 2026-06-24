@@ -26,5 +26,22 @@
       "question": "Stop vs Kill?",
       "answer": "`docker stop` sends a polite 'Please shut down' signal (SIGTERM), giving the application 10 seconds to save its work and close gracefully. `docker kill` pulls the power cord from the wall instantly (SIGKILL), forcefully crashing the process."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-t / --time (stop)",
+        "Seconds to wait for stop before forcefully killing it."
+      ],
+      [
+        "-a / --attach (start)",
+        "Attach STDOUT/STDERR and forward signals."
+      ]
+    ]
+  }
 }

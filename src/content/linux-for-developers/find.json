@@ -26,5 +26,30 @@
       "question": "What does -exec do?",
       "answer": "It allows you to execute a secondary command on every single file that `find` discovers. For example, you can use it to automatically `rm` (delete) every file it finds that is older than 30 days."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-name",
+        "Search by exact file name."
+      ],
+      [
+        "-type",
+        "Search by file type (f for file, d for directory)."
+      ],
+      [
+        "-mtime",
+        "Search by modification time (e.g., -mtime -7 for last 7 days)."
+      ],
+      [
+        "-exec",
+        "Execute a command on every file found."
+      ]
+    ]
+  }
 }

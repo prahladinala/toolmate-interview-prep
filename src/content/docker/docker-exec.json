@@ -26,5 +26,30 @@
       "question": "What are -i and -t?",
       "answer": "`-i` (Interactive) keeps the input stream open so you can type. `-t` (TTY) allocates a pseudo-terminal so the output looks like a normal, formatted command prompt."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-i",
+        "Interactive. Keep STDIN open even if not attached."
+      ],
+      [
+        "-t",
+        "Allocate a pseudo-TTY (gives you a terminal prompt)."
+      ],
+      [
+        "-u / --user",
+        "Username or UID to run the command as (e.g., to run as root)."
+      ],
+      [
+        "-w / --workdir",
+        "Working directory inside the container for the command."
+      ]
+    ]
+  }
 }

@@ -27,5 +27,26 @@
       "answer": "You can use `git log origin/main` to see the newly downloaded commits, or `git diff main origin/main` to see the exact code differences."
     }
   ],
-  "codeExample": "# Download all new data from the 'origin' server\n$ git fetch origin\n\n# Look at what your coworkers pushed to the 'main' branch on the server\n$ git log origin/main\n\n# Compare your local 'main' branch with the server's 'main' branch\n$ git diff main origin/main\n\n# If you like their changes, you manually merge them in!\n$ git merge origin/main"
+  "codeExample": "# Download all new data from the 'origin' server\n$ git fetch origin\n\n# Look at what your coworkers pushed to the 'main' branch on the server\n$ git log origin/main\n\n# Compare your local 'main' branch with the server's 'main' branch\n$ git diff main origin/main\n\n# If you like their changes, you manually merge them in!\n$ git merge origin/main",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--all",
+        "Fetch all remotes."
+      ],
+      [
+        "--prune",
+        "Remove any remote-tracking references that no longer exist on the remote."
+      ],
+      [
+        "--tags",
+        "Fetch all tags from the remote."
+      ]
+    ]
+  }
 }

@@ -26,5 +26,45 @@
       "question": "u+x vs a+x?",
       "answer": "`u+x` gives execute permission ONLY to the User (owner) of the file. `a+x` gives execute permission to All users on the system."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Numeric Permissions Breakdown (755)",
+    "headers": [
+      "Number",
+      "Binary",
+      "Permission Granted"
+    ],
+    "rows": [
+      [
+        "4",
+        "100",
+        "Read (r) only"
+      ],
+      [
+        "2",
+        "010",
+        "Write (w) only"
+      ],
+      [
+        "1",
+        "001",
+        "Execute (x) only"
+      ],
+      [
+        "5",
+        "101",
+        "Read + Execute (4 + 1)"
+      ],
+      [
+        "6",
+        "110",
+        "Read + Write (4 + 2)"
+      ],
+      [
+        "7",
+        "111",
+        "Read + Write + Execute (4 + 2 + 1)"
+      ]
+    ]
+  }
 }

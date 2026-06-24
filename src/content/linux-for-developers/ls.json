@@ -26,5 +26,40 @@
       "question": "What does 'd' mean?",
       "answer": "It means the item is a 'Directory' (folder), not a regular file."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Important `ls` Command Flags",
+    "headers": [
+      "Flag",
+      "Command",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-l",
+        "`ls -l`",
+        "Long format. Displays detailed information including permissions, owner, size, and modification date."
+      ],
+      [
+        "-a",
+        "`ls -a`",
+        "All. Shows all files, including hidden files (files starting with a dot `.`)."
+      ],
+      [
+        "-h",
+        "`ls -lh`",
+        "Human-readable. Converts file sizes from bytes into easily readable formats like KB, MB, and GB. (Usually combined with -l)."
+      ],
+      [
+        "-t",
+        "`ls -lt`",
+        "Time sort. Sorts the output by modification time, newest first."
+      ],
+      [
+        "-R",
+        "`ls -R`",
+        "Recursive. Lists the contents of all subdirectories recursively."
+      ]
+    ]
+  }
 }

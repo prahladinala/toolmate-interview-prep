@@ -26,5 +26,26 @@
       "question": "Show live CPU?",
       "answer": "No. `ps` is a static snapshot of the exact millisecond you hit Enter. To see live, fluctuating CPU usage, you must use `top` or `htop`."
     }
-  ]
+  ],
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "-e / -A",
+        "Select all processes."
+      ],
+      [
+        "-f",
+        "Do full-format listing (shows UID, PID, PPID, C, STIME, TTY, TIME, CMD)."
+      ],
+      [
+        "-u [user]",
+        "Select processes by specific user."
+      ]
+    ]
+  }
 }

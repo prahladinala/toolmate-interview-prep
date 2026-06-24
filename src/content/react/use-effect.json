@@ -41,5 +41,30 @@
       "answer": "Because `useEffect` expects the callback to either return nothing, or return a synchronous cleanup function. An `async` function returns a Promise, which confuses React and prevents cleanup from working correctly."
     }
   ],
-  "codeExample": "import React, { useState, useEffect } from 'react';\n\nexport default function Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  // This effect runs exactly ONCE on mount because of []\n  useEffect(() => {\n    console.log(\"Timer started!\");\n    \n    // Set up a side effect (an interval)\n    const intervalId = setInterval(() => {\n      setSeconds(prev => prev + 1);\n    }, 1000);\n\n    // Cleanup Function\n    // Runs when the component unmounts (is removed from screen)\n    return () => {\n      console.log(\"Component destroyed, clearing interval!\");\n      clearInterval(intervalId);\n    };\n  }, []); // Empty dependency array\n\n  return (\n    <div>\n      <h2>Seconds elapsed: {seconds}</h2>\n    </div>\n  );\n}"
+  "codeExample": "import React, { useState, useEffect } from 'react';\n\nexport default function Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  // This effect runs exactly ONCE on mount because of []\n  useEffect(() => {\n    console.log(\"Timer started!\");\n    \n    // Set up a side effect (an interval)\n    const intervalId = setInterval(() => {\n      setSeconds(prev => prev + 1);\n    }, 1000);\n\n    // Cleanup Function\n    // Runs when the component unmounts (is removed from screen)\n    return () => {\n      console.log(\"Component destroyed, clearing interval!\");\n      clearInterval(intervalId);\n    };\n  }, []); // Empty dependency array\n\n  return (\n    <div>\n      <h2>Seconds elapsed: {seconds}</h2>\n    </div>\n  );\n}",
+  "tableData": {
+    "title": "Dependency Array Behaviors",
+    "headers": [
+      "Array Type",
+      "Example",
+      "When does the effect run?"
+    ],
+    "rows": [
+      [
+        "No Array",
+        "`useEffect(() => {...})`",
+        "Runs on the very first render AND after absolutely every single re-render of the component. (High risk of infinite loops)."
+      ],
+      [
+        "Empty Array",
+        "`useEffect(() => {...}, [])`",
+        "Runs strictly ONCE when the component mounts to the screen. Never runs again."
+      ],
+      [
+        "Variables Included",
+        "`useEffect(() => {...}, [id])`",
+        "Runs on the first render, and then ONLY runs again if the value of `id` has mathematically changed."
+      ]
+    ]
+  }
 }

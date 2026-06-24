@@ -28,5 +28,40 @@
       "answer": "You do absolutely nothing. In the App Router, every component is a Server Component by default!"
     }
   ],
-  "codeExample": "import db from '@/lib/database';\n\n// Look at this! We are directly querying a database \n// right inside the React component! \n// This is completely secure because this code NEVER reaches the browser.\nexport default async function UserList() {\n  // 1. Await the DB query directly\n  const users = await db.query('SELECT * FROM users');\n\n  // 2. Render the HTML\n  return (\n    <ul>\n      {users.map(user => (\n        <li key={user.id}>{user.name}</li>\n      ))}\n    </ul>\n  );\n}"
+  "codeExample": "import db from '@/lib/database';\n\n// Look at this! We are directly querying a database \n// right inside the React component! \n// This is completely secure because this code NEVER reaches the browser.\nexport default async function UserList() {\n  // 1. Await the DB query directly\n  const users = await db.query('SELECT * FROM users');\n\n  // 2. Render the HTML\n  return (\n    <ul>\n      {users.map(user => (\n        <li key={user.id}>{user.name}</li>\n      ))}\n    </ul>\n  );\n}",
+  "tableData": {
+    "title": "Server Components vs Client Components",
+    "headers": [
+      "Feature",
+      "Server Components (Default)",
+      "Client Components ('use client')"
+    ],
+    "rows": [
+      [
+        "Execution",
+        "Runs ONLY on the Server. Sends pure HTML/CSS to the browser.",
+        "Runs on the Server (SSR) AND hydration runs on the Client."
+      ],
+      [
+        "Data Fetching",
+        "Direct, secure access to databases and secret API keys.",
+        "Cannot securely access databases. Must fetch via API endpoints."
+      ],
+      [
+        "Interactivity",
+        "NONE. Cannot use `onClick`, `onChange`, or event listeners.",
+        "FULL. Can use `onClick`, `onChange`, etc."
+      ],
+      [
+        "State & Lifecycle",
+        "NONE. Cannot use `useState` or `useEffect`.",
+        "FULL. Can use `useState` and `useEffect`."
+      ],
+      [
+        "Bundle Size",
+        "ZERO bytes added to the client JavaScript bundle.",
+        "Adds JavaScript to the client bundle."
+      ]
+    ]
+  }
 }

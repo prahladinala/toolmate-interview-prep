@@ -27,5 +27,30 @@
       "answer": "Use `git log --graph --oneline`. It prints a beautiful, colored ASCII art graph showing how branches diverge and merge."
     }
   ],
-  "codeExample": "# View standard detailed history\n$ git log\n\n# View a condensed, single-line version of the history (Super useful!)\n$ git log --oneline\n# Output: a1b2c3d Fix login bug\n# Output: e4f5g6h Add user profile page\n\n# View the beautiful ASCII tree graph of branches\n$ git log --graph --oneline --all\n\n# View only the last 3 commits\n$ git log -n 3"
+  "codeExample": "# View standard detailed history\n$ git log\n\n# View a condensed, single-line version of the history (Super useful!)\n$ git log --oneline\n# Output: a1b2c3d Fix login bug\n# Output: e4f5g6h Add user profile page\n\n# View the beautiful ASCII tree graph of branches\n$ git log --graph --oneline --all\n\n# View only the last 3 commits\n$ git log -n 3",
+  "tableData": {
+    "title": "Crucial Command Flags",
+    "headers": [
+      "Flag / Option",
+      "Description"
+    ],
+    "rows": [
+      [
+        "--oneline",
+        "Compress each commit to a single line (hash + message)."
+      ],
+      [
+        "--graph",
+        "Draw a text-based graphical representation of the commit history."
+      ],
+      [
+        "-p",
+        "Patch. Show the actual code differences introduced in each commit."
+      ],
+      [
+        "-n [num]",
+        "Limit the number of commits to show."
+      ]
+    ]
+  }
 }
