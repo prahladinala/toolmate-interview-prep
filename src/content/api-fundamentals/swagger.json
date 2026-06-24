@@ -27,5 +27,5 @@
       "answer": "A tool that reads your OpenAPI file and automatically writes the boilerplate code for your backend server or your frontend API client in almost any programming language."
     }
   ],
-  "codeExample": "/* \n  Swagger Ecosystem Flow:\n  \n  1. Developer writes the blueprint (OpenAPI spec).\n  2. Swagger Editor verifies the YAML syntax is valid.\n  3. Swagger UI displays the blueprint as a nice website for other teams.\n  4. Swagger Codegen reads the blueprint and automatically generates \n     an 'api-client.ts' file for the React team to use.\n*/"
+  "terminalOutput": "/* \n  Swagger Ecosystem Flow:\n  \n  1. Developer writes the blueprint (OpenAPI spec).\n  2. Swagger Editor verifies the YAML syntax is valid.\n  3. Swagger UI displays the blueprint as a nice website for other teams.\n  4. Swagger Codegen reads the blueprint and automatically generates \n     an 'api-client.ts' file for the React team to use.\n*/"
 }

@@ -28,5 +28,5 @@
       "answer": "It is a 40-character cryptographic string (like `a1b2c3d4...`) that uniquely identifies a specific commit. It is mathematically generated based on the contents of the files, so it is impossible to forge."
     }
   ],
-  "codeExample": "# View the full history\n$ git log\n\n/* Output Example:\ncommit 8f9b2d3c4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b (HEAD -> main)\nAuthor: John Doe <john@example.com>\nDate:   Tue Oct 10 14:32:11 2023 -0400\n\n    Fix the login button alignment\n\ncommit 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b\nAuthor: Jane Smith <jane@example.com>\nDate:   Mon Oct 9 09:15:00 2023 -0400\n\n    Initial commit\n*/"
+  "terminalOutput": "# View the full history\n$ git log\n\n/* Output Example:\ncommit 8f9b2d3c4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b (HEAD -> main)\nAuthor: John Doe <john@example.com>\nDate:   Tue Oct 10 14:32:11 2023 -0400\n\n    Fix the login button alignment\n\ncommit 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b\nAuthor: Jane Smith <jane@example.com>\nDate:   Mon Oct 9 09:15:00 2023 -0400\n\n    Initial commit\n*/"
 }

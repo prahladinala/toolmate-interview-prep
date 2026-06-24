@@ -28,5 +28,5 @@
       "answer": "If the Billing Service crashes, only Billing goes down. But because ALL traffic routes through the API Gateway, if the Gateway crashes, the entire company goes completely offline. Gateways must be highly available and redundant."
     }
   ],
-  "codeExample": "/* \n  NGINX acting as a simple API Gateway \n*/\n\nserver {\n    listen 80;\n    server_name api.mycompany.com;\n\n    # All auth traffic goes to the Node.js Auth Service on port 4000\n    location /auth/ {\n        proxy_pass http://10.0.0.1:4000/;\n    }\n\n    # All billing traffic goes to the Python Billing Service on port 5000\n    location /billing/ {\n        proxy_pass http://10.0.0.2:5000/;\n    }\n}"
+  "terminalOutput": "/* \n  NGINX acting as a simple API Gateway \n*/\n\nserver {\n    listen 80;\n    server_name api.mycompany.com;\n\n    # All auth traffic goes to the Node.js Auth Service on port 4000\n    location /auth/ {\n        proxy_pass http://10.0.0.1:4000/;\n    }\n\n    # All billing traffic goes to the Python Billing Service on port 5000\n    location /billing/ {\n        proxy_pass http://10.0.0.2:5000/;\n    }\n}"
 }

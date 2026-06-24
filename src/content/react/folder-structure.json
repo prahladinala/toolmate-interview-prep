@@ -30,5 +30,5 @@
       "answer": "Colocation is the principle of keeping files that change together close together. Instead of putting a component's CSS in `src/styles`, you put it right next to the component in `src/components/Button/Button.css`."
     }
   ],
-  "codeExample": "// Standard pattern\n// src/components\n// src/hooks\n// src/utils\n// src/services (API calls)"
+  "terminalOutput": "// Standard pattern\n// src/components\n// src/hooks\n// src/utils\n// src/services (API calls)"
 }

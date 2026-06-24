@@ -26,5 +26,26 @@
       "answer": "Your code (HTML, CSS, JS files) remains perfectly intact! But your entire Git history (all past saves, branches, and commits) is permanently deleted. It just becomes a normal, untracked Windows/Mac folder again."
     }
   ],
-  "codeExample": "# Create a new folder for your project\n$ mkdir my-awesome-app\n$ cd my-awesome-app\n\n# Tell Git to start tracking this folder\n$ git init\n# Output: Initialized empty Git repository in /path/to/my-awesome-app/.git/\n\n# If you run 'ls -a' (list all files, including hidden ones),\n# you will see the secret .git folder!\n$ ls -a\n# Output: .  ..  .git"
+  "terminalOutput": "# Create a new folder for your project\n$ mkdir my-awesome-app\n$ cd my-awesome-app\n\n# Tell Git to start tracking this folder\n$ git init\n# Output: Initialized empty Git repository in /path/to/my-awesome-app/.git/\n\n# If you run 'ls -a' (list all files, including hidden ones),\n# you will see the secret .git folder!\n$ ls -a\n# Output: .  ..  .git",
+  "tableData": {
+    "title": "`git init` Options",
+    "headers": [
+      "Flag",
+      "Description"
+    ],
+    "rows": [
+      [
+        "`git init`",
+        "Initializes a standard local git repository in the current folder (creates `.git`)."
+      ],
+      [
+        "`--bare`",
+        "Creates a bare repository without a working directory (used for centralized servers/remotes)."
+      ],
+      [
+        "`-b [branch_name]`",
+        "Sets the initial branch name (e.g., `main` instead of `master`) upon creation."
+      ]
+    ]
+  }
 }

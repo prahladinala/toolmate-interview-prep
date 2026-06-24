@@ -28,5 +28,5 @@
       "answer": "When you push new code to your server, you normally have to shut it down for 5 seconds to restart it. If you have 4 clustered instances, PM2 restarts Instance 1 while 2, 3, and 4 keep serving users. It rotates through them so the server never actually goes offline during the update."
     }
   ],
-  "codeExample": "// --- COMMON PM2 TERMINAL COMMANDS ---\n\n// 1. Start an app and name it 'api'\n// pm2 start server.js --name \"api\"\n\n// 2. Start it across ALL available CPU cores (Clustering)\n// pm2 start server.js -i max\n\n// 3. See a live dashboard of CPU and RAM usage\n// pm2 monit\n\n// 4. View logs\n// pm2 logs\n\n// 5. Zero-downtime update\n// pm2 reload api\n\nconsole.log(\"PM2 is the absolute industry standard for deploying Node on bare-metal servers.\");"
+  "terminalOutput": "// --- COMMON PM2 TERMINAL COMMANDS ---\n\n// 1. Start an app and name it 'api'\n// pm2 start server.js --name \"api\"\n\n// 2. Start it across ALL available CPU cores (Clustering)\n// pm2 start server.js -i max\n\n// 3. See a live dashboard of CPU and RAM usage\n// pm2 monit\n\n// 4. View logs\n// pm2 logs\n\n// 5. Zero-downtime update\n// pm2 reload api\n\nconsole.log(\"PM2 is the absolute industry standard for deploying Node on bare-metal servers.\");"
 }

@@ -30,5 +30,5 @@
       "answer": "Yes, but you MUST use parentheses to explicitly indicate precedence, e.g., `(a ?? b) || c`. If you try `a ?? b || c` without parentheses, it throws a SyntaxError."
     }
   ],
-  "codeExample": "const count = 0;\nconst message = \"\";\n\n// Logical OR (||) treats 0 and \"\" as falsy\nconsole.log(count || 100);    // 100 (Oops, lost the 0)\nconsole.log(message || \"Hi\"); // \"Hi\" (Oops, lost the empty string)\n\n// Nullish Coalescing (??) only replaces null/undefined\nconsole.log(count ?? 100);    // 0 (Correct!)\nconsole.log(message ?? \"Hi\"); // \"\" (Correct!)\n\nlet missingData = null;\nconsole.log(missingData ?? \"Fallback data\"); // \"Fallback data\""
+  "terminalOutput": "const count = 0;\nconst message = \"\";\n\n// Logical OR (||) treats 0 and \"\" as falsy\nconsole.log(count || 100);    // 100 (Oops, lost the 0)\nconsole.log(message || \"Hi\"); // \"Hi\" (Oops, lost the empty string)\n\n// Nullish Coalescing (??) only replaces null/undefined\nconsole.log(count ?? 100);    // 0 (Correct!)\nconsole.log(message ?? \"Hi\"); // \"\" (Correct!)\n\nlet missingData = null;\nconsole.log(missingData ?? \"Fallback data\"); // \"Fallback data\""
 }

@@ -27,5 +27,5 @@
       "answer": "If your company has strict security rules, or needs massive supercomputers to train AI, you can install the GitHub Action software on your OWN private servers. GitHub will ping your server to run the jobs instead of using Microsoft's servers."
     }
   ],
-  "codeExample": "# Running the exact same tests across THREE different Operating Systems simultaneously!\njobs:\n  test-multi-os:\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n    runs-on: ${{ matrix.os }}\n    steps:\n      - run: echo \"Running on ${{ matrix.os }}\""
+  "terminalOutput": "# Running the exact same tests across THREE different Operating Systems simultaneously!\njobs:\n  test-multi-os:\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n    runs-on: ${{ matrix.os }}\n    steps:\n      - run: echo \"Running on ${{ matrix.os }}\""
 }

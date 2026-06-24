@@ -27,5 +27,5 @@
       "answer": "In traditional CSS, all styles are global. Adding a new rule might unintentionally override something elsewhere. Tailwind classes are single-purpose and applied locally in the HTML, making unexpected side-effects impossible."
     }
   ],
-  "codeExample": "// The Naming Nightmare (Traditional CSS)\n<div class=\"card-wrapper\">\n  <div class=\"card-inner\">\n    <h2 class=\"card-title\">...</h2>\n    // Wait, should this be card-body? card-content? card-text?\n    <p class=\"card-content\">...</p>\n  </div>\n</div>\n\n// The Tailwind Dream (Just describe what it looks like)\n<div class=\"p-4 border rounded-lg\">\n  <div class=\"flex flex-col\">\n    <h2 class=\"text-2xl font-bold\">...</h2>\n    <p class=\"text-gray-600\">...</p>\n  </div>\n</div>"
+  "terminalOutput": "// The Naming Nightmare (Traditional CSS)\n<div class=\"card-wrapper\">\n  <div class=\"card-inner\">\n    <h2 class=\"card-title\">...</h2>\n    // Wait, should this be card-body? card-content? card-text?\n    <p class=\"card-content\">...</p>\n  </div>\n</div>\n\n// The Tailwind Dream (Just describe what it looks like)\n<div class=\"p-4 border rounded-lg\">\n  <div class=\"flex flex-col\">\n    <h2 class=\"text-2xl font-bold\">...</h2>\n    <p class=\"text-gray-600\">...</p>\n  </div>\n</div>"
 }

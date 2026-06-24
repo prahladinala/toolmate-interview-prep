@@ -27,5 +27,5 @@
       "answer": "No! Server Components never send any JavaScript to the browser. They remain pure, static HTML. Only Client Components (marked with `\"use client\"`) go through the hydration process in the browser."
     }
   ],
-  "codeExample": "// A visual representation of the lifecycle:\n\n// 1. [SERVER]: Request hits Server\n// 2. [SERVER]: middleware.ts runs (Checks auth cookie)\n// 3. [SERVER]: Server Component fetches DB data\n// 4. [SERVER]: Server renders pure HTML\n\n// ⬇️ --- NETWORK BOUNDARY (HTML sent over wire) --- ⬇️\n\n// 5. [BROWSER]: Browser instantly paints HTML (User sees UI immediately!)\n// 6. [BROWSER]: Next.js downloads the tiny JS bundle for Client Components\n// 7. [BROWSER]: React Hydrates Client Components (Buttons become clickable)"
+  "terminalOutput": "// A visual representation of the lifecycle:\n\n// 1. [SERVER]: Request hits Server\n// 2. [SERVER]: middleware.ts runs (Checks auth cookie)\n// 3. [SERVER]: Server Component fetches DB data\n// 4. [SERVER]: Server renders pure HTML\n\n// ⬇️ --- NETWORK BOUNDARY (HTML sent over wire) --- ⬇️\n\n// 5. [BROWSER]: Browser instantly paints HTML (User sees UI immediately!)\n// 6. [BROWSER]: Next.js downloads the tiny JS bundle for Client Components\n// 7. [BROWSER]: React Hydrates Client Components (Buttons become clickable)"
 }

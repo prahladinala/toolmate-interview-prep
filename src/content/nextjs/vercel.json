@@ -28,5 +28,5 @@
       "answer": "When you open a Pull Request on GitHub, Vercel automatically creates a secret, unique URL containing just those changes. Your team can click the link, test the new feature live on the internet, and approve it *before* it merges into production."
     }
   ],
-  "codeExample": "/* \n  The Vercel Workflow:\n  \n  1. Developer runs: `git push origin feature-branch`\n  2. Vercel intercepts the push.\n  3. Vercel builds the app and provisions a URL: https://my-app-feature-123.vercel.app\n  4. Team reviews the URL.\n  5. Developer merges Pull Request into `main`.\n  6. Vercel automatically deploys the code to Production: https://my-app.com\n*/"
+  "terminalOutput": "/* \n  The Vercel Workflow:\n  \n  1. Developer runs: `git push origin feature-branch`\n  2. Vercel intercepts the push.\n  3. Vercel builds the app and provisions a URL: https://my-app-feature-123.vercel.app\n  4. Team reviews the URL.\n  5. Developer merges Pull Request into `main`.\n  6. Vercel automatically deploys the code to Production: https://my-app.com\n*/"
 }

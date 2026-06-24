@@ -28,5 +28,5 @@
       "answer": "By default, it looks at the root of the `main` branch, or a specialized branch called `gh-pages`."
     }
   ],
-  "codeExample": "/*\n  How to deploy a basic site to GitHub Pages:\n  \n  1. Create an 'index.html' file locally.\n  2. Push it to the 'main' branch on GitHub.\n  3. On GitHub, click 'Settings' -> 'Pages' (on the left sidebar).\n  4. Under 'Build and deployment', set Source to 'Deploy from a branch'.\n  5. Select the 'main' branch and click Save.\n  6. Wait 1 minute. Your site is live!\n*/"
+  "terminalOutput": "/*\n  How to deploy a basic site to GitHub Pages:\n  \n  1. Create an 'index.html' file locally.\n  2. Push it to the 'main' branch on GitHub.\n  3. On GitHub, click 'Settings' -> 'Pages' (on the left sidebar).\n  4. Under 'Build and deployment', set Source to 'Deploy from a branch'.\n  5. Select the 'main' branch and click Save.\n  6. Wait 1 minute. Your site is live!\n*/"
 }

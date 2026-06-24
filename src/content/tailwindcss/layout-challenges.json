@@ -26,5 +26,5 @@
       "answer": "`flex justify-between items-center w-full px-4 py-2`"
     }
   ],
-  "codeExample": "/*\n  CHALLENGE: \n  Create a responsive Card Grid. \n  1 column on mobile, 3 columns on desktop. \n  Gap of 16px between cards.\n  \n  SOLUTION: \n  <div class=\"grid grid-cols-1 md:grid-cols-3 gap-4\">\n*/"
+  "terminalOutput": "/*\n  CHALLENGE: \n  Create a responsive Card Grid. \n  1 column on mobile, 3 columns on desktop. \n  Gap of 16px between cards.\n  \n  SOLUTION: \n  <div class=\"grid grid-cols-1 md:grid-cols-3 gap-4\">\n*/"
 }

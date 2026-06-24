@@ -26,5 +26,5 @@
       "answer": "If a component (like a generic Button) is used by multiple features, it gets promoted to a global `src/components` folder. Features should NEVER import files from other features directly."
     }
   ],
-  "codeExample": "// src/features/auth\n//   - components/LoginForm.jsx\n//   - api/login.js\n//   - hooks/useAuth.js\n//   - index.js (Public API for this feature)"
+  "terminalOutput": "// src/features/auth\n//   - components/LoginForm.jsx\n//   - api/login.js\n//   - hooks/useAuth.js\n//   - index.js (Public API for this feature)"
 }

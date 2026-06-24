@@ -26,5 +26,5 @@
       "answer": "It's an application for Windows environments that provides an emulation layer for a Git command line experience. It allows Windows users to use standard Linux/Unix commands like `ls`, `cd`, and `rm`."
     }
   ],
-  "codeExample": "# Check if git is installed\n$ git --version\n# Expected output: git version 2.40.1\n\n# If you are on Mac and it says 'command not found',\n# you can install it using Homebrew:\n$ brew install git\n\n# On Ubuntu/Debian Linux:\n$ sudo apt-get install git"
+  "terminalOutput": "# Check if git is installed\n$ git --version\n# Expected output: git version 2.40.1\n\n# If you are on Mac and it says 'command not found',\n# you can install it using Homebrew:\n$ brew install git\n\n# On Ubuntu/Debian Linux:\n$ sudo apt-get install git"
 }

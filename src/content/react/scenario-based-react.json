@@ -29,5 +29,5 @@
       "answer": "The flash happens because React hasn't hydrated yet to read the `localStorage` theme. You must inject a blocking `<script>` tag in the `<head>` of your HTML document that reads localStorage and applies a `.dark` class to the `<body>` BEFORE React even loads."
     }
   ],
-  "codeExample": "// System design requires thinking through the whole stack:\n// 1. Where does the state live?\n// 2. What are the edge cases?\n// 3. How do we make it accessible?\n// 4. How do we test it?"
+  "terminalOutput": "// System design requires thinking through the whole stack:\n// 1. Where does the state live?\n// 2. What are the edge cases?\n// 3. How do we make it accessible?\n// 4. How do we test it?"
 }

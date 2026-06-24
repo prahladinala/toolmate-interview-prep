@@ -28,5 +28,5 @@
       "answer": "If you want them to be able to push code DIRECTLY, yes. If they are not a collaborator on a public repo, they must use the Fork and Pull Request workflow."
     }
   ],
-  "codeExample": "/*\n  How to add a Collaborator:\n  \n  1. Go to your Repository on GitHub.\n  2. Click 'Settings' (the gear icon).\n  3. Click 'Collaborators' on the left menu.\n  4. Click 'Add people'.\n  5. Search for their GitHub username and click Add.\n  \n  IMPORTANT: They will receive an email. They MUST click the link \n  in the email to accept the invitation before they can push code!\n*/"
+  "terminalOutput": "/*\n  How to add a Collaborator:\n  \n  1. Go to your Repository on GitHub.\n  2. Click 'Settings' (the gear icon).\n  3. Click 'Collaborators' on the left menu.\n  4. Click 'Add people'.\n  5. Search for their GitHub username and click Add.\n  \n  IMPORTANT: They will receive an email. They MUST click the link \n  in the email to accept the invitation before they can push code!\n*/"
 }

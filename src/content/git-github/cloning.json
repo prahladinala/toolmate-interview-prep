@@ -27,5 +27,5 @@
       "answer": "Yes, but ONLY if you have been granted explicit access to it, and you authenticate your terminal (via SSH keys or Personal Access Tokens) to prove who you are."
     }
   ],
-  "codeExample": "# 1. Basic Clone (Creates a folder with the repo's name)\n$ git clone https://github.com/facebook/react.git\n\n# 2. Clone and give the folder a custom name\n$ git clone https://github.com/facebook/react.git my-react-experiment\n\n# 3. Clone ONLY a specific branch (Saves massive download time on huge repos!)\n$ git clone -b feature-xyz --single-branch https://github.com/user/repo.git\n\n# 4. Clone without the entire git history (Shallow clone - extremely fast!)\n$ git clone --depth 1 https://github.com/user/repo.git"
+  "terminalOutput": "# 1. Basic Clone (Creates a folder with the repo's name)\n$ git clone https://github.com/facebook/react.git\n\n# 2. Clone and give the folder a custom name\n$ git clone https://github.com/facebook/react.git my-react-experiment\n\n# 3. Clone ONLY a specific branch (Saves massive download time on huge repos!)\n$ git clone -b feature-xyz --single-branch https://github.com/user/repo.git\n\n# 4. Clone without the entire git history (Shallow clone - extremely fast!)\n$ git clone --depth 1 https://github.com/user/repo.git"
 }

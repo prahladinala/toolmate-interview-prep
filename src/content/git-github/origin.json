@@ -26,5 +26,5 @@
       "answer": "No. `git init` creates a purely local repo. You must manually add the remote by typing `git remote add origin <URL>`."
     }
   ],
-  "codeExample": "# Check where 'origin' actually points to\n$ git remote -v\n# Output:\n# origin  https://github.com/user/repo.git (fetch)\n# origin  https://github.com/user/repo.git (push)\n\n# You can change the URL that 'origin' points to!\n$ git remote set-url origin https://github.com/user/NEW-repo.git"
+  "terminalOutput": "# Check where 'origin' actually points to\n$ git remote -v\n# Output:\n# origin  https://github.com/user/repo.git (fetch)\n# origin  https://github.com/user/repo.git (push)\n\n# You can change the URL that 'origin' points to!\n$ git remote set-url origin https://github.com/user/NEW-repo.git"
 }

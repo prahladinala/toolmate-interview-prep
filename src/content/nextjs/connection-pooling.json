@@ -28,5 +28,5 @@
       "answer": "A direct connection holds a 1-to-1 link open between the server and the DB. A Pooler acts as a middleman, queuing and multiplexing thousands of incoming serverless requests through a tiny number of actual database connections."
     }
   ],
-  "codeExample": "/* \n  How Connection Pooling affects your Environment Variables:\n*/\n\n// ❌ Direct Connection (BAD for Serverless)\n// DATABASE_URL=\"postgresql://user:pass@my-db.amazon.com:5432/mydb\"\n\n// ✅ Pooled Connection via PgBouncer or Prisma Accelerate\n// DATABASE_URL=\"prisma://accelerate.prisma-data.net/?api_key=ey....\"\n// You must use the Pooler URL in your Serverless environment, \n// and use the Direct URL only when running local migrations!"
+  "terminalOutput": "/* \n  How Connection Pooling affects your Environment Variables:\n*/\n\n// ❌ Direct Connection (BAD for Serverless)\n// DATABASE_URL=\"postgresql://user:pass@my-db.amazon.com:5432/mydb\"\n\n// ✅ Pooled Connection via PgBouncer or Prisma Accelerate\n// DATABASE_URL=\"prisma://accelerate.prisma-data.net/?api_key=ey....\"\n// You must use the Pooler URL in your Serverless environment, \n// and use the Direct URL only when running local migrations!"
 }

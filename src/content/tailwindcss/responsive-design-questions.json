@@ -26,5 +26,5 @@
       "answer": "Use `order-first` for the base mobile state, and then reset it using `md:order-none` for desktop."
     }
   ],
-  "codeExample": "/*\n  Q: A developer wrote: `<div class=\"lg:w-1/2 md:w-full w-1/3\">` \n     What is the width on a mobile phone? What is wrong with this code?\n  \n  A: The width on a mobile phone is 33% (`w-1/3`). \n     \n     The code is chronologically messy. It should be written in a Mobile-First order (smallest to largest) for readability: \n     `<div class=\"w-1/3 md:w-full lg:w-1/2\">`\n     \n     Also, having it start at 1/3, jump to full width on a tablet, and shrink back to 1/2 on a desktop is highly unusual responsive behavior.\n*/"
+  "terminalOutput": "/*\n  Q: A developer wrote: `<div class=\"lg:w-1/2 md:w-full w-1/3\">` \n     What is the width on a mobile phone? What is wrong with this code?\n  \n  A: The width on a mobile phone is 33% (`w-1/3`). \n     \n     The code is chronologically messy. It should be written in a Mobile-First order (smallest to largest) for readability: \n     `<div class=\"w-1/3 md:w-full lg:w-1/2\">`\n     \n     Also, having it start at 1/3, jump to full width on a tablet, and shrink back to 1/2 on a desktop is highly unusual responsive behavior.\n*/"
 }

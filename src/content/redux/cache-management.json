@@ -27,5 +27,5 @@
       "answer": "It serializes the endpoint name and the arguments passed to it. `useGetPostQuery(5)` in Component A is mathematically identical to `useGetPostQuery(5)` in Component B, so they share the exact same cache entry."
     }
   ],
-  "codeExample": "/*\n  How the Cache Lifecycle Works:\n\n  1. Component A mounts and calls useGetUsersQuery().\n  2. RTK Query sees no cache. Makes network request. Returns Data.\n  3. Component B mounts and calls useGetUsersQuery().\n  4. RTK Query sees the cache! Instantly provides Data to B (No network request).\n  5. Component A and B unmount. Nobody is using the Data anymore.\n  6. A 60-second timer starts.\n  7. If 60 seconds pass, RTK Query deletes the Data from Redux to free up memory (Garbage Collection).\n*/"
+  "terminalOutput": "/*\n  How the Cache Lifecycle Works:\n\n  1. Component A mounts and calls useGetUsersQuery().\n  2. RTK Query sees no cache. Makes network request. Returns Data.\n  3. Component B mounts and calls useGetUsersQuery().\n  4. RTK Query sees the cache! Instantly provides Data to B (No network request).\n  5. Component A and B unmount. Nobody is using the Data anymore.\n  6. A 60-second timer starts.\n  7. If 60 seconds pass, RTK Query deletes the Data from Redux to free up memory (Garbage Collection).\n*/"
 }

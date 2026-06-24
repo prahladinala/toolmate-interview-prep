@@ -27,5 +27,5 @@
       "answer": "No. Vercel supports almost every framework natively (React, Vue, Svelte, Nuxt, Angular, and even plain HTML)."
     }
   ],
-  "codeExample": "// No code required! This is a UI-driven process.\n\n/*\n  1. Push your Next.js/React app to GitHub.\n  2. Go to Vercel.com and log in with GitHub.\n  3. Click 'Add New Project'.\n  4. Select your GitHub repository.\n  5. Click 'Deploy'.\n  \n  Vercel handles the SSL certificates, domains, CDN caching, and serverless \n  functions completely automatically.\n*/"
+  "terminalOutput": "// No code required! This is a UI-driven process.\n\n/*\n  1. Push your Next.js/React app to GitHub.\n  2. Go to Vercel.com and log in with GitHub.\n  3. Click 'Add New Project'.\n  4. Select your GitHub repository.\n  5. Click 'Deploy'.\n  \n  Vercel handles the SSL certificates, domains, CDN caching, and serverless \n  functions completely automatically.\n*/"
 }

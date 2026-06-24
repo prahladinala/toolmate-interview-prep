@@ -28,5 +28,5 @@
       "answer": "It is exactly the same thing as a Pull Request. GitHub calls them Pull Requests (PRs). GitLab calls them Merge Requests (MRs)."
     }
   ],
-  "codeExample": "/*\n  The standard PR Workflow:\n  \n  1. Developer creates branch locally: `git checkout -b feature-xyz`\n  2. Developer writes code and commits it.\n  3. Developer pushes branch to GitHub: `git push origin feature-xyz`\n  4. Developer logs into GitHub.com and clicks 'Compare & pull request'.\n  5. Reviewers look at the code diffs on the website.\n  6. Reviewers approve it.\n  7. Someone clicks the green 'Merge pull request' button.\n*/"
+  "terminalOutput": "/*\n  The standard PR Workflow:\n  \n  1. Developer creates branch locally: `git checkout -b feature-xyz`\n  2. Developer writes code and commits it.\n  3. Developer pushes branch to GitHub: `git push origin feature-xyz`\n  4. Developer logs into GitHub.com and clicks 'Compare & pull request'.\n  5. Reviewers look at the code diffs on the website.\n  6. Reviewers approve it.\n  7. Someone clicks the green 'Merge pull request' button.\n*/"
 }

@@ -28,5 +28,5 @@
       "answer": "An exact replica of the Production environment (same databases, same servers) but hidden from the public. It is used as a final 'dress rehearsal' to test the app safely before pushing the code to the real Production users."
     }
   ],
-  "codeExample": "/* \n  Next.js Environment File Hierarchy (Which file wins?)\n  Next.js looks for files in this exact order. The first one it finds wins.\n  \n  1. process.env (Actual OS/Vercel variables)\n  2. .env.$(NODE_ENV).local (.env.production.local or .env.development.local)\n  3. .env.local (Uncommitted local overrides)\n  4. .env.$(NODE_ENV) (.env.production or .env.development)\n  5. .env (The default base file, usually committed to Git with fake/safe values)\n*/"
+  "terminalOutput": "/* \n  Next.js Environment File Hierarchy (Which file wins?)\n  Next.js looks for files in this exact order. The first one it finds wins.\n  \n  1. process.env (Actual OS/Vercel variables)\n  2. .env.$(NODE_ENV).local (.env.production.local or .env.development.local)\n  3. .env.local (Uncommitted local overrides)\n  4. .env.$(NODE_ENV) (.env.production or .env.development)\n  5. .env (The default base file, usually committed to Git with fake/safe values)\n*/"
 }

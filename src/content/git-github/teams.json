@@ -27,5 +27,5 @@
       "answer": "Yes. A single GitHub user account (like `@johndoe`) can belong to your personal projects, your employer's organization, and an open-source organization simultaneously."
     }
   ],
-  "codeExample": "// Hierarchy of GitHub Enterprise/Organizations:\n\n/*\n  Organization: TechCorp Inc.\n  │\n  ├── Team: Frontend Developers (@TechCorp/frontend)\n  │   ├── Member: Alice\n  │   └── Member: Bob\n  │\n  ├── Team: Backend Developers (@TechCorp/backend)\n  │   └── Member: Charlie\n  │\n  ├── Repository: techcorp-website (Frontend Team has Write access)\n  └── Repository: techcorp-api (Backend Team has Write access)\n*/"
+  "terminalOutput": "// Hierarchy of GitHub Enterprise/Organizations:\n\n/*\n  Organization: TechCorp Inc.\n  │\n  ├── Team: Frontend Developers (@TechCorp/frontend)\n  │   ├── Member: Alice\n  │   └── Member: Bob\n  │\n  ├── Team: Backend Developers (@TechCorp/backend)\n  │   └── Member: Charlie\n  │\n  ├── Repository: techcorp-website (Frontend Team has Write access)\n  └── Repository: techcorp-api (Backend Team has Write access)\n*/"
 }

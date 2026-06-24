@@ -27,5 +27,5 @@
       "answer": "Tools like Lerna, Nx, Turborepo, and npm/yarn Workspaces."
     }
   ],
-  "codeExample": "/*\n  A typical Monorepo folder structure:\n  \n  my-startup-monorepo/\n  │\n  ├── package.json (Global dependencies)\n  │\n  ├── apps/\n  │   ├── web-frontend/ (React App)\n  │   ├── mobile-app/   (React Native)\n  │   └── admin-dashboard/\n  │\n  └── packages/\n      ├── shared-ui/    (Buttons, Inputs used by all apps)\n      └── database-orm/ (Prisma schema used by API)\n*/"
+  "terminalOutput": "/*\n  A typical Monorepo folder structure:\n  \n  my-startup-monorepo/\n  │\n  ├── package.json (Global dependencies)\n  │\n  ├── apps/\n  │   ├── web-frontend/ (React App)\n  │   ├── mobile-app/   (React Native)\n  │   └── admin-dashboard/\n  │\n  └── packages/\n      ├── shared-ui/    (Buttons, Inputs used by all apps)\n      └── database-orm/ (Prisma schema used by API)\n*/"
 }

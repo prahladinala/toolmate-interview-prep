@@ -27,5 +27,5 @@
       "answer": "Yes! As of Git 2.34, you can now use your standard SSH key to sign commits, which is significantly easier than setting up complex GPG keys."
     }
   ],
-  "codeExample": "# Tell Git to sign your commits using your SSH key\n$ git config --global gpg.format ssh\n$ git config --global user.signingkey ~/.ssh/id_ed25519.pub\n\n# Tell Git to sign EVERY commit automatically\n$ git config --global commit.gpgsign true\n\n# Now, when you run git commit, it signs it!\n$ git commit -m \"Secure, verified commit\""
+  "terminalOutput": "# Tell Git to sign your commits using your SSH key\n$ git config --global gpg.format ssh\n$ git config --global user.signingkey ~/.ssh/id_ed25519.pub\n\n# Tell Git to sign EVERY commit automatically\n$ git config --global commit.gpgsign true\n\n# Now, when you run git commit, it signs it!\n$ git commit -m \"Secure, verified commit\""
 }

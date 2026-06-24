@@ -26,5 +26,5 @@
       "answer": "Whenever the value of a Context Provider changes, EVERY component that consumes that context re-renders entirely. There is no `useSelector` equivalent to selectively listen to just one property."
     }
   ],
-  "codeExample": "/*\n  Summary:\n\n  Context API:\n  - Built into React (No installation)\n  - Great for passing data down\n  - Bad for high-frequency updates (causes massive re-renders)\n  - Good for: Theme, Auth status, Locale.\n\n  Redux:\n  - External library\n  - Powerful state management + passing data down\n  - Highly optimized for performance (components only render if their specific data changes)\n  - Good for: Enterprise apps, complex logic, real-time data.\n*/"
+  "terminalOutput": "/*\n  Summary:\n\n  Context API:\n  - Built into React (No installation)\n  - Great for passing data down\n  - Bad for high-frequency updates (causes massive re-renders)\n  - Good for: Theme, Auth status, Locale.\n\n  Redux:\n  - External library\n  - Powerful state management + passing data down\n  - Highly optimized for performance (components only render if their specific data changes)\n  - Good for: Enterprise apps, complex logic, real-time data.\n*/"
 }

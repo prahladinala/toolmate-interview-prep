@@ -5,7 +5,7 @@ import { CodePlayground } from "@/components/learn/CodePlayground";
 import { CompleteTopicButton } from "@/components/learn/CompleteTopicButton";
 import { FlashCard } from "@/components/learn/FlashCard";
 import { MermaidDiagram } from "@/components/learn/MermaidDiagram";
-import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2, Network, Table } from "lucide-react";
+import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2, Network, Table, Terminal } from "lucide-react";
 
 export default async function TopicPage({
   params,
@@ -136,6 +136,28 @@ export default async function TopicPage({
             <Code2 className="text-primary" /> Interactive Example
           </h2>
           <CodePlayground initialCode={topicContent.codeExample} />
+        </section>
+      )}
+
+      {/* Static Terminal Output */}
+      {topicContent.terminalOutput && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Terminal className="text-accent-foreground" /> Terminal Output
+          </h2>
+          <div className="border-2 border-border rounded-xl overflow-hidden retro-shadow-sm bg-card">
+            <div className="bg-muted border-b-2 border-border p-3 flex items-center">
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 rounded-full bg-destructive border border-border"></div>
+                <div className="w-3 h-3 rounded-full bg-accent border border-border"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500 border border-border"></div>
+              </div>
+              <div className="ml-4 text-xs text-muted-foreground font-mono">bash / terminal</div>
+            </div>
+            <div className="bg-black text-green-400 p-6 font-mono text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed">
+              {topicContent.terminalOutput}
+            </div>
+          </div>
         </section>
       )}
 

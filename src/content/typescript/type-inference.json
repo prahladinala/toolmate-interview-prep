@@ -30,5 +30,5 @@
       "answer": "When you declare a variable without giving it an initial value: `let data;`. TS doesn't know what it will be, so it falls back to the dangerous `any` type."
     }
   ],
-  "codeExample": "// BAD: Redundant typing\nlet greeting: string = \"Hello World\";\n\n// GOOD: Rely on inference\nlet inferredGreeting = \"Hello World\"; \n// TS knows this is a string\n// inferredGreeting = 5; // Error!\n\n// FAILS: TS infers 'any' because it has no clues\nlet unknownData;\nunknownData = 5;\nunknownData = \"Wait, now I'm a string\";"
+  "terminalOutput": "// BAD: Redundant typing\nlet greeting: string = \"Hello World\";\n\n// GOOD: Rely on inference\nlet inferredGreeting = \"Hello World\"; \n// TS knows this is a string\n// inferredGreeting = 5; // Error!\n\n// FAILS: TS infers 'any' because it has no clues\nlet unknownData;\nunknownData = 5;\nunknownData = \"Wait, now I'm a string\";"
 }

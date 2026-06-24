@@ -26,5 +26,5 @@
       "answer": "PostCSS is a tool for transforming CSS with JavaScript plugins. Tailwind is fundamentally just a giant PostCSS plugin that reads your HTML and generates CSS on the fly."
     }
   ],
-  "codeExample": "// 1. Install via npm\n// npm install -D tailwindcss postcss autoprefixer\n// npx tailwindcss init -p\n\n// 2. Add Tailwind directives to your global CSS file (e.g., src/index.css)\n@tailwind base;       /* Injects CSS resets (Preflight) */\n@tailwind components; /* Injects custom component classes */\n@tailwind utilities;  /* Injects all the utility classes you used in your HTML */"
+  "terminalOutput": "// 1. Install via npm\n// npm install -D tailwindcss postcss autoprefixer\n// npx tailwindcss init -p\n\n// 2. Add Tailwind directives to your global CSS file (e.g., src/index.css)\n@tailwind base;       /* Injects CSS resets (Preflight) */\n@tailwind components; /* Injects custom component classes */\n@tailwind utilities;  /* Injects all the utility classes you used in your HTML */"
 }

@@ -28,5 +28,5 @@
       "answer": "They instantly lose all active sessions (logged out of all websites) and lose all tracking preferences, because their browser throws away all the 'nametags'."
     }
   ],
-  "codeExample": "/* The Cookie Lifecycle */\n\n// 1. Client sends a login request (No cookie yet)\nPOST /api/login\n\n// 2. Server verifies password, and forces the browser to save a cookie\nHTTP/1.1 200 OK\nSet-Cookie: session_id=abc123xyz; HttpOnly; Secure; Max-Age=86400\n\n// 3. User clicks on the /dashboard page 10 minutes later\n// The browser AUTOMATICALLY attaches the Cookie header!\nGET /api/dashboard\nCookie: session_id=abc123xyz\n\n// 4. Server reads the cookie, looks up 'abc123xyz' in DB, returns private data."
+  "terminalOutput": "/* The Cookie Lifecycle */\n\n// 1. Client sends a login request (No cookie yet)\nPOST /api/login\n\n// 2. Server verifies password, and forces the browser to save a cookie\nHTTP/1.1 200 OK\nSet-Cookie: session_id=abc123xyz; HttpOnly; Secure; Max-Age=86400\n\n// 3. User clicks on the /dashboard page 10 minutes later\n// The browser AUTOMATICALLY attaches the Cookie header!\nGET /api/dashboard\nCookie: session_id=abc123xyz\n\n// 4. Server reads the cookie, looks up 'abc123xyz' in DB, returns private data."
 }

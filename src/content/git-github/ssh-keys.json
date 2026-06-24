@@ -27,5 +27,5 @@
       "answer": "Passwords are easily stolen, guessed, or reused across websites. SSH keys (and Personal Access Tokens) are cryptographically secure and unique to a single machine."
     }
   ],
-  "codeExample": "# 1. Generate a new SSH key on your computer\n$ ssh-keygen -t ed25519 -C \"your_email@example.com\"\n\n# 2. View your public key and copy it to your clipboard\n$ cat ~/.ssh/id_ed25519.pub\n\n# 3. Go to GitHub -> Settings -> SSH and GPG keys -> New SSH key. Paste it.\n\n# 4. Test the connection!\n$ ssh -T git@github.com\n# Output: Hi Username! You've successfully authenticated..."
+  "terminalOutput": "# 1. Generate a new SSH key on your computer\n$ ssh-keygen -t ed25519 -C \"your_email@example.com\"\n\n# 2. View your public key and copy it to your clipboard\n$ cat ~/.ssh/id_ed25519.pub\n\n# 3. Go to GitHub -> Settings -> SSH and GPG keys -> New SSH key. Paste it.\n\n# 4. Test the connection!\n$ ssh -T git@github.com\n# Output: Hi Username! You've successfully authenticated..."
 }

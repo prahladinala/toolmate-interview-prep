@@ -26,5 +26,5 @@
       "answer": "Yes! You just change the 'origin' URL. Run `git remote set-url origin git@github.com:user/repo.git`."
     }
   ],
-  "codeExample": "# Check which protocol you are currently using:\n$ git remote -v\n\n# Output indicating HTTPS:\n# origin  https://github.com/facebook/react.git (push)\n\n# Output indicating SSH:\n# origin  git@github.com:facebook/react.git (push)\n\n# Switch from HTTPS to SSH\n$ git remote set-url origin git@github.com:facebook/react.git"
+  "terminalOutput": "# Check which protocol you are currently using:\n$ git remote -v\n\n# Output indicating HTTPS:\n# origin  https://github.com/facebook/react.git (push)\n\n# Output indicating SSH:\n# origin  git@github.com:facebook/react.git (push)\n\n# Switch from HTTPS to SSH\n$ git remote set-url origin git@github.com:facebook/react.git"
 }

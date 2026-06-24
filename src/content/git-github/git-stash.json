@@ -27,5 +27,5 @@
       "answer": "By default, NO. If you created a brand new file, `git stash` will leave it sitting there. You must use `git stash -u` (include untracked) to stash everything."
     }
   ],
-  "codeExample": "# 1. You are coding, but need to switch branches urgently.\n$ git stash\n# Output: Saved working directory and index state WIP on main\n\n# 2. Your working directory is now clean! Switch branches safely.\n$ git checkout hotfix-branch\n\n# ... fix the bug, commit it ...\n\n# 3. Switch back to your feature branch.\n$ git checkout main\n\n# 4. Pull your messy code back out of the drawer!\n$ git stash pop"
+  "terminalOutput": "# 1. You are coding, but need to switch branches urgently.\n$ git stash\n# Output: Saved working directory and index state WIP on main\n\n# 2. Your working directory is now clean! Switch branches safely.\n$ git checkout hotfix-branch\n\n# ... fix the bug, commit it ...\n\n# 3. Switch back to your feature branch.\n$ git checkout main\n\n# 4. Pull your messy code back out of the drawer!\n$ git stash pop"
 }

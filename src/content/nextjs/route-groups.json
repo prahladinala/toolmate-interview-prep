@@ -27,5 +27,5 @@
       "answer": "Creating different Root Layouts. You can put one `layout.tsx` inside `(marketing)` with a fancy footer, and a totally different `layout.tsx` inside `(app)` with a sidebar. Even though they share the same URL domain, they get completely different HTML structures."
     }
   ],
-  "codeExample": "/* \n  Route Groups Example:\n  \n  app/\n  ├── (marketing)/           <-- URL ignores this folder!\n  │   ├── layout.tsx         <-- Only applies to marketing pages\n  │   ├── page.tsx           (URL: /)\n  │   └── about/page.tsx     (URL: /about)\n  │\n  └── (dashboard)/           <-- URL ignores this folder!\n      ├── layout.tsx         <-- Only applies to dashboard pages\n      ├── settings/page.tsx  (URL: /settings)\n      └── billing/page.tsx   (URL: /billing)\n*/"
+  "terminalOutput": "/* \n  Route Groups Example:\n  \n  app/\n  ├── (marketing)/           <-- URL ignores this folder!\n  │   ├── layout.tsx         <-- Only applies to marketing pages\n  │   ├── page.tsx           (URL: /)\n  │   └── about/page.tsx     (URL: /about)\n  │\n  └── (dashboard)/           <-- URL ignores this folder!\n      ├── layout.tsx         <-- Only applies to dashboard pages\n      ├── settings/page.tsx  (URL: /settings)\n      └── billing/page.tsx   (URL: /billing)\n*/"
 }

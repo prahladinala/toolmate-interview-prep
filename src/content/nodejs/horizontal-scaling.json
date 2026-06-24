@@ -27,5 +27,5 @@
       "answer": "STATELESS. If Server 1 stores user sessions in its local RAM, and the user's next request goes to Server 2, they will be logged out. To scale horizontally, all state (sessions, uploaded files) must be stored in external services (Redis, AWS S3)."
     }
   ],
-  "codeExample": "console.log(\"--- THE RULES OF HORIZONTAL SCALING ---\");\nconsole.log(\"1. No local memory caching (Use Redis instead).\");\nconsole.log(\"2. No local file uploads (Use S3/Cloud Storage instead).\");\nconsole.log(\"3. No local cron jobs that can trigger twice (Use a distributed queue).\");\n\nconsole.log(\"\\nIf your Node app follows these rules (Stateless), you can spin up 1,000 copies of it and they will all work perfectly together behind a Load Balancer.\");"
+  "terminalOutput": "console.log(\"--- THE RULES OF HORIZONTAL SCALING ---\");\nconsole.log(\"1. No local memory caching (Use Redis instead).\");\nconsole.log(\"2. No local file uploads (Use S3/Cloud Storage instead).\");\nconsole.log(\"3. No local cron jobs that can trigger twice (Use a distributed queue).\");\n\nconsole.log(\"\\nIf your Node app follows these rules (Stateless), you can spin up 1,000 copies of it and they will all work perfectly together behind a Load Balancer.\");"
 }

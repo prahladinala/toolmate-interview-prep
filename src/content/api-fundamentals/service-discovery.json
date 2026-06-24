@@ -28,5 +28,5 @@
       "answer": "Client-Side: The microservice directly queries the Service Registry (phonebook), gets the IP, and makes the call itself. Server-Side: The microservice sends the request to a Load Balancer. The Load Balancer queries the phonebook and forwards the request."
     }
   ],
-  "codeExample": "/* \n  Conceptual Flow of Service Discovery\n*/\n\n// 1. [PAYMENT SERVICE] Boots up.\n//    Sends message to [REGISTRY]: \"I am alive. My IP is 10.0.5.22\"\n\n// 2. [CART SERVICE] needs to process a payment.\n//    Sends message to [REGISTRY]: \"Where is the Payment Service?\"\n//    [REGISTRY] replies: \"10.0.5.22\"\n\n// 3. [CART SERVICE] directly makes HTTP POST to http://10.0.5.22/charge\n\n// 4. If the Payment server crashes, [REGISTRY] removes it from the phonebook automatically."
+  "terminalOutput": "/* \n  Conceptual Flow of Service Discovery\n*/\n\n// 1. [PAYMENT SERVICE] Boots up.\n//    Sends message to [REGISTRY]: \"I am alive. My IP is 10.0.5.22\"\n\n// 2. [CART SERVICE] needs to process a payment.\n//    Sends message to [REGISTRY]: \"Where is the Payment Service?\"\n//    [REGISTRY] replies: \"10.0.5.22\"\n\n// 3. [CART SERVICE] directly makes HTTP POST to http://10.0.5.22/charge\n\n// 4. If the Payment server crashes, [REGISTRY] removes it from the phonebook automatically."
 }

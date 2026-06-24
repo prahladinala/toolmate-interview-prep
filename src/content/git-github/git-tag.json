@@ -27,5 +27,5 @@
       "answer": "No! By default, `git push` ignores tags entirely. You must explicitly run `git push --tags` to send them to the server."
     }
   ],
-  "codeExample": "# Create a lightweight tag on the current commit\n$ git tag v1.0.0\n\n# Create an Annotated tag (Recommended for releases!)\n$ git tag -a v2.0.0 -m \"Major release including the new UI overhaul\"\n\n# View all tags\n$ git tag\n\n# View the specific details of a tag\n$ git show v2.0.0\n\n# Push all your local tags to GitHub (Crucial step!)\n$ git push origin --tags"
+  "terminalOutput": "# Create a lightweight tag on the current commit\n$ git tag v1.0.0\n\n# Create an Annotated tag (Recommended for releases!)\n$ git tag -a v2.0.0 -m \"Major release including the new UI overhaul\"\n\n# View all tags\n$ git tag\n\n# View the specific details of a tag\n$ git show v2.0.0\n\n# Push all your local tags to GitHub (Crucial step!)\n$ git push origin --tags"
 }

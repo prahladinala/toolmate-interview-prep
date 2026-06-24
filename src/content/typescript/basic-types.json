@@ -25,5 +25,5 @@
       "answer": "ALWAYS use lowercase `number`, `string`, and `boolean`. The uppercase versions refer to the JavaScript wrapper objects, which you almost never want to use as types."
     }
   ],
-  "codeExample": "const firstName: string = \"Alice\";\nconst age: number = 30;\nconst isDeveloper: boolean = true;\n\n// Arrays of basic types\nconst scores: number[] = [95, 80, 100];\nconst names: Array<string> = [\"Alice\", \"Bob\"]; // Alternative syntax"
+  "terminalOutput": "const firstName: string = \"Alice\";\nconst age: number = 30;\nconst isDeveloper: boolean = true;\n\n// Arrays of basic types\nconst scores: number[] = [95, 80, 100];\nconst names: Array<string> = [\"Alice\", \"Bob\"]; // Alternative syntax"
 }

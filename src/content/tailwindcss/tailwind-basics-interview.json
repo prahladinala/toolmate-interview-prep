@@ -26,5 +26,5 @@
       "answer": "Historically, we separated HTML (structure) and CSS (styling) into different files. However, modern frameworks like React proved that 'Separation of Concerns' is better achieved by separating features into reusable *Components*. A React Component encapsulates its own structure, logic, and styling (via Tailwind) in one maintainable file."
     }
   ],
-  "codeExample": "/*\n  Q: If Tailwind puts everything in the HTML, won't my HTML file become incredibly bloated and unreadable?\n  \n  A: Initially, it looks cluttered. However, in modern web development, we don't write raw HTML files with 50 repeated buttons. We use component-based frameworks (React/Vue/Svelte). You write the heavily-classed Tailwind button exactly ONCE in a `Button.tsx` file, and reuse the component cleanly everywhere else.\n*/"
+  "terminalOutput": "/*\n  Q: If Tailwind puts everything in the HTML, won't my HTML file become incredibly bloated and unreadable?\n  \n  A: Initially, it looks cluttered. However, in modern web development, we don't write raw HTML files with 50 repeated buttons. We use component-based frameworks (React/Vue/Svelte). You write the heavily-classed Tailwind button exactly ONCE in a `Button.tsx` file, and reuse the component cleanly everywhere else.\n*/"
 }

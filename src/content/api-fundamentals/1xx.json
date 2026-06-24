@@ -27,5 +27,5 @@
       "answer": "It tells the client that the initial part of a massive request (like the headers of a 5GB file upload) has been received and accepted, and the client should continue sending the rest of the massive body."
     }
   ],
-  "codeExample": "/* \n  Conceptual Flow of a 101 Switching Protocols (WebSocket Upgrade)\n  \n  1. Client sends request to connect:\n     GET /chat HTTP/1.1\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  2. Server accepts the upgrade:\n     HTTP/1.1 101 Switching Protocols\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  3. The HTTP connection is kept permanently open and binary data begins flowing.\n*/"
+  "terminalOutput": "/* \n  Conceptual Flow of a 101 Switching Protocols (WebSocket Upgrade)\n  \n  1. Client sends request to connect:\n     GET /chat HTTP/1.1\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  2. Server accepts the upgrade:\n     HTTP/1.1 101 Switching Protocols\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  3. The HTTP connection is kept permanently open and binary data begins flowing.\n*/"
 }

@@ -28,5 +28,5 @@
       "answer": "The progress bar automatically fills up! Once all issues attached to the milestone are closed, the milestone hits 100% and can be closed itself."
     }
   ],
-  "codeExample": "/*\n  Example Milestone Setup:\n  \n  Milestone Name: MVP Launch (Due: Dec 1st)\n  Progress: [████████░░░░░░░░░] 50%\n  \n  Attached Issues:\n  - [CLOSED] Design the logo\n  - [CLOSED] Setup database schema\n  - [OPEN] Build login page\n  - [OPEN] Deploy to AWS\n  \n  (When you close 'Build login page', the progress bar instantly updates to 75%!)\n*/"
+  "terminalOutput": "/*\n  Example Milestone Setup:\n  \n  Milestone Name: MVP Launch (Due: Dec 1st)\n  Progress: [████████░░░░░░░░░] 50%\n  \n  Attached Issues:\n  - [CLOSED] Design the logo\n  - [CLOSED] Setup database schema\n  - [OPEN] Build login page\n  - [OPEN] Deploy to AWS\n  \n  (When you close 'Build login page', the progress bar instantly updates to 75%!)\n*/"
 }

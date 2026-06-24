@@ -28,5 +28,5 @@
       "answer": "The action will fire, but because the specific reducer hasn't been injected yet, the action will hit the `default` switch cases of the existing reducers and do absolutely nothing. The data will be lost."
     }
   ],
-  "codeExample": "/*\n  Conceptual flow of Code Splitting Reducers:\n\n  1. App starts. configureStore() runs with ONLY the core reducers (auth, ui).\n  2. User clicks 'Dashboard'.\n  3. React Lazy loads the Dashboard.jsx component.\n  4. Inside Dashboard.jsx, a useEffect runs:\n     `store.injectReducer('dashboard', dashboardSlice.reducer)`\n  5. The Redux store recalculates its state tree.\n  6. The Dashboard component can now use `useSelector(state => state.dashboard)`.\n*/"
+  "terminalOutput": "/*\n  Conceptual flow of Code Splitting Reducers:\n\n  1. App starts. configureStore() runs with ONLY the core reducers (auth, ui).\n  2. User clicks 'Dashboard'.\n  3. React Lazy loads the Dashboard.jsx component.\n  4. Inside Dashboard.jsx, a useEffect runs:\n     `store.injectReducer('dashboard', dashboardSlice.reducer)`\n  5. The Redux store recalculates its state tree.\n  6. The Dashboard component can now use `useSelector(state => state.dashboard)`.\n*/"
 }

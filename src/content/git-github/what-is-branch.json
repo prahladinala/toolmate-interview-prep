@@ -28,5 +28,5 @@
       "answer": "No! Unlike SVN, Git branches are incredibly 'lightweight'. A branch in Git is literally just a tiny text file containing 40 characters (a pointer to a commit hash). Creating a branch takes 0.01 seconds and uses almost zero hard drive space."
     }
   ],
-  "codeExample": "// Conceptual Mental Model\n\n/*\n          (Feature Branch)\n         /--- Commit D --- Commit E\n        /\nCommit A --- Commit B --- Commit C\n(main branch)\n\nCommit E has access to everything in A and B. \nBut Commit C does NOT have the experimental code from D or E!\n*/"
+  "terminalOutput": "// Conceptual Mental Model\n\n/*\n          (Feature Branch)\n         /--- Commit D --- Commit E\n        /\nCommit A --- Commit B --- Commit C\n(main branch)\n\nCommit E has access to everything in A and B. \nBut Commit C does NOT have the experimental code from D or E!\n*/"
 }

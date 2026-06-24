@@ -30,5 +30,5 @@
       "answer": "Because the default `.sort()` method converts all elements to Strings and sorts them alphabetically. Alphabetically, '10' comes before '2'. So the array becomes `[1, 10, 2]`. To fix this, you must provide a compare function: `arr.sort((a,b) => a - b)`."
     }
   ],
-  "codeExample": "const numbers = [1, 2, 3, 4, 5];\n\n// Map: Returns a new array (creates [2, 4, 6, 8, 10])\nconst doubled = numbers.map(num => num * 2);\n\n// Filter: Returns a new array with items that pass the test\nconst evens = numbers.filter(num => num % 2 === 0);\n\n// Reduce: Condenses the array into a single value\nconst sum = numbers.reduce((accumulator, currentVal) => accumulator + currentVal, 0);\n\n// Splice: Mutates original array (Removes 1 item at index 2)\nnumbers.splice(2, 1); \nconsole.log(numbers); // [1, 2, 4, 5]"
+  "terminalOutput": "const numbers = [1, 2, 3, 4, 5];\n\n// Map: Returns a new array (creates [2, 4, 6, 8, 10])\nconst doubled = numbers.map(num => num * 2);\n\n// Filter: Returns a new array with items that pass the test\nconst evens = numbers.filter(num => num % 2 === 0);\n\n// Reduce: Condenses the array into a single value\nconst sum = numbers.reduce((accumulator, currentVal) => accumulator + currentVal, 0);\n\n// Splice: Mutates original array (Removes 1 item at index 2)\nnumbers.splice(2, 1); \nconsole.log(numbers); // [1, 2, 4, 5]"
 }

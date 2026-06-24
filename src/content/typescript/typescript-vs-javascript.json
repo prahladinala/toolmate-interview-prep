@@ -29,5 +29,5 @@
       "answer": "No! If you fetch data from an API, TS trusts whatever shape you *tell* it the data is. If the backend actually returns something different, your app will still crash at runtime. (This is why libraries like Zod exist)."
     }
   ],
-  "codeExample": "// JavaScript: Dynamic typing (Types can change at runtime)\nlet data = 10;\ndata = \"Hello\"; // Perfectly fine in JS\n\n// TypeScript: Static typing (Types are locked in)\nlet tsData: number = 10;\n// tsData = \"Hello\"; // Error: Type 'string' is not assignable to type 'number'"
+  "terminalOutput": "// JavaScript: Dynamic typing (Types can change at runtime)\nlet data = 10;\ndata = \"Hello\"; // Perfectly fine in JS\n\n// TypeScript: Static typing (Types are locked in)\nlet tsData: number = 10;\n// tsData = \"Hello\"; // Error: Type 'string' is not assignable to type 'number'"
 }

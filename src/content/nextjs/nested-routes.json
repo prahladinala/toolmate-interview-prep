@@ -28,5 +28,5 @@
       "answer": "No. Layouts ONLY affect the folder they are in, and all the nested children folders beneath them. The homepage is above `dashboard` in the hierarchy."
     }
   ],
-  "codeExample": "/* \n  Visualizing Nested Layouts:\n  \n  app/\n  ├── layout.tsx         <-- Root Layout (Navbar & Footer applied to everything)\n  ├── page.tsx\n  └── dashboard/\n      ├── layout.tsx     <-- Dashboard Layout (Adds a Sidebar just for dashboard routes)\n      ├── page.tsx\n      └── settings/\n          └── page.tsx   <-- This page gets BOTH the Root Navbar AND the Dashboard Sidebar!\n*/"
+  "terminalOutput": "/* \n  Visualizing Nested Layouts:\n  \n  app/\n  ├── layout.tsx         <-- Root Layout (Navbar & Footer applied to everything)\n  ├── page.tsx\n  └── dashboard/\n      ├── layout.tsx     <-- Dashboard Layout (Adds a Sidebar just for dashboard routes)\n      ├── page.tsx\n      └── settings/\n          └── page.tsx   <-- This page gets BOTH the Root Navbar AND the Dashboard Sidebar!\n*/"
 }

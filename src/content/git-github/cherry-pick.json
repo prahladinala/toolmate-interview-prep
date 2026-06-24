@@ -27,5 +27,5 @@
       "answer": "Yes! If the commit you are stealing modifies lines of code that have also been heavily modified on your current branch, Git won't know how to glue it in cleanly, resulting in a conflict."
     }
   ],
-  "codeExample": "# Step 1: Find the hash of the commit you want to steal\n$ git log branch-with-the-fix\n# (You copy the hash: 9f8e7d6)\n\n# Step 2: Ensure you are on the branch that needs the fix\n$ git checkout production\n\n# Step 3: Steal the commit!\n$ git cherry-pick 9f8e7d6\n\n# That specific commit has now been perfectly duplicated onto the production branch."
+  "terminalOutput": "# Step 1: Find the hash of the commit you want to steal\n$ git log branch-with-the-fix\n# (You copy the hash: 9f8e7d6)\n\n# Step 2: Ensure you are on the branch that needs the fix\n$ git checkout production\n\n# Step 3: Steal the commit!\n$ git cherry-pick 9f8e7d6\n\n# That specific commit has now been perfectly duplicated onto the production branch."
 }

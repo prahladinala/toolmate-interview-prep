@@ -27,5 +27,5 @@
       "answer": "Yes! Clicking on a label anywhere in the UI automatically filters the list to only show items with that specific label."
     }
   ],
-  "codeExample": "/*\n  Custom Labels you might create for a Web Project:\n  \n  - 'priority: high' (Color: Bright Red)\n  - 'priority: low' (Color: Yellow)\n  - 'frontend' (Color: Blue)\n  - 'backend' (Color: Green)\n  - 'needs design' (Color: Purple)\n  \n  You can then query GitHub: `is:issue is:open label:frontend label:bug`\n*/"
+  "terminalOutput": "/*\n  Custom Labels you might create for a Web Project:\n  \n  - 'priority: high' (Color: Bright Red)\n  - 'priority: low' (Color: Yellow)\n  - 'frontend' (Color: Blue)\n  - 'backend' (Color: Green)\n  - 'needs design' (Color: Purple)\n  \n  You can then query GitHub: `is:issue is:open label:frontend label:bug`\n*/"
 }

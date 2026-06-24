@@ -26,5 +26,5 @@
       "answer": "A `<button>` automatically receives keyboard focus when tabbing, and automatically triggers its `onClick` when the user presses the 'Enter' or 'Space' key. A `<div>` does none of this unless you write hundreds of lines of custom code to recreate it."
     }
   ],
-  "codeExample": "// BAD\n<div className='nav'>\n  <div className='link'>Home</div>\n</div>\n\n// GOOD\n<nav>\n  <a href='/'>Home</a>\n</nav>"
+  "terminalOutput": "// BAD\n<div className='nav'>\n  <div className='link'>Home</div>\n</div>\n\n// GOOD\n<nav>\n  <a href='/'>Home</a>\n</nav>"
 }

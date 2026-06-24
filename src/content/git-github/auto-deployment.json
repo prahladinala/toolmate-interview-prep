@@ -27,5 +27,5 @@
       "answer": "A good CD pipeline uses 'Blue/Green deployments' or 'Rollbacks'. If the deployment fails, the load balancer keeps pointing users to the old, working version of the server, and alerts the engineering team."
     }
   ],
-  "codeExample": "# .github/workflows/deploy-vps.yml\n\nname: Deploy to Production Server\non:\n  push:\n    branches: [ main ]\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: SSH and Deploy\n        uses: appleboy/ssh-action@master\n        with:\n          host: ${{ secrets.SERVER_IP }}\n          username: root\n          key: ${{ secrets.SERVER_SSH_KEY }}\n          script: |\n            cd /var/www/my-app\n            git pull origin main\n            npm install\n            npm run build\n            pm2 restart my-app"
+  "terminalOutput": "# .github/workflows/deploy-vps.yml\n\nname: Deploy to Production Server\non:\n  push:\n    branches: [ main ]\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: SSH and Deploy\n        uses: appleboy/ssh-action@master\n        with:\n          host: ${{ secrets.SERVER_IP }}\n          username: root\n          key: ${{ secrets.SERVER_SSH_KEY }}\n          script: |\n            cd /var/www/my-app\n            git pull origin main\n            npm install\n            npm run build\n            pm2 restart my-app"
 }

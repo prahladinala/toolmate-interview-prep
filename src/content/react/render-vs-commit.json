@@ -41,5 +41,5 @@
       "answer": "Because the Render Phase can be invoked multiple times, paused, or completely thrown away by React without ever reaching the Commit Phase. If you mutate external data or fetch APIs here, it will happen unpredictably."
     }
   ],
-  "codeExample": "console.log(\"1. Render Phase: Call component() -> return Virtual DOM. (Can be aborted)\");\nconsole.log(\"2. Commit Phase: Apply changes to real DOM. (Cannot be aborted)\");\nconsole.log(\"3. Cleanup Phase: Run useLayoutEffect.\");\nconsole.log(\"4. Browser Paint: User sees the UI on screen.\");\nconsole.log(\"5. Effect Phase: Run useEffect in the background.\");"
+  "terminalOutput": "console.log(\"1. Render Phase: Call component() -> return Virtual DOM. (Can be aborted)\");\nconsole.log(\"2. Commit Phase: Apply changes to real DOM. (Cannot be aborted)\");\nconsole.log(\"3. Cleanup Phase: Run useLayoutEffect.\");\nconsole.log(\"4. Browser Paint: User sees the UI on screen.\");\nconsole.log(\"5. Effect Phase: Run useEffect in the background.\");"
 }

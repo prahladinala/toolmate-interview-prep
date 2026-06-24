@@ -27,5 +27,5 @@
       "answer": "Only the 'Admin' (or Owner) level can delete a repository, transfer ownership, or change repository visibility (Public to Private)."
     }
   ],
-  "codeExample": "/*\n  Standard GitHub Permission Levels:\n\n  1. Read: Can clone, pull, and open issues. (Interns/Public)\n  2. Triage: Can manage issues and PRs, but cannot push code. (Project Managers)\n  3. Write: Can push code directly to branches. (Standard Developers)\n  4. Maintain: Can manage repository settings and permissions. (Tech Leads)\n  5. Admin: Can do everything, including deleting the repo. (CTO/Founders)\n*/"
+  "terminalOutput": "/*\n  Standard GitHub Permission Levels:\n\n  1. Read: Can clone, pull, and open issues. (Interns/Public)\n  2. Triage: Can manage issues and PRs, but cannot push code. (Project Managers)\n  3. Write: Can push code directly to branches. (Standard Developers)\n  4. Maintain: Can manage repository settings and permissions. (Tech Leads)\n  5. Admin: Can do everything, including deleting the repo. (CTO/Founders)\n*/"
 }

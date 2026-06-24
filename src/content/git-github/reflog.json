@@ -27,5 +27,5 @@
       "answer": "By default, unreachable commits in the reflog expire after 30 days. After that, Git's 'Garbage Collector' permanently deletes them from your hard drive."
     }
   ],
-  "codeExample": "# Oh no! I accidentally hard reset and lost my work!\n$ git reset --hard HEAD~3\n\n# 1. Open the secret diary of my actions\n$ git reflog\n/* Output:\n   a1b2c3d HEAD@{0}: reset: moving to HEAD~3\n   9f8e7d6 HEAD@{1}: commit: Add shopping cart   <--- I WANT THIS BACK!\n   5e4d3c2 HEAD@{2}: commit: Update CSS\n*/\n\n# 2. Travel back to the moment before I messed up\n$ git reset --hard 9f8e7d6\n\n# Everything is completely restored!"
+  "terminalOutput": "# Oh no! I accidentally hard reset and lost my work!\n$ git reset --hard HEAD~3\n\n# 1. Open the secret diary of my actions\n$ git reflog\n/* Output:\n   a1b2c3d HEAD@{0}: reset: moving to HEAD~3\n   9f8e7d6 HEAD@{1}: commit: Add shopping cart   <--- I WANT THIS BACK!\n   5e4d3c2 HEAD@{2}: commit: Update CSS\n*/\n\n# 2. Travel back to the moment before I messed up\n$ git reset --hard 9f8e7d6\n\n# Everything is completely restored!"
 }

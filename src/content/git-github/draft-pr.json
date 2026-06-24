@@ -27,5 +27,5 @@
       "answer": "No. That is one of the main benefits. It doesn't spam your senior developers with emails until you officially mark it as ready."
     }
   ],
-  "codeExample": "/*\n  How to create a Draft PR:\n  \n  1. Push your branch to GitHub.\n  2. Click 'Compare & pull request'.\n  3. Instead of clicking the big green 'Create pull request' button,\n     click the little dropdown arrow next to it.\n  4. Select 'Create draft pull request'.\n*/"
+  "terminalOutput": "/*\n  How to create a Draft PR:\n  \n  1. Push your branch to GitHub.\n  2. Click 'Compare & pull request'.\n  3. Instead of clicking the big green 'Create pull request' button,\n     click the little dropdown arrow next to it.\n  4. Select 'Create draft pull request'.\n*/"
 }

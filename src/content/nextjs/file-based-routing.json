@@ -27,5 +27,5 @@
       "answer": "It has no URL! It is impossible to access it via the browser. Only `page.tsx` files are publicly routable. This is called Colocation."
     }
   ],
-  "codeExample": "/* \n  Next.js File-Based Routing Map:\n  \n  app/page.tsx               --->  mywebsite.com/\n  app/about/page.tsx         --->  mywebsite.com/about\n  app/contact/page.tsx       --->  mywebsite.com/contact\n  \n  app/pricing/page.tsx       --->  mywebsite.com/pricing\n  app/pricing/Button.tsx     --->  (NO URL. Just a React component!)\n*/"
+  "terminalOutput": "/* \n  Next.js File-Based Routing Map:\n  \n  app/page.tsx               --->  mywebsite.com/\n  app/about/page.tsx         --->  mywebsite.com/about\n  app/contact/page.tsx       --->  mywebsite.com/contact\n  \n  app/pricing/page.tsx       --->  mywebsite.com/pricing\n  app/pricing/Button.tsx     --->  (NO URL. Just a React component!)\n*/"
 }

@@ -31,5 +31,5 @@
       "answer": "LocalStorage just sits on the hard drive until JS asks for it. Cookies are automatically attached to the Headers of EVERY SINGLE HTTP request sent to that domain (even requests for images or CSS files). If you have 4KB of cookies, you add 4KB of upload bandwidth to every image request."
     }
   ],
-  "codeExample": "// Reading cookies in JS (WARNING: Returns a giant, unparsed string)\nconsole.log(document.cookie); // \"theme=dark; userId=123\"\n\n// Writing a cookie in JS (Not recommended for Auth! Use server-side HttpOnly)\ndocument.cookie = \"theme=dark; max-age=3600; path=/\";\n\n// A much better modern approach for reading cookies is the new Cookie Store API:\n// (Only available in modern Chrome/Edge)\n/*\nconst themeCookie = await cookieStore.get('theme');\nconsole.log(themeCookie.value);\n*/"
+  "terminalOutput": "// Reading cookies in JS (WARNING: Returns a giant, unparsed string)\nconsole.log(document.cookie); // \"theme=dark; userId=123\"\n\n// Writing a cookie in JS (Not recommended for Auth! Use server-side HttpOnly)\ndocument.cookie = \"theme=dark; max-age=3600; path=/\";\n\n// A much better modern approach for reading cookies is the new Cookie Store API:\n// (Only available in modern Chrome/Edge)\n/*\nconst themeCookie = await cookieStore.get('theme');\nconsole.log(themeCookie.value);\n*/"
 }

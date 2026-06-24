@@ -27,5 +27,5 @@
       "answer": "Hypermedia as the Engine of Application State. It means an API response doesn't just return data; it returns HYPERLINKS to other actions you can take. (e.g., getting a User returns their data, plus a link to `rel: 'delete', href: '/users/5'` so the client knows how to delete them)."
     }
   ],
-  "codeExample": "/* \n  Advanced RESTful Querying via URL Parameters \n*/\n\n// Filtering (Find active admins)\nGET /users?role=admin&status=active\n\n// Sorting (Sort by creation date, descending)\nGET /users?sort=-created_at\n\n// Field Selection (Only return the name and email to save bandwidth)\nGET /users?fields=name,email\n\n// Pagination (Get page 3, 20 items per page)\nGET /users?page=3&limit=20\n\n// Full combined production query:\nGET /products?category=shoes&sort=-price&limit=10&page=1"
+  "terminalOutput": "/* \n  Advanced RESTful Querying via URL Parameters \n*/\n\n// Filtering (Find active admins)\nGET /users?role=admin&status=active\n\n// Sorting (Sort by creation date, descending)\nGET /users?sort=-created_at\n\n// Field Selection (Only return the name and email to save bandwidth)\nGET /users?fields=name,email\n\n// Pagination (Get page 3, 20 items per page)\nGET /users?page=3&limit=20\n\n// Full combined production query:\nGET /products?category=shoes&sort=-price&limit=10&page=1"
 }

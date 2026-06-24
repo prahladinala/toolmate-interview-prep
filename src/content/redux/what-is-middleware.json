@@ -28,5 +28,5 @@
       "answer": "Yes! If a middleware function does not call `next(action)`, the action dies right there and the Reducer never sees it."
     }
   ],
-  "codeExample": "/*\n  The Redux Pipeline:\n\n  1. Component runs `dispatch({ type: 'ADD' })`\n         │\n         ▼\n  2. MIDDLEWARE 1 (e.g., Logger - Prints the action to the console)\n         │ calls next()\n         ▼\n  3. MIDDLEWARE 2 (e.g., Thunk - Checks if action is a function. It's not, so it passes it on)\n         │ calls next()\n         ▼\n  4. REDUCER (Catches the action and updates state)\n*/"
+  "terminalOutput": "/*\n  The Redux Pipeline:\n\n  1. Component runs `dispatch({ type: 'ADD' })`\n         │\n         ▼\n  2. MIDDLEWARE 1 (e.g., Logger - Prints the action to the console)\n         │ calls next()\n         ▼\n  3. MIDDLEWARE 2 (e.g., Thunk - Checks if action is a function. It's not, so it passes it on)\n         │ calls next()\n         ▼\n  4. REDUCER (Catches the action and updates state)\n*/"
 }

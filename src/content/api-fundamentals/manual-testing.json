@@ -28,5 +28,5 @@
       "answer": "Because humans are slow and forgetful. If you add a new feature, you might manually test that feature, but forget to manually test the 50 older features to ensure you didn't accidentally break them. Automated testing solves this."
     }
   ],
-  "codeExample": "# Manual Testing using cURL in the Terminal\n\n# 1. Simple GET request\ncurl https://api.github.com/users/octocat\n\n# 2. Complex POST request with JSON and Headers\ncurl -X POST https://api.com/login \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"email\": \"test@test.com\", \"password\": \"123\"}'\n     \n# 3. View the Headers returned by the server (-I flag)\ncurl -I https://google.com"
+  "terminalOutput": "# Manual Testing using cURL in the Terminal\n\n# 1. Simple GET request\ncurl https://api.github.com/users/octocat\n\n# 2. Complex POST request with JSON and Headers\ncurl -X POST https://api.com/login \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"email\": \"test@test.com\", \"password\": \"123\"}'\n     \n# 3. View the Headers returned by the server (-I flag)\ncurl -I https://google.com"
 }

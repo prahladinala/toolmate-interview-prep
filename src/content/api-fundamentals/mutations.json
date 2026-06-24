@@ -28,5 +28,5 @@
       "answer": "GraphQL allows you to mutate data and query the updated result in the exact same request. By including fields at the end, you tell the server: 'Create the user, and then immediately return the new user's ID and Email to me so I can update the UI.'"
     }
   ],
-  "codeExample": "/* \n  GraphQL Mutation Example \n*/\n\nmutation CreateNewUser($email: String!, $password: String!) {\n  # The Action: Call the 'createUser' function on the server\n  createUser(email: $email, password: $password) {\n    \n    # The Return Request: \n    # If successful, give me back these specific fields\n    id\n    email\n    createdAt\n  }\n}"
+  "terminalOutput": "/* \n  GraphQL Mutation Example \n*/\n\nmutation CreateNewUser($email: String!, $password: String!) {\n  # The Action: Call the 'createUser' function on the server\n  createUser(email: $email, password: $password) {\n    \n    # The Return Request: \n    # If successful, give me back these specific fields\n    id\n    email\n    createdAt\n  }\n}"
 }

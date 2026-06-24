@@ -26,5 +26,5 @@
       "answer": "`useSelector` is used to READ data from the store. `useDispatch` is used to SEND actions to the store to trigger a change."
     }
   ],
-  "codeExample": "/*\n  Q: What problem does Redux solve?\n  \n  A: Redux solves the problem of global state management and \n     \"Prop Drilling\". In large React applications, passing data \n     down through dozens of component layers becomes unmaintainable. \n     Redux centralizes the data into a single global store, allowing \n     any component to access the exact data it needs directly, \n     resulting in cleaner code and predictable state updates.\n*/"
+  "terminalOutput": "/*\n  Q: What problem does Redux solve?\n  \n  A: Redux solves the problem of global state management and \n     \"Prop Drilling\". In large React applications, passing data \n     down through dozens of component layers becomes unmaintainable. \n     Redux centralizes the data into a single global store, allowing \n     any component to access the exact data it needs directly, \n     resulting in cleaner code and predictable state updates.\n*/"
 }

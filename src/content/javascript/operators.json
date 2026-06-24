@@ -31,5 +31,5 @@
       "answer": "It returns `'object'`. This is a famous, unfixable bug in JavaScript dating back to its creation. `null` is a primitive type, not an object, but fixing it now would break millions of legacy websites."
     }
   ],
-  "codeExample": "console.log('5' + 3);  // '53'\nconsole.log('5' - 3);  // 2\nconsole.log(typeof null); // 'object'\n\n// Double tilde ~~ is a fast shorthand for Math.floor() on positive numbers\nconsole.log(~~4.9); // 4"
+  "terminalOutput": "console.log('5' + 3);  // '53'\nconsole.log('5' - 3);  // 2\nconsole.log(typeof null); // 'object'\n\n// Double tilde ~~ is a fast shorthand for Math.floor() on positive numbers\nconsole.log(~~4.9); // 4"
 }

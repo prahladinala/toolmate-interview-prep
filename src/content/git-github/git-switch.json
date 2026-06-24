@@ -26,5 +26,5 @@
       "answer": "Muscle memory. `git checkout` has been used for over a decade. Millions of tutorials and senior developers still use it automatically."
     }
   ],
-  "codeExample": "# Switch to an existing branch\n$ git switch main\n\n# CREATE and SWITCH to a new branch\n$ git switch -c feature/payment-gateway\n\n# Quickly switch back to the branch you were just on previously (like a TV remote 'Last Channel' button)\n$ git switch -"
+  "terminalOutput": "# Switch to an existing branch\n$ git switch main\n\n# CREATE and SWITCH to a new branch\n$ git switch -c feature/payment-gateway\n\n# Quickly switch back to the branch you were just on previously (like a TV remote 'Last Channel' button)\n$ git switch -"
 }

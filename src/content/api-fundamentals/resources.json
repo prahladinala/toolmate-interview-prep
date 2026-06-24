@@ -27,5 +27,5 @@
       "answer": "By nesting the resources in the URL path: `/articles/123/comments`."
     }
   ],
-  "codeExample": "/* \n  Resource Naming Conventions in REST \n*/\n\n// Rule 1: Use plural nouns\n✅ GET /tickets\n❌ GET /ticket\n\n// Rule 2: Do not use verbs in the URL (The HTTP method IS the verb)\n✅ POST /users\n❌ POST /createUser\n\n// Rule 3: Use nesting to show relationships (Sub-resources)\n// \"Get all reviews for product #55\"\n✅ GET /products/55/reviews\n\n// Rule 4: Don't nest too deeply (Keep it flat if possible)\n❌ GET /users/1/orders/5/items/32/tracking\n✅ GET /items/32/tracking"
+  "terminalOutput": "/* \n  Resource Naming Conventions in REST \n*/\n\n// Rule 1: Use plural nouns\n✅ GET /tickets\n❌ GET /ticket\n\n// Rule 2: Do not use verbs in the URL (The HTTP method IS the verb)\n✅ POST /users\n❌ POST /createUser\n\n// Rule 3: Use nesting to show relationships (Sub-resources)\n// \"Get all reviews for product #55\"\n✅ GET /products/55/reviews\n\n// Rule 4: Don't nest too deeply (Keep it flat if possible)\n❌ GET /users/1/orders/5/items/32/tracking\n✅ GET /items/32/tracking"
 }

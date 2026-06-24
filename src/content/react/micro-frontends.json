@@ -26,5 +26,5 @@
       "answer": "They solve organizational scaling. In a massive company with 500 frontend devs, working in a single monolithic codebase causes massive merge conflicts, slow builds, and deployment bottlenecks. Micro-frontends allow teams to deploy their specific piece of the UI completely independently."
     }
   ],
-  "codeExample": "// Micro-frontends are an architectural concept usually implemented via Webpack Module Federation, iframes, or custom routing."
+  "terminalOutput": "// Micro-frontends are an architectural concept usually implemented via Webpack Module Federation, iframes, or custom routing."
 }

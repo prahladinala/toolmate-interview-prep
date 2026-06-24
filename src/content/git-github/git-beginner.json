@@ -26,5 +26,5 @@
       "answer": "It is an intermediate area (the 'Index') where you can gather specific modified files to be included in the next commit, without having to commit every single changed file in your project."
     }
   ],
-  "codeExample": "/*\n  Q: What is a Pull Request?\n  \n  A: A Pull Request (PR) is a GitHub feature that lets you propose \n     changes to a repository. It provides a web interface where \n     other developers can review your code, leave comments, and \n     approve the changes before they are officially merged into \n     the main branch.\n*/"
+  "terminalOutput": "/*\n  Q: What is a Pull Request?\n  \n  A: A Pull Request (PR) is a GitHub feature that lets you propose \n     changes to a repository. It provides a web interface where \n     other developers can review your code, leave comments, and \n     approve the changes before they are officially merged into \n     the main branch.\n*/"
 }

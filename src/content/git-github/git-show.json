@@ -27,5 +27,30 @@
       "answer": "`+` (usually in green) indicates a line of code that was added. `-` (usually in red) indicates a line of code that was deleted."
     }
   ],
-  "codeExample": "# Show the exact code changes of the most recent commit\n$ git show\n\n# Show the exact code changes of a specific commit from history\n$ git show a1b2c3d\n\n/* Output Example:\ncommit a1b2c3d\nAuthor: John Doe\n\ndiff --git a/styles.css b/styles.css\n@@ -10,3 +10,4 @@\n .header {\n-    background: blue;\n+    background: red;\n+    font-weight: bold;\n }\n*/"
+  "terminalOutput": "# Show the exact code changes of the most recent commit\n$ git show\n\n# Show the exact code changes of a specific commit from history\n$ git show a1b2c3d\n\n/* Output Example:\ncommit a1b2c3d\nAuthor: John Doe\n\ndiff --git a/styles.css b/styles.css\n@@ -10,3 +10,4 @@\n .header {\n-    background: blue;\n+    background: red;\n+    font-weight: bold;\n }\n*/",
+  "tableData": {
+    "title": "`git show` Flags",
+    "headers": [
+      "Flag",
+      "Description"
+    ],
+    "rows": [
+      [
+        "`git show [commit_hash]`",
+        "Shows the log message and textual diff of the specific commit."
+      ],
+      [
+        "`--stat`",
+        "Shows only the list of modified files and how many lines were added/removed."
+      ],
+      [
+        "`--name-only`",
+        "Shows only the raw file names that were changed."
+      ],
+      [
+        "`HEAD`",
+        "Shows the very last commit you made."
+      ]
+    ]
+  }
 }

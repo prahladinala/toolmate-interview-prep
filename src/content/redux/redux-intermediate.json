@@ -26,5 +26,5 @@
       "answer": "It significantly reduces boilerplate. It accepts an initial state and a set of reducer functions, and it automatically generates the Action Creators and Action Types corresponding to those reducers. It also wraps the reducers in Immer, allowing safe 'mutable' syntax."
     }
   ],
-  "codeExample": "/*\n  Q: Can you mutate the state directly in a Redux Reducer?\n  \n  A: In legacy Redux, absolutely not. You must use the spread operator \n     to return a new immutable object. \n     \n     HOWEVER, in modern Redux Toolkit, YES, you can write mutating syntax \n     like `state.value = 5`. This is because RTK uses the Immer library \n     under the hood, which intercepts the mutation and safely generates \n     an immutable copy behind the scenes.\n*/"
+  "terminalOutput": "/*\n  Q: Can you mutate the state directly in a Redux Reducer?\n  \n  A: In legacy Redux, absolutely not. You must use the spread operator \n     to return a new immutable object. \n     \n     HOWEVER, in modern Redux Toolkit, YES, you can write mutating syntax \n     like `state.value = 5`. This is because RTK uses the Immer library \n     under the hood, which intercepts the mutation and safely generates \n     an immutable copy behind the scenes.\n*/"
 }

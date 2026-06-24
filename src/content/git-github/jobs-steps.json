@@ -27,5 +27,5 @@
       "answer": "Use the `needs` keyword. Example: `needs: [job-A]`."
     }
   ],
-  "codeExample": "jobs:\n  # JOB 1 (Runs instantly)\n  build-app:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Building the app...\"\n\n  # JOB 2 (Waits for Job 1 to finish)\n  test-app:\n    needs: build-app\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Testing the app...\""
+  "terminalOutput": "jobs:\n  # JOB 1 (Runs instantly)\n  build-app:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Building the app...\"\n\n  # JOB 2 (Waits for Job 1 to finish)\n  test-app:\n    needs: build-app\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Testing the app...\""
 }

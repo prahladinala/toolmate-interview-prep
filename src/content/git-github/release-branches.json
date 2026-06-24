@@ -27,5 +27,5 @@
       "answer": "You merge it INTO `main` (so production is updated), and you also merge it BACK into `develop` (so all the bug fixes you made aren't lost in future versions)."
     }
   ],
-  "codeExample": "# Create a release branch off of 'develop'\n$ git checkout -b release-v2.0 develop\n\n# QA tests it, finds a bug, you fix the bug.\n$ git commit -m \"Fix critical crash on startup\"\n\n# Release day arrives! Merge to main and tag it.\n$ git checkout main\n$ git merge release-v2.0\n$ git tag v2.0.0\n\n# Don't forget to merge those bug fixes back to develop!\n$ git checkout develop\n$ git merge release-v2.0"
+  "terminalOutput": "# Create a release branch off of 'develop'\n$ git checkout -b release-v2.0 develop\n\n# QA tests it, finds a bug, you fix the bug.\n$ git commit -m \"Fix critical crash on startup\"\n\n# Release day arrives! Merge to main and tag it.\n$ git checkout main\n$ git merge release-v2.0\n$ git tag v2.0.0\n\n# Don't forget to merge those bug fixes back to develop!\n$ git checkout develop\n$ git merge release-v2.0"
 }

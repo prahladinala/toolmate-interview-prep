@@ -28,5 +28,5 @@
       "answer": "It states that a distributed database can only provide two out of three guarantees simultaneously: Consistency (everyone sees the same data), Availability (the system is always up), and Partition Tolerance (the system works even if the network cable between the servers is cut)."
     }
   ],
-  "codeExample": "/* \n  The challenge of Distributed Systems: Data Consistency\n  \n  1. User updates their profile picture.\n  2. The request goes to Server A (in New York). Server A updates Database A.\n  3. Database A begins copying the new picture to Database B (in London).\n  4. Milliseconds later, a friend in London views the profile.\n  5. The request hits Server B. Database B hasn't received the copy yet.\n  6. The friend sees the OLD profile picture. (This is called Eventual Consistency).\n*/"
+  "terminalOutput": "/* \n  The challenge of Distributed Systems: Data Consistency\n  \n  1. User updates their profile picture.\n  2. The request goes to Server A (in New York). Server A updates Database A.\n  3. Database A begins copying the new picture to Database B (in London).\n  4. Milliseconds later, a friend in London views the profile.\n  5. The request hits Server B. Database B hasn't received the copy yet.\n  6. The friend sees the OLD profile picture. (This is called Eventual Consistency).\n*/"
 }

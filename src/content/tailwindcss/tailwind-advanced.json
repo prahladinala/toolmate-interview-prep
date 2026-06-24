@@ -27,5 +27,5 @@
       "answer": "By using the `tailwind-merge` library. Standard string concatenation (`class=\"p-4 p-8\"`) leaves it up to the CSS cascade, which is unpredictable. `tailwind-merge` intelligently analyzes the Tailwind classes and strips out the overridden `p-4` class entirely."
     }
   ],
-  "codeExample": "/*\n  Q: Explain the difference between `theme.colors` and `theme.extend.colors` in the tailwind.config.js file.\n  \n  A: Placing custom colors directly inside `theme.colors` will completely override and DESTROY Tailwind's entire default color palette (you will lose bg-blue-500, bg-red-500, etc). \n  \n  Placing them inside `theme.extend.colors` will append your custom colors to the existing default palette, allowing you to use both.\n*/"
+  "terminalOutput": "/*\n  Q: Explain the difference between `theme.colors` and `theme.extend.colors` in the tailwind.config.js file.\n  \n  A: Placing custom colors directly inside `theme.colors` will completely override and DESTROY Tailwind's entire default color palette (you will lose bg-blue-500, bg-red-500, etc). \n  \n  Placing them inside `theme.extend.colors` will append your custom colors to the existing default palette, allowing you to use both.\n*/"
 }

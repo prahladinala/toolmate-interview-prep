@@ -26,5 +26,5 @@
       "answer": "Git physically deletes, adds, and modifies the files in your Working Directory in real-time to match the exact state they were in on the branch you are switching to. It's like magic."
     }
   ],
-  "codeExample": "# You open 'index.html' and type some code.\n# At this point, the changes ONLY exist in the Working Directory.\n\n# To see what is currently modified in your Working Directory:\n$ git status\n# Output: Changes not staged for commit:\n#         modified:   index.html"
+  "terminalOutput": "# You open 'index.html' and type some code.\n# At this point, the changes ONLY exist in the Working Directory.\n\n# To see what is currently modified in your Working Directory:\n$ git status\n# Output: Changes not staged for commit:\n#         modified:   index.html"
 }

@@ -30,5 +30,5 @@
       "answer": "It is a special API that queues a callback to run at the absolute most optimal time: immediately before the browser performs its next Style/Layout/Paint cycle. It is far superior to `setTimeout` for animations."
     }
   ],
-  "codeExample": "// Changing styles multiple times synchronously:\ndiv.style.width = '100px';\ndiv.style.height = '100px';\ndiv.style.backgroundColor = 'red';\n\n// The user NEVER sees these intermediate states.\n// Because JavaScript is synchronous here, the Event Loop cannot reach the Render Phase.\n// Only the final state (Red 100x100) is painted to the screen in a single batch."
+  "terminalOutput": "// Changing styles multiple times synchronously:\ndiv.style.width = '100px';\ndiv.style.height = '100px';\ndiv.style.backgroundColor = 'red';\n\n// The user NEVER sees these intermediate states.\n// Because JavaScript is synchronous here, the Event Loop cannot reach the Render Phase.\n// Only the final state (Red 100x100) is painted to the screen in a single batch."
 }

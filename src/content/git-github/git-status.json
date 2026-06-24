@@ -27,7 +27,6 @@
       "answer": "It means you created a brand new file, and Git has never seen it before. Git won't save it unless you explicitly tell it to by running `git add`."
     }
   ],
-  "codeExample": "$ git status\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nChanges to be committed:\n  (use \"git restore --staged <file>...\" to unstage)\n        modified:   index.html\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n        modified:   styles.css\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n        new-image.png",
   "tableData": {
     "title": "Crucial Command Flags",
     "headers": [
@@ -44,5 +43,6 @@
         "Show untracked files."
       ]
     ]
-  }
+  },
+  "terminalOutput": "$ git status\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nChanges to be committed:\n  (use \"git restore --staged <file>...\" to unstage)\n        modified:   index.html\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n        modified:   styles.css\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n        new-image.png"
 }

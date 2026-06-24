@@ -26,5 +26,5 @@
       "answer": "'Merge commit' takes all 50 of your tiny commits and dumps them into the main history timeline, plus adds a 51st commit tying them together. 'Squash and merge' crushes your 50 commits into 1 single clean commit and places it on the main timeline."
     }
   ],
-  "codeExample": "// No code needed. This is a GitHub UI process.\n\n// Step 1: Reviewer submits 'Approve' review.\n// Step 2: PR Author sees the green checkmark.\n// Step 3: PR Author clicks 'Squash and merge'.\n// Step 4: GitHub merges the code and asks: 'Delete branch?'\n// Step 5: ALWAYS click 'Delete branch' to keep the repository clean!"
+  "terminalOutput": "// No code needed. This is a GitHub UI process.\n\n// Step 1: Reviewer submits 'Approve' review.\n// Step 2: PR Author sees the green checkmark.\n// Step 3: PR Author clicks 'Squash and merge'.\n// Step 4: GitHub merges the code and asks: 'Delete branch?'\n// Step 5: ALWAYS click 'Delete branch' to keep the repository clean!"
 }

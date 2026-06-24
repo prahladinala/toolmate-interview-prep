@@ -27,5 +27,5 @@
       "answer": "Traditional code splitting still forces the user to download the React UI code for the page they are on. Server Components split the code completely OFF the browser. The UI code stays on the server, and 0 bytes are sent to the client, effectively resulting in a zero-size bundle."
     }
   ],
-  "codeExample": "/* \n  You do absolutely nothing. Next.js handles this automatically!\n  \n  app/\n  ├── page.tsx          <-- Next.js creates 'chunk-home.js'\n  └── dashboard/\n      └── page.tsx      <-- Next.js creates 'chunk-dashboard.js'\n      \n  When a user visits /, they ONLY download 'chunk-home.js'.\n  When they click a <Link> to go to /dashboard, Next.js quickly \n  fetches 'chunk-dashboard.js' in the background.\n*/"
+  "terminalOutput": "/* \n  You do absolutely nothing. Next.js handles this automatically!\n  \n  app/\n  ├── page.tsx          <-- Next.js creates 'chunk-home.js'\n  └── dashboard/\n      └── page.tsx      <-- Next.js creates 'chunk-dashboard.js'\n      \n  When a user visits /, they ONLY download 'chunk-home.js'.\n  When they click a <Link> to go to /dashboard, Next.js quickly \n  fetches 'chunk-dashboard.js' in the background.\n*/"
 }

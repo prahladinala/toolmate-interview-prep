@@ -26,5 +26,5 @@
       "answer": "There is no limit! You can create unlimited public and private repositories for free."
     }
   ],
-  "codeExample": "// Steps to connect a local folder to a new GitHub Repository:\n\n/*\n1. Go to github.com and click 'New Repository'. Name it 'my-app'.\n2. GitHub gives you a URL: https://github.com/user/my-app.git\n3. Open your terminal in your local project folder and run:\n*/\n\n$ git init\n$ git add .\n$ git commit -m \"First commit\"\n\n# Tell local Git where the cloud repository is\n$ git remote add origin https://github.com/user/my-app.git\n\n# Upload the code!\n$ git push -u origin main"
+  "terminalOutput": "// Steps to connect a local folder to a new GitHub Repository:\n\n/*\n1. Go to github.com and click 'New Repository'. Name it 'my-app'.\n2. GitHub gives you a URL: https://github.com/user/my-app.git\n3. Open your terminal in your local project folder and run:\n*/\n\n$ git init\n$ git add .\n$ git commit -m \"First commit\"\n\n# Tell local Git where the cloud repository is\n$ git remote add origin https://github.com/user/my-app.git\n\n# Upload the code!\n$ git push -u origin main"
 }

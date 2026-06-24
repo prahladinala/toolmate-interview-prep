@@ -27,5 +27,5 @@
       "answer": "Add-ons you can install via the Netlify UI that run during the deployment process, such as optimizing images, running Lighthouse audits, or caching Node modules."
     }
   ],
-  "codeExample": "# Example netlify.toml file\n\n[build]\n  # The command Netlify should run to build the site\n  command = \"npm run build\"\n  \n  # The folder Netlify should serve to the public\n  publish = \"dist/\"\n\n# Advanced: Setting up a redirect for a Single Page App (React)\n# This routes all traffic to index.html so React Router handles the URLs\n[[redirects]]\n  from = \"/*\"\n  to = \"/index.html\"\n  status = 200"
+  "terminalOutput": "# Example netlify.toml file\n\n[build]\n  # The command Netlify should run to build the site\n  command = \"npm run build\"\n  \n  # The folder Netlify should serve to the public\n  publish = \"dist/\"\n\n# Advanced: Setting up a redirect for a Single Page App (React)\n# This routes all traffic to index.html so React Router handles the URLs\n[[redirects]]\n  from = \"/*\"\n  to = \"/index.html\"\n  status = 200"
 }

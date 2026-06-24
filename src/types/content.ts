@@ -22,6 +22,7 @@ export interface TopicContent {
     headers: string[];
     rows: string[][];
   };
+  terminalOutput?: string;
 }
 
 export interface Category {

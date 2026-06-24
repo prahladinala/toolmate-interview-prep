@@ -28,5 +28,5 @@
       "answer": "Global Edge CDN distribution. Vercel automatically copies your static assets and edge functions to 30+ servers around the world. On a single droplet, a user in Japan must wait for the signal to travel all the way to your server in New York."
     }
   ],
-  "codeExample": "/* \n  Steps to Self-Host Next.js on a Linux Server (Ubuntu):\n  \n  1. SSH into the server.\n  2. Clone the repository: `git clone ...`\n  3. Install dependencies: `npm install`\n  4. Build the project: `npm run build`\n  5. Start the process using a Process Manager (like PM2) \n     so it automatically restarts if the server crashes:\n     `pm2 start npm --name \"next-app\" -- run start`\n  6. Configure NGINX to reverse-proxy port 80 to port 3000.\n*/"
+  "terminalOutput": "/* \n  Steps to Self-Host Next.js on a Linux Server (Ubuntu):\n  \n  1. SSH into the server.\n  2. Clone the repository: `git clone ...`\n  3. Install dependencies: `npm install`\n  4. Build the project: `npm run build`\n  5. Start the process using a Process Manager (like PM2) \n     so it automatically restarts if the server crashes:\n     `pm2 start npm --name \"next-app\" -- run start`\n  6. Configure NGINX to reverse-proxy port 80 to port 3000.\n*/"
 }

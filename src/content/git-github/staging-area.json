@@ -27,5 +27,5 @@
       "answer": "The file now exists in TWO states. The version you staged is locked in the Staging Area. The new edits exist only in the Working Directory. You must run `git add` again to stage the newest edits."
     }
   ],
-  "codeExample": "# You edited two files: index.html and styles.css\n\n# Move ONLY index.html to the Staging Area\n$ git add index.html\n\n# Check the status\n$ git status\n# Output:\n# Changes to be committed (Staging Area):\n#       modified:   index.html\n#\n# Changes not staged for commit (Working Directory):\n#       modified:   styles.css"
+  "terminalOutput": "# You edited two files: index.html and styles.css\n\n# Move ONLY index.html to the Staging Area\n$ git add index.html\n\n# Check the status\n$ git status\n# Output:\n# Changes to be committed (Staging Area):\n#       modified:   index.html\n#\n# Changes not staged for commit (Working Directory):\n#       modified:   styles.css"
 }

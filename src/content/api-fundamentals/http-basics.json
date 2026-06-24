@@ -27,5 +27,5 @@
       "answer": "The 'S' stands for Secure. Standard HTTP sends data in plain text, meaning anyone on your WiFi network can intercept and read your passwords. HTTPS encrypts the data using TLS/SSL, making it look like random gibberish to hackers."
     }
   ],
-  "codeExample": "/*\n  A raw HTTP message looks like a plain text file!\n  If you intercepted the wire, you would literally see this text:\n  \n  --- CLIENT SENDS THIS ---\n  GET /index.html HTTP/1.1\n  Host: www.example.com\n  Accept-Language: en-US\n  \n  --- SERVER RESPONDS WITH THIS ---\n  HTTP/1.1 200 OK\n  Date: Mon, 23 May 2024 22:38:34 GMT\n  Content-Type: text/html\n  \n  <html>\n    <body>Hello World</body>\n  </html>\n*/"
+  "terminalOutput": "/*\n  A raw HTTP message looks like a plain text file!\n  If you intercepted the wire, you would literally see this text:\n  \n  --- CLIENT SENDS THIS ---\n  GET /index.html HTTP/1.1\n  Host: www.example.com\n  Accept-Language: en-US\n  \n  --- SERVER RESPONDS WITH THIS ---\n  HTTP/1.1 200 OK\n  Date: Mon, 23 May 2024 22:38:34 GMT\n  Content-Type: text/html\n  \n  <html>\n    <body>Hello World</body>\n  </html>\n*/"
 }

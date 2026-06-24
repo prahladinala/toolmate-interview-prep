@@ -27,5 +27,5 @@
       "answer": "The asterisk is a wildcard. It tells Git to ignore EVERY file in the project that ends with the `.log` extension, no matter what folder it is in."
     }
   ],
-  "codeExample": "/* \n  Example .gitignore file for a Node.js project:\n*/\n\n# Ignore the massive dependencies folder\nnode_modules/\n\n# Ignore secret environment variables (Crucial for security!)\n.env\n.env.local\n\n# Ignore all system-generated log files\n*.log\n\n# Ignore macOS junk files\n.DS_Store\n\n# Ignore the production build output folder\n/dist"
+  "terminalOutput": "/* \n  Example .gitignore file for a Node.js project:\n*/\n\n# Ignore the massive dependencies folder\nnode_modules/\n\n# Ignore secret environment variables (Crucial for security!)\n.env\n.env.local\n\n# Ignore all system-generated log files\n*.log\n\n# Ignore macOS junk files\n.DS_Store\n\n# Ignore the production build output folder\n/dist"
 }

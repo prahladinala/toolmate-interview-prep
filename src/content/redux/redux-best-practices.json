@@ -27,5 +27,5 @@
       "answer": "Instead of `setUserName('John')`, dispatch `userLoggedIn({ name: 'John' })`. Redux is an event-sourcing system. Actions should describe WHAT happened, not HOW the state should change. Multiple reducers might want to listen to the `userLoggedIn` event!"
     }
   ],
-  "codeExample": "/*\n  ESSENTIAL REDUX RULES (Do not break these):\n  1. State must be immutable.\n  2. Reducers must be pure.\n  3. State must be serializable (No Maps, Sets, Promises, or Functions).\n\n  STRONGLY RECOMMENDED:\n  1. Use Redux Toolkit exclusively.\n  2. Use Immer for writing immutable updates.\n  3. Group code by Feature folders (Ducks pattern).\n  4. Evaluate selectors using shallowEqual or Reselect.\n  5. Keep state as flat (normalized) as possible.\n*/"
+  "terminalOutput": "/*\n  ESSENTIAL REDUX RULES (Do not break these):\n  1. State must be immutable.\n  2. Reducers must be pure.\n  3. State must be serializable (No Maps, Sets, Promises, or Functions).\n\n  STRONGLY RECOMMENDED:\n  1. Use Redux Toolkit exclusively.\n  2. Use Immer for writing immutable updates.\n  3. Group code by Feature folders (Ducks pattern).\n  4. Evaluate selectors using shallowEqual or Reselect.\n  5. Keep state as flat (normalized) as possible.\n*/"
 }

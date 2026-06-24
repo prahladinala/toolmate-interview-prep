@@ -27,7 +27,7 @@
       "answer": "In the old Pages router, any file placed in the `pages` directory automatically became a public route. In the App Router, only files specifically named `page.tsx` become routes. This means you can safely put your database files, CSS, and helper components inside the `app` directory right next to the pages that use them without accidentally making them public URLs."
     }
   ],
-  "codeExample": "/* \n  Colocation Example in the App Router:\n  \n  app/\n  └── dashboard/\n      ├── page.tsx           (✅ Public Route: /dashboard)\n      ├── Button.tsx         (🔒 Not a route. Just a component!)\n      ├── styles.css         (🔒 Not a route. Just CSS!)\n      └── queries.ts         (🔒 Not a route. Safe database logic!)\n*/",
   "diagramType": "mermaid",
-  "diagramContent": "\ngraph TD\n  subgraph App Router\n    src/app --> layout.tsx\n    src/app --> page.tsx\n    src/app --> dashboard\n    dashboard --> d_layout[layout.tsx]\n    dashboard --> d_page[page.tsx]\n    dashboard --> settings\n    settings --> s_page[page.tsx]\n  end\n  \n  style src/app fill:#111,stroke:#fff\n  style dashboard fill:#111,stroke:#fff\n  style settings fill:#111,stroke:#fff\n      "
+  "diagramContent": "\ngraph TD\n  subgraph App Router\n    src/app --> layout.tsx\n    src/app --> page.tsx\n    src/app --> dashboard\n    dashboard --> d_layout[layout.tsx]\n    dashboard --> d_page[page.tsx]\n    dashboard --> settings\n    settings --> s_page[page.tsx]\n  end\n  \n  style src/app fill:#111,stroke:#fff\n  style dashboard fill:#111,stroke:#fff\n  style settings fill:#111,stroke:#fff\n      ",
+  "terminalOutput": "/* \n  Colocation Example in the App Router:\n  \n  app/\n  └── dashboard/\n      ├── page.tsx           (✅ Public Route: /dashboard)\n      ├── Button.tsx         (🔒 Not a route. Just a component!)\n      ├── styles.css         (🔒 Not a route. Just CSS!)\n      └── queries.ts         (🔒 Not a route. Safe database logic!)\n*/"
 }

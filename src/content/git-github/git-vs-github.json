@@ -28,5 +28,5 @@
       "answer": "No. GitHub is the most popular, but there are major competitors like GitLab and Bitbucket that do the exact same thing."
     }
   ],
-  "codeExample": "/*\n  Local Machine (Git)\n  -------------------\n  1. Write code\n  2. `git commit` (Saves code LOCALLY)\n\n          ↓ (Internet Connection Required)\n\n  The Cloud (GitHub/GitLab/Bitbucket)\n  -----------------------------------\n  3. `git push` (Uploads local saves to the internet)\n  4. Other developers can now see and download it!\n*/"
+  "terminalOutput": "/*\n  Local Machine (Git)\n  -------------------\n  1. Write code\n  2. `git commit` (Saves code LOCALLY)\n\n          ↓ (Internet Connection Required)\n\n  The Cloud (GitHub/GitLab/Bitbucket)\n  -----------------------------------\n  3. `git push` (Uploads local saves to the internet)\n  4. Other developers can now see and download it!\n*/"
 }

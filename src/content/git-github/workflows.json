@@ -26,5 +26,5 @@
       "answer": "It's a time-based schedule trigger. Instead of running when a user pushes code, a cron workflow wakes up at a specific time (e.g., every day at 3:00 AM) to run a task, like backing up a database."
     }
   ],
-  "codeExample": "name: Daily Greeting Robot\n\n# TRIGGERS: Run manually via a button click, OR run every day at 9:00 AM UTC\non: \n  workflow_dispatch: # Adds a 'Run Workflow' button in the GitHub UI\n  schedule:\n    - cron: '0 9 * * *'\n\njobs:\n  say-hello:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Good morning! Another day, another bug to fix.\""
+  "terminalOutput": "name: Daily Greeting Robot\n\n# TRIGGERS: Run manually via a button click, OR run every day at 9:00 AM UTC\non: \n  workflow_dispatch: # Adds a 'Run Workflow' button in the GitHub UI\n  schedule:\n    - cron: '0 9 * * *'\n\njobs:\n  say-hello:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Good morning! Another day, another bug to fix.\""
 }

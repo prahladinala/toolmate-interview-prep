@@ -28,5 +28,5 @@
       "answer": "A Query is a one-time HTTP request. The server answers and hangs up. A Subscription opens a permanent connection, and the server can send multiple answers over time whenever a specific event occurs."
     }
   ],
-  "codeExample": "/* \n  GraphQL Subscription Example \n*/\n\nsubscription OnNewMessageReceived($roomId: ID!) {\n  # This block will execute and push data to the client \n  # EVERY TIME a new message is added to this room!\n  messageAdded(roomId: $roomId) {\n    id\n    text\n    sender {\n      username\n    }\n    timestamp\n  }\n}\n\n// In a React app using Apollo Client, this would automatically \n// trigger a UI re-render the millisecond someone types a message."
+  "terminalOutput": "/* \n  GraphQL Subscription Example \n*/\n\nsubscription OnNewMessageReceived($roomId: ID!) {\n  # This block will execute and push data to the client \n  # EVERY TIME a new message is added to this room!\n  messageAdded(roomId: $roomId) {\n    id\n    text\n    sender {\n      username\n    }\n    timestamp\n  }\n}\n\n// In a React app using Apollo Client, this would automatically \n// trigger a UI re-render the millisecond someone types a message."
 }

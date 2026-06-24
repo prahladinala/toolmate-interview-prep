@@ -27,5 +27,5 @@
       "answer": "A sub-pattern of feature-based architecture where all Redux logic (actions, types, and reducers) for a specific feature is bundled into a single file, rather than split across multiple files. RTK `createSlice` inherently enforces the Ducks pattern."
     }
   ],
-  "codeExample": "/*\n  ❌ BAD: Type-Based Structure (Hard to maintain)\n  src/\n    actions/\n      authActions.js\n      cartActions.js\n    reducers/\n      authReducer.js\n      cartReducer.js\n    components/\n      Login.jsx\n      Cart.jsx\n\n  ✅ GOOD: Feature-Based Structure (Easy to maintain)\n  src/\n    features/\n      auth/\n        Login.jsx\n        authSlice.js\n      cart/\n        Cart.jsx\n        cartSlice.js\n*/"
+  "terminalOutput": "/*\n  ❌ BAD: Type-Based Structure (Hard to maintain)\n  src/\n    actions/\n      authActions.js\n      cartActions.js\n    reducers/\n      authReducer.js\n      cartReducer.js\n    components/\n      Login.jsx\n      Cart.jsx\n\n  ✅ GOOD: Feature-Based Structure (Easy to maintain)\n  src/\n    features/\n      auth/\n        Login.jsx\n        authSlice.js\n      cart/\n        Cart.jsx\n        cartSlice.js\n*/"
 }

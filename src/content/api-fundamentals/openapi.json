@@ -28,5 +28,5 @@
       "answer": "OpenAPI is the official *Specification* (the rules/blueprint). Swagger is the *tooling ecosystem* built around it (like Swagger UI, which turns the blueprint into a webpage)."
     }
   ],
-  "codeExample": "# A simple openapi.yaml blueprint\nopenapi: 3.0.0\ninfo:\n  title: My Simple API\n  version: 1.0.0\npaths:\n  /users:\n    get:\n      summary: Get all users\n      responses:\n        '200':\n          description: A list of users\n          content:\n            application/json:\n              schema:\n                type: array\n                items:\n                  type: object\n                  properties:\n                    id:\n                      type: integer\n                    name:\n                      type: string"
+  "terminalOutput": "# A simple openapi.yaml blueprint\nopenapi: 3.0.0\ninfo:\n  title: My Simple API\n  version: 1.0.0\npaths:\n  /users:\n    get:\n      summary: Get all users\n      responses:\n        '200':\n          description: A list of users\n          content:\n            application/json:\n              schema:\n                type: array\n                items:\n                  type: object\n                  properties:\n                    id:\n                      type: integer\n                    name:\n                      type: string"
 }

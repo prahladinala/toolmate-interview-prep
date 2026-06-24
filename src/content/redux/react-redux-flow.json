@@ -26,5 +26,5 @@
       "answer": "You probably mutated the state directly in your reducer (e.g., `state.list.push(item)`) instead of returning a new copy. React relies on reference equality to know when to re-render. If the object reference doesn't change, React thinks nothing changed."
     }
   ],
-  "codeExample": "/*\n  THE REACT-REDUX CIRCLE OF LIFE:\n\n  1. [VIEW] React Component renders using initial state.\n       ▲\n       │ (Re-renders via useSelector)\n       │\n  4. [STORE] Updates state and alerts subscribers.\n       ▲\n       │ (Calculates new State)\n       │\n  3. [REDUCER] Looks at current State + Action.\n       ▲\n       │ (Sent via useDispatch)\n       │\n  2. [ACTION] Created when user clicks a button.\n*/"
+  "terminalOutput": "/*\n  THE REACT-REDUX CIRCLE OF LIFE:\n\n  1. [VIEW] React Component renders using initial state.\n       ▲\n       │ (Re-renders via useSelector)\n       │\n  4. [STORE] Updates state and alerts subscribers.\n       ▲\n       │ (Calculates new State)\n       │\n  3. [REDUCER] Looks at current State + Action.\n       ▲\n       │ (Sent via useDispatch)\n       │\n  2. [ACTION] Created when user clicks a button.\n*/"
 }

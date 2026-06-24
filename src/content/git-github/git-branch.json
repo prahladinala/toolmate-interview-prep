@@ -28,7 +28,6 @@
       "answer": "`git branch -d branch-name`. Git will actually stop you and throw an error if the branch contains unmerged work. (You can force delete it with a capital `-D`)."
     }
   ],
-  "codeExample": "# List all local branches (the one with the * is active)\n$ git branch\n#   feature-login\n# * main\n\n# Create a new branch called 'dark-mode'\n$ git branch dark-mode\n\n# Delete a branch (safe delete)\n$ git branch -d old-feature\n\n# Force delete a branch (even if work will be lost)\n$ git branch -D broken-feature",
   "tableData": {
     "title": "Crucial Command Flags",
     "headers": [
@@ -53,5 +52,6 @@
         "Move/Rename. Rename the current branch."
       ]
     ]
-  }
+  },
+  "terminalOutput": "# List all local branches (the one with the * is active)\n$ git branch\n#   feature-login\n# * main\n\n# Create a new branch called 'dark-mode'\n$ git branch dark-mode\n\n# Delete a branch (safe delete)\n$ git branch -d old-feature\n\n# Force delete a branch (even if work will be lost)\n$ git branch -D broken-feature"
 }

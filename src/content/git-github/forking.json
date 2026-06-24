@@ -27,5 +27,5 @@
       "answer": "No. Once you fork a repository, your copy is isolated. If the original author adds new code, you have to manually 'Sync Fork' in the GitHub UI to pull their new changes into your copy."
     }
   ],
-  "codeExample": "/* \n  The Standard Open Source Workflow:\n  \n  1. Click 'Fork' on the target GitHub repository.\n     (This copies it from facebook/react to your-name/react)\n     \n  2. Clone YOUR fork to your computer:\n     $ git clone https://github.com/your-name/react.git\n     \n  3. Make a branch, fix the bug, commit, and push:\n     $ git push origin bug-fix\n     \n  4. Go to GitHub and click 'Create Pull Request' to send \n     the code back to the original author!\n*/"
+  "terminalOutput": "/* \n  The Standard Open Source Workflow:\n  \n  1. Click 'Fork' on the target GitHub repository.\n     (This copies it from facebook/react to your-name/react)\n     \n  2. Clone YOUR fork to your computer:\n     $ git clone https://github.com/your-name/react.git\n     \n  3. Make a branch, fix the bug, commit, and push:\n     $ git push origin bug-fix\n     \n  4. Go to GitHub and click 'Create Pull Request' to send \n     the code back to the original author!\n*/"
 }

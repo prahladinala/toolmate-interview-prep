@@ -26,5 +26,5 @@
       "answer": "When an app is massive, developers cannot memorize the shape of the State Tree. TypeScript provides autocomplete and catches errors instantly if a developer tries to select `state.user.firstname` instead of `state.user.firstName`."
     }
   ],
-  "codeExample": "/*\n  Checklist for a Scalable Redux App:\n\n  [x] Are we using Redux Toolkit exclusively? (No legacy Redux)\n  [x] Are we using RTK Query for data fetching instead of manual Thunks?\n  [x] Is our state Normalized (flat) instead of deeply nested arrays?\n  [x] Are we using useAppSelector (Typed Hooks) instead of useSelector?\n  [x] Is Local state used for forms/modals, reserving Redux for Global data?\n*/"
+  "terminalOutput": "/*\n  Checklist for a Scalable Redux App:\n\n  [x] Are we using Redux Toolkit exclusively? (No legacy Redux)\n  [x] Are we using RTK Query for data fetching instead of manual Thunks?\n  [x] Is our state Normalized (flat) instead of deeply nested arrays?\n  [x] Are we using useAppSelector (Typed Hooks) instead of useSelector?\n  [x] Is Local state used for forms/modals, reserving Redux for Global data?\n*/"
 }

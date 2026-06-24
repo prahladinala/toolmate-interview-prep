@@ -40,5 +40,5 @@
       "answer": "Yes! It is extremely common. A component might receive `text=\"Submit\"` via Props, but receive the `theme` from Context."
     }
   ],
-  "codeExample": "// Conceptual comparison, no execution needed.\nconsole.log(\"Props are Explicit. Context is Implicit. Prefer Props until the pain of drilling outweighs the loss of component reusability.\");"
+  "terminalOutput": "// Conceptual comparison, no execution needed.\nconsole.log(\"Props are Explicit. Context is Implicit. Prefer Props until the pain of drilling outweighs the loss of component reusability.\");"
 }

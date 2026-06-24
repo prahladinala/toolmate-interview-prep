@@ -30,5 +30,5 @@
       "answer": "SSR (Server-Side Rendering) renders your components to an HTML string on the server, sends it to the browser, and then 'hydrates' the page by downloading the JS bundle. React Server Components NEVER download their JS bundle to the browser. They remain exclusively on the server, sending only a serialized JSON UI representation to the client, drastically reducing bundle size."
     }
   ],
-  "codeExample": "// Advanced discussion topics usually don't have simple code snippets. \n// Be prepared to whiteboard architecture diagrams!"
+  "terminalOutput": "// Advanced discussion topics usually don't have simple code snippets. \n// Be prepared to whiteboard architecture diagrams!"
 }

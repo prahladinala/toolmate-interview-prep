@@ -27,5 +27,5 @@
       "answer": "No! The GitHub Action robot will run `npm install` on its own server to generate the modules before building."
     }
   ],
-  "codeExample": "/*\n  Modern GitHub Pages Deployment (No gh-pages branch needed!)\n  \n  1. Go to Repository Settings -> Pages.\n  2. Under 'Build and deployment', change Source to 'GitHub Actions'.\n  3. GitHub will suggest a pre-built workflow (like Static HTML or Node.js).\n  4. Click Configure, and it will generate the deploy.yml file for you.\n  \n  Now, every time you push to main, the Action builds and deploys your site.\n*/"
+  "terminalOutput": "/*\n  Modern GitHub Pages Deployment (No gh-pages branch needed!)\n  \n  1. Go to Repository Settings -> Pages.\n  2. Under 'Build and deployment', change Source to 'GitHub Actions'.\n  3. GitHub will suggest a pre-built workflow (like Static HTML or Node.js).\n  4. Click Configure, and it will generate the deploy.yml file for you.\n  \n  Now, every time you push to main, the Action builds and deploys your site.\n*/"
 }

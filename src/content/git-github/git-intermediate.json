@@ -26,5 +26,5 @@
       "answer": "`git merge` combines two branches by creating a new 'Merge Commit', keeping the branching history visible. `git rebase` moves your entire feature branch to the tip of the main branch, rewriting history to create a perfectly straight, linear timeline without merge commits."
     }
   ],
-  "codeExample": "/*\n  Q: How do you resolve a Merge Conflict?\n  \n  A: \n  1. Git pauses the merge and modifies the conflicting files with \n     markers (<<<<<<<, =======, >>>>>>>).\n  2. I open the files and manually delete the markers, deciding \n     which lines of code to keep.\n  3. I run `git add` to stage the fixed files.\n  4. I run `git commit` to finalize the merge.\n*/"
+  "terminalOutput": "/*\n  Q: How do you resolve a Merge Conflict?\n  \n  A: \n  1. Git pauses the merge and modifies the conflicting files with \n     markers (<<<<<<<, =======, >>>>>>>).\n  2. I open the files and manually delete the markers, deciding \n     which lines of code to keep.\n  3. I run `git add` to stage the fixed files.\n  4. I run `git commit` to finalize the merge.\n*/"
 }

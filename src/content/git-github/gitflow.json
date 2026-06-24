@@ -27,5 +27,5 @@
       "answer": "It is too complex and slow. Modern web apps deploy multiple times a day using 'Continuous Deployment'. Maintaining a rigid `develop` and `release` branch adds unnecessary bureaucratic overhead."
     }
   ],
-  "codeExample": "// The GitFlow Workflow Pattern:\n\n/*\n  [master] (v1.0) ---------------------------------------> [master] (v1.1)\n             \\                                           /\n            [develop] ---> [feature-A] ---> [develop] --/ \n*/"
+  "terminalOutput": "// The GitFlow Workflow Pattern:\n\n/*\n  [master] (v1.0) ---------------------------------------> [master] (v1.1)\n             \\                                           /\n            [develop] ---> [feature-A] ---> [develop] --/ \n*/"
 }

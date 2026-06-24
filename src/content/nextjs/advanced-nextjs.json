@@ -27,5 +27,5 @@
       "answer": "PPR allows a single page to be BOTH static and dynamic. The server instantly sends a pre-built static HTML shell (like the Navbar and Footer) from the CDN, and leaves a 'hole' (a Suspense boundary) where it dynamically streams in the server-side rendered content (like a user's Shopping Cart) milliseconds later."
     }
   ],
-  "codeExample": "/*\n  Common Advanced Interview Scenario:\n  \"How do you protect against Cross-Site Request Forgery (CSRF) when using Server Actions?\"\n  \n  Answer:\n  \"Next.js Server Actions automatically mitigate CSRF attacks by strictly comparing the 'Origin' header of the incoming POST request to the server's Host header. If the request was forged by a malicious third-party site, the Origin will not match, and Next.js violently rejects the execution before the Server Action even begins.\"\n*/"
+  "terminalOutput": "/*\n  Common Advanced Interview Scenario:\n  \"How do you protect against Cross-Site Request Forgery (CSRF) when using Server Actions?\"\n  \n  Answer:\n  \"Next.js Server Actions automatically mitigate CSRF attacks by strictly comparing the 'Origin' header of the incoming POST request to the server's Host header. If the request was forged by a malicious third-party site, the Origin will not match, and Next.js violently rejects the execution before the Server Action even begins.\"\n*/"
 }

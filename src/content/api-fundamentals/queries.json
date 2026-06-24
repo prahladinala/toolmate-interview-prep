@@ -27,5 +27,5 @@
       "answer": "While the Client writes the Query, the Server must write a 'Resolver'. A Resolver is just a backend function that connects the GraphQL schema to the actual database (e.g., instructing the server how to actually fetch the User data when requested)."
     }
   ],
-  "codeExample": "# A complex GraphQL Query featuring arguments and nesting\n\nquery GetDashboardData($userId: ID!) {\n  # Fetch the specific user\n  user(id: $userId) {\n    name\n    email\n    # Nesting: Fetch their recent orders\n    orders(limit: 5, sort: \"DESC\") {\n      orderId\n      totalAmount\n      # Deep Nesting: Fetch the specific items in the order\n      items {\n        productName\n        price\n      }\n    }\n  }\n}"
+  "terminalOutput": "# A complex GraphQL Query featuring arguments and nesting\n\nquery GetDashboardData($userId: ID!) {\n  # Fetch the specific user\n  user(id: $userId) {\n    name\n    email\n    # Nesting: Fetch their recent orders\n    orders(limit: 5, sort: \"DESC\") {\n      orderId\n      totalAmount\n      # Deep Nesting: Fetch the specific items in the order\n      items {\n        productName\n        price\n      }\n    }\n  }\n}"
 }

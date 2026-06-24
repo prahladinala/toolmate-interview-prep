@@ -27,5 +27,7 @@
       "answer": "Yes! You can have one remote pointing to GitHub (named 'origin') and another pointing to Heroku for deployments (named 'heroku')."
     }
   ],
-  "codeExample": "// Conceptual Mental Model\n\nconst localRepo = {\n  location: 'Your Laptop',\n  purpose: 'Where you write, test, and save code privately.',\n  isInternetRequired: false\n};\n\nconst remoteRepo = {\n  location: 'GitHub Servers in the cloud',\n  purpose: 'Where you share code, backup code, and collaborate with teams.',\n  isInternetRequired: true\n};"
+  "codeExample": "// Conceptual Mental Model\n\nconst localRepo = {\n  location: 'Your Laptop',\n  purpose: 'Where you write, test, and save code privately.',\n  isInternetRequired: false\n};\n\nconst remoteRepo = {\n  location: 'GitHub Servers in the cloud',\n  purpose: 'Where you share code, backup code, and collaborate with teams.',\n  isInternetRequired: true\n};",
+  "diagramType": "mermaid",
+  "diagramContent": "\ngraph LR\n  subgraph Local Computer\n    Working[Working Directory] -->|git add| Staging[Staging Area]\n    Staging -->|git commit| LocalRepo[(Local Repository)]\n  end\n\n  subgraph Cloud / Network\n    RemoteRepo[(Remote Repository \n GitHub / GitLab)]\n  end\n\n  LocalRepo -->|git push| RemoteRepo\n  RemoteRepo -->|git fetch / git pull| LocalRepo\n  \n  style Working fill:#e8f0fe,stroke:#1a73e8\n  style LocalRepo fill:#fce8e6,stroke:#d93025\n  style RemoteRepo fill:#ceead6,stroke:#1e8e3e\n      "
 }

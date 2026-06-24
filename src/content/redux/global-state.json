@@ -28,5 +28,5 @@
       "answer": "The Redux Store."
     }
   ],
-  "codeExample": "/* \n  Examples of GLOBAL State (Belongs in Redux):\n  - Current logged in User data\n  - List of notifications/alerts\n  - Shopping cart items\n  - Fetched API data that multiple pages need\n*/"
+  "terminalOutput": "/* \n  Examples of GLOBAL State (Belongs in Redux):\n  - Current logged in User data\n  - List of notifications/alerts\n  - Shopping cart items\n  - Fetched API data that multiple pages need\n*/"
 }

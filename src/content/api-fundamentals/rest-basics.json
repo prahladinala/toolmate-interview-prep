@@ -27,5 +27,5 @@
       "answer": "It means the server does not remember anything about previous requests. Every single HTTP request from the client must contain ALL the information necessary for the server to fulfill it (like attaching the Auth Token to every single request)."
     }
   ],
-  "codeExample": "/* \n  Comparing a Non-REST API to a RESTful API \n*/\n\n// ❌ MESSY, NON-RESTful API (Verb-based URLs, random methods)\nPOST /getUsers\nGET /createNewUser?name=John\nPOST /updateUser123\nGET /delete-user-by-id/123\n\n// ✅ CLEAN RESTful API (Noun-based URLs, strict HTTP Methods)\nGET    /users         // Read all users\nPOST   /users         // Create a new user\nGET    /users/123     // Read user #123\nPUT    /users/123     // Update user #123\nDELETE /users/123     // Delete user #123"
+  "terminalOutput": "/* \n  Comparing a Non-REST API to a RESTful API \n*/\n\n// ❌ MESSY, NON-RESTful API (Verb-based URLs, random methods)\nPOST /getUsers\nGET /createNewUser?name=John\nPOST /updateUser123\nGET /delete-user-by-id/123\n\n// ✅ CLEAN RESTful API (Noun-based URLs, strict HTTP Methods)\nGET    /users         // Read all users\nPOST   /users         // Create a new user\nGET    /users/123     // Read user #123\nPUT    /users/123     // Update user #123\nDELETE /users/123     // Delete user #123"
 }

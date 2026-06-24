@@ -30,5 +30,5 @@
       "answer": "When JS tries to coerce an object to a primitive, it first calls `valueOf()`. If that doesn't return a primitive, it falls back to calling `toString()`. You can override these methods to change an object's math behavior."
     }
   ],
-  "codeExample": "// EXPLICIT (Clear and safe)\nconst num = Number(\"42\"); \n\n// IMPLICIT (Magic and dangerous)\nconst implicitNum = \"42\" * 1; \n\nconsole.log(1 + \"2\" + \"2\"); // \"122\"\nconsole.log(1 + +\"2\" + \"2\"); // \"32\" (The unary plus coercies \"2\" to 2 first)"
+  "terminalOutput": "// EXPLICIT (Clear and safe)\nconst num = Number(\"42\"); \n\n// IMPLICIT (Magic and dangerous)\nconst implicitNum = \"42\" * 1; \n\nconsole.log(1 + \"2\" + \"2\"); // \"122\"\nconsole.log(1 + +\"2\" + \"2\"); // \"32\" (The unary plus coercies \"2\" to 2 first)"
 }

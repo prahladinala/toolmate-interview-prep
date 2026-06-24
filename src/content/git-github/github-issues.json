@@ -28,5 +28,5 @@
       "answer": "Use the hashtag followed by the issue number (e.g., `#42`). GitHub will automatically create clickable hyperlinks between the commit and the issue."
     }
   ],
-  "codeExample": "/*\n  Anatomy of a great Bug Report (Issue):\n  \n  Title: [BUG] Login page crashes on Safari iOS\n  \n  Description:\n  When attempting to log in using Safari on an iPhone 13, the page \n  freezes and throws a TypeError in the console.\n  \n  Steps to Reproduce:\n  1. Open Safari on iOS 15.\n  2. Navigate to /login.\n  3. Click the 'Sign in with Google' button.\n  \n  Expected Behavior:\n  The Google OAuth popup should appear.\n  \n  Actual Behavior:\n  The screen turns white and becomes unresponsive.\n*/"
+  "terminalOutput": "/*\n  Anatomy of a great Bug Report (Issue):\n  \n  Title: [BUG] Login page crashes on Safari iOS\n  \n  Description:\n  When attempting to log in using Safari on an iPhone 13, the page \n  freezes and throws a TypeError in the console.\n  \n  Steps to Reproduce:\n  1. Open Safari on iOS 15.\n  2. Navigate to /login.\n  3. Click the 'Sign in with Google' button.\n  \n  Expected Behavior:\n  The Google OAuth popup should appear.\n  \n  Actual Behavior:\n  The screen turns white and becomes unresponsive.\n*/"
 }

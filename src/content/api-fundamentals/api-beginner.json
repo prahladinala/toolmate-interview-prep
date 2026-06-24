@@ -26,5 +26,5 @@
       "answer": "JavaScript Object Notation. It is a lightweight text format used to send data over the internet. It is preferred over XML because it is easier to read, much smaller in file size, and parses natively into JavaScript objects."
     }
   ],
-  "codeExample": "/* \n  Common Beginner Question: \n  \"Explain the categories of HTTP Status Codes.\"\n  \n  Answer:\n  200s: Success. The request worked.\n  300s: Redirection. The resource moved.\n  400s: Client Error. The frontend sent bad data or lacks permission.\n  500s: Server Error. The backend code crashed.\n*/"
+  "terminalOutput": "/* \n  Common Beginner Question: \n  \"Explain the categories of HTTP Status Codes.\"\n  \n  Answer:\n  200s: Success. The request worked.\n  300s: Redirection. The resource moved.\n  400s: Client Error. The frontend sent bad data or lacks permission.\n  500s: Server Error. The backend code crashed.\n*/"
 }

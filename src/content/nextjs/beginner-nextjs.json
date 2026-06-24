@@ -27,5 +27,5 @@
       "answer": "Instead of writing complex code to connect a URL (like '/about') to a webpage, Next.js acts like your computer's Desktop. If you create a folder named 'about' and put a file in it, the website instantly creates that URL for you."
     }
   ],
-  "codeExample": "/* \n  Common Beginner Interview Scenario: \n  \"How do you make an API call in the new App Router?\"\n  \n  Bad Answer:\n  \"I use useEffect and fetch the data when the component mounts.\"\n  (This proves you don't understand Server Components)\n  \n  Good Answer:\n  \"By default, components are Server Components. I simply make the component async, use standard 'await fetch()', and Next.js fetches the data on the server before the HTML is even sent to the browser.\"\n*/"
+  "terminalOutput": "/* \n  Common Beginner Interview Scenario: \n  \"How do you make an API call in the new App Router?\"\n  \n  Bad Answer:\n  \"I use useEffect and fetch the data when the component mounts.\"\n  (This proves you don't understand Server Components)\n  \n  Good Answer:\n  \"By default, components are Server Components. I simply make the component async, use standard 'await fetch()', and Next.js fetches the data on the server before the HTML is even sent to the browser.\"\n*/"
 }

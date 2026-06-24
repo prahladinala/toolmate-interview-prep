@@ -31,5 +31,5 @@
       "answer": "TS prevents impossible assertions (e.g., you can't assert a `string` as a `boolean`). If you MUST force a completely unrelated type, you have to cast it to `unknown` first: `let val = \"hello\" as unknown as number`. This is highly dangerous."
     }
   ],
-  "codeExample": "// The DOM API returns a generic HTMLElement or null\n// We ASSERT that we know it is an HTMLInputElement\nconst searchInput = document.getElementById('search') as HTMLInputElement;\n\n// Now TS allows us to access the .value property specific to inputs\nconsole.log(searchInput.value);\n\n// Alternative syntax (Not recommended if using React/JSX because it clashes with tags)\nconst altInput = <HTMLInputElement>document.getElementById('search');"
+  "terminalOutput": "// The DOM API returns a generic HTMLElement or null\n// We ASSERT that we know it is an HTMLInputElement\nconst searchInput = document.getElementById('search') as HTMLInputElement;\n\n// Now TS allows us to access the .value property specific to inputs\nconsole.log(searchInput.value);\n\n// Alternative syntax (Not recommended if using React/JSX because it clashes with tags)\nconst altInput = <HTMLInputElement>document.getElementById('search');"
 }

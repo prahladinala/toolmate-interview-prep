@@ -27,7 +27,6 @@
       "answer": "If the `main` branch hasn't changed at all since you created your feature branch, Git doesn't need to do any complex math. It just instantly moves the `main` pointer forward to match your feature branch. No extra 'Merge Commit' is required."
     }
   ],
-  "codeExample": "# Scenario: You finished 'feature-login' and want to merge it into 'main'\n\n# Step 1: Switch to the receiving branch (main)\n$ git checkout main\n\n# Step 2: Merge the feature branch INTO main\n$ git merge feature-login\n\n# Step 3 (Optional): Delete the feature branch now that it is merged\n$ git branch -d feature-login",
   "tableData": {
     "title": "Merge vs Rebase",
     "headers": [
@@ -57,5 +56,6 @@
         "DANGER: Never rebase a public branch. It rewrites history and will break your coworkers' local repositories."
       ]
     ]
-  }
+  },
+  "terminalOutput": "# Scenario: You finished 'feature-login' and want to merge it into 'main'\n\n# Step 1: Switch to the receiving branch (main)\n$ git checkout main\n\n# Step 2: Merge the feature branch INTO main\n$ git merge feature-login\n\n# Step 3 (Optional): Delete the feature branch now that it is merged\n$ git branch -d feature-login"
 }

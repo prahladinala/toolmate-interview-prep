@@ -27,5 +27,5 @@
       "answer": "It must return `Access-Control-Allow-Origin` (who is allowed), `Access-Control-Allow-Methods` (what verbs are allowed), and `Access-Control-Allow-Headers`."
     }
   ],
-  "codeExample": "/* \n  The Invisible CORS Handshake (Preflight)\n*/\n\n// 1. Browser secretly sends OPTIONS first:\nOPTIONS /api/data HTTP/1.1\nOrigin: http://localhost:3000\nAccess-Control-Request-Method: PUT\n\n// 2. Server responds:\nHTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: http://localhost:3000\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE\nAccess-Control-Allow-Headers: Content-Type, Authorization\n\n// 3. Browser sees it is allowed, and NOW sends the real PUT request."
+  "terminalOutput": "/* \n  The Invisible CORS Handshake (Preflight)\n*/\n\n// 1. Browser secretly sends OPTIONS first:\nOPTIONS /api/data HTTP/1.1\nOrigin: http://localhost:3000\nAccess-Control-Request-Method: PUT\n\n// 2. Server responds:\nHTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: http://localhost:3000\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE\nAccess-Control-Allow-Headers: Content-Type, Authorization\n\n// 3. Browser sees it is allowed, and NOW sends the real PUT request."
 }

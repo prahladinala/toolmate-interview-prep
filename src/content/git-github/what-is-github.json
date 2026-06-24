@@ -28,5 +28,5 @@
       "answer": "It is a Markdown text file placed at the root of your repository. GitHub automatically renders this file visually on the front page of your project. It is the 'Landing Page' where you explain what your project is and how to install it."
     }
   ],
-  "codeExample": "/*\n  Features that GitHub provides ON TOP of Git:\n  \n  1. Pull Requests (UI for reviewing code before merging)\n  2. Issues (Bug tracking and task lists)\n  3. GitHub Actions (Automated servers that test your code)\n  4. GitHub Pages (Free website hosting)\n  5. Forking (Easily copying other people's projects)\n*/"
+  "terminalOutput": "/*\n  Features that GitHub provides ON TOP of Git:\n  \n  1. Pull Requests (UI for reviewing code before merging)\n  2. Issues (Bug tracking and task lists)\n  3. GitHub Actions (Automated servers that test your code)\n  4. GitHub Pages (Free website hosting)\n  5. Forking (Easily copying other people's projects)\n*/"
 }

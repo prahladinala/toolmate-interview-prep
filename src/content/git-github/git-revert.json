@@ -27,5 +27,5 @@
       "answer": "No. The original broken commit stays in the history forever. Right above it in the log will be a new commit titled 'Revert: [broken commit name]'."
     }
   ],
-  "codeExample": "# Oh no! Commit 9f8e7d broke the production server!\n# It is already pushed to GitHub, so we must use revert.\n\n# Generate the Anti-Commit\n$ git revert 9f8e7d\n\n# Git will open your text editor with a default message like:\n# \"Revert 'Add new payment gateway'\"\n# Save and close the editor.\n\n# Push the fix to the server!\n$ git push origin main"
+  "terminalOutput": "# Oh no! Commit 9f8e7d broke the production server!\n# It is already pushed to GitHub, so we must use revert.\n\n# Generate the Anti-Commit\n$ git revert 9f8e7d\n\n# Git will open your text editor with a default message like:\n# \"Revert 'Add new payment gateway'\"\n# Save and close the editor.\n\n# Push the fix to the server!\n$ git push origin main"
 }

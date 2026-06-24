@@ -26,5 +26,5 @@
       "answer": "Run `git merge --abort`. This safely cancels the merge entirely and puts your files exactly back to how they were before you typed `git merge`."
     }
   ],
-  "codeExample": "# 1. You type git merge, and get a CONFLICT error.\n$ git merge feature-branch\n# CONFLICT (content): Merge conflict in index.html\n# Automatic merge failed; fix conflicts and then commit the result.\n\n# 2. Open index.html in your editor and manually fix the text.\n\n# 3. Tell Git the file is fixed by adding it to the staging area.\n$ git add index.html\n\n# 4. Finalize the merge by committing!\n$ git commit -m \"Merge feature-branch and resolve conflict in index.html\"\n\n# PANIC BUTTON: If everything is ruined and you want to cancel the merge:\n$ git merge --abort"
+  "terminalOutput": "# 1. You type git merge, and get a CONFLICT error.\n$ git merge feature-branch\n# CONFLICT (content): Merge conflict in index.html\n# Automatic merge failed; fix conflicts and then commit the result.\n\n# 2. Open index.html in your editor and manually fix the text.\n\n# 3. Tell Git the file is fixed by adding it to the staging area.\n$ git add index.html\n\n# 4. Finalize the merge by committing!\n$ git commit -m \"Merge feature-branch and resolve conflict in index.html\"\n\n# PANIC BUTTON: If everything is ruined and you want to cancel the merge:\n$ git merge --abort"
 }

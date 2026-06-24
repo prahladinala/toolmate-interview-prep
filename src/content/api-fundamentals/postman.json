@@ -28,5 +28,5 @@
       "answer": "You can configure a Postman 'Environment Variable'. When you hit the `/login` endpoint, you write a tiny script in Postman to extract the JWT from the response and save it to the variable. You then configure the Collection to attach that variable to the `Authorization` header of all other requests automatically."
     }
   ],
-  "codeExample": "/* \n  How to structure a Postman Collection for a new API:\n  \n  📁 E-Commerce API (Collection)\n    📁 Auth\n       - 🟢 POST /login (Saves token to environment)\n       - 🟢 POST /register\n    📁 Products\n       - 🔵 GET /products\n       - 🔵 GET /products/:id\n       - 🟡 PUT /products/:id (Uses Admin Token)\n       - 🔴 DELETE /products/:id (Uses Admin Token)\n*/"
+  "terminalOutput": "/* \n  How to structure a Postman Collection for a new API:\n  \n  📁 E-Commerce API (Collection)\n    📁 Auth\n       - 🟢 POST /login (Saves token to environment)\n       - 🟢 POST /register\n    📁 Products\n       - 🔵 GET /products\n       - 🔵 GET /products/:id\n       - 🟡 PUT /products/:id (Uses Admin Token)\n       - 🔴 DELETE /products/:id (Uses Admin Token)\n*/"
 }

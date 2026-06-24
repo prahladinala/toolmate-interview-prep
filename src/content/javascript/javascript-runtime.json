@@ -29,5 +29,5 @@
       "answer": "The `libuv` library (written in C). It handles the thread pool, the event loop, and all OS-level asynchronous tasks."
     }
   ],
-  "codeExample": "// This is pure JavaScript (Handled entirely by V8 Engine)\nconst sum = 1 + 1;\n\n// This is a Runtime API (Handled by the Browser/Node.js)\n// In the browser, it hooks into the C++ DOM API.\n// In Node, this crashes because 'document' does not exist in the Node runtime.\n/* document.getElementById('app'); */"
+  "terminalOutput": "// This is pure JavaScript (Handled entirely by V8 Engine)\nconst sum = 1 + 1;\n\n// This is a Runtime API (Handled by the Browser/Node.js)\n// In the browser, it hooks into the C++ DOM API.\n// In Node, this crashes because 'document' does not exist in the Node runtime.\n/* document.getElementById('app'); */"
 }

@@ -27,5 +27,5 @@
       "answer": "The `main` branch must ALWAYS be in a deployable, working state. Never merge broken code into `main`."
     }
   ],
-  "codeExample": "/*\n  The 6 Steps of GitHub Flow:\n  \n  1. Create a branch (from main)\n  2. Add commits\n  3. Open a Pull Request\n  4. Discuss and review the code\n  5. Merge the PR\n  6. Deploy immediately!\n*/"
+  "terminalOutput": "/*\n  The 6 Steps of GitHub Flow:\n  \n  1. Create a branch (from main)\n  2. Add commits\n  3. Open a Pull Request\n  4. Discuss and review the code\n  5. Merge the PR\n  6. Deploy immediately!\n*/"
 }

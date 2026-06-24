@@ -26,5 +26,5 @@
       "answer": "A Commit points to exactly ONE root Tree (representing the entire project folder at that moment in time), and it also points to its Parent Commit (the commit that came before it)."
     }
   ],
-  "codeExample": "/*\n  The structure of a Commit in Git's brain:\n  \n  [COMMIT Object: Hash 9a3b...]\n  │  Author: John Doe\n  │  Message: \"Initial Commit\"\n  │  Parent: None\n  │\n  └──▶ [TREE Object: Hash 4f1c...] (The Root Folder)\n       │\n       ├── \"index.html\" ──▶ [BLOB Object: Hash 7e8d...] (Contains HTML text)\n       │\n       └── \"src/\"       ──▶ [TREE Object: Hash 2b9a...] (A Sub-Folder)\n                            └── \"app.js\" ──▶ [BLOB Object]\n*/"
+  "terminalOutput": "/*\n  The structure of a Commit in Git's brain:\n  \n  [COMMIT Object: Hash 9a3b...]\n  │  Author: John Doe\n  │  Message: \"Initial Commit\"\n  │  Parent: None\n  │\n  └──▶ [TREE Object: Hash 4f1c...] (The Root Folder)\n       │\n       ├── \"index.html\" ──▶ [BLOB Object: Hash 7e8d...] (Contains HTML text)\n       │\n       └── \"src/\"       ──▶ [TREE Object: Hash 2b9a...] (A Sub-Folder)\n                            └── \"app.js\" ──▶ [BLOB Object]\n*/"
 }

@@ -26,5 +26,5 @@
       "answer": "An architectural pattern where all Redux logic for a specific feature (Actions, Reducers, Selectors) is kept in a single file (e.g., `userSlice.js`), rather than having 3 separate folders for actions, reducers, and constants."
     }
   ],
-  "codeExample": "/*\n  Great State Design Principles:\n  \n  1. Avoid redundant data. (If you have a list of items, don't store \n     'numberOfItems: 5'. Just use items.length in your selector).\n  2. Keep state flat (Normalization).\n  3. Treat Redux as a cache for server data.\n  4. Slices should correspond to domains (e.g., 'auth', 'products'), \n     not UI pages (e.g., 'homePage', 'settingsPage').\n*/"
+  "terminalOutput": "/*\n  Great State Design Principles:\n  \n  1. Avoid redundant data. (If you have a list of items, don't store \n     'numberOfItems: 5'. Just use items.length in your selector).\n  2. Keep state flat (Normalization).\n  3. Treat Redux as a cache for server data.\n  4. Slices should correspond to domains (e.g., 'auth', 'products'), \n     not UI pages (e.g., 'homePage', 'settingsPage').\n*/"
 }

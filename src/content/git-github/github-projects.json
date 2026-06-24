@@ -27,5 +27,5 @@
       "answer": "Yes! GitHub Projects have built-in automation workflows. You can tell it: 'When an issue is closed, automatically drag its card into the Done column'."
     }
   ],
-  "codeExample": "/*\n  A typical GitHub Project Kanban Board Layout:\n  \n  [ Backlog ]   |   [ To Do (Sprint) ]   |   [ In Progress ]   |   [ Review ]   |   [ Done ]\n  ------------  |   ------------------   |   ---------------   |   ----------   |   --------\n  Issue #99     |   Issue #45            |   Issue #42         |   PR #44       |   Issue #12\n  Issue #100    |   Issue #48            |                     |                |   Issue #14\n*/"
+  "terminalOutput": "/*\n  A typical GitHub Project Kanban Board Layout:\n  \n  [ Backlog ]   |   [ To Do (Sprint) ]   |   [ In Progress ]   |   [ Review ]   |   [ Done ]\n  ------------  |   ------------------   |   ---------------   |   ----------   |   --------\n  Issue #99     |   Issue #45            |   Issue #42         |   PR #44       |   Issue #12\n  Issue #100    |   Issue #48            |                     |                |   Issue #14\n*/"
 }

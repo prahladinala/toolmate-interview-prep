@@ -31,5 +31,5 @@
       "answer": "In the REPL, `_` holds the result of the very last evaluated expression. If you type `2 + 2` and press Enter (it prints 4). Then you type `_ + 5`, it will output 9."
     }
   ],
-  "codeExample": "/* \nHOW TO USE THE REPL:\n\n1. Open your terminal.\n2. Type: node\n3. You will see a `>` prompt.\n\n> const name = \"Alice\"\nundefined\n\n> name.toUpperCase()\n'ALICE'\n\n> [1, 2, 3].map(n => n * 2)\n[ 2, 4, 6 ]\n\n> const fs = require('fs')\nundefined\n\n> .help   (Shows available REPL commands)\n> .exit   (Exits the REPL back to your normal terminal)\n*/\n\nconsole.log(\"The REPL is an interactive terminal environment. Run 'node' in your terminal to try it!\");"
+  "terminalOutput": "/* \nHOW TO USE THE REPL:\n\n1. Open your terminal.\n2. Type: node\n3. You will see a `>` prompt.\n\n> const name = \"Alice\"\nundefined\n\n> name.toUpperCase()\n'ALICE'\n\n> [1, 2, 3].map(n => n * 2)\n[ 2, 4, 6 ]\n\n> const fs = require('fs')\nundefined\n\n> .help   (Shows available REPL commands)\n> .exit   (Exits the REPL back to your normal terminal)\n*/\n\nconsole.log(\"The REPL is an interactive terminal environment. Run 'node' in your terminal to try it!\");"
 }

@@ -27,5 +27,5 @@
       "answer": "No! Library updates can contain 'Breaking Changes' that destroy your app. You should rely on your Automated Tests (CI) to ensure the app still works before merging the Dependabot PR."
     }
   ],
-  "codeExample": "/* \n  You can configure Dependabot by creating a file at:\n  .github/dependabot.yml\n*/\n\nversion: 2\nupdates:\n  # Scan npm packages (package.json)\n  - package-ecosystem: \"npm\"\n    # Look in the root directory\n    directory: \"/\"\n    # Check for updates once a week\n    schedule:\n      interval: \"weekly\""
+  "terminalOutput": "/* \n  You can configure Dependabot by creating a file at:\n  .github/dependabot.yml\n*/\n\nversion: 2\nupdates:\n  # Scan npm packages (package.json)\n  - package-ecosystem: \"npm\"\n    # Look in the root directory\n    directory: \"/\"\n    # Check for updates once a week\n    schedule:\n      interval: \"weekly\""
 }

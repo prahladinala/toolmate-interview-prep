@@ -26,5 +26,5 @@
       "answer": "Redux Thunk (for async logic) and development checks that throw errors if you accidentally mutate state or dispatch non-serializable data."
     }
   ],
-  "codeExample": "/*\n  Top 5 Reasons to use RTK:\n  \n  1. Less Boilerplate: createSlice combines actions and reducers.\n  2. No More Switch Statements: Replaced by builder syntax.\n  3. Immer Built-in: Write state.value = 5 without breaking immutable rules.\n  4. Sensible Defaults: configureStore sets up Thunk and DevTools instantly.\n  5. RTK Query: Built-in advanced data fetching and caching tool.\n*/"
+  "terminalOutput": "/*\n  Top 5 Reasons to use RTK:\n  \n  1. Less Boilerplate: createSlice combines actions and reducers.\n  2. No More Switch Statements: Replaced by builder syntax.\n  3. Immer Built-in: Write state.value = 5 without breaking immutable rules.\n  4. Sensible Defaults: configureStore sets up Thunk and DevTools instantly.\n  5. RTK Query: Built-in advanced data fetching and caching tool.\n*/"
 }

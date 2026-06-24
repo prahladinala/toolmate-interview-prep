@@ -28,5 +28,5 @@
       "answer": "Your terminal will literally spit back an error: `remote: error: GH006: Protected branch update failed. remote: error: At least 1 approving review is required by reviewers with write access.`"
     }
   ],
-  "codeExample": "/*\n  Common Branch Protection Settings you should enable on 'main':\n  \n  [x] Require a pull request before merging\n      [x] Require approvals: 1\n      [x] Dismiss stale pull request approvals when new commits are pushed\n  [x] Require status checks to pass before merging\n      (This means your automated CI/CD Tests must pass!)\n  [x] Do not allow bypassing the above settings\n  [x] Restrict who can push to matching branches\n*/"
+  "terminalOutput": "/*\n  Common Branch Protection Settings you should enable on 'main':\n  \n  [x] Require a pull request before merging\n      [x] Require approvals: 1\n      [x] Dismiss stale pull request approvals when new commits are pushed\n  [x] Require status checks to pass before merging\n      (This means your automated CI/CD Tests must pass!)\n  [x] Do not allow bypassing the above settings\n  [x] Restrict who can push to matching branches\n*/"
 }

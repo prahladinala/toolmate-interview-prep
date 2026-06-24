@@ -27,5 +27,5 @@
       "answer": "Yes! You can run `git bisect run npm test`. Git will automatically jump through history, running your test suite at every stop. If the test passes, Git marks it 'good'. If it fails, 'bad'. It will find the bug while you go get coffee."
     }
   ],
-  "codeExample": "# 1. Start the wizard\n$ git bisect start\n\n# 2. Tell Git that right now, the code is broken\n$ git bisect bad\n\n# 3. Tell Git a hash from 3 weeks ago where the code was definitely working\n$ git bisect good a1b2c3d\n\n# Git jumps to a commit halfway between them.\n# You test the app in your browser...\n\n# 4. If it's broken, type: git bisect bad\n# 4. If it works, type: git bisect good\n\n# Repeat until Git says: \"9f8e7d6 is the first bad commit!\"\n\n# 5. End the wizard and go back to normal\n$ git bisect reset"
+  "terminalOutput": "# 1. Start the wizard\n$ git bisect start\n\n# 2. Tell Git that right now, the code is broken\n$ git bisect bad\n\n# 3. Tell Git a hash from 3 weeks ago where the code was definitely working\n$ git bisect good a1b2c3d\n\n# Git jumps to a commit halfway between them.\n# You test the app in your browser...\n\n# 4. If it's broken, type: git bisect bad\n# 4. If it works, type: git bisect good\n\n# Repeat until Git says: \"9f8e7d6 is the first bad commit!\"\n\n# 5. End the wizard and go back to normal\n$ git bisect reset"
 }

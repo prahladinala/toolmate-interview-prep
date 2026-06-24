@@ -27,5 +27,5 @@
       "answer": "The server closes the connection with an empty response (or a 204/304 code). The client receives this, and immediately opens a brand new Long Polling request to start waiting again."
     }
   ],
-  "codeExample": "/* \n  Conceptual Flow of Long Polling \n*/\n\n// 1. Client: GET /api/messages/wait\n// 2. Server: (Does not respond immediately. Keeps connection open in memory.)\n// ... 15 seconds pass ...\n// 3. User B sends a message to the database.\n// 4. Server: Sees the message, immediately sends it to Client and closes the connection.\n// 5. Client: Receives message, processes it, and INSTANTLY sends a new GET /api/messages/wait."
+  "terminalOutput": "/* \n  Conceptual Flow of Long Polling \n*/\n\n// 1. Client: GET /api/messages/wait\n// 2. Server: (Does not respond immediately. Keeps connection open in memory.)\n// ... 15 seconds pass ...\n// 3. User B sends a message to the database.\n// 4. Server: Sees the message, immediately sends it to Client and closes the connection.\n// 5. Client: Receives message, processes it, and INSTANTLY sends a new GET /api/messages/wait."
 }

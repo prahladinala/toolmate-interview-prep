@@ -27,5 +27,5 @@
       "answer": "`--mixed`. It moves the commit pointer back, and unstages the files, but leaves the code safely in your text editor."
     }
   ],
-  "codeExample": "# 1. --SOFT: Undo the commit, but keep files Staged\n# Great for editing the commit message or adding one more file to the commit\n$ git reset --soft HEAD~1\n\n# 2. --MIXED (Default): Undo commit, and Unstage files\n# Great if you realized you need to rewrite the code completely before staging\n$ git reset HEAD~1\n\n# 3. --HARD: Destroy the commit, Destroy the Staging Area, Destroy the Working Directory\n# Great for completely abandoning a terrible idea and wiping the slate clean\n$ git reset --hard HEAD~1"
+  "terminalOutput": "# 1. --SOFT: Undo the commit, but keep files Staged\n# Great for editing the commit message or adding one more file to the commit\n$ git reset --soft HEAD~1\n\n# 2. --MIXED (Default): Undo commit, and Unstage files\n# Great if you realized you need to rewrite the code completely before staging\n$ git reset HEAD~1\n\n# 3. --HARD: Destroy the commit, Destroy the Staging Area, Destroy the Working Directory\n# Great for completely abandoning a terrible idea and wiping the slate clean\n$ git reset --hard HEAD~1"
 }

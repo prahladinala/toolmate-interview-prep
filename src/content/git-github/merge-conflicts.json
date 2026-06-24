@@ -26,5 +26,5 @@
       "answer": "It injects conflict markers: `<<<<<<< HEAD` (your current code), `=======` (the divider), and `>>>>>>> branch-name` (the incoming code)."
     }
   ],
-  "codeExample": "/* \n  What a file looks like during a Merge Conflict:\n  \n  <<<<<<< HEAD (Current branch: main)\n  <h1>Hello World</h1>\n  =======\n  <h1>Welcome to App</h1>\n  >>>>>>> feature-login (Incoming branch)\n  \n  To fix it, you literally just delete the symbols (<<<, ===, >>>)\n  and type out what you want the final code to look like.\n*/"
+  "terminalOutput": "/* \n  What a file looks like during a Merge Conflict:\n  \n  <<<<<<< HEAD (Current branch: main)\n  <h1>Hello World</h1>\n  =======\n  <h1>Welcome to App</h1>\n  >>>>>>> feature-login (Incoming branch)\n  \n  To fix it, you literally just delete the symbols (<<<, ===, >>>)\n  and type out what you want the final code to look like.\n*/"
 }

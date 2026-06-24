@@ -27,7 +27,6 @@
       "answer": "Use `git restore --staged <file>`. This pulls the file off the Stage, but safely leaves your edits intact in the Working Directory."
     }
   ],
-  "codeExample": "# Scenario 1: Throwing away terrible code\n# You edited app.js, it's broken, you want to start over.\n$ git restore app.js\n\n# Scenario 2: Throwing away ALL terrible code in the project\n$ git restore .\n\n# Scenario 3: Unstaging a file (The modern alternative to git reset)\n$ git add config.json\n# Wait, I don't want to commit config.json yet!\n$ git restore --staged config.json",
   "tableData": {
     "title": "Crucial Command Flags",
     "headers": [
@@ -44,5 +43,6 @@
         "Restore a file to how it looked in a specific past commit."
       ]
     ]
-  }
+  },
+  "terminalOutput": "# Scenario 1: Throwing away terrible code\n# You edited app.js, it's broken, you want to start over.\n$ git restore app.js\n\n# Scenario 2: Throwing away ALL terrible code in the project\n$ git restore .\n\n# Scenario 3: Unstaging a file (The modern alternative to git reset)\n$ git add config.json\n# Wait, I don't want to commit config.json yet!\n$ git restore --staged config.json"
 }

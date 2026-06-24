@@ -28,5 +28,5 @@
       "answer": "YAML (`.yml` or `.yaml`)."
     }
   ],
-  "codeExample": "# This file lives in: .github/workflows/test.yml\n\nname: Run Tests\n\n# TRIGGER: When does this robot run?\non: [push, pull_request] \n\n# JOBS: What does the robot do?\njobs:\n  test:\n    runs-on: ubuntu-latest # Boot up a Linux server\n    \n    steps:\n    - name: Download my code\n      uses: actions/checkout@v3\n      \n    - name: Install Node.js\n      uses: actions/setup-node@v3\n      with:\n        node-version: 18\n        \n    - name: Install dependencies and Run tests\n      run: |\n        npm install\n        npm test"
+  "terminalOutput": "# This file lives in: .github/workflows/test.yml\n\nname: Run Tests\n\n# TRIGGER: When does this robot run?\non: [push, pull_request] \n\n# JOBS: What does the robot do?\njobs:\n  test:\n    runs-on: ubuntu-latest # Boot up a Linux server\n    \n    steps:\n    - name: Download my code\n      uses: actions/checkout@v3\n      \n    - name: Install Node.js\n      uses: actions/setup-node@v3\n      with:\n        node-version: 18\n        \n    - name: Install dependencies and Run tests\n      run: |\n        npm install\n        npm test"
 }

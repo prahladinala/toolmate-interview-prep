@@ -26,5 +26,5 @@
       "answer": "Cross-Origin Resource Sharing. It's a browser security feature that prevents a malicious website from making background API requests to your bank account. To fix it, the backend server must be configured to send the `Access-Control-Allow-Origin` header, explicitly whitelisting the frontend's domain."
     }
   ],
-  "codeExample": "/*\n  Common Intermediate Question:\n  \"What is the difference between PUT and PATCH?\"\n  \n  Answer:\n  PUT is used to completely replace a resource. You must send the entire object payload.\n  PATCH is used to partially update a resource. You only send the specific fields that changed.\n*/"
+  "terminalOutput": "/*\n  Common Intermediate Question:\n  \"What is the difference between PUT and PATCH?\"\n  \n  Answer:\n  PUT is used to completely replace a resource. You must send the entire object payload.\n  PATCH is used to partially update a resource. You only send the specific fields that changed.\n*/"
 }

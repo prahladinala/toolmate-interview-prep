@@ -31,5 +31,5 @@
       "answer": "Using a global content-addressable store and hard links. It stores a single copy of a package globally on your hard drive, and uses OS-level symlinks to trick your project into thinking it has its own copy of `node_modules`."
     }
   ],
-  "codeExample": "// --- COMMON COMMAND EQUIVALENTS ---\n\n// 1. Installing a project\n// npm install\n// yarn install\n// pnpm install\n\n// 2. Adding a specific package\n// npm install axios\n// yarn add axios\n// pnpm add axios\n\n// 3. Removing a package\n// npm uninstall axios\n// yarn remove axios\n// pnpm remove axios\n\n// 4. Running a custom script (e.g., 'start' in package.json)\n// npm run start\n// yarn start\n// pnpm start\n\nconsole.log(\"All three accomplish the exact same goal, but pnpm is currently the fastest and most efficient!\");"
+  "terminalOutput": "// --- COMMON COMMAND EQUIVALENTS ---\n\n// 1. Installing a project\n// npm install\n// yarn install\n// pnpm install\n\n// 2. Adding a specific package\n// npm install axios\n// yarn add axios\n// pnpm add axios\n\n// 3. Removing a package\n// npm uninstall axios\n// yarn remove axios\n// pnpm remove axios\n\n// 4. Running a custom script (e.g., 'start' in package.json)\n// npm run start\n// yarn start\n// pnpm start\n\nconsole.log(\"All three accomplish the exact same goal, but pnpm is currently the fastest and most efficient!\");"
 }

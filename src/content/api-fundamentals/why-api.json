@@ -28,5 +28,5 @@
       "answer": "It means the Frontend only worries about making things look pretty (UI), and the Backend only worries about databases and business logic. They are completely separate. The API is the bridge connecting them. If you want to rebuild the UI, you don't have to touch the database."
     }
   ],
-  "codeExample": "/*\n  Why APIs are crucial for business speed:\n  \n  App Requirements:\n  1. Take payments  --> Connect to Stripe API (Takes 1 hour)\n  2. Send emails    --> Connect to SendGrid API (Takes 30 mins)\n  3. Get location   --> Connect to Google Maps API (Takes 30 mins)\n  \n  Without APIs, building those 3 features from scratch would take \n  a team of 50 engineers 3 years.\n*/"
+  "terminalOutput": "/*\n  Why APIs are crucial for business speed:\n  \n  App Requirements:\n  1. Take payments  --> Connect to Stripe API (Takes 1 hour)\n  2. Send emails    --> Connect to SendGrid API (Takes 30 mins)\n  3. Get location   --> Connect to Google Maps API (Takes 30 mins)\n  \n  Without APIs, building those 3 features from scratch would take \n  a team of 50 engineers 3 years.\n*/"
 }

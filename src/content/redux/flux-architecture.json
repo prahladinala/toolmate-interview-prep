@@ -27,5 +27,5 @@
       "answer": "In traditional Flux, you can have MULTIPLE Stores (a UserStore, a CartStore). Redux mandates exactly ONE single centralized Store. Redux also eliminates the 'Dispatcher' class in favor of pure function Reducers."
     }
   ],
-  "codeExample": "/*\n  The Flux Unidirectional Flow:\n\n  [ VIEW ] (User clicks a button)\n     │\n     ▼\n  [ ACTION ] (An object describing what happened: { type: 'CLICK' })\n     │\n     ▼\n  [ DISPATCHER ] (The traffic cop that sends the action to the stores)\n     │\n     ▼\n  [ STORE ] (Updates the data, then tells the view to re-render)\n     │\n     ▼\n  [ VIEW ] (UI updates!)\n*/"
+  "terminalOutput": "/*\n  The Flux Unidirectional Flow:\n\n  [ VIEW ] (User clicks a button)\n     │\n     ▼\n  [ ACTION ] (An object describing what happened: { type: 'CLICK' })\n     │\n     ▼\n  [ DISPATCHER ] (The traffic cop that sends the action to the stores)\n     │\n     ▼\n  [ STORE ] (Updates the data, then tells the view to re-render)\n     │\n     ▼\n  [ VIEW ] (UI updates!)\n*/"
 }

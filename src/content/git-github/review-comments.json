@@ -26,5 +26,5 @@
       "answer": "If you leave a 'Single Comment', it emails the author immediately. If you have 10 comments, they get 10 emails (annoying!). A 'Review' lets you draft all 10 comments privately, and then submit them all at once as a single batch (1 email)."
     }
   ],
-  "codeExample": "/*\n  Using GitHub's 'Suggested Change' feature in a comment:\n  \n  ```suggestion\n  const userName = user.firstName + ' ' + user.lastName;\n  ```\n  \n  When you leave a comment formatted like this, GitHub renders it as a \n  Diff block with an \"Commit Suggestion\" button. The PR author can click \n  that button to instantly fix their code right from the web browser!\n*/"
+  "terminalOutput": "/*\n  Using GitHub's 'Suggested Change' feature in a comment:\n  \n  ```suggestion\n  const userName = user.firstName + ' ' + user.lastName;\n  ```\n  \n  When you leave a comment formatted like this, GitHub renders it as a \n  Diff block with an \"Commit Suggestion\" button. The PR author can click \n  that button to instantly fix their code right from the web browser!\n*/"
 }

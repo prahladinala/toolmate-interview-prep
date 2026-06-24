@@ -26,7 +26,6 @@
       "answer": "`git remote -v` (The -v stands for verbose)."
     }
   ],
-  "codeExample": "# View your current remotes (and their URLs)\n$ git remote -v\n\n# Add a new remote named 'origin'\n$ git remote add origin https://github.com/user/project.git\n\n# Rename a remote from 'origin' to 'destination'\n$ git remote rename origin destination\n\n# Remove a remote connection completely\n$ git remote remove destination",
   "tableData": {
     "title": "Crucial Command Flags",
     "headers": [
@@ -47,5 +46,6 @@
         "Remove a remote repository tracking."
       ]
     ]
-  }
+  },
+  "terminalOutput": "# View your current remotes (and their URLs)\n$ git remote -v\n\n# Add a new remote named 'origin'\n$ git remote add origin https://github.com/user/project.git\n\n# Rename a remote from 'origin' to 'destination'\n$ git remote rename origin destination\n\n# Remove a remote connection completely\n$ git remote remove destination"
 }

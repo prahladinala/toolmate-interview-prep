@@ -28,5 +28,5 @@
       "answer": "Usually, NO. Adding new data is considered a 'Non-Breaking Change' because old clients will simply ignore the new field. You do not need to increment the API version just to add a new field."
     }
   ],
-  "codeExample": "/* \n  The Golden Rule of API Design:\n  \n  ONCE AN API IS PUBLIC, YOU CAN NEVER DELETE OR RENAME A FIELD. \n  YOU CAN ONLY ADD NEW FIELDS.\n  \n  If you MUST rename or delete a field, you must create a V2 of the API.\n  V1 must stay alive until every single user has migrated to V2.\n*/"
+  "terminalOutput": "/* \n  The Golden Rule of API Design:\n  \n  ONCE AN API IS PUBLIC, YOU CAN NEVER DELETE OR RENAME A FIELD. \n  YOU CAN ONLY ADD NEW FIELDS.\n  \n  If you MUST rename or delete a field, you must create a V2 of the API.\n  V1 must stay alive until every single user has migrated to V2.\n*/"
 }

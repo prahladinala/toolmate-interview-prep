@@ -28,5 +28,5 @@
       "answer": "If the central server goes down, nobody can collaborate or save versioned changes. If the central server's hard drive crashes and there are no backups, the entire history of the project is lost."
     }
   ],
-  "codeExample": "// Example of Centralized vs Distributed\n\nconst svn = 'Centralized: 1 Server has history. Clients just have 1 file.';\nconst git = 'Distributed: 1 Server has history. EVERY Client has the FULL history too!';\n\nconsole.log(git);"
+  "terminalOutput": "// Example of Centralized vs Distributed\n\nconst svn = 'Centralized: 1 Server has history. Clients just have 1 file.';\nconst git = 'Distributed: 1 Server has history. EVERY Client has the FULL history too!';\n\nconsole.log(git);"
 }

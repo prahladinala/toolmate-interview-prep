@@ -26,5 +26,5 @@
       "answer": "fatal: The current branch has no upstream branch. To push the current branch and set the remote as upstream, use: `git push --set-upstream origin branch-name`."
     }
   ],
-  "codeExample": "# Create a new branch\n$ git checkout -b feature-xyz\n\n# Try to push it simply (THIS WILL FAIL!)\n$ git push\n# fatal: The current branch feature-xyz has no upstream branch.\n\n# Do it correctly by setting the upstream link (-u)\n$ git push -u origin feature-xyz\n\n# Now the tether is established! Tomorrow, you can just type:\n$ git push"
+  "terminalOutput": "# Create a new branch\n$ git checkout -b feature-xyz\n\n# Try to push it simply (THIS WILL FAIL!)\n$ git push\n# fatal: The current branch feature-xyz has no upstream branch.\n\n# Do it correctly by setting the upstream link (-u)\n$ git push -u origin feature-xyz\n\n# Now the tether is established! Tomorrow, you can just type:\n$ git push"
 }

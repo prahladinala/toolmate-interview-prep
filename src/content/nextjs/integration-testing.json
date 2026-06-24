@@ -28,5 +28,5 @@
       "answer": "Because testing isolated React components often provides false confidence. The component might render perfectly, but if it passes the wrong data payload to the Redux store or the Server Action, the app is broken. Integration tests catch these connection errors."
     }
   ],
-  "codeExample": "/* \n  The Testing Pyramid in Next.js:\n  \n  1. E2E (Playwright) - 5% of tests\n     Tests the entire app (Browser -> Network -> Next.js -> DB)\n     \n  2. Integration (Jest + RTL + Test DB) - 25% of tests\n     Tests a Page component interacting with a Server Action.\n     \n  3. Unit (Jest) - 70% of tests\n     Tests a pure math function or a dumb UI component.\n*/"
+  "terminalOutput": "/* \n  The Testing Pyramid in Next.js:\n  \n  1. E2E (Playwright) - 5% of tests\n     Tests the entire app (Browser -> Network -> Next.js -> DB)\n     \n  2. Integration (Jest + RTL + Test DB) - 25% of tests\n     Tests a Page component interacting with a Server Action.\n     \n  3. Unit (Jest) - 70% of tests\n     Tests a pure math function or a dumb UI component.\n*/"
 }

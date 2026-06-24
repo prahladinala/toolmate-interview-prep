@@ -26,5 +26,5 @@
       "answer": "You MUST merge it back into `develop` (or your active feature branches). If you don't, the next time `develop` merges into `main`, the bug will be reintroduced!"
     }
   ],
-  "codeExample": "# FIRE ALARM! Production is broken!\n\n# 1. Branch straight off the live code (main)\n$ git checkout main\n$ git checkout -b hotfix-pricing-typo\n\n# 2. Fix the typo, test it, commit it\n$ git commit -am \"Fix critical pricing typo\"\n\n# 3. Merge immediately to main and deploy\n$ git checkout main\n$ git merge hotfix-pricing-typo\n\n# 4. Crucial: Merge back to the development branch so it isn't lost!\n$ git checkout develop\n$ git merge hotfix-pricing-typo"
+  "terminalOutput": "# FIRE ALARM! Production is broken!\n\n# 1. Branch straight off the live code (main)\n$ git checkout main\n$ git checkout -b hotfix-pricing-typo\n\n# 2. Fix the typo, test it, commit it\n$ git commit -am \"Fix critical pricing typo\"\n\n# 3. Merge immediately to main and deploy\n$ git checkout main\n$ git merge hotfix-pricing-typo\n\n# 4. Crucial: Merge back to the development branch so it isn't lost!\n$ git checkout develop\n$ git merge hotfix-pricing-typo"
 }
