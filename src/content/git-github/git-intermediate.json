@@ -1,0 +1,30 @@
+{
+  "id": "git-intermediate",
+  "title": "Intermediate Interview Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to test a candidate's experience working in team environments, handling conflicts, and managing branches.",
+  "simpleExplanation": "Interviewers are looking for evidence that you've worked with other people. If you don't know what a Merge Conflict is, it means you've probably only ever coded alone.",
+  "realWorldExample": "Explaining exactly how you would resolve a merge conflict in VS Code.",
+  "useCases": [
+    "Mid-level Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What does `git clone` do?"
+    ],
+    "intermediate": [
+      "What is the difference between `git merge` and `git rebase`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does clone do?",
+      "answer": "It downloads a remote repository to your local machine, including all files, branches, and the entire commit history."
+    },
+    {
+      "question": "Merge vs Rebase?",
+      "answer": "`git merge` combines two branches by creating a new 'Merge Commit', keeping the branching history visible. `git rebase` moves your entire feature branch to the tip of the main branch, rewriting history to create a perfectly straight, linear timeline without merge commits."
+    }
+  ],
+  "codeExample": "/*\n  Q: How do you resolve a Merge Conflict?\n  \n  A: \n  1. Git pauses the merge and modifies the conflicting files with \n     markers (<<<<<<<, =======, >>>>>>>).\n  2. I open the files and manually delete the markers, deciding \n     which lines of code to keep.\n  3. I run `git add` to stage the fixed files.\n  4. I run `git commit` to finalize the merge.\n*/"
+}

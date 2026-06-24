@@ -1,0 +1,30 @@
+{
+  "id": "file-permissions",
+  "title": "Read, Write, Execute (rwx)",
+  "difficulty": "Beginner",
+  "definition": "The three fundamental permissions in Linux. Read (view contents), Write (modify contents), and Execute (run as a program or enter a directory).",
+  "simpleExplanation": "Read: Look but don't touch. Write: You can edit or delete it. Execute: You can run it like an app.",
+  "realWorldExample": "If you look at `ls -l`, you see `rwxr-xr--`. This means the Owner has Read/Write/Execute. The Group has Read/Execute. Everyone else only has Read.",
+  "useCases": [
+    "Securing files",
+    "Troubleshooting 'Permission Denied' errors"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'Execute' permission do if applied to a Directory (folder) instead of a File?"
+    ],
+    "intermediate": [
+      "If a user has 'Write' permission on a file, but NOT 'Write' permission on the directory containing the file, can they delete the file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Execute on a directory?",
+      "answer": "It allows a user to 'enter' the directory using the `cd` command. Without execute permission on a folder, you cannot open it."
+    },
+    {
+      "question": "Can they delete the file?",
+      "answer": "No! In Linux, deleting a file is actually considered modifying the *directory* that holds the file. You must have Write permission on the parent folder to delete a file inside it."
+    }
+  ]
+}

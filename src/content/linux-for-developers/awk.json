@@ -1,0 +1,31 @@
+{
+  "id": "awk",
+  "title": "awk",
+  "difficulty": "Advanced",
+  "definition": "A domain-specific programming language designed specifically for text processing and data extraction, particularly excellent at handling data formatted in columns.",
+  "simpleExplanation": "The command-line spreadsheet. If you have a file with rows and columns separated by spaces, `awk` can easily say 'Print only the 3rd column, but only if the 1st column is greater than 50'.",
+  "realWorldExample": "You run the `df -h` command to see hard drive space. It outputs 6 columns. You only want the column showing the percentage full. You pipe it: `df -h | awk '{print $5}'`. It strips away everything else and just prints the 5th column.",
+  "useCases": [
+    "Data extraction",
+    "Log parsing",
+    "Reporting"
+  ],
+  "questions": {
+    "basic": [
+      "In `awk`, how do you refer to the very first column of text in a row?"
+    ],
+    "intermediate": [
+      "If a CSV file is separated by commas instead of spaces, how do you tell `awk` to process it correctly?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "First column?",
+      "answer": "Using `$1`."
+    },
+    {
+      "question": "Process commas?",
+      "answer": "You use the Field Separator flag (`-F`). Example: `awk -F ',' '{print $2}' file.csv`."
+    }
+  ]
+}

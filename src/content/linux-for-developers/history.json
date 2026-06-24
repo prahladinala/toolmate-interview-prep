@@ -1,0 +1,30 @@
+{
+  "id": "history",
+  "title": "history",
+  "difficulty": "Beginner",
+  "definition": "A command that prints a numbered list of the previously executed commands stored in the user's shell history file.",
+  "simpleExplanation": "The 'What did I just type 5 minutes ago?' command. It remembers everything you've typed so you don't have to memorize complex commands.",
+  "realWorldExample": "You ran a massive, complex Docker command yesterday but forgot it. You type `history | grep docker`. The terminal searches your past commands and prints out the exact command you used, saving you 20 minutes of Googling.",
+  "useCases": [
+    "Recalling complex commands",
+    "Security auditing (seeing what a user typed)"
+  ],
+  "questions": {
+    "basic": [
+      "How can you re-run a specific command from your history without retyping it (e.g., command number 105)?"
+    ],
+    "intermediate": [
+      "If you type a password directly into a command (like `mysql -u root -p1234`), is it saved in the history file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Re-run by number?",
+      "answer": "Type an exclamation mark followed by the number: `!105`."
+    },
+    {
+      "question": "Is password saved?",
+      "answer": "Yes! This is a massive security risk. Passwords passed as command-line arguments are stored in plain text in the `~/.bash_history` file. You should always use interactive password prompts."
+    }
+  ]
+}

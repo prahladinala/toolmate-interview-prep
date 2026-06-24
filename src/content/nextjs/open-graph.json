@@ -1,0 +1,32 @@
+{
+  "id": "open-graph",
+  "title": "Open Graph Tags",
+  "difficulty": "Intermediate",
+  "definition": "Specific metadata tags originally created by Facebook that dictate exactly how a webpage looks when a link is shared in iMessage, Slack, Twitter, or Facebook.",
+  "simpleExplanation": "When you paste a link into Slack, it automatically unfurls into a beautiful preview card with an image, title, and description. Open Graph (OG) tags are the hidden data in your HTML that give Slack that image and title.",
+  "realWorldExample": "Ensuring that when your startup's homepage is shared on LinkedIn, it shows a massive, beautiful branding image instead of a broken gray box.",
+  "useCases": [
+    "Social media marketing",
+    "Viral sharing",
+    "Brand consistency"
+  ],
+  "questions": {
+    "basic": [
+      "What property inside the Next.js `metadata` object is used to configure Open Graph tags?"
+    ],
+    "intermediate": [
+      "Why are high-quality Open Graph images crucial for modern web applications?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which property?",
+      "answer": "The `openGraph` object."
+    },
+    {
+      "question": "Why crucial?",
+      "answer": "Click-Through Rates (CTR). A link shared on social media with a compelling, large preview image is exponentially more likely to be clicked than a raw blue hyperlink."
+    }
+  ],
+  "codeExample": "export const metadata: Metadata = {\n  title: 'My Startup',\n  description: 'We build cool things.',\n  \n  // This configures the rich link preview card!\n  openGraph: {\n    title: 'My Startup - Revolutionizing Tech',\n    description: 'Learn how we are changing the world.',\n    url: 'https://mystartup.com',\n    siteName: 'My Startup',\n    images: [\n      {\n        url: 'https://mystartup.com/og-image.jpg', // The massive image preview\n        width: 1200,\n        height: 630,\n        alt: 'My Startup Branding Image',\n      },\n    ],\n    locale: 'en_US',\n    type: 'website',\n  },\n};"
+}

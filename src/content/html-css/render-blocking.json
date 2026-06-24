@@ -1,0 +1,30 @@
+{
+  "id": "render-blocking",
+  "title": "Render Blocking Resources",
+  "difficulty": "Advanced",
+  "definition": "Static files (like CSS and synchronous JavaScript) that prevent the browser from rendering any DOM content to the screen until they have been fully downloaded and parsed.",
+  "simpleExplanation": "The browser is a strict rule-follower. If it is reading your HTML top-to-bottom and hits a `<script src=\"huge-file.js\">`, it literally stops painting the screen, downloads the file, runs the entire file, and ONLY THEN continues reading the rest of your HTML. The user stares at a blank white screen the entire time.",
+  "realWorldExample": "This is why JavaScript tags used to be placed at the very bottom of the `<body>` tag. Modern developers put them in the `<head>`, but use the `defer` attribute to tell the browser: 'Keep painting the screen, just download this JS in the background'.",
+  "useCases": [
+    "Improving First Contentful Paint (FCP)"
+  ],
+  "questions": {
+    "basic": [
+      "Are CSS files render-blocking by default?"
+    ],
+    "intermediate": [
+      "What is the difference between `<script defer>` and `<script async>`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is CSS render-blocking?",
+      "answer": "Yes! The browser will not paint anything on the screen until all `<link rel=\"stylesheet\">` files in the `<head>` are downloaded. This prevents the 'Flash of Unstyled Content' (FOUC)."
+    },
+    {
+      "question": "defer vs async?",
+      "answer": "`async` downloads the script in the background and runs it THE MOMENT it finishes downloading (good for Google Analytics, but bad if scripts depend on each other). `defer` downloads in the background, but WAITS to run until the entire HTML document is fully parsed (best for your React/App bundles)."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Render Blocking</title>\n  \n  <!-- THIS BLOCKS RENDERING: \n       The user sees nothing until styles.css is downloaded -->\n  <link rel=\"stylesheet\" href=\"styles.css\">\n\n  <!-- THIS BLOCKS RENDERING: \n       The browser stops parsing HTML until jquery.js executes -->\n  <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n\n  <!-- THIS DOES NOT BLOCK RENDERING: \n       The 'defer' attribute tells the browser to keep going, \n       and run this script after the HTML is finished loading. -->\n  <script defer src=\"my-app.js\"></script>\n\n</head>\n<body>\n  <h1>Hello!</h1>\n</body>\n</html>"
+}

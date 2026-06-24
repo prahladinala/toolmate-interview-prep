@@ -1,0 +1,31 @@
+{
+  "id": "sitemap",
+  "title": "Sitemap.xml",
+  "difficulty": "Intermediate",
+  "definition": "An XML file that lists all the important URLs on a website, acting as a roadmap to guide search engines to all your pages.",
+  "simpleExplanation": "Imagine a website with 10,000 blog posts. Googlebot arrives at the homepage and has to frantically click every single link it can find to discover all 10,000 posts. A sitemap is a map you hand directly to Google that says: 'Here is a list of every single URL on my site, and the exact date I last updated them.'",
+  "realWorldExample": "Submitting a sitemap to Google Search Console to guarantee that Google knows your new website exists within hours, instead of waiting weeks for them to organically find it.",
+  "useCases": [
+    "Ensuring rapid indexing by Google",
+    "Helping bots discover deeply nested pages"
+  ],
+  "questions": {
+    "basic": [
+      "What file format is a sitemap written in?"
+    ],
+    "intermediate": [
+      "Do you need to write a sitemap manually by hand?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format?",
+      "answer": "XML (eXtensible Markup Language)."
+    },
+    {
+      "question": "Write manually?",
+      "answer": "Almost never. Frameworks like Next.js, or CMS plugins like Yoast SEO for WordPress, automatically generate the `sitemap.xml` file dynamically every time you publish a new page."
+    }
+  ],
+  "codeExample": "<!-- Note: This is an XML file, not HTML! -->\n<pre style=\"background: #222; color: orange; padding: 20px; font-family: monospace;\">\n&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n&lt;urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"&gt;\n\n  &lt;!-- The Homepage --&gt;\n  &lt;url&gt;\n    &lt;loc&gt;https://www.example.com/&lt;/loc&gt;\n    &lt;lastmod&gt;2024-01-01&lt;/lastmod&gt;\n    &lt;changefreq&gt;daily&lt;/changefreq&gt;\n    &lt;priority&gt;1.0&lt;/priority&gt;\n  &lt;/url&gt;\n\n  &lt;!-- A Blog Post --&gt;\n  &lt;url&gt;\n    &lt;loc&gt;https://www.example.com/blog/html-basics&lt;/loc&gt;\n    &lt;lastmod&gt;2024-05-15&lt;/lastmod&gt;\n    &lt;changefreq&gt;monthly&lt;/changefreq&gt;\n    &lt;priority&gt;0.8&lt;/priority&gt;\n  &lt;/url&gt;\n\n&lt;/urlset&gt;\n</pre>"
+}

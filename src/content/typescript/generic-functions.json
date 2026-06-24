@@ -1,0 +1,34 @@
+{
+  "id": "generic-functions",
+  "title": "Generic Functions",
+  "difficulty": "Intermediate",
+  "definition": "Functions that can operate over a variety of types rather than a single one, while still preserving perfect type safety. They use a type variable (usually `<T>`) to capture the type passed by the user.",
+  "simpleExplanation": "A generic function is a template. Imagine a machine that wraps gifts. You don't build a machine for wrapping Books, and a separate machine for wrapping Toys. You build ONE Generic machine, and you tell it 'Whatever type of item goes IN, that exact same type of item comes OUT'.",
+  "realWorldExample": "The `useState<T>()` hook in React. It accepts any type you pass it, and returns an array containing that exact same type.",
+  "useCases": [
+    "Reusable utility functions",
+    "Array manipulation functions like `.map()`"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `<T>` stand for in Generics?"
+    ],
+    "intermediate": [
+      "Do you always have to explicitly write `<string>` when calling a generic function?"
+    ],
+    "advanced": [
+      "Can a generic function have multiple type variables?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does <T> stand for?",
+      "answer": "It stands for 'Type'. It is just a placeholder variable name. You could name it `<ItemType>` or `<Thing>`, but `<T>` is the industry standard convention."
+    },
+    {
+      "question": "Do you always have to write it?",
+      "answer": "No! TypeScript has 'Generic Type Inference'. If you call `wrapItem(\"hello\")`, TS automatically figures out that `T` must be `string` based on the argument. You rarely need to write `<string>` manually unless inference fails."
+    }
+  ],
+  "codeExample": "// BAD: We lose type safety (returns 'any')\nfunction wrapAny(item: any): any {\n  return { value: item };\n}\n\n// GOOD: The generic <T> links the input type to the output type\nfunction wrapItem<T>(item: T): { value: T } {\n  return { value: item };\n}\n\n// TS infers T is string. Returns { value: string }\nconst wrappedString = wrapItem(\"Alice\"); \n\n// TS infers T is number. Returns { value: number }\nconst wrappedNumber = wrapItem(100); \n\n// Multiple generics!\nfunction mergePairs<K, V>(key: K, value: V) {\n  return { key, value };\n}"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "activation-functions",
+  "title": "Activation Functions",
+  "difficulty": "Advanced",
+  "definition": "Mathematical equations attached to each neuron in a network that determine whether the neuron should 'fire' (activate) or remain dormant, introducing non-linearity to the model.",
+  "simpleExplanation": "A neuron does a bunch of math and gets a number, like 452. The Activation Function acts as a gatekeeper. It looks at the number and says: 'Anything greater than 0 becomes a 1. Anything less than 0 becomes a 0.' It decides if the signal is strong enough to pass to the next layer.",
+  "realWorldExample": "The ReLU (Rectified Linear Unit) activation function is used in almost all modern AI. Its math is incredibly simple: `if (x < 0) return 0; else return x;`. This tiny rule allows the network to learn incredibly complex shapes and patterns.",
+  "useCases": [
+    "Adding non-linearity",
+    "Network design"
+  ],
+  "questions": {
+    "basic": [
+      "What happens to a Neural Network if you do not use any Activation Functions at all?"
+    ],
+    "intermediate": [
+      "What does the 'Softmax' activation function do at the very end of an output layer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "No activation functions?",
+      "answer": "The entire 100-layer Neural Network mathematically collapses into a single straight line (a simple linear regression). It would be completely incapable of learning complex patterns like recognizing a human face."
+    },
+    {
+      "question": "What is Softmax?",
+      "answer": "It takes an array of random numbers outputted by the network and squashes them down so that they all add up perfectly to 1.0 (100%). This turns the raw math into readable percentages (e.g., '90% chance it's a dog, 10% chance it's a cat')."
+    }
+  ]
+}

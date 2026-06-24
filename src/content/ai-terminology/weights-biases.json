@@ -1,0 +1,30 @@
+{
+  "id": "weights-biases",
+  "title": "Weights & Biases",
+  "difficulty": "Advanced",
+  "definition": "The internal mathematical parameters that a neural network adjusts during training. Weights determine the strength of the connection between two neurons. Biases shift the activation threshold.",
+  "simpleExplanation": "Weights are 'How much does this matter?'. If you are predicting house prices, the 'Square Footage' input will have a massive Weight (very important), and the 'Color of the front door' input will have a tiny Weight (not important). Biases are the baseline starting point.",
+  "realWorldExample": "When OpenAI says GPT-4 has 'Trillions of Parameters', they literally mean there are trillions of individual Weights and Biases inside the mathematical file. Training the AI is just the process of adjusting those trillions of numbers up and down slightly until the AI gets smart.",
+  "useCases": [
+    "Model parameters",
+    "Mathematical foundations of ML"
+  ],
+  "questions": {
+    "basic": [
+      "During the training process, does the AI adjust the data, or does it adjust the Weights and Biases?"
+    ],
+    "intermediate": [
+      "In the classic linear equation `y = mx + b`, which variable represents the Weight, and which represents the Bias?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is adjusted?",
+      "answer": "It adjusts the Weights and Biases. The data remains strictly unchanged."
+    },
+    {
+      "question": "Weight vs Bias in equation?",
+      "answer": "The slope `m` is the Weight (how heavily 'x' impacts the outcome). The y-intercept `b` is the Bias (shifting the baseline up or down)."
+    }
+  ]
+}

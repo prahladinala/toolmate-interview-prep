@@ -1,0 +1,31 @@
+{
+  "id": "logout-patterns",
+  "title": "Logout Patterns",
+  "difficulty": "Advanced",
+  "definition": "The architectural requirement to completely wipe out all sensitive data from the Redux store when a user logs out, preventing the next user on the same computer from seeing it.",
+  "simpleExplanation": "If John logs in, Redux fetches his credit card history. If John clicks 'Logout', the `auth.isLoggedIn` changes to false. BUT, the credit card history is still sitting inside `state.billing`. If Jane logs in on the same laptop 5 minutes later, the billing slice hasn't been cleared, and Jane sees John's credit cards. You must destroy the entire state on logout.",
+  "realWorldExample": "Writing a Root Reducer interceptor that listens for the `USER_LOGOUT` action and replaces the entire Redux state tree with `undefined`.",
+  "useCases": [
+    "Security",
+    "Data privacy in shared environments"
+  ],
+  "questions": {
+    "basic": [
+      "Should you write a `logout` reducer in every single slice (auth, billing, profile) to clear their data individually?"
+    ],
+    "intermediate": [
+      "How do you clear the entire RTK Query cache on logout?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Clear individually?",
+      "answer": "No. That is error-prone. If you add a new slice and forget to handle the logout action, data will leak. It is better to clear the entire Root Reducer at once."
+    },
+    {
+      "question": "Clear RTK Query cache?",
+      "answer": "Dispatch `api.util.resetApiState()`. It instantly destroys all cached data from all endpoints."
+    }
+  ],
+  "codeExample": "import { combineReducers, configureStore } from '@reduxjs/toolkit';\nimport authReducer from './authSlice';\nimport billingReducer from './billingSlice';\n\nconst appReducer = combineReducers({\n  auth: authReducer,\n  billing: billingReducer,\n});\n\n// The Root Reducer Interceptor!\nconst rootReducer = (state, action) => {\n  // If the user clicks logout...\n  if (action.type === 'auth/logout') {\n    // Passing 'undefined' to appReducer forces EVERY slice \n    // to reset back to its initialState!\n    state = undefined;\n  }\n\n  return appReducer(state, action);\n};\n\nexport const store = configureStore({\n  reducer: rootReducer,\n});"
+}

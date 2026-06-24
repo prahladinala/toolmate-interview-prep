@@ -1,0 +1,30 @@
+{
+  "id": "flex-direction",
+  "title": "Flex Direction",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the direction in which flex items are placed in the flex container.",
+  "simpleExplanation": "Flexbox normally puts things in a horizontal Row. If you change it to `flex-col`, it stacks things vertically in a Column. The brilliant part is that you can use responsive classes to have a Row on Desktop, but a Column on Mobile.",
+  "realWorldExample": "A Pricing Page with 3 pricing tiers. On a laptop, you want them side-by-side (`flex-row`). On a mobile phone, there isn't enough room, so you stack them vertically (`flex-col`).",
+  "useCases": [
+    "Responsive layouts"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default direction of a `flex` container?"
+    ],
+    "intermediate": [
+      "How do you completely reverse the visual order of items in a flex container without changing the HTML?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default direction?",
+      "answer": "`flex-row` (Horizontal)."
+    },
+    {
+      "question": "Reverse visual order?",
+      "answer": "Use `flex-row-reverse` or `flex-col-reverse`. The item written first in the HTML will magically appear last on the screen."
+    }
+  ],
+  "codeExample": "<!-- \n  Mobile First Responsive Layout! \n  On phones, it stacks vertically. \n  On medium screens (md) and up, it sits side-by-side.\n-->\n<div class=\"flex flex-col md:flex-row\">\n  <div class=\"bg-gray-200\">Sidebar</div>\n  <div class=\"bg-blue-200\">Main Content</div>\n</div>"
+}

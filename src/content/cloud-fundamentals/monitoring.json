@@ -1,0 +1,31 @@
+{
+  "id": "monitoring",
+  "title": "Monitoring (CloudWatch / Azure Monitor)",
+  "difficulty": "Intermediate",
+  "definition": "A comprehensive service that observes and tracks the performance, health, and resource utilization (CPU, memory, network) of your entire cloud infrastructure in real-time.",
+  "simpleExplanation": "The dashboard of your car. It tells you how fast you are going (CPU usage), how much gas you have (Storage), and turns on a flashing red 'Check Engine' light (Alarms) if something is about to break.",
+  "realWorldExample": "AWS CloudWatch, Azure Monitor, GCP Cloud Monitoring. An engineer sets a CloudWatch Alarm: 'If the CPU of the web server stays above 90% for more than 5 minutes, send me a text message and automatically launch a second server.'",
+  "useCases": [
+    "Auto-scaling triggers",
+    "Performance optimization",
+    "Outage prevention"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary AWS service used for monitoring CPU metrics?"
+    ],
+    "intermediate": [
+      "What is the difference between a 'Metric' and an 'Alarm'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which AWS service?",
+      "answer": "Amazon CloudWatch."
+    },
+    {
+      "question": "Metric vs Alarm?",
+      "answer": "A Metric is a raw data point collected over time (e.g., 'CPU is at 45%'). An Alarm is a specific threshold rule you set (e.g., 'If CPU > 80%, send an email') that triggers an action based on those metrics."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "height",
+  "title": "Height",
+  "difficulty": "Beginner",
+  "definition": "Utilities for setting the height of an element, including fixed heights, percentage heights, and viewport heights.",
+  "simpleExplanation": "How tall something is. Just like width, you can use the spacing scale (`h-16`), percentages (`h-full`), or viewport units (`h-screen`).",
+  "realWorldExample": "Creating a 'Hero Image' at the top of a landing page that perfectly takes up the entire vertical space of the user's monitor using `h-screen`.",
+  "useCases": [
+    "Hero sections",
+    "Full-page layouts",
+    "Sizing icons"
+  ],
+  "questions": {
+    "basic": [
+      "If you apply `h-full` to a child, but the parent `div` doesn't have a defined height, what happens?"
+    ],
+    "intermediate": [
+      "What modern Tailwind class accounts for the mobile browser address bar popping in and out?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Parent has no height?",
+      "answer": "`h-full` will do nothing. Percentage heights ONLY work if the parent has an explicitly defined height."
+    },
+    {
+      "question": "Mobile address bar?",
+      "answer": "`h-dvh` (Dynamic Viewport Height). It automatically resizes the height when the mobile Safari/Chrome address bar expands or shrinks."
+    }
+  ],
+  "codeExample": "<!-- Fixed height (64px) -->\n<img src=\"logo.png\" class=\"h-16 w-16\" />\n\n<!-- Full Screen Hero Section (100vh) -->\n<div class=\"h-screen bg-cover bg-center\" style=\"background-image: url('hero.jpg')\">\n  <h1 class=\"text-white\">Welcome</h1>\n</div>\n\n<!-- Modern dynamic height (Fixes iOS Safari scrolling bugs!) -->\n<div class=\"h-dvh flex flex-col\">\n  <header>App Header</header>\n  <main class=\"flex-1\">Content</main>\n</div>"
+}

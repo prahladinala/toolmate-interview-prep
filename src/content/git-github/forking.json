@@ -1,0 +1,31 @@
+{
+  "id": "forking",
+  "title": "Forking Repositories",
+  "difficulty": "Intermediate",
+  "definition": "A fork is a complete, personal copy of someone else's repository that lives on your account. Forks allow you to freely make changes to a project without affecting the original upstream repository.",
+  "simpleExplanation": "The 'Copy and Paste' button of Open Source. If you want to fix a bug in the React framework, Facebook will not give you permission to edit their files. Instead, you click 'Fork'. GitHub instantly creates a perfect clone of React on YOUR profile. You fix the bug on your copy, and then politely ask Facebook to copy your fix over to theirs (a Pull Request).",
+  "realWorldExample": "Creating your own custom version of an open-source video game emulator, adding your own features, and releasing it as a totally independent project.",
+  "useCases": [
+    "Open Source contributing",
+    "Creating independent spin-off projects"
+  ],
+  "questions": {
+    "basic": [
+      "Is 'forking' a native Git command?"
+    ],
+    "intermediate": [
+      "If the original repository updates, does your fork update automatically?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it native Git?",
+      "answer": "No! `git fork` does not exist. Forking is a feature explicitly invented by GitHub/GitLab to manage permissions in the cloud."
+    },
+    {
+      "question": "Updates automatically?",
+      "answer": "No. Once you fork a repository, your copy is isolated. If the original author adds new code, you have to manually 'Sync Fork' in the GitHub UI to pull their new changes into your copy."
+    }
+  ],
+  "codeExample": "/* \n  The Standard Open Source Workflow:\n  \n  1. Click 'Fork' on the target GitHub repository.\n     (This copies it from facebook/react to your-name/react)\n     \n  2. Clone YOUR fork to your computer:\n     $ git clone https://github.com/your-name/react.git\n     \n  3. Make a branch, fix the bug, commit, and push:\n     $ git push origin bug-fix\n     \n  4. Go to GitHub and click 'Create Pull Request' to send \n     the code back to the original author!\n*/"
+}

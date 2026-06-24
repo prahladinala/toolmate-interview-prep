@@ -1,0 +1,34 @@
+{
+  "id": "typescript-scenarios",
+  "title": "Scenario-Based TS Questions",
+  "difficulty": "Advanced",
+  "definition": "Architectural interview questions that ask you to design the type system for a complex application feature.",
+  "simpleExplanation": "Instead of writing algorithms, the interviewer asks: 'We are building a unified API client that talks to 5 different microservices. How do you design the Type Interfaces to ensure the frontend developers get perfect autocomplete for all 5 services without duplicating code?'",
+  "realWorldExample": "Designing the type system for a Redux-like state management library.",
+  "useCases": [
+    "Staff/Principal Engineering interviews",
+    "System Design"
+  ],
+  "questions": {
+    "basic": [
+      "How do you share types between a Node backend and a React frontend?"
+    ],
+    "intermediate": [
+      "How would you type a highly dynamic form generator based on JSON configuration?"
+    ],
+    "advanced": [
+      "Design the types for an Event Emitter class."
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you share types between Backend/Frontend?",
+      "answer": "Monorepo architectures (Nx, Turborepo). You create a third package called `@company/shared-types`. Both the backend and frontend install this local package. If the backend changes a DTO, the frontend compilation instantly fails, preventing production bugs."
+    },
+    {
+      "question": "Design the types for an Event Emitter",
+      "answer": "You need a Generic Map. `type EventMap = { 'login': User, 'logout': void }`. The emitter methods look like: `on<K extends keyof EventMap>(event: K, cb: (payload: EventMap[K]) => void)`."
+    }
+  ],
+  "codeExample": "// SCENARIO: Design a strictly typed Event Emitter\n\n// 1. The developer defines their app's specific events\ntype AppEvents = {\n  'user_login': { userId: string, timestamp: number };\n  'user_logout': void; // No payload\n  'error': Error;\n};\n\n// 2. The generic class design\nclass TypedEventEmitter<Events extends Record<string, any>> {\n  private listeners: any = {};\n\n  // K is constrained to be a valid event name\n  // The payload type dynamically updates based on K!\n  on<K extends keyof Events>(\n    event: K, \n    callback: (payload: Events[K]) => void\n  ) {\n    if (!this.listeners[event]) this.listeners[event] = [];\n    this.listeners[event].push(callback);\n  }\n\n  emit<K extends keyof Events>(event: K, payload: Events[K]) {\n    this.listeners[event]?.forEach((cb: any) => cb(payload));\n  }\n}\n\nconst emitter = new TypedEventEmitter<AppEvents>();\n\n// TS enforces the payload must be an Error object!\nemitter.emit('error', new Error(\"Crash!\"));\n\n// TS throws error: payload missing userId!\n// emitter.emit('user_login', { timestamp: 123 });"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "reducers",
+  "title": "Reducers",
+  "difficulty": "Beginner",
+  "definition": "Pure functions that take the current state and an action, and return a new state result. `(state, action) => newState`.",
+  "simpleExplanation": "The accountant. The accountant looks at your Current Balance (state), looks at your Deposit Slip (action), does the math in their head, and writes down the New Balance (new state). They NEVER scribble over the old balance, they always write a brand new line.",
+  "realWorldExample": "A massive `switch` statement that looks at the `action.type`. If it says 'LOGOUT', it returns `{ user: null }`. If it says 'LOGIN', it returns `{ user: action.payload }`.",
+  "useCases": [
+    "Calculating state changes securely and predictably"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Reducer modify the original `state` object passed into it?"
+    ],
+    "intermediate": [
+      "Why must a Reducer return the current `state` as a default fallback?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Modify original state?",
+      "answer": "NEVER. Reducers must perform 'Immutable Updates'. They must make a COPY of the state, modify the copy, and return the copy."
+    },
+    {
+      "question": "Why default fallback?",
+      "answer": "When an Action is dispatched, it is sent to EVERY Reducer in the app. If a specific Reducer doesn't care about that specific Action, it must return the current state unchanged so it doesn't accidentally delete its data."
+    }
+  ],
+  "codeExample": "const initialState = { value: 0 };\n\nfunction counterReducer(state = initialState, action) {\n  switch (action.type) {\n    case 'counter/incremented':\n      // Make a copy, change the copy\n      return { ...state, value: state.value + 1 };\n      \n    case 'counter/decremented':\n      return { ...state, value: state.value - 1 };\n      \n    default:\n      // If we don't care about this action, return the state unchanged!\n      return state;\n  }\n}"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "composition",
+  "title": "Composition vs Inheritance",
+  "difficulty": "Intermediate",
+  "definition": "Composition is the React paradigm of building complex components by combining smaller, simpler components, usually via the `children` prop. React heavily favors Composition over Object-Oriented Inheritance.",
+  "simpleExplanation": "Inheritance is like biology: A Dog IS A Mammal. It inherits traits from its parent. Composition is like Legos: A Car HAS A Wheel, HAS An Engine, HAS A Door. React says, \"Don't try to make a SpecialButton class that inherits from a GenericButton class. Just build a GenericButton, and compose it by passing different icons and text inside it as children.\"",
+  "realWorldExample": "Building a Modal. Instead of creating an `AlertModal` that inherits from `BaseModal`, you create a generic `<Modal>` component that accepts `children`. Then you build `<AlertModal>` by returning `<Modal><h1>Alert!</h1></Modal>`.",
+  "useCases": [
+    "Creating highly reusable UI shells (Cards, Modals, Layouts)",
+    "Avoiding the \"Gorilla Banana\" problem of OOP (where you ask for a banana but get a gorilla holding the banana and the entire jungle)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the `children` prop?",
+      "Does React recommend Inheritance or Composition?"
+    ],
+    "intermediate": [
+      "How do you pass multiple \"slots\" of children to a component? (e.g., a header and a footer)",
+      "What does \"Containment\" mean in the context of Composition?"
+    ],
+    "advanced": [
+      "What is the `React.Children` API used for?",
+      "Why did React abandon mixins?"
+    ],
+    "trick": [
+      "Can a child component access or modify its own `children` prop?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you pass multiple slots of children?",
+      "answer": "You can pass React elements as custom props! Instead of just using the default `children`, you can pass `<Layout leftSidebar={<Sidebar />} rightContent={<Main />} />`."
+    },
+    {
+      "question": "Can a component modify its own children prop?",
+      "answer": "Props are read-only, so you cannot mutate `children` directly. However, using the advanced `React.cloneElement` and `React.Children.map` APIs, a parent CAN clone its children and inject new props into them before rendering."
+    },
+    {
+      "question": "Why did React abandon Mixins (Inheritance)?",
+      "answer": "Mixins caused implicit dependencies, name clashes, and snowballing complexity. Composition makes data flow explicit and visible."
+    }
+  ],
+  "codeExample": "import React from \"react\";\n\n// 1. The Generic Shell Component (Containment)\nfunction CardBox({ title, children, footerActions }) {\n  return (\n    <div className=\"border-2 rounded p-4 shadow-lg\">\n      <h2 className=\"border-b pb-2 mb-2\">{title}</h2>\n      \n      {/* This is the main composition slot */}\n      <div className=\"mb-4\">\n        {children}\n      </div>\n\n      {/* This is a custom prop slot for composition */}\n      <div className=\"flex gap-2\">\n        {footerActions}\n      </div>\n    </div>\n  );\n}\n\n// 2. The Specialized Component (Composing the shell)\nexport default function WelcomeDialog() {\n  return (\n    <CardBox \n      title=\"Welcome aboard!\"\n      footerActions={\n        <>\n          <button className=\"bg-blue-500 text-white px-2 rounded\">Accept</button>\n          <button className=\"text-gray-500\">Cancel</button>\n        </>\n      }\n    >\n      {/* Everything here is passed as the implicit `children` prop */}\n      <p>Thank you for signing up for our service.</p>\n      <p>Please review the terms below.</p>\n    </CardBox>\n  );\n}"
+}

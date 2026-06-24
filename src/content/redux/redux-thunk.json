@@ -1,0 +1,31 @@
+{
+  "id": "redux-thunk",
+  "title": "Redux Thunk",
+  "difficulty": "Intermediate",
+  "definition": "A middleware that allows you to write action creators that return a FUNCTION instead of an action object. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.",
+  "simpleExplanation": "A Thunk is just a function that wraps around another function to delay its execution. In Redux, when you dispatch a Thunk (a function), the Thunk middleware intercepts it, stops it from hitting the reducer, runs your API call, and then manually `dispatch()`es the final data when it's ready.",
+  "realWorldExample": "You dispatch `loginUser(credentials)`. The Thunk intercepts it, sends the credentials to the backend, gets a Token, and then dispatches `{ type: 'LOGIN_SUCCESS', payload: Token }` to the reducer.",
+  "useCases": [
+    "API integrations",
+    "Complex synchronous logic that needs access to `getState`"
+  ],
+  "questions": {
+    "basic": [
+      "Does RTK's `configureStore` require you to install Redux Thunk manually?"
+    ],
+    "intermediate": [
+      "What two arguments does a Thunk function receive when the middleware executes it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install manually?",
+      "answer": "No. `configureStore` automatically installs and enables Redux Thunk."
+    },
+    {
+      "question": "Two arguments?",
+      "answer": "`dispatch` (so you can send the final action) and `getState` (so you can check the current store data before making an API call)."
+    }
+  ],
+  "codeExample": "// A classic manual Thunk function\nexport const fetchUserData = (userId) => {\n  // Notice we return a FUNCTION, not an object!\n  return async (dispatch, getState) => {\n    \n    // 1. Dispatch a 'loading' action\n    dispatch({ type: 'user/fetchStarted' });\n\n    try {\n      // 2. Do the async work\n      const response = await fetch(`/api/users/${userId}`);\n      const data = await response.json();\n\n      // 3. Dispatch the 'success' action with the data\n      dispatch({ type: 'user/fetchSuccess', payload: data });\n\n    } catch (error) {\n      // 4. Dispatch the 'error' action\n      dispatch({ type: 'user/fetchFailed', error: error.message });\n    }\n  };\n};"
+}

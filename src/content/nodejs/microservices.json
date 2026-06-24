@@ -1,0 +1,32 @@
+{
+  "id": "microservices",
+  "title": "Microservices",
+  "difficulty": "Advanced",
+  "definition": "An architectural style that structures an application as a collection of loosely coupled, independently deployable services organized around business capabilities.",
+  "simpleExplanation": "Instead of building one gigantic mega-application (a Monolith) that handles Users, Products, Payments, and Emails all in one codebase, you chop it into pieces. You build 4 completely separate, tiny Node.js apps. App 1 ONLY handles Payments. App 2 ONLY handles Emails. They talk to each other over the network via HTTP or Message Queues.",
+  "realWorldExample": "Netflix. When you log in, that's the Auth Microservice. When it recommends movies, that's the AI Microservice. When you pay your bill, that's the Billing Microservice. If the AI Microservice crashes, Netflix still works, you just don't see recommendations.",
+  "useCases": [
+    "Massive engineering teams",
+    "Apps with extreme scaling requirements",
+    "Polyglot environments (e.g., Auth is Node.js, AI is Python, Billing is Java)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the opposite of a Microservice architecture?"
+    ],
+    "intermediate": [
+      "What is a major disadvantage of Microservices?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the opposite?",
+      "answer": "A Monolith (one single massive codebase and server)."
+    },
+    {
+      "question": "Major disadvantage?",
+      "answer": "Complexity. Debugging a Monolith is easy; the error is in the codebase. Debugging Microservices requires tracing network requests jumping across 5 different servers, dealing with network latency, and handling partial failures (Server A succeeded, but Server B crashed)."
+    }
+  ],
+  "codeExample": "// --- MONOLITH (Everything in one) ---\n// const app = express();\n// app.post('/checkout', (req, res) => {\n//   Database.saveOrder();\n//   Stripe.charge();\n//   Email.sendReceipt();\n// });\n\n// --- MICROSERVICES (Decoupled) ---\n// SERVICE 1: The API Gateway (Checkout Service)\nconsole.log(\"[Gateway]: Received Checkout Request.\");\nconsole.log(\"[Gateway]: Sending network request to -> http://payment-service:8001/charge\");\n\n// SERVICE 2: Payment Service (Running on a totally different server)\nconsole.log(\"[Payment Server]: Charged card. Broadcasting 'PaymentSuccess' event.\");\n\n// SERVICE 3: Email Service (Running on yet another server)\nconsole.log(\"[Email Server]: Heard 'PaymentSuccess'. Sending receipt email.\");\n\nconsole.log(\"\\nMicroservices allow the 'Payment' team to deploy updates without breaking the 'Email' team's code.\");"
+}

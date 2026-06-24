@@ -1,0 +1,34 @@
+{
+  "id": "node-vs-browser",
+  "title": "Node.js vs Browser JavaScript",
+  "difficulty": "Beginner",
+  "definition": "A comparison between the JavaScript environment in the browser (DOM-focused) and the Node.js environment (OS-focused).",
+  "simpleExplanation": "Browser JS is an interior decorator. It can change the paint color (CSS), move furniture around (DOM manipulation), and listen if someone rings the doorbell (Click events). But it CANNOT leave the house. Node.js is a construction worker. It cannot decorate the living room (no DOM), but it CAN tear down the house, build files on the hard drive, and talk to other servers.",
+  "realWorldExample": "If you try to write `document.getElementById('btn')` in a Node.js file, the program will crash because `document` does not exist on a backend server. If you try to write `fs.readFile('secret.txt')` in a browser, it will crash because browsers prohibit reading the user's hard drive for security.",
+  "useCases": [
+    "Understanding environment limitations",
+    "Writing isomorphic/universal code"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `window` object exist in Node.js?"
+    ],
+    "intermediate": [
+      "Can Node.js use the `fetch` API?"
+    ],
+    "advanced": [
+      "How do you write code that can safely run in both Node and the Browser?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does the window object exist?",
+      "answer": "No. The `window` object represents a browser tab. In Node.js, the global scope object is simply called `global` (or `globalThis`)."
+    },
+    {
+      "question": "Can Node use fetch()?",
+      "answer": "Historically, no (you had to use external libraries like `node-fetch` or `axios`). However, starting from Node 18, the `fetch` API is natively built into Node.js!"
+    }
+  ],
+  "codeExample": "// --- THIS WORKS IN BROWSER, CRASHES IN NODE ---\n// console.log(window.innerWidth);\n// document.body.style.background = 'red';\n\n// --- THIS WORKS IN NODE, CRASHES IN BROWSER ---\nconst fs = require('fs');\n// fs.writeFileSync('test.txt', 'Hello Hard Drive!');\n\n// --- THIS WORKS IN BOTH (Isomorphic Code) ---\nconst mathResult = Math.max(10, 20);\nconsole.log(\"Universal JS works everywhere! Result:\", mathResult);\n\n// Checking the environment safely:\nif (typeof window === 'undefined') {\n  console.log(\"I am running in Node.js!\");\n} else {\n  console.log(\"I am running in a Browser!\");\n}"
+}

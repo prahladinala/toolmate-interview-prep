@@ -1,0 +1,30 @@
+{
+  "id": "https-vs-ssh",
+  "title": "HTTPS vs SSH",
+  "difficulty": "Intermediate",
+  "definition": "The two primary protocols used to connect a local Git repository to a remote GitHub repository.",
+  "simpleExplanation": "- HTTPS: Requires you to use a Personal Access Token (PAT) every time you push, or requires a credential manager to remember it for you. Good for beginners.\n- SSH: Requires you to generate a digital key pair once. Afterward, authentication happens silently in the background. Good for professionals.",
+  "realWorldExample": "If your remote URL looks like `https://github.com/user/repo.git`, you are using HTTPS. If it looks like `git@github.com:user/repo.git`, you are using SSH.",
+  "useCases": [
+    "Choosing an authentication method"
+  ],
+  "questions": {
+    "basic": [
+      "Which protocol is recommended by GitHub for ease of use?"
+    ],
+    "intermediate": [
+      "Can you switch a repository from HTTPS to SSH after it's already been cloned?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Recommended?",
+      "answer": "GitHub officially recommends HTTPS for most users, combined with the Git Credential Manager."
+    },
+    {
+      "question": "Can you switch?",
+      "answer": "Yes! You just change the 'origin' URL. Run `git remote set-url origin git@github.com:user/repo.git`."
+    }
+  ],
+  "codeExample": "# Check which protocol you are currently using:\n$ git remote -v\n\n# Output indicating HTTPS:\n# origin  https://github.com/facebook/react.git (push)\n\n# Output indicating SSH:\n# origin  git@github.com:facebook/react.git (push)\n\n# Switch from HTTPS to SSH\n$ git remote set-url origin git@github.com:facebook/react.git"
+}

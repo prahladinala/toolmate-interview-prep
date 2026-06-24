@@ -1,0 +1,32 @@
+{
+  "id": "4xx",
+  "title": "4xx Client Errors",
+  "difficulty": "Beginner",
+  "definition": "HTTP status codes ranging from 400-499. They indicate that the CLIENT (the frontend app, the user, the browser) did something wrong. The request contained bad syntax, unauthorized credentials, or asked for something that doesn't exist.",
+  "simpleExplanation": "The server saying: 'You messed up. I cannot process this because you sent me garbage, you aren't logged in, or you are looking for a ghost.'",
+  "realWorldExample": "Typing a URL that doesn't exist (`404 Not Found`). Forgetting to type your password when logging in (`400 Bad Request`). Trying to access an admin panel as a standard user (`403 Forbidden`).",
+  "useCases": [
+    "Form validation",
+    "Authentication failures",
+    "API error handling"
+  ],
+  "questions": {
+    "basic": [
+      "Who is at fault when a 4xx error occurs: The Frontend Developer or the Backend Developer?"
+    ],
+    "intermediate": [
+      "What is the exact difference between `401 Unauthorized` and `403 Forbidden`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who is at fault?",
+      "answer": "The Frontend Developer (The Client). They sent an invalid request."
+    },
+    {
+      "question": "401 vs 403?",
+      "answer": "`401 Unauthorized` means 'I don't know who you are. Please log in.' `403 Forbidden` means 'I know exactly who you are, but you do not have permission to do this (e.g., you aren't an admin).'"
+    }
+  ],
+  "codeExample": "app.post('/api/users', (req, res) => {\n  const { email, password } = req.body;\n\n  // 1. 400 Bad Request (Client forgot to send data!)\n  if (!email || !password) {\n    return res.status(400).json({ error: \"Email and password are required\" });\n  }\n\n  // 2. 401 Unauthorized (Client sent a bad password!)\n  if (password !== 'secret123') {\n    return res.status(401).json({ error: \"Invalid credentials. Please log in.\" });\n  }\n\n  // 3. 403 Forbidden (Client is logged in, but not an admin!)\n  if (req.user.role !== 'Admin') {\n    return res.status(403).json({ error: \"You are not allowed to create users.\" });\n  }\n\n  res.status(200).send(\"Success\");\n});"
+}

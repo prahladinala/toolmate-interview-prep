@@ -1,0 +1,32 @@
+{
+  "id": "branch-protection",
+  "title": "Branch Protection Rules",
+  "difficulty": "Advanced",
+  "definition": "Rules enforced by GitHub that prevent certain actions on specific branches (usually `main` or `production`), such as preventing force pushes, preventing deletions, or requiring code reviews before merging.",
+  "simpleExplanation": "A force field around your `main` branch. It physically stops developers from typing `git push origin main`. It forces everyone to use Pull Requests, forces them to get at least 1 approval from a coworker, and forces automated tests to pass before the code is allowed in.",
+  "realWorldExample": "A developer gets angry and tries to run `git push --force` to overwrite the company's production code. GitHub's branch protection intercepts the command, denies it, and logs the attempt.",
+  "useCases": [
+    "Enforcing code quality",
+    "Compliance and security",
+    "Preventing accidents"
+  ],
+  "questions": {
+    "basic": [
+      "Which branch is most commonly protected by these rules?"
+    ],
+    "intermediate": [
+      "What happens if you try to `git push origin main` when Branch Protection requires a Pull Request?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which branch?",
+      "answer": "The `main` (or `master`) branch, and any release/production branches."
+    },
+    {
+      "question": "What happens?",
+      "answer": "Your terminal will literally spit back an error: `remote: error: GH006: Protected branch update failed. remote: error: At least 1 approving review is required by reviewers with write access.`"
+    }
+  ],
+  "codeExample": "/*\n  Common Branch Protection Settings you should enable on 'main':\n  \n  [x] Require a pull request before merging\n      [x] Require approvals: 1\n      [x] Dismiss stale pull request approvals when new commits are pushed\n  [x] Require status checks to pass before merging\n      (This means your automated CI/CD Tests must pass!)\n  [x] Do not allow bypassing the above settings\n  [x] Restrict who can push to matching branches\n*/"
+}

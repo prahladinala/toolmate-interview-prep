@@ -1,0 +1,31 @@
+{
+  "id": "unit-testing",
+  "title": "Unit Testing",
+  "difficulty": "Beginner",
+  "definition": "A software testing method where individual units or components of a software are tested in total isolation from the rest of the application.",
+  "simpleExplanation": "Testing a single puzzle piece. If you have a function that calculates taxes, a Unit Test only runs that specific function. It intentionally disconnects from the database and the network to prove that the raw math logic works perfectly on its own.",
+  "realWorldExample": "Writing a test for `calculateDiscount(price, code)`. You feed it 100 and 'SAVE20', and expect it to return 80. You don't test if the web server can receive the request, just the math.",
+  "useCases": [
+    "Validating core business logic",
+    "Ensuring pure functions behave correctly"
+  ],
+  "questions": {
+    "basic": [
+      "Should a Unit Test interact with a real Database?"
+    ],
+    "intermediate": [
+      "What is a 'Pure Function' in relation to unit testing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Should it interact with a DB?",
+      "answer": "NEVER. If a test touches a database, hard drive, or network, it is no longer a Unit Test (it is an Integration test). Unit tests must run in milliseconds and be completely isolated."
+    },
+    {
+      "question": "What is a Pure Function?",
+      "answer": "A function that always produces the exact same output given the exact same input, and causes no side effects (like modifying global variables). Pure functions are incredibly easy to unit test."
+    }
+  ],
+  "codeExample": "// --- THE UNIT (A pure function) ---\nfunction calculateTotal(price, taxRate) {\n  if (price < 0) throw new Error(\"Price cannot be negative\");\n  return price + (price * taxRate);\n}\n\n// --- THE UNIT TESTS ---\n// Testing the 'Happy Path'\nfunction testHappyPath() {\n  const result = calculateTotal(100, 0.1);\n  console.assert(result === 110, \"Expected 110\");\n}\n\n// Testing the 'Edge Case' (Error handling)\nfunction testNegativePrice() {\n  try {\n    calculateTotal(-50, 0.1);\n    console.error(\"Test Failed: Should have thrown an error\");\n  } catch (err) {\n    console.assert(err.message === \"Price cannot be negative\", \"Expected specific error\");\n  }\n}\n\ntestHappyPath();\ntestNegativePrice();\nconsole.log(\"Unit tests passed!\");"
+}

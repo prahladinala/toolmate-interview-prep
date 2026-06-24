@@ -1,0 +1,31 @@
+{
+  "id": "1xx",
+  "title": "1xx Informational",
+  "difficulty": "Advanced",
+  "definition": "HTTP status codes ranging from 100-199. They indicate that the request was received and the process is continuing. They are purely informational and rarely interacted with directly by standard frontend developers.",
+  "simpleExplanation": "The server saying: 'Hold on, I heard you, I'm working on it, please wait.'",
+  "realWorldExample": "`101 Switching Protocols`: A client asks the server to upgrade a standard HTTP connection into a persistent WebSocket connection. The server replies with 101 to say 'Okay, we are now speaking WebSockets.'",
+  "useCases": [
+    "WebSockets",
+    "Protocol upgrades"
+  ],
+  "questions": {
+    "basic": [
+      "Do you frequently write code to handle 1xx status codes in standard React applications?"
+    ],
+    "intermediate": [
+      "What does the `100 Continue` status code tell the client?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Handle in React?",
+      "answer": "No. 1xx codes are handled at the absolute lowest network layers by the browser or the `fetch` API under the hood."
+    },
+    {
+      "question": "What is 100 Continue?",
+      "answer": "It tells the client that the initial part of a massive request (like the headers of a 5GB file upload) has been received and accepted, and the client should continue sending the rest of the massive body."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Flow of a 101 Switching Protocols (WebSocket Upgrade)\n  \n  1. Client sends request to connect:\n     GET /chat HTTP/1.1\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  2. Server accepts the upgrade:\n     HTTP/1.1 101 Switching Protocols\n     Upgrade: websocket\n     Connection: Upgrade\n     \n  3. The HTTP connection is kept permanently open and binary data begins flowing.\n*/"
+}

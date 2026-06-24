@@ -1,0 +1,30 @@
+{
+  "id": "dns",
+  "title": "DNS Service (Route 53 / Cloud DNS)",
+  "difficulty": "Beginner",
+  "definition": "A highly available cloud Domain Name System service. It translates human-readable domain names into the machine-readable IP addresses needed to locate servers.",
+  "simpleExplanation": "The phonebook of the internet. You type `google.com`. The DNS service looks up the name and tells your browser to connect to the IP address `142.250.190.46`.",
+  "realWorldExample": "AWS Route 53, Azure DNS. You buy `mycoolstartup.com` and use Route 53 to map that name directly to your AWS Load Balancer. Route 53 can also route users to different servers based on their geographic location (e.g., sending European users to the Paris data center).",
+  "useCases": [
+    "Domain management",
+    "Global traffic routing"
+  ],
+  "questions": {
+    "basic": [
+      "What does DNS stand for?"
+    ],
+    "intermediate": [
+      "Why is AWS's DNS service specifically named 'Route 53'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Domain Name System."
+    },
+    {
+      "question": "Why Route 53?",
+      "answer": "All DNS requests across the entire internet fundamentally operate on TCP/UDP Port 53. Amazon named it as a pun on US Highways (like Route 66)."
+    }
+  ]
+}

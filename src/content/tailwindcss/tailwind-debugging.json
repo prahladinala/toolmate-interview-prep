@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-debugging",
+  "title": "Debugging Questions",
+  "difficulty": "Advanced",
+  "definition": "Scenario-based questions where a piece of Tailwind code is broken, and you must identify WHY it is broken and how to fix it.",
+  "simpleExplanation": "Proving that you have real-world experience, because you've definitely hit these exact frustrating bugs before.",
+  "realWorldExample": "Being asked why a `z-50` dropdown menu is appearing underneath a `z-10` hero image.",
+  "useCases": [
+    "Senior Technical Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "You wrote `<div class=\"bg-red-500 hover:bg-blue\">`. On hover, the background disappears instead of turning blue. Why?"
+    ],
+    "intermediate": [
+      "You wrote `<div class=\"absolute top-0 right-0\">` inside a Card component, but the div flew to the top right of the entire webpage. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Background disappears?",
+      "answer": "Because `bg-blue` is an invalid class. It must be a specific shade, like `bg-blue-500`. Tailwind doesn't generate broken classes, so the browser drops the background color entirely."
+    },
+    {
+      "question": "Flew to top right?",
+      "answer": "Because absolute elements position themselves relative to their nearest positioned ancestor. The Card component is missing the `relative` class, so the absolute div escaped the card and anchored itself to the `<body>`."
+    }
+  ],
+  "codeExample": "/*\n  Q: You have a button: \n     <button class=\"px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:opacity-50\">\n       Submit\n     </button>\n     \n     You use React to add the HTML `disabled` attribute. \n     The button fades to 50% opacity correctly. \n     BUT, when you hover your mouse over the disabled button, it still turns dark blue (`bg-blue-600`). How do you stop this?\n     \n  A: The `hover:` variant doesn't magically know the button is disabled. It still triggers. \n  \n     You must stack the variants: `disabled:hover:bg-blue-500` to force it to stay the original color, OR simply use `disabled:pointer-events-none` so the button physically cannot register mouse hovers or clicks anymore.\n*/"
+}

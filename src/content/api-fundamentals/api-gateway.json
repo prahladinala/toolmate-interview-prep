@@ -1,0 +1,32 @@
+{
+  "id": "api-gateway",
+  "title": "API Gateway",
+  "difficulty": "Advanced",
+  "definition": "A centralized server acting as a reverse proxy that sits between clients and a collection of backend microservices. It routes requests, composes responses, and enforces security policies.",
+  "simpleExplanation": "A massive corporation has 50 different buildings (Microservices). You are a delivery driver. You don't want to figure out the map to all 50 buildings. You drop the package at the Front Security Desk (API Gateway). The Security Desk figures out exactly which building it needs to go to.",
+  "realWorldExample": "AWS API Gateway. A mobile app just makes requests to `api.company.com`. The API Gateway receives the request. If it's for `/billing`, it forwards it to the Python Billing Service. If it's for `/videos`, it forwards it to the Go Video Service. It also checks JWT tokens so the internal services don't have to.",
+  "useCases": [
+    "Microservices architecture",
+    "Rate limiting",
+    "Authentication centralization"
+  ],
+  "questions": {
+    "basic": [
+      "How does an API Gateway simplify the code written on the Frontend (Client)?"
+    ],
+    "intermediate": [
+      "What is a 'Single Point of Failure' and how does it relate to an API Gateway?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Simplify frontend?",
+      "answer": "Without a gateway, the frontend would have to memorize 50 different IP addresses for 50 different microservices. With a gateway, the frontend only talks to one single URL, and the gateway handles the complex routing."
+    },
+    {
+      "question": "Single Point of Failure?",
+      "answer": "If the Billing Service crashes, only Billing goes down. But because ALL traffic routes through the API Gateway, if the Gateway crashes, the entire company goes completely offline. Gateways must be highly available and redundant."
+    }
+  ],
+  "codeExample": "/* \n  NGINX acting as a simple API Gateway \n*/\n\nserver {\n    listen 80;\n    server_name api.mycompany.com;\n\n    # All auth traffic goes to the Node.js Auth Service on port 4000\n    location /auth/ {\n        proxy_pass http://10.0.0.1:4000/;\n    }\n\n    # All billing traffic goes to the Python Billing Service on port 5000\n    location /billing/ {\n        proxy_pass http://10.0.0.2:5000/;\n    }\n}"
+}

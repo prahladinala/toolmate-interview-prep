@@ -1,0 +1,31 @@
+{
+  "id": "memoization-redux",
+  "title": "Memoization",
+  "difficulty": "Advanced",
+  "definition": "An optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again.",
+  "simpleExplanation": "If you ask me 'What is 1,234 x 5,678?', it takes me 10 minutes to calculate the answer. If you ask me the exact same question 5 seconds later, I don't recalculate it. I just remember the answer. That is memoization.",
+  "realWorldExample": "Using `useMemo()` in React components to prevent an expensive sorting algorithm from running on an array of Redux data every time a totally unrelated piece of state updates.",
+  "useCases": [
+    "Preventing UI lag",
+    "Optimizing derived state calculations"
+  ],
+  "questions": {
+    "basic": [
+      "What library does Redux use to implement memoized selectors?"
+    ],
+    "intermediate": [
+      "If a memoized selector receives the exact same arguments as last time, does the internal function execute?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which library?",
+      "answer": "Reselect (built into RTK via `createSelector`)."
+    },
+    {
+      "question": "Does it execute?",
+      "answer": "No. It completely skips the internal function and instantly returns the cached result from memory."
+    }
+  ],
+  "codeExample": "import { useMemo } from 'react';\nimport { useSelector } from 'react-redux';\n\nfunction ExpensiveComponent() {\n  const users = useSelector(state => state.users);\n\n  // ✅ GOOD: This heavy calculation ONLY runs when 'users' actually changes!\n  // If this component re-renders because 'theme' changed, this math is skipped.\n  const sortedUsers = useMemo(() => {\n    console.log('Running heavy sort algorithm...');\n    return [...users].sort((a, b) => a.name.localeCompare(b.name));\n  }, [users]);\n\n  return <div>{sortedUsers.length} Users</div>;\n}"
+}

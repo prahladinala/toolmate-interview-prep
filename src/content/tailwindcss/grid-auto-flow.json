@@ -1,0 +1,31 @@
+{
+  "id": "grid-auto-flow",
+  "title": "Grid Auto Flow",
+  "difficulty": "Advanced",
+  "definition": "Utilities for controlling how the auto-placement algorithm works, specifying exactly how items flow into the grid.",
+  "simpleExplanation": "When you dump 10 items into a grid, do they fill up the columns first (left-to-right), or do they fill up the rows first (top-to-bottom)? Auto-flow lets you decide.",
+  "realWorldExample": "Using `grid-flow-col` to create a horizontal scrolling carousel where items naturally stack sideways into columns instead of wrapping downward.",
+  "useCases": [
+    "Dense photo grids",
+    "Horizontal carousels"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default auto-flow direction for CSS Grid?"
+    ],
+    "intermediate": [
+      "What does the `grid-flow-row-dense` class do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default direction?",
+      "answer": "Row (left-to-right, then wraps down to the next row)."
+    },
+    {
+      "question": "dense?",
+      "answer": "If you have items of different sizes (`col-span-2`), sometimes they leave ugly empty holes in the grid. `dense` tells the browser's algorithm to go back and pack smaller items into those empty holes, completely rearranging your HTML order to make the grid fit perfectly like Tetris."
+    }
+  ],
+  "codeExample": "<!-- A Masonry/Tetris Photo Gallery -->\n<!-- 'dense' packs small photos into gaps left by large photos -->\n<div class=\"grid grid-cols-4 grid-flow-row-dense gap-4\">\n  <div class=\"col-span-2 row-span-2 bg-blue-200\">Giant Photo</div>\n  <div class=\"col-span-1 bg-red-200\">Small Photo (Will jump to fill a hole!)</div>\n  <div class=\"col-span-3 bg-green-200\">Wide Photo</div>\n</div>"
+}

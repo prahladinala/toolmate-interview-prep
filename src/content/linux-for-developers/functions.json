@@ -1,0 +1,30 @@
+{
+  "id": "functions",
+  "title": "Functions",
+  "difficulty": "Advanced",
+  "definition": "Reusable blocks of code within a Bash script. They allow you to group complex commands under a single name, keeping scripts organized and avoiding copy-pasting the same code.",
+  "simpleExplanation": "A mini-script inside your script. You teach the script how to 'CheckDatabase()'. Then, whenever you need to check the database, you just say 'CheckDatabase()' instead of typing out the 20 lines of code again.",
+  "realWorldExample": "A backup script has a function `log_message() { echo \"[$(date)] $1\" >> backup.log; }`. Throughout the 500-line script, the developer can just type `log_message \"Starting backup\"` to instantly write neatly formatted timestamps to the log file.",
+  "useCases": [
+    "Modular scripting",
+    "Dry (Don't Repeat Yourself) programming"
+  ],
+  "questions": {
+    "basic": [
+      "Do Bash functions require you to define what type of data they return (like integer or string)?"
+    ],
+    "intermediate": [
+      "How do you pass a variable or argument into a Bash function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Define return type?",
+      "answer": "No. Bash is a dynamically untyped language. Functions technically only return numeric exit statuses (0 for success, 1-255 for errors), not data."
+    },
+    {
+      "question": "Pass arguments?",
+      "answer": "You don't put them in parentheses like other languages. You simply write them after the function name separated by a space (e.g., `my_function \"argument1\"`). Inside the function, you access it using `$1`."
+    }
+  ]
+}

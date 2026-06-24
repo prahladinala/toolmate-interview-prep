@@ -1,0 +1,32 @@
+{
+  "id": "git-branch",
+  "title": "git branch",
+  "difficulty": "Beginner",
+  "definition": "The command used to list, create, or delete branches.",
+  "simpleExplanation": "The branch management tool. Typing it by itself lists all your branches and puts a little star next to the one you are currently on. Typing it with a name creates a new alternate universe.",
+  "realWorldExample": "Your boss tells you to build a login page. You type `git branch feature/login-page` to create a safe space to work.",
+  "useCases": [
+    "Seeing where you are",
+    "Creating new branches",
+    "Deleting old branches"
+  ],
+  "questions": {
+    "basic": [
+      "Does creating a branch automatically switch you to that branch?"
+    ],
+    "intermediate": [
+      "How do you delete a branch safely?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Switch automatically?",
+      "answer": "No. `git branch my-feature` creates it, but leaves you exactly where you are. You must use `git checkout` or `git switch` to actually jump into the new branch."
+    },
+    {
+      "question": "Delete branch?",
+      "answer": "`git branch -d branch-name`. Git will actually stop you and throw an error if the branch contains unmerged work. (You can force delete it with a capital `-D`)."
+    }
+  ],
+  "codeExample": "# List all local branches (the one with the * is active)\n$ git branch\n#   feature-login\n# * main\n\n# Create a new branch called 'dark-mode'\n$ git branch dark-mode\n\n# Delete a branch (safe delete)\n$ git branch -d old-feature\n\n# Force delete a branch (even if work will be lost)\n$ git branch -D broken-feature"
+}

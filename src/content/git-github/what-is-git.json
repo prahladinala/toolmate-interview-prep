@@ -1,0 +1,32 @@
+{
+  "id": "what-is-git",
+  "title": "What is Git?",
+  "difficulty": "Beginner",
+  "definition": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+  "simpleExplanation": "Imagine playing a video game where you can save your progress at any time. If you make a bad decision, you can just load an old save file. Git is exactly that, but for your code. It keeps a perfect historical record of every change you've ever made.",
+  "realWorldExample": "Writing a book. Instead of saving files like 'book_v1.doc', 'book_final.doc', and 'book_final_FINAL_v3.doc', you just have one 'book.doc' and Git remembers all previous versions for you.",
+  "useCases": [
+    "Tracking changes over time",
+    "Collaborating with other developers without overwriting their code",
+    "Reverting code when a bug is introduced"
+  ],
+  "questions": {
+    "basic": [
+      "Who created Git?"
+    ],
+    "intermediate": [
+      "What does it mean that Git is 'distributed'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who created Git?",
+      "answer": "Linus Torvalds, the creator of Linux, built Git in 2005 to help manage the Linux kernel development."
+    },
+    {
+      "question": "What is distributed?",
+      "answer": "Unlike centralized systems where a single master server holds the history, in Git, every single developer has a complete, 100% full copy of the entire project history on their own local hard drive."
+    }
+  ],
+  "codeExample": "// No code for this conceptual topic, but think of Git as a timeline!\n// v1.0.0 (Initial Release) ──> v1.1.0 (Added Feature) ──> v1.2.0 (Fixed Bug)\nconsole.log('Git tracks this timeline!');"
+}

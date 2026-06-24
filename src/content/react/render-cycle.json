@@ -1,0 +1,45 @@
+{
+  "id": "render-cycle",
+  "title": "Render Cycle",
+  "difficulty": "Intermediate",
+  "definition": "The React Render Cycle is the multi-step process React goes through to determine what the UI should look like and update the actual DOM in the browser.",
+  "simpleExplanation": "Imagine you are a chef. The Render Cycle has 3 steps. 1. Trigger: The waiter hands you an order ticket (State changed). 2. Render: You look at the recipe and gather the ingredients in the kitchen (React calls your component function and figures out what the Virtual DOM should look like). 3. Commit: You place the finished plate on the customer's table (React physically updates the HTML in the browser so the user can see it).",
+  "realWorldExample": "When a user clicks \"Like\", state changes to `likes: 1`. React triggers a render. React calls `Post()` and sees it returned `<button>Like 1</button>`. React compares this to the old button (Render Phase). Finally, React reaches into the DOM and changes the text (Commit Phase).",
+  "useCases": [
+    "Understanding performance bottlenecks",
+    "Debugging infinite loops",
+    "Knowing when to use `useEffect` vs `useLayoutEffect`"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three steps of the React rendering process?",
+      "Does \"Rendering\" mean updating the actual browser screen?"
+    ],
+    "intermediate": [
+      "If a component \"Renders\" but nothing changed, does React update the DOM?",
+      "What is an initial render vs a re-render?"
+    ],
+    "advanced": [
+      "How does Concurrent Mode (React 18) affect the Render Phase?",
+      "Why must the Render Phase be \"Pure\"?"
+    ],
+    "trick": [
+      "If you update state to the EXACT same value it already has, does React trigger a render cycle?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does \"Rendering\" mean updating the browser screen?",
+      "answer": "NO! This is the biggest misconception in React. \"Rendering\" purely means React is calling your function to see what the UI *should* look like. Updating the screen is called \"Mounting\" or \"Committing\"."
+    },
+    {
+      "question": "If a component renders but nothing changed, does the DOM update?",
+      "answer": "No. React compares the new Virtual DOM to the old Virtual DOM. If they are exactly the same, React skips the Commit phase entirely and touches nothing in the browser."
+    },
+    {
+      "question": "Why must the Render Phase be Pure?",
+      "answer": "Because React can call your component function multiple times, abort it, or pause it (especially in Strict Mode or Concurrent Mode). If your component mutates an external variable or fetches data during render, it will cause unpredictable bugs."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\nexport default function RenderDemo() {\n  const [count, setCount] = useState(0);\n\n  // This console.log represents the \"Render Phase\"\n  // It runs every time the component is asked \"what should you look like?\"\n  console.log(\"Render Phase: Evaluating the component... Count is\", count);\n\n  return (\n    <div>\n      <h2>Count: {count}</h2>\n      {/* 1. The Trigger */}\n      <button onClick={() => setCount(c => c + 1)}>Trigger Update</button>\n      <button onClick={() => setCount(0)}>Set to 0 (Try clicking when already 0)</button>\n    </div>\n  );\n}"
+}

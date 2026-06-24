@@ -1,0 +1,31 @@
+{
+  "id": "vector-search",
+  "title": "Vector Search",
+  "difficulty": "Intermediate",
+  "definition": "The overarching technology of querying data based on its meaning and context (semantic similarity) rather than exact lexical (keyword) matches.",
+  "simpleExplanation": "If you search for 'Canine doctor', a keyword search looks for those exact words and fails. A Vector Search understands that 'Canine doctor' means exactly the same thing as 'Veterinarian for dogs' and successfully finds the document.",
+  "realWorldExample": "Google Image Search. You upload a picture of a red chair. The AI converts your picture into a vector, runs a Vector Search across billions of other images, and shows you visually similar red chairs.",
+  "useCases": [
+    "Semantic search",
+    "Image matching",
+    "Product recommendations"
+  ],
+  "questions": {
+    "basic": [
+      "Does Vector Search require the query words to exactly match the document words?"
+    ],
+    "intermediate": [
+      "Why do we convert data into Vectors before searching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exact match required?",
+      "answer": "No. It searches based on mathematical meaning, so exact word matches are entirely unnecessary."
+    },
+    {
+      "question": "Why convert to vectors?",
+      "answer": "Because computers cannot measure the 'distance' or 'similarity' between English words easily. By converting concepts into math, computers can instantly calculate exactly how close two concepts are to each other."
+    }
+  ]
+}

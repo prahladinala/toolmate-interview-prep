@@ -1,0 +1,35 @@
+{
+  "id": "es-modules",
+  "title": "ES Modules in TypeScript",
+  "difficulty": "Beginner",
+  "definition": "The official standard format to package JavaScript code for reuse. TypeScript relies heavily on ES Modules (`import` and `export`) to share types, interfaces, and logic across files.",
+  "simpleExplanation": "Before ES Modules, all JS files were just dumped into a giant global bucket, causing variables to overwrite each other. ES Modules give every file its own private room. Nothing leaves the room unless you explicitly `export` it, and nothing enters the room unless you explicitly `import` it.",
+  "realWorldExample": "Creating a `types.ts` file that holds all your global interfaces, and importing them into your React components to keep the component files clean.",
+  "useCases": [
+    "File separation",
+    "Code reusability",
+    "Avoiding global namespace pollution"
+  ],
+  "questions": {
+    "basic": [
+      "What keywords are used to share code between files?"
+    ],
+    "intermediate": [
+      "Does exporting an `interface` add any code to your final JavaScript bundle?"
+    ],
+    "advanced": [
+      "What is `import type`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does exporting an interface add code?",
+      "answer": "No. Because interfaces only exist at compile time, exporting and importing them leaves absolutely zero footprint in the compiled JavaScript bundle."
+    },
+    {
+      "question": "What is import type?",
+      "answer": "A TS-specific feature: `import type { User } from './types'`. It explicitly tells the compiler 'I am ONLY importing types, not real JS values'. This allows modern bundlers (like Vite or Webpack) to safely drop the import statement entirely during compilation, resulting in faster builds."
+    }
+  ],
+  "codeExample": "// file: models.ts\nexport interface User {\n  id: number;\n  name: string;\n}\n// Default export (Only one per file!)\nexport default function getAdmin() { return 'Admin'; }\n\n// file: app.ts\n// Named imports use { }, default imports don't.\nimport getAdmin, { User } from './models';\n\n// TYPE-ONLY IMPORT (Best Practice for performance!)\nimport type { User as UserType } from './models';\n\nconst newUser: UserType = { id: 1, name: \"Alice\" };"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "checkbox-radio",
+  "title": "Checkbox & Radio Buttons",
+  "difficulty": "Intermediate",
+  "definition": "The specific techniques required to style HTML checkboxes and radio buttons, which are notoriously difficult to manipulate using standard CSS.",
+  "simpleExplanation": "You cannot easily change the color of a default browser checkbox just by applying `bg-blue-500`. To customize them, you usually have to hide the real checkbox (`sr-only`), and draw a fake box using Tailwind that reacts to the `peer-checked:` state of the hidden input.",
+  "realWorldExample": "Creating a massive, clickable 'Plan Selection' card where clicking anywhere on the card selects the hidden radio button inside it.",
+  "useCases": [
+    "Pricing tables",
+    "Custom forms",
+    "Settings toggles"
+  ],
+  "questions": {
+    "basic": [
+      "Can you simply apply `bg-red-500` to a `<input type=\"checkbox\">` to make the checkmark red?"
+    ],
+    "intermediate": [
+      "What is the easiest way to perfectly style checkboxes without writing complex `peer` logic?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Apply background color?",
+      "answer": "No. Browsers heavily restrict styling on checkboxes. It will just remain the default blue/system color."
+    },
+    {
+      "question": "Easiest way?",
+      "answer": "Use the official `@tailwindcss/forms` plugin. It resets checkboxes so that `text-red-500` actually DOES change the checkmark color!"
+    }
+  ],
+  "codeExample": "<!-- Custom Radio Button Card (No Plugins Required!) -->\n<label class=\"cursor-pointer\">\n  <!-- 1. Hide the real input, but make it a 'peer' -->\n  <input type=\"radio\" name=\"plan\" class=\"peer sr-only\" />\n  \n  <!-- 2. Draw a fake card. When the invisible peer is checked, add a blue border! -->\n  <div class=\"border-2 border-gray-200 p-6 rounded-lg \n              peer-checked:border-blue-500 peer-checked:bg-blue-50 transition\">\n    <h3 class=\"font-bold\">Pro Plan</h3>\n    <p>$15 / month</p>\n  </div>\n</label>"
+}

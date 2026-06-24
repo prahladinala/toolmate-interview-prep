@@ -1,0 +1,32 @@
+{
+  "id": "role-based-access",
+  "title": "Role-Based Access Control",
+  "difficulty": "Intermediate",
+  "definition": "RBAC: An authorization strategy where permissions are assigned to specific roles (Admin, Editor, Viewer), and users are granted those roles.",
+  "simpleExplanation": "A standard user logs in and sees 'View Article'. An Admin logs in and sees 'View Article' AND 'Delete Article'. The system checks their 'role' before rendering UI elements or allowing API requests.",
+  "realWorldExample": "A SaaS application with 'Free Tier' and 'Pro Tier' users. Pro users are authorized to access the `/advanced-analytics` route, while Free users are blocked.",
+  "useCases": [
+    "SaaS applications",
+    "Admin panels",
+    "Enterprise software"
+  ],
+  "questions": {
+    "basic": [
+      "If Authentication answers 'Are you logged in?', what does Authorization answer?"
+    ],
+    "intermediate": [
+      "Why is it critical to check user roles on the Server/API, rather than just hiding the 'Delete' button in the React UI?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Authorization answers?",
+      "answer": "'Are you allowed to do this?'"
+    },
+    {
+      "question": "Why check on server?",
+      "answer": "Because the client is in the hands of the enemy. A malicious user can easily open Chrome DevTools, make a hidden 'Delete' button visible, and click it. The server API must verify their role before actually deleting the data."
+    }
+  ],
+  "codeExample": "// app/api/delete-user/route.ts\nimport { getAuth } from '@/lib/auth';\n\nexport async function POST(request: Request) {\n  const user = await getAuth();\n  \n  // 1. AUTHENTICATION (Are they logged in?)\n  if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });\n  \n  // 2. AUTHORIZATION (Are they an Admin?)\n  if (user.role !== 'ADMIN') {\n    return Response.json({ error: 'Forbidden. Admins only.' }, { status: 403 });\n  }\n\n  // 3. Safe to perform destructive action\n  await db.deleteUser();\n  return Response.json({ success: true });\n}"
+}

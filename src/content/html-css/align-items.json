@@ -1,0 +1,30 @@
+{
+  "id": "align-items",
+  "title": "align-items",
+  "difficulty": "Intermediate",
+  "definition": "A flexbox container property that defines the default behavior for how flex items are laid out along the cross-axis (vertical by default).",
+  "simpleExplanation": "If `justify-content` handles Horizontal alignment, `align-items` handles Vertical alignment. Do you want the items pushed to the ceiling? Pushed to the floor? Vertically centered perfectly in the middle?",
+  "realWorldExample": "Centering an icon next to a large line of text. Without Flexbox, the icon might float weirdly near the top of the text. With `align-items: center`, the icon and the text perfectly lock into vertical alignment.",
+  "useCases": [
+    "Vertically centering elements (The Holy Grail of CSS)"
+  ],
+  "questions": {
+    "basic": [
+      "What value centers items vertically?"
+    ],
+    "intermediate": [
+      "What is the default value of `align-items`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Vertical center?",
+      "answer": "`center`"
+    },
+    {
+      "question": "Default value?",
+      "answer": "`stretch`. If you don't declare align-items, and one box in the row is 100px tall, all the other boxes will automatically stretch vertically to also be 100px tall."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    display: flex;\n    height: 150px; /* A tall container so we can see vertical alignment */\n    background: #e2e8f0;\n    margin-bottom: 20px;\n    border: 2px dashed #64748b;\n  }\n  .item { background: #6366f1; color: white; padding: 10px; margin: 5px; }\n\n  /* The Magic Properties */\n  .center { align-items: center; }\n  .end { align-items: flex-end; }\n  .stretch { align-items: stretch; }\n</style>\n\n<h3>align-items: center (The most useful CSS rule ever)</h3>\n<div class=\"container center\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\" style=\"font-size: 30px;\">Tall Item</div>\n  <div class=\"item\">Item 3</div>\n</div>\n\n<h3>align-items: flex-end (Floor)</h3>\n<div class=\"container end\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n</div>\n\n<h3>align-items: stretch (Default behavior)</h3>\n<div class=\"container stretch\">\n  <div class=\"item\">We stretch</div>\n  <div class=\"item\">To fill the</div>\n  <div class=\"item\">Container height!</div>\n</div>"
+}

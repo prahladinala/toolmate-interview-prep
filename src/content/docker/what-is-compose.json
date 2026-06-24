@@ -1,0 +1,31 @@
+{
+  "id": "what-is-compose",
+  "title": "What is Docker Compose?",
+  "difficulty": "Beginner",
+  "definition": "An official Docker tool used to define and run multi-container Docker applications. It allows developers to configure all application services, networks, and volumes in a single, declarative YAML file.",
+  "simpleExplanation": "The orchestra conductor. Typing `docker run` 5 times with massive 100-character port and volume flags is exhausting. Docker Compose lets you write down all those settings in a text file. Then, you type ONE command, and Compose perfectly spins up the front-end, back-end, and database all at once.",
+  "realWorldExample": "Instead of running a giant shell script, a developer runs `docker-compose up`. Compose reads the YAML file, builds the networks, links the database to the API, boots them in the correct order, and handles everything flawlessly.",
+  "useCases": [
+    "Local development environments",
+    "Automated testing",
+    "Single-host deployments"
+  ],
+  "questions": {
+    "basic": [
+      "What file format does Docker Compose use for configuration?"
+    ],
+    "intermediate": [
+      "Is Docker Compose designed to manage massive, 1,000-server production clusters?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which file format?",
+      "answer": "YAML (`.yml` or `.yaml`)."
+    },
+    {
+      "question": "Manage 1,000 servers?",
+      "answer": "No! Docker Compose is strictly designed for single-host deployments (running on ONE computer). To manage clusters across multiple servers, you must graduate to Docker Swarm or Kubernetes."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "availability-zones",
+  "title": "Regions & Availability Zones",
+  "difficulty": "Intermediate",
+  "definition": "The physical architecture of the Cloud. A Region is a geographical area (e.g., 'us-east-1' in Virginia). An Availability Zone (AZ) is a distinct, physically separate data center within that Region.",
+  "simpleExplanation": "A Region is a State. An Availability Zone is a specific building in that State. If one building catches on fire, the other buildings in the State keep your website running.",
+  "realWorldExample": "You deploy your database to 'us-east-1a' (Data center A). You set up a live replica in 'us-east-1b' (Data center B). A massive tornado destroys Data center A. Your app instantly switches to Data center B without going offline, because the AZs are physically miles apart.",
+  "useCases": [
+    "High Availability",
+    "Disaster Recovery",
+    "Latency optimization"
+  ],
+  "questions": {
+    "basic": [
+      "If you live in London, should you deploy your servers to a Region in London or a Region in Tokyo?"
+    ],
+    "intermediate": [
+      "Do Availability Zones within the same Region share the same power grid and internet providers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "London or Tokyo?",
+      "answer": "London. You deploy close to your users to minimize network latency (lag)."
+    },
+    {
+      "question": "Share power grids?",
+      "answer": "No. AZs are specifically engineered to have independent power, cooling, and internet infrastructure so that a single local disaster (like a blackout) does not take down multiple AZs."
+    }
+  ]
+}

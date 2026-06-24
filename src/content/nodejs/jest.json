@@ -1,0 +1,32 @@
+{
+  "id": "jest",
+  "title": "Jest",
+  "difficulty": "Beginner",
+  "definition": "A delightful JavaScript Testing Framework maintained by Meta (Facebook) with a focus on simplicity. It provides assertions, mocking, and code coverage out of the box.",
+  "simpleExplanation": "Writing code to test your code. Instead of manually clicking through your app every time you make a change to make sure you didn't break anything, you write a Jest script. You run `npm test`, and Jest executes your functions, automatically verifying that `add(2, 2)` still equals 4.",
+  "realWorldExample": "Running Jest tests automatically via GitHub Actions (CI/CD) every time a developer opens a Pull Request. If the tests fail, the PR is blocked from merging to prevent shipping bugs to production.",
+  "useCases": [
+    "Unit testing",
+    "Test-Driven Development (TDD)",
+    "Preventing regressions"
+  ],
+  "questions": {
+    "basic": [
+      "What command is commonly used to execute Jest tests?"
+    ],
+    "intermediate": [
+      "What is an assertion?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command?",
+      "answer": "`npm test` (Which is mapped to the `jest` command in package.json)."
+    },
+    {
+      "question": "What is an assertion?",
+      "answer": "A statement verifying that a condition is true. In Jest, it is written using the `expect()` function. E.g., `expect(result).toBe(4)`. If the result is not 4, the assertion throws an error and the test fails."
+    }
+  ],
+  "codeExample": "// --- file: math.js ---\nconst add = (a, b) => a + b;\n\n// --- file: math.test.js ---\n// Jest provides 'test' and 'expect' globally. No need to import them!\n\n/*\ntest('adds 1 + 2 to equal 3', () => {\n  // 1. Arrange (Setup the data)\n  const a = 1;\n  const b = 2;\n  \n  // 2. Act (Execute the function)\n  const result = add(a, b);\n  \n  // 3. Assert (Verify the expectation)\n  expect(result).toBe(3);\n});\n*/\n\nconsole.log(\"Jest tests act as living documentation for how your functions are supposed to behave.\");"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dispatch",
+  "title": "Dispatch",
+  "difficulty": "Beginner",
+  "definition": "The method used to send actions to the Redux store. It is the only way to trigger a state change.",
+  "simpleExplanation": "The 'Send' button. You created your Action object, but it's just sitting there doing nothing. You wrap it in `dispatch()` to literally throw it into the Redux Store so the reducers can catch it.",
+  "realWorldExample": "Clicking a 'Logout' button triggers an `onClick` event, which runs `dispatch({ type: 'LOGOUT' })`.",
+  "useCases": [
+    "Triggering state changes from React components"
+  ],
+  "questions": {
+    "basic": [
+      "What React hook is used to get access to the dispatch function in a component?"
+    ],
+    "intermediate": [
+      "Is the `dispatch` function synchronous or asynchronous?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which hook?",
+      "answer": "`useDispatch()`"
+    },
+    {
+      "question": "Sync or Async?",
+      "answer": "By default, `dispatch` is 100% synchronous. The state is updated immediately, and the UI re-renders immediately. (Middleware like Thunk is required to handle async operations)."
+    }
+  ],
+  "codeExample": "import { useDispatch } from 'react-redux';\n\nfunction LogoutButton() {\n  // 1. Grab the dispatch function from Redux\n  const dispatch = useDispatch();\n\n  const handleLogout = () => {\n    // 2. Throw the action into the store!\n    dispatch({ type: 'auth/logout' });\n  };\n\n  return <button onClick={handleLogout}>Log Out</button>;\n}"
+}

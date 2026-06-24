@@ -1,0 +1,30 @@
+{
+  "id": "guardrails",
+  "title": "Guardrails",
+  "difficulty": "Intermediate",
+  "definition": "Hardcoded rules, secondary filtering models, or architectural boundaries placed around an LLM to strictly constrain its outputs and prevent it from generating toxic, biased, or off-topic content.",
+  "simpleExplanation": "The bumpers in a bowling alley. You don't trust the AI to roll the ball straight, so you put bumpers on the sides. If the AI tries to talk about politics (goes into the gutter), the bumper blocks it and pushes the conversation back to the center.",
+  "realWorldExample": "NVIDIA's NeMo Guardrails. If you build a customer support bot, you install a guardrail script. Before the LLM's response is shown to the user, a secondary, smaller AI reads it. If it detects a competitor's name in the text, it deletes the response and replaces it with 'I cannot discuss other companies.'",
+  "useCases": [
+    "Enterprise chatbots",
+    "Brand safety"
+  ],
+  "questions": {
+    "basic": [
+      "Are Guardrails built directly into the mathematical weights of the AI Model, or are they an external software layer?"
+    ],
+    "intermediate": [
+      "What is 'Topic Fencing' in relation to Guardrails?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Internal or external?",
+      "answer": "They are typically an external software layer sitting between the AI Model and the User. (Though alignment techniques like RLHF try to bake safety into the weights internally)."
+    },
+    {
+      "question": "Topic Fencing?",
+      "answer": "A specific guardrail that forces the AI to stay on topic. If a user asks a Banking AI for a cupcake recipe, the Topic Fence detects the pivot and blocks the LLM from generating the recipe."
+    }
+  ]
+}

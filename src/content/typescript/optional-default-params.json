@@ -1,0 +1,34 @@
+{
+  "id": "optional-default-params",
+  "title": "Optional & Default Parameters",
+  "difficulty": "Beginner",
+  "definition": "Optional parameters (`?`) allow you to call a function without passing all arguments. Default parameters (`= value`) automatically provide a fallback value if the argument is missing or undefined.",
+  "simpleExplanation": "If you are ordering a burger, 'Cheese' is a required parameter. 'Bacon' is an optional parameter (`?`). If you order a 'Meal', fries are a default parameter (`= 'Fries'`); you get them automatically unless you specifically ask for a salad instead.",
+  "realWorldExample": "A logging function where the `level` defaults to 'INFO', but can be overridden with 'ERROR'.",
+  "useCases": [
+    "Flexible APIs",
+    "Avoiding undefined crashes"
+  ],
+  "questions": {
+    "basic": [
+      "Can an optional parameter come before a required parameter?"
+    ],
+    "intermediate": [
+      "Do you need to use `?` if you provide a default value?"
+    ],
+    "advanced": [
+      "How does TS infer the type of a default parameter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can an optional parameter come first?",
+      "answer": "No. In TypeScript, all required parameters MUST come before optional parameters. If `function(a?, b)` was allowed, calling `func(5)` would be ambiguous—is 5 meant for 'a' or 'b'?"
+    },
+    {
+      "question": "Do you need '?' if you provide a default?",
+      "answer": "No. If you write `msg = 'Hello'`, TypeScript automatically knows two things: 1. It is a string. 2. It is optional. Writing `msg?: string = 'Hello'` is redundant and generally disallowed."
+    }
+  ],
+  "codeExample": "// OPTIONAL PARAMETER (?)\nfunction buildName(first: string, last?: string) {\n  if (last) return `${first} ${last}`;\n  return first;\n}\nconsole.log(buildName(\"Alice\")); // Valid!\nconsole.log(buildName(\"Alice\", \"Smith\")); // Valid!\n\n// DEFAULT PARAMETER (=)\nfunction createGreeting(name: string, greeting: string = \"Hello\") {\n  return `${greeting}, ${name}`;\n}\nconsole.log(createGreeting(\"Bob\")); // \"Hello, Bob\"\nconsole.log(createGreeting(\"Bob\", \"Welcome\")); // \"Welcome, Bob\""
+}

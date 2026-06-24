@@ -1,0 +1,31 @@
+{
+  "id": "session-auth",
+  "title": "Session Authentication",
+  "difficulty": "Intermediate",
+  "definition": "A stateful authentication mechanism where the server stores active session data in a database, and the user's cookie only contains an opaque random string (Session ID).",
+  "simpleExplanation": "Like a coat check at a club. You give the server your coat (credentials). The server hangs it on hook #42 (database row) and gives you a ticket that says '#42' (Session Cookie). When you return, the server looks up hook #42 to see who you are.",
+  "realWorldExample": "Highly secure applications (like banks) that require the ability to instantly 'Revoke' a session. If a user loses their laptop, the bank deletes row #42 from the database. The user's cookie immediately stops working.",
+  "useCases": [
+    "High-security apps",
+    "Applications requiring session revocation"
+  ],
+  "questions": {
+    "basic": [
+      "In Session Authentication, does the cookie contain the user's email address?"
+    ],
+    "intermediate": [
+      "What is the primary performance drawback of Session Authentication compared to JWT?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Contain email?",
+      "answer": "No. The cookie only contains a random, meaningless Session ID string. The actual email is stored safely in the server's database."
+    },
+    {
+      "question": "Performance drawback?",
+      "answer": "Database hits. Every single time the user requests a page, the server must query the database to look up the Session ID to see if it is still valid. JWTs avoid this database hit."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Session Auth Flow in Next.js \n*/\n\nexport async function getSession(request) {\n  // 1. Read the meaningless string from the cookie\n  const sessionId = request.cookies.get('session_id');\n  if (!sessionId) return null;\n\n  // 2. STATEFUL OPERATION: We MUST query the database!\n  // This proves the session wasn't revoked by an admin.\n  const session = await db.sessions.findUnique({\n    where: { id: sessionId },\n    include: { user: true }\n  });\n\n  // 3. Return the actual user data found in the DB\n  return session?.user;\n}"
+}

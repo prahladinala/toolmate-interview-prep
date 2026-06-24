@@ -1,0 +1,31 @@
+{
+  "id": "writable-streams",
+  "title": "Writable Streams",
+  "difficulty": "Advanced",
+  "definition": "An abstraction for a destination to which data is written sequentially. It allows you to write large amounts of data chunk-by-chunk.",
+  "simpleExplanation": "If a Readable Stream is drinking soda through a straw, a Writable Stream is spitting that soda into a bucket. You don't try to spit 50 gallons at once; you spit a little bit at a time. The system safely flushes the bucket to the hard drive in the background.",
+  "realWorldExample": "Writing thousands of log entries to an `access.log` file on a busy server. If you opened and closed the file for every single log, the server would crash. You use a Writable Stream to continuously funnel data safely to the file.",
+  "useCases": [
+    "Writing large files",
+    "Sending HTTP responses (res is a writable stream!)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you push data into a Writable stream?"
+    ],
+    "intermediate": [
+      "How do you signal that you are completely finished writing to the stream?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to push data?",
+      "answer": "By calling `writeStream.write(chunk)`."
+    },
+    {
+      "question": "How to signal you are finished?",
+      "answer": "By calling `writeStream.end()`. This flushes any remaining data and gracefully closes the file/connection."
+    }
+  ],
+  "codeExample": "const fs = require('fs');\n\n// We will create a writable stream that outputs to the console for this example\n// In reality, you'd do: const logger = fs.createWriteStream('./access.log');\nconst logger = process.stdout; \n\nconsole.log(\"--- Server Logs ---\");\n\n// Writing data chunk by chunk\nlogger.write(\"User Alice logged in.\\n\");\nlogger.write(\"User Bob updated profile.\\n\");\nlogger.write(\"System backup started.\\n\");\n\n// In a file stream, calling .end() closes the file safely.\n// We can't call .end() on process.stdout, or we break the terminal!\n// logger.end();\n\nconsole.log(\"--- End Logs ---\");"
+}

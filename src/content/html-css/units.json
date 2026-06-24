@@ -1,0 +1,31 @@
+{
+  "id": "units",
+  "title": "CSS Units (px, rem, em, %, vh, vw)",
+  "difficulty": "Intermediate",
+  "definition": "CSS provides various units of measurement to express length. They are divided into absolute units (like `px`) and relative units (like `%` and `rem`).",
+  "simpleExplanation": "`px` is absolute: a 16px font is always exactly 16 pixels regardless of screen size. `%`, `vw`, and `rem` are relative. If you say `width: 50%`, it means half of whatever the parent container's size is. This is the absolute foundation of making websites mobile-friendly.",
+  "realWorldExample": "Setting a hero banner to `height: 100vh;` means it will always perfectly fill 100% of the Viewer's screen Height, whether they are on a massive TV or a tiny iPhone.",
+  "useCases": [
+    "Responsive typography",
+    "Fluid layouts"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `vh` and `vw`?"
+    ],
+    "intermediate": [
+      "Why is `rem` preferred over `px` for font sizes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "vh vs vw?",
+      "answer": "`vh` stands for Viewport Height (1vh = 1% of the screen's height). `vw` stands for Viewport Width."
+    },
+    {
+      "question": "rem vs px?",
+      "answer": "`rem` (Root EM) scales based on the user's browser settings. If a visually impaired user changes their default browser font size from 16px to 24px, `rem` units will scale your entire website up proportionally. `px` ignores the user's settings and stays fixed, which is terrible for accessibility."
+    }
+  ],
+  "codeExample": "<style>\n  /* ABSOLUTE UNIT */\n  .box-px {\n    width: 300px; /* Will NEVER shrink or grow */\n    background: lightcoral;\n    margin-bottom: 10px;\n  }\n\n  /* RELATIVE: PERCENTAGE */\n  .box-percent {\n    width: 50%; /* 50% of the result window's width */\n    background: lightblue;\n    margin-bottom: 10px;\n  }\n\n  /* RELATIVE: VIEWPORT */\n  .box-vw {\n    width: 80vw; /* 80% of the entire screen's width */\n    background: lightgreen;\n    margin-bottom: 10px;\n  }\n\n  /* RELATIVE: REM (Typography) */\n  .text-rem {\n    /* 1rem = The root font size (usually 16px). So 2rem = 32px. */\n    font-size: 2rem;\n  }\n</style>\n\n<div class=\"box-px\">I am exactly 300px wide.</div>\n<div class=\"box-percent\">I am 50% wide. Resize the browser to see me shift!</div>\n<div class=\"box-vw\">I am 80vw wide.</div>\n\n<p class=\"text-rem\">I am 2rem (32px) text.</p>"
+}

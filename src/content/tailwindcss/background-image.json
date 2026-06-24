@@ -1,0 +1,32 @@
+{
+  "id": "background-image",
+  "title": "Background Images",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling an element's background image, size, position, and repeating.",
+  "simpleExplanation": "When you want an image to act as the 'wallpaper' for a div, rather than using an `<img>` tag. You then use `bg-cover` to make sure it fills the div without stretching, and `bg-center` to focus on the middle of the image.",
+  "realWorldExample": "A massive Hero Banner at the top of a webpage featuring a beautiful stock photo spanning the full width of the browser.",
+  "useCases": [
+    "Hero sections",
+    "Patterned backgrounds",
+    "Avatars"
+  ],
+  "questions": {
+    "basic": [
+      "What class guarantees a background image will fill the entire container without distorting its aspect ratio?"
+    ],
+    "intermediate": [
+      "How do you apply a specific image URL in Tailwind without modifying the `tailwind.config.js`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fill without distorting?",
+      "answer": "`bg-cover`"
+    },
+    {
+      "question": "Specific image URL?",
+      "answer": "You can use Tailwind's arbitrary value syntax: `bg-[url('/img/hero.jpg')]`."
+    }
+  ],
+  "codeExample": "<!-- The Ultimate Hero Image Recipe -->\n<!-- \n  bg-cover: Fills the entire div, cropping if necessary.\n  bg-center: Keeps the middle of the image visible.\n  bg-no-repeat: Prevents tiling if the div is larger than the image.\n-->\n<div \n  class=\"h-96 w-full bg-cover bg-center bg-no-repeat\"\n  style=\"background-image: url('https://picsum.photos/1920/1080');\"\n>\n  <!-- Dark overlay to make text readable! -->\n  <div class=\"w-full h-full bg-black/50 flex items-center justify-center\">\n    <h1 class=\"text-white text-5xl font-bold\">Welcome to my site</h1>\n  </div>\n</div>"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "tsconfig",
+  "title": "tsconfig.json",
+  "difficulty": "Beginner",
+  "definition": "The configuration file that indicates that a directory is the root of a TypeScript project. It specifies the root files and the compiler options required to compile the project.",
+  "simpleExplanation": "The `tsconfig.json` is the rulebook for the TypeScript Sheriff. It tells the compiler exactly how strict it should be, what files it should ignore (like `node_modules`), and what 'flavor' of JavaScript it should output (like old ES5 for Internet Explorer, or modern ES2022).",
+  "realWorldExample": "Running `tsc --init` in a terminal creates a blank `tsconfig.json`. Changing `\"target\": \"ES6\"` tells the compiler to leave Arrow Functions alone, rather than compiling them down to `function() {}` for old browsers.",
+  "useCases": [
+    "Project setup",
+    "Adjusting compiler strictness",
+    "Excluding test files from the build"
+  ],
+  "questions": {
+    "basic": [
+      "What command generates a default `tsconfig.json`?"
+    ],
+    "intermediate": [
+      "What is the difference between `include` and `exclude`?"
+    ],
+    "advanced": [
+      "What does the `extends` property do in a tsconfig?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command generates it?",
+      "answer": "`npx tsc --init` (if using npx) or simply `tsc --init` if installed globally."
+    },
+    {
+      "question": "What does the extends property do?",
+      "answer": "It allows a `tsconfig.json` to inherit from another configuration file. Large monorepos usually have a `tsconfig.base.json` at the root, and each sub-project has a tiny tsconfig that just does `\"extends\": \"../../tsconfig.base.json\"`."
+    }
+  ],
+  "codeExample": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",        // What JS version to output\n    \"module\": \"ESNext\",        // What module system to use\n    \"strict\": true,            // Enable ALL strict type-checking options\n    \"outDir\": \"./dist\",        // Where to put the compiled .js files\n    \"rootDir\": \"./src\",        // Where the source .ts files live\n    \"skipLibCheck\": true       // Skip checking node_modules for faster builds\n  },\n  \"include\": [\"src/**/*\"],     // Only compile files in the src folder\n  \"exclude\": [\"node_modules\", \"**/*.test.ts\"] // Ignore tests and dependencies\n}"
+}

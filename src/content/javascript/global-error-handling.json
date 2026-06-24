@@ -1,0 +1,34 @@
+{
+  "id": "global-error-handling",
+  "title": "Global Error Handling",
+  "difficulty": "Advanced",
+  "definition": "Mechanism to catch unhandled exceptions and unhandled promise rejections that slip past your local `try/catch` blocks, preventing the application from dying silently.",
+  "simpleExplanation": "Global error handling is the safety net at the very bottom of the circus tent. If the acrobat misses the trapeze (the code fails) and the safety harness snaps (no try/catch), the global error handler catches them before they hit the ground, logs the incident, and politely tells the audience the show is over.",
+  "realWorldExample": "Adding `window.addEventListener('error')` to intercept crashes, sending the stack trace to an external logging service like Sentry or LogRocket, and rendering a fallback 'Something went wrong' UI component.",
+  "useCases": [
+    "Crash reporting",
+    "Fallback UIs (React Error Boundaries)"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you don't catch an error in a JavaScript app?"
+    ],
+    "intermediate": [
+      "What is `unhandledrejection`?"
+    ],
+    "advanced": [
+      "How do Error Boundaries in React relate to global error handling?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is unhandledrejection?",
+      "answer": "The standard `error` event listener only catches synchronous errors. If a Promise fails (e.g., an API fetch fails) and you forgot to write a `.catch()`, it throws an 'Unhandled Promise Rejection'. You must listen for the `window.addEventListener('unhandledrejection')` event specifically to capture these."
+    },
+    {
+      "question": "How do React Error Boundaries relate?",
+      "answer": "React catches rendering errors internally. A global `window.onerror` will NOT catch an error that happens during a React render cycle. You must use a React `ErrorBoundary` component to catch UI crashes and prevent the entire page from turning into a blank white screen."
+    }
+  ],
+  "codeExample": "// 1. Catch synchronous runtime crashes\nwindow.addEventListener('error', (event) => {\n  console.error(\"Global Sync Crash Detected:\", event.message, event.filename, event.lineno);\n  // e.g., sendToSentry(event.error);\n});\n\n// 2. Catch forgotten Promise rejections\nwindow.addEventListener('unhandledrejection', (event) => {\n  console.error(\"You forgot a .catch() on a Promise! Reason:\", event.reason);\n});\n\n// Simulate a crash that will be caught globally:\n// setTimeout(() => { throw new Error(\"Oops\"); }, 1000);\n// Promise.reject(\"API Timeout\"); // Notice no .catch()!"
+}

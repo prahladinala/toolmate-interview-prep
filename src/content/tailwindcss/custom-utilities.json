@@ -1,0 +1,31 @@
+{
+  "id": "custom-utilities",
+  "title": "Custom Utilities",
+  "difficulty": "Advanced",
+  "definition": "Adding your own bespoke CSS classes directly into the Tailwind compilation engine using the `@layer utilities` directive or a Plugin.",
+  "simpleExplanation": "Sometimes you just need a weird CSS property that Tailwind doesn't have, like `scrollbar-width: none`. You don't want to create a separate CSS file. You can inject it directly into Tailwind, and it will magically work with `hover:` and `md:` prefixes!",
+  "realWorldExample": "Adding a `.no-scrollbar` class to hide ugly scrollbars on a horizontal scrolling carousel.",
+  "useCases": [
+    "Niche CSS properties",
+    "Bridging legacy CSS"
+  ],
+  "questions": {
+    "basic": [
+      "Which Tailwind directive (`@tailwind`, `@apply`, or `@layer`) is used to inject custom classes so they can be purged properly?"
+    ],
+    "intermediate": [
+      "If you define a custom utility like `.text-shadow-glow` in your CSS, will `hover:text-shadow-glow` automatically work?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which directive?",
+      "answer": "`@layer utilities { ... }`"
+    },
+    {
+      "question": "Will hover work?",
+      "answer": "Yes! That is the magic of `@layer utilities`. Tailwind detects your custom class and automatically generates all the responsive (`md:`) and state (`hover:`) variants for it!"
+    }
+  ],
+  "codeExample": "/* In your global main.css file */\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n/* Inject custom utilities into Tailwind's engine! */\n@layer utilities {\n  .no-scrollbar {\n    /* Firefox */\n    scrollbar-width: none; \n    /* IE 10+ */\n    -ms-overflow-style: none; \n  }\n  .no-scrollbar::-webkit-scrollbar {\n    /* Chrome/Safari/Edge */\n    display: none; \n  }\n}\n\n/* Now you can use it in HTML, WITH prefixes! */\n/* <div class=\"no-scrollbar md:no-scrollbar hover:no-scrollbar\"> */"
+}

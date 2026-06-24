@@ -1,0 +1,30 @@
+{
+  "id": "tables",
+  "title": "Tables",
+  "difficulty": "Intermediate",
+  "definition": "The `<table>` element represents data in two dimensions (rows and columns).",
+  "simpleExplanation": "HTML's version of an Excel spreadsheet. You create a `<table>`, add Table Rows `<tr>`, and inside those rows you put Table Headers `<th>` or standard Table Data cells `<td>`.",
+  "realWorldExample": "Displaying a financial report, a sports league leaderboard, or a pricing tier comparison chart.",
+  "useCases": [
+    "Displaying tabular data"
+  ],
+  "questions": {
+    "basic": [
+      "What tags define a row and a cell inside a table?"
+    ],
+    "intermediate": [
+      "Why shouldn't you use tables for website layout?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Row and cell tags?",
+      "answer": "`<tr>` (Table Row) defines the horizontal row. `<td>` (Table Data) defines the individual cell within that row."
+    },
+    {
+      "question": "Why not use tables for layout?",
+      "answer": "In the 1990s, developers used invisible tables to build multi-column website layouts. This is terrible for accessibility (screen readers read it as data, confusing users) and terrible for responsive mobile design. Use CSS Flexbox or Grid for layout, and only use tables for actual tabular data."
+    }
+  ],
+  "codeExample": "<style>\n  /* Adding basic CSS so the table isn't invisible */\n  table, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n    padding: 8px;\n    text-align: left;\n  }\n  th {\n    background-color: #f2f2f2;\n  }\n</style>\n\n<table>\n  <!-- Table Header Row -->\n  <tr>\n    <th>Employee Name</th>\n    <th>Department</th>\n    <th>Status</th>\n  </tr>\n  \n  <!-- Table Data Row 1 -->\n  <tr>\n    <td>Alice Johnson</td>\n    <td>Engineering</td>\n    <td>Active</td>\n  </tr>\n  \n  <!-- Table Data Row 2 -->\n  <tr>\n    <td>Bob Smith</td>\n    <td>Marketing</td>\n    <td>On Leave</td>\n  </tr>\n</table>"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "factory",
+  "title": "Factory Pattern",
+  "difficulty": "Intermediate",
+  "definition": "A creational design pattern that uses a 'Factory' method/function to create and return new objects without exposing the exact class or constructor logic to the client.",
+  "simpleExplanation": "Imagine you are at a car dealership. You don't need to know how to weld metal or install an engine to get a car. You just tell the dealer 'I want a red SUV', and they build it and hand you the keys. The Factory Pattern is that dealer. It takes simple configuration and spits out complex, fully-formed objects.",
+  "realWorldExample": "Creating different types of Enemies in a game (Orc, Goblin, Dragon). Instead of importing 3 different Classes across your entire codebase, you just call `EnemyFactory.create('goblin')`.",
+  "useCases": [
+    "When object creation logic is complex",
+    "When you need to create different objects sharing a common interface based on conditions"
+  ],
+  "questions": {
+    "basic": [
+      "Why use a Factory instead of the `new` keyword directly?"
+    ],
+    "intermediate": [
+      "How does the Factory pattern relate to polymorphism?"
+    ],
+    "advanced": [
+      "What is an Abstract Factory?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use a Factory instead of `new`?",
+      "answer": "If the object creation process requires API calls, reading config files, or complex `if/else` logic, putting all that in every file that needs the object causes massive code duplication. A Factory centralizes the creation logic."
+    },
+    {
+      "question": "What is an Abstract Factory?",
+      "answer": "A Factory that produces Factories. For example, a `UIFactory` that returns either a `MacUIFactory` or a `WinUIFactory` depending on the OS. Then, the specific factory handles creating buttons and windows for that OS."
+    }
+  ],
+  "codeExample": "class Developer { constructor(name) { this.name = name; this.type = \"Dev\"; } }\nclass Designer { constructor(name) { this.name = name; this.type = \"Designer\"; } }\n\n// The Factory\nclass EmployeeFactory {\n  create(name, type) {\n    switch(type) {\n      case \"dev\": return new Developer(name);\n      case \"designer\": return new Designer(name);\n      default: throw new Error(\"Unknown Employee Type\");\n    }\n  }\n}\n\nconst factory = new EmployeeFactory();\nconst employees = [];\n\n// Clean, simple creation logic without needing to import specific classes everywhere\nemployees.push(factory.create(\"Alice\", \"dev\"));\nemployees.push(factory.create(\"Bob\", \"designer\"));"
+}

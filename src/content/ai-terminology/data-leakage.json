@@ -1,0 +1,30 @@
+{
+  "id": "data-leakage",
+  "title": "Data Leakage",
+  "difficulty": "Beginner",
+  "definition": "A security failure where an AI system accidentally exposes sensitive, private, or proprietary information to unauthorized users.",
+  "simpleExplanation": "Telling a secret to the AI, and the AI blabbing it to the next person who asks.",
+  "realWorldExample": "Samsung engineers pasted top-secret, proprietary code into ChatGPT to ask it to fix bugs. OpenAI's systems saved that code to their training servers. Samsung had to instantly ban all employees from using ChatGPT to prevent their company secrets from leaking to the public.",
+  "useCases": [
+    "Corporate security policies",
+    "On-premise AI deployments"
+  ],
+  "questions": {
+    "basic": [
+      "Why do massive corporations often ban their employees from using the free version of ChatGPT?"
+    ],
+    "intermediate": [
+      "How does RAG architecture inherently present a massive Data Leakage risk if not built perfectly?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why ban free ChatGPT?",
+      "answer": "Because anything typed into the free version is explicitly collected by OpenAI and used to train future models, meaning corporate secrets could be regurgitated to a competitor down the line."
+    },
+    {
+      "question": "RAG leakage risk?",
+      "answer": "If you dump your entire company's Google Drive into a Vector Database for RAG, the AI can read everything. If an intern asks the AI 'What is the CEO's salary?', the RAG system might retrieve the confidential HR document and tell the intern. The retrieval system MUST enforce user permission roles."
+    }
+  ]
+}

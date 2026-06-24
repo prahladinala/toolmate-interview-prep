@@ -1,0 +1,30 @@
+{
+  "id": "snap",
+  "title": "Snap",
+  "difficulty": "Intermediate",
+  "definition": "A modern software packaging and deployment system developed by Canonical. Unlike APT, Snap packages are completely self-contained, including all their own dependencies, and run in an isolated sandbox.",
+  "simpleExplanation": "Like a Docker container for desktop apps. Instead of an app relying on the messy shared files of your Operating System, it brings everything it needs bundled inside its own secure box.",
+  "realWorldExample": "You want to install Spotify. You type `sudo snap install spotify`. It downloads a massive file containing Spotify AND its specific version of Python and graphics libraries, ensuring it won't break your computer's files.",
+  "useCases": [
+    "Cross-distribution software installation",
+    "Desktop applications"
+  ],
+  "questions": {
+    "basic": [
+      "Do Snap packages generally take up more or less hard drive space than APT packages?"
+    ],
+    "intermediate": [
+      "Why is Snap controversial among hardcore Linux users?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More or less space?",
+      "answer": "Significantly MORE space. Because every Snap package bundles all of its own dependencies, you might end up having 5 different copies of Python installed on your hard drive."
+    },
+    {
+      "question": "Why controversial?",
+      "answer": "Because the backend server that hosts the Snap packages is proprietary and strictly controlled by one corporation (Canonical). It goes against the decentralized, open-source ethos of traditional Linux."
+    }
+  ]
+}

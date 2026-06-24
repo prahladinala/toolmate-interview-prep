@@ -1,0 +1,30 @@
+{
+  "id": "man-pages",
+  "title": "man Pages",
+  "difficulty": "Beginner",
+  "definition": "The system's built-in manual pages. The `man` command formats and displays the official documentation for almost any command or configuration file.",
+  "simpleExplanation": "The built-in encyclopedia. If you forget how a command works, you don't need the internet. You just type `man` followed by the command, and it explains everything it does.",
+  "realWorldExample": "You forget the flag to make `rm` delete a folder recursively. You type `man rm`. The screen changes to a text document. You read that `-r` stands for recursive. You press `q` to quit the manual and return to the terminal.",
+  "useCases": [
+    "Learning commands",
+    "Finding obscure flags"
+  ],
+  "questions": {
+    "basic": [
+      "How do you exit or close a `man` page once you are done reading it?"
+    ],
+    "intermediate": [
+      "What is the difference between `man` and the `--help` flag (e.g., `ls --help`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to exit?",
+      "answer": "Press the `q` key (for quit)."
+    },
+    {
+      "question": "man vs --help?",
+      "answer": "The `--help` flag prints a very short, quick summary directly into your terminal. `man` opens a dedicated, comprehensive, multi-page textbook about the command."
+    }
+  ]
+}

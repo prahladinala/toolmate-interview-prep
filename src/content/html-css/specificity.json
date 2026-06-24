@@ -1,0 +1,31 @@
+{
+  "id": "specificity",
+  "title": "Specificity",
+  "difficulty": "Advanced",
+  "definition": "The algorithm used by browsers to determine which CSS property value is the most relevant to an element and therefore applied when multiple conflicting rules exist.",
+  "simpleExplanation": "The CSS Point System. If you tell an element to be Red, but another rule tells it to be Blue, who wins? The browser calculates points. IDs are worth 100 points. Classes are worth 10 points. Elements are worth 1 point. The rule with the highest score wins the fight.",
+  "realWorldExample": "You write `.btn { color: red; }` but the button stays blue. You inspect it and realize a third-party library wrote `#main-form .btn { color: blue; }`. Because they used an ID (100 pts), their rule overpowered yours (10 pts).",
+  "useCases": [
+    "Debugging 'Why isn't my CSS working?!'",
+    "Writing maintainable code"
+  ],
+  "questions": {
+    "basic": [
+      "Which has higher specificity: a Class (`.card`) or an ID (`#header`)?"
+    ],
+    "intermediate": [
+      "What is `!important` and why should you avoid it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Class vs ID?",
+      "answer": "An ID. An ID is worth 100 points, a Class is only worth 10."
+    },
+    {
+      "question": "What is !important?",
+      "answer": "`!important` overrides the entire point system. It guarantees victory. It is considered an absolute last resort, because if someone else needs to override YOUR rule later, they also have to use `!important`, leading to a chaotic, unmaintainable codebase."
+    }
+  ],
+  "codeExample": "<style>\n  /* ELEMENT SELECTOR: 1 Point */\n  h2 {\n    color: gray;\n  }\n\n  /* CLASS SELECTOR: 10 Points (Beats the element selector) */\n  .my-title {\n    color: blue;\n  }\n\n  /* ID SELECTOR: 100 Points (Beats the class selector) */\n  #special-title {\n    color: red;\n  }\n\n  /* INLINE STYLES: 1000 Points (Beats everything in this stylesheet) */\n  \n  /* !IMPORTANT: 10,000 Points (The nuclear option) */\n  h2 {\n    color: green !important;\n  }\n</style>\n\n<!-- Who wins? \n  1. The element is an h2 (1 pt: Gray)\n  2. It has a class (10 pts: Blue)\n  3. It has an ID (100 pts: Red)\n  4. It has an inline style (1000 pts: Orange)\n  ...BUT the CSS file used !important on Green. Green wins! -->\n  \n<h2 id=\"special-title\" class=\"my-title\" style=\"color: orange;\">\n  I am green because of !important!\n</h2>"
+}

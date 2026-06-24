@@ -1,0 +1,30 @@
+{
+  "id": "find",
+  "title": "find",
+  "difficulty": "Intermediate",
+  "definition": "A highly powerful command-line utility that searches for files and directories in a directory hierarchy based on user-evaluated expressions (name, size, modification date, permissions).",
+  "simpleExplanation": "The ultimate search engine for your hard drive. You can say 'Find me all files bigger than 50MB that were modified yesterday and end in .log', and it will find them.",
+  "realWorldExample": "A server runs out of space. The admin types `find /var/log -type f -size +1G`. It searches the log directory and instantly finds exactly which log files are massive and clogging the drive.",
+  "useCases": [
+    "Complex file searches",
+    "Automated cleanup scripts"
+  ],
+  "questions": {
+    "basic": [
+      "How do you search for a file named exactly 'config.json' in the current directory?"
+    ],
+    "intermediate": [
+      "What does the `-exec` flag do when attached to a `find` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Search exactly?",
+      "answer": "`find . -name \"config.json\"`"
+    },
+    {
+      "question": "What does -exec do?",
+      "answer": "It allows you to execute a secondary command on every single file that `find` discovers. For example, you can use it to automatically `rm` (delete) every file it finds that is older than 30 days."
+    }
+  ]
+}

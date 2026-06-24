@@ -1,0 +1,31 @@
+{
+  "id": "git-restore",
+  "title": "git restore",
+  "difficulty": "Beginner",
+  "definition": "Introduced in Git 2.23, it is explicitly used to restore files in the working tree or staging area. It replaces the confusing file-manipulation aspects of `git checkout` and `git reset`.",
+  "simpleExplanation": "The 'discard changes' button. If you edit a file, completely mess it up, and just want to throw your edits in the trash and go back to the last saved version, use `git restore`.",
+  "realWorldExample": "You delete 50 lines of CSS trying to fix a bug, realize you made it worse, and type `git restore styles.css` to instantly put those 50 lines back.",
+  "useCases": [
+    "Discarding uncommitted local changes",
+    "Unstaging files easily"
+  ],
+  "questions": {
+    "basic": [
+      "Does `git restore` delete your recent, unsaved edits permanently?"
+    ],
+    "intermediate": [
+      "How do you unstage a file using `git restore`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Delete permanently?",
+      "answer": "YES. Be very careful. `git restore <file>` takes the file exactly as it was in the last commit and forcefully overwrites your Working Directory. Your unsaved edits are gone forever."
+    },
+    {
+      "question": "Unstage a file?",
+      "answer": "Use `git restore --staged <file>`. This pulls the file off the Stage, but safely leaves your edits intact in the Working Directory."
+    }
+  ],
+  "codeExample": "# Scenario 1: Throwing away terrible code\n# You edited app.js, it's broken, you want to start over.\n$ git restore app.js\n\n# Scenario 2: Throwing away ALL terrible code in the project\n$ git restore .\n\n# Scenario 3: Unstaging a file (The modern alternative to git reset)\n$ git add config.json\n# Wait, I don't want to commit config.json yet!\n$ git restore --staged config.json"
+}

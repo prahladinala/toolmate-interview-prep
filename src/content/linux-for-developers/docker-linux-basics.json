@@ -1,0 +1,30 @@
+{
+  "id": "docker-linux-basics",
+  "title": "Docker & Linux Relationship",
+  "difficulty": "Intermediate",
+  "definition": "Understanding that Docker is fundamentally a Linux technology that acts as a user-friendly wrapper around existing Linux Kernel features (cgroups and namespaces).",
+  "simpleExplanation": "Docker didn't invent containers. Linux had the raw materials (cgroups/namespaces) for years. Docker just built a beautiful, easy-to-use factory around them.",
+  "realWorldExample": "When you install Docker Desktop on a Mac or Windows machine, it cannot run natively. It actually secretly installs a hidden Linux Virtual Machine in the background, and runs the Docker containers inside that Linux VM.",
+  "useCases": [
+    "Understanding container architecture",
+    "Debugging cross-platform Docker issues"
+  ],
+  "questions": {
+    "basic": [
+      "Does a Docker container contain a full Linux Kernel inside it?"
+    ],
+    "intermediate": [
+      "Why do Docker containers boot up in milliseconds, whereas a Virtual Machine takes a full minute?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Contain a kernel?",
+      "answer": "No. The container only contains the application and its files. It completely relies on sharing the host computer's underlying Linux Kernel to function."
+    },
+    {
+      "question": "Why boot instantly?",
+      "answer": "Because a VM has to do a complete hardware boot sequence and load a massive 500MB Kernel into RAM. A Docker container skips all of that; it just starts a normal Linux process, which is instant."
+    }
+  ]
+}

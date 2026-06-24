@@ -1,0 +1,32 @@
+{
+  "id": "headless-ui",
+  "title": "Headless UI",
+  "difficulty": "Advanced",
+  "definition": "Unstyled, fully accessible UI components (Dialogs, Dropdowns, Comboboxes) created by Tailwind Labs, designed to integrate seamlessly with Tailwind CSS.",
+  "simpleExplanation": "Building an accessible Dropdown menu with keyboard support, ARIA tags, and click-outside-to-close logic takes 5 hours of JavaScript programming. Headless UI provides the invisible Javascript 'brain' of the Dropdown for free. It has absolutely no CSS. You apply Tailwind classes to give it a 'body'.",
+  "realWorldExample": "Using the `<Menu>` component from Headless UI to create a user profile dropdown that works flawlessly with screen readers and the Tab key.",
+  "useCases": [
+    "Accessible complex components",
+    "Modals",
+    "Dropdowns"
+  ],
+  "questions": {
+    "basic": [
+      "Does Headless UI provide any pre-styled CSS classes like Bootstrap?"
+    ],
+    "intermediate": [
+      "Why are 'Headless' component libraries becoming the industry standard over traditional libraries like Material UI?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pre-styled CSS?",
+      "answer": "No. It is completely 'headless' (no visual appearance). It ONLY provides the interactive logic and accessibility attributes."
+    },
+    {
+      "question": "Why industry standard?",
+      "answer": "Traditional libraries lock you into their specific visual design (e.g., it's very hard to make Material UI NOT look like Google). Headless libraries handle the incredibly difficult JavaScript/Accessibility logic, leaving you 100% free to design the exact visual appearance you want using Tailwind."
+    }
+  ],
+  "codeExample": "import { Menu } from '@headlessui/react'\n\n// The <Menu> components handle ALL the complex JS logic: \n// opening, closing, keyboard arrows, and ARIA tags.\n// You just provide the Tailwind classes!\nfunction MyDropdown() {\n  return (\n    <Menu>\n      <Menu.Button className=\"bg-blue-500 text-white px-4 py-2 rounded\">\n        Options\n      </Menu.Button>\n      <Menu.Items className=\"absolute mt-2 w-56 bg-white border rounded shadow-lg flex flex-col\">\n        <Menu.Item>\n          {({ active }) => (\n            <a className={`${active ? 'bg-blue-500 text-white' : 'text-gray-900'} p-2`}>\n              Account Settings\n            </a>\n          )}\n        </Menu.Item>\n      </Menu.Items>\n    </Menu>\n  )\n}"
+}

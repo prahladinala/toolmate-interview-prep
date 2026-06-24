@@ -1,0 +1,35 @@
+{
+  "id": "literal-types",
+  "title": "Literal Types",
+  "difficulty": "Intermediate",
+  "definition": "A Literal Type is a type that represents one exact, specific value. It is usually combined with Union Types to create a strict set of allowed values.",
+  "simpleExplanation": "Instead of typing a variable as `string` (which means ANY word in the dictionary), a Literal Type means the variable must be exactly the word 'SUCCESS' or exactly the word 'ERROR'. Nothing else is allowed.",
+  "realWorldExample": "Typing a button component in React: `type ButtonVariant = 'primary' | 'secondary' | 'danger'`. If a developer passes `variant='blue'`, TS throws a compile error.",
+  "useCases": [
+    "Strict UI component props",
+    "Redux Action Types",
+    "Enforcing specific configuration options"
+  ],
+  "questions": {
+    "basic": [
+      "Can literal types be numbers or just strings?"
+    ],
+    "intermediate": [
+      "Why does `const` automatically create a literal type?"
+    ],
+    "advanced": [
+      "What is `as const`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can they be numbers?",
+      "answer": "Yes! They can be strings, numbers, or booleans. e.g., `type DiceRoll = 1 | 2 | 3 | 4 | 5 | 6;`."
+    },
+    {
+      "question": "What is as const?",
+      "answer": "A 'Const Assertion'. If you define an object `const req = { url: '/api', method: 'GET' }`, TS types `method` as a generic `string`. If you add `as const` at the end, TS locks it down so `method` is strictly typed as the literal `'GET'`."
+    }
+  ],
+  "codeExample": "// Defining a Union of Literal Types\ntype Alignment = \"left\" | \"center\" | \"right\";\n\nfunction setAlignment(align: Alignment) {\n  // Do something...\n}\n\nsetAlignment(\"left\");   // Valid\nsetAlignment(\"center\"); // Valid\n// setAlignment(\"top\"); // ERROR: Argument of type '\"top\"' is not assignable to parameter of type 'Alignment'.\n\n// Numeric Literals\ntype StatusCodes = 200 | 404 | 500;\n\n// Const Assertion example\nconst config = {\n  method: \"GET\" // Inferred as 'string' normally\n} as const; // Now inferred exactly as the literal 'GET'"
+}

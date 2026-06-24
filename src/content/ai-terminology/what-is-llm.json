@@ -1,0 +1,31 @@
+{
+  "id": "what-is-llm",
+  "title": "What is an LLM?",
+  "difficulty": "Beginner",
+  "definition": "Large Language Model. A massive deep learning model trained on vast amounts of text data, designed to understand, generate, and interact with human language in a highly sophisticated way.",
+  "simpleExplanation": "The ultimate auto-complete on your phone. It has read the entire internet, so if you give it the first half of a sentence (the Prompt), it uses math to predict exactly what words should come next to complete the thought.",
+  "realWorldExample": "OpenAI's GPT-4, Google's Gemini, and Meta's LLaMA. You ask it to write a poem about a toaster, and it instantly generates one that rhymes perfectly.",
+  "useCases": [
+    "Chatbots",
+    "Content generation",
+    "Code writing"
+  ],
+  "questions": {
+    "basic": [
+      "What does LLM stand for?"
+    ],
+    "intermediate": [
+      "Does an LLM actually 'understand' the facts it is writing, or is it just doing math?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does LLM stand for?",
+      "answer": "Large Language Model."
+    },
+    {
+      "question": "Does it understand?",
+      "answer": "Strictly speaking, no. It is purely a statistical engine doing extremely complex math to predict which word has the highest probability of appearing next. It has no true consciousness or factual comprehension, which is why it sometimes invents fake information (hallucinations)."
+    }
+  ]
+}

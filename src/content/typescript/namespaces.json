@@ -1,0 +1,34 @@
+{
+  "id": "namespaces",
+  "title": "Namespaces",
+  "difficulty": "Intermediate",
+  "definition": "A TypeScript-specific way to organize code before ES Modules became the standard. They group logically related code under a single global object.",
+  "simpleExplanation": "Before modern JavaScript `import/export` existed, if you had two functions named `calculate()`, they would clash. Namespaces were TS's solution to group them: `MathUtils.calculate()` and `PhysicsUtils.calculate()`. Today, they are largely obsolete.",
+  "realWorldExample": "You will mostly see Namespaces in legacy codebases, or when writing Declaration Files (`.d.ts`) to describe old JavaScript libraries (like jQuery) that attach themselves globally to the `window` object.",
+  "useCases": [
+    "Legacy code support",
+    "Typing global `<script>` tag libraries"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use Namespaces for new TypeScript projects?"
+    ],
+    "intermediate": [
+      "How do you access a function inside a Namespace?"
+    ],
+    "advanced": [
+      "What is the difference between a Namespace and a Module?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Should you use them for new projects?",
+      "answer": "No! The official TypeScript documentation recommends using standard ES Modules (`import/export`) for all new modern code. Namespaces should only be used for typing global legacy libraries."
+    },
+    {
+      "question": "Namespace vs Module?",
+      "answer": "A Module is a file that contains `import/export`. It has its own file scope. A Namespace is an object created in the global scope (or inside a module) to group properties. Modules are native to JS; Namespaces are a TS-only invention."
+    }
+  ],
+  "codeExample": "// DEFINITION\nnamespace Validation {\n  // Must export the interface to be visible outside the namespace\n  export interface StringValidator {\n    isAcceptable(s: string): boolean;\n  }\n\n  const lettersRegexp = /^[A-Za-z]+$/;\n\n  // Must export the class too\n  export class LettersOnlyValidator implements StringValidator {\n    isAcceptable(s: string) {\n      return lettersRegexp.test(s);\n    }\n  }\n}\n\n// USAGE (Accessed via dot notation)\nconst myValidator = new Validation.LettersOnlyValidator();\nmyValidator.isAcceptable(\"Hello\"); // true"
+}

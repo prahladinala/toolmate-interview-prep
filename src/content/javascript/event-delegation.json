@@ -1,0 +1,45 @@
+{
+  "id": "event-delegation",
+  "title": "Event Bubbling & Delegation",
+  "difficulty": "Intermediate",
+  "definition": "Event bubbling is the phase where an event triggers on the deepest target element and then successively triggers on its ancestors. Event delegation is a pattern that takes advantage of bubbling by attaching a single event listener to a parent element to manage events for all of its children.",
+  "simpleExplanation": "Imagine a classroom full of students. Instead of the teacher handing a specific instruction sheet to all 30 students individually (attaching 30 event listeners), the teacher just pins one instruction sheet to the classroom whiteboard (the parent element). When a student needs it, they just look at the board. This is event delegation.",
+  "realWorldExample": "If you have a shopping cart with 50 'Remove Item' buttons, attaching an event listener to each button takes up a lot of memory. It's much smarter to attach ONE listener to the entire shopping cart container, and check if the thing clicked was a 'Remove' button.",
+  "useCases": [
+    "Handling events for a large number of child elements (like lists or tables)",
+    "Handling events for elements that are added dynamically to the page after the initial load",
+    "Improving performance and saving memory"
+  ],
+  "questions": {
+    "basic": [
+      "What is event bubbling?",
+      "What is event delegation?"
+    ],
+    "intermediate": [
+      "What is the difference between event.target and event.currentTarget?",
+      "How do you stop an event from bubbling up?"
+    ],
+    "advanced": [
+      "What is Event Capturing (or Trickling) and how does it relate to Bubbling?",
+      "What is the difference between stopPropagation() and stopImmediatePropagation()?"
+    ],
+    "trick": [
+      "Do all events bubble in JavaScript?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between event.target and event.currentTarget?",
+      "answer": "'event.target' is the exact, deepest element that triggered the event (e.g., the specific button clicked). 'event.currentTarget' is the element that the event listener is actually attached to (e.g., the parent container)."
+    },
+    {
+      "question": "How do you stop an event from bubbling up?",
+      "answer": "By calling `event.stopPropagation()` inside your event handler."
+    },
+    {
+      "question": "Do all events bubble?",
+      "answer": "No. While most do (like click, keyup), some events like 'focus', 'blur', 'load', and 'scroll' do not bubble."
+    }
+  ],
+  "codeExample": "// Instead of this (Bad Performance):\n// document.querySelectorAll('.list-item').forEach(item => {\n//   item.addEventListener('click', () => console.log('Item clicked'));\n// });\n\n// We do this (Event Delegation):\nconst listContainer = document.getElementById('my-list');\n\n// We attach ONE listener to the parent\n// listContainer.addEventListener('click', function(event) {\n//   // We check if what was actually clicked matches our target\n//   if (event.target && event.target.matches('li.list-item')) {\n//     console.log('List item clicked:', event.target.textContent);\n//   }\n// });\n\n// Try clicking around!\nconsole.log(\"Event delegation makes it easy to add new list items dynamically because the parent is already listening for their clicks!\");"
+}

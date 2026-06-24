@@ -1,0 +1,31 @@
+{
+  "id": "inheritance",
+  "title": "Inheritance",
+  "difficulty": "Beginner",
+  "definition": "The mechanism by which certain CSS properties are passed down from a parent element to its children.",
+  "simpleExplanation": "If you set the `color` and `font-family` on the `<body>` tag, you don't have to rewrite it for every single paragraph inside the body. The paragraphs 'inherit' the font and color from their parent.",
+  "realWorldExample": "Setting `font-family: 'Open Sans', sans-serif;` on the `html` selector so your entire website uses the same font automatically.",
+  "useCases": [
+    "Writing DRY (Don't Repeat Yourself) CSS",
+    "Setting global themes"
+  ],
+  "questions": {
+    "basic": [
+      "Do ALL CSS properties inherit automatically?"
+    ],
+    "intermediate": [
+      "How do you force a property to inherit if it doesn't normally do so?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do all inherit?",
+      "answer": "No! Typography properties (color, font-size, line-height) inherit. Layout properties (margin, padding, border) do NOT inherit. (If you put a border on a parent div, the child paragraphs don't get borders too!)."
+    },
+    {
+      "question": "Force inheritance?",
+      "answer": "Use the value `inherit`. Example: `border: inherit;`."
+    }
+  ],
+  "codeExample": "<style>\n  /* We apply styles to the PARENT container */\n  .parent {\n    color: purple;           /* Inherited */\n    font-family: monospace;  /* Inherited */\n    border: 2px solid black; /* NOT Inherited */\n    padding: 20px;           /* NOT Inherited */\n  }\n</style>\n\n<div class=\"parent\">\n  <h3>I inherited the purple color and monospace font!</h3>\n  <p>I also inherited them. Notice how neither of us have our own borders?</p>\n  \n  <!-- You can break inheritance by explicitly setting a new value -->\n  <p style=\"color: orange;\">I broke inheritance by setting my own color!</p>\n</div>"
+}

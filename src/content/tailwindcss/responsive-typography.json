@@ -1,0 +1,32 @@
+{
+  "id": "responsive-typography",
+  "title": "Responsive Typography",
+  "difficulty": "Beginner",
+  "definition": "Using breakpoints to change font sizes (`text-*`), ensuring text is readable on phones but correctly scaled up for massive monitors.",
+  "simpleExplanation": "A `text-6xl` Hero Header looks magnificent on a 27-inch iMac. If you load that exact same header on an iPhone, the word 'Welcome' will be so huge it will break onto 3 different lines and ruin the screen. You must use `text-3xl md:text-6xl`.",
+  "realWorldExample": "Creating a blog post where the main paragraph text is `text-base` (16px) on mobile, but jumps to `text-lg` (18px) on laptops for easier reading from further away.",
+  "useCases": [
+    "Landing page headers",
+    "Articles",
+    "Accessible design"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind pattern ensures a heading is small on mobile but huge on desktop?"
+    ],
+    "intermediate": [
+      "Does changing the font size responsively (e.g., `md:text-xl`) also automatically update the line-height responsively in Tailwind?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which pattern?",
+      "answer": "`text-2xl md:text-5xl` (Or any similar combination of small base class + larger prefixed class)."
+    },
+    {
+      "question": "Line-height update?",
+      "answer": "Yes! Because Tailwind pairs every `text-*` class with a matching `line-height` by default, changing the text size automatically recalculates the optimal line height for that specific breakpoint."
+    }
+  ],
+  "codeExample": "<!-- A perfectly responsive Hero Header -->\n<div class=\"text-center py-20\">\n  <!-- \n    Mobile: 3xl (Large enough to be bold, small enough to fit) \n    Tablet: 5xl \n    Desktop: 7xl (Massive cinematic title) \n  -->\n  <h1 class=\"text-3xl md:text-5xl lg:text-7xl font-black tracking-tight\">\n    Build Faster With Tailwind\n  </h1>\n  \n  <!-- Responsive subtitle -->\n  <p class=\"mt-4 text-base md:text-xl text-gray-500 max-w-2xl mx-auto\">\n    Rapidly build modern websites without ever leaving your HTML.\n  </p>\n</div>"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "chgrp",
+  "title": "chgrp",
+  "difficulty": "Beginner",
+  "definition": "Change Group. A command specifically used to change the group ownership of a file or directory, without affecting the user ownership.",
+  "simpleExplanation": "Changing which team is allowed to use a file, without changing the individual who owns it.",
+  "realWorldExample": "You create a project file. You want your entire engineering team to be able to edit it. You run `chgrp engineers project.txt`.",
+  "useCases": [
+    "Managing team access to shared folders"
+  ],
+  "questions": {
+    "basic": [
+      "Why do people rarely use `chgrp`?"
+    ],
+    "intermediate": [
+      "Can a normal user change a file's group to a group they are NOT a member of?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why rarely used?",
+      "answer": "Because the `chown` command can change both the user and the group at the exact same time (e.g., `chown user:group`), making `chgrp` somewhat redundant."
+    },
+    {
+      "question": "Change to external group?",
+      "answer": "No. A regular user can only change a file's group to a group they are actively a member of."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "workdir",
+  "title": "WORKDIR",
+  "difficulty": "Beginner",
+  "definition": "The instruction that sets the working directory (the active folder) for any subsequent `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD` instructions that follow it in the Dockerfile.",
+  "simpleExplanation": "Typing `cd` (change directory) in the terminal. It tells Docker 'For the rest of the recipe, do all your work inside this specific folder'.",
+  "realWorldExample": "`WORKDIR /app`. Now, if the next line is `COPY . .`, it copies your files directly into the `/app` folder. If you open a terminal in the live container later, you will start inside the `/app` folder.",
+  "useCases": [
+    "Organizing container file structure",
+    "Best practices"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you set a `WORKDIR` to a folder that doesn't exist yet?"
+    ],
+    "intermediate": [
+      "Why is using `WORKDIR /app` better than just writing `RUN cd /app`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Folder doesn't exist?",
+      "answer": "Docker will automatically create the folder for you."
+    },
+    {
+      "question": "Why better than cd?",
+      "answer": "Because every `RUN` instruction happens in complete isolation. If you write `RUN cd /app` on line 4, Docker changes the directory, finishes the layer, and then *immediately forgets it*. Line 5 will be back in the root directory. `WORKDIR` makes the change permanent for the whole file."
+    }
+  ]
+}

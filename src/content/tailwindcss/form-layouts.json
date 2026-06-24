@@ -1,0 +1,32 @@
+{
+  "id": "form-layouts",
+  "title": "Form Layouts",
+  "difficulty": "Intermediate",
+  "definition": "Using CSS Grid and Flexbox to structure complex forms with multiple rows, columns, labels, and helper text.",
+  "simpleExplanation": "A form isn't just one input. It's a 'First Name' input next to a 'Last Name' input, with a 'Submit' button at the bottom. You use Grid (`grid-cols-2`) to align them perfectly.",
+  "realWorldExample": "Building a Checkout page where the 'City', 'State', and 'Zip' inputs all share the same horizontal row, but stack vertically on a mobile phone.",
+  "useCases": [
+    "Checkout flows",
+    "Settings pages",
+    "Data entry dashboards"
+  ],
+  "questions": {
+    "basic": [
+      "What is the easiest way to make two inputs sit side-by-side on desktop, but stack on mobile?"
+    ],
+    "intermediate": [
+      "Where should you put the `gap-4` class to create spacing between all inputs in a form?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Side-by-side?",
+      "answer": "Wrap them in a `<div class=\"grid grid-cols-1 md:grid-cols-2\">`."
+    },
+    {
+      "question": "Where to put gap-4?",
+      "answer": "On the parent `<form>` or `<div class=\"grid\">` container. Avoid putting `margin-bottom` on the individual inputs."
+    }
+  ],
+  "codeExample": "<!-- A Professional 2-Column Form Layout -->\n<form class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n  <!-- First Name (1 Column) -->\n  <div class=\"flex flex-col space-y-1\">\n    <label class=\"text-sm font-medium text-gray-700\">First Name</label>\n    <input type=\"text\" class=\"border p-2 rounded\" />\n  </div>\n\n  <!-- Last Name (1 Column) -->\n  <div class=\"flex flex-col space-y-1\">\n    <label class=\"text-sm font-medium text-gray-700\">Last Name</label>\n    <input type=\"text\" class=\"border p-2 rounded\" />\n  </div>\n\n  <!-- Email Address (Spans BOTH columns! col-span-full) -->\n  <div class=\"flex flex-col space-y-1 md:col-span-2\">\n    <label class=\"text-sm font-medium text-gray-700\">Email</label>\n    <input type=\"email\" class=\"border p-2 rounded w-full\" />\n  </div>\n  \n  <!-- Submit Button -->\n  <button class=\"md:col-span-2 bg-blue-600 text-white p-2 rounded\">\n    Save Profile\n  </button>\n</form>"
+}

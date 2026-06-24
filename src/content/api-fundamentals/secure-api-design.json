@@ -1,0 +1,31 @@
+{
+  "id": "secure-api-design",
+  "title": "Secure API Design",
+  "difficulty": "Advanced",
+  "definition": "The overarching architectural mindset of building APIs with 'Defense in Depth', ensuring minimal data exposure, proper authentication layers, and resilience against attacks.",
+  "simpleExplanation": "Don't send data you don't need to. Don't trust anyone. Secure your endpoints.",
+  "realWorldExample": "Mass Assignment Vulnerability. A developer writes an update function that takes everything in the Request Body and saves it to the DB. A hacker sends `PUT /users/1` with `{ \"name\": \"John\", \"isAdmin\": true }`. The developer's lazy API accidentally makes the hacker an admin.",
+  "useCases": [
+    "Enterprise Architecture",
+    "Penetration testing defense"
+  ],
+  "questions": {
+    "basic": [
+      "What does the principle of 'Least Privilege' mean in API design?"
+    ],
+    "intermediate": [
+      "Why should you never return detailed database error messages (like SQL syntax errors) in your API responses?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Least Privilege?",
+      "answer": "It means an API token, user, or microservice should only have the absolute minimum permissions required to do its job, and nothing more."
+    },
+    {
+      "question": "Why hide DB errors?",
+      "answer": "Information Leakage. If you return an error like `SQL syntax error near SELECT * FROM admin_users`, the hacker now knows exactly what database you use (MySQL) and the exact name of your sensitive tables. Always return generic 500 errors."
+    }
+  ],
+  "codeExample": "/* \n  Preventing the Mass Assignment Vulnerability \n*/\n\n// ❌ BAD: Blindly trusting all incoming data\napp.put('/api/users/:id', async (req, res) => {\n  // Hacker sends { isAdmin: true }\n  await db.users.update(req.params.id, req.body);\n  // 🚨 HACKER IS NOW AN ADMIN 🚨\n});\n\n// ✅ GOOD: Explicitly destructuring and picking ONLY allowed fields\napp.put('/api/users/:id', async (req, res) => {\n  // We ignore anything else they might have put in the body\n  const { firstName, lastName, bio } = req.body;\n  \n  await db.users.update(req.params.id, { firstName, lastName, bio });\n  // Hacker remains a normal user.\n});"
+}

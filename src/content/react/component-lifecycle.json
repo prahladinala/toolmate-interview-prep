@@ -1,0 +1,45 @@
+{
+  "id": "component-lifecycle",
+  "title": "Component Lifecycle",
+  "difficulty": "Beginner",
+  "definition": "Every React component goes through three main phases during its lifetime: Mounting (being inserted into the DOM), Updating (being re-rendered due to state/prop changes), and Unmounting (being removed from the DOM).",
+  "simpleExplanation": "Think of a component like an actor in a play. Mounting is when they walk onto the stage and say their first line. Updating is when they interact with other actors and change their emotions. Unmounting is when their scene is over and they walk off the stage.",
+  "realWorldExample": "Mounting: You fetch the user's profile from an API the moment the page loads. Updating: The user types in an input box, and the screen updates to show the letters. Unmounting: The user logs out, and you cancel any pending API requests or timers so they don't crash the app in the background.",
+  "useCases": [
+    "Fetching initial data (Mounting)",
+    "Responding to new props (Updating)",
+    "Cleaning up memory leaks like setInterval (Unmounting)"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three phases of the component lifecycle?",
+      "How do you simulate 'componentDidMount' using React Hooks?"
+    ],
+    "intermediate": [
+      "How do you simulate 'componentWillUnmount' using Hooks?",
+      "What triggers an 'Update' phase?"
+    ],
+    "advanced": [
+      "What was the purpose of `shouldComponentUpdate` in class components, and what is its equivalent in functional components?",
+      "In Strict Mode, why does React call the `useEffect` setup and cleanup functions twice on mount?"
+    ],
+    "trick": [
+      "If a parent component unmounts, do its children unmount before or after the parent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you simulate componentDidMount with Hooks?",
+      "answer": "By using the `useEffect` hook with an empty dependency array `[]`. This tells React to run the effect exactly once after the initial render."
+    },
+    {
+      "question": "How do you simulate componentWillUnmount with Hooks?",
+      "answer": "By returning a function from inside your `useEffect`. This returned 'cleanup' function will be executed by React right before the component is removed from the screen."
+    },
+    {
+      "question": "Why does Strict Mode call effects twice on mount?",
+      "answer": "In development only, React 18+ intentionally mounts, unmounts, and remounts components to help you find bugs in your cleanup logic and ensure your effects are resilient to Concurrent rendering."
+    }
+  ],
+  "codeExample": "import React, { useState, useEffect } from 'react';\n\nexport default function LifecycleDemo() {\n  const [count, setCount] = useState(0);\n\n  // 1. MOUNTING & UNMOUNTING\n  useEffect(() => {\n    console.log(\"Phase 1: Component Mounted! (Like componentDidMount)\");\n    \n    return () => {\n      console.log(\"Phase 3: Component Unmounted! (Like componentWillUnmount)\");\n    };\n  }, []); // Empty array means run once\n\n  // 2. UPDATING\n  useEffect(() => {\n    if (count > 0) {\n      console.log(`Phase 2: Component Updated! Count is now ${count}`);\n    }\n  }, [count]); // Runs whenever 'count' changes\n\n  return (\n    <div>\n      <h2>Count: {count}</h2>\n      <button onClick={() => setCount(c => c + 1)}>Trigger Update</button>\n    </div>\n  );\n}"
+}

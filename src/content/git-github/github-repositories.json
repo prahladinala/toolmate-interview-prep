@@ -1,0 +1,30 @@
+{
+  "id": "github-repositories",
+  "title": "Repositories",
+  "difficulty": "Beginner",
+  "definition": "A repository (or 'repo') is the most basic element of GitHub. It is a place where you can store your code, your files, and each file's revision history.",
+  "simpleExplanation": "A project folder in the cloud. Every distinct project you build gets its own Repository. A repository contains all your folders, files, images, videos, spreadsheets, and data sets, along with the Git history.",
+  "realWorldExample": "Creating a repository named 'my-portfolio-website', uploading your HTML/CSS files to it, and setting it to 'Public' so employers can review your code.",
+  "useCases": [
+    "Organizing projects"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Public and Private repository?"
+    ],
+    "intermediate": [
+      "What is the repository limit for a free GitHub account?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Public vs Private?",
+      "answer": "Public repositories can be seen, cloned, and downloaded by anyone on the internet (great for open source). Private repositories can only be seen by you and specific collaborators you explicitly invite (great for secret company projects)."
+    },
+    {
+      "question": "Repo limit?",
+      "answer": "There is no limit! You can create unlimited public and private repositories for free."
+    }
+  ],
+  "codeExample": "// Steps to connect a local folder to a new GitHub Repository:\n\n/*\n1. Go to github.com and click 'New Repository'. Name it 'my-app'.\n2. GitHub gives you a URL: https://github.com/user/my-app.git\n3. Open your terminal in your local project folder and run:\n*/\n\n$ git init\n$ git add .\n$ git commit -m \"First commit\"\n\n# Tell local Git where the cloud repository is\n$ git remote add origin https://github.com/user/my-app.git\n\n# Upload the code!\n$ git push -u origin main"
+}

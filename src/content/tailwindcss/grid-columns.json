@@ -1,0 +1,30 @@
+{
+  "id": "grid-columns",
+  "title": "Grid Columns",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for specifying the number of columns in a grid layout.",
+  "simpleExplanation": "Telling the spreadsheet exactly how many vertical pillars you want. `grid-cols-3` creates 3 equal-width columns. `grid-cols-12` creates 12 equal columns (the standard for massive web apps).",
+  "realWorldExample": "Building a standard dashboard with a narrow sidebar and a wide main content area. You create a 4-column grid, make the sidebar span 1 column, and the main area span 3 columns.",
+  "useCases": [
+    "Defining layout structure"
+  ],
+  "questions": {
+    "basic": [
+      "What class creates a grid with 4 equal columns?"
+    ],
+    "intermediate": [
+      "What is the maximum number of equal columns Tailwind supports out of the box?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "4 columns?",
+      "answer": "`grid-cols-4`"
+    },
+    {
+      "question": "Maximum columns?",
+      "answer": "`grid-cols-12` (Though you can add more using arbitrary values like `grid-cols-[16]`)."
+    }
+  ],
+  "codeExample": "<!-- A 12-Column Layout Engine -->\n<div class=\"grid grid-cols-12 gap-4\">\n  <!-- Spans 3 out of 12 columns (25% width) -->\n  <aside class=\"col-span-3 bg-gray-200\">\n    Sidebar Navigation\n  </aside>\n  \n  <!-- Spans 9 out of 12 columns (75% width) -->\n  <main class=\"col-span-9 bg-white\">\n    Main Dashboard Content\n  </main>\n</div>"
+}

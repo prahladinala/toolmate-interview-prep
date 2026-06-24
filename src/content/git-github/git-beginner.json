@@ -1,0 +1,30 @@
+{
+  "id": "git-beginner",
+  "title": "Beginner Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common Git questions asked during entry-level developer interviews to ensure the candidate understands basic version control concepts.",
+  "simpleExplanation": "Interviewers want to make sure you know how to save code, push it to GitHub, and understand the difference between Git and GitHub.",
+  "realWorldExample": "Being asked 'What is the difference between `git fetch` and `git pull`?'",
+  "useCases": [
+    "Junior Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the command to initialize a new Git repository?"
+    ],
+    "intermediate": [
+      "What is the Staging Area?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Initialize?",
+      "answer": "`git init`"
+    },
+    {
+      "question": "What is the Staging Area?",
+      "answer": "It is an intermediate area (the 'Index') where you can gather specific modified files to be included in the next commit, without having to commit every single changed file in your project."
+    }
+  ],
+  "codeExample": "/*\n  Q: What is a Pull Request?\n  \n  A: A Pull Request (PR) is a GitHub feature that lets you propose \n     changes to a repository. It provides a web interface where \n     other developers can review your code, leave comments, and \n     approve the changes before they are officially merged into \n     the main branch.\n*/"
+}

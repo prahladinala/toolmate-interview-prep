@@ -1,0 +1,30 @@
+{
+  "id": "css-selectors",
+  "title": "Selectors",
+  "difficulty": "Beginner",
+  "definition": "CSS Selectors define the HTML elements to which a set of CSS rules apply.",
+  "simpleExplanation": "CSS is a sniper. Selectors are the scope. Before you can change the color of a button, you have to 'select' the button. You can target elements by their tag name (`button`), their Class (`.btn`), or their ID (`#submit-btn`).",
+  "realWorldExample": "Using `.nav-link:hover` to select navigation links, but ONLY when the user's mouse is hovering over them.",
+  "useCases": [
+    "Targeting specific elements for styling"
+  ],
+  "questions": {
+    "basic": [
+      "What symbol is used to select a Class, and what symbol is used for an ID?"
+    ],
+    "intermediate": [
+      "What does the selector `div p` (with a space) do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Class vs ID symbols?",
+      "answer": "A period (`.`) selects a Class (e.g., `.card`). A hashtag (`#`) selects an ID (e.g., `#header`)."
+    },
+    {
+      "question": "What does 'div p' do?",
+      "answer": "It is a Descendant Selector. It selects EVERY paragraph `<p>` that lives anywhere inside a `<div>`."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. Element Selector (Targets ALL h3 tags) */\n  h3 {\n    color: darkblue;\n  }\n\n  /* 2. Class Selector (Targets elements with class=\"highlight\", uses a Period) */\n  .highlight {\n    background-color: yellow;\n    font-weight: bold;\n  }\n\n  /* 3. ID Selector (Targets the single element with id=\"unique\", uses a Hash) */\n  #unique {\n    border: 2px solid red;\n    padding: 10px;\n  }\n\n  /* 4. Descendant Selector (Targets 'a' tags, but ONLY if they are inside '.nav') */\n  .nav a {\n    color: green;\n    text-decoration: none;\n  }\n</style>\n\n<h3>Element Selector Target</h3>\n<p>This is a <span class=\"highlight\">Class Target</span> in a sentence.</p>\n<div id=\"unique\">This is an ID Target.</div>\n\n<div class=\"nav\">\n  <a href=\"#\">I am a green link because I am inside .nav</a>\n</div>\n<a href=\"#\">I am a normal blue link because I am outside!</a>"
+}

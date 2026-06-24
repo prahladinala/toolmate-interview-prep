@@ -1,0 +1,30 @@
+{
+  "id": "docker-advanced",
+  "title": "Advanced Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions assessing knowledge of Multi-Stage Builds, Security Hardening, Orchestration, and CI/CD pipelines.",
+  "simpleExplanation": "Proving you know how to safely put Docker on the public internet without getting the company hacked or crashing the server.",
+  "realWorldExample": "Question: 'Walk me through how to reduce a 1GB Golang Docker Image down to 15MB, and explain why that is critical for security.'",
+  "useCases": [
+    "DevOps Engineer Interviews",
+    "SRE roles"
+  ],
+  "questions": {
+    "basic": [
+      "Why should you never run a container as the 'root' user in production?"
+    ],
+    "intermediate": [
+      "How does Layer Caching work, and how should it dictate the order of commands in your Dockerfile?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not root?",
+      "answer": "Because if an attacker exploits a vulnerability in your application and achieves a 'Container Escape', running as root means they instantly gain Superuser control over the entire physical Host server."
+    },
+    {
+      "question": "How does Layer Caching work?",
+      "answer": "Docker caches each command line as an image layer. If a line changes, that layer and EVERY layer below it is invalidated and must be rebuilt. Therefore, commands that change rarely (like installing OS dependencies) must go at the top, and commands that change constantly (like copying source code) must go at the absolute bottom."
+    }
+  ]
+}

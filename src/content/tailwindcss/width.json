@@ -1,0 +1,32 @@
+{
+  "id": "width",
+  "title": "Width",
+  "difficulty": "Beginner",
+  "definition": "Utilities for setting the width of an element, including fixed widths, percentage widths, and viewport widths.",
+  "simpleExplanation": "How wide something is. You can use the standard spacing scale (`w-16` for 4rem), fractions (`w-1/2` for 50%), or viewport units (`w-screen` for 100% of your monitor).",
+  "realWorldExample": "Creating a two-column layout by setting two sibling `div` elements to `w-1/2`.",
+  "useCases": [
+    "Sizing images",
+    "Creating column layouts",
+    "Full-width hero sections"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class makes an element span 100% of its parent's width?"
+    ],
+    "intermediate": [
+      "What is the difference between `w-full` and `w-screen`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "100% width?",
+      "answer": "`w-full`"
+    },
+    {
+      "question": "full vs screen?",
+      "answer": "`w-full` sets width to 100% of the PARENT container. `w-screen` sets width to 100vw (100% of the entire browser window), completely ignoring parent constraints."
+    }
+  ],
+  "codeExample": "<!-- Fixed width (64px) -->\n<div class=\"w-16 bg-red-500\">Small</div>\n\n<!-- Percentage widths (Fractions) -->\n<div class=\"flex\">\n  <div class=\"w-1/3 bg-blue-500\">33.33%</div>\n  <div class=\"w-2/3 bg-green-500\">66.66%</div>\n</div>\n\n<!-- 100% of parent -->\n<button class=\"w-full bg-indigo-500\">Full Width Button</button>\n\n<!-- Fit Content (Shrinks to fit the text inside exactly) -->\n<div class=\"w-fit bg-yellow-400\">Just exactly my size</div>"
+}

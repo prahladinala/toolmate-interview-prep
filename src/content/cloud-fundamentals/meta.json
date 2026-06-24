@@ -1,0 +1,279 @@
+{
+  "id": "cloud-fundamentals",
+  "title": "Cloud Fundamentals",
+  "description": "Learn core cloud concepts by comparing equivalent services across AWS, Azure, and Google Cloud Platform (GCP). Ideal for developers, DevOps engineers, cloud engineers, and certification preparation.",
+  "icon": "cloud",
+  "categories": [
+    {
+      "id": "cloud-basics",
+      "title": "Cloud Computing Fundamentals",
+      "topics": [
+        { "id": "what-is-cloud", "title": "What is Cloud Computing?" },
+        { "id": "iaas-paas-saas", "title": "IaaS vs PaaS vs SaaS" },
+        { "id": "public-private-hybrid", "title": "Public vs Private vs Hybrid Cloud" },
+        { "id": "availability-zones", "title": "Regions & Availability Zones" },
+        { "id": "shared-responsibility", "title": "Shared Responsibility Model" }
+      ]
+    },
+    {
+      "id": "compute",
+      "title": "Compute Services",
+      "topics": [
+        {
+          "id": "virtual-machines",
+          "title": "Virtual Machines",
+          "aws": "EC2",
+          "azure": "Virtual Machines",
+          "gcp": "Compute Engine"
+        },
+        {
+          "id": "autoscaling",
+          "title": "Auto Scaling",
+          "aws": "Auto Scaling Groups",
+          "azure": "VM Scale Sets",
+          "gcp": "Managed Instance Groups"
+        },
+        {
+          "id": "serverless-functions",
+          "title": "Serverless Functions",
+          "aws": "Lambda",
+          "azure": "Azure Functions",
+          "gcp": "Cloud Functions"
+        },
+        {
+          "id": "containers",
+          "title": "Managed Containers",
+          "aws": "ECS/Fargate",
+          "azure": "Container Apps",
+          "gcp": "Cloud Run"
+        }
+      ]
+    },
+    {
+      "id": "kubernetes",
+      "title": "Kubernetes Services",
+      "topics": [
+        {
+          "id": "managed-kubernetes",
+          "title": "Managed Kubernetes",
+          "aws": "EKS",
+          "azure": "AKS",
+          "gcp": "GKE"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "title": "Storage Services",
+      "topics": [
+        {
+          "id": "object-storage",
+          "title": "Object Storage",
+          "aws": "S3",
+          "azure": "Blob Storage",
+          "gcp": "Cloud Storage"
+        },
+        {
+          "id": "file-storage",
+          "title": "File Storage",
+          "aws": "EFS",
+          "azure": "Azure Files",
+          "gcp": "Filestore"
+        },
+        {
+          "id": "block-storage",
+          "title": "Block Storage",
+          "aws": "EBS",
+          "azure": "Managed Disks",
+          "gcp": "Persistent Disk"
+        }
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "Database Services",
+      "topics": [
+        {
+          "id": "managed-sql",
+          "title": "Managed SQL Databases",
+          "aws": "RDS",
+          "azure": "Azure SQL Database",
+          "gcp": "Cloud SQL"
+        },
+        {
+          "id": "mysql-postgresql",
+          "title": "MySQL/PostgreSQL",
+          "aws": "RDS MySQL/PostgreSQL",
+          "azure": "Azure Database",
+          "gcp": "Cloud SQL"
+        },
+        {
+          "id": "nosql",
+          "title": "NoSQL Database",
+          "aws": "DynamoDB",
+          "azure": "Cosmos DB",
+          "gcp": "Firestore"
+        },
+        {
+          "id": "data-warehouse",
+          "title": "Data Warehouse",
+          "aws": "Redshift",
+          "azure": "Synapse Analytics",
+          "gcp": "BigQuery"
+        }
+      ]
+    },
+    {
+      "id": "networking",
+      "title": "Networking Services",
+      "topics": [
+        {
+          "id": "virtual-network",
+          "title": "Virtual Network",
+          "aws": "VPC",
+          "azure": "Virtual Network (VNet)",
+          "gcp": "VPC Network"
+        },
+        {
+          "id": "load-balancer",
+          "title": "Load Balancer",
+          "aws": "Elastic Load Balancer",
+          "azure": "Azure Load Balancer",
+          "gcp": "Cloud Load Balancing"
+        },
+        {
+          "id": "dns",
+          "title": "DNS Service",
+          "aws": "Route 53",
+          "azure": "Azure DNS",
+          "gcp": "Cloud DNS"
+        },
+        {
+          "id": "cdn",
+          "title": "Content Delivery Network",
+          "aws": "CloudFront",
+          "azure": "Azure CDN",
+          "gcp": "Cloud CDN"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Identity & Security",
+      "topics": [
+        {
+          "id": "identity-management",
+          "title": "Identity & Access Management",
+          "aws": "IAM",
+          "azure": "Microsoft Entra ID",
+          "gcp": "Cloud IAM"
+        },
+        {
+          "id": "secret-management",
+          "title": "Secrets Management",
+          "aws": "Secrets Manager",
+          "azure": "Key Vault",
+          "gcp": "Secret Manager"
+        },
+        {
+          "id": "key-management",
+          "title": "Key Management",
+          "aws": "KMS",
+          "azure": "Key Vault",
+          "gcp": "Cloud KMS"
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "title": "Monitoring & Logging",
+      "topics": [
+        {
+          "id": "monitoring",
+          "title": "Monitoring",
+          "aws": "CloudWatch",
+          "azure": "Azure Monitor",
+          "gcp": "Cloud Monitoring"
+        },
+        {
+          "id": "logging",
+          "title": "Centralized Logging",
+          "aws": "CloudWatch Logs",
+          "azure": "Log Analytics",
+          "gcp": "Cloud Logging"
+        }
+      ]
+    },
+    {
+      "id": "messaging",
+      "title": "Messaging & Event Services",
+      "topics": [
+        {
+          "id": "queue-service",
+          "title": "Message Queue",
+          "aws": "SQS",
+          "azure": "Service Bus",
+          "gcp": "Pub/Sub"
+        },
+        {
+          "id": "event-bus",
+          "title": "Event Bus",
+          "aws": "EventBridge",
+          "azure": "Event Grid",
+          "gcp": "Eventarc"
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DevOps & CI/CD",
+      "topics": [
+        {
+          "id": "container-registry",
+          "title": "Container Registry",
+          "aws": "ECR",
+          "azure": "ACR",
+          "gcp": "Artifact Registry"
+        },
+        {
+          "id": "cicd",
+          "title": "CI/CD Service",
+          "aws": "CodePipeline",
+          "azure": "Azure DevOps",
+          "gcp": "Cloud Build"
+        }
+      ]
+    },
+    {
+      "id": "ai-ml",
+      "title": "AI & Machine Learning",
+      "topics": [
+        {
+          "id": "ai-platform",
+          "title": "AI Platform",
+          "aws": "SageMaker",
+          "azure": "Azure AI Foundry",
+          "gcp": "Vertex AI"
+        },
+        {
+          "id": "generative-ai",
+          "title": "Generative AI",
+          "aws": "Amazon Bedrock",
+          "azure": "Azure OpenAI",
+          "gcp": "Vertex AI Gemini"
+        }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Cloud Interview Preparation",
+      "topics": [
+        { "id": "cloud-beginner", "title": "Beginner Questions" },
+        { "id": "cloud-intermediate", "title": "Intermediate Questions" },
+        { "id": "cloud-advanced", "title": "Advanced Questions" },
+        { "id": "cloud-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "cloud-architecture", "title": "Architecture Design Questions" }
+      ]
+    }
+  ]
+}

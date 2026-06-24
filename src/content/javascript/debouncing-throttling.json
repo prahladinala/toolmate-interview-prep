@@ -1,0 +1,46 @@
+{
+  "id": "debouncing-throttling",
+  "title": "Debouncing & Throttling",
+  "difficulty": "Advanced",
+  "definition": "Debouncing and Throttling are two techniques to control how many times we allow a function to be executed over time. Debouncing delays the function execution until a certain amount of time has passed since the last time it was called. Throttling limits the function execution to at most once every specified time interval.",
+  "simpleExplanation": "Imagine an elevator with doors about to close. \n**Debounce**: Every time a new person arrives, you reset the timer. The elevator won't leave until 5 seconds pass with NO new people arriving.\n**Throttle**: The elevator leaves strictly every 10 minutes. Doesn't matter how many people arrive or mash the button, it only departs on that exact schedule.",
+  "realWorldExample": "Debounce is used for Search Bars: wait until the user stops typing for 300ms before making an API call. Throttle is used for Scroll events: if a user scrolls rapidly, you only want to check the scroll position once every 100ms so the browser doesn't freeze.",
+  "useCases": [
+    "Search input auto-completion (Debounce)",
+    "Window resizing logic (Debounce)",
+    "Infinite scrolling / loading more content (Throttle)",
+    "Clicking a 'Submit' button repeatedly (Throttle)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between debouncing and throttling?",
+      "Why are these techniques necessary?"
+    ],
+    "intermediate": [
+      "How do you implement a simple debounce function using setTimeout?",
+      "In a search bar, which technique would you use and why?"
+    ],
+    "advanced": [
+      "How does leading edge vs trailing edge execution work in Lodash's debounce?",
+      "How would you handle 'this' context and arguments in a custom debounce function?"
+    ],
+    "trick": [
+      "If you set a debounce delay to 0ms, does it execute synchronously?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the main difference?",
+      "answer": "Debounce groups multiple sequential calls into a single execution at the very end of the burst. Throttle guarantees execution at a regular, steady interval regardless of how many times it was called."
+    },
+    {
+      "question": "In a search bar, which technique would you use and why?",
+      "answer": "Debounce. If a user types 'hello', that's 5 keystrokes. You don't want to make 5 API calls. You want to wait until they finish typing the word (e.g., 300ms of silence) and then make exactly 1 API call for 'hello'."
+    },
+    {
+      "question": "If you set a debounce delay to 0ms, does it execute synchronously?",
+      "answer": "No. `setTimeout` with 0ms still pushes the callback to the Task Queue, so it will execute asynchronously after the current synchronous Call Stack is clear."
+    }
+  ],
+  "codeExample": "// A standard implementation of Debounce\nfunction debounce(func, delay) {\n  let timeoutId;\n  \n  return function(...args) {\n    // If called again, clear the previous timer\n    clearTimeout(timeoutId);\n    \n    // Start a fresh timer\n    timeoutId = setTimeout(() => {\n      func.apply(this, args);\n    }, delay);\n  };\n}\n\n// Usage\nconst handleSearch = (query) => {\n  console.log(`Fetching results for: ${query}`);\n};\n\nconst debouncedSearch = debounce(handleSearch, 300);\n\n// Simulating user typing rapidly\ndebouncedSearch('h');\ndebouncedSearch('he');\ndebouncedSearch('hel');\ndebouncedSearch('hello');\n\n// Output: Only \"Fetching results for: hello\" is printed, 300ms later.\n\n\n// A basic implementation of Throttle\nfunction throttle(func, limit) {\n  let inThrottle;\n  \n  return function(...args) {\n    if (!inThrottle) {\n      func.apply(this, args);\n      inThrottle = true;\n      setTimeout(() => {\n        inThrottle = false;\n      }, limit);\n    }\n  };\n}"
+}

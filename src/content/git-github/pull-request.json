@@ -1,0 +1,32 @@
+{
+  "id": "pull-request",
+  "title": "Pull Requests (PR)",
+  "difficulty": "Beginner",
+  "definition": "A mechanism in GitHub that notifies team members that a feature is completed. It provides a dedicated web page for developers to discuss, review, and approve the proposed code changes before they are merged into the main branch.",
+  "simpleExplanation": "In Open Source, you can't just shove your code into someone else's project. You have to politely ask them: 'Hey, I wrote this code to fix your bug. Could you please PULL my code and merge it?'. Thus, a Pull Request.",
+  "realWorldExample": "You finish building a new Login page on your `feature-login` branch. You don't merge it yourself. You open a PR on GitHub. Your senior developer reads the PR, spots a security flaw, leaves a comment, you fix it, and THEN it gets merged.",
+  "useCases": [
+    "Code review",
+    "Gatekeeping the main branch",
+    "Discussing features"
+  ],
+  "questions": {
+    "basic": [
+      "Is a Pull Request a native Git feature or a GitHub feature?"
+    ],
+    "intermediate": [
+      "What is a 'Merge Request'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Native Git or GitHub?",
+      "answer": "It is entirely a GitHub (and GitLab/Bitbucket) feature. Native Git only has `git merge`, it does not have 'Pull Requests' or a UI for code review."
+    },
+    {
+      "question": "Merge Request?",
+      "answer": "It is exactly the same thing as a Pull Request. GitHub calls them Pull Requests (PRs). GitLab calls them Merge Requests (MRs)."
+    }
+  ],
+  "codeExample": "/*\n  The standard PR Workflow:\n  \n  1. Developer creates branch locally: `git checkout -b feature-xyz`\n  2. Developer writes code and commits it.\n  3. Developer pushes branch to GitHub: `git push origin feature-xyz`\n  4. Developer logs into GitHub.com and clicks 'Compare & pull request'.\n  5. Reviewers look at the code diffs on the website.\n  6. Reviewers approve it.\n  7. Someone clicks the green 'Merge pull request' button.\n*/"
+}

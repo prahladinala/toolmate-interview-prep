@@ -1,0 +1,30 @@
+{
+  "id": "private-registries",
+  "title": "Private Registries",
+  "difficulty": "Intermediate",
+  "definition": "A highly secure, access-controlled repository for storing Docker images, preventing the general public from downloading a company's proprietary source code.",
+  "simpleExplanation": "A private App Store just for your company. You don't put your company's secret banking app on the public internet. You put it in a locked vault that only your servers have the key to.",
+  "realWorldExample": "AWS Elastic Container Registry (ECR) or Google Artifact Registry. A developer builds a new version of the company website and pushes it to ECR. The production server uses an IAM token to securely pull the image and deploy it.",
+  "useCases": [
+    "Enterprise security",
+    "Proprietary code storage"
+  ],
+  "questions": {
+    "basic": [
+      "Can anyone on the internet pull an image from a Private Registry?"
+    ],
+    "intermediate": [
+      "If you push an image without specifying a registry URL (e.g., `docker push my-app`), where does Docker attempt to push it by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Public pull?",
+      "answer": "No. It requires secure authentication (username/password or IAM tokens)."
+    },
+    {
+      "question": "Default push location?",
+      "answer": "Docker Hub. If you don't explicitly prepend your private registry URL (e.g., `docker push 12345.dkr.ecr.aws.com/my-app`), Docker assumes you want to push to the public Docker Hub."
+    }
+  ]
+}

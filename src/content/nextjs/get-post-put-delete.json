@@ -1,0 +1,30 @@
+{
+  "id": "get-post-put-delete",
+  "title": "REST API Endpoints",
+  "difficulty": "Beginner",
+  "definition": "Exporting specific named functions (`GET`, `POST`, `PUT`, `DELETE`) from a `route.ts` file to handle different types of HTTP requests.",
+  "simpleExplanation": "If an external app sends data to your server to CREATE a user, it sends a `POST` request. You write an `export async function POST()` to handle it. If they want to READ a user, you write a `GET` function. They can all live in the exact same `route.ts` file.",
+  "realWorldExample": "Creating a standard CRUD API for a mobile app. `GET /api/users` returns the list. `POST /api/users` creates a new one.",
+  "useCases": [
+    "RESTful API architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP method is traditionally used to UPDATE existing data?"
+    ],
+    "intermediate": [
+      "If a client sends a `DELETE` request to your Route Handler, but you only exported a `GET` and `POST` function, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Method to update?",
+      "answer": "`PUT` (replaces the whole record) or `PATCH` (partially updates the record)."
+    },
+    {
+      "question": "Unhandled method?",
+      "answer": "Next.js automatically returns a `405 Method Not Allowed` HTTP error to the client."
+    }
+  ],
+  "codeExample": "/* File: app/api/products/route.ts */\n\n// Read data\nexport async function GET(request: Request) {\n  const products = await db.product.findMany();\n  return Response.json(products);\n}\n\n// Create data\nexport async function POST(request: Request) {\n  // Extract the JSON body sent by the client\n  const body = await request.json(); \n  \n  const newProduct = await db.product.create({ data: body });\n  return Response.json(newProduct, { status: 201 });\n}\n\n// Update data\nexport async function PATCH(request: Request) { ... }\n\n// Delete data\nexport async function DELETE(request: Request) { ... }"
+}

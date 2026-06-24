@@ -1,0 +1,32 @@
+{
+  "id": "postgresql",
+  "title": "PostgreSQL Integration",
+  "difficulty": "Intermediate",
+  "definition": "Connecting Next.js to PostgreSQL, the industry-standard, highly robust relational database system.",
+  "simpleExplanation": "If you are building a banking app, an e-commerce site, or any application where relationships between data are critical (e.g., A User has many Orders, an Order has many Items), you use PostgreSQL. Next.js can connect to it via Prisma, Drizzle, or raw SQL queries.",
+  "realWorldExample": "Using Vercel Postgres (a serverless PostgreSQL database) seamlessly integrated into a Next.js deployment.",
+  "useCases": [
+    "Financial applications",
+    "Complex relational data",
+    "Enterprise software"
+  ],
+  "questions": {
+    "basic": [
+      "What does the acronym SQL stand for?"
+    ],
+    "intermediate": [
+      "What is a 'Connection Pool', and why is it absolutely critical when connecting Next.js (especially Serverless Next.js) to PostgreSQL?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "SQL?",
+      "answer": "Structured Query Language."
+    },
+    {
+      "question": "Connection Pool?",
+      "answer": "PostgreSQL has a hard limit on how many active connections it can handle (e.g., 100). If Next.js scales up 500 serverless functions to handle a traffic spike, they will all try to connect and crash the database. A Connection Pool sits in front of the DB, holds connections open, and manages them efficiently."
+    }
+  ],
+  "codeExample": "// Example using raw SQL via the @vercel/postgres package\nimport { sql } from '@vercel/postgres';\n\nexport default async function TopProducts() {\n  // Using tagged template literals prevents SQL injection automatically!\n  const category = 'Electronics';\n  const { rows } = await sql`\n    SELECT id, name, price \n    FROM products \n    WHERE category = ${category} \n    ORDER BY sales DESC \n    LIMIT 10\n  `;\n\n  return (\n    <ul>\n      {rows.map((product) => (\n        <li key={product.id}>{product.name} - ${product.price}</li>\n      ))}\n    </ul>\n  );\n}"
+}

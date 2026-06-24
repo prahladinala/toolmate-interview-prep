@@ -1,0 +1,30 @@
+{
+  "id": "redux-toolkit-benefits",
+  "title": "Benefits of Redux Toolkit",
+  "difficulty": "Beginner",
+  "definition": "A summary of the architectural and developer experience improvements provided by standardizing on RTK.",
+  "simpleExplanation": "It stops Redux from being painful. It drastically reduces the amount of typing required, makes accidental state mutations impossible, automatically configures Thunk for API calls, and provides excellent TypeScript out of the box.",
+  "realWorldExample": "A legacy Redux app takes 15 files to manage User Auth. An RTK app takes exactly 1 file (`authSlice.js`).",
+  "useCases": [
+    "Justifying the use of RTK over legacy Redux in interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Does the official Redux documentation recommend using RTK?"
+    ],
+    "intermediate": [
+      "What middleware is included by default in RTK's `configureStore`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Recommended?",
+      "answer": "Yes. It is the ONLY recommended way to write Redux logic today. Legacy plain Redux is considered obsolete."
+    },
+    {
+      "question": "Default middleware?",
+      "answer": "Redux Thunk (for async logic) and development checks that throw errors if you accidentally mutate state or dispatch non-serializable data."
+    }
+  ],
+  "codeExample": "/*\n  Top 5 Reasons to use RTK:\n  \n  1. Less Boilerplate: createSlice combines actions and reducers.\n  2. No More Switch Statements: Replaced by builder syntax.\n  3. Immer Built-in: Write state.value = 5 without breaking immutable rules.\n  4. Sensible Defaults: configureStore sets up Thunk and DevTools instantly.\n  5. RTK Query: Built-in advanced data fetching and caching tool.\n*/"
+}

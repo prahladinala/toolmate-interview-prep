@@ -1,0 +1,45 @@
+{
+  "id": "react-elements",
+  "title": "React Elements",
+  "difficulty": "Beginner",
+  "definition": "A React Element is the smallest building block of React apps. It is a plain JavaScript object describing what you want to see on the screen.",
+  "simpleExplanation": "Imagine an architect drawing a blueprint. The blueprint is not a real house; it is just a piece of paper describing the house. A React Element is like that blueprint. It describes what a button or a div should look like, and React uses that blueprint to build the actual physical DOM element in the browser.",
+  "realWorldExample": "When you write `<div className=\"box\"></div>` in JSX, Babel compiles it down to `React.createElement(\"div\", {className: \"box\"})`. This function returns a plain object: `{ type: \"div\", props: { className: \"box\" } }`. This object is the Element.",
+  "useCases": [
+    "Representing DOM nodes in memory",
+    "Passing UI descriptions around as variables",
+    "Being the return value of all React Components"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a React Element and a React Component?",
+      "Are React Elements mutable or immutable?"
+    ],
+    "intermediate": [
+      "What does `React.createElement` return?",
+      "What happens if you try to modify the props of an Element after it is created?"
+    ],
+    "advanced": [
+      "How does React use Elements in the Virtual DOM?",
+      "What is the `$$typeof` property on a React Element used for?"
+    ],
+    "trick": [
+      "Can a React Element be a function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between a React Element and a Component?",
+      "answer": "An Element is a plain object describing what to render (e.g., `<button/>`). A Component is a function or class that RETURNS an Element (e.g., `function MyButton() { return <button/> }`)."
+    },
+    {
+      "question": "Are React Elements mutable?",
+      "answer": "No. Elements are completely immutable. Once created, you cannot change its children or attributes. The only way to update the UI is to create a brand new Element and pass it to ReactDOM.render (or update state so React does it for you)."
+    },
+    {
+      "question": "What is the $$typeof property used for?",
+      "answer": "It is a security feature. `$$typeof: Symbol.for(\"react.element\")` ensures that an object was actually created by React and not injected by a malicious user (XSS) trying to render an arbitrary JSON object as a DOM node."
+    }
+  ],
+  "codeExample": "import React from \"react\";\n\nexport default function ElementDemo() {\n  // 1. Using JSX (What you normally write)\n  const jsxElement = <div className=\"box\">Hello JSX</div>;\n\n  // 2. What it compiles to (The actual React Element)\n  const rawElement = React.createElement(\n    \"div\", \n    { className: \"box\", style: { color: \"blue\" } }, \n    \"Hello raw React.createElement\"\n  );\n\n  return (\n    <div>\n      {jsxElement}\n      {rawElement}\n      <p>Both variables hold plain JavaScript objects, not real DOM nodes!</p>\n    </div>\n  );\n}"
+}

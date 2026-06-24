@@ -1,0 +1,45 @@
+{
+  "id": "weakmap-weakset",
+  "title": "WeakMap & WeakSet",
+  "difficulty": "Expert",
+  "definition": "WeakMap and WeakSet are collections in JavaScript where the references to objects are 'weak'. If there are no other references to an object stored in a WeakMap/WeakSet, the object can be garbage collected.",
+  "simpleExplanation": "Imagine a standard Map is like a heavy chain keeping a boat (an object) tied to a dock. As long as the chain exists, the boat can't float away. A WeakMap is like a thin thread. If nothing else is holding the boat, the thread breaks, and the boat floats away into the ocean (gets Garbage Collected).",
+  "realWorldExample": "You want to keep track of how many times a user clicks a specific button (DOM element). If you use a regular Map to store the count, the button can never be deleted from memory even if it's removed from the screen! If you use a WeakMap, when the button is removed from the screen, your tracking data disappears automatically.",
+  "useCases": [
+    "Storing private data or metadata associated with objects or DOM nodes",
+    "Caching computed results (memoization) without causing memory leaks",
+    "Managing listeners or observers"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Map and WeakMap?",
+      "Can you use a string as a key in a WeakMap?"
+    ],
+    "intermediate": [
+      "Why are WeakMaps not iterable?",
+      "How does WeakMap help prevent memory leaks?"
+    ],
+    "advanced": [
+      "What methods are missing from WeakMap compared to Map?",
+      "How can you use WeakMap to simulate private properties in Classes?"
+    ],
+    "trick": [
+      "Can you use the .size property on a WeakSet?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you use a string as a key in a WeakMap?",
+      "answer": "No. Keys in a WeakMap MUST be objects (or Symbols in newer JS). Primitive values like strings or numbers cannot be used as keys because primitives don't have a lifetime tied to garbage collection."
+    },
+    {
+      "question": "Why are WeakMaps not iterable (no forEach, keys, values)?",
+      "answer": "Because the garbage collector can run at any time, the list of keys in a WeakMap can change unpredictably. Iteration would be non-deterministic, so JS doesn't allow it."
+    },
+    {
+      "question": "Can you use the .size property on a WeakMap/WeakSet?",
+      "answer": "No. Because they are not iterable and their contents can be collected at any time, JS doesn't provide a way to know exactly how many items are currently in them."
+    }
+  ],
+  "codeExample": "// A DOM element\nlet userButton = { id: \"login-btn\" }; // Pretend this is a real DOM node\n\n// 1. Using a regular Map\nconst regularMap = new Map();\nregularMap.set(userButton, { clicks: 5 });\n\nuserButton = null; // We \"remove\" the button from the page\n\n// MEMORY LEAK! The button object still exists inside regularMap.\nconsole.log(regularMap.size); // 1\n\n\n// 2. Using a WeakMap\nlet anotherButton = { id: \"logout-btn\" };\nconst weakMap = new WeakMap();\nweakMap.set(anotherButton, { clicks: 2 });\n\nanotherButton = null; // We remove the button\n\n// No memory leak! The WeakMap doesn't prevent garbage collection.\n// We can't check weakMap.size, but behind the scenes, \n// the {id: \"logout-btn\"} object will be wiped from memory."
+}

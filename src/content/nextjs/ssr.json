@@ -1,0 +1,32 @@
+{
+  "id": "ssr",
+  "title": "Server Side Rendering (SSR)",
+  "difficulty": "Intermediate",
+  "definition": "A rendering strategy where the HTML is generated on the server for EVERY single request, using the freshest data possible, before being sent to the browser.",
+  "simpleExplanation": "User asks for a page. The server halts, fetches data from the database, builds the HTML, and sends the finished page to the user. It happens completely fresh every single time anyone hits the URL.",
+  "realWorldExample": "A Twitter timeline or a live stock market ticker. The data changes every second, so the server must generate the page on-demand when requested to ensure the user isn't seeing old data.",
+  "useCases": [
+    "Highly dynamic content",
+    "Personalized user feeds",
+    "Real-time data"
+  ],
+  "questions": {
+    "basic": [
+      "Is Server-Side Rendering better or worse for SEO than Client-Side Rendering?"
+    ],
+    "intermediate": [
+      "What is the main performance drawback of Server-Side Rendering (Dynamic Rendering)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Better or worse for SEO?",
+      "answer": "Much better! The server sends fully formed HTML containing all the content, so Google Web Crawlers can read it instantly."
+    },
+    {
+      "question": "Performance drawback?",
+      "answer": "Time to First Byte (TTFB) is slower. The user has to wait staring at a blank screen while the server queries the database and generates the HTML before it can send anything back."
+    }
+  ],
+  "codeExample": "/* \n  Server Side Rendering in the App Router \n  (Also called 'Dynamic Rendering')\n*/\n\nexport default async function LiveStockTicker() {\n  // By adding 'cache: no-store', we FORCE Next.js to run this fetch \n  // and rebuild the HTML on EVERY single user request (SSR)\n  const res = await fetch('https://api.stocks.com/tsla', { \n    cache: 'no-store' \n  });\n  const data = await res.json();\n\n  return (\n    <div>\n      <h1>TSLA Live Price</h1>\n      <p>${data.price}</p>\n    </div>\n  );\n}"
+}

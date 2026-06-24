@@ -1,0 +1,32 @@
+{
+  "id": "focus-management",
+  "title": "Focus Management",
+  "difficulty": "Advanced",
+  "definition": "The practice of programmatically controlling where the keyboard focus is on a webpage using JavaScript, usually in response to dynamic UI changes like opening a modal or loading a new page.",
+  "simpleExplanation": "When you click a button to open a popup Modal, a keyboard user expects their 'Tab' key to immediately start tabbing through the Modal. If you don't use JavaScript to physically move their focus into the Modal, they will be stuck tabbing through the hidden background page behind the Modal.",
+  "realWorldExample": "Creating a 'Skip to Main Content' link at the very top of a page. Keyboard users press enter, and JavaScript instantly moves their focus past the 20 navigation links straight to the article.",
+  "useCases": [
+    "Modals and Dialogs",
+    "Single Page Applications (React/Next.js routing)",
+    "Skip links"
+  ],
+  "questions": {
+    "basic": [
+      "What JavaScript method is used to force focus onto an element?"
+    ],
+    "intermediate": [
+      "What is a 'Focus Trap'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What method?",
+      "answer": "`element.focus()`"
+    },
+    {
+      "question": "What is a Focus Trap?",
+      "answer": "When a Modal is open, the user should not be able to tab OUT of the Modal. A focus trap is a JavaScript script that listens for the Tab key. When the user reaches the last button in the Modal and presses Tab, it forces the focus back to the first button in the Modal, 'trapping' them safely inside."
+    }
+  ],
+  "codeExample": "<style>\n  #modal {\n    display: none;\n    position: fixed; top: 20%; left: 20%; right: 20%; \n    background: white; padding: 20px; border: 2px solid black;\n    box-shadow: 0 0 10px rgba(0,0,0,0.5);\n  }\n</style>\n\n<button id=\"openBtn\" onclick=\"openModal()\">\n  Open Important Dialog\n</button>\n\n<p>If you don't manage focus, opening the modal leaves keyboard users stranded back here!</p>\n\n<div id=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"modalTitle\">\n  <!-- tabindex=\"-1\" allows JS to focus an element, but keeps it OUT of the normal Tab flow -->\n  <h2 id=\"modalTitle\" tabindex=\"-1\">Terms of Service</h2>\n  <p>You must agree to these terms.</p>\n  <button id=\"agreeBtn\" onclick=\"closeModal()\">I Agree</button>\n</div>\n\n<script>\n  const modal = document.getElementById('modal');\n  const modalTitle = document.getElementById('modalTitle');\n  const openBtn = document.getElementById('openBtn');\n\n  function openModal() {\n    modal.style.display = 'block';\n    // CRITICAL: Move focus into the modal immediately!\n    // We focus the title so the screen reader reads it first.\n    setTimeout(() => modalTitle.focus(), 50);\n  }\n\n  function closeModal() {\n    modal.style.display = 'none';\n    // CRITICAL: Return focus to the button that opened the modal!\n    // Otherwise, the user loses their place on the page entirely.\n    openBtn.focus();\n  }\n</script>"
+}

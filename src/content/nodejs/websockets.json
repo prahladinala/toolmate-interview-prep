@@ -1,0 +1,31 @@
+{
+  "id": "websockets",
+  "title": "WebSockets",
+  "difficulty": "Intermediate",
+  "definition": "A computer communications protocol providing full-duplex communication channels over a single, long-lived TCP connection.",
+  "simpleExplanation": "Standard HTTP is like sending a letter. You ask for the homepage, the server sends it, and the connection is closed. If someone sends you a chat message, the server can't reach you because the connection is dead. WebSockets are a phone call. You call the server, and NEITHER of you hangs up. The line stays open permanently. If someone chats you, the server instantly speaks into the open phone line: 'Hey, new message!'.",
+  "realWorldExample": "Multiplayer browser games, Live stock market tickers, and Chat applications (Discord/Slack). All require instantaneous, two-way communication without the browser constantly refreshing.",
+  "useCases": [
+    "Real-time applications",
+    "Collaborative editing (Google Docs)"
+  ],
+  "questions": {
+    "basic": [
+      "Are WebSockets unidirectional or bidirectional?"
+    ],
+    "intermediate": [
+      "Does the client have to constantly 'ask' the server if there is new data in a WebSocket?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Unidirectional or bidirectional?",
+      "answer": "Bidirectional (Full-duplex). Both the client and the server can send messages to each other at the exact same time."
+    },
+    {
+      "question": "Does the client have to ask?",
+      "answer": "No. Unlike HTTP 'Long Polling', the client just sits quietly. The server PUSHES the data down the open connection the millisecond it becomes available."
+    }
+  ],
+  "codeExample": "/* \n  Using the native 'ws' package\n  npm install ws\n*/\n\n// const WebSocket = require('ws');\n// const wss = new WebSocket.Server({ port: 8080 });\n\n// console.log(\"WebSocket Server listening on ws://localhost:8080\");\n\n// // 1. Wait for a client to connect (pick up the phone)\n// wss.on('connection', (socket) => {\n//   console.log(\"A new client connected!\");\n\n//   // 2. Send a message TO the client instantly\n//   socket.send(\"Welcome to the real-time server!\");\n\n//   // 3. Listen for messages FROM the client\n//   socket.on('message', (message) => {\n//     console.log(`Client says: ${message}`);\n    \n//     // Broadcast to ALL connected clients (like a chat room)\n//     wss.clients.forEach(client => {\n//       if (client.readyState === WebSocket.OPEN) {\n//         client.send(`User: ${message}`);\n//       }\n//     });\n//   });\n// });\n\nconsole.log(\"WebSockets completely bypass the heavy HTTP request/response headers, making them incredibly lightweight and fast for real-time data.\");"
+}

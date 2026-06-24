@@ -1,0 +1,34 @@
+{
+  "id": "type-conversion",
+  "title": "Implicit vs Explicit Type Conversion",
+  "difficulty": "Intermediate",
+  "definition": "Explicit conversion (Type Casting) is when a developer manually converts one data type to another using functions like `Number()`. Implicit conversion (Type Coercion) is when JavaScript automatically converts types behind the scenes.",
+  "simpleExplanation": "Explicit is you translating English to Spanish with a dictionary. Implicit is JavaScript trying to guess the translation on the fly, sometimes ending up saying something completely embarrassing.",
+  "realWorldExample": "Explicit: Reading an `<input value=\"10\" />` and explicitly calling `parseInt(value, 10)` before doing math. Implicit: Just doing `value * 5`, letting JS guess that you wanted a number.",
+  "useCases": [
+    "Parsing user input",
+    "Avoiding NaN errors"
+  ],
+  "questions": {
+    "basic": [
+      "What is type coercion?"
+    ],
+    "intermediate": [
+      "What happens when you add an array to an object: `[] + {}`?"
+    ],
+    "advanced": [
+      "How does the `valueOf()` and `toString()` mechanism work during coercion?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens in `[] + {}`?",
+      "answer": "JavaScript converts both to strings to concatenate them. `[]` becomes `\"\"` (empty string). `{}` becomes `\"[object Object]\"`. The result is `\"[object Object]\"`."
+    },
+    {
+      "question": "How do valueOf and toString work?",
+      "answer": "When JS tries to coerce an object to a primitive, it first calls `valueOf()`. If that doesn't return a primitive, it falls back to calling `toString()`. You can override these methods to change an object's math behavior."
+    }
+  ],
+  "codeExample": "// EXPLICIT (Clear and safe)\nconst num = Number(\"42\"); \n\n// IMPLICIT (Magic and dangerous)\nconst implicitNum = \"42\" * 1; \n\nconsole.log(1 + \"2\" + \"2\"); // \"122\"\nconsole.log(1 + +\"2\" + \"2\"); // \"32\" (The unary plus coercies \"2\" to 2 first)"
+}

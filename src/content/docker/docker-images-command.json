@@ -1,0 +1,30 @@
+{
+  "id": "docker-images-command",
+  "title": "docker images",
+  "difficulty": "Beginner",
+  "definition": "The CLI command that lists all the top-level Docker images currently stored on your local machine, showing their tags, IDs, creation dates, and sizes.",
+  "simpleExplanation": "Opening your digital garage to see exactly which blueprints you currently have saved on your computer.",
+  "realWorldExample": "Typing `docker images` to figure out why your hard drive is full, and realizing you have 20 gigabytes of old Python images downloaded from 3 years ago.",
+  "useCases": [
+    "Disk space management",
+    "Image verification"
+  ],
+  "questions": {
+    "basic": [
+      "What command do you type to see a list of images on your computer?"
+    ],
+    "intermediate": [
+      "What is a 'Dangling Image' (usually shown as `<none>` in the list)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which command?",
+      "answer": "`docker images` or `docker image ls`."
+    },
+    {
+      "question": "Dangling image?",
+      "answer": "An image that no longer has a name or tag attached to it. This usually happens when you build a new version of an image with the same name. The old image is pushed aside, loses its name, and becomes `<none>`. It wastes disk space and should be pruned."
+    }
+  ]
+}

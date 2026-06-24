@@ -1,0 +1,32 @@
+{
+  "id": "caching",
+  "title": "API Caching",
+  "difficulty": "Intermediate",
+  "definition": "The process of storing a copy of an API response temporarily so that future identical requests can be served instantly from memory rather than querying the database again.",
+  "simpleExplanation": "If 10,000 people ask you 'What is 4,329 x 8,192?', doing the math every single time takes forever. Instead, you do the math ONCE, write the answer on a whiteboard, and for the next hour, when someone asks, you just point at the whiteboard.",
+  "realWorldExample": "An API serving the current price of Bitcoin. Because it's requested millions of times a second, hitting the database would crash the server. The server fetches the price, caches it in Redis for 5 seconds, and serves all millions of requests directly from Redis.",
+  "useCases": [
+    "Performance optimization",
+    "Reducing database load",
+    "Cost saving"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP Header allows the server to tell the client's browser how long it is allowed to cache the response?"
+    ],
+    "intermediate": [
+      "What is the difference between Client-Side Caching and Server-Side Caching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which Header?",
+      "answer": "`Cache-Control` (e.g., `Cache-Control: max-age=3600` tells the browser to cache it for 1 hour)."
+    },
+    {
+      "question": "Client vs Server Caching?",
+      "answer": "Client-Side: The user's browser saves the data. If they refresh, the request never even leaves their computer. Server-Side: The request travels to the backend, but the backend reads the answer from a fast memory cache (like Redis) instead of the slow hard-drive database."
+    }
+  ],
+  "codeExample": "// Node.js Express Example implementing basic Server-Side caching using an object\n\nconst cache = {};\n\napp.get('/api/trending-movies', async (req, res) => {\n  // 1. Check if we have the data in memory and if it is less than 5 minutes old\n  if (cache.movies && cache.timestamp > Date.now() - 300000) {\n    return res.status(200).json(cache.movies); // INSTANT RESPONSE\n  }\n\n  // 2. If no cache, we must do the slow database query\n  const movies = await db.query('SELECT * FROM movies WHERE trending = true');\n  \n  // 3. Save it to the whiteboard (cache) for the next 5 minutes\n  cache.movies = movies;\n  cache.timestamp = Date.now();\n  \n  // 4. Return to the first user\n  res.status(200).json(movies);\n});"
+}

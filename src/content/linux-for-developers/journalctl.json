@@ -1,0 +1,30 @@
+{
+  "id": "journalctl",
+  "title": "journalctl",
+  "difficulty": "Intermediate",
+  "definition": "The command-line utility used to query and read the centralized, binary log data collected by systemd. It replaces the need to manually read traditional text files in `/var/log`.",
+  "simpleExplanation": "The modern search engine for system logs. Instead of using `grep` on 50 different text files, `journalctl` keeps all the logs in a giant, highly-searchable database.",
+  "realWorldExample": "A database service (PostgreSQL) fails to start. Instead of hunting for the specific postgres log file, the admin types `journalctl -u postgresql`. It instantly prints ONLY the logs associated with that specific service, revealing the exact error.",
+  "useCases": [
+    "Debugging systemd services",
+    "Viewing boot errors"
+  ],
+  "questions": {
+    "basic": [
+      "Can you open systemd journal logs using a normal text editor like Nano or Vim?"
+    ],
+    "intermediate": [
+      "What does the command `journalctl -b` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Open with Nano?",
+      "answer": "No. Unlike traditional logs which are plain text files, the systemd journal is stored as raw binary data. You MUST use the `journalctl` command to parse and read it."
+    },
+    {
+      "question": "What is -b?",
+      "answer": "Boot. It filters the massive database of logs to show ONLY the events that happened since the most recent time the computer was restarted."
+    }
+  ]
+}

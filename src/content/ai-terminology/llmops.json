@@ -1,0 +1,30 @@
+{
+  "id": "llmops",
+  "title": "LLMOps",
+  "difficulty": "Advanced",
+  "definition": "Large Language Model Operations. The set of practices, tools, and processes used to manage the lifecycle of LLMs in production, including deployment, monitoring, fine-tuning, and versioning.",
+  "simpleExplanation": "DevOps, but specifically for AI. Building an AI app on your laptop is easy. Keeping it running 24/7 for 1 million users without crashing, going bankrupt, or getting hacked requires a massive engineering pipeline.",
+  "realWorldExample": "A company uses MLflow (an MLOps tool) to track 5 different versions of their fine-tuned LLaMA model, run automated tests against them, deploy the best one to AWS, and automatically monitor it for latency drops.",
+  "useCases": [
+    "Production engineering",
+    "Continuous Integration for AI"
+  ],
+  "questions": {
+    "basic": [
+      "What does LLMOps stand for?"
+    ],
+    "intermediate": [
+      "How does LLMOps differ from traditional MLOps (Machine Learning Operations)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Large Language Model Operations."
+    },
+    {
+      "question": "LLMOps vs MLOps?",
+      "answer": "Traditional MLOps deals with tabular data, predicting numbers, and retraining models weekly. LLMOps deals entirely with unstructured text, Prompt Engineering version control, massive GPU infrastructure, and tracking API costs (which traditional ML rarely worries about)."
+    }
+  ]
+}

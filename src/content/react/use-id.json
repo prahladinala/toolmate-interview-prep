@@ -1,0 +1,45 @@
+{
+  "id": "use-id",
+  "title": "useId",
+  "difficulty": "Intermediate",
+  "definition": "`useId` is a React Hook for generating unique IDs that can be passed to accessibility attributes. It generates unique string IDs that are stable across server and client renders.",
+  "simpleExplanation": "In HTML, if you click a `<label>`, it focuses the connected `<input>`. They connect using an ID: `<label htmlFor=\"name\">` and `<input id=\"name\">`. If you render this same component twice, you have two inputs with `id=\"name\"`, which breaks HTML rules and accessibility. `useId` acts like a license plate generator, giving every single input a mathematically guaranteed unique ID, even if you render the component 100 times.",
+  "realWorldExample": "Building highly reusable form components (like a custom TextInput component) that are fully accessible (a11y) to screen readers. `useId` ensures the ARIA attributes and labels always match up correctly without you having to pass a manual ID prop.",
+  "useCases": [
+    "Generating unique IDs for HTML forms (label htmlFor / input id)",
+    "Generating unique IDs for ARIA attributes (aria-describedby, aria-labelledby)",
+    "Preventing Hydration mismatches in SSR apps (like Next.js)"
+  ],
+  "questions": {
+    "basic": [
+      "What problem does `useId` solve?",
+      "Can you use `useId` to generate keys for lists (`.map()`)?"
+    ],
+    "intermediate": [
+      "How does `useId` prevent SSR hydration mismatches?",
+      "If you need an ID for an input AND an error message in the same component, should you call `useId` twice?"
+    ],
+    "advanced": [
+      "What does the generated ID string actually look like under the hood?",
+      "Can you use `useId` to query the DOM using `document.getElementById()`?"
+    ],
+    "trick": [
+      "Does `useId` generate a random UUID like `Math.random()` or `Date.now()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you use useId to generate keys for lists?",
+      "answer": "NO! You should NEVER use `useId` to generate keys for elements in a list. Keys should be generated from your data (like a database ID). `useId` does not guarantee the same ID if the list order changes."
+    },
+    {
+      "question": "Should you call useId twice for an input and an error message?",
+      "answer": "No, you only need to call it once to get a base ID. You can then append suffixes. E.g., `id={baseId + '-input'}` and `id={baseId + '-error'}`."
+    },
+    {
+      "question": "Does useId generate a random UUID?",
+      "answer": "No. It generates an ID based on the component's position in the React tree. This is crucial because `Math.random()` would generate a different number on the Server than on the Client, causing a hydration error. `useId` guarantees the exact same ID on both."
+    }
+  ],
+  "codeExample": "import React, { useId } from 'react';\n\nfunction PasswordField() {\n  // Generate a unique base ID for this specific instance of the component\n  const baseId = useId();\n\n  return (\n    <div>\n      {/* We use the base ID to uniquely link the label and input */}\n      <label htmlFor={`${baseId}-input`}>Password:</label>\n      \n      <input \n        id={`${baseId}-input`} \n        type=\"password\" \n        aria-describedby={`${baseId}-hint`} \n      />\n      \n      {/* We use the same base ID with a suffix to link the ARIA description */}\n      <p id={`${baseId}-hint`}>\n        Must be at least 8 characters.\n      </p>\n    </div>\n  );\n}\n\nexport default function App() {\n  return (\n    <div>\n      <h2>Create Account</h2>\n      {/* Even though we render this twice, useId ensures no HTML ID collisions! */}\n      <PasswordField />\n      <PasswordField />\n    </div>\n  );\n}"
+}

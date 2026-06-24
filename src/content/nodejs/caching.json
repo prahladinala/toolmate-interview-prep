@@ -1,0 +1,32 @@
+{
+  "id": "caching",
+  "title": "Caching Strategies",
+  "difficulty": "Intermediate",
+  "definition": "The process of storing copies of frequently accessed data in a temporary, high-speed storage layer so that future requests for that data are served much faster.",
+  "simpleExplanation": "Imagine asking a librarian 'Who won the 1994 World Cup?'. She walks to the basement, searches 10 books, and 15 minutes later says 'Brazil' (A slow Database Query). Five minutes later, someone else asks her the exact same question. Does she go back to the basement? No! She memorized the answer (Caching). She answers 'Brazil' instantly.",
+  "realWorldExample": "A news website. The 'Top 10 Articles' query takes 2 seconds to run against the database. Since the top 10 articles only change once an hour, you cache the result. For the next hour, all 50,000 users get the articles instantly in 5 milliseconds without the database doing any work.",
+  "useCases": [
+    "Drastically improving API response times",
+    "Reducing database server costs",
+    "Surviving traffic spikes"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Cache 'Hit' vs a Cache 'Miss'?"
+    ],
+    "intermediate": [
+      "What is 'Cache Invalidation'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Hit vs Miss?",
+      "answer": "A Hit means the data was found in the cache, and returned instantly. A Miss means the data wasn't there (or expired), so the server is forced to run the slow database query."
+    },
+    {
+      "question": "What is Cache Invalidation?",
+      "answer": "The hardest problem in computer science. It is the process of deleting or updating cached data when the source database changes. If you don't invalidate the cache, users will see stale, outdated data."
+    }
+  ],
+  "codeExample": "// Simulated Database (Slow)\nconst db = { \n  getTopUsers: async () => new Promise(res => setTimeout(() => res(['Alice', 'Bob']), 2000)) \n};\n\n// Simulated Cache Memory (Fast)\nlet memoryCache = { data: null, timestamp: 0 };\nconst CACHE_LIFETIME = 10000; // 10 seconds\n\nasync function getTopUsers() {\n  const now = Date.now();\n  \n  // 1. Check if cache exists AND is not expired\n  if (memoryCache.data && (now - memoryCache.timestamp < CACHE_LIFETIME)) {\n    console.log(\"⚡ CACHE HIT! Returning instantly.\");\n    return memoryCache.data;\n  }\n\n  // 2. CACHE MISS! Do the heavy lifting.\n  console.log(\"🐌 CACHE MISS! Querying slow database...\");\n  const freshData = await db.getTopUsers();\n\n  // 3. Save to cache for the next user!\n  memoryCache = {\n    data: freshData,\n    timestamp: now\n  };\n\n  return freshData;\n}\n\nasync function runDemo() {\n  await getTopUsers(); // Miss (Takes 2 seconds)\n  await getTopUsers(); // Hit (Instant)\n}\nrunDemo();"
+}

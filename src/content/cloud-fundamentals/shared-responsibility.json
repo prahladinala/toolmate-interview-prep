@@ -1,0 +1,31 @@
+{
+  "id": "shared-responsibility",
+  "title": "Shared Responsibility Model",
+  "difficulty": "Intermediate",
+  "definition": "A cloud security framework dictating that the Cloud Provider is responsible for the security *OF* the cloud (hardware, physical buildings), and the Customer is responsible for security *IN* the cloud (passwords, firewalls, app code).",
+  "simpleExplanation": "If someone physically breaks into the Amazon data center with a crowbar, it is Amazon's fault. If someone hacks into your database because your password was '12345', it is your fault.",
+  "realWorldExample": "A company uses AWS EC2. AWS guarantees the physical server won't be stolen. But the company fails to update their Linux OS, gets hacked via a malware virus, and sues AWS. The judge dismisses it, citing the Shared Responsibility Model: updating Linux was the customer's job.",
+  "useCases": [
+    "Security audits",
+    "Compliance",
+    "Cloud architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Who is responsible for locking the front door of the actual data center?"
+    ],
+    "intermediate": [
+      "In a PaaS (Platform as a Service) model, does the customer have MORE or LESS security responsibility than in an IaaS model?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who locks the door?",
+      "answer": "The Cloud Provider (AWS, Azure, GCP)."
+    },
+    {
+      "question": "More or less in PaaS?",
+      "answer": "Less. In PaaS, the provider takes over responsibility for updating the Operating System and Network firewalls. The customer is only responsible for their App Code and Data."
+    }
+  ]
+}

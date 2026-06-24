@@ -1,0 +1,32 @@
+{
+  "id": "server-sent-events",
+  "title": "Server-Sent Events (SSE)",
+  "difficulty": "Intermediate",
+  "definition": "A standard allowing a browser to receive automatic updates (event streams) from a server via an HTTP connection. It is strictly a one-way communication channel (Server to Client).",
+  "simpleExplanation": "WebSockets is a two-way phone call. SSE is a one-way radio broadcast. The client tunes in to the station, and the server continuously streams data to them. The client cannot talk back on that channel.",
+  "realWorldExample": "A live Twitter feed or a live sports score ticker. The user is just watching the data flow in. They don't need to send complex high-speed data back to the server, so a full WebSocket is overkill. SSE handles this perfectly over standard HTTP.",
+  "useCases": [
+    "Live scoreboards",
+    "News feeds",
+    "Streaming AI text (ChatGPT)"
+  ],
+  "questions": {
+    "basic": [
+      "Which is generally easier to set up through corporate firewalls and load balancers: WebSockets or Server-Sent Events?"
+    ],
+    "intermediate": [
+      "If a client needs to send a chat message while listening to an SSE stream, how do they do it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Easier to setup?",
+      "answer": "Server-Sent Events. Because SSE operates completely over standard HTTP (port 80/443), practically all firewalls and proxies handle it natively. WebSockets use a custom protocol that often requires special proxy configuration."
+    },
+    {
+      "question": "How to send data?",
+      "answer": "They must send a standard, separate HTTP POST request. SSE is strictly one-way (downlink). The POST request goes up, the server processes it, and broadcasts the result back down the SSE stream."
+    }
+  ],
+  "codeExample": "// Frontend JavaScript connecting to an SSE stream\n\n// 1. Connect to the EventStream endpoint\nconst eventSource = new EventSource('https://api.com/live-scores');\n\n// 2. Listen for data packets being streamed down\neventSource.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(\"New Score! \", data);\n};\n\n// 3. If the connection drops, EventSource automatically tries to reconnect!\neventSource.onerror = () => {\n  console.log(\"Connection lost. Reconnecting...\");\n};"
+}

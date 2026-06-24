@@ -1,0 +1,30 @@
+{
+  "id": "octal-permissions",
+  "title": "Octal Permissions",
+  "difficulty": "Intermediate",
+  "definition": "A numeric system (0-7) used to quickly set permissions using `chmod`. Read = 4, Write = 2, Execute = 1.",
+  "simpleExplanation": "Math for permissions. Instead of typing out `chmod u+rwx,g+rx,o+r`, you just add the numbers together. 4+2+1 = 7. 4+1 = 5. Read only = 4. So you type `chmod 754`.",
+  "realWorldExample": "A web server requires files to be readable and writable by the owner, and strictly unreadable by anyone else. The developer types `chmod 600 secrets.txt` (6 = 4+2 for owner, 0 for group, 0 for others).",
+  "useCases": [
+    "Rapidly setting exact permissions",
+    "Infrastructure as Code"
+  ],
+  "questions": {
+    "basic": [
+      "What does `chmod 777` do, and why is it dangerous?"
+    ],
+    "intermediate": [
+      "What numeric value would you use to give the Owner Read/Write, the Group Read-only, and Others absolutely nothing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is 777?",
+      "answer": "It gives Read, Write, and Execute permissions to absolutely everyone on the system. It is highly dangerous because any hacker or malicious script can modify or delete the file."
+    },
+    {
+      "question": "Owner RW, Group R, Others 0?",
+      "answer": "`640`. (Owner: 4+2=6. Group: 4. Others: 0)."
+    }
+  ]
+}

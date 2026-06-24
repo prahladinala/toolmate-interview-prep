@@ -1,0 +1,32 @@
+{
+  "id": "collaborators",
+  "title": "Collaborators",
+  "difficulty": "Beginner",
+  "definition": "Specific GitHub users who have been explicitly invited to have write access to a personal repository.",
+  "simpleExplanation": "If you are working on a school project with a friend on your personal GitHub account, you can't use an 'Organization'. Instead, you go to your repo settings, type in your friend's username, and invite them as a 'Collaborator'. Now they can push code directly to your repository.",
+  "realWorldExample": "Inviting your hackathon teammates as collaborators so you can all push code to the same repository over the weekend.",
+  "useCases": [
+    "Small team projects",
+    "Hackathons",
+    "Academic projects"
+  ],
+  "questions": {
+    "basic": [
+      "Does your friend need a GitHub account to be added as a collaborator?"
+    ],
+    "intermediate": [
+      "If a repository is Public, do you still need to add people as collaborators for them to help?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need an account?",
+      "answer": "Yes. You must invite them using their specific GitHub username or the email address attached to their GitHub account."
+    },
+    {
+      "question": "Public repo?",
+      "answer": "If you want them to be able to push code DIRECTLY, yes. If they are not a collaborator on a public repo, they must use the Fork and Pull Request workflow."
+    }
+  ],
+  "codeExample": "/*\n  How to add a Collaborator:\n  \n  1. Go to your Repository on GitHub.\n  2. Click 'Settings' (the gear icon).\n  3. Click 'Collaborators' on the left menu.\n  4. Click 'Add people'.\n  5. Search for their GitHub username and click Add.\n  \n  IMPORTANT: They will receive an email. They MUST click the link \n  in the email to accept the invitation before they can push code!\n*/"
+}

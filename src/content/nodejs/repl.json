@@ -1,0 +1,35 @@
+{
+  "id": "repl",
+  "title": "Node REPL",
+  "difficulty": "Beginner",
+  "definition": "REPL stands for Read, Eval, Print, Loop. It is the interactive command-line shell that comes with Node.js.",
+  "simpleExplanation": "It's a playground in your terminal. You type `node` and press Enter. Now, you can type JavaScript code directly into your terminal, press Enter, and instantly see the result without having to create or save a `.js` file.",
+  "realWorldExample": "Quickly testing a complex Regex string, or verifying what a specific JavaScript built-in method like `Math.random().toFixed(2)` returns without leaving your terminal.",
+  "useCases": [
+    "Prototyping",
+    "Debugging JS logic",
+    "Exploring available modules"
+  ],
+  "questions": {
+    "basic": [
+      "How do you start the Node REPL?"
+    ],
+    "intermediate": [
+      "What does the special `_` (underscore) variable do in the REPL?"
+    ],
+    "advanced": [
+      "Can you require custom modules inside the REPL?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you start it?",
+      "answer": "Open your terminal and type `node` (with no file arguments)."
+    },
+    {
+      "question": "What does the underscore (_) do?",
+      "answer": "In the REPL, `_` holds the result of the very last evaluated expression. If you type `2 + 2` and press Enter (it prints 4). Then you type `_ + 5`, it will output 9."
+    }
+  ],
+  "codeExample": "/* \nHOW TO USE THE REPL:\n\n1. Open your terminal.\n2. Type: node\n3. You will see a `>` prompt.\n\n> const name = \"Alice\"\nundefined\n\n> name.toUpperCase()\n'ALICE'\n\n> [1, 2, 3].map(n => n * 2)\n[ 2, 4, 6 ]\n\n> const fs = require('fs')\nundefined\n\n> .help   (Shows available REPL commands)\n> .exit   (Exits the REPL back to your normal terminal)\n*/\n\nconsole.log(\"The REPL is an interactive terminal environment. Run 'node' in your terminal to try it!\");"
+}

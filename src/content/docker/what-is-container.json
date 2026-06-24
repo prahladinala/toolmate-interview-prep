@@ -1,0 +1,31 @@
+{
+  "id": "what-is-container",
+  "title": "What is a Container?",
+  "difficulty": "Beginner",
+  "definition": "A standardized unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. It isolates software from its environment.",
+  "simpleExplanation": "A shipping container for code. Just like physical shipping containers can hold anything (cars, electronics, food) and fit perfectly on any cargo ship or truck in the world without the ship needing to know what's inside, a Docker Container holds your app and fits perfectly on any server.",
+  "realWorldExample": "Running a massive Netflix architecture. Instead of having one giant server with Python, Java, and Node all conflicting with each other, Netflix runs 10,000 isolated Containers. One container runs Python, another runs Java, and they never touch each other's files.",
+  "useCases": [
+    "Microservices",
+    "Application isolation",
+    "Rapid scaling"
+  ],
+  "questions": {
+    "basic": [
+      "Are Containers physically isolated hardware, or software isolated processes?"
+    ],
+    "intermediate": [
+      "If a Container crashes, does it crash the Host machine running it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Hardware or software?",
+      "answer": "Software isolated processes. They share the same physical hardware and kernel of the host machine, but they are logically boxed in so they can't see each other."
+    },
+    {
+      "question": "Crash the host?",
+      "answer": "No. The isolation guarantees that a process crashing inside a container cannot bring down the main Host operating system."
+    }
+  ]
+}

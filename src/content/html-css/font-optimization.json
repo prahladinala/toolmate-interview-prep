@@ -1,0 +1,31 @@
+{
+  "id": "font-optimization",
+  "title": "Font Optimization",
+  "difficulty": "Intermediate",
+  "definition": "Techniques used to ensure custom web fonts do not severely impact website performance or cause aggressive layout shifts when they finally load.",
+  "simpleExplanation": "Custom fonts (like Google Fonts) are heavy files. When a user visits your site, their browser uses a default font (like Arial), then 2 seconds later the custom font finishes downloading, and the entire text changes shape and size. This is called the 'Flash of Unstyled Text' (FOUT), and it causes the layout to jump around wildly.",
+  "realWorldExample": "Using `font-display: swap` to tell the browser: 'Use Arial instantly so the user can start reading. As soon as my custom font downloads, swap it in smoothly.'",
+  "useCases": [
+    "Improving Cumulative Layout Shift (CLS)",
+    "Faster text rendering"
+  ],
+  "questions": {
+    "basic": [
+      "What CSS property dictates how a font is displayed while it is downloading?"
+    ],
+    "intermediate": [
+      "Why might you 'preload' a font?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`font-display` (usually set to `swap`)."
+    },
+    {
+      "question": "Why preload?",
+      "answer": "Fonts are usually discovered late in the rendering process (the browser has to download the HTML, then download the CSS, read the CSS, and ONLY THEN realize it needs to download a font). Adding `<link rel=\"preload\" href=\"myfont.woff2\" as=\"font\">` in the HTML `<head>` tells the browser to start downloading the font instantly."
+    }
+  ],
+  "codeExample": "<style>\n  /* A highly optimized @font-face declaration */\n  @font-face {\n    font-family: 'MyCustomFont';\n    \n    /* Using the woff2 format (it is 30% smaller than older formats like ttf) */\n    src: url('/fonts/myfont.woff2') format('woff2');\n    \n    /* THE MAGIC KEYWORD */\n    /* 'swap' ensures the text is visible immediately using a fallback font, \n       and swaps to the custom font once it is fully loaded. */\n    font-display: swap;\n  }\n\n  body {\n    font-family: 'MyCustomFont', sans-serif;\n  }\n</style>\n\n<!-- In the HTML <head>, we Preload the font so it downloads instantly! -->\n<!-- \n<link rel=\"preload\" href=\"/fonts/myfont.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>\n-->"
+}

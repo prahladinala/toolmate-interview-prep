@@ -1,0 +1,30 @@
+{
+  "id": "docker-ps",
+  "title": "docker ps",
+  "difficulty": "Beginner",
+  "definition": "The CLI command that outputs a list of currently running containers, showing their IDs, image names, uptime, and mapped ports.",
+  "simpleExplanation": "The Task Manager for Docker. It shows you exactly what containers are currently turned on and running on your computer.",
+  "realWorldExample": "You start a database but forget which port you assigned it to. You type `docker ps`, look at the port column, and see it is running on port 5432.",
+  "useCases": [
+    "Monitoring state",
+    "Finding Container IDs"
+  ],
+  "questions": {
+    "basic": [
+      "Will `docker ps` show you containers that are currently Stopped/Exited?"
+    ],
+    "intermediate": [
+      "Why is it called `ps`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Show stopped containers?",
+      "answer": "No. By default, it only shows live, running containers. You must add the `-a` (all) flag (e.g., `docker ps -a`) to see stopped containers."
+    },
+    {
+      "question": "Why called ps?",
+      "answer": "It is inherited from Unix/Linux terminology, where `ps` stands for 'Process Status'."
+    }
+  ]
+}

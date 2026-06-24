@@ -1,0 +1,31 @@
+{
+  "id": "load-balancing",
+  "title": "Load Balancing",
+  "difficulty": "Advanced",
+  "definition": "The process of distributing network traffic efficiently across multiple servers. It ensures no single server bears too much demand.",
+  "simpleExplanation": "The traffic cop. If you scaled horizontally and have 5 Node.js servers, the Load Balancer sits in front of them. When 100 users visit your site, the Load Balancer directs 20 to Server A, 20 to Server B, etc. If Server C catches fire and crashes, the Load Balancer detects it instantly and redirects all traffic to the healthy servers, meaning the users never even notice the crash.",
+  "realWorldExample": "AWS Application Load Balancer (ALB) or NGINX. The DNS points `google.com` to the Load Balancer, which then silently forwards the traffic to Google's millions of internal servers.",
+  "useCases": [
+    "Distributing high traffic",
+    "Ensuring High Availability / Fault Tolerance"
+  ],
+  "questions": {
+    "basic": [
+      "Does the client communicate directly with the individual Node.js servers?"
+    ],
+    "intermediate": [
+      "What is 'Round Robin'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Client communicate directly?",
+      "answer": "No. The client only knows the IP address of the Load Balancer. The internal servers are hidden in a private network."
+    },
+    {
+      "question": "What is Round Robin?",
+      "answer": "The simplest load balancing algorithm. It just goes down the list sequentially: Request 1 goes to Server A, Request 2 to Server B, Request 3 to Server C, Request 4 back to Server A. Other algorithms route based on which server has the lowest current CPU usage."
+    }
+  ],
+  "codeExample": "// Simulated Load Balancer logic\nconst servers = [\n  { name: 'Server A', active: true },\n  { name: 'Server B', active: true },\n  { name: 'Server C', active: false } // Crashed!\n];\n\nlet currentIndex = 0;\n\nfunction loadBalancer() {\n  // 1. Find the next server in the list (Round Robin)\n  let target = servers[currentIndex];\n  \n  // 2. Health Check! If crashed, skip it.\n  if (!target.active) {\n    console.log(`[LB]: ${target.name} is DEAD. Skipping...`);\n    currentIndex = (currentIndex + 1) % servers.length;\n    target = servers[currentIndex];\n  }\n\n  console.log(`[LB]: Routing user request to ${target.name}`);\n  \n  // Advance the index for the next request\n  currentIndex = (currentIndex + 1) % servers.length;\n}\n\nconsole.log(\"Traffic Spike incoming!\\n\");\nloadBalancer();\nloadBalancer();\nloadBalancer();\nloadBalancer();"
+}

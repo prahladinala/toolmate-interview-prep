@@ -1,0 +1,32 @@
+{
+  "id": "event-driven-architecture",
+  "title": "Event Driven Architecture",
+  "difficulty": "Advanced",
+  "definition": "A software architecture paradigm promoting the production, detection, consumption of, and reaction to events.",
+  "simpleExplanation": "Instead of writing one massive 500-line function that does A, then B, then C, then D, you write 4 tiny isolated functions. Function A finishes its job and simply shouts 'I am done!'. Function B hears that shout, does its job, and shouts 'I am done!'. The code is completely decoupled. If you want to remove Function C, you just delete it. You don't have to rewrite Function A.",
+  "realWorldExample": "Microservices. An 'Order Service' accepts a credit card and publishes an 'Order Paid' event to a message queue (like RabbitMQ or Kafka). The 'Inventory Service' and 'Shipping Service' are just sitting there listening. They hear the event and instantly start packing the box.",
+  "useCases": [
+    "Microservices",
+    "Scalable backend systems",
+    "Real-time gaming servers"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Publisher' and a 'Subscriber'?"
+    ],
+    "intermediate": [
+      "What is the main benefit of Event-Driven Architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Publisher and Subscriber?",
+      "answer": "The Publisher is the code that emits the event (`.emit()`). The Subscriber is the code that listens and reacts to it (`.on()`)."
+    },
+    {
+      "question": "Main benefit?",
+      "answer": "Loose Coupling. The Publisher has absolutely zero idea who is listening. It just does its job and yells. This allows you to add 50 new features to your app (like adding a new Analytics listener) without ever touching the original Publisher's code."
+    }
+  ],
+  "codeExample": "const EventEmitter = require('events');\nconst eventBus = new EventEmitter();\n\n// --- THE SUBSCRIBERS (Decoupled Services) ---\nclass EmailService {\n  constructor() { eventBus.on('purchase', this.sendReceipt); }\n  sendReceipt(data) { console.log(`[Email]: Receipt sent to ${data.user}`); }\n}\n\nclass InventoryService {\n  constructor() { eventBus.on('purchase', this.reduceStock); }\n  reduceStock(data) { console.log(`[Inventory]: Reduced stock of ${data.item} by 1`); }\n}\n\n// Instantiate the services so they start listening\nnew EmailService();\nnew InventoryService();\n\n// --- THE PUBLISHER (Checkout Route) ---\nfunction handleCheckout(user, item) {\n  console.log(`[Checkout]: Processing payment for ${item}...`);\n  \n  // Checkout logic is completely unaware of Emails or Inventory!\n  // It just broadcasts the event and moves on.\n  eventBus.emit('purchase', { user, item });\n}\n\nhandleCheckout(\"alice@test.com\", \"MacBook Pro\");"
+}

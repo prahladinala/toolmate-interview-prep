@@ -1,0 +1,46 @@
+{
+  "id": "data-types",
+  "title": "Data Types & Coercion",
+  "difficulty": "Beginner",
+  "definition": "JavaScript has different types of values, broadly categorized into Primitives (like strings and numbers) and Objects. Type Coercion is JavaScript's automatic conversion of values from one data type to another.",
+  "simpleExplanation": "Imagine trying to add the word 'Apple' and the number 5. JavaScript tries to be helpful by automatically turning the number 5 into a word, so it becomes 'Apple5'. This automatic conversion is called coercion.",
+  "realWorldExample": "When a user types their age into a form, it's often captured as a text string (e.g., '25'). When you try to add 5 years to it, JavaScript needs to know if it should combine them like text ('255') or do math (30).",
+  "useCases": [
+    "Validating user input",
+    "Checking if a value is 'truthy' or 'falsy'",
+    "Comparing variables for equality"
+  ],
+  "questions": {
+    "basic": [
+      "What are the primitive data types in JavaScript?",
+      "What is the difference between == and ===?"
+    ],
+    "intermediate": [
+      "What is type coercion?",
+      "What are 'truthy' and 'falsy' values?"
+    ],
+    "advanced": [
+      "Explain the difference between null and undefined.",
+      "How does JavaScript coerce objects to primitive values?"
+    ],
+    "trick": [
+      "What does [] == ![] evaluate to and why?",
+      "What is the result of typeof null?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the primitive data types?",
+      "answer": "String, Number, BigInt, Boolean, Undefined, Null, and Symbol."
+    },
+    {
+      "question": "What is the difference between == and ===?",
+      "answer": "== (loose equality) compares values after attempting to convert them to the same type (coercion). === (strict equality) compares both value and type without converting."
+    },
+    {
+      "question": "What is the result of typeof null?",
+      "answer": "It returns 'object'. This is a known historical bug in JavaScript that was never fixed to maintain backward compatibility."
+    }
+  ],
+  "codeExample": "// Strict vs Loose Equality\nconsole.log(5 == '5');  // true (coercion happened)\nconsole.log(5 === '5'); // false (different types)\n\n// Type Coercion in action\nconsole.log(1 + '2'); // '12' (number converted to string)\nconsole.log('5' - 1); // 4 (string converted to number)\n\n// Falsy values\nif (0 || \"\" || null || undefined || NaN || false) {\n  // This block will never execute\n}\nconsole.log('Done!');"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "install-docker",
+  "title": "Installing Docker",
+  "difficulty": "Beginner",
+  "definition": "The process of setting up the Docker environment on a host operating system, which differs significantly between Linux, Windows, and macOS.",
+  "simpleExplanation": "Downloading the Docker engine so your computer understands how to run containers.",
+  "realWorldExample": "On Linux, you run a few `apt-get` commands in the terminal to install the raw Engine. On Mac and Windows, you usually download a graphical app called 'Docker Desktop'.",
+  "useCases": [
+    "Environment setup",
+    "Onboarding"
+  ],
+  "questions": {
+    "basic": [
+      "Do you install the exact same Docker software file on Linux as you do on a Macbook?"
+    ],
+    "intermediate": [
+      "Why does installing Docker on Windows require WSL2 (Windows Subsystem for Linux)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Same software file?",
+      "answer": "No. The installation architectures are vastly different."
+    },
+    {
+      "question": "Why WSL2?",
+      "answer": "Because Docker containers rely on core features of the Linux Kernel (like namespaces and cgroups). Windows does not have a Linux Kernel. WSL2 runs a highly efficient, invisible Linux kernel inside Windows, allowing Docker to run natively."
+    }
+  ]
+}

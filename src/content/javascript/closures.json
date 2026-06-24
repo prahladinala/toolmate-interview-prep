@@ -1,0 +1,45 @@
+{
+  "id": "closures",
+  "title": "Closures",
+  "difficulty": "Intermediate",
+  "definition": "A closure is simply a function that remembers the variables around it, even after the function that created it has finished running.",
+  "simpleExplanation": "Think of a closure like a function with a memory. Normally, when a function finishes, its variables are gone forever. But if you create a smaller function inside it, that smaller function remembers the variables from the first one. It packs them in a little invisible backpack so it can use them later.",
+  "realWorldExample": "Think of a smart lock. The lock remembers the password that was set when it was manufactured (outer environment). Even years later, when you try to open it (inner function), it still remembers that original password to check against.",
+  "useCases": [
+    "Data privacy / Emulating private methods",
+    "Partial applications or currying",
+    "Event handlers and callbacks",
+    "Memoization"
+  ],
+  "questions": {
+    "basic": [
+      "What is a closure in JavaScript?",
+      "Can you give a simple example of a closure?"
+    ],
+    "intermediate": [
+      "How do closures help with data encapsulation?",
+      "What is the difference between scope and closure?"
+    ],
+    "advanced": [
+      "How do closures affect memory management and garbage collection?",
+      "What is the module pattern and how does it relate to closures?"
+    ],
+    "trick": [
+      "What is the output of a loop with var and setTimeout, and how do closures fix it?"
+    ],
+    "hr": [
+      "Tell me about a time you had a hard-to-find bug related to variable scoping."
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a closure in JavaScript?",
+      "answer": "A closure is formed when a function is defined inside another function. It allows the inner function to access variables of the outer function, even after the outer function has finished executing."
+    },
+    {
+      "question": "What is the output of a loop with var and setTimeout, and how do closures fix it?",
+      "answer": "Using `var` in a loop with setTimeout prints the final value of the loop counter for every iteration. Closures fix this by creating a new scope for each iteration, capturing the current value of the counter. Modern JS fixes this simply by using `let`."
+    }
+  ],
+  "codeExample": "function makeCounter() {\n  let count = 0; // Outer scope variable\n  \n  return function() {\n    count++; // Inner function accesses count\n    return count;\n  };\n}\n\nconst counter = makeCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2\nconsole.log(counter()); // 3"
+}

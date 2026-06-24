@@ -1,0 +1,30 @@
+{
+  "id": "css-interview-questions",
+  "title": "CSS Interview Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to expose candidates who rely too heavily on Tailwind or Bootstrap and don't understand how CSS actually works under the hood.",
+  "simpleExplanation": "Expect trick questions about Specificity, the Box Model, and Centering.",
+  "realWorldExample": "The classic: 'How do you vertically and horizontally center a div?'",
+  "useCases": [
+    "Front-End Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the CSS Box Model?"
+    ],
+    "intermediate": [
+      "What is the difference between `display: none` and `visibility: hidden`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Box Model?",
+      "answer": "The core of CSS layout. Every element is a box composed of four areas: Content (the core), Padding (space inside the border), Border (the edge), and Margin (space outside the border)."
+    },
+    {
+      "question": "none vs hidden?",
+      "answer": "`display: none` completely removes the element from the document flow; it takes up zero space. `visibility: hidden` makes the element invisible, but it still physically takes up empty space on the screen."
+    }
+  ],
+  "codeExample": "/* \n  Q: What is Specificity in CSS, and how is it calculated?\n\n  A: Specificity is the algorithm the browser uses to decide which CSS rule wins \n     when there are conflicting styles.\n     \n     The Point System:\n     - Element Selectors (h1, p, div): 1 Point\n     - Class Selectors (.btn, .card): 10 Points\n     - ID Selectors (#header): 100 Points\n     - Inline Styles (style=\"color: red;\"): 1000 Points\n     - !important: Overrides everything.\n     \n     Example:\n     #main .title { color: blue; }  (Score: 100 + 10 = 110)\n     .container .title { color: red; } (Score: 10 + 10 = 20)\n     \n     The blue rule wins because 110 beats 20.\n*/"
+}

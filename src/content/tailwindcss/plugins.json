@@ -1,0 +1,31 @@
+{
+  "id": "plugins",
+  "title": "Plugins",
+  "difficulty": "Advanced",
+  "definition": "JavaScript functions that can be imported into `tailwind.config.js` to inject new utilities, components, or base styles into the framework.",
+  "simpleExplanation": "If Tailwind doesn't have a class you need (like a complex 3D text shadow), you can write a plugin that generates it. You can also download plugins made by other people (like `@tailwindcss/typography`) to instantly give your app superpowers.",
+  "realWorldExample": "Installing the official Typography plugin, which allows you to apply `class=\"prose\"` to a massive block of raw Markdown HTML, instantly styling all the headers, links, and lists beautifully.",
+  "useCases": [
+    "Extending functionality",
+    "Styling Markdown"
+  ],
+  "questions": {
+    "basic": [
+      "What official plugin is used to beautifully style raw HTML that you don't control (like from a Markdown file or CMS)?"
+    ],
+    "intermediate": [
+      "Where in the `tailwind.config.js` file do you register a plugin?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which plugin?",
+      "answer": "`@tailwindcss/typography` (The `prose` class)."
+    },
+    {
+      "question": "Where to register?",
+      "answer": "In the `plugins: []` array at the bottom of the config."
+    }
+  ],
+  "codeExample": "// 1. Install: npm install -D @tailwindcss/typography\n\n// 2. Register Plugin\nmodule.exports = {\n  theme: {},\n  plugins: [\n    require('@tailwindcss/typography'),\n  ],\n}\n\n// 3. Usage:\n// If a backend CMS gives you raw HTML without any Tailwind classes,\n// wrapping it in a 'prose' div instantly makes it beautiful and readable.\n<article class=\"prose lg:prose-xl text-gray-800\">\n  <!-- Raw HTML from database goes here -->\n  <div dangerouslySetInnerHTML={{ __html: cmsContent }} />\n</article>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "graceful-shutdown",
+  "title": "Graceful Shutdown",
+  "difficulty": "Advanced",
+  "definition": "The process of safely turning off a Node.js server. Instead of instantly killing the process, it stops accepting new requests, finishes processing existing active requests, closes database connections, and then exits.",
+  "simpleExplanation": "Imagine a restaurant closing at 10 PM. A bad shutdown is turning off the lights and kicking everyone out mid-bite. A Graceful Shutdown is locking the front door so no NEW customers can enter, letting the people already inside finish their meals, washing the dishes, and then turning off the lights.",
+  "realWorldExample": "If you host on Kubernetes, K8s restarts your pods frequently. If you don't implement Graceful Shutdown, any user in the middle of uploading a file or paying a bill when the restart happens will experience a failed request and a crashed app.",
+  "useCases": [
+    "Kubernetes/Docker deployments",
+    "Ensuring data integrity during deployments"
+  ],
+  "questions": {
+    "basic": [
+      "What system signal does Node.js receive when the server (like PM2 or Docker) wants it to shut down?"
+    ],
+    "intermediate": [
+      "What happens to pending HTTP requests if you call `process.exit(1)` immediately?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What system signal?",
+      "answer": "`SIGTERM` or `SIGINT` (Ctrl+C)."
+    },
+    {
+      "question": "What happens if you process.exit?",
+      "answer": "Every single pending HTTP request and database query is instantly severed, resulting in network errors for users and potentially corrupted database entries."
+    }
+  ],
+  "codeExample": "const http = require('http');\nconst server = http.createServer((req, res) => res.end('Hello'));\n\nserver.listen(3000, () => console.log('Server running...'));\n\n// Listen for the termination signal from the OS (e.g., Docker or Ctrl+C)\nprocess.on('SIGTERM', shutDown);\nprocess.on('SIGINT', shutDown);\n\nfunction shutDown() {\n  console.log('\\n[SYSTEM]: Received kill signal, shutting down gracefully...');\n\n  // 1. Stop accepting NEW requests\n  server.close(() => {\n    console.log('[SYSTEM]: Closed out remaining connections.');\n    \n    // 2. Close database connections\n    // mongoose.connection.close(false, () => {\n    //   console.log('MongoDb connection closed.');\n      \n      // 3. Exit successfully\n      console.log('[SYSTEM]: Goodbye!');\n      process.exit(0);\n    // });\n  });\n\n  // 4. Force kill after 10 seconds if it hangs\n  setTimeout(() => {\n    console.error('[SYSTEM]: Could not close connections in time, forcefully shutting down');\n    process.exit(1);\n  }, 10000);\n}"
+}

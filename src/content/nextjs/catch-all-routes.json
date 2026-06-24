@@ -1,0 +1,31 @@
+{
+  "id": "catch-all-routes",
+  "title": "Catch-All Routes",
+  "difficulty": "Advanced",
+  "definition": "An extension of dynamic routes using an ellipsis `[...param]` that captures an array of nested URL segments, rather than just one.",
+  "simpleExplanation": "A standard dynamic route `[id]` only catches ONE slash (e.g. `/shop/shirts`). A catch-all route `[...categories]` catches infinite slashes (e.g. `/shop/mens/shirts/summer/red`). It gathers all those words into an array and hands them to you.",
+  "realWorldExample": "Creating a complex e-commerce filtering system or a documentation site where the URL depth varies wildly (`/docs/react/hooks/useState`).",
+  "useCases": [
+    "Documentation viewers",
+    "Complex nested taxonomies"
+  ],
+  "questions": {
+    "basic": [
+      "What syntax is used to create a catch-all route folder?"
+    ],
+    "intermediate": [
+      "What is the difference between `[...slug]` and `[[...slug]]` (double brackets)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Syntax?",
+      "answer": "An ellipsis followed by the variable name in square brackets: `[...slug]`."
+    },
+    {
+      "question": "Single vs Double brackets?",
+      "answer": "`[...slug]` requires at least ONE segment (e.g., `/shop/shirts`). `[[...slug]]` is an OPTIONAL catch-all, meaning it will also match the root route (e.g., just `/shop` with no sub-categories)."
+    }
+  ],
+  "codeExample": "/* \n  File Path: app/docs/[...slug]/page.tsx\n  URL Visited: mywebsite.com/docs/api/v2/authentication\n*/\n\nexport default function DocsPage({ params }: { params: { slug: string[] } }) {\n  \n  // params.slug is an ARRAY of all the URL segments!\n  // params.slug = [\"api\", \"v2\", \"authentication\"]\n  \n  const section = params.slug[0]; // \"api\"\n  const version = params.slug[1]; // \"v2\"\n  const topic = params.slug[2];   // \"authentication\"\n  \n  return <h1>Viewing documentation for: {topic}</h1>\n}"
+}

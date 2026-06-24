@@ -1,0 +1,34 @@
+{
+  "id": "compiler-options",
+  "title": "Compiler Options",
+  "difficulty": "Advanced",
+  "definition": "The specific settings nested inside `\"compilerOptions\"` in `tsconfig.json` that dictate how TypeScript emits JavaScript, performs type checking, and handles JSX.",
+  "simpleExplanation": "If `tsconfig.json` is the rulebook, the Compiler Options are the individual dials and switches. You can turn a dial to say 'Compile JSX for React', turn another switch to say 'Do not allow unused variables', and flip a switch that says 'Output source maps for debugging'.",
+  "realWorldExample": "Changing `\"jsx\": \"preserve\"` (used with Next.js which handles its own JSX compilation) vs `\"jsx\": \"react-jsx\"` (standard React 17+ compilation).",
+  "useCases": [
+    "Tailoring TS to specific frameworks (React, Node, Vue)",
+    "Enforcing code quality rules"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `target` option do?"
+    ],
+    "intermediate": [
+      "What is the difference between `noUnusedLocals` and `noUnusedParameters`?"
+    ],
+    "advanced": [
+      "What does `isolatedModules` do and why do tools like Vite/Babel require it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does 'target' do?",
+      "answer": "It specifies the ECMAScript version of the compiled JavaScript. E.g., `ES5` (old browsers) or `ESNext` (latest Node.js)."
+    },
+    {
+      "question": "What does isolatedModules do?",
+      "answer": "Compilers like Babel or Vite (esbuild) compile files one at a time, completely ignoring other files in the project. They cannot safely compile things like `const enum` because they don't have access to the whole project's type system. `isolatedModules: true` forces TypeScript to warn you if you write code that a single-file compiler cannot handle."
+    }
+  ],
+  "codeExample": "{\n  \"compilerOptions\": {\n    // --- BUILD PROCESS ---\n    \"target\": \"ES2022\",\n    \"module\": \"ESNext\",\n    \"outDir\": \"./dist\",\n    \"sourceMap\": true, // Generates .map files so browser debuggers show TS code\n\n    // --- LINTING & QUALITY ---\n    \"noUnusedLocals\": true, // Errors if a variable is declared but never read\n    \"noImplicitReturns\": true, // Errors if some branches of a function don't return a value\n\n    // --- REACT ---\n    \"jsx\": \"react-jsx\" // Required for React 17+ to understand <div> syntax\n  }\n}"
+}

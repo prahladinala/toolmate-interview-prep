@@ -1,0 +1,34 @@
+{
+  "id": "custom-errors",
+  "title": "Custom Errors",
+  "difficulty": "Intermediate",
+  "definition": "Creating custom error classes that extend the built-in JavaScript `Error` object to provide more specific and actionable error handling.",
+  "simpleExplanation": "Standard errors just say 'Something went wrong'. A custom error says 'The Database Connection Timed Out'. This allows your `catch` block to look at the error and say, 'Oh, it's a Database error, I will retry 3 times. If it was a Validation error, I won't retry.'",
+  "realWorldExample": "Creating a `ValidationError` class. If a user submits a bad email, you throw a `ValidationError`. Your catch block checks `if (err instanceof ValidationError)` and displays it to the user, but if it's a standard `Error`, it sends it to the crash reporting tool.",
+  "useCases": [
+    "API error handling",
+    "Domain-specific logic rules"
+  ],
+  "questions": {
+    "basic": [
+      "How do you manually throw an error in JavaScript?"
+    ],
+    "intermediate": [
+      "How do you create a custom error class?"
+    ],
+    "advanced": [
+      "Why is extending the built-in `Error` class important for stack traces?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you manually throw an error?",
+      "answer": "Using the `throw` keyword: `throw new Error(\"Invalid ID\");`. You can technically throw anything (even a string: `throw \"Crash\"`), but it's terrible practice because you lose the stack trace."
+    },
+    {
+      "question": "Why is extending Error important?",
+      "answer": "The native `Error` class automatically captures the Stack Trace (the exact file and line number where the error occurred). If you just return a plain object `{ message: 'failed' }`, you will have no idea where the code failed."
+    }
+  ],
+  "codeExample": "// 1. Define the Custom Error\nclass ValidationError extends Error {\n  constructor(message) {\n    super(message); // Call the parent Error constructor\n    this.name = \"ValidationError\";\n  }\n}\n\n// 2. Use it in your business logic\nfunction registerUser(age) {\n  if (age < 18) {\n    throw new ValidationError(\"User must be at least 18.\");\n  }\n  return \"Success\";\n}\n\n// 3. Catch and inspect it\ntry {\n  registerUser(15);\n} catch (error) {\n  if (error instanceof ValidationError) {\n    console.log(\"Show popup to user:\", error.message);\n  } else {\n    console.log(\"Fatal system crash! Send to Sentry.\", error);\n  }\n}"
+}

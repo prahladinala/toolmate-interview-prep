@@ -1,0 +1,31 @@
+{
+  "id": "responsive-images",
+  "title": "Responsive Images",
+  "difficulty": "Beginner",
+  "definition": "Images that scale nicely to fit any browser size. In modern web development, an image should never overflow its container or stretch out of proportion.",
+  "simpleExplanation": "If you put a 2000px wide 4K image on a 400px wide iPhone, the image will physically stick out of the phone's screen and cause a horizontal scrollbar. You fix this by telling the image: 'Never be wider than your parent container'.",
+  "realWorldExample": "The holy grail rule of responsive images: `img { max-width: 100%; height: auto; }`.",
+  "useCases": [
+    "Mobile friendly design",
+    "Preventing layout breakage"
+  ],
+  "questions": {
+    "basic": [
+      "What CSS property prevents an image from overflowing its container?"
+    ],
+    "intermediate": [
+      "Why use `max-width: 100%` instead of `width: 100%`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`max-width: 100%;`"
+    },
+    {
+      "question": "max-width vs width?",
+      "answer": "If you have a tiny 50px icon inside a giant 1000px container, `width: 100%` will forcefully stretch the icon to 1000px, making it incredibly blurry. `max-width: 100%` means 'Shrink if you have to, but never grow larger than your original file size'."
+    }
+  ],
+  "codeExample": "<style>\n  /* The Holy Grail of Responsive Images */\n  img {\n    max-width: 100%;\n    height: auto; /* Keeps the aspect ratio from stretching! */\n    display: block;\n  }\n\n  /* We put it in a flexible container to test it */\n  .image-container {\n    width: 50vw; /* 50% of the screen width */\n    border: 5px solid red;\n    margin: auto;\n  }\n</style>\n\n<p>Resize your browser! The red container shrinks, and the massive image automatically scales down with it, never breaking out of the red box.</p>\n\n<div class=\"image-container\">\n  <!-- This image is physically 800px wide! -->\n  <img src=\"https://placehold.co/800x400\" alt=\"A large placeholder image\">\n</div>"
+}

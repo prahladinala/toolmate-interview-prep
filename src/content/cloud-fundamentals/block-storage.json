@@ -1,0 +1,30 @@
+{
+  "id": "block-storage",
+  "title": "Block Storage (EBS / Persistent Disk)",
+  "difficulty": "Intermediate",
+  "definition": "A storage architecture that splits data into evenly sized blocks and stores them independently. It acts exactly like a raw physical hard drive (SSD/HDD) attached directly to a specific virtual machine.",
+  "simpleExplanation": "The C: Drive or D: Drive of your cloud server. It is incredibly fast, allows you to install operating systems, and acts exactly like a normal hard drive.",
+  "realWorldExample": "AWS EBS, Azure Managed Disks, GCP Persistent Disk. When you launch a new Virtual Machine, you attach a 50GB Block Storage volume to it so the VM has a place to install Linux and the database files.",
+  "useCases": [
+    "Operating System boot drives",
+    "High-performance databases"
+  ],
+  "questions": {
+    "basic": [
+      "If you terminate/delete a Virtual Machine, what happens to its attached Block Storage drive?"
+    ],
+    "intermediate": [
+      "Why would you choose Block Storage for a massive database instead of Object Storage (S3)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens on termination?",
+      "answer": "By default, the primary boot drive is deleted when the VM is terminated. However, you can configure the settings to save the drive, allowing you to attach it to a new VM later."
+    },
+    {
+      "question": "Block vs Object for DB?",
+      "answer": "Because of speed and updates. If you change 1 single letter in a 5GB file on S3, you have to re-upload the entire 5GB file. Block storage allows you to update just the exact microscopic block of data on the disk, which is required for database performance."
+    }
+  ]
+}

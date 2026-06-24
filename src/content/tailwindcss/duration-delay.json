@@ -1,0 +1,32 @@
+{
+  "id": "duration-delay",
+  "title": "Duration & Delay",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the length (duration) of a transition, and how long to wait before starting it (delay).",
+  "simpleExplanation": "You added a transition, but it's too fast. `duration-500` tells the transition to take exactly half a second (500ms) to complete. `delay-200` tells it to wait 200ms before it even begins.",
+  "realWorldExample": "A massive dropdown menu. You don't want it to instantly vanish if the user's mouse accidentally slips off it for a millisecond. You add `delay-150` so it waits a moment before fading out.",
+  "useCases": [
+    "Choreographing animations",
+    "Dropdowns",
+    "Tooltips"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default duration of a transition in Tailwind if you don't specify one?"
+    ],
+    "intermediate": [
+      "What is an `ease` function (`ease-in`, `ease-out`) used for alongside duration?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default duration?",
+      "answer": "150 milliseconds (`duration-150`)."
+    },
+    {
+      "question": "Ease function?",
+      "answer": "It controls the acceleration of the animation over the duration. `ease-in` starts slow and speeds up. `ease-out` starts fast and slows down gracefully at the end (the most natural feeling for UI)."
+    }
+  ],
+  "codeExample": "<!-- \n  The \"Cinematic Fade\" Image \n  1. transition-opacity: Tells it to fade smoothly\n  2. duration-1000: Take a full 1 second to fade (very slow!)\n  3. ease-in-out: Start slow, speed up in middle, end slow.\n-->\n<img \n  src=\"photo.jpg\" \n  class=\"opacity-50 hover:opacity-100 \n         transition-opacity duration-1000 ease-in-out\" \n/>\n\n<!-- Choreographed Staggering using Delay -->\n<div class=\"group\">\n  <div class=\"opacity-0 group-hover:opacity-100 transition duration-300\">Item 1</div>\n  <div class=\"opacity-0 group-hover:opacity-100 transition duration-300 delay-100\">Item 2 (Shows up later)</div>\n  <div class=\"opacity-0 group-hover:opacity-100 transition duration-300 delay-200\">Item 3 (Shows up last)</div>\n</div>"
+}

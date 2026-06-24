@@ -1,0 +1,30 @@
+{
+  "id": "copy-add",
+  "title": "COPY vs ADD",
+  "difficulty": "Intermediate",
+  "definition": "Instructions used to copy files from the host machine (your laptop) into the Docker image. `COPY` is the standard tool. `ADD` is an older tool that does the same thing but has hidden extra features.",
+  "simpleExplanation": "Taking the source code folder sitting on your Macbook desktop and permanently dragging-and-dropping it inside the Docker Image.",
+  "realWorldExample": "`COPY ./src /app/src`. This copies the 'src' folder from your laptop and pastes it into the '/app/src' directory inside the container.",
+  "useCases": [
+    "Importing source code",
+    "Injecting configuration files"
+  ],
+  "questions": {
+    "basic": [
+      "Which command is considered best practice for normal file copying: `COPY` or `ADD`?"
+    ],
+    "intermediate": [
+      "What are the 'hidden features' of the `ADD` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is best practice?",
+      "answer": "`COPY`. It is completely transparent and does exactly what it says. `ADD` should generally be avoided unless you specifically need its extra features."
+    },
+    {
+      "question": "What hidden features?",
+      "answer": "`ADD` can accept a URL to download a file from the internet directly into the image. Furthermore, if you `ADD` a compressed `.tar.gz` file, it will automatically unzip it inside the container."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "block-inline-elements",
+  "title": "Block vs Inline Elements",
+  "difficulty": "Beginner",
+  "definition": "The two primary display values in HTML that determine how elements sit next to each other on the page.",
+  "simpleExplanation": "Block elements are greedy. They take up the entire width of the screen and force a line break (like a Paragraph). Inline elements are polite. They only take up as much space as their text needs, and sit side-by-side with other elements (like a bold `<b>` tag inside a sentence).",
+  "realWorldExample": "A `<div>` is a block element. A `<span>` is an inline element. If you put two `<div>`s next to each other, they stack vertically. Two `<span>`s will sit horizontally.",
+  "useCases": [
+    "Structuring page layouts",
+    "Styling text inline"
+  ],
+  "questions": {
+    "basic": [
+      "Is an `<h1>` tag block or inline?"
+    ],
+    "intermediate": [
+      "Can you set the `width` and `height` of an inline element?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is h1 block or inline?",
+      "answer": "Block. It takes up the full width of its container."
+    },
+    {
+      "question": "Can you set width/height on inline?",
+      "answer": "No. Inline elements completely ignore CSS `width` and `height` properties. If you need to set dimensions but keep it sitting next to other items, you must use CSS `display: inline-block`."
+    }
+  ],
+  "codeExample": "<style>\n  /* Adding borders to make the behavior visible */\n  .block-element {\n    border: 2px solid red;\n    margin-bottom: 10px;\n  }\n  .inline-element {\n    border: 2px solid blue;\n  }\n</style>\n\n<!-- BLOCK ELEMENTS: They take up 100% width and stack on top of each other -->\n<div class=\"block-element\">I am a Block element (div). Notice my border goes all the way across!</div>\n<p class=\"block-element\">I am also a Block element (p).</p>\n\n<hr />\n\n<!-- INLINE ELEMENTS: They only take up necessary space and sit side-by-side -->\nThis is a sentence with a <span class=\"inline-element\">Span (Inline)</span> inside it. \n<a href=\"#\" class=\"inline-element\">Links</a> are also inline!\n\n<br><br>\n<b>Notice how the blue boxes sit right next to each other!</b>"
+}

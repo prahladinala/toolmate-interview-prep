@@ -1,0 +1,31 @@
+{
+  "id": "text-classification",
+  "title": "Text Classification",
+  "difficulty": "Beginner",
+  "definition": "The foundational NLP task of automatically assigning predefined categories or tags to free-text documents.",
+  "simpleExplanation": "A digital mail-sorter. It reads an incoming document and throws it into the correct bucket. (e.g., Is this email Spam or Not Spam? Is this news article about Sports, Politics, or Technology?)",
+  "realWorldExample": "Gmail's automatic inbox tabs. Gmail reads every incoming email and classifies it into 'Primary', 'Social', or 'Promotions' so your inbox stays clean.",
+  "useCases": [
+    "Spam filtering",
+    "Ticket routing",
+    "Content moderation"
+  ],
+  "questions": {
+    "basic": [
+      "Is Spam Filtering a form of Text Classification?"
+    ],
+    "intermediate": [
+      "What is 'Multi-Label' classification?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is Spam Filtering text classification?",
+      "answer": "Yes. It is the most famous example of binary (two-category) text classification."
+    },
+    {
+      "question": "What is Multi-Label?",
+      "answer": "When a single document can be assigned to multiple buckets simultaneously. For example, a news article about the Super Bowl halftime show could be classified as BOTH 'Sports' AND 'Entertainment'."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "kernel-tuning",
+  "title": "Kernel Tuning (sysctl)",
+  "difficulty": "Advanced",
+  "definition": "The process of modifying Linux kernel parameters at runtime using the `sysctl` command or `/etc/sysctl.conf` to optimize performance, networking, and security.",
+  "simpleExplanation": "Tuning the engine of your car while you are driving it down the highway. You can adjust how the OS handles memory, network packets, and file limits without rebooting.",
+  "realWorldExample": "A high-traffic web server keeps dropping connections. The admin types `sysctl -w net.core.somaxconn=1024`. This instantly tells the kernel to increase the maximum number of allowed queued network connections from 128 to 1024, fixing the site.",
+  "useCases": [
+    "High-performance database tuning",
+    "Network optimization for web servers"
+  ],
+  "questions": {
+    "basic": [
+      "If you use the `sysctl` command to change a kernel parameter, does the change survive a server reboot?"
+    ],
+    "intermediate": [
+      "What is 'swappiness' (`vm.swappiness`) and why do database admins usually change it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Survive reboot?",
+      "answer": "No. Command-line `sysctl` changes are temporary. To make them permanent across reboots, you must write the change into the `/etc/sysctl.conf` file."
+    },
+    {
+      "question": "What is swappiness?",
+      "answer": "It is a value (0-100) determining how aggressively the kernel moves RAM data to the slow physical hard drive (Swap). Databases (like MySQL) need data in fast RAM, so admins usually lower swappiness to 1 or 10 to force the kernel to avoid using the slow hard drive."
+    }
+  ]
+}

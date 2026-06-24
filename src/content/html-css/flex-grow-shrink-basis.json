@@ -1,0 +1,32 @@
+{
+  "id": "flex-grow-shrink-basis",
+  "title": "flex-grow, shrink, basis",
+  "difficulty": "Advanced",
+  "definition": "The three flex item properties that control size flexibility. They are usually combined into the shorthand `flex` property (e.g., `flex: 1 0 200px;`).",
+  "simpleExplanation": "- **Basis**: The ideal starting width of the item (like `width`, but for flexbox).\n- **Grow**: If there is extra empty space in the container, how greedily should this item expand to eat that space? (0 = don't grow, 1 = take your fair share, 2 = take twice as much as others).\n- **Shrink**: If the screen gets too small, should this item shrink to prevent overflowing? (1 = yes, 0 = no, stay rigid).",
+  "realWorldExample": "A search bar. You want the 'Search' button to stay exactly 100px wide (`flex-basis: 100px; flex-shrink: 0;`), but you want the text input field to grow and fill the rest of the screen on any device (`flex-grow: 1;`).",
+  "useCases": [
+    "Complex fluid layouts",
+    "Search bars",
+    "Sidebar & Main content layouts"
+  ],
+  "questions": {
+    "basic": [
+      "If you write `flex: 1`, what does the `1` represent?"
+    ],
+    "intermediate": [
+      "If Item A has `flex-grow: 1` and Item B has `flex-grow: 2`, what happens to the leftover space?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is 1?",
+      "answer": "It is the `flex-grow` value. `flex: 1` is shorthand for 'allow this item to grow and fill empty space evenly'."
+    },
+    {
+      "question": "Grow 1 vs 2?",
+      "answer": "The browser takes the remaining empty space and divides it by 3. Item A gets 1/3 of the space. Item B gets 2/3 of the space."
+    }
+  ],
+  "codeExample": "<style>\n  .container { display: flex; gap: 10px; background: #eee; padding: 10px; }\n  .item { padding: 20px; color: white; font-weight: bold; text-align: center; }\n\n  /* The Input Field (Greedy - eats all remaining space) */\n  .input-field {\n    background: #14b8a6;\n    flex-grow: 1; /* Grow as much as possible */\n  }\n\n  /* The Buttons (Rigid - Never grow, never shrink, stay exactly 100px) */\n  .fixed-btn {\n    background: #0f766e;\n    flex-basis: 100px; /* Start at 100px */\n    flex-grow: 0;      /* Do not grow */\n    flex-shrink: 0;    /* Do not shrink even if screen is tiny */\n  }\n</style>\n\n<p>Resize your browser window! The input field shrinks and grows, but the buttons remain locked at 100px.</p>\n\n<div class=\"container\">\n  <div class=\"item fixed-btn\">Menu</div>\n  \n  <div class=\"item input-field\">Search Bar (flex-grow: 1)</div>\n  \n  <div class=\"item fixed-btn\">Search</div>\n</div>"
+}

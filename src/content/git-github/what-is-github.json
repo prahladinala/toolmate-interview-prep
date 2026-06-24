@@ -1,0 +1,32 @@
+{
+  "id": "what-is-github",
+  "title": "What is GitHub?",
+  "difficulty": "Beginner",
+  "definition": "A web-based hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, feature requests, task management, and continuous integration.",
+  "simpleExplanation": "If Git is the camera, GitHub is Instagram. It's the social network and cloud storage center for developers. It's where you upload your code so others can view it, collaborate on it, and download it.",
+  "realWorldExample": "Virtually every Open Source project (React, Linux, VS Code) is hosted on GitHub, allowing millions of developers around the world to collaborate on the same code seamlessly.",
+  "useCases": [
+    "Cloud code hosting",
+    "Open Source collaboration",
+    "Developer portfolios"
+  ],
+  "questions": {
+    "basic": [
+      "Is GitHub owned by the creators of Git?"
+    ],
+    "intermediate": [
+      "What is a 'Readme.md' file on GitHub?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who owns it?",
+      "answer": "No. Git is an open-source tool created by Linus Torvalds. GitHub is a private, for-profit company that was purchased by Microsoft in 2018 for $7.5 billion."
+    },
+    {
+      "question": "What is a Readme?",
+      "answer": "It is a Markdown text file placed at the root of your repository. GitHub automatically renders this file visually on the front page of your project. It is the 'Landing Page' where you explain what your project is and how to install it."
+    }
+  ],
+  "codeExample": "/*\n  Features that GitHub provides ON TOP of Git:\n  \n  1. Pull Requests (UI for reviewing code before merging)\n  2. Issues (Bug tracking and task lists)\n  3. GitHub Actions (Automated servers that test your code)\n  4. GitHub Pages (Free website hosting)\n  5. Forking (Easily copying other people's projects)\n*/"
+}

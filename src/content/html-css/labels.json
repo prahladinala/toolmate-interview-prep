@@ -1,0 +1,31 @@
+{
+  "id": "labels",
+  "title": "Labels",
+  "difficulty": "Beginner",
+  "definition": "The `<label>` element represents a caption for an item in a user interface, specifically tying text to a specific form input.",
+  "simpleExplanation": "If you just type text next to a checkbox, clicking the text does nothing. If you wrap that text in a `<label>` and link it to the checkbox, clicking the text will magically check the box! This makes forms vastly easier to use, especially on mobile devices where checkboxes are tiny.",
+  "realWorldExample": "Every properly built form on the internet uses labels. Without them, screen readers don't know what an input box is for, and blind users won't know what to type.",
+  "useCases": [
+    "Form accessibility",
+    "Improving click targets for small inputs like radio buttons"
+  ],
+  "questions": {
+    "basic": [
+      "How do you link a `<label>` to an `<input>`?"
+    ],
+    "intermediate": [
+      "What happens if you click a properly linked label?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to link them?",
+      "answer": "Give the `<input>` a unique `id` attribute. Then, give the `<label>` a `for` attribute with the exact same value. (e.g., `<label for=\"email\">` and `<input id=\"email\">`)."
+    },
+    {
+      "question": "What happens when clicked?",
+      "answer": "The browser automatically transfers focus to the linked input. For text boxes, the cursor appears. For checkboxes/radios, they toggle on or off."
+    }
+  ],
+  "codeExample": "<!-- BAD WAY (No label) -->\n<!-- You MUST click exactly on the tiny circle to select this -->\n<input type=\"radio\" name=\"group1\">\nI am just text next to an input. Clicking me does nothing.\n\n<br><br><hr><br>\n\n<!-- GOOD WAY (Linked with 'for' and 'id') -->\n<!-- Try clicking the words! It selects the radio button! -->\n<input type=\"radio\" name=\"group1\" id=\"awesome-option\">\n<label for=\"awesome-option\">I am a proper label. Click me!</label>\n\n<br><br>\n\n<!-- ALTERNATIVE GOOD WAY (Nesting) -->\n<!-- Wrapping the input inside the label creates the link automatically -->\n<label>\n  <input type=\"checkbox\">\n  I am nested. Clicking me also works!\n</label>"
+}

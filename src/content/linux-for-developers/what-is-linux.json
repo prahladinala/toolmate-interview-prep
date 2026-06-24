@@ -1,0 +1,31 @@
+{
+  "id": "what-is-linux",
+  "title": "What is Linux?",
+  "difficulty": "Beginner",
+  "definition": "An open-source, Unix-like operating system kernel created by Linus Torvalds. It is the core software that manages a computer's hardware and resources.",
+  "simpleExplanation": "The engine under the hood of the computer. It's the extremely reliable, free, and secure software that runs the vast majority of the internet, smartphones (Android), and cloud servers.",
+  "realWorldExample": "When you visit Netflix or Amazon, your request is handled by a computer running Linux. Because it's open-source and free, companies don't have to pay licensing fees for the millions of servers they run.",
+  "useCases": [
+    "Web Servers",
+    "Cloud Computing",
+    "Embedded Devices"
+  ],
+  "questions": {
+    "basic": [
+      "Is Linux completely free to use?"
+    ],
+    "intermediate": [
+      "What does 'Open Source' actually mean in the context of Linux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it free?",
+      "answer": "Yes, the core Linux Kernel and most distributions are 100% free and open-source."
+    },
+    {
+      "question": "What is Open Source?",
+      "answer": "It means the actual underlying source code is publicly visible. Anyone on earth can read it, modify it, fix bugs, and distribute their own version. This crowdsourced development makes it incredibly secure."
+    }
+  ]
+}

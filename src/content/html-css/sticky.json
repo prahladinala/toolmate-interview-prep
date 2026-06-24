@@ -1,0 +1,31 @@
+{
+  "id": "sticky",
+  "title": "Sticky",
+  "difficulty": "Advanced",
+  "definition": "A hybrid between `relative` and `fixed` positioning. The element is treated as relative until it crosses a specified threshold during scrolling, at which point it becomes fixed.",
+  "simpleExplanation": "The element acts like a normal, statically positioned element. But as you scroll down, right when it is about to go off the top of the screen, it magically sticks to the ceiling and follows you. When you scroll back up, it un-sticks and goes back to its original place.",
+  "realWorldExample": "Alphabetical contact lists in iOS. You scroll through the 'A' names, and the letter 'A' sticks to the top. When you hit the 'B' names, the 'B' header pushes the 'A' out of the way and sticks to the top.",
+  "useCases": [
+    "Table headers that follow you as you scroll",
+    "Section headers"
+  ],
+  "questions": {
+    "basic": [
+      "What coordinate property MUST you provide for `sticky` to work?"
+    ],
+    "intermediate": [
+      "Why does `position: sticky` sometimes randomly fail to work?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Required property?",
+      "answer": "You must provide at least one threshold, usually `top: 0;`. This tells the browser: 'Become sticky when the element is 0px away from the top of the screen'."
+    },
+    {
+      "question": "Why does it fail?",
+      "answer": "If ANY parent element in the HTML tree has `overflow: hidden`, `overflow: auto`, or `overflow: scroll`, `position: sticky` is completely disabled. The element will just scroll off the screen normally."
+    }
+  ],
+  "codeExample": "<style>\n  /* A tall scrolling container */\n  .scroll-box {\n    height: 300px;\n    overflow-y: scroll;\n    border: 2px solid black;\n    width: 300px;\n  }\n\n  .section-header {\n    /* MAGIC HAPPENS HERE */\n    position: sticky;\n    top: 0; /* Stick when it hits the very top of the scrolling box */\n    \n    background: #e11d48;\n    color: white;\n    padding: 10px;\n    font-weight: bold;\n    margin: 0;\n  }\n  \n  .content { padding: 20px; height: 200px; background: #fee2e2; }\n</style>\n\n<p>Scroll inside the box below to see Sticky in action!</p>\n\n<div class=\"scroll-box\">\n  <!-- Group 1 -->\n  <div class=\"section-header\">Section A</div>\n  <div class=\"content\">Apples<br>Apricots<br>Avocados</div>\n  \n  <!-- Group 2 -->\n  <div class=\"section-header\" style=\"background: #2563eb;\">Section B</div>\n  <div class=\"content\" style=\"background: #dbeafe;\">Bananas<br>Berries</div>\n  \n  <!-- Group 3 -->\n  <div class=\"section-header\" style=\"background: #16a34a;\">Section C</div>\n  <div class=\"content\" style=\"background: #dcfce3;\">Carrots<br>Cherries</div>\n</div>"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "thread-pool",
+  "title": "Thread Pool",
+  "difficulty": "Advanced",
+  "definition": "A collection of background threads maintained by `libuv` to execute heavy tasks that cannot be handled asynchronously by the OS kernel, preventing them from blocking the main Event Loop.",
+  "simpleExplanation": "Wait, I thought Node was single-threaded? The JavaScript code YOU write is single-threaded. But deep in the basement, `libuv` maintains a secret team of 4 C++ workers (The Thread Pool). When you ask Node to hash a password or read a file, it secretly passes that work to the basement workers. They do the heavy lifting simultaneously while your main thread keeps serving web pages.",
+  "realWorldExample": "Cryptographic functions (`pbkdf2`), File System operations (`fs.readFile`), and DNS lookups all use the Thread Pool automatically.",
+  "useCases": [
+    "Optimizing CPU-bound internal operations"
+  ],
+  "questions": {
+    "basic": [
+      "How many threads does the libuv Thread Pool have by default?"
+    ],
+    "intermediate": [
+      "What happens if you run 5 heavy cryptography functions at the exact same time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many threads by default?",
+      "answer": "Four (4)."
+    },
+    {
+      "question": "What happens with 5 tasks?",
+      "answer": "The first 4 tasks will immediately occupy the 4 threads in the pool. The 5th task must wait in line. It will not start executing until one of the first 4 tasks finishes and frees up a thread."
+    }
+  ],
+  "codeExample": "// HOW TO CHANGE THE THREAD POOL SIZE\n// You must set this environment variable BEFORE the app starts!\n// process.env.UV_THREADPOOL_SIZE = 8;\n\nconst crypto = require('crypto');\nconst start = Date.now();\n\nfunction doHeavyMath(id) {\n  crypto.pbkdf2('pwd', 'salt', 100000, 512, 'sha512', () => {\n    console.log(`Task ${id} finished in ${Date.now() - start}ms`);\n  });\n}\n\n// If you run this with the default pool of 4:\n// Tasks 1-4 will finish at roughly the same time (e.g., ~1000ms)\n// Task 5 will take TWICE as long (~2000ms) because it had to wait for a free thread!\n\n// doHeavyMath(1);\n// doHeavyMath(2);\n// doHeavyMath(3);\n// doHeavyMath(4);\n// doHeavyMath(5);\n\nconsole.log(\"The Thread Pool is the hidden secret to Node's non-blocking magic.\");"
+}

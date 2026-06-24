@@ -1,0 +1,37 @@
+{
+  "id": "compound-components",
+  "title": "Compound Components Pattern",
+  "difficulty": "Advanced",
+  "definition": "A design pattern where multiple components work together to share state and logic implicitly, allowing the developer to declaratively assemble the UI without passing dozens of props.",
+  "simpleExplanation": "Think of the standard HTML `<select>` and `<option>` tags. They are separate tags, but they magically communicate. When you click an `<option>`, the `<select>` knows about it. The Compound Components pattern allows you to build your own React components that work exactly like this.",
+  "realWorldExample": "Building a `<Tabs>` component. Instead of passing an array of objects to `<Tabs data={myTabs} />`, you use Compound Components: `<Tabs><TabList><Tab>Profile</Tab></TabList><TabPanels><Panel>Profile Data</Panel></TabPanels></Tabs>`.",
+  "useCases": [
+    "Building highly flexible UI libraries (like Headless UI or Radix)",
+    "Avoiding 'Prop explosion' (components that take 20 different props to configure layout)"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Compound Component?",
+      "Why not just pass a big configuration object as a prop?"
+    ],
+    "intermediate": [
+      "How do the parent and child components communicate in this pattern?",
+      "How do you restrict children to only be specific components?"
+    ],
+    "advanced": [
+      "What is the difference between using `React.Children.map` and using Context for this pattern?",
+      "How does this pattern improve flexibility?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not just pass a big config object?",
+      "answer": "If you pass a config object, the layout is rigid. If a developer wants to put an icon next to the tab text, or change the order of the panels, they can't unless you add MORE props. Compound components let the developer write the layout themselves using standard JSX."
+    },
+    {
+      "question": "How do they communicate?",
+      "answer": "Historically, React used `React.cloneElement` to inject props into children. In modern React, the parent component creates a React Context, and the child components `useContext` to read and update the shared state implicitly."
+    }
+  ],
+  "codeExample": "import React, { useState, createContext, useContext } from 'react';\n\n// 1. Create a Context for the compound components to share\nconst ToggleContext = createContext();\n\n// 2. The Parent Component manages the state\nexport function Toggle({ children }) {\n  const [on, setOn] = useState(false);\n  return (\n    <ToggleContext.Provider value={{ on, setOn }}>\n      <div className='p-4 border rounded bg-gray-50'>{children}</div>\n    </ToggleContext.Provider>\n  );\n}\n\n// 3. Child components consume the context\nexport function ToggleOn({ children }) {\n  const { on } = useContext(ToggleContext);\n  return on ? children : null;\n}\n\nexport function ToggleOff({ children }) {\n  const { on } = useContext(ToggleContext);\n  return on ? null : children;\n}\n\nexport function ToggleButton() {\n  const { on, setOn } = useContext(ToggleContext);\n  return <button onClick={() => setOn(!on)} className='bg-blue-500 text-white p-2 rounded'>Toggle</button>;\n}\n\n// 4. Usage: Highly declarative and flexible!\nexport default function App() {\n  return (\n    <Toggle>\n      <ToggleButton />\n      <hr className='my-2'/>\n      <ToggleOn>The button is ON!</ToggleOn>\n      <ToggleOff>The button is OFF!</ToggleOff>\n    </Toggle>\n  );\n}"
+}

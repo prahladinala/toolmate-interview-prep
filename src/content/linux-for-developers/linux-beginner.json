@@ -1,0 +1,30 @@
+{
+  "id": "linux-beginner",
+  "title": "Beginner Linux Questions",
+  "difficulty": "Beginner",
+  "definition": "Foundational interview questions testing basic navigation, file management, and core command-line competency.",
+  "simpleExplanation": "Proving you can walk around the terminal without deleting the operating system.",
+  "realWorldExample": "Interview Question: 'How do you find your current directory, list the files including hidden ones, and read the contents of a text file?'",
+  "useCases": [
+    "Junior Developer interviews",
+    "Helpdesk IT interviews"
+  ],
+  "questions": {
+    "basic": [
+      "How do you recursively delete a directory and all of its contents?"
+    ],
+    "intermediate": [
+      "What is the difference between an absolute path and a relative path?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Recursive delete?",
+      "answer": "`rm -r directory_name` (or `rm -rf` to force)."
+    },
+    {
+      "question": "Absolute vs Relative?",
+      "answer": "An absolute path starts from the root directory (`/var/www/html`). A relative path starts from your current location (`../html`)."
+    }
+  ]
+}

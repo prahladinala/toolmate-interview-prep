@@ -1,0 +1,32 @@
+{
+  "id": "aspect-ratio",
+  "title": "aspect-ratio",
+  "difficulty": "Intermediate",
+  "definition": "A CSS property that sets a preferred aspect ratio for the box, which will be used in the calculation of auto sizes.",
+  "simpleExplanation": "If you want a box to always be a perfect square, you used to have to write complex JavaScript or CSS padding hacks. Now, you just write `aspect-ratio: 1 / 1;`. If the width is 500px, the browser automatically forces the height to be 500px.",
+  "realWorldExample": "Embedding a YouTube video. You want it to be responsive, but it MUST stay in the classic 16:9 widescreen movie format, or else you get ugly black bars. `aspect-ratio: 16 / 9;` solves it instantly.",
+  "useCases": [
+    "Responsive video embeds",
+    "Perfectly square profile pictures",
+    "Image grids"
+  ],
+  "questions": {
+    "basic": [
+      "What value makes an element a perfect square?"
+    ],
+    "intermediate": [
+      "If I set `width: 100%;` and `aspect-ratio: 16 / 9`, do I need to set the `height`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Perfect square?",
+      "answer": "`1 / 1`"
+    },
+    {
+      "question": "Need to set height?",
+      "answer": "No! That is the magic of `aspect-ratio`. The browser calculates the height automatically based on whatever the width currently is."
+    }
+  ],
+  "codeExample": "<style>\n  .grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 20px;\n  }\n\n  .square-box {\n    background: #a855f7;\n    color: white;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: bold;\n    \n    /* MAGIC HAPPENS HERE */\n    aspect-ratio: 1 / 1;\n    \n    /* Notice I didn't set a height! */\n  }\n\n  .video-box {\n    background: #3b82f6;\n    color: white;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: bold;\n    \n    /* Classic Widescreen Ratio */\n    aspect-ratio: 16 / 9;\n  }\n</style>\n\n<p>Resize the browser. The boxes shrink, but their aspect ratios remain mathematically perfect.</p>\n\n<div class=\"grid\">\n  <div class=\"square-box\">1:1 (Square)</div>\n  <div class=\"video-box\">16:9 (Widescreen)</div>\n</div>"
+}

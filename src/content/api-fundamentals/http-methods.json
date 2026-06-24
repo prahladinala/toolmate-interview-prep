@@ -1,0 +1,31 @@
+{
+  "id": "http-methods",
+  "title": "HTTP Methods Overview",
+  "difficulty": "Beginner",
+  "definition": "Standardized 'verbs' used in HTTP requests to indicate the desired action to be performed on a specific resource.",
+  "simpleExplanation": "If you send a request to `/api/users`, the server needs to know what you want to do. \nGET = Read users. \nPOST = Create a new user. \nDELETE = Destroy a user.\nPUT = Replace a user.",
+  "realWorldExample": "Building a CRUD (Create, Read, Update, Delete) application. Each letter perfectly maps to an HTTP Method: Create (POST), Read (GET), Update (PUT/PATCH), Delete (DELETE).",
+  "useCases": [
+    "RESTful API design",
+    "Frontend API calls"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP method is used strictly to retrieve data from a server without modifying it?"
+    ],
+    "intermediate": [
+      "What happens if you try to `POST` to an endpoint that only has a `GET` handler configured?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which method to retrieve?",
+      "answer": "`GET`."
+    },
+    {
+      "question": "Wrong method?",
+      "answer": "The server will reject the request and return a `405 Method Not Allowed` HTTP error."
+    }
+  ],
+  "codeExample": "// Frontend fetching example showing different methods on the EXACT SAME URL!\n\nconst url = 'https://api.store.com/products/123';\n\n// 1. READ: Tell me about Product 123\nfetch(url, { method: 'GET' });\n\n// 2. UPDATE: Change the price of Product 123\nfetch(url, { \n  method: 'PUT', \n  body: JSON.stringify({ price: 9.99 }) \n});\n\n// 3. DELETE: Remove Product 123 from the store\nfetch(url, { method: 'DELETE' });"
+}

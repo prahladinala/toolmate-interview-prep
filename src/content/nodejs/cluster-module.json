@@ -1,0 +1,31 @@
+{
+  "id": "cluster-module",
+  "title": "Cluster Module",
+  "difficulty": "Advanced",
+  "definition": "The core Node.js module used to fork the main process into multiple child processes that can all share the same server ports.",
+  "simpleExplanation": "The built-in mechanism that makes Clustering possible. The `cluster` module is essentially a specialized wrapper around the `child_process.fork()` method, specifically designed to allow multiple clones to listen on port 3000 simultaneously without throwing an 'Address in use' error.",
+  "realWorldExample": "It is the exact underlying technology that PM2 uses to scale your application across CPU cores.",
+  "useCases": [
+    "Building custom load balancers",
+    "High-performance API servers"
+  ],
+  "questions": {
+    "basic": [
+      "What boolean property checks if the current code is running in the main orchestrator process?"
+    ],
+    "intermediate": [
+      "How does the Cluster module magically allow 8 clones to share port 3000?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`cluster.isMaster` (or `cluster.isPrimary` in newer Node versions)."
+    },
+    {
+      "question": "How do they share a port?",
+      "answer": "The clones don't actually bind to the port! The Master process binds to port 3000. When a request hits the port, the Master intercepts it and uses a Round-Robin algorithm to silently hand the TCP connection to one of the worker clones via IPC (Inter-Process Communication)."
+    }
+  ],
+  "codeExample": "const cluster = require('cluster');\nconst http = require('http');\n\n// The Master acts as the traffic cop\nif (cluster.isPrimary) {\n  console.log(`Primary ${process.pid} is running`);\n\n  // Fork 2 workers\n  cluster.fork();\n  cluster.fork();\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} \n// The Workers do the actual HTTP processing\nelse {\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end(`Hello from Worker ${process.pid}\\n`);\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}\n\n// If you hit localhost:8000 multiple times, you will see different PIDs responding!"
+}

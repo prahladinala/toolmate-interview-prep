@@ -1,0 +1,32 @@
+{
+  "id": "open-source-contributions",
+  "title": "Open Source Contributions",
+  "difficulty": "Intermediate",
+  "definition": "The act of offering code, documentation, or design improvements to public repositories managed by other people or organizations.",
+  "simpleExplanation": "Donating your time to fix software that everyone uses. If you find a typo in the React documentation, you can fix it and send a Pull Request to Facebook. If they accept it, you are officially an 'Open Source Contributor' to React!",
+  "realWorldExample": "A company is using an open-source chart library, but it lacks a specific feature. Instead of writing a new library from scratch, the company's developer writes the feature and contributes it back to the open-source library so the whole world can use it.",
+  "useCases": [
+    "Building a resume",
+    "Giving back to the community",
+    "Learning from senior devs globally"
+  ],
+  "questions": {
+    "basic": [
+      "What file should you always read before contributing to an open-source project?"
+    ],
+    "intermediate": [
+      "What is Hacktoberfest?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What file to read?",
+      "answer": "The `CONTRIBUTING.md` file. It explains exactly how the maintainers want you to format your code, run tests, and name your branches. Ignoring this file usually results in your PR being instantly rejected."
+    },
+    {
+      "question": "What is Hacktoberfest?",
+      "answer": "A month-long celebration in October hosted by DigitalOcean where developers are encouraged (and rewarded with t-shirts) for making high-quality Pull Requests to Open Source projects."
+    }
+  ],
+  "codeExample": "/*\n  The Golden Path to your first Open Source Contribution:\n  \n  1. Find a project you actually use.\n  2. Look at their 'Issues' tab.\n  3. Filter by the label \"good first issue\" or \"help wanted\".\n  4. Read the CONTRIBUTING.md file.\n  5. Fork the repo and clone it locally.\n  6. Fix the bug.\n  7. Submit a Pull Request referencing the Issue number.\n  8. Be polite and patient! Maintainers are usually unpaid volunteers.\n*/"
+}

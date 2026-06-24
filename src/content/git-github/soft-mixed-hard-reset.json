@@ -1,0 +1,31 @@
+{
+  "id": "soft-mixed-hard-reset",
+  "title": "Soft vs Mixed vs Hard Reset",
+  "difficulty": "Advanced",
+  "definition": "The three modes of `git reset` which determine what happens to your files in the Working Directory and Staging Area when you move the timeline backwards.",
+  "simpleExplanation": "If you reset 1 commit backward: \n- `--soft`: Keeps your code exactly as it is, and leaves it in the Staging Area ready to be committed again.\n- `--mixed` (Default): Keeps your code exactly as it is, but pulls it out of the Staging Area.\n- `--hard`: DELETES your code completely. Wipes the files back to how they looked in the old commit.",
+  "realWorldExample": "You made 5 tiny commits ('typo', 'fix', 'oops'). You use `git reset --soft HEAD~5` to rip out those 5 commits, keeping all the code perfectly intact on the stage, so you can bundle it into one single, clean commit.",
+  "useCases": [
+    "Squashing commits locally",
+    "Completely nuking experimental code (--hard)"
+  ],
+  "questions": {
+    "basic": [
+      "Which reset mode is the most dangerous and can permanently delete code?"
+    ],
+    "intermediate": [
+      "If you don't provide a flag (just `git reset HEAD~1`), which mode is used?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most dangerous?",
+      "answer": "`--hard`. It forcefully overwrites your Working Directory. Any uncommitted code is destroyed."
+    },
+    {
+      "question": "Default mode?",
+      "answer": "`--mixed`. It moves the commit pointer back, and unstages the files, but leaves the code safely in your text editor."
+    }
+  ],
+  "codeExample": "# 1. --SOFT: Undo the commit, but keep files Staged\n# Great for editing the commit message or adding one more file to the commit\n$ git reset --soft HEAD~1\n\n# 2. --MIXED (Default): Undo commit, and Unstage files\n# Great if you realized you need to rewrite the code completely before staging\n$ git reset HEAD~1\n\n# 3. --HARD: Destroy the commit, Destroy the Staging Area, Destroy the Working Directory\n# Great for completely abandoning a terrible idea and wiping the slate clean\n$ git reset --hard HEAD~1"
+}

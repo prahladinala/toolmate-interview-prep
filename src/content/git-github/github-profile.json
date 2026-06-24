@@ -1,0 +1,32 @@
+{
+  "id": "github-profile",
+  "title": "GitHub Profile",
+  "difficulty": "Beginner",
+  "definition": "Your public identity on GitHub. It displays your pinned repositories, your organizational affiliations, and most famously, your contribution graph (the 'green squares').",
+  "simpleExplanation": "Your developer resume. When you apply for a coding job, the recruiter will look at your GitHub profile. They want to see that you have projects (repositories) and that you write code regularly (the contribution graph lights up green when you push code).",
+  "realWorldExample": "Creating a special repository with the same name as your username to unlock a hidden feature that places a giant, customizable README banner at the top of your profile.",
+  "useCases": [
+    "Personal branding",
+    "Job hunting",
+    "Networking"
+  ],
+  "questions": {
+    "basic": [
+      "What causes a 'green square' to appear on your contribution graph?"
+    ],
+    "intermediate": [
+      "How do you create a custom visual README for your profile?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Green squares?",
+      "answer": "Making a commit in a local repository and successfully PUSHING it to GitHub. The color gets darker the more commits you push on that specific day."
+    },
+    {
+      "question": "Profile README?",
+      "answer": "Create a new repository with a name that EXACTLY matches your GitHub username (e.g., `johndoe/johndoe`). Add a `README.md` file to it, and GitHub will magically display that file at the top of your profile page."
+    }
+  ],
+  "codeExample": "<!-- \n  Example of a Profile README.md file\n  Repository: https://github.com/your-username/your-username\n-->\n\n# Hi there 👋, I'm John Doe!\n\nI am a Full Stack Developer specializing in React and Node.js.\n\n### 🛠️ Tech Stack:\n- **Frontend:** React, Next.js, TailwindCSS\n- **Backend:** Node.js, Express, PostgreSQL\n- **Tools:** Git, Docker, AWS\n\n### 📫 How to reach me:\n- Twitter: @johndoe_dev\n- LinkedIn: linkedin.com/in/johndoe\n- Email: john@example.com"
+}

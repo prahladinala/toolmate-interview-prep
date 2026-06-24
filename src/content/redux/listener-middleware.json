@@ -1,0 +1,32 @@
+{
+  "id": "listener-middleware",
+  "title": "Listener Middleware",
+  "difficulty": "Advanced",
+  "definition": "An RTK middleware that lets you run 'side effects' (like API calls or analytics) in response to specific Redux actions being dispatched. It is a lightweight alternative to Redux Saga.",
+  "simpleExplanation": "You tell the listener: 'Whenever ANY component dispatches the `login_success` action, I want you to wake up in the background and trigger this Google Analytics code.' The React components don't know it's happening.",
+  "realWorldExample": "Listening for the `logout` action. When it fires, the listener automatically runs code to clear out the user's `localStorage` and redirect them to the home page.",
+  "useCases": [
+    "Reactive side effects",
+    "Analytics",
+    "Syncing Redux with LocalStorage"
+  ],
+  "questions": {
+    "basic": [
+      "Is the Listener Middleware built into RTK by default?"
+    ],
+    "intermediate": [
+      "Why use Listener Middleware instead of just putting the side effect inside the Reducer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Built into RTK?",
+      "answer": "Yes, it is included in `@reduxjs/toolkit`, but you have to explicitly add it to your `configureStore` setup."
+    },
+    {
+      "question": "Why not inside reducer?",
+      "answer": "Because Reducers MUST be pure functions. They cannot interact with the outside world (like LocalStorage, APIs, or the browser router). Side effects belong in Middleware."
+    }
+  ],
+  "codeExample": "import { createListenerMiddleware, isAnyOf } from '@reduxjs/toolkit';\nimport { login, logout } from './authSlice';\n\n// 1. Create the listener\nconst listenerMiddleware = createListenerMiddleware();\n\n// 2. Define what it listens for\nlistenerMiddleware.startListening({\n  // Listen for EITHER login or logout actions\n  matcher: isAnyOf(login, logout),\n  \n  // 3. The side effect to run when it hears the action\n  effect: async (action, listenerApi) => {\n    // Grab the current state of the auth slice\n    const authState = listenerApi.getState().auth;\n    \n    // Sync the Redux state to the browser's LocalStorage!\n    localStorage.setItem('authData', JSON.stringify(authState));\n  }\n});"
+}

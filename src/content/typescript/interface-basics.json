@@ -1,0 +1,34 @@
+{
+  "id": "interface-basics",
+  "title": "Interface Basics",
+  "difficulty": "Beginner",
+  "definition": "An interface is a syntax in TypeScript used to define the shape of an object. It explicitly names a specific combination of properties and their types.",
+  "simpleExplanation": "An interface is a contract. If a component says 'I need a User object', the Interface is the document that lists exactly what makes an object a 'User'. If your object doesn't match the contract (e.g., missing an email), it gets rejected.",
+  "realWorldExample": "Defining the props for a React component: `interface ButtonProps { label: string; onClick: () => void; }`.",
+  "useCases": [
+    "Defining object shapes",
+    "Object-oriented programming (implements)"
+  ],
+  "questions": {
+    "basic": [
+      "Can an interface define a function type?"
+    ],
+    "intermediate": [
+      "Can you add properties to an interface after it is defined?"
+    ],
+    "advanced": [
+      "What is the difference between an Interface and a Type Alias?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can an interface define a function type?",
+      "answer": "Yes. While usually used for objects, you can use an interface to define a function signature using an anonymous method signature: `interface MathFunc { (a: number, b: number): number }`."
+    },
+    {
+      "question": "Can you add properties to an interface later?",
+      "answer": "Yes! This is called 'Declaration Merging'. If you declare `interface User { name: string }` and later in the same file declare `interface User { age: number }`, TS merges them into one single interface containing both properties."
+    }
+  ],
+  "codeExample": "// Defining the contract\ninterface Product {\n  id: number;\n  name: string;\n  price: number;\n  description?: string; // Optional\n}\n\n// Fulfilling the contract\nconst myLaptop: Product = {\n  id: 101,\n  name: \"MacBook Pro\",\n  price: 1999\n};\n\nfunction printLabel(item: Product) {\n  console.log(`Item: ${item.name} - $${item.price}`);\n}"
+}

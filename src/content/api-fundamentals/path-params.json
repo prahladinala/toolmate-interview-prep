@@ -1,0 +1,31 @@
+{
+  "id": "path-params",
+  "title": "Path Parameters",
+  "difficulty": "Beginner",
+  "definition": "Variables embedded directly into the core structure of the URL path itself, used to identify a specific, unique resource.",
+  "simpleExplanation": "Query params (`?id=5`) are for optional filters. Path params (`/users/5`) are for pointing at one exact, specific thing. It's the difference between asking 'Show me all users who happen to have the ID of 5' vs 'Take me exactly to User 5's house'.",
+  "realWorldExample": "Visiting a GitHub profile: `github.com/torvalds`. The word 'torvalds' is a path parameter. The server extracts it and searches for a user named Linus Torvalds.",
+  "useCases": [
+    "Fetching single records",
+    "RESTful resource targeting"
+  ],
+  "questions": {
+    "basic": [
+      "In the URL path `/users/:id/posts`, what does the colon (`:`) represent?"
+    ],
+    "intermediate": [
+      "When designing an API to fetch a specific user, should you use `GET /users?id=123` or `GET /users/123`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does colon mean?",
+      "answer": "It is standard framework syntax (used in Express, Next.js, React Router) indicating that the segment is a dynamic variable, not a literal string."
+    },
+    {
+      "question": "Which design?",
+      "answer": "You should use `GET /users/123` (Path parameter). According to REST principles, fetching a specific, unique resource should be done via the path. Query parameters should be reserved for filtering collections."
+    }
+  ],
+  "codeExample": "/* \n  URL: https://api.com/users/99/orders/55\n  \n  We are looking for User #99, and specifically their Order #55.\n*/\n\n// Backend Example (Express.js)\n// We define the route using colons to create variables\napp.get('/api/users/:userId/orders/:orderId', (req, res) => {\n  \n  // The framework extracts them into the req.params object\n  const userId = req.params.userId;   // \"99\"\n  const orderId = req.params.orderId; // \"55\"\n  \n  const order = db.getOrder(userId, orderId);\n  res.json(order);\n});"
+}

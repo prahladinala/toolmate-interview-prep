@@ -1,0 +1,35 @@
+{
+  "id": "indexeddb",
+  "title": "IndexedDB",
+  "difficulty": "Advanced",
+  "definition": "A low-level API for client-side storage of significant amounts of structured data, including files/blobs. It uses indexes to enable high-performance searches of this data.",
+  "simpleExplanation": "LocalStorage is a tiny notepad. IndexedDB is a massive filing cabinet. It's an actual NoSQL database built right into your browser. It takes more work to set up, but it can hold hundreds of megabytes of data, search it incredibly fast, and runs asynchronously so it doesn't freeze the screen.",
+  "realWorldExample": "Google Docs uses IndexedDB to save your document offline. If your wifi cuts out, your keystrokes are saved to IndexedDB. When wifi returns, it syncs the database with the Google servers.",
+  "useCases": [
+    "Offline Progressive Web Apps (PWAs)",
+    "Storing large files/images client-side",
+    "Caching massive API responses"
+  ],
+  "questions": {
+    "basic": [
+      "Why use IndexedDB over LocalStorage?"
+    ],
+    "intermediate": [
+      "Is IndexedDB synchronous or asynchronous?"
+    ],
+    "advanced": [
+      "What is the difference between IndexedDB and WebSQL?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use it over LocalStorage?",
+      "answer": "1. Capacity (Hundreds of MBs vs 5MB). 2. Types (Stores Objects/Blobs natively, no JSON.stringify needed). 3. Performance (Async operations don't block the main thread). 4. Querying (Has indexes and cursors for fast searching)."
+    },
+    {
+      "question": "WebSQL vs IndexedDB?",
+      "answer": "WebSQL was an old attempt to put a literal SQLite database in the browser. It was deprecated and removed from modern browsers because all browsers ended up just using the exact same SQLite backend, failing the requirement for independent browser implementations. IndexedDB is the official modern standard."
+    }
+  ],
+  "codeExample": "// Raw IndexedDB is notoriously complex and uses old event listeners instead of Promises.\n// In the real world, developers use wrapper libraries like `idb` or `localForage`.\n\n// Example using the popular 'idb' wrapper library:\n/*\nimport { openDB } from 'idb';\n\nasync function initDB() {\n  const db = await openDB('my-store', 1, {\n    upgrade(db) {\n      db.createObjectStore('users', { keyPath: 'id' });\n    },\n  });\n\n  // Add a user\n  await db.put('users', { id: 123, name: 'Alice', age: 25 });\n\n  // Retrieve a user\n  const user = await db.get('users', 123);\n  console.log(user.name);\n}\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "logical-properties",
+  "title": "Logical Properties",
+  "difficulty": "Advanced",
+  "definition": "CSS properties that control layout through logical, rather than physical, direction and dimension mappings (e.g., `margin-inline-start` instead of `margin-left`).",
+  "simpleExplanation": "In English, text flows from Left-to-Right. So `margin-left: 20px` pushes an icon away from the start of the text. But in Arabic, text flows Right-to-Left! `margin-left` breaks the layout. Logical properties say `margin-inline-start`. In English, 'start' means left. In Arabic, 'start' magically means right. Your CSS automatically adapts to the language!",
+  "realWorldExample": "Building international websites. Instead of writing two entire CSS files (one for English, one for Arabic), you write one CSS file using Logical Properties.",
+  "useCases": [
+    "Internationalization (i18n)",
+    "Right-to-Left (RTL) language support"
+  ],
+  "questions": {
+    "basic": [
+      "What is the logical property equivalent of `margin-left` (in an English document)?"
+    ],
+    "intermediate": [
+      "What do 'inline' and 'block' refer to in logical properties?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Equivalent?",
+      "answer": "`margin-inline-start`"
+    },
+    {
+      "question": "Inline vs Block?",
+      "answer": "'Inline' refers to the axis that text flows along (Left/Right in English). 'Block' refers to the axis that new paragraphs stack along (Top/Bottom in English)."
+    }
+  ],
+  "codeExample": "<style>\n  /* OLD PHYSICAL WAY (Breaks in Arabic) */\n  .physical-box {\n    border-left: 5px solid red;\n    padding-left: 10px;\n    background: #fee2e2;\n    margin-bottom: 20px;\n  }\n\n  /* NEW LOGICAL WAY (Adapts to language automatically) */\n  .logical-box {\n    border-inline-start: 5px solid green;\n    padding-inline-start: 10px;\n    background: #dcfce3;\n  }\n</style>\n\n<h3>Standard Left-To-Right (English)</h3>\n<div dir=\"ltr\">\n  <div class=\"physical-box\">Physical: Red border on Left</div>\n  <div class=\"logical-box\">Logical: Green border on Left (Start of sentence)</div>\n</div>\n\n<h3>Right-To-Left (Arabic / Hebrew)</h3>\n<!-- dir=\"rtl\" simulates a right-to-left language environment -->\n<div dir=\"rtl\">\n  <div class=\"physical-box\">Physical: Red border STILL on Left (Broken design!)</div>\n  <div class=\"logical-box\">Logical: Green border magically moved to the Right! (Start of sentence)</div>\n</div>"
+}

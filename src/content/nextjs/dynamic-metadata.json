@@ -1,0 +1,32 @@
+{
+  "id": "dynamic-metadata",
+  "title": "Dynamic Metadata",
+  "difficulty": "Intermediate",
+  "definition": "Using the `generateMetadata()` function to dynamically fetch data from a database and use it to construct SEO tags for a specific dynamic route.",
+  "simpleExplanation": "If you have a dynamic route like `[productId]`, you can't hardcode the title. You need to look at the ID, fetch the product from the database, and make the title 'Buy the iPhone 15'. `generateMetadata` pauses the server, does exactly that, and then renders the page.",
+  "realWorldExample": "A blog post page where the browser tab title perfectly matches the title of the article fetched from the CMS.",
+  "useCases": [
+    "E-commerce product pages",
+    "Blog posts",
+    "User profiles"
+  ],
+  "questions": {
+    "basic": [
+      "What function do you export to generate metadata based on route parameters?"
+    ],
+    "intermediate": [
+      "If you fetch a product in `generateMetadata`, and then fetch the exact same product again in your `page.tsx` component, does Next.js query the database twice?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What function?",
+      "answer": "`generateMetadata(props)`"
+    },
+    {
+      "question": "Query twice?",
+      "answer": "No! Next.js uses 'Fetch Memoization'. It automatically intercepts the second identical `fetch` call and instantly returns the cached result from the first call, ensuring absolutely zero performance penalty."
+    }
+  ],
+  "codeExample": "import { Metadata } from 'next';\nimport db from '@/lib/db';\n\n// 1. Next.js runs this FIRST to build the <head> tags\nexport async function generateMetadata({ params }): Promise<Metadata> {\n  // Fetch the specific product based on the URL parameter\n  const product = await db.getProduct(params.id);\n  \n  return {\n    title: product.name, // e.g., 'Nike Air Max'\n    description: product.summary,\n  };\n}\n\n// 2. Next.js runs this SECOND to build the <body> HTML\nexport default async function ProductPage({ params }) {\n  // This fetch is perfectly memoized and costs 0ms!\n  const product = await db.getProduct(params.id);\n  \n  return <h1>{product.name}</h1>;\n}"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "rendering-cycle",
+  "title": "Browser Rendering Cycle",
+  "difficulty": "Advanced",
+  "definition": "The steps the browser takes to convert HTML, CSS, and JS into pixels on the screen (Parse -> Style -> Layout -> Paint -> Composite). The Event Loop coordinates with the rendering engine.",
+  "simpleExplanation": "Painting the screen is expensive. The browser tries to paint the screen 60 times a second (every 16.6ms). However, the browser uses the EXACT SAME THREAD for rendering as it uses for JavaScript. If your JavaScript takes 50ms to run, the browser misses 3 frames, resulting in a visually 'janky' or lagging animation.",
+  "realWorldExample": "Using `requestAnimationFrame` to run a piece of JavaScript right before the browser calculates the next frame, ensuring silky smooth 60FPS animations.",
+  "useCases": [
+    "60FPS Animations",
+    "Scroll performance optimization"
+  ],
+  "questions": {
+    "basic": [
+      "What causes 'Jank' on a webpage?"
+    ],
+    "intermediate": [
+      "When does the Event Loop decide to render?"
+    ],
+    "advanced": [
+      "What is `requestAnimationFrame`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When does the Event Loop decide to render?",
+      "answer": "The browser attempts to render between Macrotasks. If the Call Stack and Microtask Queue are completely empty, the Event Loop will pause and allow the Rendering Engine to update the DOM visually before picking up the next Macrotask."
+    },
+    {
+      "question": "What is requestAnimationFrame?",
+      "answer": "It is a special API that queues a callback to run at the absolute most optimal time: immediately before the browser performs its next Style/Layout/Paint cycle. It is far superior to `setTimeout` for animations."
+    }
+  ],
+  "codeExample": "// Changing styles multiple times synchronously:\ndiv.style.width = '100px';\ndiv.style.height = '100px';\ndiv.style.backgroundColor = 'red';\n\n// The user NEVER sees these intermediate states.\n// Because JavaScript is synchronous here, the Event Loop cannot reach the Render Phase.\n// Only the final state (Red 100x100) is painted to the screen in a single batch."
+}

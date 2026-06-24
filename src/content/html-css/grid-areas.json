@@ -1,0 +1,32 @@
+{
+  "id": "grid-areas",
+  "title": "Grid Areas",
+  "difficulty": "Advanced",
+  "definition": "The `grid-template-areas` property specifies areas within the grid layout. You literally 'draw' the layout using named strings.",
+  "simpleExplanation": "The most visual and magical feature in CSS. You give your elements names (like 'head', 'nav', 'main'). Then, in the parent container, you write a visual ASCII-art map of where those names should go. If you want the header to span 3 columns, you just write `'head head head'`.",
+  "realWorldExample": "Instantly rearranging a complex desktop layout into a stacked mobile layout by simply redefining the ASCII map inside a Media Query, without touching the HTML order.",
+  "useCases": [
+    "App shells",
+    "Rapid layout prototyping",
+    "Responsive reorganizing"
+  ],
+  "questions": {
+    "basic": [
+      "How do you assign a name to a grid item so you can use it in the map?"
+    ],
+    "intermediate": [
+      "How do you leave an empty cell in the grid area map?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Assign a name?",
+      "answer": "Use the `grid-area` property on the child element. Example: `.header { grid-area: head; }`."
+    },
+    {
+      "question": "Empty cell?",
+      "answer": "Use a period (`.`). Example: `'head . nav'` means the middle column is completely empty."
+    }
+  ],
+  "codeExample": "<style>\n  .layout {\n    display: grid;\n    gap: 10px;\n    height: 300px;\n    color: white;\n    text-align: center;\n    font-weight: bold;\n    \n    /* VISUALLY DRAWING THE LAYOUT! */\n    /* 3 Rows, 3 Columns */\n    grid-template-areas:\n      \"header header header\"\n      \"nav    main   main\"\n      \"footer footer footer\";\n  }\n\n  /* Assigning names to the children */\n  .box-header { grid-area: header; background: #e11d48; padding-top: 20px; }\n  .box-nav    { grid-area: nav;    background: #2563eb; padding-top: 40px; }\n  .box-main   { grid-area: main;   background: #16a34a; padding-top: 40px; }\n  .box-footer { grid-area: footer; background: #475569; padding-top: 20px; }\n</style>\n\n<p>Look at the CSS code! The layout is drawn using literal text strings.</p>\n\n<div class=\"layout\">\n  <div class=\"box-header\">Header (Spans 3 cols)</div>\n  <div class=\"box-nav\">Nav</div>\n  <div class=\"box-main\">Main Content (Spans 2 cols)</div>\n  <div class=\"box-footer\">Footer (Spans 3 cols)</div>\n</div>"
+}

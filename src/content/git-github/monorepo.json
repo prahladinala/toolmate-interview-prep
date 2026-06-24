@@ -1,0 +1,31 @@
+{
+  "id": "monorepo",
+  "title": "Monorepos",
+  "difficulty": "Advanced",
+  "definition": "A software development strategy where code for many projects is stored in the same repository, as opposed to storing them in separate repositories (polyrepo).",
+  "simpleExplanation": "Putting your Frontend app, your Backend API, and your Mobile App into one giant Git repository. They share the same `node_modules`, the same ESLint rules, and the same Git history.",
+  "realWorldExample": "Google famously has the largest Monorepo in the world. Almost all of Google's code (billions of lines) lives in a single repository.",
+  "useCases": [
+    "Easy code sharing between frontend and backend",
+    "Atomic commits across entire tech stacks"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main problem with Monorepos?"
+    ],
+    "intermediate": [
+      "What tools are commonly used to manage JavaScript monorepos?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Main problem?",
+      "answer": "Scale. `git clone` becomes incredibly slow if the repository contains 50 different apps and 10 years of history. Git was not originally designed to handle repos with terabytes of data."
+    },
+    {
+      "question": "Management tools?",
+      "answer": "Tools like Lerna, Nx, Turborepo, and npm/yarn Workspaces."
+    }
+  ],
+  "codeExample": "/*\n  A typical Monorepo folder structure:\n  \n  my-startup-monorepo/\n  │\n  ├── package.json (Global dependencies)\n  │\n  ├── apps/\n  │   ├── web-frontend/ (React App)\n  │   ├── mobile-app/   (React Native)\n  │   └── admin-dashboard/\n  │\n  └── packages/\n      ├── shared-ui/    (Buttons, Inputs used by all apps)\n      └── database-orm/ (Prisma schema used by API)\n*/"
+}

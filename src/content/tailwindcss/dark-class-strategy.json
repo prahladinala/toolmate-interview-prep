@@ -1,0 +1,31 @@
+{
+  "id": "dark-class-strategy",
+  "title": "Class Strategy",
+  "difficulty": "Advanced",
+  "definition": "Implementing dark mode manually by toggling a CSS class via JavaScript, allowing the user to override their OS preferences.",
+  "simpleExplanation": "A user's iPhone is in Light Mode, but they are reading your blog at 2 AM and their eyes hurt. They click your 'Dark Mode' button. Your React state updates, slapping `<html class=\"dark\">` onto the page. Suddenly, all `dark:bg-black` classes instantly activate, saving their eyes.",
+  "realWorldExample": "Creating a Theme Context in React that manages a `theme` state (`light` or `dark`), saves that preference to `localStorage`, and injects it into the DOM on page load.",
+  "useCases": [
+    "Manual theme switchers",
+    "Persistent user preferences"
+  ],
+  "questions": {
+    "basic": [
+      "In the class strategy, what exact class name must be present on a parent element to trigger dark mode?"
+    ],
+    "intermediate": [
+      "Why do you need to save the user's theme choice to `localStorage`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exact class name?",
+      "answer": "`dark`"
+    },
+    {
+      "question": "Why localStorage?",
+      "answer": "If you don't save it to `localStorage`, the website will reset back to Light Mode every single time the user clicks a link to a new page or refreshes the browser."
+    }
+  ],
+  "codeExample": "/* Vanilla JS Implementation for Class Strategy */\n\n// 1. Check local storage on initial page load\nif (localStorage.theme === 'dark') {\n  // 2. Slap the magic class on the root HTML element\n  document.documentElement.classList.add('dark');\n} else {\n  document.documentElement.classList.remove('dark');\n}\n\n// 3. The Toggle Button Event Listener\ndocument.getElementById('theme-toggle').addEventListener('click', () => {\n  const html = document.documentElement;\n  \n  if (html.classList.contains('dark')) {\n    html.classList.remove('dark');\n    localStorage.setItem('theme', 'light');\n  } else {\n    html.classList.add('dark');\n    localStorage.setItem('theme', 'dark');\n  }\n});"
+}

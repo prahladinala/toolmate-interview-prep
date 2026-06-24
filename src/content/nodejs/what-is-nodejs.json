@@ -1,0 +1,36 @@
+{
+  "id": "what-is-nodejs",
+  "title": "What is Node.js?",
+  "difficulty": "Beginner",
+  "definition": "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment built on Chrome's V8 engine that executes JavaScript code outside a web browser.",
+  "simpleExplanation": "Normally, JavaScript lives inside a browser (like Chrome or Safari) and is strictly used to make websites interactive. Node.js takes the engine out of Chrome, installs it on your computer, and gives it superpowers—allowing JavaScript to read files, talk to databases, and build backend servers.",
+  "realWorldExample": "Building the backend for Netflix. Instead of using Java or Python for their servers, they use JavaScript (Node.js) because it's insanely fast at handling millions of tiny, concurrent network requests.",
+  "useCases": [
+    "Building RESTful APIs",
+    "Real-time chat applications",
+    "Command-line tools (CLI)",
+    "Streaming applications"
+  ],
+  "questions": {
+    "basic": [
+      "Is Node.js a programming language or a framework?"
+    ],
+    "intermediate": [
+      "Why is Node.js described as 'single-threaded' yet capable of handling millions of requests?"
+    ],
+    "advanced": [
+      "What is the difference between Node.js and Deno?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it a language or a framework?",
+      "answer": "Neither! It is a runtime environment. The language is still JavaScript. It isn't a framework like Express or React; it's the engine that literally runs the code."
+    },
+    {
+      "question": "How does single-threaded handle millions of requests?",
+      "answer": "Through the asynchronous Event Loop. While Node processes code on one thread, it offloads heavy I/O operations (like reading a file or querying a DB) to the operating system, freeing up the main thread to instantly handle the next incoming user request."
+    }
+  ],
+  "codeExample": "// index.js\n// No browser needed! Run this in your terminal with: `node index.js`\n\nconsole.log(\"Hello from Node.js!\");\n\n// We can access system-level features that the browser blocks:\nconst os = require('os');\nconsole.log(`Your computer has ${os.cpus().length} CPU cores!`);"
+}

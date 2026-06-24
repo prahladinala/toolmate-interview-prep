@@ -1,0 +1,35 @@
+{
+  "id": "try-catch",
+  "title": "try / catch / finally",
+  "difficulty": "Beginner",
+  "definition": "A syntax structure that allows you to execute code that might fail (`try`), gracefully handle the error if it does fail (`catch`), and execute cleanup code regardless of the outcome (`finally`).",
+  "simpleExplanation": "Try: 'Hey JS, try to do this risky thing.' Catch: 'If it explodes, don't crash the whole app, just run this backup plan.' Finally: 'No matter if it exploded or succeeded, clean up your mess.'",
+  "realWorldExample": "Trying to parse a JSON string from LocalStorage. If the string is corrupted, `JSON.parse` will throw an error. Wrapping it in a try/catch prevents the app from white-screening.",
+  "useCases": [
+    "Handling JSON parsing",
+    "Handling API failures in `async/await`",
+    "Closing database connections (`finally`)"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if an error occurs inside the `try` block?"
+    ],
+    "intermediate": [
+      "Is the `finally` block mandatory?"
+    ],
+    "advanced": [
+      "Can a `try/catch` block catch errors inside a `setTimeout` callback?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is finally mandatory?",
+      "answer": "No. You can have just `try/catch`, or just `try/finally` (which runs the cleanup but doesn't suppress the crash). You rarely use `finally` in frontend JS, but it is heavily used in Node.js to close database/file streams."
+    },
+    {
+      "question": "Can try/catch catch setTimeout errors?",
+      "answer": "NO! `try/catch` is completely synchronous. The `try` block finishes instantly, and 1 second later the `setTimeout` callback throws an error. The `catch` block has already finished and packed up its bags. The error will crash the app. You must put the `try/catch` INSIDE the setTimeout callback."
+    }
+  ],
+  "codeExample": "const badJsonString = \"{ name: 'Alice' \"; // Missing closing brace!\n\ntry {\n  console.log(\"1. Attempting to parse...\");\n  const user = JSON.parse(badJsonString); \n  // Execution STOPS here. The next line never runs.\n  console.log(\"2. Success!\", user);\n\n} catch (error) {\n  // Code jumps here instantly\n  console.error(\"3. Parse failed! Falling back to guest user.\");\n  // error.message will be \"Unexpected end of JSON input\"\n\n} finally {\n  console.log(\"4. This runs no matter what happens.\");\n}"
+}

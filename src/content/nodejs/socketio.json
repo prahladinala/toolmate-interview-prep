@@ -1,0 +1,31 @@
+{
+  "id": "socketio",
+  "title": "Socket.IO",
+  "difficulty": "Intermediate",
+  "definition": "A hugely popular JavaScript library for real-time web applications. It acts as a wrapper around WebSockets, providing fallbacks, auto-reconnection, and easy broadcasting.",
+  "simpleExplanation": "Raw WebSockets are great, but what if the user's internet drops for 2 seconds? The raw WebSocket dies forever. Socket.IO is a smart wrapper. If the internet drops, Socket.IO automatically tries to reconnect. If the user is on an ancient 15-year-old browser that doesn't support WebSockets, Socket.IO gracefully falls back to 'HTTP Long-Polling' to simulate real-time behavior so the app doesn't break.",
+  "realWorldExample": "Emitting an event specifically to a 'Room'. Socket.IO allows you to group users. When a user joins the 'Gaming Room', you can write `io.to('Gaming Room').emit('score')`, and it broadcasts ONLY to those 10 users, ignoring the 5,000 other users on the server.",
+  "useCases": [
+    "Production-grade real-time apps",
+    "Complex chat rooms with namespaces"
+  ],
+  "questions": {
+    "basic": [
+      "Is Socket.IO exactly the same thing as a native WebSocket?"
+    ],
+    "intermediate": [
+      "What happens if a Socket.IO connection drops?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it exactly the same?",
+      "answer": "No. Socket.IO uses WebSockets under the hood, but it adds its own custom protocol metadata. You cannot connect a standard raw WebSocket client to a Socket.IO server; you must use the Socket.IO client library."
+    },
+    {
+      "question": "What happens if connection drops?",
+      "answer": "Socket.IO has a built-in heartbeat mechanism. It automatically detects the drop and will continuously attempt to reconnect the user in the background."
+    }
+  ],
+  "codeExample": "/* \n  npm install socket.io\n*/\n\n// const { Server } = require('socket.io');\n// const http = require('http');\n\n// // Socket.IO attaches to an existing HTTP server\n// const server = http.createServer();\n// const io = new Server(server, { cors: { origin: \"*\" } });\n\n// io.on('connection', (socket) => {\n//   console.log(\"Client connected:\", socket.id);\n\n//   // Custom Events (Socket.IO superpower over raw WS!)\n//   socket.on('join_room', (roomName) => {\n//     socket.join(roomName); // Joins a specific channel\n//     console.log(`${socket.id} joined ${roomName}`);\n//   });\n\n//   socket.on('send_message', (data) => {\n//     // Broadcast to EVERYONE IN THE ROOM except the sender\n//     socket.to(data.room).emit('receive_message', data.msg);\n//   });\n// });\n\n// server.listen(3000);\n\nconsole.log(\"Socket.IO abstracts away the harsh complexities of building stable, scalable real-time architectures.\");"
+}

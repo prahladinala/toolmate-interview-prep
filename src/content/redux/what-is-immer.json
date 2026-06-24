@@ -1,0 +1,31 @@
+{
+  "id": "what-is-immer",
+  "title": "What is Immer?",
+  "difficulty": "Intermediate",
+  "definition": "A tiny package that allows you to work with immutable state in a more convenient way. It is built into Redux Toolkit by default.",
+  "simpleExplanation": "A magic trick for JavaScript. React and Redux strictly forbid 'mutating' data (like `array.push()`). Immer is a library that says: 'Go ahead, use array.push()! I'll intercept it behind the scenes, make a perfect immutable clone, and apply your push to the clone instead of the original.'",
+  "realWorldExample": "Writing Redux reducers that look like dirty, mutation-heavy code, but actually result in perfectly clean, time-travel-safe immutable updates.",
+  "useCases": [
+    "Simplifying reducer logic",
+    "Preventing accidental state mutations"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to run `npm install immer` when using Redux Toolkit?"
+    ],
+    "intermediate": [
+      "How does Immer work under the hood?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install it?",
+      "answer": "No. `createSlice` and `createReducer` from Redux Toolkit already include Immer out of the box."
+    },
+    {
+      "question": "How it works?",
+      "answer": "It uses JavaScript `Proxy` objects. When you modify the 'state' inside a reducer, you aren't actually modifying the real state. You are modifying a Proxy. Immer watches what you do to the proxy, and then generates the final immutable object for you."
+    }
+  ],
+  "codeExample": "import { produce } from 'immer';\n\nconst baseState = [\n  { title: \"Learn React\", done: true },\n  { title: \"Learn Redux\", done: false }\n]\n\n// How Immer works (This is exactly what RTK does inside createSlice)\nconst nextState = produce(baseState, draftState => {\n  // We can push to the array! (Normally forbidden in Redux)\n  draftState.push({ title: \"Learn Immer\", done: false });\n  \n  // We can reassign properties directly!\n  draftState[1].done = true;\n});\n\n// baseState is perfectly untouched! Immutable rules are preserved."
+}

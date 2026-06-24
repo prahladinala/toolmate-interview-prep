@@ -1,0 +1,31 @@
+{
+  "id": "mvc-pattern",
+  "title": "MVC Architecture",
+  "difficulty": "Intermediate",
+  "definition": "Model-View-Controller. A software design pattern that divides the related program logic into three interconnected elements to separate internal representations of information from the ways information is presented to and accepted from the user.",
+  "simpleExplanation": "A restaurant. \n1. The View is the Menu and the Dining Room (what the user sees).\n2. The Controller is the Waiter. The user tells the Waiter what they want. The Waiter handles the request.\n3. The Model is the Kitchen/Chef. The Waiter gives the order to the Chef. The Chef talks to the database, prepares the data, and hands it back to the Waiter, who carries it out to the View.",
+  "realWorldExample": "In an Express/React app: React is the View. The Express Route is the Controller. Mongoose is the Model. The Route (Controller) validates the HTTP request, calls Mongoose (Model) to fetch the user, and sends the JSON back to React (View).",
+  "useCases": [
+    "Organizing large codebases",
+    "Separation of Concerns"
+  ],
+  "questions": {
+    "basic": [
+      "Which part of MVC interacts directly with the Database?"
+    ],
+    "intermediate": [
+      "What is the main responsibility of the Controller?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which part interacts with DB?",
+      "answer": "The Model."
+    },
+    {
+      "question": "Controller responsibility?",
+      "answer": "It is the middleman. It receives the HTTP request from the View, validates the inputs, asks the Model for data, and then decides what Response to send back. It shouldn't contain complex database queries itself."
+    }
+  ],
+  "codeExample": "/* --- DIRECTORY STRUCTURE --- \n/models/User.js (Mongoose Schema)\n/controllers/userController.js (Logic)\n/routes/userRoutes.js (Express Endpoints)\n/views/index.html (Or a separate React app)\n*/\n\n// --- 1. MODEL (User.js) ---\n// const User = mongoose.model('User', { name: String });\n\n// --- 2. CONTROLLER (userController.js) ---\nconst getUser = async (req, res) => {\n  try {\n    // Controller asks the Model for data\n    // const user = await User.findById(req.params.id);\n    const user = { name: \"Alice\" }; // Simulated\n    \n    // Controller returns data to the View\n    res.status(200).json(user);\n  } catch (error) {\n    res.status(500).json({ error: \"Failed to fetch\" });\n  }\n};\n\n// --- 3. ROUTER ---\n// const router = express.Router();\n// router.get('/:id', getUser); // Ties the route to the controller\n\nconsole.log(\"MVC stops your server.js file from becoming a 10,000 line nightmare.\");"
+}

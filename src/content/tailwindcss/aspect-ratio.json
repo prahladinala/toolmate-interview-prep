@@ -1,0 +1,32 @@
+{
+  "id": "aspect-ratio",
+  "title": "Aspect Ratio",
+  "difficulty": "Advanced",
+  "definition": "Utilities for controlling the aspect ratio of an element, ensuring it maintains a specific proportion (like 16:9 or 1:1) regardless of its width.",
+  "simpleExplanation": "A TV screen is always a rectangle (16:9). A profile picture is always a square (1:1). If you define `aspect-video` on a video player, it will ALWAYS perfectly calculate its own height to match its width, no matter how much you resize your browser window.",
+  "realWorldExample": "Embedding a YouTube iframe. Without aspect ratio, iframes look horrible on mobile phones. With `aspect-video w-full`, the iframe perfectly scales to look like a mobile video player.",
+  "useCases": [
+    "Videos",
+    "Image grids",
+    "Profile pictures"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class forces an element to be a perfect square?"
+    ],
+    "intermediate": [
+      "Before `aspect-ratio` was added natively to CSS, what complex 'hack' did developers use to achieve responsive videos?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Perfect square?",
+      "answer": "`aspect-square`"
+    },
+    {
+      "question": "Complex hack?",
+      "answer": "The 'Padding-Bottom Hack'. Developers had to use `padding-bottom: 56.25%` and absolute positioning to trick the browser into maintaining a 16:9 ratio. Tailwind's `aspect-video` makes this obsolete."
+    }
+  ],
+  "codeExample": "<!-- Responsive YouTube Video (16:9) -->\n<iframe \n  class=\"w-full aspect-video\"\n  src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" \n  frameborder=\"0\"\n></iframe>\n\n<!-- Perfect Square Profile Picture (1:1) -->\n<!-- Even if w-24 changes on mobile, it will ALWAYS remain a perfect circle -->\n<img \n  src=\"avatar.jpg\" \n  class=\"w-24 aspect-square rounded-full object-cover\"\n/>\n\n<!-- Portrait / Vertical Video (9:16) -->\n<div class=\"w-64 aspect-[9/16] bg-black\">\n  TikTok style video\n</div>"
+}

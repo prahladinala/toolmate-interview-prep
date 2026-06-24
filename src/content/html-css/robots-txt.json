@@ -1,0 +1,31 @@
+{
+  "id": "robots-txt",
+  "title": "robots.txt",
+  "difficulty": "Intermediate",
+  "definition": "A simple text file placed in the root directory of a website that tells search engine crawlers which pages or files they can or cannot request from your site.",
+  "simpleExplanation": "It's the bouncer at the door of your website. When Googlebot arrives, the very first thing it does is ask for `robots.txt`. If the file says 'Do not enter the /admin/ folder', Googlebot respectfully turns around and skips that folder so your private admin pages don't show up on Google.",
+  "realWorldExample": "Blocking Google from indexing your `cart` or `checkout` pages. There is no reason a user's shopping cart URL should ever appear in a Google search result.",
+  "useCases": [
+    "Preventing sensitive pages from being indexed",
+    "Saving crawl budget by blocking low-value pages"
+  ],
+  "questions": {
+    "basic": [
+      "Does `robots.txt` physically prevent hackers from accessing a URL?"
+    ],
+    "intermediate": [
+      "What does the asterisk (`*`) mean in a User-agent line?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it block hackers?",
+      "answer": "Absolutely not. It relies entirely on the 'honor system'. Good bots (Google, Bing) obey it. Malicious bots and hackers completely ignore it. Never use `robots.txt` to hide secret passwords!"
+    },
+    {
+      "question": "What does the asterisk mean?",
+      "answer": "It is a wildcard. `User-agent: *` means 'These rules apply to EVERY search engine bot in the world'."
+    }
+  ],
+  "codeExample": "<!-- Note: This isn't HTML! This is what your physical robots.txt file would look like -->\n<pre style=\"background: #222; color: #0f0; padding: 20px; font-family: monospace;\">\n# Example robots.txt file\n# Placed at: https://www.yourwebsite.com/robots.txt\n\n# Target ALL search engines\nUser-agent: *\n\n# Do not crawl the admin dashboard\nDisallow: /admin/\n\n# Do not crawl any user's shopping cart\nDisallow: /cart/\n\n# Do not crawl private PDF documents\nDisallow: /private-docs/*.pdf\n\n# Explicitly ALLOW them to crawl the public blog\nAllow: /blog/\n\n# Tell the bots where your sitemap is located\nSitemap: https://www.yourwebsite.com/sitemap.xml\n</pre>"
+}

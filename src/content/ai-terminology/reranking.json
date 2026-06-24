@@ -1,0 +1,30 @@
+{
+  "id": "reranking",
+  "title": "Re-ranking",
+  "difficulty": "Advanced",
+  "definition": "An advanced, secondary step in RAG architectures where an initial large list of retrieved documents is passed through a highly precise 'Cross-Encoder' model to re-score and re-sort them based on deep contextual relevance.",
+  "simpleExplanation": "The Vector Database acts as a fast but somewhat sloppy net, catching 50 possible documents. The Re-ranker acts as a slow, meticulous human, reading those 50 documents thoroughly and picking the absolute best 3.",
+  "realWorldExample": "Cohere's Rerank API. You search the database and get 20 results. You send the user's query and those 20 results to Cohere. Cohere calculates a deep contextual score for each one and outputs the top 3, drastically improving the final LLM answer.",
+  "useCases": [
+    "Advanced RAG",
+    "Improving search accuracy"
+  ],
+  "questions": {
+    "basic": [
+      "Why don't we just use the Re-ranker on the entire database from the start?"
+    ],
+    "intermediate": [
+      "What is the difference between a Bi-Encoder (Vector Database) and a Cross-Encoder (Re-ranker)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not use it initially?",
+      "answer": "Because Re-ranking models are extremely computationally expensive and slow. Running a Re-ranker on a database of 1 million documents would take hours. Vector math takes milliseconds."
+    },
+    {
+      "question": "Bi-Encoder vs Cross-Encoder?",
+      "answer": "Bi-Encoders (Vectors) evaluate the Query and the Document completely separately, reducing them to math before comparing them (Fast but shallow). Cross-Encoders evaluate the Query and Document *together simultaneously*, understanding how the words interact with each other (Slow but deeply accurate)."
+    }
+  ]
+}

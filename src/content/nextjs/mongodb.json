@@ -1,0 +1,32 @@
+{
+  "id": "mongodb",
+  "title": "MongoDB Integration",
+  "difficulty": "Intermediate",
+  "definition": "Integrating Next.js with MongoDB, the most popular NoSQL database, typically using the official `mongodb` driver or the `mongoose` ODM.",
+  "simpleExplanation": "PostgreSQL uses strict tables and rows. MongoDB uses flexible, massive JSON-like documents. If you are building an app where the data structure changes constantly, MongoDB is perfect. You can connect to it directly from Next.js Server Components.",
+  "realWorldExample": "Building a dynamic 'Forms' builder. Since every user creates a form with different inputs, strict SQL tables are a nightmare. MongoDB handles flexible schemas effortlessly.",
+  "useCases": [
+    "Flexible schema apps",
+    "Rapid prototyping",
+    "JSON heavy applications"
+  ],
+  "questions": {
+    "basic": [
+      "What is Mongoose?"
+    ],
+    "intermediate": [
+      "Why do you need to establish a global database connection caching mechanism in Next.js when using MongoDB?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Mongoose?",
+      "answer": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It adds strict schema validation to MongoDB, which is otherwise completely schema-less."
+    },
+    {
+      "question": "Global caching?",
+      "answer": "In Next.js development mode, the server constantly hot-reloads every time you save a file. If you don't cache your MongoDB connection globally, every time you press save, Next.js opens a new database connection until MongoDB crashes from too many connections."
+    }
+  ],
+  "codeExample": "// lib/mongodb.ts (Handling the Hot-Reload Connection Issue)\nimport { MongoClient } from 'mongodb';\n\nconst uri = process.env.MONGODB_URI;\nlet client;\nlet clientPromise: Promise<MongoClient>;\n\nif (process.env.NODE_ENV === 'development') {\n  // In development mode, use a global variable so that the value\n  // is preserved across module reloads caused by HMR.\n  if (!global._mongoClientPromise) {\n    client = new MongoClient(uri);\n    global._mongoClientPromise = client.connect();\n  }\n  clientPromise = global._mongoClientPromise;\n} else {\n  // In production mode, it's best to not use a global variable.\n  client = new MongoClient(uri);\n  clientPromise = client.connect();\n}\n\nexport default clientPromise;"
+}

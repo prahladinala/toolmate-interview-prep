@@ -1,0 +1,33 @@
+{
+  "id": "intermediate-react-questions",
+  "title": "Intermediate React Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to test your understanding of React's lifecycle, hooks, and performance characteristics.",
+  "simpleExplanation": "These questions separate the developers who just 'use' React from the developers who actually understand *how* React works under the hood.",
+  "realWorldExample": "Mid-level interviews will focus heavily on `useEffect` dependencies, React Context, and preventing unnecessary re-renders.",
+  "useCases": [
+    "Mid-level Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is Prop Drilling and how do you avoid it?"
+    ],
+    "intermediate": [
+      "Explain the `useEffect` hook and its dependency array."
+    ],
+    "advanced": [
+      "What is the difference between `useMemo` and `useCallback`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Explain the useEffect dependency array.",
+      "answer": "The dependency array tells React when to re-run the effect. If omitted, the effect runs after every single render. If empty `[]`, it runs only once on mount. If it has variables `[data]`, it runs on mount and whenever `data` changes."
+    },
+    {
+      "question": "useMemo vs useCallback?",
+      "answer": "`useMemo` caches the RESULT of a calculation (like a sorted array). `useCallback` caches the FUNCTION ITSELF so that its reference doesn't change on every render, which is useful when passing functions to `React.memo` wrapped child components."
+    }
+  ],
+  "codeExample": "// Typical intermediate question: \"Fix the infinite loop in this useEffect\"\n/*\nfunction BadComponent() {\n  const [user, setUser] = useState({ name: 'Alice' });\n  \n  useEffect(() => {\n    // fetch data...\n    setUser({ name: 'Alice' }); \n  }, [user]); // INFINITE LOOP! The object reference changes every render!\n}\n*/"
+}

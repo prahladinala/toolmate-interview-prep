@@ -1,0 +1,30 @@
+{
+  "id": "mount",
+  "title": "mount",
+  "difficulty": "Advanced",
+  "definition": "A command used to attach a physical storage device (like a USB drive or a second hard drive) to a specific directory in the Linux file system tree.",
+  "simpleExplanation": "Plugging the hard drive into the tree. On Windows, a USB drive magically becomes `E:\\\\`. On Linux, you must manually 'mount' (glue) the USB drive to an empty folder like `/mnt/usb` so you can look inside it.",
+  "realWorldExample": "You attach a massive 5TB Amazon EBS Volume to your server. It does nothing until you type `mount /dev/xvdf /data`. Now, any file you save into the `/data` folder is actually being saved on the 5TB drive.",
+  "useCases": [
+    "Adding storage volumes",
+    "Network File Systems (NFS)"
+  ],
+  "questions": {
+    "basic": [
+      "If you restart the server, does a hard drive stay mounted automatically?"
+    ],
+    "intermediate": [
+      "What is the `/etc/fstab` file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it stay mounted?",
+      "answer": "No. The `mount` command is strictly temporary. If you reboot, the mount is lost."
+    },
+    {
+      "question": "What is fstab?",
+      "answer": "The File System Table. It is a configuration file where you write down your mounts. When Linux boots up, it reads `/etc/fstab` and automatically mounts all the hard drives listed there so you don't have to do it manually."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "nginx",
+  "title": "Nginx Reverse Proxy",
+  "difficulty": "Advanced",
+  "definition": "A high-performance web server that is heavily used as a Reverse Proxy and Load Balancer sitting in front of Node.js applications.",
+  "simpleExplanation": "Node.js is fantastic at processing business logic, but it is terrible at serving static files (like huge images) or managing SSL/HTTPS certificates. NGINX is the massive steel gate at the front of your server. It catches all incoming internet traffic, handles the HTTPS security instantly, serves static images directly from the hard drive, and then silently passes the complex API requests back to your fragile Node.js app.",
+  "realWorldExample": "A user visits `https://yoursite.com/api/users`. NGINX receives the request on port 443 (HTTPS), decrypts it, and forwards it to your Node app hiding on `localhost:3000`. The Node app processes it, hands the data back to NGINX, and NGINX sends it to the user.",
+  "useCases": [
+    "Handling HTTPS/SSL certificates",
+    "Serving static assets blazingly fast",
+    "Load balancing across multiple PM2 instances"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Reverse Proxy?"
+    ],
+    "intermediate": [
+      "Why not just use Node.js to serve HTTPS traffic directly?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Reverse Proxy?",
+      "answer": "A server that sits in front of backend servers and forwards client requests to those servers. The client never knows the backend server exists."
+    },
+    {
+      "question": "Why not use Node for HTTPS?",
+      "answer": "Because cryptography (SSL/TLS decryption) is heavily CPU intensive. If Node does it, it blocks the single-threaded Event Loop, causing massive slowdowns. NGINX is written in highly optimized C and can decrypt thousands of connections concurrently without breaking a sweat."
+    }
+  ],
+  "codeExample": "# --- TYPICAL NGINX CONFIGURATION ---\n\n# server {\n#     listen 80;\n#     server_name mywebsite.com;\n# \n#     # 1. Serve static files directly (Extremely fast)\n#     location /images/ {\n#         root /var/www/mywebsite/public;\n#     }\n# \n#     # 2. Pass API traffic to the hidden Node.js server\n#     location /api/ {\n#         proxy_pass http://localhost:3000;\n#         proxy_http_version 1.1;\n#         proxy_set_header Upgrade $http_upgrade;\n#         proxy_set_header Connection 'upgrade';\n#         proxy_set_header Host $host;\n#         proxy_cache_bypass $http_upgrade;\n#     }\n# }\n\nconsole.log(\"NGINX + PM2 is the classic, battle-tested way to deploy Node on a Virtual Private Server (VPS).\");"
+}

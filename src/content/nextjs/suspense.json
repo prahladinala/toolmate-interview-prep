@@ -1,0 +1,32 @@
+{
+  "id": "suspense",
+  "title": "Suspense in Next.js",
+  "difficulty": "Intermediate",
+  "definition": "A React feature deeply integrated into Next.js that orchestrates the declarative loading states of asynchronous components and data fetching.",
+  "simpleExplanation": "Suspense is a boundary you draw around a piece of your UI. You tell React: 'If anything inside this box is not ready yet (like it is waiting for a database), pause, and show this Loading Spinner instead.'",
+  "realWorldExample": "Drawing a Suspense boundary around a 'Recommended Videos' sidebar. While the complex algorithm figures out what videos to recommend, the user sees a pulsing skeleton loader.",
+  "useCases": [
+    "Streaming UI",
+    "Graceful loading states",
+    "Component decoupling"
+  ],
+  "questions": {
+    "basic": [
+      "What prop on the `<Suspense>` component dictates what UI is shown while the data is loading?"
+    ],
+    "intermediate": [
+      "If you have three different Server Components wrapped in the SAME `<Suspense>` boundary, do they show up one-by-one or all at once?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which prop?",
+      "answer": "The `fallback` prop (e.g., `fallback={<Spinner />}`)."
+    },
+    {
+      "question": "One by one or all at once?",
+      "answer": "All at once! A single Suspense boundary waits for EVERYTHING inside of it to finish before it swaps the fallback out. If you want them to pop in individually, you must wrap each component in its own separate `<Suspense>` boundary."
+    }
+  ],
+  "codeExample": "import { Suspense } from 'react';\nimport { SkeletonCard } from '@/components/ui/Skeleton';\n\nexport default function Dashboard() {\n  return (\n    <div className=\"grid grid-cols-2\">\n      {/* Strategy 1: Independent Suspense (Pop in whenever they finish) */}\n      <Suspense fallback={<SkeletonCard />}>\n        <WeatherWidget />\n      </Suspense>\n      \n      <Suspense fallback={<SkeletonCard />}>\n        <StockTickerWidget />\n      </Suspense>\n\n      {/* Strategy 2: Grouped Suspense (Wait for both to finish, show together) */}\n      <Suspense fallback={<p>Loading financial data...</p>}>\n        <BankBalance />\n        <RecentTransactions />\n      </Suspense>\n    </div>\n  );\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "image-optimization",
+  "title": "Image Optimization",
+  "difficulty": "Intermediate",
+  "definition": "The under-the-hood process where Next.js uses the Sharp library on the server to dynamically resize, compress, and convert images to modern formats like WebP or AVIF.",
+  "simpleExplanation": "You don't need Photoshop to save 5 different sizes of an image anymore. You just upload one massive, high-quality image to your server. Next.js does the Photoshop work automatically, on-the-fly, generating a tiny mobile version for iPhones and a large version for Desktop monitors.",
+  "realWorldExample": "A user on an old 3G network visits your site. Next.js `<Image>` automatically detects this and serves them a highly compressed WebP image, saving their data plan.",
+  "useCases": [
+    "Automated performance scaling",
+    "Next-gen image formats"
+  ],
+  "questions": {
+    "basic": [
+      "What modern image format does Next.js automatically convert JPEG/PNG files into by default?"
+    ],
+    "intermediate": [
+      "Does the image optimization process happen at Build Time (`npm run build`) or Runtime?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format?",
+      "answer": "WebP (and it can be configured to use AVIF, which is even smaller)."
+    },
+    {
+      "question": "Build time or runtime?",
+      "answer": "Runtime! When a user requests the image for the very first time, Next.js halts, optimizes the image, serves it, and caches the optimized version for all future users."
+    }
+  ],
+  "codeExample": "// next.config.js\nmodule.exports = {\n  images: {\n    // Whitelisting external domains so Next.js is allowed to optimize them\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: 'images.unsplash.com',\n      },\n    ],\n    // Opt-in to the absolute best compression available (AVIF)\n    formats: ['image/avif', 'image/webp'],\n  },\n}"
+}

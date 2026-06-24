@@ -1,0 +1,38 @@
+{
+  "id": "auth-handling",
+  "title": "Authentication Handling",
+  "difficulty": "Advanced",
+  "definition": "The process of verifying user identity (Login), maintaining their session across page reloads (Tokens/Cookies), and protecting certain React routes from unauthorized access.",
+  "simpleExplanation": "Authentication is like getting a wristband at a concert. First, you show your ID at the front door (Login). The bouncer gives you a wristband (Token). Now, whenever you want to enter the VIP area (Protected Route), the security guard just checks if you are wearing the wristband. If not, they kick you back to the front door (Redirect to Login).",
+  "realWorldExample": "A user logs in. The backend returns a JWT (JSON Web Token). The React app stores this token and wraps the `<Dashboard>` component in a `<ProtectedRoute>`. If a guest tries to visit `/dashboard`, the route checks for the token, finds nothing, and redirects to `/login`.",
+  "useCases": [
+    "Protecting Private Routes",
+    "Displaying different UI for guests vs logged-in users",
+    "Attaching Bearer tokens to outgoing API requests"
+  ],
+  "questions": {
+    "basic": [
+      "How do you protect a route in React?",
+      "Where should you store the user's authentication state (isLoggedIn)?"
+    ],
+    "intermediate": [
+      "What is a Higher Order Component (HOC) and how is it used for Auth?",
+      "How do you persist the user's login after they close the browser?"
+    ],
+    "advanced": [
+      "What is the difference between Authentication (401) and Authorization (403)?",
+      "How do you handle silent token refresh in React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where should you store auth state?",
+      "answer": "Usually in a Global Context (e.g., `AuthContext`) or a state manager like Redux/Zustand. This allows any component in the app (like a Navbar wanting to show a 'Logout' button) to instantly know if the user is logged in."
+    },
+    {
+      "question": "Authentication vs Authorization?",
+      "answer": "Authentication (401 Unauthorized) asks 'Who are you?'. Authorization (403 Forbidden) asks 'Are you allowed to do this?'. You might be authenticated (logged in), but not authorized to visit an Admin page."
+    }
+  ],
+  "codeExample": "import React, { useState, createContext, useContext } from 'react';\n\nconst AuthContext = createContext();\n\nfunction ProtectedRoute({ children }) {\n  const { user } = useContext(AuthContext);\n  if (!user) {\n    return <div className='text-red-500 font-bold p-4 border'>Access Denied. Please log in!</div>;\n  }\n  return children;\n}\n\nexport default function AuthDemo() {\n  const [user, setUser] = useState(null);\n  return (\n    <AuthContext.Provider value={{ user, setUser }}>\n      <div className='p-4 border'>\n        <header className='flex justify-between mb-4'>\n          <h2>MyApp</h2>\n          {user ? \n            <button onClick={() => setUser(null)}>Logout</button> : \n            <button onClick={() => setUser({ name: 'Alice' })} className='bg-blue-500 text-white px-2 rounded'>Login</button>\n          }\n        </header>\n        <p>Everyone can see the homepage.</p>\n        <div className='mt-4'>\n          <h3>Dashboard:</h3>\n          <ProtectedRoute>\n            <div className='bg-green-100 p-4 rounded'>Welcome to the secret dashboard, {user?.name}!</div>\n          </ProtectedRoute>\n        </div>\n      </div>\n    </AuthContext.Provider>\n  );\n}"
+}

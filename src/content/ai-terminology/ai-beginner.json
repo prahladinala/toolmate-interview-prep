@@ -1,0 +1,29 @@
+{
+  "id": "ai-beginner",
+  "title": "Beginner Questions",
+  "difficulty": "Beginner",
+  "definition": "Introductory interview questions ensuring a candidate understands the high-level differences between standard software, Machine Learning, and Generative AI.",
+  "simpleExplanation": "Proving you aren't just using buzzwords. You need to know the difference between a database and a neural network.",
+  "realWorldExample": "Being asked: 'Explain Machine Learning to me like I am 5 years old.'",
+  "useCases": [
+    "Junior AI Engineer interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between AI and Machine Learning?"
+    ],
+    "intermediate": [
+      "Explain what 'Training Data' is and why it's so important."
+    ]
+  },
+  "answers": [
+    {
+      "question": "AI vs ML?",
+      "answer": "AI is the broad concept of machines acting smartly. ML is the specific technique of feeding machines data so they can learn the rules themselves, rather than a human hard-coding the rules."
+    },
+    {
+      "question": "What is Training Data?",
+      "answer": "It's the textbooks the AI studies. If the textbooks are biased or factually incorrect, the resulting AI will be biased and incorrect (Garbage in, garbage out)."
+    }
+  ]
+}

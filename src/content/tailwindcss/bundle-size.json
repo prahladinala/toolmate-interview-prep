@@ -1,0 +1,31 @@
+{
+  "id": "bundle-size",
+  "title": "Bundle Size Optimization",
+  "difficulty": "Advanced",
+  "definition": "The architectural reality that Tailwind naturally scales to a flat curve in production; no matter how large the application gets, the CSS file stops growing.",
+  "simpleExplanation": "In traditional CSS, every new feature adds 100 new lines of CSS. A 50-page app might have a 500kb CSS file. In Tailwind, once you've used `flex`, `p-4`, and `text-center` once, they are in the bundle. Building 50 more pages uses those same exact classes. The CSS file literally stops growing around 15kb.",
+  "realWorldExample": "Netflix completely rewriting their UI. They found that traditional CSS grew infinitely. Moving to utility-first CSS resulted in an extremely small, strictly capped CSS payload.",
+  "useCases": [
+    "Enterprise scaling",
+    "Core web vitals optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Which results in a smaller production CSS file: Traditional semantic CSS or Tailwind CSS?"
+    ],
+    "intermediate": [
+      "If you use `bg-red-500` in 1,000 different React components, how many times does `bg-red-500` appear in the final production CSS file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Smaller CSS file?",
+      "answer": "Tailwind CSS. Because it reuses a strict set of utilities, its file size is exponentially smaller than traditional CSS at scale."
+    },
+    {
+      "question": "How many times in CSS?",
+      "answer": "Exactly ONCE. The HTML references it 1,000 times, but the browser only downloads the CSS definition one single time."
+    }
+  ],
+  "codeExample": "/* \n  The \"Flat Curve\" Phenomenon \n*/\n\n/* ❌ Traditional CSS: Grows forever */\n.nav-button { padding: 1rem; color: white; background: blue; }\n.footer-button { padding: 1rem; color: white; background: blue; } \n.modal-button { padding: 1rem; color: white; background: blue; }\n/* Result: 300 bytes downloaded */\n\n/* ✅ Tailwind CSS: Reuses utilities. Never grows. */\n.p-4 { padding: 1rem; }\n.text-white { color: white; }\n.bg-blue-500 { background-color: blue; }\n/* Result: 100 bytes downloaded. Reused infinitely across the DOM. */"
+}

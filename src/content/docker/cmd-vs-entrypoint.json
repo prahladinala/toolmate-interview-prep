@@ -1,0 +1,30 @@
+{
+  "id": "cmd-vs-entrypoint",
+  "title": "CMD vs ENTRYPOINT",
+  "difficulty": "Advanced",
+  "definition": "Instructions that define the default command executed when a container starts. `CMD` provides default arguments that a user can easily override. `ENTRYPOINT` configures a container to run as an unyielding executable.",
+  "simpleExplanation": "When the container wakes up, what is its primary job? \n`CMD` is a suggestion: 'When you wake up, run `python main.py`. (But if the user overrides it by typing `bash`, do that instead).'\n`ENTRYPOINT` is a strict law: 'When you wake up, you MUST run `python`. If the user passes arguments, append them, but you ARE a python script.'",
+  "realWorldExample": "An NGINX web server uses `CMD [\"nginx\", \"-g\", \"daemon off;\"]`. When the container starts, the web server boots. But if you want to debug, you can run `docker run -it nginx bash`, completely overriding the CMD and starting a bash shell instead.",
+  "useCases": [
+    "Defining container behavior",
+    "Creating CLI tools"
+  ],
+  "questions": {
+    "basic": [
+      "If a Dockerfile has five `CMD` instructions scattered throughout it, what happens?"
+    ],
+    "intermediate": [
+      "How do `CMD` and `ENTRYPOINT` work together in the same Dockerfile?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Five CMD instructions?",
+      "answer": "Docker completely ignores the first four. Only the absolute last `CMD` instruction in the file will take effect."
+    },
+    {
+      "question": "Work together?",
+      "answer": "If you use both, `ENTRYPOINT` becomes the un-changeable executable, and `CMD` becomes the default arguments fed into it. \nExample: \n`ENTRYPOINT [\"ping\"]`\n`CMD [\"google.com\"]`\nBy default, it pings google. If the user types `docker run myimage yahoo.com`, it overrides the CMD and pings yahoo instead."
+    }
+  ]
+}

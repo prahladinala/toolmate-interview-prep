@@ -1,0 +1,31 @@
+{
+  "id": "form-validation",
+  "title": "HTML Validation",
+  "difficulty": "Intermediate",
+  "definition": "HTML5 includes built-in form validation features that can prevent a form from submitting if the user enters invalid data, without needing to write any JavaScript.",
+  "simpleExplanation": "You can tell the browser: 'This field is required' or 'This field MUST be an email'. If the user tries to submit the form while leaving the field blank or typing gibberish, the browser itself will pop up a red error message and block the submission.",
+  "realWorldExample": "Adding the `required` attribute to a password field so a user can't accidentally submit an empty password when registering.",
+  "useCases": [
+    "Front-end data validation",
+    "Improving UX with instant feedback"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute forces a user to fill out a field before submitting?"
+    ],
+    "intermediate": [
+      "Is HTML validation enough to secure your database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "The `required` attribute."
+    },
+    {
+      "question": "Is it enough for security?",
+      "answer": "NO! Hackers can easily bypass HTML validation by modifying the code in Chrome DevTools or using Postman to send HTTP requests directly. You MUST always re-validate data on your backend server."
+    }
+  ],
+  "codeExample": "<!-- Try submitting this form without filling it out properly! -->\n<form action=\"#\">\n  \n  <label for=\"username\">Username (Required):</label><br>\n  <!-- The 'required' attribute prevents blank submissions -->\n  <!-- The 'minlength' attribute forces them to type at least 3 characters -->\n  <input type=\"text\" id=\"username\" required minlength=\"3\">\n  <br><br>\n\n  <label for=\"email\">Email:</label><br>\n  <!-- type=\"email\" automatically checks for the '@' symbol -->\n  <input type=\"email\" id=\"email\" required>\n  <br><br>\n\n  <label for=\"pin\">4-Digit PIN:</label><br>\n  <!-- 'pattern' uses Regular Expressions for strict custom validation -->\n  <input type=\"text\" id=\"pin\" pattern=\"[0-9]{4}\" title=\"Must be exactly 4 numbers\">\n  <br><br>\n\n  <button type=\"submit\">Submit Form</button>\n\n</form>"
+}

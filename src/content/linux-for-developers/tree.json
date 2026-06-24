@@ -1,0 +1,30 @@
+{
+  "id": "tree",
+  "title": "tree",
+  "difficulty": "Intermediate",
+  "definition": "A command-line utility that recursively lists directories and files in a depth-indented, highly visual tree format.",
+  "simpleExplanation": "Drawing a visual map of the folders. Instead of opening folders one by one with `ls`, `tree` shows you the entire folder structure in one giant picture.",
+  "realWorldExample": "You download a complex open-source project. You type `tree -L 2`. It prints a beautiful visual hierarchy of the project, restricted to 2 levels deep, so you instantly understand where the source code and tests are located.",
+  "useCases": [
+    "Visualizing complex directories",
+    "Documentation generation"
+  ],
+  "questions": {
+    "basic": [
+      "Is the `tree` command installed by default on all Linux distributions?"
+    ],
+    "intermediate": [
+      "What happens if you run `tree /` on a production server?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Installed by default?",
+      "answer": "No. Unlike `ls`, `tree` usually has to be installed manually via `apt install tree` or `yum install tree`."
+    },
+    {
+      "question": "Run tree / ?",
+      "answer": "It will attempt to print every single file on the entire computer, filling your screen with millions of lines of text for several minutes until you forcefully cancel it (Ctrl+C)."
+    }
+  ]
+}

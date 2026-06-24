@@ -1,0 +1,31 @@
+{
+  "id": "generative-ai",
+  "title": "Generative AI Services",
+  "difficulty": "Advanced",
+  "definition": "Cloud services that provide API access to massive, pre-trained Foundational Models (like LLMs), allowing developers to build advanced chatbots, text summarizers, and image generators without training models themselves.",
+  "simpleExplanation": "Renting a super-genius brain. Instead of spending $100 Million to build your own ChatGPT, you pay Amazon a fraction of a penny to ask their pre-built AI a question.",
+  "realWorldExample": "Amazon Bedrock, Azure OpenAI, GCP Vertex AI Gemini. A law firm uses Amazon Bedrock. They upload a 500-page legal contract to the cloud via API, and the Foundational Model instantly returns a 3-paragraph summary highlighting the risk clauses.",
+  "useCases": [
+    "RAG (Retrieval-Augmented Generation)",
+    "Enterprise chatbots",
+    "Automated content creation"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to be a Data Scientist to build an app using an API service like Amazon Bedrock?"
+    ],
+    "intermediate": [
+      "Why would a large bank choose to use Amazon Bedrock or Azure OpenAI instead of the free, public ChatGPT website?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need to be Data Scientist?",
+      "answer": "No. Generative AI APIs completely abstract the complex math. A standard Web Developer can build an AI app just by sending a JSON request to the API."
+    },
+    {
+      "question": "Why use Enterprise AI APIs?",
+      "answer": "Data Privacy and Compliance. If a bank pastes customer financial data into the public ChatGPT, that data leaves the company and can be used by OpenAI for training. Cloud services like Bedrock legally guarantee that customer data never leaves the private Virtual Network and is never used to train base models."
+    }
+  ]
+}

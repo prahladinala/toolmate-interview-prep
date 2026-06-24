@@ -1,0 +1,31 @@
+{
+  "id": "http-response",
+  "title": "HTTP Response Structure",
+  "difficulty": "Intermediate",
+  "definition": "The specific format of the message sent from the server back to the client. It consists of a Status Line, Headers, and an optional Body.",
+  "simpleExplanation": "The server's reply to your letter. \n1. Status Line tells you instantly if it succeeded or failed ('200 OK' or '404 Not Found').\n2. Headers tell the browser how to read the data ('This is an image', 'Cache this for 1 hour').\n3. The Body is the actual webpage, image file, or JSON data.",
+  "realWorldExample": "A server returning a successful login attempt. The status line is `200 OK`. The headers include a `Set-Cookie` command to keep the user logged in. The body contains the user's profile data.",
+  "useCases": [
+    "Parsing API responses",
+    "Error handling"
+  ],
+  "questions": {
+    "basic": [
+      "What is the first line of an HTTP Response called?"
+    ],
+    "intermediate": [
+      "If a server returns an image file, how does the browser know it's an image and not a text file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "First line called?",
+      "answer": "The Status Line (which contains the Protocol Version, Status Code, and Status Text)."
+    },
+    {
+      "question": "How does browser know?",
+      "answer": "Because of the `Content-Type` Header in the HTTP Response. If it says `image/jpeg`, the browser renders a picture. If it says `text/html`, it renders a webpage."
+    }
+  ],
+  "codeExample": "/* \n  Anatomy of an HTTP Response:\n*/\n\n// 1. STATUS LINE (Protocol, Status Code, Status Message)\nHTTP/1.1 200 OK\n\n// 2. HEADERS (Metadata from the server)\nDate: Wed, 21 Oct 2024 07:28:00 GMT\nServer: Nginx\nContent-Type: application/json\nCache-Control: max-age=3600\n\n// 3. BLANK LINE\n\n// 4. BODY (The data requested by the client)\n{\n  \"success\": true,\n  \"userId\": 99,\n  \"message\": \"Login successful\"\n}"
+}

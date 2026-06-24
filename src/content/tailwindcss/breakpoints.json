@@ -1,0 +1,31 @@
+{
+  "id": "breakpoints",
+  "title": "Breakpoints",
+  "difficulty": "Beginner",
+  "definition": "Responsive prefixes (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`) that allow you to conditionally apply CSS classes at specific screen widths.",
+  "simpleExplanation": "Instead of writing complex `@media` queries in a CSS file to make your site work on mobile phones, you just prefix your classes. `w-full md:w-1/2` means: 'Be 100% wide on phones, but on Medium screens (tablets) and larger, be 50% wide'.",
+  "realWorldExample": "Hiding the sidebar navigation on a mobile phone (`hidden`), but revealing it when the user rotates their iPad to landscape or opens the site on a laptop (`md:block`).",
+  "useCases": [
+    "Responsive web design",
+    "Mobile adaptation"
+  ],
+  "questions": {
+    "basic": [
+      "What screen width roughly corresponds to the `md:` breakpoint in Tailwind?"
+    ],
+    "intermediate": [
+      "If you write `<div class=\"bg-red-500 md:bg-blue-500 lg:bg-green-500\">`, what color is the div on a massive 4K monitor?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "md width?",
+      "answer": "768px (Standard Tablet portrait mode)."
+    },
+    {
+      "question": "Color on 4K?",
+      "answer": "Green. Tailwind breakpoints act as 'Minimum Widths' (min-width). `lg:` means 'Large screens AND EVERYTHING BIGGER'. Since 4K is bigger than `lg`, green wins."
+    }
+  ],
+  "codeExample": "<!-- \n  Tailwind Default Breakpoints:\n  sm: 640px  (Large Phones)\n  md: 768px  (Tablets)\n  lg: 1024px (Laptops)\n  xl: 1280px (Desktop Monitors)\n  2xl: 1536px (Huge Monitors)\n-->\n\n<!-- A highly responsive grid -->\n<!-- 1 column on phones, 2 on tablets, 4 on laptops! -->\n<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4\">\n  <div class=\"bg-gray-200 p-4\">Item 1</div>\n  <div class=\"bg-gray-200 p-4\">Item 2</div>\n  <div class=\"bg-gray-200 p-4\">Item 3</div>\n  <div class=\"bg-gray-200 p-4\">Item 4</div>\n</div>"
+}

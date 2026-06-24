@@ -1,0 +1,241 @@
+{
+  "id": "tailwindcss",
+  "title": "Tailwind CSS",
+  "description": "Master Tailwind CSS from fundamentals to advanced responsive design, customization, performance optimization, component architecture, and production-ready frontend development.",
+  "icon": "tailwindcss",
+  "categories": [
+    {
+      "id": "fundamentals",
+      "title": "Tailwind Fundamentals",
+      "topics": [
+        { "id": "what-is-tailwind", "title": "What is Tailwind CSS?" },
+        { "id": "tailwind-vs-css", "title": "Tailwind CSS vs Traditional CSS" },
+        { "id": "utility-first", "title": "Utility-First Approach" },
+        { "id": "installation", "title": "Installation & Setup" },
+        { "id": "configuration", "title": "tailwind.config.js" },
+        { "id": "content-scanning", "title": "Content Scanning" }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": "Layout & Positioning",
+      "topics": [
+        { "id": "container", "title": "Container" },
+        { "id": "display", "title": "Display Utilities" },
+        { "id": "position", "title": "Position Utilities" },
+        { "id": "top-right-bottom-left", "title": "Inset Utilities" },
+        { "id": "z-index", "title": "z-index" },
+        { "id": "overflow", "title": "Overflow" },
+        { "id": "visibility", "title": "Visibility" }
+      ]
+    },
+    {
+      "id": "spacing-sizing",
+      "title": "Spacing & Sizing",
+      "topics": [
+        { "id": "margin", "title": "Margin" },
+        { "id": "padding", "title": "Padding" },
+        { "id": "width", "title": "Width" },
+        { "id": "height", "title": "Height" },
+        { "id": "min-max-width", "title": "Min/Max Width" },
+        { "id": "min-max-height", "title": "Min/Max Height" },
+        { "id": "aspect-ratio", "title": "Aspect Ratio" }
+      ]
+    },
+    {
+      "id": "flexbox",
+      "title": "Flexbox",
+      "topics": [
+        { "id": "flex-container", "title": "Flex Container" },
+        { "id": "flex-direction", "title": "Flex Direction" },
+        { "id": "justify-content", "title": "Justify Content" },
+        { "id": "align-items", "title": "Align Items" },
+        { "id": "align-content", "title": "Align Content" },
+        { "id": "flex-grow-shrink", "title": "Flex Grow & Shrink" },
+        { "id": "gap", "title": "Gap Utilities" }
+      ]
+    },
+    {
+      "id": "grid",
+      "title": "CSS Grid",
+      "topics": [
+        { "id": "grid-container", "title": "Grid Container" },
+        { "id": "grid-columns", "title": "Grid Columns" },
+        { "id": "grid-rows", "title": "Grid Rows" },
+        { "id": "grid-span", "title": "Column & Row Span" },
+        { "id": "grid-auto-flow", "title": "Grid Auto Flow" },
+        { "id": "grid-vs-flex", "title": "Grid vs Flexbox" }
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "topics": [
+        { "id": "font-size", "title": "Font Size" },
+        { "id": "font-weight", "title": "Font Weight" },
+        { "id": "font-family", "title": "Font Family" },
+        { "id": "line-height", "title": "Line Height" },
+        { "id": "letter-spacing", "title": "Letter Spacing" },
+        { "id": "text-alignment", "title": "Text Alignment" },
+        { "id": "text-overflow", "title": "Text Overflow" }
+      ]
+    },
+    {
+      "id": "colors-backgrounds",
+      "title": "Colors & Backgrounds",
+      "topics": [
+        { "id": "text-colors", "title": "Text Colors" },
+        { "id": "background-colors", "title": "Background Colors" },
+        { "id": "gradients", "title": "Gradients" },
+        { "id": "opacity", "title": "Opacity" },
+        { "id": "background-image", "title": "Background Images" },
+        { "id": "dark-mode-colors", "title": "Dark Mode Colors" }
+      ]
+    },
+    {
+      "id": "borders-effects",
+      "title": "Borders & Effects",
+      "topics": [
+        { "id": "border", "title": "Borders" },
+        { "id": "border-radius", "title": "Border Radius" },
+        { "id": "outline", "title": "Outline & Ring" },
+        { "id": "box-shadow", "title": "Box Shadow" },
+        { "id": "drop-shadow", "title": "Drop Shadow" },
+        { "id": "backdrop-filter", "title": "Backdrop Blur" }
+      ]
+    },
+    {
+      "id": "responsive-design",
+      "title": "Responsive Design",
+      "topics": [
+        { "id": "breakpoints", "title": "Breakpoints" },
+        { "id": "mobile-first", "title": "Mobile First Design" },
+        { "id": "responsive-layouts", "title": "Responsive Layouts" },
+        { "id": "responsive-grid", "title": "Responsive Grid" },
+        { "id": "responsive-typography", "title": "Responsive Typography" }
+      ]
+    },
+    {
+      "id": "states-variants",
+      "title": "States & Variants",
+      "topics": [
+        { "id": "hover", "title": "Hover State" },
+        { "id": "focus", "title": "Focus State" },
+        { "id": "active", "title": "Active State" },
+        { "id": "disabled", "title": "Disabled State" },
+        { "id": "group-hover", "title": "group-hover" },
+        { "id": "peer", "title": "peer & peer-* Variants" }
+      ]
+    },
+    {
+      "id": "dark-mode",
+      "title": "Dark Mode",
+      "topics": [
+        { "id": "dark-mode-setup", "title": "Dark Mode Setup" },
+        { "id": "dark-class-strategy", "title": "Class Strategy" },
+        { "id": "dark-system-strategy", "title": "System Preference Strategy" },
+        { "id": "theme-switcher", "title": "Theme Switcher" }
+      ]
+    },
+    {
+      "id": "animations",
+      "title": "Animations & Transitions",
+      "topics": [
+        { "id": "transitions", "title": "Transitions" },
+        { "id": "duration-delay", "title": "Duration & Delay" },
+        { "id": "transform", "title": "Transform Utilities" },
+        { "id": "scale-rotate", "title": "Scale & Rotate" },
+        { "id": "translate", "title": "Translate" },
+        { "id": "custom-animations", "title": "Custom Animations" }
+      ]
+    },
+    {
+      "id": "forms",
+      "title": "Forms",
+      "topics": [
+        { "id": "input-styling", "title": "Input Styling" },
+        { "id": "form-layouts", "title": "Form Layouts" },
+        { "id": "checkbox-radio", "title": "Checkbox & Radio Buttons" },
+        { "id": "validation-states", "title": "Validation States" },
+        { "id": "tailwind-forms-plugin", "title": "@tailwindcss/forms" }
+      ]
+    },
+    {
+      "id": "customization",
+      "title": "Customization",
+      "topics": [
+        { "id": "theme-extension", "title": "Theme Extension" },
+        { "id": "custom-colors", "title": "Custom Colors" },
+        { "id": "custom-spacing", "title": "Custom Spacing" },
+        { "id": "custom-breakpoints", "title": "Custom Breakpoints" },
+        { "id": "plugins", "title": "Plugins" },
+        { "id": "custom-utilities", "title": "Custom Utilities" }
+      ]
+    },
+    {
+      "id": "component-architecture",
+      "title": "Component Architecture",
+      "topics": [
+        { "id": "reusable-components", "title": "Reusable Components" },
+        { "id": "extracting-classes", "title": "Extracting Common Styles" },
+        { "id": "class-variance-authority", "title": "Class Variance Authority (CVA)" },
+        { "id": "tailwind-with-react", "title": "Tailwind with React" },
+        { "id": "tailwind-with-nextjs", "title": "Tailwind with Next.js" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "purging", "title": "Unused CSS Removal" },
+        { "id": "jit-engine", "title": "JIT Engine" },
+        { "id": "bundle-size", "title": "Bundle Size Optimization" },
+        { "id": "content-configuration", "title": "Content Configuration" }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "topics": [
+        { "id": "focus-rings", "title": "Focus Rings" },
+        { "id": "keyboard-navigation", "title": "Keyboard Navigation" },
+        { "id": "color-contrast", "title": "Color Contrast" },
+        { "id": "aria-support", "title": "ARIA Support" }
+      ]
+    },
+    {
+      "id": "tailwind-ecosystem",
+      "title": "Tailwind Ecosystem",
+      "topics": [
+        { "id": "shadcn-ui", "title": "shadcn/ui" },
+        { "id": "daisyui", "title": "DaisyUI" },
+        { "id": "headless-ui", "title": "Headless UI" },
+        { "id": "tailwind-merge", "title": "tailwind-merge" },
+        { "id": "clsx", "title": "clsx" }
+      ]
+    },
+    {
+      "id": "advanced-tailwind",
+      "title": "Advanced Tailwind CSS",
+      "topics": [
+        { "id": "arbitrary-values", "title": "Arbitrary Values" },
+        { "id": "arbitrary-variants", "title": "Arbitrary Variants" },
+        { "id": "data-attributes", "title": "Data Attribute Selectors" },
+        { "id": "container-queries", "title": "Container Queries" },
+        { "id": "custom-plugin-development", "title": "Custom Plugin Development" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "tailwind-basics-interview", "title": "Beginner Questions" },
+        { "id": "tailwind-intermediate", "title": "Intermediate Questions" },
+        { "id": "tailwind-advanced", "title": "Advanced Questions" },
+        { "id": "layout-challenges", "title": "Layout Coding Challenges" },
+        { "id": "responsive-design-questions", "title": "Responsive Design Questions" },
+        { "id": "tailwind-debugging", "title": "Debugging Questions" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "model",
+  "title": "Model",
+  "difficulty": "Beginner",
+  "definition": "The mathematical file or program that is produced after training a Machine Learning algorithm on a dataset. It recognizes patterns and makes predictions on new, unseen data.",
+  "simpleExplanation": "If the algorithm is the 'recipe', and the training data is the 'ingredients', the Model is the 'baked cake'. Once the cake is baked, you can't un-bake it. You just use it to answer questions.",
+  "realWorldExample": "GPT-4 is a Model. OpenAI spent months running algorithms on supercomputers to analyze the internet. The final result is a massive mathematical file (the Model) that can predict what word should come next in a sentence.",
+  "useCases": [
+    "Deploying AI",
+    "Inference"
+  ],
+  "questions": {
+    "basic": [
+      "Is a Machine Learning Model just a list of 'If/Else' programming statements?"
+    ],
+    "intermediate": [
+      "What does it mean to 'Save' or 'Export' a trained model?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it If/Else?",
+      "answer": "No. A model is a massive network of complex mathematical weights and probabilities. It does not look like traditional human-readable code."
+    },
+    {
+      "question": "Save/Export model?",
+      "answer": "Training an AI takes days and costs millions of dollars in electricity. Once it finishes learning, you 'save' the final mathematical state into a file (like an `.h5` or `.pt` file). You can then copy that file to a cheap web server to use it instantly without ever needing to train it again."
+    }
+  ]
+}

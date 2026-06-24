@@ -1,0 +1,31 @@
+{
+  "id": "fonts",
+  "title": "Fonts & Typography",
+  "difficulty": "Beginner",
+  "definition": "CSS properties used to control the appearance of text, including the font family, weight, size, and spacing.",
+  "simpleExplanation": "By default, browsers use boring fonts like Times New Roman. Typography properties allow you to load beautiful custom fonts from Google Fonts, make them bold, italicized, spaced out, or transformed to ALL CAPS.",
+  "realWorldExample": "Loading the 'Inter' or 'Roboto' font from Google Fonts to give a web app a sleek, modern, Apple-like aesthetic.",
+  "useCases": [
+    "Branding",
+    "Improving readability"
+  ],
+  "questions": {
+    "basic": [
+      "What property makes text bold?"
+    ],
+    "intermediate": [
+      "Why do we write fallback fonts like `font-family: Arial, Helvetica, sans-serif;`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What makes text bold?",
+      "answer": "`font-weight: bold;` (or a number like `font-weight: 700;`)."
+    },
+    {
+      "question": "Why fallback fonts?",
+      "answer": "If the user's computer doesn't have 'Arial' installed, the browser moves to the next option and tries 'Helvetica'. If they don't have that either, it falls back to the generic system 'sans-serif' font. It ensures the site doesn't break."
+    }
+  ],
+  "codeExample": "<style>\n  /* Importing a custom font from Google! */\n  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');\n\n  .typography-demo {\n    /* 1. Applying the Google Font, with a fallback to sans-serif */\n    font-family: 'Outfit', sans-serif;\n    \n    /* 2. Text Size */\n    font-size: 20px;\n    \n    /* 3. Text Weight (400 is normal, 700 is bold) */\n    font-weight: 700;\n    \n    /* 4. Text Color */\n    color: #334155;\n    \n    /* 5. Line Height (Space between vertical lines of text) */\n    line-height: 1.6;\n    \n    /* 6. Letter Spacing (Space between individual letters) */\n    letter-spacing: 2px;\n    \n    /* 7. Text Transform (Forces EVERYTHING to uppercase) */\n    text-transform: uppercase;\n    \n    /* 8. Text Alignment */\n    text-align: center;\n  }\n</style>\n\n<div class=\"typography-demo\">\n  This text looks premium because it uses a custom Google Font (Outfit) with custom tracking and line height!\n</div>"
+}

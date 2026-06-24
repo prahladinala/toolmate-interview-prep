@@ -1,0 +1,31 @@
+{
+  "id": "bisect",
+  "title": "git bisect",
+  "difficulty": "Advanced",
+  "definition": "A command that uses a binary search algorithm to find which commit in your project's history introduced a bug.",
+  "simpleExplanation": "The ultimate bug hunting tool. You tell Git: 'The code is broken right now. But I know for a fact it was working 50 commits ago.' Git will automatically jump to the middle commit (commit 25) and ask: 'Is it broken here?'. You say Yes or No. It jumps again, splitting the list in half. Within 5 questions, it finds the exact commit that caused the bug out of hundreds.",
+  "realWorldExample": "Finding a memory leak. You can't figure out when the leak was introduced. You start `bisect`, run your test, and narrow it down to the exact developer and the exact line of code that caused the leak.",
+  "useCases": [
+    "Hunting down regressions",
+    "Debugging massive codebases"
+  ],
+  "questions": {
+    "basic": [
+      "What two points in time must you give Git to start a bisect?"
+    ],
+    "intermediate": [
+      "Can you automate `git bisect` so you don't have to manually answer Yes/No?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two points?",
+      "answer": "A known 'bad' commit (usually your current state) and a known 'good' commit from the past."
+    },
+    {
+      "question": "Automate it?",
+      "answer": "Yes! You can run `git bisect run npm test`. Git will automatically jump through history, running your test suite at every stop. If the test passes, Git marks it 'good'. If it fails, 'bad'. It will find the bug while you go get coffee."
+    }
+  ],
+  "codeExample": "# 1. Start the wizard\n$ git bisect start\n\n# 2. Tell Git that right now, the code is broken\n$ git bisect bad\n\n# 3. Tell Git a hash from 3 weeks ago where the code was definitely working\n$ git bisect good a1b2c3d\n\n# Git jumps to a commit halfway between them.\n# You test the app in your browser...\n\n# 4. If it's broken, type: git bisect bad\n# 4. If it works, type: git bisect good\n\n# Repeat until Git says: \"9f8e7d6 is the first bad commit!\"\n\n# 5. End the wizard and go back to normal\n$ git bisect reset"
+}

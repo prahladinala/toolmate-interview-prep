@@ -1,0 +1,45 @@
+{
+  "id": "array-methods",
+  "title": "Array Methods",
+  "difficulty": "Intermediate",
+  "definition": "Array methods are built-in functions in JavaScript that allow you to easily manipulate, search, and transform arrays without having to write manual loops.",
+  "simpleExplanation": "Instead of using a bulky `for` loop every time you want to do something to a list of items, JavaScript gives you shortcuts. `map` is like putting every item through a machine to change it. `filter` is like a bouncer at a club who only lets certain items pass. `reduce` is like taking a pile of ingredients and combining them into a single cake.",
+  "realWorldExample": "If you have a list of user objects from a database, you might use `.filter()` to only show active users, and then use `.map()` to create a new list containing just their email addresses.",
+  "useCases": [
+    "Transforming data structures for the UI",
+    "Filtering out bad data or deleted items",
+    "Calculating totals (like a shopping cart sum using reduce)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between push() and unshift()?",
+      "What does the map() method do?"
+    ],
+    "intermediate": [
+      "What is the difference between slice() and splice()?",
+      "How do map(), filter(), and reduce() differ?"
+    ],
+    "advanced": [
+      "Does the sort() method mutate the original array? How does it sort by default?",
+      "What is the difference between forEach() and map()?"
+    ],
+    "trick": [
+      "How do you flatten a multi-dimensional array using flatMap()?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between slice() and splice()?",
+      "answer": "slice() extracts a section of an array and returns a NEW array without modifying the original. splice() adds or removes items from an array, mutating the ORIGINAL array."
+    },
+    {
+      "question": "What is the difference between forEach() and map()?",
+      "answer": "forEach() just iterates over the array to perform actions (returns undefined). map() iterates and returns a completely NEW array based on what your callback function returns."
+    },
+    {
+      "question": "Does sort() mutate the original array?",
+      "answer": "Yes, sort() mutates the original array. By default, it sorts elements alphabetically as strings, so sorting [10, 2, 5] yields [10, 2, 5] because '10' comes before '2' alphabetically."
+    }
+  ],
+  "codeExample": "const numbers = [1, 2, 3, 4, 5];\n\n// MAP: Transforms every item (creates new array)\nconst doubled = numbers.map(num => num * 2);\nconsole.log('Doubled:', doubled); // [2, 4, 6, 8, 10]\n\n// FILTER: Keeps items that pass a test (creates new array)\nconst evens = numbers.filter(num => num % 2 === 0);\nconsole.log('Evens:', evens); // [2, 4]\n\n// REDUCE: Accumulates all items into a single value\nconst sum = numbers.reduce((total, current) => total + current, 0);\nconsole.log('Sum:', sum); // 15\n\n// SPLICE: Mutates the original array\nconst months = ['Jan', 'March', 'April'];\nmonths.splice(1, 0, 'Feb'); // Insert at index 1\nconsole.log('Spliced:', months); // ['Jan', 'Feb', 'March', 'April']"
+}

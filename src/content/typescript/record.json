@@ -1,0 +1,31 @@
+{
+  "id": "record",
+  "title": "Record<Keys, Type>",
+  "difficulty": "Intermediate",
+  "definition": "A utility type that constructs an object type whose property keys are `Keys` and whose property values are `Type`. It maps a set of keys to a specific type.",
+  "simpleExplanation": "It is a fast, incredibly readable way to type a Dictionary or Hash Map. Instead of writing out a complex Index Signature, you just say `Record<string, number>`, meaning 'This is an object where every key is a string, and every value is a number'.",
+  "realWorldExample": "Typing a theme configuration object: `const theme: Record<'dark' | 'light', ThemeColors>`. This forces the object to strictly contain exactly those two keys.",
+  "useCases": [
+    "Dictionaries",
+    "Mapping strict enums/unions to specific values"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `Record<string, number>` and `[key: string]: number`?"
+    ],
+    "intermediate": [
+      "Can the `Keys` parameter be a union type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference between Record and Index Signatures?",
+      "answer": "They compile to the exact same thing! However, `Record` is generally preferred for readability. Furthermore, `Record` allows you to pass specific String Unions (e.g., `'a' | 'b'`) as the keys, whereas inline Index Signatures do not allow unions."
+    },
+    {
+      "question": "Can Keys be a union?",
+      "answer": "Yes! This is the superpower of `Record`. If you do `Record<'admin' | 'user', boolean>`, TS forces the object to have EXACTLY an 'admin' key and a 'user' key. No more, no less."
+    }
+  ],
+  "codeExample": "// 1. Generic Dictionary (Any string key allowed)\ntype Scores = Record<string, number>;\nconst myScores: Scores = { math: 95, science: 80 };\n\n// 2. Strict Mapping (Highly Powerful!)\ntype Role = \"admin\" | \"editor\" | \"guest\";\n\n// We map every role to a boolean (e.g., 'canEdit')\n// TS FORCES you to define all 3 keys.\nconst permissions: Record<Role, boolean> = {\n  admin: true,\n  editor: true,\n  guest: false\n};\n\n// ERROR: Type is missing the 'guest' property\n// const badPerms: Record<Role, boolean> = { admin: true, editor: true };"
+}

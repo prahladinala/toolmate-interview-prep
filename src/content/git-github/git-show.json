@@ -1,0 +1,31 @@
+{
+  "id": "git-show",
+  "title": "git show",
+  "difficulty": "Intermediate",
+  "definition": "Shows one or more objects (blobs, trees, tags and commits). Most commonly used to see the exact code changes introduced by a specific commit.",
+  "simpleExplanation": "`git log` tells you THAT a commit happened. `git show` tells you exactly WHAT code was added or deleted inside that commit.",
+  "realWorldExample": "You see a commit titled 'Fix header'. You type `git show <hash>` to see exactly which CSS lines were changed to fix the header.",
+  "useCases": [
+    "Code review",
+    "Investigating past changes in detail"
+  ],
+  "questions": {
+    "basic": [
+      "If you just type `git show` without a hash, what does it show?"
+    ],
+    "intermediate": [
+      "In the output of `git show`, what do lines starting with `+` and `-` mean?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Without a hash?",
+      "answer": "It defaults to showing the very latest commit on your current branch (also known as `HEAD`)."
+    },
+    {
+      "question": "+ and - lines?",
+      "answer": "`+` (usually in green) indicates a line of code that was added. `-` (usually in red) indicates a line of code that was deleted."
+    }
+  ],
+  "codeExample": "# Show the exact code changes of the most recent commit\n$ git show\n\n# Show the exact code changes of a specific commit from history\n$ git show a1b2c3d\n\n/* Output Example:\ncommit a1b2c3d\nAuthor: John Doe\n\ndiff --git a/styles.css b/styles.css\n@@ -10,3 +10,4 @@\n .header {\n-    background: blue;\n+    background: red;\n+    font-weight: bold;\n }\n*/"
+}

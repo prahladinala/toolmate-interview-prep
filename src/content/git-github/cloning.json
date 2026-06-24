@@ -1,0 +1,31 @@
+{
+  "id": "cloning",
+  "title": "Cloning Repositories",
+  "difficulty": "Beginner",
+  "definition": "Creating a local copy of a remote repository on your computer. When you clone a repository, you copy the entire project, including all its files, branches, and commits.",
+  "simpleExplanation": "Downloading the project. You find a cool open-source project on GitHub, click the green 'Code' button, copy the URL, and run `git clone <URL>` in your terminal. You now have the entire project on your computer ready to run.",
+  "realWorldExample": "You buy a new laptop. You install VS Code, open the terminal, and `git clone` all your personal projects from GitHub onto the new machine.",
+  "useCases": [
+    "Setting up local environments",
+    "Reviewing other people's code locally"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Forking and Cloning?"
+    ],
+    "intermediate": [
+      "Can you clone a private repository?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fork vs Clone?",
+      "answer": "Forking is a Cloud-to-Cloud copy (GitHub to GitHub). Cloning is a Cloud-to-Local copy (GitHub to your Laptop)."
+    },
+    {
+      "question": "Clone private?",
+      "answer": "Yes, but ONLY if you have been granted explicit access to it, and you authenticate your terminal (via SSH keys or Personal Access Tokens) to prove who you are."
+    }
+  ],
+  "codeExample": "# 1. Basic Clone (Creates a folder with the repo's name)\n$ git clone https://github.com/facebook/react.git\n\n# 2. Clone and give the folder a custom name\n$ git clone https://github.com/facebook/react.git my-react-experiment\n\n# 3. Clone ONLY a specific branch (Saves massive download time on huge repos!)\n$ git clone -b feature-xyz --single-branch https://github.com/user/repo.git\n\n# 4. Clone without the entire git history (Shallow clone - extremely fast!)\n$ git clone --depth 1 https://github.com/user/repo.git"
+}

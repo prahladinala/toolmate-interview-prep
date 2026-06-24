@@ -1,0 +1,32 @@
+{
+  "id": "lists",
+  "title": "Lists",
+  "difficulty": "Beginner",
+  "definition": "HTML provides three types of lists: Unordered Lists `<ul>` (bullet points), Ordered Lists `<ol>` (numbered), and Description Lists `<dl>`.",
+  "simpleExplanation": "If you need to list items, use a list tag! You wrap the entire list in a `<ul>` or `<ol>` container, and then wrap every single item inside it with an `<li>` (List Item) tag.",
+  "realWorldExample": "Navigation menus are almost always built using an Unordered List `<ul>` where the bullets are hidden using CSS. Recipe steps are built using an Ordered List `<ol>`.",
+  "useCases": [
+    "Bullet points",
+    "Numbered instructions",
+    "Navigation bars"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `<ul>` and `<ol>`?"
+    ],
+    "intermediate": [
+      "Can you put a list inside of another list?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "ul vs ol?",
+      "answer": "`<ul>` (Unordered) uses bullet points. `<ol>` (Ordered) uses sequential numbers (1, 2, 3)."
+    },
+    {
+      "question": "List inside a list?",
+      "answer": "Yes! This is called a nested list. You place a new `<ul>` or `<ol>` directly inside an existing `<li>` tag."
+    }
+  ],
+  "codeExample": "<h3>Shopping List (Unordered)</h3>\n<ul>\n  <li>Apples</li>\n  <li>Bananas</li>\n  <li>Milk</li>\n</ul>\n\n<h3>How to cook pasta (Ordered)</h3>\n<ol>\n  <li>Boil water</li>\n  <li>Add salt</li>\n  <li>Add pasta</li>\n  <li>Drain after 10 minutes</li>\n</ol>\n\n<h3>Nested List Example</h3>\n<ul>\n  <li>Coffee</li>\n  <li>Tea\n    <!-- A list INSIDE a list item -->\n    <ul>\n      <li>Black Tea</li>\n      <li>Green Tea</li>\n    </ul>\n  </li>\n  <li>Milk</li>\n</ul>"
+}

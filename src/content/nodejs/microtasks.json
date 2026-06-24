@@ -1,0 +1,34 @@
+{
+  "id": "microtasks",
+  "title": "Microtasks Queue",
+  "difficulty": "Advanced",
+  "definition": "A special priority queue in Node.js that executes completely independently of the 6 main Event Loop phases. Microtasks run immediately after the currently executing script finishes, and between every single phase of the Event Loop.",
+  "simpleExplanation": "Microtasks are the VIP pass at an amusement park. If the Event Loop is the normal line for the roller coaster, Microtasks get to skip the line. Whenever the main code finishes, Node immediately pauses everything and processes the entire Microtask queue before allowing the Event Loop to continue.",
+  "realWorldExample": "Resolved `Promises` (like `.then()` and `async/await`) are queued as Microtasks! This is why a resolved Promise will ALWAYS run before a `setTimeout`, even if the timeout is set to 0 milliseconds.",
+  "useCases": [
+    "Fine-tuning execution order",
+    "Preventing UI or Server blocking"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most common feature that uses the Microtask Queue?"
+    ],
+    "intermediate": [
+      "If a Promise resolves, does it run before or after `setTimeout`?"
+    ],
+    "advanced": [
+      "What happens if a Microtask queues another Microtask infinitely?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most common feature?",
+      "answer": "Promises! Any `.then()` or `catch()` callback is thrown straight into the Microtask Queue."
+    },
+    {
+      "question": "Infinite Microtasks?",
+      "answer": "It will completely crash/block the Node.js process. Because Node refuses to move to the next Event Loop phase until the Microtask Queue is completely empty, an infinite loop of Promises will starve the Event Loop, freezing your server."
+    }
+  ],
+  "codeExample": "console.log(\"1. Main Thread Start\");\n\n// Macrotask (Timers Phase of Event Loop)\nsetTimeout(() => {\n  console.log(\"4. setTimeout (Macrotask Queue)\");\n}, 0);\n\n// Microtask (VIP Priority! Skips the Event Loop phases)\nPromise.resolve().then(() => {\n  console.log(\"3. Promise Resolved (Microtask Queue)\");\n});\n\nconsole.log(\"2. Main Thread End\");\n\n// OUTPUT ORDER:\n// 1. Main Thread Start\n// 2. Main Thread End\n// 3. Promise Resolved (VIP Queue runs before Event Loop starts!)\n// 4. setTimeout (Event Loop finally starts)"
+}

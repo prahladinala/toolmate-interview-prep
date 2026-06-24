@@ -1,0 +1,33 @@
+{
+  "id": "enum-vs-union",
+  "title": "Enums vs Union Types",
+  "difficulty": "Intermediate",
+  "definition": "A comparison between using TypeScript Enums and Literal Union Types (`type Role = 'Admin' | 'Guest'`) to manage distinct sets of values.",
+  "simpleExplanation": "Union Types say: 'You must type the word \"Admin\" here'. Enums say: 'You must import my specific Enum object and use `Role.Admin` here'. In the modern React community, Union Types are vastly more popular because they are simpler and don't add bloat to your compiled JavaScript.",
+  "realWorldExample": "Migrating a codebase away from Enums because the compiled JavaScript output was bloated, replacing them all with simple String Unions.",
+  "useCases": [
+    "Choosing the right standard for your architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Why do many modern TS developers dislike Enums?"
+    ],
+    "intermediate": [
+      "What happens to a Union Type during compilation compared to an Enum?"
+    ],
+    "advanced": [
+      "How do `const` enums attempt to solve the compilation bloat?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens during compilation?",
+      "answer": "Union Types are 100% erased during compilation; they leave zero footprint in your JavaScript bundle. Enums, however, generate actual JavaScript objects (IIFEs). Using many Enums increases your final JS bundle size."
+    },
+    {
+      "question": "Why do developers dislike Enums?",
+      "answer": "1. They bloat the JS bundle. 2. Numeric enums behave strangely with Reverse Mapping. 3. String Unions are just easier to write (`variant=\"primary\"` instead of `variant={ButtonVariant.Primary}`)."
+    }
+  ],
+  "codeExample": "// --- THE ENUM WAY ---\nenum LogLevel {\n  ERROR = \"ERROR\",\n  WARN = \"WARN\",\n  INFO = \"INFO\"\n}\n// Requires importing the Enum everywhere to use it\nfunction logEnum(level: LogLevel, msg: string) { ... }\nlogEnum(LogLevel.WARN, \"Memory high\"); \n\n// --- THE UNION TYPE WAY (Modern Preferred Method) ---\ntype LogLevelType = \"ERROR\" | \"WARN\" | \"INFO\";\n\n// No imports needed, just type the string. TS auto-completes it!\nfunction logUnion(level: LogLevelType, msg: string) { ... }\nlogUnion(\"WARN\", \"Memory high\");"
+}

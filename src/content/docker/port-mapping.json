@@ -1,0 +1,30 @@
+{
+  "id": "port-mapping",
+  "title": "Port Mapping",
+  "difficulty": "Beginner",
+  "definition": "The process of forwarding a specific port on the Host machine's physical network interface to a specific port inside the isolated Docker container.",
+  "simpleExplanation": "Punching a hole in the wall. The container is completely isolated; nobody from the outside can reach it. Port mapping drills a hole through the host computer directly into the container so internet traffic can get in.",
+  "realWorldExample": "Running `docker run -p 8080:80 nginx`. The NGINX container is listening on port 80. The `-p 8080:80` tells the Host laptop: 'If anyone goes to `localhost:8080` in Chrome, immediately tunnel that traffic into the container's port 80.'",
+  "useCases": [
+    "Exposing web apps",
+    "Allowing external database connections"
+  ],
+  "questions": {
+    "basic": [
+      "In the command `-p 3000:80`, which port is the one the user types into their web browser?"
+    ],
+    "intermediate": [
+      "What happens if you run two containers and try to map them both to Host port 8080?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which port in browser?",
+      "answer": "Port 3000. (The format is always `HOST_PORT : CONTAINER_PORT`)."
+    },
+    {
+      "question": "Map two to same port?",
+      "answer": "Docker will throw a 'Bind for 0.0.0.0:8080 failed: port is already allocated' error. A physical host port can only be occupied by one process at a time."
+    }
+  ]
+}

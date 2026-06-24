@@ -1,0 +1,31 @@
+{
+  "id": "authentication-vs-authorization",
+  "title": "Authentication vs Authorization",
+  "difficulty": "Beginner",
+  "definition": "The two distinct security phases of access control. Authentication verifies identity. Authorization verifies permissions.",
+  "simpleExplanation": "Authentication is the TSA agent checking your Passport to prove you are actually John Doe. Authorization is the Flight Attendant checking your ticket to ensure John Doe is allowed to sit in First Class.",
+  "realWorldExample": "A user logs into a WordPress site with their email and password (Authentication). They click the 'Delete Website' button, but the server rejects the request because their account role is 'Subscriber', not 'Admin' (Authorization).",
+  "useCases": [
+    "System security",
+    "Role-based access control (RBAC)"
+  ],
+  "questions": {
+    "basic": [
+      "Which one happens first: Authentication or Authorization?"
+    ],
+    "intermediate": [
+      "If a user tries to access a protected API route without sending a login token, should the API return a 401 or 403 status code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which happens first?",
+      "answer": "Authentication. You cannot check what someone is allowed to do until you first prove who they are."
+    },
+    {
+      "question": "401 vs 403?",
+      "answer": "`401 Unauthorized` (Authentication failed - 'I don't know who you are'). If they sent a valid token but weren't an admin, it would be `403 Forbidden` (Authorization failed - 'I know who you are, but you aren't allowed to do this')."
+    }
+  ],
+  "codeExample": "// Node.js Express Middleware Example\n\napp.delete('/api/company', (req, res) => {\n  \n  // 1. AUTHENTICATION CHECK\n  const token = req.headers.authorization;\n  const user = verifyToken(token);\n  \n  if (!user) {\n    return res.status(401).send(\"Authentication Failed: Please log in.\");\n  }\n\n  // 2. AUTHORIZATION CHECK\n  if (user.role !== 'CEO') {\n    return res.status(403).send(\"Authorization Failed: You lack permissions.\");\n  }\n\n  // 3. Perform action\n  deleteCompany();\n  res.send(\"Company deleted.\");\n});"
+}

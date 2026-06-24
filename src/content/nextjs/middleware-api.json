@@ -1,0 +1,33 @@
+{
+  "id": "middleware-api",
+  "title": "API Middleware Concepts",
+  "difficulty": "Advanced",
+  "definition": "The architectural practice of intercepting API requests to perform tasks like authentication or rate limiting before the request reaches your specific Route Handler.",
+  "simpleExplanation": "You have 50 API routes that require the user to be logged in. Instead of copy-pasting the exact same 'Check if user is logged in' code at the top of all 50 files, you put it in one global Middleware file. It checks the ID badge at the front door before letting them into the building.",
+  "realWorldExample": "Protecting the entire `/api/admin/*` path. If a user without an admin token tries to access it, the Middleware instantly bounces them with a 401 error before the Route Handler even wakes up.",
+  "useCases": [
+    "Authentication",
+    "Rate Limiting",
+    "Bot detection",
+    "Logging"
+  ],
+  "questions": {
+    "basic": [
+      "Where must the `middleware.ts` file be located in a Next.js project?"
+    ],
+    "intermediate": [
+      "How do you prevent the Middleware from running on static assets like images and CSS files?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where located?",
+      "answer": "At the very root of the project (or inside the `src` folder), parallel to the `app` directory. Not inside it."
+    },
+    {
+      "question": "Prevent on static assets?",
+      "answer": "By exporting a `config` object with a `matcher` array that defines exactly which URL paths the middleware should apply to (or which it should ignore)."
+    }
+  ],
+  "codeExample": "// middleware.ts (At the root of the project!)\nimport { NextResponse } from 'next/server';\nimport type { NextRequest } from 'next/server';\n\n// This function runs on EVERY request that matches the config below\nexport function middleware(request: NextRequest) {\n  \n  // Check for an auth token\n  const token = request.cookies.get('auth_token');\n  \n  if (!token) {\n    // Reject API requests instantly\n    if (request.nextUrl.pathname.startsWith('/api/')) {\n      return NextResponse.json({ error: 'Auth required' }, { status: 401 });\n    }\n    // Redirect webpage requests to login\n    return NextResponse.redirect(new URL('/login', request.url));\n  }\n  \n  // Allow the request to continue normally\n  return NextResponse.next();\n}\n\n// Tell Middleware to ONLY run on API routes and the Dashboard\nexport const config = {\n  matcher: ['/api/:path*', '/dashboard/:path*'],\n};"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dockerignore",
+  "title": ".dockerignore",
+  "difficulty": "Beginner",
+  "definition": "A configuration file placed in the build context directory. Before the context is sent to the Docker daemon, any files or directories matching patterns in this file are excluded.",
+  "simpleExplanation": "A VIP list for the kitchen. It tells Docker exactly which garbage files (like massive `node_modules` folders or secret passwords) to ignore when gathering ingredients for the build.",
+  "realWorldExample": "A developer's folder contains a 2GB `node_modules` folder. Without a `.dockerignore`, the `docker build` command takes 5 minutes just to send the context to the daemon. By adding `node_modules/` to the `.dockerignore`, the build starts instantly.",
+  "useCases": [
+    "Optimizing build speed",
+    "Preventing secret leakage"
+  ],
+  "questions": {
+    "basic": [
+      "Is `.dockerignore` functionally similar to `.gitignore`?"
+    ],
+    "intermediate": [
+      "If you put `secrets.txt` in the `.dockerignore` file, but explicitly write `COPY secrets.txt /app/` in your Dockerfile, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Similar to gitignore?",
+      "answer": "Yes, they use the exact same syntax and serve the same core purpose: hiding specific files from the system."
+    },
+    {
+      "question": "What happens on COPY?",
+      "answer": "The build will crash. Because the file was ignored, it was never sent to the Docker daemon. When the daemon tries to execute the `COPY` instruction, it throws a 'file not found' error."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "container-security",
+  "title": "Container Security",
+  "difficulty": "Intermediate",
+  "definition": "The overarching practices and tooling used to protect containerized applications from vulnerabilities, unauthorized access, and malicious attacks throughout the build-ship-run lifecycle.",
+  "simpleExplanation": "Making sure hackers can't break into the box, and if they do break into the box, making sure they can't break OUT of the box to attack the main server.",
+  "realWorldExample": "A hacker finds a vulnerability in a Node.js library and gets a terminal shell inside the container. Because of good Container Security practices (the container is running as a non-root user, the filesystem is read-only, and capabilities are dropped), the hacker is completely trapped and can't do any damage.",
+  "useCases": [
+    "DevSecOps",
+    "Compliance",
+    "Threat modeling"
+  ],
+  "questions": {
+    "basic": [
+      "Is a Docker container inherently as secure as a heavily isolated Virtual Machine?"
+    ],
+    "intermediate": [
+      "What is a 'Container Escape' vulnerability?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "As secure as a VM?",
+      "answer": "No. Because containers share the Host OS kernel, a critical vulnerability in the kernel could allow an attacker to breach all containers simultaneously. VMs have stronger hardware-level isolation."
+    },
+    {
+      "question": "Container Escape?",
+      "answer": "A catastrophic security failure where an attacker breaks into a container, exploits a misconfiguration (like the container running in 'Privileged' mode), and manages to 'escape' the container's isolation, gaining full Root control over the main Host Server."
+    }
+  ]
+}

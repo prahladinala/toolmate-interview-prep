@@ -1,0 +1,31 @@
+{
+  "id": "use-client",
+  "title": "\"use client\" Directive",
+  "difficulty": "Intermediate",
+  "definition": "A specific pragma in React 18+ that defines a boundary between the server-only code and client-side code.",
+  "simpleExplanation": "It's like a border checkpoint. When Next.js is bundling your code on the server, it bundles everything freely. The moment it sees a file with `'use client'`, it stops, packages that file (and everything it imports) into a JavaScript bundle, and sends it across the network to the browser.",
+  "realWorldExample": "Putting `'use client'` at the top of a `Carousel.tsx` component file because it imports a heavy 3rd-party slider library that requires the browser's DOM to function.",
+  "useCases": [
+    "Defining network boundaries",
+    "Using third-party React libraries"
+  ],
+  "questions": {
+    "basic": [
+      "If Component A has `'use client'` and imports Component B, does Component B also need the `'use client'` directive?"
+    ],
+    "intermediate": [
+      "Why shouldn't you just put `'use client'` at the top of your `layout.tsx` file and make the whole app client-side?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does Component B need it?",
+      "answer": "No. The `'use client'` directive defines a boundary. Once you cross the boundary, every component imported underneath it automatically becomes a Client Component too."
+    },
+    {
+      "question": "Why not at the top?",
+      "answer": "Because you would completely destroy all the performance and security benefits of Server Components. You would force the user to download a massive JavaScript bundle containing your entire application's code, leading to terrible load times."
+    }
+  ],
+  "codeExample": "/* \n  File: components/SearchInput.tsx \n*/\n'use client'; // This is the boundary!\n\n// Even though we didn't write 'use client' inside SearchDropdown,\n// because it is imported into a Client boundary, it is treated as a Client Component.\nimport { SearchDropdown } from './SearchDropdown'; \n\nexport function SearchInput() {\n  return (\n    <div>\n      <input type=\"text\" onChange={(e) => console.log(e)} />\n      <SearchDropdown />\n    </div>\n  )\n}"
+}

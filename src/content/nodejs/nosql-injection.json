@@ -1,0 +1,30 @@
+{
+  "id": "nosql-injection",
+  "title": "NoSQL Injection",
+  "difficulty": "Intermediate",
+  "definition": "Exploiting vulnerabilities in NoSQL databases (like MongoDB) by injecting malicious database query operators through user input.",
+  "simpleExplanation": "People think NoSQL is immune to injection because it doesn't use SQL strings. False! If you pass `req.body` directly into a Mongoose query: `User.find({ email: req.body.email })`, a hacker can send a JSON object instead of a string: `{ \"email\": { \"$gt\": \"\" } }`. This translates to 'Find an email Greater Than nothing', which returns EVERY user in the database.",
+  "realWorldExample": "Bypassing a MongoDB login screen without knowing the password by injecting the `$ne` (Not Equal) operator.",
+  "useCases": [
+    "Securing MongoDB/Mongoose backends"
+  ],
+  "questions": {
+    "basic": [
+      "Can MongoDB be affected by traditional SQL Injection (`' OR '1'='1`)?"
+    ],
+    "intermediate": [
+      "How do you prevent NoSQL Injection in Express?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can Mongo be affected by SQL Injection?",
+      "answer": "No. MongoDB doesn't understand SQL syntax, so traditional SQL injection attacks fail."
+    },
+    {
+      "question": "How do you prevent NoSQL injection?",
+      "answer": "Data Sanitization. Use middleware like `express-mongo-sanitize`. It intercepts all incoming requests and completely strips out any keys that start with a `$` (the MongoDB operator symbol), neutralizing the attack."
+    }
+  ],
+  "codeExample": "// HOW NOSQL INJECTION WORKS\n\n// Expected Input from a normal user:\nconst normalInput = { username: \"Alice\", password: \"12345\" };\n\n// Malicious Input from a hacker (Sending an object instead of a string!)\nconst hackerInput = { \n  username: \"Admin\", \n  password: { \"$ne\": \"wrong_password\" } // $ne means 'Not Equal'\n};\n\n// The Vulnerable Code:\n// const user = await User.findOne({\n//   username: req.body.username,\n//   password: req.body.password \n// });\n\nconsole.log(\"If the hacker's input is processed, the query becomes:\");\nconsole.log(\"Find user where username is 'Admin' AND password is NOT EQUAL to 'wrong_password'\");\nconsole.log(\"This evaluates to TRUE, logging the hacker in as the Admin!\");\n\n// FIX: npm install express-mongo-sanitize"
+}

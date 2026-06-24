@@ -1,0 +1,30 @@
+{
+  "id": "docker-desktop",
+  "title": "Docker Desktop",
+  "difficulty": "Beginner",
+  "definition": "An easy-to-install application for Mac and Windows environments that provides a graphical user interface (GUI) and bundles the Docker Engine, Docker CLI, and Docker Compose into one package.",
+  "simpleExplanation": "Docker made easy for everyday developers. Instead of fighting with complex terminal configurations, you install an app with a nice icon, click 'Start', and a dashboard opens showing all your running containers with visual Stop/Start buttons.",
+  "realWorldExample": "A frontend developer who hates the terminal installs Docker Desktop. They use the visual GUI to click 'Play' on a database container whenever they need to test their React app locally.",
+  "useCases": [
+    "Local development",
+    "Developer experience"
+  ],
+  "questions": {
+    "basic": [
+      "Is Docker Desktop commonly installed on production AWS/Linux servers?"
+    ],
+    "intermediate": [
+      "Is Docker Desktop completely free for massive corporations to use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Used in production?",
+      "answer": "No! Production servers are 'Headless' (they have no screen/GUI). They install the raw 'Docker Engine' via command line, not the Desktop app."
+    },
+    {
+      "question": "Is it free?",
+      "answer": "No. While free for individuals and small businesses, Docker changed its licensing so that large enterprises must pay a subscription fee to use Docker Desktop."
+    }
+  ]
+}

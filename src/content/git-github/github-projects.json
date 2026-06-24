@@ -1,0 +1,31 @@
+{
+  "id": "github-projects",
+  "title": "GitHub Projects",
+  "difficulty": "Intermediate",
+  "definition": "A customizable project management tool integrated directly into GitHub. It allows you to create Kanban boards, spreadsheets, and roadmaps to organize Issues and Pull Requests.",
+  "simpleExplanation": "Trello or Jira, but built directly inside GitHub. You create a board with columns like 'To Do', 'In Progress', and 'Done'. You can drag and drop your GitHub Issues between the columns as you work on them.",
+  "realWorldExample": "A project manager creates a Kanban board. During the morning standup meeting, they drag the 'Fix database bug' issue from the 'To Do' column into the 'In Progress' column, and assign it to a developer.",
+  "useCases": [
+    "Agile project management",
+    "Visualizing team workload"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Kanban board?"
+    ],
+    "intermediate": [
+      "Can a GitHub Project board automatically move an issue to 'Done' when a Pull Request is merged?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Kanban?",
+      "answer": "A visual system for managing work as it moves through a process. It uses cards (Issues) and columns (To Do, Doing, Done) to visualize the workflow."
+    },
+    {
+      "question": "Automate moving to Done?",
+      "answer": "Yes! GitHub Projects have built-in automation workflows. You can tell it: 'When an issue is closed, automatically drag its card into the Done column'."
+    }
+  ],
+  "codeExample": "/*\n  A typical GitHub Project Kanban Board Layout:\n  \n  [ Backlog ]   |   [ To Do (Sprint) ]   |   [ In Progress ]   |   [ Review ]   |   [ Done ]\n  ------------  |   ------------------   |   ---------------   |   ----------   |   --------\n  Issue #99     |   Issue #45            |   Issue #42         |   PR #44       |   Issue #12\n  Issue #100    |   Issue #48            |                     |                |   Issue #14\n*/"
+}

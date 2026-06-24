@@ -1,0 +1,30 @@
+{
+  "id": "docker-contexts",
+  "title": "Docker Contexts",
+  "difficulty": "Advanced",
+  "definition": "A CLI feature that allows a single Docker Client on your local machine to connect to, manage, and seamlessly switch between multiple different Docker Engines (e.g., a local daemon and a remote AWS daemon).",
+  "simpleExplanation": "A remote control with multiple profiles. Profile 1 controls your laptop's Docker. Profile 2 securely connects over SSH and controls the Docker Engine on your production server in London.",
+  "realWorldExample": "You type `docker context use production`. Now, when you type `docker ps` on your laptop, it doesn't show your local containers; it shows the containers running on the remote cloud server. You type `docker context use default` to switch back to your laptop.",
+  "useCases": [
+    "Managing remote servers",
+    "Multi-environment workflows"
+  ],
+  "questions": {
+    "basic": [
+      "Can Docker Contexts securely connect to a remote server using SSH?"
+    ],
+    "intermediate": [
+      "Why are Contexts considered safer than modifying the `DOCKER_HOST` environment variable?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Connect over SSH?",
+      "answer": "Yes. It natively supports tunneling Docker commands over standard SSH connections."
+    },
+    {
+      "question": "Safer than DOCKER_HOST?",
+      "answer": "Changing the global environment variable affects every single terminal window and script on your machine, leading to disastrous accidents (like accidentally deleting production containers). Contexts are explicit, manageable configurations that clearly display which server you are pointing at."
+    }
+  ]
+}

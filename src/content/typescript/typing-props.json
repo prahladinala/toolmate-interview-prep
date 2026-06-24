@@ -1,0 +1,38 @@
+{
+  "id": "typing-props",
+  "title": "React: Typing Props",
+  "difficulty": "Beginner",
+  "definition": "Using TypeScript Interfaces or Type Aliases to define the exact shape of properties (props) a React component accepts.",
+  "simpleExplanation": "Typing props is giving your React component a bouncer at the door. If a parent component tries to pass a prop that isn't on the guest list (the Interface), or tries to pass a Number when a String was expected, the bouncer rejects it instantly.",
+  "realWorldExample": "Typing a ProfileCard component to require a `name: string` and an `age: number`, with an optional `avatarUrl?: string`.",
+  "useCases": [
+    "Self-documenting React components",
+    "Preventing UI crashes from missing data"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use `type` or `interface` for React Props?"
+    ],
+    "intermediate": [
+      "How do you type a prop that accepts React children (like `<div>...</div>`)?"
+    ],
+    "advanced": [
+      "What is `React.FC` and why is it currently discouraged by many developers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "type vs interface for Props?",
+      "answer": "Both work perfectly. `type` is generally preferred by modern teams for props because props don't need to be extended or declaration-merged later, and `type` handles Unions better."
+    },
+    {
+      "question": "How to type children?",
+      "answer": "Use `children: React.ReactNode`. This allows strings, numbers, React elements, fragments, or arrays of elements."
+    },
+    {
+      "question": "Why is React.FC discouraged?",
+      "answer": "Historically, `React.FC` implicitly injected the `children` prop into every component, even if your component shouldn't accept children. It also struggles with Generic components. Modern practice is to type the props directly: `function Button(props: ButtonProps) {}`."
+    }
+  ],
+  "codeExample": "import React from 'react';\n\ntype ButtonProps = {\n  label: string;           // Required string\n  onClick: () => void;     // Required function\n  isDisabled?: boolean;    // Optional boolean\n  children?: React.ReactNode; // Optional React elements inside the tag\n};\n\n// Modern approach: Typing the arguments directly\nexport function Button({ label, onClick, isDisabled = false, children }: ButtonProps) {\n  return (\n    <button onClick={onClick} disabled={isDisabled}>\n      {label}\n      {children}\n    </button>\n  );\n}\n\n// USAGE (TS will throw an error if 'label' or 'onClick' are missing!)\n// <Button label=\"Submit\" onClick={() => console.log('Clicked')} />"
+}

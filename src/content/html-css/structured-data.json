@@ -1,0 +1,32 @@
+{
+  "id": "structured-data",
+  "title": "Structured Data",
+  "difficulty": "Advanced",
+  "definition": "A standardized format for providing explicit clues about the meaning of a page to search engines, written in JSON-LD format.",
+  "simpleExplanation": "Google is smart, but it's not a human. If it reads a webpage, it might not know if the page is a Recipe, a Job Posting, or a Product for sale. Structured data is a hidden JSON block you put in your HTML that directly tells Google: 'This is a recipe. The cooking time is 45 mins. It has a 5-star review.'",
+  "realWorldExample": "When you Google a recipe, the top results have photos, star ratings, and cooking times right there on the Google Search page. That is a 'Rich Snippet', and you only get it by using Structured Data.",
+  "useCases": [
+    "Getting Rich Snippets in Google Search",
+    "E-commerce products",
+    "Event listings"
+  ],
+  "questions": {
+    "basic": [
+      "What format is strictly recommended by Google for writing Structured Data?"
+    ],
+    "intermediate": [
+      "Does Structured Data guarantee that Google will show a Rich Snippet for your site?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format?",
+      "answer": "JSON-LD (JavaScript Object Notation for Linked Data). It is placed inside a `<script type=\"application/ld+json\">` tag in the `<head>`."
+    },
+    {
+      "question": "Is it guaranteed?",
+      "answer": "No. It makes your site ELIGIBLE for rich snippets, but Google's algorithm decides whether or not to actually show them based on your site's authority."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Chocolate Chip Cookie Recipe</title>\n\n  <!-- THIS IS STRUCTURED DATA (JSON-LD) -->\n  <!-- It is completely invisible to the user, but Googlebot reads it immediately -->\n  <script type=\"application/ld+json\">\n    {\n      \"@context\": \"https://schema.org/\",\n      \"@type\": \"Recipe\",\n      \"name\": \"Perfect Chocolate Chip Cookies\",\n      \"author\": {\n        \"@type\": \"Person\",\n        \"name\": \"Jane Doe\"\n      },\n      \"prepTime\": \"PT15M\",\n      \"cookTime\": \"PT10M\",\n      \"description\": \"The best chewy chocolate chip cookies ever.\",\n      \"aggregateRating\": {\n        \"@type\": \"AggregateRating\",\n        \"ratingValue\": \"4.8\",\n        \"reviewCount\": \"124\"\n      }\n    }\n  </script>\n</head>\n<body>\n  <h1>Chocolate Chip Cookies</h1>\n  <p>Our rating is 4.8 out of 5 stars based on 124 reviews.</p>\n  <p>Because we used JSON-LD, Google might show those stars directly on the search results page!</p>\n</body>\n</html>"
+}

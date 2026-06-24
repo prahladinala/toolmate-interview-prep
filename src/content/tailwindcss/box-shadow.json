@@ -1,0 +1,32 @@
+{
+  "id": "box-shadow",
+  "title": "Box Shadow",
+  "difficulty": "Beginner",
+  "definition": "Utilities for applying drop shadows to elements, creating a sense of depth and elevation.",
+  "simpleExplanation": "Floating boxes. `shadow-sm` makes it look like the card is resting flat on the table. `shadow-2xl` makes it look like the card is floating 6 inches above the page. Use shadows to make important elements (like modals and dropdowns) pop out.",
+  "realWorldExample": "Adding `shadow-md` to a white card on a light gray background, allowing the user's brain to instantly distinguish the card from the background.",
+  "useCases": [
+    "Cards",
+    "Modals",
+    "Floating action buttons"
+  ],
+  "questions": {
+    "basic": [
+      "What is the standard class to add a medium, modern drop shadow to a card?"
+    ],
+    "intermediate": [
+      "Can you change the color of a shadow in Tailwind?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Standard class?",
+      "answer": "`shadow` or `shadow-md`."
+    },
+    {
+      "question": "Change color?",
+      "answer": "Yes! You can use `shadow-blue-500/50` to create a glowing blue neon shadow instead of the default black/gray shadow."
+    }
+  ],
+  "codeExample": "<!-- Flat, slightly elevated card -->\n<div class=\"bg-white p-6 rounded shadow-sm\">\n  Basic info\n</div>\n\n<!-- A massive floating Modal -->\n<div class=\"bg-white p-10 rounded-xl shadow-2xl\">\n  Important pop-up!\n</div>\n\n<!-- A glowing neon button! -->\n<button class=\"bg-indigo-500 text-white px-6 py-3 rounded-full \n               shadow-lg shadow-indigo-500/50\">\n  Start Free Trial\n</button>"
+}

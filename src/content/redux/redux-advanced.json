@@ -1,0 +1,30 @@
+{
+  "id": "redux-advanced",
+  "title": "Advanced Interview Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions testing architectural knowledge, performance optimization, and custom middleware creation.",
+  "simpleExplanation": "Proving that you can architect an enterprise application from scratch and debug severe performance bottlenecks.",
+  "realWorldExample": "Being asked to explain how to prevent unnecessary re-renders in a massive list component connected to Redux.",
+  "useCases": [
+    "Senior Developer / Architect Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is State Normalization and why is it important?"
+    ],
+    "intermediate": [
+      "Explain how a custom Middleware function is structured using currying."
+    ]
+  },
+  "answers": [
+    {
+      "question": "State Normalization?",
+      "answer": "It is the process of flattening deeply nested array data into a dictionary structure (`{ ids: [], entities: {} }`). It is crucial for performance because it turns O(N) array searches into O(1) instant object lookups, and makes updating nested data vastly easier."
+    },
+    {
+      "question": "Middleware currying?",
+      "answer": "A custom middleware is a function that returns a function that returns a function: `storeAPI => next => action => {}`. This captures the `store` context, the `next` dispatch method, and the specific `action` being dispatched in a closure."
+    }
+  ],
+  "codeExample": "/*\n  Q: What are Memoized Selectors and when should you use them?\n  \n  A: A memoized selector (created via Reselect or RTK's createSelector) \n     is a function that caches its outputs. \n     \n     If you have a selector that derives data (e.g., sorting an array of \n     10,000 items), computing this on every re-render will freeze the UI. \n     A memoized selector remembers the sorted array and instantly returns \n     the cached result unless the underlying input state has actually changed.\n*/"
+}

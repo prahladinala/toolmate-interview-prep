@@ -1,0 +1,32 @@
+{
+  "id": "retry-pattern",
+  "title": "Retry Mechanisms",
+  "difficulty": "Intermediate",
+  "definition": "An architectural pattern that enables an application to handle transient (temporary) failures by transparently retrying a failed operation after a delay.",
+  "simpleExplanation": "Sometimes the internet just stutters. If a request fails, don't immediately show a massive red error to the user. Just wait 1 second and silently try again. It usually works the second time.",
+  "realWorldExample": "Uploading an image to AWS S3 from a mobile phone. Mobile networks drop packets constantly. If the upload hits a blip and fails, the code should catch the error and automatically retry up to 3 times before finally giving up.",
+  "useCases": [
+    "Mobile applications",
+    "Cloud infrastructure communication",
+    "Database deadlocks"
+  ],
+  "questions": {
+    "basic": [
+      "What does the term 'Transient Failure' mean?"
+    ],
+    "intermediate": [
+      "What is 'Exponential Backoff' and why is it crucial when retrying failed requests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Transient Failure?",
+      "answer": "A temporary glitch that resolves itself very quickly. For example, a 1-second network dropout, or a database locking a row for a few milliseconds."
+    },
+    {
+      "question": "Exponential Backoff?",
+      "answer": "If you retry immediately and fail, you wait 1 second. If that fails, wait 2 seconds. Then 4 seconds. Then 8 seconds. If 1,000 users all hit a glitch and instantly retry 100 times a second, they will DDoS and destroy the server. Exponential backoff forces them to slow down and give the server time to recover."
+    }
+  ],
+  "codeExample": "// A robust Retry Function with Exponential Backoff\n\nasync function fetchWithExponentialRetry(url, retries = 3, delay = 1000) {\n  try {\n    const response = await fetch(url);\n    \n    // If it's a 5xx Server Error, we should retry. \n    // (If it's a 4xx error, DON'T retry, because the client made a bad request!)\n    if (!response.ok && response.status >= 500) {\n      throw new Error('Server Glitch');\n    }\n    \n    return await response.json();\n    \n  } catch (error) {\n    if (retries === 0) {\n      throw new Error('Maximum retries exceeded. API is down.');\n    }\n    \n    console.warn(`Request failed. Retrying in ${delay}ms...`);\n    await new Promise(resolve => setTimeout(resolve, delay));\n    \n    // Call itself again, reducing retries, and DOUBLING the delay time\n    return fetchWithExponentialRetry(url, retries - 1, delay * 2);\n  }\n}"
+}

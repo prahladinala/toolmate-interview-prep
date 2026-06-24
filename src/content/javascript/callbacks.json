@@ -1,0 +1,35 @@
+{
+  "id": "callbacks",
+  "title": "Callbacks",
+  "difficulty": "Beginner",
+  "definition": "A callback is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.",
+  "simpleExplanation": "Imagine ordering food at a restaurant. You don't stand at the counter waiting while they cook. You give the cashier your phone number (the callback). You go sit down (continue executing code), and when the food is ready, they call your number to let you know.",
+  "realWorldExample": "Passing a function to `setTimeout` or `addEventListener('click', handleClick)`. The `handleClick` function is a callback.",
+  "useCases": [
+    "Asynchronous execution",
+    "Event handling",
+    "Array methods (map, filter)"
+  ],
+  "questions": {
+    "basic": [
+      "What is a higher-order function in relation to callbacks?"
+    ],
+    "intermediate": [
+      "What is the difference between a synchronous and asynchronous callback?"
+    ],
+    "advanced": [
+      "How do callbacks handle errors in Node.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Synchronous vs Asynchronous callback?",
+      "answer": "A synchronous callback runs immediately before the outer function completes (e.g., `[].map(cb)`). An asynchronous callback is registered and executed later, after the outer function has returned (e.g., `setTimeout(cb, 1000)`)."
+    },
+    {
+      "question": "How do callbacks handle errors in Node.js?",
+      "answer": "Node.js uses an 'Error-First Callback' pattern. The first argument of the callback is reserved for the error object. If successful, the first argument is `null` and the data is passed in the second argument: `fs.readFile('data.txt', (err, data) => {})`."
+    }
+  ],
+  "codeExample": "function fetchData(callback) {\n  console.log('1. Fetching data...');\n  setTimeout(() => {\n    const data = { id: 1, name: 'Alice' };\n    // Execute the callback function passed as an argument\n    callback(data);\n  }, 2000);\n}\n\n// The anonymous function here is the callback\nfetchData((result) => {\n  console.log('2. Data received:', result.name);\n});\nconsole.log('3. I run immediately without waiting!');"
+}

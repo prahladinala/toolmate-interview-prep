@@ -1,0 +1,30 @@
+{
+  "id": "agent-memory",
+  "title": "Agent Memory",
+  "difficulty": "Intermediate",
+  "definition": "The systems used by an AI Agent to store, retrieve, and reflect upon past interactions, allowing it to maintain context over long periods of time. Broken into Short-Term Memory (Context Window) and Long-Term Memory (Vector Databases).",
+  "simpleExplanation": "Short-Term memory is the current chat conversation. Long-Term memory is the Agent writing down important facts in a digital notebook (Vector Database) so it can remember you 3 months from now even after the chat is cleared.",
+  "realWorldExample": "You tell an AI companion 'I am allergic to peanuts'. The AI uses Tool Calling to save this to a Vector Database. Six months later, you ask 'Give me a recipe for Pad Thai'. The AI queries its Long-Term memory, remembers the allergy, and substitutes peanuts with cashews.",
+  "useCases": [
+    "Personalized AI",
+    "Continuous learning agents"
+  ],
+  "questions": {
+    "basic": [
+      "Which type of memory is erased when you close the chat window or exceed the token limit?"
+    ],
+    "intermediate": [
+      "How do Agents utilize 'Working Memory' (Scratchpads)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which memory is erased?",
+      "answer": "Short-Term Memory (The Context Window)."
+    },
+    {
+      "question": "What is a Scratchpad?",
+      "answer": "During a complex task, an Agent uses an invisible 'Scratchpad' in its prompt to write down intermediate thoughts, track what tools it has already tried, and plan its next move before responding to the user."
+    }
+  ]
+}

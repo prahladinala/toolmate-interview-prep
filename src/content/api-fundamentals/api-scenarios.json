@@ -1,0 +1,30 @@
+{
+  "id": "api-scenarios",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Interview questions that present a complex, real-world business problem and ask you to design the API architecture to solve it.",
+  "simpleExplanation": "There is no single 'right' answer. The interviewer wants to hear your thought process. They want to see if you can balance performance, security, and scalability.",
+  "realWorldExample": "Scenario: 'We are building a live sports scoreboard for the Super Bowl. Millions of users will have the app open simultaneously. How do you deliver the live score?'",
+  "useCases": [
+    "System Design Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: You need to upload a 5 Gigabyte video file to an API. How do you handle it?"
+    ],
+    "intermediate": [
+      "Scenario: Your frontend needs to know when a background video rendering task finishes. Do you use Polling or WebSockets?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Upload 5GB file?",
+      "answer": "You do NOT send it through your Node.js API server, as that will block the server and run out of memory. You should request a 'Pre-signed URL' from the backend, and have the frontend upload the massive file directly to AWS S3, bypassing your backend entirely."
+    },
+    {
+      "question": "Polling or WebSockets?",
+      "answer": "Neither. Video rendering takes minutes or hours. Keeping a WebSocket open that long is inefficient and fragile on mobile networks. Short Polling destroys the server. The best approach is Long Polling, or Server-Sent Events (SSE), or simply using Push Notifications if it's a mobile app."
+    }
+  ],
+  "codeExample": "/*\n  Scenario:\n  \"Design the REST API routes for a library system where users can check out books.\"\n  \n  Answer:\n  - GET    /books                (List all books)\n  - GET    /books/:id            (Get specific book details)\n  - POST   /users/:id/checkouts  (Action: A user checks out a book. Body: { bookId })\n  - GET    /users/:id/checkouts  (List all books a specific user has checked out)\n  - DELETE /users/:id/checkouts/:bookId (Action: User returns the book)\n*/"
+}

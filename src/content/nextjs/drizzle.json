@@ -1,0 +1,32 @@
+{
+  "id": "drizzle",
+  "title": "Drizzle ORM",
+  "difficulty": "Advanced",
+  "definition": "A lightweight, extremely fast, and highly popular TypeScript ORM that competes directly with Prisma by offering a more SQL-like syntax and better serverless performance.",
+  "simpleExplanation": "Prisma is 'magic' but uses a heavy Rust engine under the hood, making it slightly slow to start up in serverless environments. Drizzle is 'lightweight'. It doesn't use a custom `.prisma` file. You define your tables using pure TypeScript. It feels exactly like writing raw SQL, but with perfect autocomplete.",
+  "realWorldExample": "Deploying a Next.js app to Cloudflare Pages (Edge runtime). Prisma struggles on the Edge. Drizzle runs perfectly on the Edge because it has zero heavy dependencies.",
+  "useCases": [
+    "Edge rendering",
+    "High-performance serverless apps",
+    "Developers who prefer SQL"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference in how you define your database schema in Prisma vs Drizzle?"
+    ],
+    "intermediate": [
+      "Why is Drizzle often preferred over Prisma for Edge computing platforms like Cloudflare Workers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Schema definition?",
+      "answer": "Prisma uses a proprietary, custom language in a `schema.prisma` file. Drizzle uses pure TypeScript objects in a `.ts` file."
+    },
+    {
+      "question": "Why preferred for Edge?",
+      "answer": "Drizzle has zero native Node.js or Rust dependencies. It is just pure JavaScript/TypeScript, making it perfectly compatible with lightweight Edge environments."
+    }
+  ],
+  "codeExample": "// 1. Defining the schema purely in TypeScript! (schema.ts)\nimport { pgTable, serial, text, varchar } from \"drizzle-orm/pg-core\";\n\nexport const users = pgTable('users', {\n  id: serial('id').primaryKey(),\n  fullName: text('full_name'),\n  phone: varchar('phone', { length: 256 }),\n});\n\n// 2. Querying in Next.js\nimport { db } from '@/lib/db';\nimport { users } from '@/schema';\nimport { eq } from 'drizzle-orm';\n\nexport default async function Profile({ id }) {\n  // Looks almost exactly like SQL, but perfectly type-safe!\n  const result = await db\n    .select()\n    .from(users)\n    .where(eq(users.id, id));\n    \n  return <h1>{result[0].fullName}</h1>;\n}"
+}

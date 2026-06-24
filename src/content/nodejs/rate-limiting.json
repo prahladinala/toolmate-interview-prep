@@ -1,0 +1,32 @@
+{
+  "id": "rate-limiting",
+  "title": "Rate Limiting",
+  "difficulty": "Intermediate",
+  "definition": "A technique used to control the amount of incoming requests to a network or server within a specific timeframe to prevent abuse.",
+  "simpleExplanation": "A bouncer at a club. If one person tries to enter the club 50 times in 1 minute, the bouncer steps in, blocks them, and says 'Slow down, wait 15 minutes'. This stops hackers from brute-forcing passwords or crashing your server via Denial of Service (DDoS) attacks.",
+  "realWorldExample": "Using the `express-rate-limit` package. Setting a rule that allows a single IP address to hit the `/login` endpoint a maximum of 5 times per hour. If they fail 5 times, they are locked out.",
+  "useCases": [
+    "Preventing brute-force login attacks",
+    "Preventing API abuse / DDoS",
+    "Monetizing APIs (e.g., Free tier gets 100 requests/day)"
+  ],
+  "questions": {
+    "basic": [
+      "What HTTP status code is returned when a user exceeds the rate limit?"
+    ],
+    "intermediate": [
+      "Why is storing rate limit data in Node.js memory a bad idea for large apps?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What status code?",
+      "answer": "429 Too Many Requests."
+    },
+    {
+      "question": "Why is memory storage bad?",
+      "answer": "If you run 3 instances of your Node server behind a load balancer, they don't share memory. A hacker could hit Server A 5 times, Server B 5 times, and Server C 5 times, effectively bypassing the limit. In production, rate limits MUST be tracked in a centralized fast database like Redis."
+    }
+  ],
+  "codeExample": "/* \n  npm install express-rate-limit\n*/\n// const rateLimit = require('express-rate-limit');\n\n// 1. Define the rule\n/*\nconst loginLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes timeframe\n  max: 5, // Limit each IP to 5 requests per windowMs\n  message: \"Too many login attempts from this IP, please try again after 15 minutes.\",\n  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers\n});\n*/\n\n// 2. Apply it specifically to the sensitive route\n// app.post('/api/login', loginLimiter, (req, res) => {\n//   res.send(\"Login logic executes here\");\n// });\n\nconsole.log(\"Rate limiting is essential for protecting expensive database queries and authentication routes.\");"
+}

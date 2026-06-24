@@ -1,0 +1,30 @@
+{
+  "id": "key-management",
+  "title": "Key Management Service (KMS)",
+  "difficulty": "Advanced",
+  "definition": "A managed service that allows you to easily create, control, and rotate the cryptographic keys used to encrypt your data across various cloud services.",
+  "simpleExplanation": "The locksmith for your cloud. It generates the mathematical keys used to scramble your data so hackers can't read it, and keeps those keys locked in a mathematically unbreakable vault.",
+  "realWorldExample": "AWS KMS, Azure Key Vault, GCP Cloud KMS. When you save a patient's medical record to an S3 bucket, AWS KMS automatically generates a unique encryption key, scrambles the file, and then encrypts the key itself. Even if a hacker steals the hard drive, the data is useless gibberish.",
+  "useCases": [
+    "Data encryption at rest",
+    "Compliance (HIPAA/PCI)"
+  ],
+  "questions": {
+    "basic": [
+      "What does KMS stand for?"
+    ],
+    "intermediate": [
+      "What is 'Envelope Encryption' in the context of KMS?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does KMS stand for?",
+      "answer": "Key Management Service."
+    },
+    {
+      "question": "What is Envelope Encryption?",
+      "answer": "A highly secure technique where you encrypt your plaintext data with a 'Data Key', and then you use the massive KMS 'Master Key' to encrypt the Data Key itself. You store the encrypted Data Key right next to the encrypted file like an envelope."
+    }
+  ]
+}

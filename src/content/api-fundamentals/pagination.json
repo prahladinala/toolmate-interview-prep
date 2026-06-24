@@ -1,0 +1,31 @@
+{
+  "id": "pagination",
+  "title": "Pagination",
+  "difficulty": "Intermediate",
+  "definition": "The process of dividing a massive dataset into smaller, discrete chunks (pages) when returning it via an API, to prevent crashing the server and overloading the network.",
+  "simpleExplanation": "If Amazon has 5 million pairs of shoes, `GET /shoes` cannot return all 5 million at once. Your browser would crash, and Amazon's server would melt. Instead, they return 20 shoes at a time, and tell you how to ask for the next 20.",
+  "realWorldExample": "Offset Pagination (Page 1, 2, 3) used on Google Search results. Cursor Pagination (Infinite Scroll) used on Instagram's feed.",
+  "useCases": [
+    "Large datasets",
+    "Mobile bandwidth optimization"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two most common query parameters used to implement Offset Pagination?"
+    ],
+    "intermediate": [
+      "Why is Cursor Pagination preferred over Offset Pagination for infinite-scrolling social media feeds?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which query params?",
+      "answer": "`page` and `limit` (e.g., `?page=2&limit=50`), or `offset` and `limit`."
+    },
+    {
+      "question": "Why Cursor over Offset?",
+      "answer": "If you use `page=2` while people are actively posting new tweets, the entire list shifts downward. When you load Page 2, you will accidentally see tweets you already saw on Page 1. Cursor pagination solves this by saying 'Give me 10 tweets immediately *older* than Tweet ID 99', which is always perfectly accurate regardless of new posts."
+    }
+  ],
+  "codeExample": "/* \n  Excellent RESTful Paginated Response \n*/\n\n// GET /api/products?page=2&limit=20\n{\n  \"data\": [\n    { \"id\": 21, \"name\": \"Shoe 21\" },\n    // ... 19 more items\n  ],\n  // Metadata is CRITICAL so the frontend knows how to draw the pagination buttons!\n  \"meta\": {\n    \"totalItems\": 5000,\n    \"itemsPerPage\": 20,\n    \"currentPage\": 2,\n    \"totalPages\": 250,\n    \"hasNextPage\": true,\n    \"hasPrevPage\": true\n  }\n}"
+}

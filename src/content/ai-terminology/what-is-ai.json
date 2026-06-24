@@ -1,0 +1,31 @@
+{
+  "id": "what-is-ai",
+  "title": "What is Artificial Intelligence?",
+  "difficulty": "Beginner",
+  "definition": "The simulation of human intelligence processes by machines, especially computer systems. These processes include learning, reasoning, and self-correction.",
+  "simpleExplanation": "Giving computers the ability to think, learn, and make decisions somewhat like a human would, rather than just blindly following fixed programming rules.",
+  "realWorldExample": "Instead of programming a computer with 10,000 exact rules on how to identify a dog in a picture, AI allows the computer to look at 10,000 pictures of dogs and 'learn' what a dog looks like on its own.",
+  "useCases": [
+    "Self-driving cars",
+    "Voice assistants (Siri/Alexa)",
+    "Recommendation engines (Netflix/YouTube)"
+  ],
+  "questions": {
+    "basic": [
+      "What does AI stand for?"
+    ],
+    "intermediate": [
+      "How does AI fundamentally differ from traditional software programming?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does AI stand for?",
+      "answer": "Artificial Intelligence."
+    },
+    {
+      "question": "Difference from traditional software?",
+      "answer": "Traditional software uses explicitly programmed, rigid rules (If A, then B). AI systems 'learn' the rules by analyzing large amounts of data and identifying patterns themselves."
+    }
+  ]
+}

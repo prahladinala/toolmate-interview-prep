@@ -1,0 +1,35 @@
+{
+  "id": "cookies",
+  "title": "Cookies",
+  "difficulty": "Intermediate",
+  "definition": "Small pieces of data stored on the user's computer by the web browser while browsing a website. Unlike LocalStorage, cookies are automatically sent to the server with every HTTP request.",
+  "simpleExplanation": "Cookies are like a digital ID badge. Once the bouncer (server) gives you one, you automatically wear it on your shirt. Every time you ask for a drink (make a network request), the bartender instantly sees the badge and knows who you are without you having to say anything.",
+  "realWorldExample": "Storing an authentication session ID or a JWT. The server sets an `HttpOnly` cookie, and the browser automatically attaches it to all future API calls to prove the user is logged in.",
+  "useCases": [
+    "Session management (Logins)",
+    "Tracking and analytics",
+    "Personalization"
+  ],
+  "questions": {
+    "basic": [
+      "What is the maximum size of a cookie?"
+    ],
+    "intermediate": [
+      "What is the difference between `HttpOnly` and `Secure` flags on a cookie?"
+    ],
+    "advanced": [
+      "How do cookies differ from LocalStorage in terms of network overhead?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between HttpOnly and Secure?",
+      "answer": "`HttpOnly` means the cookie cannot be accessed via JavaScript (`document.cookie`). This prevents XSS hackers from stealing it. `Secure` means the cookie will ONLY be sent over an encrypted HTTPS connection, never HTTP."
+    },
+    {
+      "question": "How do they differ in network overhead?",
+      "answer": "LocalStorage just sits on the hard drive until JS asks for it. Cookies are automatically attached to the Headers of EVERY SINGLE HTTP request sent to that domain (even requests for images or CSS files). If you have 4KB of cookies, you add 4KB of upload bandwidth to every image request."
+    }
+  ],
+  "codeExample": "// Reading cookies in JS (WARNING: Returns a giant, unparsed string)\nconsole.log(document.cookie); // \"theme=dark; userId=123\"\n\n// Writing a cookie in JS (Not recommended for Auth! Use server-side HttpOnly)\ndocument.cookie = \"theme=dark; max-age=3600; path=/\";\n\n// A much better modern approach for reading cookies is the new Cookie Store API:\n// (Only available in modern Chrome/Edge)\n/*\nconst themeCookie = await cookieStore.get('theme');\nconsole.log(themeCookie.value);\n*/"
+}

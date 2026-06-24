@@ -1,0 +1,34 @@
+{
+  "id": "observer",
+  "title": "Observer Pattern",
+  "difficulty": "Advanced",
+  "definition": "A behavioral design pattern where an object (the Subject) maintains a list of its dependents (Observers) and automatically notifies them of any state changes, usually by calling one of their methods.",
+  "simpleExplanation": "The Observer pattern is a YouTube channel. The Subject is the YouTuber. The Observers are the subscribers. The subscribers say 'Hey, let me know when you upload.' When the YouTuber uploads a video, they don't manually message every single person; the system iterates through the subscriber list and sends everyone a notification.",
+  "realWorldExample": "React's `useEffect` listening to state changes. Vue's reactivity system. Standard DOM event listeners (`element.addEventListener('click', fn)`).",
+  "useCases": [
+    "Event-driven architectures",
+    "Decoupling complex UI updates"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two main roles in the Observer pattern?"
+    ],
+    "intermediate": [
+      "What is the difference between the Observer pattern and the Pub-Sub pattern?"
+    ],
+    "advanced": [
+      "How do you prevent memory leaks when using the Observer pattern?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Observer vs Pub-Sub?",
+      "answer": "In Observer, the Subject and the Observers know about each other tightly (the Subject holds the array of callbacks). In Pub-Sub, there is a middleman (the Event Bus or Broker). Publishers just throw events into the void, and Subscribers listen to the void. They never directly interact."
+    },
+    {
+      "question": "How to prevent memory leaks?",
+      "answer": "You MUST provide an `unsubscribe` or `removeObserver` method. If an Observer (like a UI component) is destroyed but forgets to unsubscribe, the Subject still holds a reference to it in its array, preventing garbage collection."
+    }
+  ],
+  "codeExample": "class YouTubeChannel { // The Subject\n  constructor() {\n    this.subscribers = [];\n  }\n\n  subscribe(callback) {\n    this.subscribers.push(callback);\n    // Return an unsubscribe function\n    return () => {\n      this.subscribers = this.subscribers.filter(sub => sub !== callback);\n    };\n  }\n\n  uploadVideo(title) {\n    console.log(`Uploaded: ${title}. Notifying subs...`);\n    // Notify all observers\n    this.subscribers.forEach(callback => callback(title));\n  }\n}\n\nconst channel = new YouTubeChannel();\n\n// Observer 1\nconst unsubAlice = channel.subscribe(video => console.log(`Alice got pinged: ${video}`));\n// Observer 2\nchannel.subscribe(video => console.log(`Bob got pinged: ${video}`));\n\nchannel.uploadVideo(\"JS Patterns Explained\"); \n\n// Alice unsubscribes\nunsubAlice();\n\nchannel.uploadVideo(\"React Hooks\"); // Only Bob gets pinged"
+}

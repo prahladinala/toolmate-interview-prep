@@ -1,0 +1,45 @@
+{
+  "id": "suspense",
+  "title": "React Suspense",
+  "difficulty": "Advanced",
+  "definition": "`<Suspense>` lets you display a fallback UI (like a loading spinner) while you wait for some asynchronous operation (like fetching data or lazily loading a component) to finish.",
+  "simpleExplanation": "Imagine waiting at a restaurant table for your food. Instead of leaving you staring at an empty plate (a blank white screen), the waiter brings you breadsticks (a Loading Spinner) to keep you happy until the real meal (the Data/Component) is ready. Suspense is the waiter automatically managing the breadsticks for you.",
+  "realWorldExample": "In traditional React, you have to write `if (loading) return <Spinner />` in every single component that fetches data. With Suspense, you just wrap the top of your app in `<Suspense fallback={<Spinner />}>`. Any component deep inside can pause to fetch data, and React automatically shows the spinner.",
+  "useCases": [
+    "Code Splitting (React.lazy) to reduce initial bundle size",
+    "Data Fetching with Suspense-enabled frameworks (like Next.js or Relay)",
+    "Declarative loading states without boolean `isLoading` flags"
+  ],
+  "questions": {
+    "basic": [
+      "What is the `fallback` prop in `<Suspense>` used for?",
+      "What is `React.lazy()`?"
+    ],
+    "intermediate": [
+      "How does Suspense work with Error Boundaries?",
+      "Does a standard `fetch()` or `axios` call automatically trigger Suspense?"
+    ],
+    "advanced": [
+      "How does a component signal to Suspense that it is 'suspended' under the hood?",
+      "How does Suspense behave differently in Concurrent React (React 18) compared to React 16?"
+    ],
+    "trick": [
+      "If you nest multiple `<Suspense>` boundaries, which fallback is shown?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does standard fetch() automatically trigger Suspense?",
+      "answer": "No! Standard data fetching does not work with Suspense out-of-the-box. The data fetching library must explicitly integrate with Suspense (like React Query, SWR, or Next.js App Router). Otherwise, you still need `isLoading` state."
+    },
+    {
+      "question": "How does a component signal it is 'suspended' under the hood?",
+      "answer": "It actually throws a Promise! If a component throws a Promise during render, React 'catches' the Promise, finds the nearest `<Suspense>` boundary, renders the fallback, and waits for the Promise to resolve before trying to render the component again."
+    },
+    {
+      "question": "If you nest multiple boundaries, which fallback is shown?",
+      "answer": "React will always use the nearest (closest ancestor) Suspense boundary. This allows you to have a global spinner for the whole page, but specific skeleton loaders for individual widgets."
+    }
+  ],
+  "codeExample": "import React, { Suspense } from 'react';\n\n// Lazily load a heavy component. \n// It won't be downloaded until it's actually rendered!\nconst HeavyChart = React.lazy(() => import('./HeavyChart'));\n\nexport default function Dashboard() {\n  return (\n    <div>\n      <h2>Welcome to your Dashboard</h2>\n      \n      {/* We MUST wrap lazy components in Suspense */}\n      <Suspense fallback={<div>Loading massive chart...</div>}>\n        <HeavyChart />\n      </Suspense>\n    </div>\n  );\n}"
+}

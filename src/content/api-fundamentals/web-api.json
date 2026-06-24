@@ -1,0 +1,32 @@
+{
+  "id": "web-api",
+  "title": "Web APIs",
+  "difficulty": "Beginner",
+  "definition": "A specific type of API that can be accessed over the internet using the HTTP protocol.",
+  "simpleExplanation": "When most people say 'API', they actually mean 'Web API'. It is an interface that lives on a server somewhere in the world. You talk to it by sending web requests (just like typing a URL in Chrome), and it talks back by sending raw data (usually JSON) instead of HTML webpages.",
+  "realWorldExample": "The Spotify Web API. You send an HTTP request over the internet to `api.spotify.com/v1/tracks/123`, and Spotify's servers send back a JSON text file containing the song name, artist, and album cover URL.",
+  "useCases": [
+    "Fetching remote data",
+    "Mobile app backends",
+    "Cloud services"
+  ],
+  "questions": {
+    "basic": [
+      "What protocol do almost all Web APIs use to communicate over the internet?"
+    ],
+    "intermediate": [
+      "If a Web API does not return HTML, what data format does it usually return?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which protocol?",
+      "answer": "HTTP (Hypertext Transfer Protocol) or HTTPS (Secure)."
+    },
+    {
+      "question": "What format?",
+      "answer": "JSON (JavaScript Object Notation). It is lightweight, readable by humans, and easily parsed by any programming language."
+    }
+  ],
+  "codeExample": "/* \n  Comparing a standard Web Request vs a Web API Request:\n  \n  Standard Website Request:\n  - Client: Types 'facebook.com' in Chrome\n  - Server: Sends back <html><body><h1>Facebook</h1>...</body></html>\n  \n  Web API Request:\n  - Client: Mobile App fetches 'api.facebook.com/v1/feed'\n  - Server: Sends back raw data:\n    {\n      \"posts\": [\n        { \"id\": 1, \"text\": \"Hello World\", \"likes\": 5 }\n      ]\n    }\n*/"
+}

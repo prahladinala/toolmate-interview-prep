@@ -1,0 +1,30 @@
+{
+  "id": "transform",
+  "title": "Transform",
+  "difficulty": "Intermediate",
+  "definition": "The `transform` CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.",
+  "simpleExplanation": "It's a way to physically manipulate a box without breaking the layout of the webpage. If you use `margin-top: 50px` to move a box down, you push everything else on the page down too. If you use `transform: translateY(50px)`, the box visually moves down, but it leaves a 'ghost' behind, so the rest of the webpage doesn't move an inch.",
+  "realWorldExample": "Using `transform: scale(1.1)` on a button hover to make it pop out at the user without pushing the surrounding text away.",
+  "useCases": [
+    "High-performance animations (60 FPS GPU hardware acceleration)"
+  ],
+  "questions": {
+    "basic": [
+      "Why is animating `transform` better than animating `margin` or `top`?"
+    ],
+    "intermediate": [
+      "Can you apply multiple transforms at the same time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is it better?",
+      "answer": "Performance. Changing margins or widths causes the browser to recalculate the entire page layout (Reflow), which is incredibly CPU heavy and causes stuttering. `transform` is handed off directly to the GPU (Graphics Card), making the animation a buttery smooth 60 Frames Per Second."
+    },
+    {
+      "question": "Multiple transforms?",
+      "answer": "Yes! You chain them together separated by a space. Example: `transform: scale(1.5) rotate(45deg);`."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    display: flex;\n    gap: 40px;\n    padding: 50px;\n  }\n\n  .box {\n    width: 100px; height: 100px;\n    background: #8b5cf6;\n    color: white;\n    display: flex; align-items: center; justify-content: center;\n    font-weight: bold;\n    transition: transform 0.3s ease;\n  }\n\n  /* 1. Scale (Grow/Shrink) */\n  .box-scale:hover { transform: scale(1.3); }\n\n  /* 2. Rotate */\n  .box-rotate:hover { transform: rotate(45deg); }\n\n  /* 3. Translate (Move X/Y) */\n  .box-translate:hover { transform: translateY(-20px); }\n\n  /* 4. Multiple Transforms Combined! */\n  .box-combo:hover { transform: scale(1.2) rotate(180deg) translateY(-20px); }\n</style>\n\n<p>Hover over the boxes to see them transform independently of the layout!</p>\n\n<div class=\"container\">\n  <div class=\"box box-scale\">Scale</div>\n  <div class=\"box box-rotate\">Rotate</div>\n  <div class=\"box box-translate\">Translate</div>\n  <div class=\"box box-combo\">Combo!</div>\n</div>"
+}

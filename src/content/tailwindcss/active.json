@@ -1,0 +1,31 @@
+{
+  "id": "active",
+  "title": "Active State",
+  "difficulty": "Intermediate",
+  "definition": "A state variant (`active:`) that applies a utility class for the exact millisecond the element is actively being pressed down by a mouse click or finger tap.",
+  "simpleExplanation": "The 'Click Down' state. When you physically press a button, it should visually 'squish' or darken slightly to give you tactile feedback that the click registered.",
+  "realWorldExample": "Scaling a button down to 95% size (`active:scale-95`) exactly when the user clicks it, making it feel like a physical, mechanical button.",
+  "useCases": [
+    "Tactile button feedback",
+    "Touch screen feedback"
+  ],
+  "questions": {
+    "basic": [
+      "What is the chronological difference between `hover`, `active`, and `focus` on a button?"
+    ],
+    "intermediate": [
+      "If you apply `active:bg-red-500` to a `div`, will it turn red if you click and hold your mouse down on it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Chronology?",
+      "answer": "1. `hover`: Mouse moves over it. 2. `active`: Mouse clicks DOWN. 3. `focus`: Mouse clicks UP (or button is tabbed to). The button remains in the `focus` state until you click somewhere else."
+    },
+    {
+      "question": "Click and hold?",
+      "answer": "Yes! The `active:` state persists for exactly as long as the mouse button or touchscreen is physically held down."
+    }
+  ],
+  "codeExample": "<!-- \n  The \"Physical Button\" effect:\n  - Normal: Blue\n  - Hover: Darker Blue\n  - Active (Clicked): Shrinks by 5% (scale-95) and turns Even Darker Blue\n-->\n<button class=\"bg-blue-500 text-white font-bold py-3 px-6 rounded-lg \n               transition duration-150 ease-in-out\n               hover:bg-blue-600 \n               active:bg-blue-700 active:scale-95\">\n  Press Me\n</button>"
+}

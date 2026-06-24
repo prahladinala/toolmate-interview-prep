@@ -1,0 +1,30 @@
+{
+  "id": "genai-interview",
+  "title": "Generative AI Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions exploring the broader ecosystem of GenAI, including image generation (Diffusion), multi-modality, and copyright/ethics.",
+  "simpleExplanation": "Testing your knowledge of the field beyond just text-based chatbots.",
+  "realWorldExample": "Being asked: 'How do Diffusion models differ from older GAN (Generative Adversarial Network) architectures?'",
+  "useCases": [
+    "Machine Learning Engineer roles",
+    "Creative AI development"
+  ],
+  "questions": {
+    "basic": [
+      "What does it mean if a model is 'Multimodal'?"
+    ],
+    "intermediate": [
+      "Explain the basic concept of a Diffusion Model."
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Multimodal?",
+      "answer": "The model can natively process and understand multiple types of data inputs simultaneously, such as text, audio waves, and images, within the same neural network."
+    },
+    {
+      "question": "Diffusion Model?",
+      "answer": "An image generation architecture that is trained by slowly adding static (noise) to a picture until it is destroyed. The model learns how to reverse the process. In production, you give it pure static, and it 'denoises' it into a perfect image based on a text prompt."
+    }
+  ]
+}

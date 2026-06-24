@@ -1,0 +1,34 @@
+{
+  "id": "union-types",
+  "title": "Union Types",
+  "difficulty": "Beginner",
+  "definition": "A Union Type is a type formed from two or more other types, representing values that may be any one of those types. It uses the pipe `|` symbol.",
+  "simpleExplanation": "A Union type is an 'OR' operator for types. It tells TypeScript: 'This variable is allowed to be a String OR a Number. Either one is completely fine.'",
+  "realWorldExample": "A function that finds a user by ID. Sometimes the ID is from a URL (so it's a string '123'), sometimes it's from a database (so it's a number 123). You type the parameter as `id: string | number`.",
+  "useCases": [
+    "Handling diverse inputs",
+    "API responses that return different shapes based on status"
+  ],
+  "questions": {
+    "basic": [
+      "What symbol is used for Union Types?"
+    ],
+    "intermediate": [
+      "If a parameter is `string | number`, can you call `.toUpperCase()` on it immediately?"
+    ],
+    "advanced": [
+      "What is Type Narrowing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you call .toUpperCase() on it immediately?",
+      "answer": "No! TypeScript only allows you to call methods that are common to BOTH types. Since numbers don't have `.toUpperCase()`, TS throws an error. You must check the type first."
+    },
+    {
+      "question": "What is Type Narrowing?",
+      "answer": "Using an `if` statement (like `typeof val === 'string'`) to 'narrow' a broad union type down to a specific type. Inside that `if` block, TS safely allows you to use string methods."
+    }
+  ],
+  "codeExample": "function printID(id: string | number) {\n  // ERROR: Property 'toUpperCase' does not exist on type 'string | number'.\n  // console.log(id.toUpperCase());\n\n  // TYPE NARROWING:\n  if (typeof id === \"string\") {\n    // Inside this block, TS knows 'id' is definitely a string\n    console.log(id.toUpperCase());\n  } else {\n    // Inside this block, TS knows 'id' MUST be a number\n    console.log(id.toFixed(2));\n  }\n}\n\nprintID(101);\nprintID(\"202-A\");"
+}

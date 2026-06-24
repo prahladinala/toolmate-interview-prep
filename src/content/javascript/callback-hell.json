@@ -1,0 +1,33 @@
+{
+  "id": "callback-hell",
+  "title": "Callback Hell (Pyramid of Doom)",
+  "difficulty": "Intermediate",
+  "definition": "A phenomenon that occurs when multiple asynchronous operations depend on the results of previous ones, leading to deeply nested and unreadable callback functions.",
+  "simpleExplanation": "Callback hell looks like a staircase of code marching off the right side of your screen. It happens when you say 'Do step 1. When step 1 is done, do step 2. When 2 is done, do 3...' using raw callbacks. It makes code impossible to read and incredibly hard to debug.",
+  "realWorldExample": "Fetching a user's ID from a database, then using that ID to fetch their posts, then using the first post to fetch its comments, all nested inside each other.",
+  "useCases": [
+    "Historical context of why Promises were invented"
+  ],
+  "questions": {
+    "basic": [
+      "What does Callback Hell look like?"
+    ],
+    "intermediate": [
+      "How do you fix Callback Hell?"
+    ],
+    "advanced": [
+      "What is Inversion of Control in relation to callbacks?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you fix Callback Hell?",
+      "answer": "1. Keep your code shallow by naming functions instead of using anonymous arrow functions. 2. Modularize your code. 3. (Modern approach) Use Promises or `async/await` to flatten the code structure."
+    },
+    {
+      "question": "What is Inversion of Control?",
+      "answer": "When you pass your callback to a third-party library, you are trusting that library to call your function at the right time, with the right arguments, and exactly once. You have 'inverted control' of your program to them. If they have a bug and call your payment callback twice, you have a massive problem."
+    }
+  ],
+  "codeExample": "// Welcome to Callback Hell\nfs.readFile('user.json', function(err, userStr) {\n  if (err) return handleError(err);\n  const user = JSON.parse(userStr);\n  \n  fs.readFile(`posts_${user.id}.json`, function(err, postsStr) {\n    if (err) return handleError(err);\n    const posts = JSON.parse(postsStr);\n    \n    fs.readFile(`comments_${posts[0].id}.json`, function(err, comments) {\n      if (err) return handleError(err);\n      console.log(\"Finally got the comments!\", comments);\n    });\n  });\n});"
+}

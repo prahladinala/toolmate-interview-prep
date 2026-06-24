@@ -1,0 +1,34 @@
+{
+  "id": "optional-properties",
+  "title": "Optional Properties",
+  "difficulty": "Beginner",
+  "definition": "Using a question mark `?` after a property name in an object type or interface to indicate that the property is not strictly required.",
+  "simpleExplanation": "Imagine filling out a form online. Your 'Name' and 'Email' are required (no question mark). 'Phone Number' is optional. If you don't provide it, the form still successfully submits. Optional properties allow an object to be valid even if pieces are missing.",
+  "realWorldExample": "Typing a generic `ButtonProps` interface in React. The `onClick` handler is required, but the `className` string is optional.",
+  "useCases": [
+    "React component props",
+    "Partial API update payloads (PATCH requests)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you mark a property as optional?"
+    ],
+    "intermediate": [
+      "What is the type of an optional property if it is not provided?"
+    ],
+    "advanced": [
+      "What is the `exactOptionalPropertyTypes` compiler option?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the type if not provided?",
+      "answer": "It is intrinsically `undefined`. If you have `age?: number`, TS treats its type internally as `number | undefined`. You must handle the `undefined` case in your logic."
+    },
+    {
+      "question": "What is exactOptionalPropertyTypes?",
+      "answer": "By default, TS allows you to explicitly assign `undefined` to an optional property (`age: undefined`). If this strict flag is turned on in `tsconfig.json`, you are NOT allowed to explicitly set it to undefined; you must either omit the key entirely, or provide a real number."
+    }
+  ],
+  "codeExample": "interface UserProfile {\n  name: string;        // Required\n  email: string;       // Required\n  phoneNumber?: string; // Optional!\n}\n\n// Valid!\nconst user1: UserProfile = {\n  name: \"Alice\",\n  email: \"alice@test.com\"\n};\n\n// Also Valid!\nconst user2: UserProfile = {\n  name: \"Bob\",\n  email: \"bob@test.com\",\n  phoneNumber: \"555-1234\"\n};"
+}

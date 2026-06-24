@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-with-react",
+  "title": "Tailwind with React",
+  "difficulty": "Intermediate",
+  "definition": "The specific patterns, pitfalls, and best practices of using Tailwind CSS within a React or JSX environment.",
+  "simpleExplanation": "React uses `className` instead of `class`. But more importantly, React allows you to use template literals to dynamically change classes based on State, which is where developers make the biggest mistakes with Tailwind.",
+  "realWorldExample": "Conditionally hiding a Modal based on an `isOpen` React state.",
+  "useCases": [
+    "React integration"
+  ],
+  "questions": {
+    "basic": [
+      "In React, do you write `class=\"bg-red-500\"` or `className=\"bg-red-500\"`?"
+    ],
+    "intermediate": [
+      "Why is it a catastrophic bug to write `className={`bg-${color}-500`}` in React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "class or className?",
+      "answer": "`className`."
+    },
+    {
+      "question": "Catastrophic bug?",
+      "answer": "Because Tailwind's compiler runs at BUILD time, before React runs. It scans your files for full class names. It will see `bg-${color}-500`, not know what it means, and permanently delete all blue, red, and green backgrounds from your production CSS file."
+    }
+  ],
+  "codeExample": "// ❌ THE NUMBER ONE REACT + TAILWIND MISTAKE\n// String concatenation hides the class name from Tailwind's Purge engine.\nfunction StatusBadge({ status }) {\n  // If status is 'success', it generates 'bg-green-500', but Tailwind deleted that class!\n  return <span className={`bg-${status === 'success' ? 'green' : 'red'}-500`}>Badge</span>\n}\n\n// ✅ THE CORRECT WAY\n// Write the FULL class name so Tailwind's scanner can read it.\nfunction StatusBadge({ status }) {\n  return (\n    <span className={status === 'success' ? 'bg-green-500' : 'bg-red-500'}>\n      Badge\n    </span>\n  )\n}"
+}

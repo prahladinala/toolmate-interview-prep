@@ -1,0 +1,31 @@
+{
+  "id": "caching-strategies",
+  "title": "Caching Strategies Overview",
+  "difficulty": "Advanced",
+  "definition": "Next.js has a highly aggressive, multi-layered caching system. Understanding how the Request Memoization, Data Cache, Full Route Cache, and Router Cache interact.",
+  "simpleExplanation": "Next.js tries to save work at every step. \n1. If you call `fetch('x')` twice in one render, it only fetches once (Memoization). \n2. It saves the fetch result permanently across deployments (Data Cache). \n3. It saves the final compiled HTML so it never has to build it again (Full Route Cache). \n4. The user's browser remembers pages it has visited recently so hitting 'Back' is instant (Router Cache).",
+  "realWorldExample": "Debugging why a user clicks a button to update their profile, but the screen still shows their old name (because the Router Cache in the browser hasn't realized the server data changed).",
+  "useCases": [
+    "Advanced performance architecture",
+    "Debugging stale data"
+  ],
+  "questions": {
+    "basic": [
+      "If you call `fetch('https://api/users')` in the `<Navbar>` and call the exact same fetch again in the `<Sidebar>`, does Next.js hit the API twice during the server render?"
+    ],
+    "intermediate": [
+      "How do you clear the Client-side Router Cache if you need the user's browser to fetch the absolute freshest HTML from the server?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Hit API twice?",
+      "answer": "No! Next.js automatically 'Memoizes' the request. It executes the API hit once, and instantly returns the cached result to both components. (This removes the need for React Context just to share data)."
+    },
+    {
+      "question": "Clear router cache?",
+      "answer": "By calling `router.refresh()` using the `useRouter` hook. This tells the browser: 'Throw away your cached memory of this page and ask the server for the newest version.'"
+    }
+  ],
+  "codeExample": "// The 4 Layers of Next.js Caching:\n\n// 1. REQUEST MEMOIZATION (Server-side, lasts for exactly ONE page load)\n// Solves the \"Prop Drilling\" problem. Just fetch data wherever you need it.\nconst data1 = await fetch('url');\nconst data2 = await fetch('url'); // Instant! Skipped network.\n\n// 2. DATA CACHE (Server-side, lasts FOREVER until you revalidate it)\n// fetch('url', { cache: 'force-cache' })\n\n// 3. FULL ROUTE CACHE (Server-side, lasts FOREVER)\n// Next.js caches the entire final HTML file output.\n\n// 4. ROUTER CACHE (Client-side, lasts for a few minutes)\n// The browser remembers pages you just visited.\n// Call `router.refresh()` to bust this cache!"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "git-objects",
+  "title": "Blobs, Trees & Commits",
+  "difficulty": "Advanced",
+  "definition": "The three fundamental data structures Git uses to store information. Blobs store file data, Trees store directory structures, and Commits store metadata linking to a Tree.",
+  "simpleExplanation": "Think of it like a computer filesystem. \n- A Blob is a File (e.g., the actual text inside `index.html`).\n- A Tree is a Folder (It just contains a list of Blobs and other Trees).\n- A Commit is a sticky note (It says 'John Doe saved this Tree on Tuesday').",
+  "realWorldExample": "When you type `git commit`, Git literally creates a Blob for every file, a Tree for every folder, and wraps a Commit object around the root Tree.",
+  "useCases": [
+    "Advanced repository recovery"
+  ],
+  "questions": {
+    "basic": [
+      "Do Blobs store the filename (like `index.html`)?"
+    ],
+    "intermediate": [
+      "What does a Commit object point to?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Store filename?",
+      "answer": "No! A Blob stores ONLY the raw data (the code). The filename (`index.html`) is stored inside the Tree object. This is why renaming a file is so fast in Git."
+    },
+    {
+      "question": "Commit points to?",
+      "answer": "A Commit points to exactly ONE root Tree (representing the entire project folder at that moment in time), and it also points to its Parent Commit (the commit that came before it)."
+    }
+  ],
+  "codeExample": "/*\n  The structure of a Commit in Git's brain:\n  \n  [COMMIT Object: Hash 9a3b...]\n  │  Author: John Doe\n  │  Message: \"Initial Commit\"\n  │  Parent: None\n  │\n  └──▶ [TREE Object: Hash 4f1c...] (The Root Folder)\n       │\n       ├── \"index.html\" ──▶ [BLOB Object: Hash 7e8d...] (Contains HTML text)\n       │\n       └── \"src/\"       ──▶ [TREE Object: Hash 2b9a...] (A Sub-Folder)\n                            └── \"app.js\" ──▶ [BLOB Object]\n*/"
+}

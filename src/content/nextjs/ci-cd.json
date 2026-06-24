@@ -1,0 +1,32 @@
+{
+  "id": "ci-cd",
+  "title": "CI/CD Pipelines",
+  "difficulty": "Intermediate",
+  "definition": "Continuous Integration & Continuous Deployment: Automated workflows that test, build, and deploy your code every time a developer commits changes to the repository.",
+  "simpleExplanation": "Without CI/CD: A developer finishes a feature, pushes code, logs into the production server, types `npm run build`, hopes it doesn't crash, and restarts the server. \nWith CI/CD: A developer pushes code. A robot automatically runs all tests. If tests pass, the robot builds the code and deploys it to the server safely while the developer goes to get coffee.",
+  "realWorldExample": "Using GitHub Actions. Every time a Pull Request is opened, a script spins up a server, runs ESLint, runs Jest tests, and runs Cypress E2E tests. If any test fails, the 'Merge' button is physically blocked.",
+  "useCases": [
+    "Team collaboration",
+    "Preventing production bugs",
+    "Automated deployments"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'CI' stand for in CI/CD?"
+    ],
+    "intermediate": [
+      "Why should you run `npm run lint` and `npm run build` in your CI pipeline before deploying?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does CI stand for?",
+      "answer": "Continuous Integration."
+    },
+    {
+      "question": "Why run build?",
+      "answer": "Because Next.js has strict build-time checks. If there is a TypeScript error, `npm run build` will violently fail. Catching this failure in the CI pipeline prevents the broken code from reaching the live production server."
+    }
+  ],
+  "codeExample": "# .github/workflows/main.yml (GitHub Actions Pipeline)\nname: Next.js CI\n\n# Triggers whenever code is pushed to the main branch\non:\n  push:\n    branches: [ main ]\n\njobs:\n  build-and-test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n        with:\n          node-version: '18'\n          \n      - name: Install dependencies\n        run: npm ci\n        \n      - name: Run Linters\n        run: npm run lint\n        \n      - name: Run Unit Tests\n        run: npm test\n        \n      - name: Verify Next.js Build succeeds\n        run: npm run build"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "mutations",
+  "title": "Data Mutations",
+  "difficulty": "Advanced",
+  "definition": "The end-to-end process of changing data on the server (creating, updating, deleting) and ensuring the client UI perfectly reflects those changes.",
+  "simpleExplanation": "If you add a new 'Todo' item to the database, the database updates, but the user's screen will still show the old list. You must 'mutate' the data, and then immediately tell Next.js to purge the cache and refresh the screen.",
+  "realWorldExample": "A user clicks 'Delete' on an article. The Server Action deletes the row in PostgreSQL, and then calls `revalidatePath('/articles')` to instantly refresh the UI so the article visually disappears.",
+  "useCases": [
+    "CRUD Operations",
+    "Interactive applications"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary Next.js function used to refresh the UI after a Server Action mutates data?"
+    ],
+    "intermediate": [
+      "How do you show a 'Loading...' state on a submit button while a Server Action mutation is running?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which function?",
+      "answer": "`revalidatePath()` or `revalidateTag()`."
+    },
+    {
+      "question": "Show loading state?",
+      "answer": "You must use the `useFormStatus()` hook from `react-dom` inside a Client Component button."
+    }
+  ],
+  "codeExample": "// app/actions.ts\n'use server';\nimport { revalidatePath } from 'next/cache';\nimport db from '@/lib/db';\n\nexport async function deleteTodo(id: string) {\n  // 1. Mutate the data in the database\n  await db.todo.delete({ where: { id } });\n  \n  // 2. Purge the cache for the /todos page so it fetches fresh data!\n  revalidatePath('/todos');\n}\n\n// app/todos/page.tsx\nimport { deleteTodo } from '@/actions';\n\nexport default function TodoList({ todos }) {\n  return (\n    <ul>\n      {todos.map(todo => (\n        <li key={todo.id}>\n          {todo.title}\n          {/* Inline Server Action using bind! */}\n          <form action={deleteTodo.bind(null, todo.id)}>\n             <button type=\"submit\">Delete</button>\n          </form>\n        </li>\n      ))}\n    </ul>\n  )\n}"
+}

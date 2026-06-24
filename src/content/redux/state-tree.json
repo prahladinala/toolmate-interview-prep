@@ -1,0 +1,30 @@
+{
+  "id": "state-tree",
+  "title": "State Tree",
+  "difficulty": "Intermediate",
+  "definition": "The single plain JavaScript object that holds the entire state of your Redux application.",
+  "simpleExplanation": "The final shape of your massive spreadsheet. When you plan a Redux app, you literally draw out what this giant JSON object is going to look like. It contains nested objects and arrays for every piece of data your app needs.",
+  "realWorldExample": "Logging `store.getState()` in the console and seeing a massive nested object with `auth`, `products`, `ui`, and `settings` branches.",
+  "useCases": [
+    "Architecting application data flow"
+  ],
+  "questions": {
+    "basic": [
+      "Should you store functions or React Components inside the State Tree?"
+    ],
+    "intermediate": [
+      "What does it mean to 'normalize' the State Tree?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Store functions?",
+      "answer": "NO! The State Tree must contain ONLY serializable data (Strings, Numbers, Arrays, plain Objects). Functions, Promises, and UI Components will break Redux's time-travel debugging."
+    },
+    {
+      "question": "Normalize?",
+      "answer": "Structuring your data like a relational database (flat tables using IDs to reference each other) rather than deeply nesting arrays inside of arrays. It makes updating data massively faster."
+    }
+  ],
+  "codeExample": "/*\n  An example of a well-architected State Tree:\n*/\n\nconst applicationState = {\n  // Auth Slice\n  auth: {\n    isLoggedIn: true,\n    token: 'eyJhbGciOiJIUzI1Ni...'\n  },\n  // User Slice (Normalized data!)\n  users: {\n    byId: {\n      'user1': { id: 'user1', name: 'John' },\n      'user2': { id: 'user2', name: 'Jane' }\n    },\n    allIds: ['user1', 'user2']\n  },\n  // UI Slice\n  ui: {\n    isModalOpen: false,\n    theme: 'dark'\n  }\n};"
+}

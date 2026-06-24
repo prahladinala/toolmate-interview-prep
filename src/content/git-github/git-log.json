@@ -1,0 +1,31 @@
+{
+  "id": "git-log",
+  "title": "git log",
+  "difficulty": "Beginner",
+  "definition": "Shows the commit history for the currently active branch.",
+  "simpleExplanation": "Reading the diary of your project. It prints out a scrolling list of every save point ever made, starting from the most recent.",
+  "realWorldExample": "Trying to figure out who broke the website. You run `git log`, read the recent messages, see a commit titled 'Delete important database config', and find the email address of the person who did it.",
+  "useCases": [
+    "Reviewing project history",
+    "Finding specific commit hashes to revert to"
+  ],
+  "questions": {
+    "basic": [
+      "How do you exit the `git log` screen when it takes over your terminal?"
+    ],
+    "intermediate": [
+      "How can you make `git log` output look like a visual graph instead of a wall of text?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to exit?",
+      "answer": "Press the `q` key on your keyboard."
+    },
+    {
+      "question": "Visual graph?",
+      "answer": "Use `git log --graph --oneline`. It prints a beautiful, colored ASCII art graph showing how branches diverge and merge."
+    }
+  ],
+  "codeExample": "# View standard detailed history\n$ git log\n\n# View a condensed, single-line version of the history (Super useful!)\n$ git log --oneline\n# Output: a1b2c3d Fix login bug\n# Output: e4f5g6h Add user profile page\n\n# View the beautiful ASCII tree graph of branches\n$ git log --graph --oneline --all\n\n# View only the last 3 commits\n$ git log -n 3"
+}

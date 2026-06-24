@@ -1,0 +1,31 @@
+{
+  "id": "align-content",
+  "title": "Align Content",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how rows are positioned in multi-row flex and grid containers.",
+  "simpleExplanation": "If you have so many flex items that they wrap onto a second or third row, `align-content` decides how those ENTIRE ROWS space themselves out vertically.",
+  "realWorldExample": "A product gallery that wraps onto 3 rows. Using `content-between` ensures the top row touches the top of the container, the bottom row touches the bottom, and the middle row sits perfectly in between.",
+  "useCases": [
+    "Multi-line flex containers",
+    "Image galleries"
+  ],
+  "questions": {
+    "basic": [
+      "Does `content-center` do anything if your flex items are all on a single line?"
+    ],
+    "intermediate": [
+      "What class must be present on the flex container for `align-content` to have any effect at all?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Single line?",
+      "answer": "No. It has absolutely zero effect on single-line flex containers. You must use `items-center` for single lines."
+    },
+    {
+      "question": "Required class?",
+      "answer": "`flex-wrap`. If the items aren't allowed to wrap onto multiple lines, `align-content` cannot function."
+    }
+  ],
+  "codeExample": "<!-- \n  A multi-row flex container (flex-wrap) \n  where the rows are pushed apart to opposite top/bottom edges (content-between)\n-->\n<div class=\"h-64 flex flex-wrap content-between bg-gray-200\">\n  <div class=\"w-1/2\">Row 1</div>\n  <div class=\"w-1/2\">Row 1</div>\n  <div class=\"w-1/2\">Row 2</div>\n  <div class=\"w-1/2\">Row 2</div>\n</div>"
+}

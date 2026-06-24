@@ -1,0 +1,31 @@
+{
+  "id": "root-reducer",
+  "title": "Root Reducer",
+  "difficulty": "Intermediate",
+  "definition": "The top-level reducer function that combines multiple smaller, specialized reducer functions into a single reducer that manages the entire global state tree.",
+  "simpleExplanation": "You don't want one massive 10,000-line reducer file managing the users, the shopping cart, and the dark mode theme. You split them up into `userReducer`, `cartReducer`, and `themeReducer`. The Root Reducer glues them all back together into one giant robot.",
+  "realWorldExample": "Using the `combineReducers()` utility. The resulting global state object will have keys that match the individual reducers, like `state.users`, `state.cart`, and `state.theme`.",
+  "useCases": [
+    "Structuring large applications logically",
+    "Separation of concerns"
+  ],
+  "questions": {
+    "basic": [
+      "What legacy Redux function was used to glue reducers together?"
+    ],
+    "intermediate": [
+      "If an action is dispatched, does the Root Reducer send it to just one child reducer, or all of them?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which legacy function?",
+      "answer": "`combineReducers()`."
+    },
+    {
+      "question": "One or all?",
+      "answer": "ALL of them! Every single action passes through every single child reducer. If a child reducer cares about it, it reacts. If not, it hits its `default` switch case and ignores it."
+    }
+  ],
+  "codeExample": "import { combineReducers } from 'redux';\nimport userReducer from './userSlice';\nimport cartReducer from './cartSlice';\n\n// The Root Reducer combines the smaller slices\nconst rootReducer = combineReducers({\n  user: userReducer, // This state will live at state.user\n  cart: cartReducer  // This state will live at state.cart\n});\n\nexport default rootReducer;"
+}

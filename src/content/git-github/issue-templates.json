@@ -1,0 +1,31 @@
+{
+  "id": "issue-templates",
+  "title": "Issue Templates",
+  "difficulty": "Intermediate",
+  "definition": "Files placed in a repository that customize and standardize the form users see when they open a new Issue or Pull Request.",
+  "simpleExplanation": "If you don't use templates, users will open issues that just say 'IT BROKE!!!' with no context. Issue Templates force them to fill out a structured form (e.g., 'What browser are you using?', 'Steps to reproduce').",
+  "realWorldExample": "When you click 'New Issue' on a popular open-source repo, you are presented with options: 'Report a Bug', 'Request a Feature', or 'Ask a Question'. Clicking one pre-fills the text box with a checklist you MUST complete.",
+  "useCases": [
+    "Standardizing bug reports",
+    "Saving maintainer time"
+  ],
+  "questions": {
+    "basic": [
+      "In which hidden directory do you usually store Issue Template files?"
+    ],
+    "intermediate": [
+      "Can you use YAML forms instead of Markdown for templates?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which directory?",
+      "answer": "Inside the `.github/ISSUE_TEMPLATE/` directory at the root of your project."
+    },
+    {
+      "question": "YAML forms?",
+      "answer": "Yes! GitHub recently introduced Issue Forms. By writing YAML instead of Markdown, you can create actual UI inputs, dropdown menus, and required checkboxes that users must fill out before submitting."
+    }
+  ],
+  "codeExample": "<!-- \n  File: .github/ISSUE_TEMPLATE/bug_report.md\n  \n  --- \n  name: Bug Report\n  about: Create a report to help us improve\n  title: '[BUG] '\n  labels: 'bug'\n  ---\n-->\n\n**Describe the bug**\nA clear and concise description of what the bug is.\n\n**To Reproduce**\nSteps to reproduce the behavior:\n1. Go to '...'\n2. Click on '....'\n3. Scroll down to '....'\n4. See error\n\n**Expected behavior**\nA clear and concise description of what you expected to happen.\n\n**Desktop environment:**\n - OS: [e.g. iOS]\n - Browser [e.g. chrome, safari]\n - Version [e.g. 22]"
+}

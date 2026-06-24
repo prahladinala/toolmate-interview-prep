@@ -1,0 +1,32 @@
+{
+  "id": "font-optimization",
+  "title": "Font Optimization",
+  "difficulty": "Advanced",
+  "definition": "The technical configuration of local fonts, variable fonts, and preloading to squeeze every millisecond of performance out of typography.",
+  "simpleExplanation": "If you bought an expensive custom `.woff2` font file from a designer, you don't use Google Fonts. You use `next/font/local`. You tell Next.js where the file is, and it handles all the complex CSS `@font-face` declarations and preloading automatically.",
+  "realWorldExample": "A corporate brand that uses a proprietary font like 'Circular' or 'Helvetica Neue'. They upload the raw font files to the codebase and use `next/font/local` to apply them securely.",
+  "useCases": [
+    "Premium branding",
+    "Variable fonts",
+    "Advanced typography"
+  ],
+  "questions": {
+    "basic": [
+      "If you have a custom font file downloaded on your computer, which import do you use: `next/font/google` or `next/font/local`?"
+    ],
+    "intermediate": [
+      "What is a 'Variable Font' and why is it vastly superior for performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which import?",
+      "answer": "`next/font/local`"
+    },
+    {
+      "question": "What is Variable Font?",
+      "answer": "Historically, if you wanted 'Thin', 'Normal', and 'Bold' weights, you had to download 3 massive separate font files. A Variable Font is a single, heavily mathematical file that allows the browser to stretch and slide the weight to ANY number dynamically, saving massive bandwidth."
+    }
+  ],
+  "codeExample": "// app/layout.tsx\nimport localFont from 'next/font/local';\n\n// 1. Configure a local font file stored in the public/fonts directory\nconst myCustomFont = localFont({\n  src: './fonts/MyBrandFont-Regular.woff2',\n  weight: '400',\n  style: 'normal',\n  // Instructs Next.js to inject <link rel=\"preload\"> into the HTML head\n  // so the browser fetches the font before anything else!\n  preload: true, \n});\n\nexport default function RootLayout({ children }) {\n  return (\n    <html lang=\"en\">\n      {/* 2. Apply it globally via Tailwind CSS Variables! */}\n      <body className={myCustomFont.className}>\n        {children}\n      </body>\n    </html>\n  );\n}"
+}

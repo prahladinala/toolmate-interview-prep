@@ -1,0 +1,30 @@
+{
+  "id": "diffusion-models",
+  "title": "Diffusion Models",
+  "difficulty": "Advanced",
+  "definition": "A class of generative models used heavily in image creation. They are trained by systematically destroying an image with Gaussian noise, and then learning the neural network process to reverse that destruction to recover the image.",
+  "simpleExplanation": "Imagine taking a perfect painting and throwing sand on it until it's completely covered. The AI is trained by watching the sand fall. Once trained, you give it a pile of random sand, and it knows exactly how to blow the sand away to reveal a masterpiece.",
+  "realWorldExample": "Stable Diffusion. It starts with random noise matrices. Over 20 or 30 'steps', it mathematically denoises the matrix based on your text prompt, resolving the noise into a high-resolution image.",
+  "useCases": [
+    "Image generation",
+    "Video generation (Sora)"
+  ],
+  "questions": {
+    "basic": [
+      "Which generative task are Diffusion Models most famous for: Text Generation or Image Generation?"
+    ],
+    "intermediate": [
+      "What came before Diffusion models in the field of image generation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Text or Image?",
+      "answer": "Image Generation."
+    },
+    {
+      "question": "What came before?",
+      "answer": "Generative Adversarial Networks (GANs). GANs used two AIs fighting each other (a Forger and a Detective). Diffusion models completely replaced GANs because they produce vastly higher quality images and are easier to train without crashing."
+    }
+  ]
+}

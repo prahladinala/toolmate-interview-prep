@@ -1,0 +1,34 @@
+{
+  "id": "bcrypt",
+  "title": "Password Hashing (bcrypt)",
+  "difficulty": "Beginner",
+  "definition": "A password-hashing function designed to be computationally expensive to thwart brute-force search attacks. It is the industry standard for securely storing passwords.",
+  "simpleExplanation": "If you save `password: \"ilovecats123\"` in your database, and your database gets hacked, all your users are compromised. `bcrypt` takes that password, throws it into a blender, and outputs gibberish like `$2b$10$X1...`. If the hacker steals the gibberish, they cannot reverse it back to 'ilovecats123'.",
+  "realWorldExample": "When a user registers, you hash their password using `bcrypt.hash()`. When they try to log in, you don't un-hash the DB password; you hash their attempted password using `bcrypt.compare()` and see if the two gibberish strings match.",
+  "useCases": [
+    "User registration",
+    "Authentication"
+  ],
+  "questions": {
+    "basic": [
+      "Should you ever store plain-text passwords in a database?"
+    ],
+    "intermediate": [
+      "What is a 'Salt' in cryptography?"
+    ],
+    "advanced": [
+      "Why is bcrypt intentionally designed to be slow?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Salt?",
+      "answer": "A random string of characters added to the password BEFORE it is hashed. This ensures that if two users have the exact same password ('12345'), their final hashes will look completely different, protecting them from Rainbow Table attacks. Bcrypt generates and applies salts automatically."
+    },
+    {
+      "question": "Why intentionally slow?",
+      "answer": "To protect against brute-force attacks. A hacker with a powerful GPU can guess billions of fast MD5 hashes a second. Bcrypt forces a computationally heavy 'cost factor' (rounds). You can configure it so calculating ONE hash takes 0.5 seconds. At that speed, guessing passwords would take a hacker billions of years."
+    }
+  ],
+  "codeExample": "/* \n  npm install bcryptjs \n*/\n// const bcrypt = require('bcryptjs');\n\n// Simulated async functions for demonstration\nconst bcrypt = {\n  hash: async (pw, saltRounds) => `$2b$${saltRounds}$FakeHashedPassword123`,\n  compare: async (attempt, hash) => attempt === \"secret\" // fake logic\n};\n\nasync function authFlow() {\n  // 1. REGISTRATION\n  const plainPassword = \"secret\";\n  const saltRounds = 10; // The 'cost factor'. Higher = slower = safer.\n  \n  const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);\n  console.log(\"Saving to Database:\", hashedPassword);\n  \n  // 2. LOGIN ATTEMPT\n  const loginAttempt = \"secret\";\n  \n  // We NEVER decrypt the database hash. We compare them mathematically.\n  const isMatch = await bcrypt.compare(loginAttempt, hashedPassword);\n  \n  if (isMatch) {\n    console.log(\"Login Successful!\");\n  } else {\n    console.log(\"Wrong Password!\");\n  }\n}\n\nauthFlow();"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "disk-partitions",
+  "title": "Disk Partitions",
+  "difficulty": "Advanced",
+  "definition": "The practice of dividing a single physical hard drive into multiple distinct, isolated logical sections. The OS treats each partition as if it were a completely separate physical drive.",
+  "simpleExplanation": "Drawing a line down the middle of a chalkboard. You use the left side for the Operating System, and the right side for User Data. If the OS side gets completely corrupted, the data side is perfectly safe.",
+  "realWorldExample": "Enterprise servers almost always partition the `/var/log` directory onto its own small partition. If an application goes crazy and writes 100GB of log files, it will fill the log partition to 100%, but it won't crash the main OS because the OS partition is isolated.",
+  "useCases": [
+    "System stability",
+    "Dual-booting OSs",
+    "Data protection"
+  ],
+  "questions": {
+    "basic": [
+      "What classic command-line tool is most commonly used to create and delete partitions on Linux?"
+    ],
+    "intermediate": [
+      "What is the difference between formatting a drive and partitioning a drive?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which tool?",
+      "answer": "`fdisk` or `parted`."
+    },
+    {
+      "question": "Format vs Partition?",
+      "answer": "Partitioning is cutting the raw hard drive into slices (drawing the lines). Formatting is taking one of those slices and applying a File System to it (like `ext4` or `NTFS`) so the OS actually knows how to write files into it."
+    }
+  ]
+}

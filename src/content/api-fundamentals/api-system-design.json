@@ -1,0 +1,30 @@
+{
+  "id": "api-system-design",
+  "title": "API Design Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions evaluating your ability to build API infrastructure that is secure, highly available, and scalable to millions of requests.",
+  "simpleExplanation": "Can you design an architecture that survives going viral?",
+  "realWorldExample": "Designing the API layer for an Uber clone, discussing load balancers, rate limiting, geospatial database indexing, and WebSockets for live driver tracking.",
+  "useCases": [
+    "Staff Engineer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Why should you put a Reverse Proxy / API Gateway (like NGINX or Cloudflare) in front of your Node.js API servers?"
+    ],
+    "intermediate": [
+      "How do you handle a sudden 10,000x spike in traffic to a Read-Heavy API endpoint?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why Reverse Proxy?",
+      "answer": "Node.js is great at logic, but terrible at heavy network tasks like SSL/HTTPS decryption, serving static images, and blocking DDoS attacks. A reverse proxy handles the heavy lifting, protects the real servers from direct internet exposure, and acts as a Load Balancer to distribute traffic across multiple Node instances."
+    },
+    {
+      "question": "Handle Read-Heavy traffic spike?",
+      "answer": "Aggressive caching. Implement a CDN layer (like Cloudflare) to serve cached responses globally. Use an in-memory datastore (like Redis) on the backend so the API never has to touch the main SQL database for that endpoint."
+    }
+  ],
+  "codeExample": "/*\n  System Design Scenario:\n  \"Design a Rate Limiter for a public API.\"\n  \n  Answer:\n  I would use a Token Bucket algorithm backed by Redis.\n  1. Every user gets a 'bucket' in Redis with 100 tokens, identified by their API Key.\n  2. When a request hits the API Gateway, it instantly checks Redis.\n  3. If tokens > 0, decrement by 1, and route the request to the backend.\n  4. If tokens == 0, the API Gateway immediately drops the request and returns a 429 Status Code, completely protecting the backend servers from doing any work.\n  5. A background process refills the bucket to 100 tokens every minute.\n*/"
+}

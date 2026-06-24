@@ -1,0 +1,31 @@
+{
+  "id": "grep",
+  "title": "grep",
+  "difficulty": "Intermediate",
+  "definition": "Global Regular Expression Print. A powerful command-line utility used to search plain-text data sets for lines that match a regular expression or string.",
+  "simpleExplanation": "The 'Ctrl+F' (Find) function for the terminal. You feed it a massive file, tell it what word to look for, and it spits out only the sentences containing that word.",
+  "realWorldExample": "A user complains they can't log in. You type `grep 'username123' auth.log`. Grep scans the massive log file and prints out the exact single line showing 'username123 failed password authentication'.",
+  "useCases": [
+    "Filtering log files",
+    "Finding code snippets",
+    "Piping command output"
+  ],
+  "questions": {
+    "basic": [
+      "How do you make `grep` ignore case sensitivity (e.g., matching both 'Error' and 'error')?"
+    ],
+    "intermediate": [
+      "What happens when you pipe another command into grep, like `ls -l | grep 'Feb'`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Ignore case?",
+      "answer": "Use the `-i` flag: `grep -i 'error' file.txt`."
+    },
+    {
+      "question": "Piping into grep?",
+      "answer": "Instead of searching a file, `grep` filters the live output of the `ls` command. It will only print the files that were modified in February, effectively filtering the list."
+    }
+  ]
+}

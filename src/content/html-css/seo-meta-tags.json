@@ -1,0 +1,31 @@
+{
+  "id": "seo-meta-tags",
+  "title": "SEO Meta Tags",
+  "difficulty": "Intermediate",
+  "definition": "HTML tags placed in the `<head>` of a document that provide data about the page to search engines (Google, Bing) to help them understand the content and rank it.",
+  "simpleExplanation": "When Google's robot (Googlebot) visits your website, it's blind. It can't look at your pretty images. It relies on your `Title` and `Meta Description` tags to figure out what your site is about. These tags are exactly what shows up on the Google Search Results page.",
+  "realWorldExample": "If you search 'Nike shoes', the blue clickable link is the `<title>`, and the gray paragraph underneath it is the `<meta name=\"description\">`.",
+  "useCases": [
+    "Ranking higher on Google",
+    "Increasing click-through rates (CTR) from search results"
+  ],
+  "questions": {
+    "basic": [
+      "What is the ideal length for a Title tag?"
+    ],
+    "intermediate": [
+      "Does the `<meta name=\"keywords\">` tag help your Google rankings?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Ideal length?",
+      "answer": "Between 50 and 60 characters. If it is longer, Google will chop it off and add '...' at the end."
+    },
+    {
+      "question": "Does meta keywords help?",
+      "answer": "NO. Google completely ignores the keywords meta tag and has done so since 2009 because people abused it by spamming thousands of irrelevant keywords. Focus on writing good content instead."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <!-- 1. The Title (CRITICAL FOR SEO) -->\n  <!-- This is the big blue link on Google -->\n  <title>Buy Fresh Coffee Beans Online | BeanRoasters</title>\n\n  <!-- 2. The Meta Description (CRITICAL FOR CLICKS) -->\n  <!-- This is the 1-2 sentence pitch under the link -->\n  <meta name=\"description\" content=\"Shop our selection of freshly roasted, organic Arabica coffee beans. Free shipping on all orders over $50. Roasted daily and shipped to your door.\">\n\n  <!-- 3. Canonical Link -->\n  <!-- If you have the same content on example.com/coffee and example.com/products/coffee -->\n  <!-- This tells Google which one is the 'Master' copy so you aren't penalized for duplicate content. -->\n  <link rel=\"canonical\" href=\"https://www.beanroasters.com/coffee\">\n\n  <!-- 4. Viewport (Required because Google heavily penalizes sites that aren't mobile-friendly) -->\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n</head>\n<body>\n  <h1>Welcome to BeanRoasters</h1>\n  <p>Our metadata ensures you found us on Google!</p>\n</body>\n</html>"
+}

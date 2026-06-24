@@ -1,0 +1,34 @@
+{
+  "id": "setimmediate",
+  "title": "setImmediate()",
+  "difficulty": "Advanced",
+  "definition": "A function that executes a callback immediately after the Event Loop's Poll phase finishes. It belongs to the Check phase of the Event Loop.",
+  "simpleExplanation": "It's poorly named. `setImmediate` is NOT immediate. `nextTick` is immediate. `setImmediate` means: 'Hey Event Loop, after you finish dealing with all the heavy database and file operations in the Poll phase, run this code next before you loop back to the Timers.'",
+  "realWorldExample": "Used heavily when you have a massive array to process (like 1,000,000 items). Instead of using a `for` loop (which freezes the server), you process 1,000 items, and use `setImmediate` to process the next 1,000. This yields control back to the Event Loop, allowing it to serve HTTP requests in between chunks!",
+  "useCases": [
+    "CPU-intensive task chunking",
+    "Preventing Event Loop starvation"
+  ],
+  "questions": {
+    "basic": [
+      "Which phase of the Event Loop executes `setImmediate` callbacks?"
+    ],
+    "intermediate": [
+      "What is the difference between `setImmediate` and `setTimeout(cb, 0)`?"
+    ],
+    "advanced": [
+      "Why is the execution order of `setImmediate` and `setTimeout(0)` sometimes unpredictable in the main module?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which phase?",
+      "answer": "The Check phase."
+    },
+    {
+      "question": "Unpredictable execution?",
+      "answer": "If you run both in the main script, the system performance determines which runs first. BUT, if you put them both inside an I/O callback (like `fs.readFile`), `setImmediate` will ALWAYS execute first because the Poll phase (I/O) naturally transitions directly into the Check phase (`setImmediate`) before it loops back around to Timers (`setTimeout`)."
+    }
+  ],
+  "codeExample": "const fs = require('fs');\n\n// We put them inside an I/O operation (Poll Phase)\n// fs.readFile(__filename, () => {\n  \n  console.log(\"--- Inside I/O Callback ---\");\n\n  // Timers Phase (Has to wait for the loop to completely restart)\n  setTimeout(() => console.log(\"Timeout ran\"), 0);\n  \n  // Check Phase (Runs IMMEDIATELY after the I/O Poll Phase finishes!)\n  setImmediate(() => console.log(\"setImmediate ran\"));\n\n// });\n\n// Output will ALWAYS be:\n// 1. setImmediate ran\n// 2. Timeout ran\n\nconsole.log(\"To see the true difference, uncomment the fs.readFile block in a real Node environment!\");"
+}

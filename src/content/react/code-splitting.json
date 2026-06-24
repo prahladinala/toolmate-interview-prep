@@ -1,0 +1,45 @@
+{
+  "id": "code-splitting",
+  "title": "Code Splitting & Lazy Loading",
+  "difficulty": "Advanced",
+  "definition": "Code splitting is a feature supported by bundlers like Webpack and Vite that allows you to split your code into various bundles which can then be loaded on demand (lazily). React supports this natively using `React.lazy()` and `<Suspense>`.",
+  "simpleExplanation": "Imagine you are going on a hike. You *could* pack a massive backpack with a tent, a winter coat, a swimsuit, and 30 days of food (sending the entire JavaScript app at once). But that makes the initial hike (page load) incredibly slow and heavy! Code splitting is like magic teleportation. You only pack a water bottle (the Home page code). When you reach a lake and need a swimsuit, you press a button, and the swimsuit is instantly downloaded to your backpack. You only download the code you actually need, exactly when you need it.",
+  "realWorldExample": "Your app has a massive 'Admin Dashboard' full of heavy charting libraries (like Chart.js). 99% of your users are regular customers who never see the dashboard. If you don't code-split, all users are forced to download the charting library, making their page load slower. With `React.lazy()`, only Admins who actually click the 'Dashboard' button will trigger the download of that specific code.",
+  "useCases": [
+    "Reducing the Initial Page Load time (Time to Interactive)",
+    "Splitting code based on React Router routes (Route-based splitting)",
+    "Isolating massive 3rd-party dependencies"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main benefit of Code Splitting?",
+      "How do you dynamically import a component in React?"
+    ],
+    "intermediate": [
+      "What is `React.lazy()` used for?",
+      "Why must `React.lazy()` be used in conjunction with `<Suspense>`?"
+    ],
+    "advanced": [
+      "Can you use `React.lazy()` for Server-Side Rendering (SSR)?",
+      "How do you implement route-based code splitting?"
+    ],
+    "trick": [
+      "Can you use `React.lazy()` with Named Exports (e.g., `export const MyComponent`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why must React.lazy be used with Suspense?",
+      "answer": "When a lazily loaded component is first rendered, the code hasn't downloaded yet. React needs to know what to display on the screen while it waits for the network request to finish. `<Suspense fallback={<Spinner/>}>` tells React what to show during that delay."
+    },
+    {
+      "question": "Can you use React.lazy() for Server-Side Rendering?",
+      "answer": "No. `React.lazy()` and Suspense for code-splitting do not work during standard SSR. If you are using an SSR framework like Next.js, you must use their specific dynamic import functions (e.g., `next/dynamic`)."
+    },
+    {
+      "question": "Can you use React.lazy() with Named Exports?",
+      "answer": "Currently, `React.lazy()` only supports Default Exports. If the component you want to import uses a named export, you must create an intermediate module that re-exports it as the default, or use a workaround like `import().then(module => ({ default: module.MyComponent }))`."
+    }
+  ],
+  "codeExample": "import React, { Suspense } from 'react';\n\n// 1. Standard Import (Bundled immediately)\nimport Header from './Header'; \n\n// 2. Dynamic Import / Lazy Load (Split into a separate bundle)\n// This component and all of its heavy dependencies won't be downloaded\n// until the 'Show Heavy Dashboard' button is clicked and it actually renders.\nconst HeavyDashboard = React.lazy(() => import('./HeavyDashboard'));\n\nexport default function App() {\n  const [showDashboard, setShowDashboard] = React.useState(false);\n\n  return (\n    <div>\n      {/* Loads immediately because it was statically imported */}\n      <Header />\n      \n      <button onClick={() => setShowDashboard(true)}>\n        Show Heavy Dashboard\n      </button>\n\n      {showDashboard && (\n        // 3. We MUST wrap lazy components in Suspense\n        <Suspense fallback={<h2>Downloading dashboard code... please wait.</h2>}>\n          <HeavyDashboard />\n        </Suspense>\n      )}\n    </div>\n  );\n}"
+}

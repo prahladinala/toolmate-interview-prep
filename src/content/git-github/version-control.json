@@ -1,0 +1,32 @@
+{
+  "id": "version-control",
+  "title": "Version Control Systems",
+  "difficulty": "Beginner",
+  "definition": "A system that records changes to a file or set of files over time so that you can recall specific versions later.",
+  "simpleExplanation": "A time machine for your files. A Version Control System (VCS) allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, and more.",
+  "realWorldExample": "Google Docs version history. You can open a document, click 'Version history', and see every edit made by every person over the last year, and restore any of them.",
+  "useCases": [
+    "Backup and Restore",
+    "Auditing (Blaming)",
+    "Synchronization"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two main types of Version Control Systems?"
+    ],
+    "intermediate": [
+      "Why is Centralized Version Control considered risky?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two main types?",
+      "answer": "Centralized (like Subversion/SVN) and Distributed (like Git)."
+    },
+    {
+      "question": "Why risky?",
+      "answer": "If the central server goes down, nobody can collaborate or save versioned changes. If the central server's hard drive crashes and there are no backups, the entire history of the project is lost."
+    }
+  ],
+  "codeExample": "// Example of Centralized vs Distributed\n\nconst svn = 'Centralized: 1 Server has history. Clients just have 1 file.';\nconst git = 'Distributed: 1 Server has history. EVERY Client has the FULL history too!';\n\nconsole.log(git);"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "idempotency",
+  "title": "Idempotency",
+  "difficulty": "Advanced",
+  "definition": "A mathematical and computer science property where an operation can be applied multiple times without changing the result beyond the initial application.",
+  "simpleExplanation": "If you hit an elevator button 1 time, it comes to your floor. If you smash the elevator button 100 times in a row, it still just comes to your floor. The button is Idempotent. The end result is exactly the same no matter how many times you pressed it.",
+  "realWorldExample": "Stripe Payments. If a user clicks 'Pay', but their WiFi drops, they panic and click 'Pay' again. If the `POST /charge` API is NOT idempotent, the user gets charged $100 twice. If the API IS idempotent, the server recognizes the duplicate request and only charges them once.",
+  "useCases": [
+    "Payment gateways",
+    "Distributed retries",
+    "Network reliability"
+  ],
+  "questions": {
+    "basic": [
+      "Is the HTTP `DELETE` method intended to be Idempotent?"
+    ],
+    "intermediate": [
+      "How do payment APIs implement Idempotency on `POST` requests (which are normally not idempotent)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is DELETE idempotent?",
+      "answer": "Yes. If you say `DELETE /users/5`, User 5 is destroyed. If you send `DELETE /users/5` again, User 5 is still destroyed. The database state remains the same."
+    },
+    {
+      "question": "How to make POST idempotent?",
+      "answer": "By using an `Idempotency-Key` header. The frontend generates a unique random ID (UUID) for the specific checkout attempt. If the user clicks 'Pay' twice, both requests have the exact same Key. The backend sees the duplicate Key, processes the first one, and ignores the second one."
+    }
+  ],
+  "codeExample": "// Frontend Payment Example\nconst idempotencyKey = crypto.randomUUID(); // \"a1b2c3d4...\"\n\n// If the user clicks this 5 times fast, it sends the exact same key\nasync function processPayment() {\n  await fetch('https://api.stripe.com/v1/charges', {\n    method: 'POST',\n    headers: {\n      'Authorization': 'Bearer sk_test_123',\n      // The magic safeguard!\n      'Idempotency-Key': idempotencyKey \n    },\n    body: JSON.stringify({ amount: 1000 })\n  });\n}"
+}

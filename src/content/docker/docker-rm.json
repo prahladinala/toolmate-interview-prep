@@ -1,0 +1,30 @@
+{
+  "id": "docker-rm",
+  "title": "docker rm",
+  "difficulty": "Beginner",
+  "definition": "The CLI command used to permanently delete one or more containers from the host system, freeing up disk space.",
+  "simpleExplanation": "Throwing the container in the trash. Once you do this, the container and all the un-saved data inside it are gone forever.",
+  "realWorldExample": "You ran a temporary Ubuntu container just to test a bash script. You're done with it. You type `docker rm test-ubuntu` so it doesn't clutter up your hard drive.",
+  "useCases": [
+    "Cleaning up environments",
+    "Resetting state"
+  ],
+  "questions": {
+    "basic": [
+      "Can you run `docker rm` on a container that is currently running?"
+    ],
+    "intermediate": [
+      "What does the flag `--rm` do when attached to the `docker run` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Run on active container?",
+      "answer": "No. Docker will throw an error protecting the active container. You must `docker stop` it first, or use `docker rm -f` to forcibly kill and delete it simultaneously."
+    },
+    {
+      "question": "What does --rm do?",
+      "answer": "It tells Docker to act like a self-destructing message. The absolute second the container stops running, Docker automatically deletes the container from the hard drive. Perfect for quick, one-off tasks."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "cnn",
+  "title": "Convolutional Neural Networks (CNN)",
+  "difficulty": "Intermediate",
+  "definition": "A specialized type of Deep Neural Network designed specifically to process data that has a grid-like topology, most notably digital images.",
+  "simpleExplanation": "Standard neural networks look at a picture as a single flat list of pixels, destroying the structure. A CNN scans a picture like a magnifying glass. It slides a tiny square across the image, looking for edges. Then it slides a bigger square looking for shapes (like eyes or wheels). Then it combines them to guess the object.",
+  "realWorldExample": "Facial recognition on your phone, medical AI scanning X-rays for tumors, and Tesla's self-driving cameras all rely heavily on Convolutional Neural Networks.",
+  "useCases": [
+    "Computer Vision",
+    "Image classification",
+    "Facial recognition"
+  ],
+  "questions": {
+    "basic": [
+      "What type of data are CNNs primarily used for?"
+    ],
+    "intermediate": [
+      "What does the 'Pooling' layer do in a CNN?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What type of data?",
+      "answer": "Images and visual data (Computer Vision)."
+    },
+    {
+      "question": "What does Pooling do?",
+      "answer": "It forcibly shrinks the image by throwing away non-essential pixels (Downsampling). If the AI found a 'Dog Ear' in the top left corner, it saves that fact, but deletes the millions of sky pixels around it to save memory and processing power."
+    }
+  ]
+}

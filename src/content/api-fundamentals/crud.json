@@ -1,0 +1,31 @@
+{
+  "id": "crud",
+  "title": "CRUD Operations",
+  "difficulty": "Beginner",
+  "definition": "An acronym standing for Create, Read, Update, and Delete. These are the four basic functions of persistent storage in any database or API.",
+  "simpleExplanation": "Almost everything you do on the internet is CRUD. Posting a tweet (Create). Scrolling your feed (Read). Editing a typo (Update). Removing a bad photo (Delete). REST APIs perfectly map these four actions to the four main HTTP Methods.",
+  "realWorldExample": "A Todo List app. Adding a task is Create. Viewing tasks is Read. Checking a task off is Update. Trash can icon is Delete.",
+  "useCases": [
+    "Database interaction",
+    "API design pattern"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP method maps to the 'Create' operation in CRUD?"
+    ],
+    "intermediate": [
+      "Which HTTP method maps to the 'Read' operation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Create method?",
+      "answer": "`POST`."
+    },
+    {
+      "question": "Read method?",
+      "answer": "`GET`."
+    }
+  ],
+  "codeExample": "/* \n  The Holy Grail of REST: The CRUD to HTTP Mapping\n*/\n\n// [C]REATE -> POST\nfetch('/api/tasks', { \n  method: 'POST', \n  body: JSON.stringify({ title: 'Buy milk' }) \n});\n\n// [R]EAD -> GET\nfetch('/api/tasks', { \n  method: 'GET' \n});\n\n// [U]PDATE -> PUT (or PATCH)\nfetch('/api/tasks/99', { \n  method: 'PUT', \n  body: JSON.stringify({ title: 'Buy almond milk', completed: true }) \n});\n\n// [D]ELETE -> DELETE\nfetch('/api/tasks/99', { \n  method: 'DELETE' \n});"
+}

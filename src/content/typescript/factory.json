@@ -1,0 +1,30 @@
+{
+  "id": "factory",
+  "title": "Factory Pattern (TS)",
+  "difficulty": "Intermediate",
+  "definition": "A pattern that provides an interface for creating objects in a superclass, but allows subclasses or logic gates to alter the type of objects that will be created.",
+  "simpleExplanation": "A Factory is an automated vending machine. You don't need to know how the soda is made. You just press the 'Coke' button, and a Coke comes out. The Factory function abstracts away the messy `new` keywords and complex setup logic.",
+  "realWorldExample": "Building an API service factory. You call `ApiServiceFactory.create('user')` and it returns an Axios instance fully pre-configured with the User API base URL and specific Auth headers.",
+  "useCases": [
+    "Complex object initialization",
+    "Decoupling implementation from usage"
+  ],
+  "questions": {
+    "basic": [
+      "Why use a Factory instead of just exporting multiple classes?"
+    ],
+    "intermediate": [
+      "How do you type the return value of a Factory?"
+    ],
+    "advanced": [
+      "What is an Abstract Factory in TypeScript?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you type the return value?",
+      "answer": "You define a common `Interface` (e.g., `interface Button { render(): void }`). Both `MacButton` and `WindowsButton` implement that interface. The Factory's return type is explicitly typed as `Button`, hiding the specific class from the consumer."
+    }
+  ],
+  "codeExample": "// 1. The Common Interface\ninterface Notification {\n  send(msg: string): void;\n}\n\n// 2. The Concrete Implementations\nclass EmailNotification implements Notification {\n  send(msg: string) { console.log(`Sending Email: ${msg}`); }\n}\n\nclass PushNotification implements Notification {\n  send(msg: string) { console.log(`Sending Push: ${msg}`); }\n}\n\n// 3. The Factory\nclass NotificationFactory {\n  // The return type is the broad Interface, hiding the specific classes\n  public static create(type: \"email\" | \"push\"): Notification {\n    if (type === \"email\") return new EmailNotification();\n    if (type === \"push\") return new PushNotification();\n    throw new Error(\"Unknown notification type\");\n  }\n}\n\n// Consumer code has no idea 'EmailNotification' class exists. \n// It just uses the factory.\nconst notifier = NotificationFactory.create(\"email\");\nnotifier.send(\"Welcome to the app!\");"
+}

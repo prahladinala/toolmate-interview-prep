@@ -1,0 +1,185 @@
+{
+  "id": "javascript",
+  "title": "JavaScript",
+  "description": "The language of the web. Master core concepts, advanced patterns, and performance.",
+  "icon": "javascript",
+  "categories": [
+    {
+      "id": "basics",
+      "title": "Basics & Fundamentals",
+      "topics": [
+        { "id": "variables", "title": "Variables (var, let, const)" },
+        { "id": "data-types", "title": "Data Types" },
+        { "id": "scope", "title": "Scope" },
+        { "id": "strict-mode", "title": "Strict Mode" },
+        { "id": "array-methods", "title": "Array Methods" }
+      ]
+    },
+    {
+      "id": "types-operators",
+      "title": "Types & Operators",
+      "topics": [
+        { "id": "operators", "title": "Operators & Comparisons" },
+        { "id": "truthy-falsy", "title": "Truthy & Falsy Values" },
+        { "id": "type-conversion", "title": "Implicit vs Explicit Type Conversion" },
+        { "id": "primitive-reference", "title": "Primitive vs Reference Types" },
+        { "id": "equality", "title": "== vs ===" }
+      ]
+    },
+    {
+      "id": "execution",
+      "title": "Execution Context & Scope",
+      "topics": [
+        { "id": "execution-context", "title": "Execution Context" },
+        { "id": "call-stack", "title": "Call Stack" },
+        { "id": "hoisting", "title": "Hoisting" },
+        { "id": "lexical-scope", "title": "Lexical Scope" },
+        { "id": "closures", "title": "Closures" },
+        { "id": "this-keyword", "title": "The 'this' Keyword" },
+        { "id": "call-apply-bind", "title": "call(), apply(), bind()" },
+        { "id": "iife", "title": "IIFE" }
+      ]
+    },
+    {
+      "id": "objects",
+      "title": "Objects & Prototypes",
+      "topics": [
+        { "id": "objects-basics", "title": "Object Fundamentals" },
+        { "id": "prototype-chain", "title": "Prototype Chain" },
+        { "id": "prototypes", "title": "Prototypes & Inheritance" },
+        { "id": "object-create", "title": "Object.create()" },
+        { "id": "property-descriptors", "title": "Property Descriptors" },
+        { "id": "object-freeze-seal", "title": "Object.freeze vs seal" },
+        { "id": "shallow-deep-copy", "title": "Shallow Copy vs Deep Copy" }
+      ]
+    },
+    {
+      "id": "async",
+      "title": "Asynchronous JS",
+      "topics": [
+        { "id": "callbacks", "title": "Callbacks" },
+        { "id": "callback-hell", "title": "Callback Hell" },
+        { "id": "promises", "title": "Promises" },
+        { "id": "promise-methods", "title": "Promise Methods (all, race)" },
+        { "id": "async-await", "title": "Async / Await" },
+        { "id": "fetch-api", "title": "Fetch API" },
+        { "id": "abort-controller", "title": "AbortController" },
+        { "id": "microtask-macrotask", "title": "Microtasks vs Macrotasks" }
+      ]
+    },
+    {
+      "id": "event-loop",
+      "title": "Event Loop Deep Dive",
+      "topics": [
+        { "id": "event-loop-flow", "title": "Event Loop Internals" },
+        { "id": "task-queue", "title": "Task Queue" },
+        { "id": "microtask-queue", "title": "Microtask Queue" },
+        { "id": "rendering-cycle", "title": "Browser Rendering Cycle" }
+      ]
+    },
+    {
+      "id": "es6",
+      "title": "Modern JS (ES6+)",
+      "topics": [
+        { "id": "destructuring", "title": "Destructuring & Spread" },
+        { "id": "arrow-functions", "title": "Arrow Functions" },
+        { "id": "template-literals", "title": "Template Literals" },
+        { "id": "rest-parameters", "title": "Rest Parameters" },
+        { "id": "default-parameters", "title": "Default Parameters" },
+        { "id": "optional-chaining", "title": "Optional Chaining" },
+        { "id": "nullish-coalescing", "title": "Nullish Coalescing" },
+        { "id": "classes", "title": "ES6 Classes" },
+        { "id": "modules", "title": "JS Modules" }
+      ]
+    },
+    {
+      "id": "dom",
+      "title": "DOM & Browser APIs",
+      "topics": [
+        { "id": "dom-manipulation", "title": "DOM Manipulation" },
+        { "id": "event-delegation", "title": "Event Bubbling & Delegation" },
+        { "id": "event-capturing", "title": "Event Capturing" },
+        { "id": "event-loop-browser", "title": "Browser Event Loop" },
+        { "id": "intersection-observer", "title": "Intersection Observer" },
+        { "id": "mutation-observer", "title": "Mutation Observer" }
+      ]
+    },
+    {
+      "id": "storage",
+      "title": "Web Storage",
+      "topics": [
+        { "id": "local-storage", "title": "Local Storage" },
+        { "id": "session-storage", "title": "Session Storage" },
+        { "id": "cookies", "title": "Cookies" },
+        { "id": "indexeddb", "title": "IndexedDB" }
+      ]
+    },
+    {
+      "id": "memory-perf",
+      "title": "Memory & Performance",
+      "topics": [
+        { "id": "memory-leaks", "title": "Memory Leaks" },
+        { "id": "garbage-collection", "title": "Garbage Collection" },
+        { "id": "performance-optimization", "title": "Performance Optimization" },
+        { "id": "lazy-loading", "title": "Lazy Loading" },
+        { "id": "critical-rendering", "title": "Critical Rendering Path" }
+      ]
+    },
+    {
+      "id": "data-structures",
+      "title": "Data Structures",
+      "topics": [
+        { "id": "array", "title": "Arrays" },
+        { "id": "object", "title": "Objects" },
+        { "id": "map", "title": "Map" },
+        { "id": "set", "title": "Set" },
+        { "id": "weakmap", "title": "WeakMap" },
+        { "id": "weakset", "title": "WeakSet" }
+      ]
+    },
+    {
+      "id": "error-handling",
+      "title": "Error Handling",
+      "topics": [
+        { "id": "try-catch", "title": "try / catch / finally" },
+        { "id": "custom-errors", "title": "Custom Errors" },
+        { "id": "global-error-handling", "title": "Global Error Handling" },
+        { "id": "async-error-handling", "title": "Async Error Handling" }
+      ]
+    },
+    {
+      "id": "design-patterns",
+      "title": "JavaScript Design Patterns",
+      "topics": [
+        { "id": "module-pattern", "title": "Module Pattern" },
+        { "id": "singleton", "title": "Singleton Pattern" },
+        { "id": "factory", "title": "Factory Pattern" },
+        { "id": "observer", "title": "Observer Pattern" },
+        { "id": "pub-sub", "title": "Publish Subscribe Pattern" }
+      ]
+    },
+    {
+      "id": "advanced-javascript",
+      "title": "Advanced JavaScript",
+      "topics": [
+        { "id": "closures-deep", "title": "Closures Deep Dive" },
+        { "id": "event-loop-deep", "title": "Event Loop Deep Dive" },
+        { "id": "memory-management", "title": "Memory Management" },
+        { "id": "engine-optimization", "title": "V8 Engine Optimizations" },
+        { "id": "javascript-runtime", "title": "JavaScript Runtime" }
+      ]
+    },
+    {
+      "id": "coding-rounds",
+      "title": "Coding Questions",
+      "topics": [
+        { "id": "polyfills", "title": "Polyfills" },
+        { "id": "flatten-array", "title": "Flatten Array" },
+        { "id": "deep-clone", "title": "Deep Clone Object" },
+        { "id": "debounce-implementation", "title": "Implement Debounce" },
+        { "id": "throttle-implementation", "title": "Implement Throttle" },
+        { "id": "promise-polyfill", "title": "Promise Polyfill" }
+      ]
+    }
+  ]
+}

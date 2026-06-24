@@ -1,0 +1,30 @@
+{
+  "id": "lemmatization",
+  "title": "Lemmatization",
+  "difficulty": "Intermediate",
+  "definition": "A sophisticated NLP process that uses vocabulary and morphological analysis of words to accurately reduce them to their proper dictionary base form (the lemma).",
+  "simpleExplanation": "A digital English teacher. Unlike Stemming (which blindly chops off letters), Lemmatization actually understands grammar. It knows that the root word of 'Better' is 'Good', and the root word of 'Mice' is 'Mouse'.",
+  "realWorldExample": "Modern chatbots use lemmatization to understand user intent. If the user says 'I am buying a car' or 'I bought a car', the AI lemmatizes both to 'buy car' to trigger the sales algorithm.",
+  "useCases": [
+    "Chatbot intent recognition",
+    "Text analysis"
+  ],
+  "questions": {
+    "basic": [
+      "Which is generally more accurate: Stemming or Lemmatization?"
+    ],
+    "intermediate": [
+      "Why does Lemmatization require significantly more computing power than Stemming?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is more accurate?",
+      "answer": "Lemmatization. It preserves the actual meaning of the words."
+    },
+    {
+      "question": "Why more computing power?",
+      "answer": "Stemming just uses simple Regex rules to delete letters. Lemmatization requires the computer to load a massive dictionary into memory and perform complex linguistic analysis to figure out the context of the word before converting it."
+    }
+  ]
+}

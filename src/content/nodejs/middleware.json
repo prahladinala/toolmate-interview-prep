@@ -1,0 +1,33 @@
+{
+  "id": "middleware",
+  "title": "Middleware",
+  "difficulty": "Intermediate",
+  "definition": "Functions that have access to the request object, response object, and the next middleware function in the application’s request-response cycle. They execute in the middle of the flow.",
+  "simpleExplanation": "Middleware is the assembly line. A raw request enters the factory. Station 1 (Middleware) checks if it's JSON. Station 2 logs the time. Station 3 checks if the user is an Admin. If all stations approve, the request finally reaches the end of the line (your Route) where the database is updated. If a station rejects it, the line stops instantly.",
+  "realWorldExample": "Protecting a route. You write an `isAuthenticated` middleware function. You plug it into your `/dashboard` route. If the user isn't logged in, the middleware immediately returns a 401 Error. If they are, it calls `next()` to let them through to the dashboard.",
+  "useCases": [
+    "Authentication/Authorization",
+    "Logging",
+    "Parsing JSON payloads",
+    "CORS configuration"
+  ],
+  "questions": {
+    "basic": [
+      "What crucial function must a middleware call to allow the request to continue?"
+    ],
+    "intermediate": [
+      "What happens if a middleware doesn't call `res.send()` and doesn't call `next()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What crucial function?",
+      "answer": "The `next()` function."
+    },
+    {
+      "question": "What happens if neither is called?",
+      "answer": "The server hangs infinitely. The request is stuck in the middle of the assembly line forever until the browser eventually times out. You MUST either terminate the request (res.send) or pass it on (next)."
+    }
+  ],
+  "codeExample": "// --- CUSTOM MIDDLEWARE EXAMPLE ---\n\n// 1. Defining a Middleware function\nconst securityGuard = (req, res, next) => {\n  console.log(`[Middleware Check]: User requesting ${req.url}`);\n  \n  const hasTicket = true;\n  \n  if (hasTicket) {\n    console.log(\"Ticket valid! Opening the door...\");\n    next(); // Pass control to the next function!\n  } else {\n    // Stop the assembly line! Do not call next()!\n    console.log(\"No ticket. Kicking user out.\");\n    // res.status(403).send('Forbidden');\n  }\n};\n\n// 2. Plugging it in globally (applies to ALL routes)\n// app.use(securityGuard);\n\n// 3. Or plugging it into a specific route\n// app.get('/vip-lounge', securityGuard, (req, res) => {\n//   res.send('Welcome to the VIP area!');\n// });\n\n// Simulate the flow:\nsecurityGuard({ url: '/vip-lounge' }, {}, () => console.log(\"Route executed!\"));"
+}

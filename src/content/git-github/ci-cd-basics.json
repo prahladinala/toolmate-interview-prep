@@ -1,0 +1,31 @@
+{
+  "id": "ci-cd-basics",
+  "title": "CI/CD Basics",
+  "difficulty": "Advanced",
+  "definition": "Continuous Integration (CI) is the practice of automating the integration of code changes. Continuous Delivery (CD) is the practice of automating the deployment of those changes to production.",
+  "simpleExplanation": "The holy grail of modern software development. \n- CI: You push code, a robot tests it. If it fails, it blocks the PR. (Quality Control).\n- CD: You merge the PR, a robot instantly takes the code and puts it on the live internet. (Automated Shipping).",
+  "realWorldExample": "At Netflix or Amazon, developers don't manually log into servers to update the website. They merge a PR, and the CD pipeline automatically rolls the update out to 5% of users, tests for crashes, and then rolls it out to 100%.",
+  "useCases": [
+    "Rapid feature release",
+    "Preventing bugs in production"
+  ],
+  "questions": {
+    "basic": [
+      "What does CI stand for?"
+    ],
+    "intermediate": [
+      "What is the main difference between Continuous Delivery and Continuous Deployment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "CI stands for?",
+      "answer": "Continuous Integration."
+    },
+    {
+      "question": "Delivery vs Deployment?",
+      "answer": "In Continuous Delivery, the robot prepares the code, but a human must click a final 'Approve' button to push it live. In Continuous Deployment, there is NO human interaction. The moment the PR merges, it goes live instantly."
+    }
+  ],
+  "codeExample": "// A typical CI/CD Pipeline Flow\n\n/*\n  1. Developer pushes branch to GitHub.\n  2. [CI RUNS]: Linter checks for messy code.\n  3. [CI RUNS]: Unit Tests run.\n  4. [CI RUNS]: Integration Tests run.\n  5. Reviewer approves PR.\n  6. PR Merged to Main.\n  7. [CD RUNS]: Docker image built.\n  8. [CD RUNS]: Docker image pushed to AWS.\n  9. Users see the new feature!\n*/"
+}

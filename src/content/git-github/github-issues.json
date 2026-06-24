@@ -1,0 +1,32 @@
+{
+  "id": "github-issues",
+  "title": "GitHub Issues",
+  "difficulty": "Beginner",
+  "definition": "A tracking system integrated into GitHub used to collect user feedback, report bugs, request features, and organize tasks for a repository.",
+  "simpleExplanation": "A To-Do list combined with a message board. If a user finds a bug in your app, they open an 'Issue'. You can talk to the user in the comment section of the Issue, assign a developer to fix it, and eventually close the Issue when the bug is squashed.",
+  "realWorldExample": "A user clicks 'New Issue' on the Next.js repository to report that the server crashes when using a specific combination of plugins. The Vercel team responds, confirms the bug, and assigns it to an engineer.",
+  "useCases": [
+    "Bug tracking",
+    "Feature requests",
+    "Project planning"
+  ],
+  "questions": {
+    "basic": [
+      "Can anyone open an Issue on a Public repository?"
+    ],
+    "intermediate": [
+      "How do you reference an Issue inside a commit message or Pull Request?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Anyone can open?",
+      "answer": "Yes! Any GitHub user can open an issue on any public repository to report bugs or ask questions."
+    },
+    {
+      "question": "Reference an issue?",
+      "answer": "Use the hashtag followed by the issue number (e.g., `#42`). GitHub will automatically create clickable hyperlinks between the commit and the issue."
+    }
+  ],
+  "codeExample": "/*\n  Anatomy of a great Bug Report (Issue):\n  \n  Title: [BUG] Login page crashes on Safari iOS\n  \n  Description:\n  When attempting to log in using Safari on an iPhone 13, the page \n  freezes and throws a TypeError in the console.\n  \n  Steps to Reproduce:\n  1. Open Safari on iOS 15.\n  2. Navigate to /login.\n  3. Click the 'Sign in with Google' button.\n  \n  Expected Behavior:\n  The Google OAuth popup should appear.\n  \n  Actual Behavior:\n  The screen turns white and becomes unresponsive.\n*/"
+}

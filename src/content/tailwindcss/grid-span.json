@@ -1,0 +1,32 @@
+{
+  "id": "grid-span",
+  "title": "Column & Row Span",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how many columns or rows a single grid item should stretch across.",
+  "simpleExplanation": "If you have a 3-column grid, but you want a massive 'Featured Image' to stretch all the way across the top, you use `col-span-3`. It tells that specific item to merge 3 cells together into one giant cell.",
+  "realWorldExample": "A newspaper layout where the main headline article spans 2 columns, while the minor articles next to it only span 1 column.",
+  "useCases": [
+    "Bento layouts",
+    "Feature highlights",
+    "Complex forms"
+  ],
+  "questions": {
+    "basic": [
+      "If a parent is `grid-cols-4`, what class makes a child take up half the grid?"
+    ],
+    "intermediate": [
+      "What does `col-span-full` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Half the grid?",
+      "answer": "`col-span-2`"
+    },
+    {
+      "question": "col-span-full?",
+      "answer": "It forces the item to stretch across ALL available columns in the grid, regardless of whether it is a 3-column grid or a 12-column grid."
+    }
+  ],
+  "codeExample": "<!-- A Bento Box UI -->\n<div class=\"grid grid-cols-4 gap-4\">\n  <!-- Massive Featured Item (Spans 2 columns AND 2 rows!) -->\n  <div class=\"col-span-2 row-span-2 bg-blue-500\">\n    Giant Hero Box\n  </div>\n  \n  <!-- Normal 1x1 items -->\n  <div class=\"bg-red-500\">Box 2</div>\n  <div class=\"bg-green-500\">Box 3</div>\n  \n  <!-- Wide item (Spans 2 columns) -->\n  <div class=\"col-span-2 bg-yellow-500\">\n    Wide Box 4\n  </div>\n</div>"
+}

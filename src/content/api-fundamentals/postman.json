@@ -1,0 +1,32 @@
+{
+  "id": "postman",
+  "title": "Postman",
+  "difficulty": "Beginner",
+  "definition": "A highly popular desktop application used by developers to manually build, send, and test HTTP requests against APIs without writing any frontend code.",
+  "simpleExplanation": "Before you build a React app to talk to an API, you need to make sure the API actually works. Postman is a graphical interface where you type in a URL, pick 'GET' or 'POST', click 'Send', and it formats the JSON response beautifully on the screen.",
+  "realWorldExample": "A backend developer finishes building a new `/checkout` API. Instead of waiting for the frontend team to build the shopping cart UI, they use Postman to simulate a checkout request and verify the database updates.",
+  "useCases": [
+    "Manual API testing",
+    "Saving request collections",
+    "Debugging"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Postman 'Collection'?"
+    ],
+    "intermediate": [
+      "How can you use Postman to handle Authentication tokens automatically across multiple requests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Collection?",
+      "answer": "A group of saved API requests organized into folders. You can share a Collection with your team so everyone can test the API easily."
+    },
+    {
+      "question": "Handle auth automatically?",
+      "answer": "You can configure a Postman 'Environment Variable'. When you hit the `/login` endpoint, you write a tiny script in Postman to extract the JWT from the response and save it to the variable. You then configure the Collection to attach that variable to the `Authorization` header of all other requests automatically."
+    }
+  ],
+  "codeExample": "/* \n  How to structure a Postman Collection for a new API:\n  \n  📁 E-Commerce API (Collection)\n    📁 Auth\n       - 🟢 POST /login (Saves token to environment)\n       - 🟢 POST /register\n    📁 Products\n       - 🔵 GET /products\n       - 🔵 GET /products/:id\n       - 🟡 PUT /products/:id (Uses Admin Token)\n       - 🔴 DELETE /products/:id (Uses Admin Token)\n*/"
+}

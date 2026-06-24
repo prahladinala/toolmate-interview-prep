@@ -1,0 +1,31 @@
+{
+  "id": "release-management",
+  "title": "Release Management",
+  "difficulty": "Advanced",
+  "definition": "The process of managing, planning, scheduling, and controlling a software build through different stages and environments (Development, Staging, Production).",
+  "simpleExplanation": "You don't just push code straight to the public. You push it to 'Development'. Then you move it to 'Staging' (a fake environment that looks exactly like the real website) so the QA team can test it. Finally, you 'Release' it to Production.",
+  "realWorldExample": "Creating a 'Release' on GitHub, attaching compiled `.exe` files, writing release notes, and notifying users that Version 2.0 is available.",
+  "useCases": [
+    "Enterprise software lifecycle",
+    "Mobile App store submissions"
+  ],
+  "questions": {
+    "basic": [
+      "What GitHub feature allows you to attach compiled binaries (like a Windows `.exe` installer) to a specific version tag?"
+    ],
+    "intermediate": [
+      "What is Semantic Versioning (SemVer)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Feature for binaries?",
+      "answer": "GitHub Releases. You associate a Release with a Tag (like `v1.0`), write changelogs, and upload compiled assets."
+    },
+    {
+      "question": "Semantic Versioning?",
+      "answer": "A universal numbering system: `MAJOR.MINOR.PATCH` (e.g., `1.4.2`). Increment PATCH for bug fixes, MINOR for new features (backwards compatible), and MAJOR for massive breaking changes."
+    }
+  ],
+  "codeExample": "/*\n  How to create an official Release on GitHub:\n  \n  1. Go to your repository main page.\n  2. On the right sidebar, click 'Releases'.\n  3. Click 'Draft a new release'.\n  4. Create a new Tag (e.g., v1.2.0).\n  5. Click 'Generate release notes' to auto-fill the description \n     with all the Pull Requests merged since the last release.\n  6. Drag and drop any compiled assets (like an installer or PDF).\n  7. Click Publish!\n*/"
+}

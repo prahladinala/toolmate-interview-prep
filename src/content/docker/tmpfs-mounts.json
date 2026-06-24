@@ -1,0 +1,30 @@
+{
+  "id": "tmpfs-mounts",
+  "title": "tmpfs Mounts",
+  "difficulty": "Advanced",
+  "definition": "A temporary storage mount that writes data strictly into the host machine's memory (RAM), ensuring data is never permanently written to the container's writable layer or the host's hard drive.",
+  "simpleExplanation": "A whiteboard. The container writes data on it extremely fast, but the moment the container stops, someone wipes the whiteboard completely clean.",
+  "realWorldExample": "A high-security application needs to generate massive cryptographic keys to process a transaction. Writing them to disk is a security risk. It writes them to a `tmpfs` mount. Once the transaction ends, the memory is cleared, leaving zero trace on the hard drive.",
+  "useCases": [
+    "High-security secrets",
+    "High-performance temporary caching"
+  ],
+  "questions": {
+    "basic": [
+      "Are files saved in a `tmpfs` mount available after the container restarts?"
+    ],
+    "intermediate": [
+      "Does `tmpfs` work on Docker Desktop for Windows?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Available after restart?",
+      "answer": "No. Data stored in RAM is incredibly volatile. It disappears the instant the container stops."
+    },
+    {
+      "question": "Work on Windows?",
+      "answer": "No. `tmpfs` mounts are a native Linux feature. They only work on Docker running on a Linux host."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "pinecone",
+  "title": "Pinecone",
+  "difficulty": "Beginner",
+  "definition": "A highly popular, fully managed, cloud-native vector database designed specifically to store and query high-dimensional embeddings for AI applications.",
+  "simpleExplanation": "The most famous 'Database for AI'. You don't have to install it or manage servers. You just send it your vectors via an API, and it handles finding the nearest neighbors instantly.",
+  "realWorldExample": "A startup building a PDF-chat app uses Pinecone. When a user uploads a PDF, the app turns the text into vectors and saves them to Pinecone. When the user asks a question, the app queries Pinecone to find the right paragraphs.",
+  "useCases": [
+    "RAG architecture",
+    "Cloud-native AI apps"
+  ],
+  "questions": {
+    "basic": [
+      "Is Pinecone primarily used to store relational data (like SQL) or mathematical vectors?"
+    ],
+    "intermediate": [
+      "What is a fully managed or 'Serverless' database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "SQL or Vectors?",
+      "answer": "Mathematical vectors."
+    },
+    {
+      "question": "What is Serverless?",
+      "answer": "It means the developer does not have to worry about provisioning servers, installing software, or scaling infrastructure. Pinecone handles all the backend operations automatically."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "system-design-nextjs",
+  "title": "System Design Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions focusing on deploying, scaling, securing, and monitoring massive Next.js applications in production environments.",
+  "simpleExplanation": "You've built the app. Now, how do you keep it from crashing when 100,000 users log in at the exact same time?",
+  "realWorldExample": "Designing a ticketing system (like Ticketmaster) where caching is incredibly dangerous because inventory changes every millisecond.",
+  "useCases": [
+    "Staff Engineer Interviews",
+    "Architect roles"
+  ],
+  "questions": {
+    "basic": [
+      "Why is storing user uploaded images (like profile pictures) inside the Next.js `public` folder a terrible idea in production?"
+    ],
+    "intermediate": [
+      "How do you handle background jobs (like sending 10,000 emails) in a Next.js Serverless environment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not public folder?",
+      "answer": "The `public` folder is bundled at build time and deployed to read-only serverless environments. You cannot dynamically write files to it while the server is running. You must use external cloud storage like AWS S3 or Cloudinary for user uploads."
+    },
+    {
+      "question": "Handle background jobs?",
+      "answer": "Serverless functions die after 10-60 seconds. You cannot run long loops. You must push the task to an external Message Queue (like Upstash Kafka or AWS SQS), and have a dedicated external worker process those emails asynchronously."
+    }
+  ],
+  "codeExample": "/*\n  System Design Scenario:\n  \"How do you securely pass database passwords to Next.js without checking them into GitHub, and how do you rotate them?\"\n  \n  Answer:\n  1. Development: Use a `.env.local` file (gitignored).\n  2. Production: Inject them via the Vercel/AWS Dashboard Environment Variables UI.\n  3. Secret Manager: For enterprise, connect Next.js to AWS Secrets Manager or HashiCorp Vault. The app fetches the password dynamically at runtime.\n  4. Rotation: If the DB password changes, you update the Vercel dashboard and trigger a completely new deployment so Next.js rebuilds with the new credentials.\n*/"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "docker-intermediate",
+  "title": "Intermediate Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions focusing on Dockerfile best practices, Volumes, Networking, and Docker Compose.",
+  "simpleExplanation": "Proving you can actually build and manage a realistic application architecture locally.",
+  "realWorldExample": "Question: 'If you want to persist the data of a MySQL container so it survives restarts, what mechanism must you use and how does it work?'",
+  "useCases": [
+    "Full-Stack Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the purpose of a `.dockerignore` file?"
+    ],
+    "intermediate": [
+      "Explain the difference between `CMD` and `ENTRYPOINT` in a Dockerfile."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Purpose of .dockerignore?",
+      "answer": "To prevent specific large or sensitive files (like `node_modules` or `.env`) from being copied into the Docker Build Context, significantly speeding up build times and improving security."
+    },
+    {
+      "question": "CMD vs ENTRYPOINT?",
+      "answer": "`ENTRYPOINT` sets the strict, unyielding executable that the container will always run. `CMD` provides default arguments to that executable that can easily be overridden by the user at runtime."
+    }
+  ]
+}

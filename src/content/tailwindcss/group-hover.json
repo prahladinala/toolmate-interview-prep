@@ -1,0 +1,32 @@
+{
+  "id": "group-hover",
+  "title": "group-hover",
+  "difficulty": "Advanced",
+  "definition": "A complex state variant that allows a CHILD element to change its styling when a PARENT element is hovered.",
+  "simpleExplanation": "Normally, `hover:text-red` only triggers if your mouse is directly touching that exact word. But what if you have a massive Card, and you want a tiny arrow inside the card to turn red when the user hovers over ANY part of the Card? You make the Card a `group`, and you give the arrow `group-hover:text-red`.",
+  "realWorldExample": "A pricing tier card. When the user hovers over the card itself, the 'Buy Now' button inside it instantly lights up and expands.",
+  "useCases": [
+    "Interactive Cards",
+    "List items with action buttons",
+    "Complex UI feedback"
+  ],
+  "questions": {
+    "basic": [
+      "What class MUST you place on the parent element for `group-hover:` to work on the child?"
+    ],
+    "intermediate": [
+      "Can you have nested groups (a group inside another group)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Class on parent?",
+      "answer": "The `group` class."
+    },
+    {
+      "question": "Nested groups?",
+      "answer": "Yes! But you must name them. Parent gets `group/card`. Child gets `group-hover/card:text-red`. This prevents the hover states from confusing each other."
+    }
+  ],
+  "codeExample": "<!-- \n  The Parent is marked with 'group'.\n  When ANY PART of this white card is hovered by the mouse...\n-->\n<div class=\"group bg-white p-6 border rounded-lg hover:shadow-xl transition-shadow\">\n  <h3 class=\"font-bold\">Starter Plan</h3>\n  <p class=\"text-gray-500\">Perfect for individuals.</p>\n  \n  <!-- ...This child text instantly turns blue! -->\n  <p class=\"text-transparent group-hover:text-blue-500 transition-colors mt-4 font-bold\">\n    Click anywhere to view details →\n  </p>\n</div>"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "template-literals",
+  "title": "Template Literals",
+  "difficulty": "Beginner",
+  "definition": "String literals allowing embedded expressions and multi-line strings, enclosed by the backtick (` `) character.",
+  "simpleExplanation": "Instead of gluing strings together with clumsy plus signs (`'Hello ' + name + '!'`), Template Literals let you inject variables directly inside the string like a fill-in-the-blank mad-lib: `` `Hello ${name}!` ``.",
+  "realWorldExample": "Writing readable multi-line HTML strings or complex API endpoints: `` fetch(`https://api.com/users/${userId}/posts`) ``.",
+  "useCases": [
+    "String interpolation",
+    "Multi-line strings",
+    "Styled Components (Tagged Templates)"
+  ],
+  "questions": {
+    "basic": [
+      "What character is used for Template Literals?"
+    ],
+    "intermediate": [
+      "Can you execute functions inside the `${}` syntax?"
+    ],
+    "advanced": [
+      "What is a Tagged Template Literal?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you execute functions inside ${}?",
+      "answer": "Yes. You can put ANY valid JavaScript expression inside `${}`. This includes math `${2 + 2}`, function calls `${getName()}`, or ternaries `${isLoggedIn ? 'Yes' : 'No'}`."
+    },
+    {
+      "question": "What is a Tagged Template?",
+      "answer": "A tagged template allows you to parse a template literal with a custom function. This is exactly how the `styled-components` library in React works. Example: `styled.div` is actually a function, and the string ```color: red;``` is passed to it as arguments."
+    }
+  ],
+  "codeExample": "const name = 'Alice';\nconst age = 25;\n\n// Old ES5 way\nconst oldStr = \"My name is \" + name + \"\\nAnd I am \" + age + \" years old.\";\n\n// Modern ES6 Template Literal\nconst modernStr = `My name is ${name}\nAnd I am ${age} years old.`;\n\n// Tagged Template (Advanced)\nfunction highlight(strings, ...values) {\n  console.log(strings); // Array of string chunks\n  console.log(values);  // Array of evaluated expressions\n}\nhighlight`User ${name} has ${100} points`;"
+}

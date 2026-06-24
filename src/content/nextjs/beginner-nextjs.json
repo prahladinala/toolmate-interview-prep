@@ -1,0 +1,31 @@
+{
+  "id": "beginner-nextjs",
+  "title": "Beginner Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common, foundational questions asked in junior frontend engineering interviews to verify a basic understanding of the Next.js framework.",
+  "simpleExplanation": "Interviewers at this level want to know if you understand WHY Next.js exists, the difference between it and standard React, and the absolute basics of routing and components.",
+  "realWorldExample": "Preparing to articulate the difference between SSR and CSR clearly, rather than just reciting textbook definitions.",
+  "useCases": [
+    "Junior Developer Interviews",
+    "Basic knowledge verification"
+  ],
+  "questions": {
+    "basic": [
+      "Can you list 3 major benefits Next.js provides over standard Create React App (CRA)?"
+    ],
+    "intermediate": [
+      "Explain the concept of File-Based Routing to a non-technical person."
+    ]
+  },
+  "answers": [
+    {
+      "question": "3 major benefits?",
+      "answer": "1. Server-Side Rendering (SSR) for massive SEO improvements. 2. File-Based Routing (no need for react-router-dom). 3. Built-in performance optimizations (like the `<Image>` component and automatic code splitting)."
+    },
+    {
+      "question": "Explain routing?",
+      "answer": "Instead of writing complex code to connect a URL (like '/about') to a webpage, Next.js acts like your computer's Desktop. If you create a folder named 'about' and put a file in it, the website instantly creates that URL for you."
+    }
+  ],
+  "codeExample": "/* \n  Common Beginner Interview Scenario: \n  \"How do you make an API call in the new App Router?\"\n  \n  Bad Answer:\n  \"I use useEffect and fetch the data when the component mounts.\"\n  (This proves you don't understand Server Components)\n  \n  Good Answer:\n  \"By default, components are Server Components. I simply make the component async, use standard 'await fetch()', and Next.js fetches the data on the server before the HTML is even sent to the browser.\"\n*/"
+}

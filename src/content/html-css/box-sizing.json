@@ -1,0 +1,31 @@
+{
+  "id": "box-sizing",
+  "title": "box-sizing",
+  "difficulty": "Intermediate",
+  "definition": "The `box-sizing` property defines how the user agent should calculate the total width and height of an element.",
+  "simpleExplanation": "The biggest trap in CSS. By default, if you set `width: 100px` and `padding: 20px`, the browser ADDs them together, making your box 140px wide (100 + 20 left + 20 right). This destroys layouts. Setting `box-sizing: border-box` forces the browser to shrink the content inside so the TOTAL width remains exactly 100px.",
+  "realWorldExample": "This is why almost every modern website starts with a CSS reset: `* { box-sizing: border-box; }`. Without it, adding padding to a 100% width container will make it 105% wide, causing horizontal scrolling.",
+  "useCases": [
+    "Preventing horizontal scrollbars",
+    "Making math predictable when building layouts"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default value of `box-sizing`?"
+    ],
+    "intermediate": [
+      "If a div has `box-sizing: border-box`, `width: 200px`, and `padding: 50px`, how wide is the content area?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default value?",
+      "answer": "`content-box` (The bad one that adds padding to the total width)."
+    },
+    {
+      "question": "How wide is the content?",
+      "answer": "100px. The total width is locked at 200px. The left padding takes 50px, the right padding takes 50px, leaving only 100px of space in the middle for the actual text."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 300px;\n    padding: 50px;\n    border: 5px solid black;\n    margin-bottom: 20px;\n    background-color: lightcoral;\n  }\n\n  /* This box will grow massively! Total width = 300 + 50L + 50R + 5L + 5R = 410px! */\n  .bad-box {\n    box-sizing: content-box; /* Default */\n  }\n\n  /* This box stays EXACTLY 300px wide. The padding pushes INWARD. */\n  .good-box {\n    box-sizing: border-box;\n    background-color: lightgreen;\n  }\n</style>\n\n<div class=\"box bad-box\">\n  I have box-sizing: content-box.\n  <br>My width was set to 300px, but I am actually 410px wide!\n</div>\n\n<div class=\"box good-box\">\n  I have box-sizing: border-box.\n  <br>I am exactly 300px wide.\n</div>"
+}

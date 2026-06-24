@@ -1,0 +1,30 @@
+{
+  "id": "git-switch",
+  "title": "git switch",
+  "difficulty": "Beginner",
+  "definition": "A newer command introduced in Git 2.23 explicitly designed to switch branches, resolving the confusing dual-nature of `git checkout`.",
+  "simpleExplanation": "The modern, safer version of `git checkout`. It does exactly one thing: it switches branches. It cannot accidentally delete your files.",
+  "realWorldExample": "You want to go to the `dev` branch. Instead of typing `git checkout dev`, you type `git switch dev`.",
+  "useCases": [
+    "Switching branches safely"
+  ],
+  "questions": {
+    "basic": [
+      "What is the `git switch` equivalent of `git checkout -b` (create and switch)?"
+    ],
+    "intermediate": [
+      "If `git switch` is better, why do people still use `git checkout`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Equivalent to -b?",
+      "answer": "`git switch -c new-branch-name` (The -c stands for create)."
+    },
+    {
+      "question": "Why still use checkout?",
+      "answer": "Muscle memory. `git checkout` has been used for over a decade. Millions of tutorials and senior developers still use it automatically."
+    }
+  ],
+  "codeExample": "# Switch to an existing branch\n$ git switch main\n\n# CREATE and SWITCH to a new branch\n$ git switch -c feature/payment-gateway\n\n# Quickly switch back to the branch you were just on previously (like a TV remote 'Last Channel' button)\n$ git switch -"
+}

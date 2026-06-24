@@ -1,0 +1,32 @@
+{
+  "id": "inter-service-communication",
+  "title": "Service Communication",
+  "difficulty": "Advanced",
+  "definition": "The methodologies and protocols used by different microservices within a backend ecosystem to talk to each other, primarily divided into Synchronous (REST/gRPC) and Asynchronous (Message Queues).",
+  "simpleExplanation": "Synchronous: You call a coworker on the phone, ask a question, and hold the line until they give you the answer. (REST/gRPC). Asynchronous: You drop a letter in their inbox and walk away. They will process it whenever they have time. (RabbitMQ/Kafka).",
+  "realWorldExample": "An E-commerce site. When a user clicks 'Buy', the Cart Service must talk to the Payment Service SYNCHRONOUSLY (you must know instantly if the card declined). Once successful, it sends an ASYNCHRONOUS message to the Email Service ('Send a receipt eventually, I don't care when').",
+  "useCases": [
+    "Microservices",
+    "Event-driven architecture",
+    "Decoupling systems"
+  ],
+  "questions": {
+    "basic": [
+      "Which communication style expects an immediate response: Synchronous or Asynchronous?"
+    ],
+    "intermediate": [
+      "Why is gRPC often preferred over REST for Synchronous inter-service communication?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Immediate response?",
+      "answer": "Synchronous."
+    },
+    {
+      "question": "Why gRPC over REST?",
+      "answer": "Because internal microservices often talk to each other thousands of times a second. REST sends bulky JSON strings. gRPC sends highly compressed binary Protocol Buffers over HTTP/2, which is significantly faster and uses less CPU."
+    }
+  ],
+  "codeExample": "/* \n  Comparing Comm Styles:\n*/\n\n// 1. SYNCHRONOUS (HTTP/REST)\n// The 'Checkout' service pauses and waits. If 'Inventory' crashes, 'Checkout' crashes.\nconst result = await fetch('http://inventory-service/deduct/item123');\nif (result.ok) completeCheckout();\n\n// 2. ASYNCHRONOUS (Message Broker like RabbitMQ)\n// The 'Checkout' service fires a message and instantly finishes. \n// The 'Email' service picks it up 5 seconds later.\nmessageBroker.publish('order_completed', { orderId: 99 });\nreturn res.send('Order Placed!');"
+}

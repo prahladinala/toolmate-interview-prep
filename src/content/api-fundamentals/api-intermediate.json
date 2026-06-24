@@ -1,0 +1,30 @@
+{
+  "id": "api-intermediate",
+  "title": "Intermediate Interview Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to test practical experience with RESTful architecture, authentication, and HTTP headers.",
+  "simpleExplanation": "Interviewers want to see that you've actually built APIs and hit roadblocks. They will ask about PUT vs PATCH, CORS, and statelessness.",
+  "realWorldExample": "Being asked: 'How would you design a REST API endpoint to update a user's password?'",
+  "useCases": [
+    "Mid-level Engineering Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Explain the concept of 'Statelessness' in REST."
+    ],
+    "intermediate": [
+      "What is a CORS error and how do you fix it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Statelessness?",
+      "answer": "It means the server does not store any session information about the client between requests. Every single request from the client must contain all the information (like an Auth Token) necessary for the server to understand and authorize it."
+    },
+    {
+      "question": "What is CORS?",
+      "answer": "Cross-Origin Resource Sharing. It's a browser security feature that prevents a malicious website from making background API requests to your bank account. To fix it, the backend server must be configured to send the `Access-Control-Allow-Origin` header, explicitly whitelisting the frontend's domain."
+    }
+  ],
+  "codeExample": "/*\n  Common Intermediate Question:\n  \"What is the difference between PUT and PATCH?\"\n  \n  Answer:\n  PUT is used to completely replace a resource. You must send the entire object payload.\n  PATCH is used to partially update a resource. You only send the specific fields that changed.\n*/"
+}

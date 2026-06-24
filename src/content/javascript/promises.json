@@ -1,0 +1,45 @@
+{
+  "id": "promises",
+  "title": "Promises",
+  "difficulty": "Intermediate",
+  "definition": "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It is a proxy for a value not necessarily known when the promise is created.",
+  "simpleExplanation": "Imagine ordering food at a restaurant. They give you a buzzer (the Promise). You can't eat the buzzer, but it promises that eventually it will ring (Resolve) and you'll get food, or it will flash red (Reject) if they ran out of ingredients. While waiting, you can chat with your friends (run other code).",
+  "realWorldExample": "Fetching data from a database or a remote API. You don't want to freeze the entire website while waiting for the data to download over the internet.",
+  "useCases": [
+    "Fetching data from an API (fetch)",
+    "Reading files from a hard drive",
+    "Any operation that takes an unpredictable amount of time"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Promise?",
+      "What are the three states of a Promise?"
+    ],
+    "intermediate": [
+      "How do you handle errors in a Promise chain?",
+      "What is Promise.all() and when would you use it?"
+    ],
+    "advanced": [
+      "What is the difference between Promise.all() and Promise.race()?",
+      "How can you create a Promise that automatically resolves after 2 seconds?"
+    ],
+    "trick": [
+      "If you return a value inside a .then() block, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the three states of a Promise?",
+      "answer": "1. Pending: Initial state, neither fulfilled nor rejected. 2. Fulfilled (Resolved): The operation completed successfully. 3. Rejected: The operation failed."
+    },
+    {
+      "question": "What is Promise.all()?",
+      "answer": "Promise.all() takes an array of promises and returns a single Promise that resolves when ALL of the promises in the array have resolved. If any one of them rejects, the entire Promise.all rejects."
+    },
+    {
+      "question": "If you return a value inside a .then() block, what happens?",
+      "answer": "It is automatically wrapped in a new Promise. This allows you to chain multiple .then() blocks together."
+    }
+  ],
+  "codeExample": "// Creating a custom Promise\nconst orderFood = new Promise((resolve, reject) => {\n  console.log(\"Cooking food...\");\n  const success = true;\n  \n  setTimeout(() => {\n    if (success) {\n      resolve(\"🍔 Here is your burger!\");\n    } else {\n      reject(\"❌ Sorry, we ran out of meat.\");\n    }\n  }, 2000);\n});\n\n// Using the Promise\norderFood\n  .then((food) => {\n    console.log(food);\n    return \"Eating...\"; // This passes to the next .then()\n  })\n  .then((action) => {\n    console.log(action);\n  })\n  .catch((error) => {\n    console.error(error);\n  });\n\nconsole.log(\"Chatting with friends while waiting...\");"
+}

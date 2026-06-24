@@ -1,0 +1,30 @@
+{
+  "id": "git-checkout-file",
+  "title": "Restore Files (Legacy)",
+  "difficulty": "Intermediate",
+  "definition": "Using the legacy `git checkout -- <file>` command to discard changes in the working directory and restore the file to a previous state.",
+  "simpleExplanation": "Before `git restore` was invented in 2019, developers used `git checkout` to discard file changes. It is heavily used in older tutorials and by senior developers due to muscle memory.",
+  "realWorldExample": "Typing `git checkout -- index.html` to instantly erase any unsaved changes you made to the HTML file.",
+  "useCases": [
+    "Discarding changes in older Git versions"
+  ],
+  "questions": {
+    "basic": [
+      "What does the double dash (`--`) do in `git checkout -- file.txt`?"
+    ],
+    "intermediate": [
+      "Why did the Git team create `git restore` to replace this?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the double dash?",
+      "answer": "It explicitly tells Git: 'What follows is a file name, not a branch name'. This prevents a catastrophic error if you happen to have a file and a branch with the exact same name."
+    },
+    {
+      "question": "Why replace?",
+      "answer": "Because `git checkout` was too confusing. One command was used to safely switch branches (`git checkout dev`) AND destructively delete code (`git checkout -- file.txt`). Now, `switch` handles branches, and `restore` handles files."
+    }
+  ],
+  "codeExample": "# DANGER: This permanently deletes any unsaved changes to app.js\n$ git checkout -- app.js\n\n# DANGER: Discard all unsaved changes in the entire project\n$ git checkout -- .\n\n# Note: While this works perfectly, modern best practice is to use:\n# $ git restore app.js"
+}

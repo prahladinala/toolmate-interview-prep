@@ -1,0 +1,33 @@
+{
+  "id": "ssg",
+  "title": "Static Site Generation (SSG)",
+  "difficulty": "Intermediate",
+  "definition": "A rendering strategy where the HTML is generated exactly ONCE during the build process (`npm run build`). That same HTML file is then served instantly to every user.",
+  "simpleExplanation": "Cooking a pizza and freezing it. When a user asks for a pizza, you don't cook a new one (SSR); you just instantly hand them the frozen one. It is absurdly fast and costs the server almost zero processing power.",
+  "realWorldExample": "A company's 'About Us' page or a Blog post. The content almost never changes, so there is no reason to fetch from the database every time a user visits. Build it once and serve it to millions.",
+  "useCases": [
+    "Blogs",
+    "Marketing pages",
+    "Documentation",
+    "E-commerce product catalogs"
+  ],
+  "questions": {
+    "basic": [
+      "When is the HTML generated in Static Site Generation?"
+    ],
+    "intermediate": [
+      "What is the main problem with SSG if you use it for an application with data that updates frequently?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When generated?",
+      "answer": "At Build Time (when you run `npm run build` on your deployment server, before the users ever see it)."
+    },
+    {
+      "question": "Main problem?",
+      "answer": "Stale data. If you change a typo in a blog post in your database, the website will still show the old typo until you completely shut down and rebuild/redeploy the entire application."
+    }
+  ],
+  "codeExample": "/* \n  Static Site Generation in the App Router \n  (Also called 'Static Rendering')\n*/\n\nexport default async function BlogPost() {\n  // In the App Router, fetch is automatically cached by default!\n  // Next.js will run this fetch ONCE during `npm run build`,\n  // generate the HTML, and never run this fetch again.\n  const res = await fetch('https://api.cms.com/post/1');\n  const post = await res.json();\n\n  return (\n    <article>\n      <h1>{post.title}</h1>\n      <p>{post.content}</p>\n    </article>\n  );\n}"
+}

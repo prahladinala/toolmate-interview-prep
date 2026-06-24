@@ -1,0 +1,35 @@
+{
+  "id": "process-nexttick",
+  "title": "process.nextTick()",
+  "difficulty": "Advanced",
+  "definition": "A specific Node.js function that places a callback at the absolute front of the Microtask Queue, executing it immediately after the current operation completes, before ANY other Promises or Event Loop phases.",
+  "simpleExplanation": "If Microtasks are the VIP pass, `process.nextTick()` is the Owner of the amusement park. It skips EVERYTHING. Even if there are resolved Promises waiting in the VIP line, `nextTick` cuts in front of them.",
+  "realWorldExample": "You wrote a library that emits an event `emitter.emit('start')` inside the constructor. But the user hasn't had time to attach `.on('start')` yet because the constructor hasn't finished! You wrap the emit in `process.nextTick()`. This gives the user exactly 1 synchronous tick of time to attach the listener before the event fires.",
+  "useCases": [
+    "Library authoring",
+    "Emitting events safely",
+    "Deferring execution by exactly one tick"
+  ],
+  "questions": {
+    "basic": [
+      "Which runs first: `process.nextTick()` or a resolved Promise?"
+    ],
+    "intermediate": [
+      "Is `nextTick` part of the Event Loop?"
+    ],
+    "advanced": [
+      "What is the danger of recursive `nextTick` calls?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which runs first?",
+      "answer": "`process.nextTick()` ALWAYS runs first. It has the highest priority of any asynchronous queue in Node.js."
+    },
+    {
+      "question": "Is it part of the Event Loop?",
+      "answer": "No! It is a C++ microtask queue evaluated completely independent of the libuv Event Loop phases."
+    }
+  ],
+  "codeExample": "console.log(\"1. Script Start\");\n\n// Standard VIP (Microtask)\nPromise.resolve().then(() => {\n  console.log(\"4. Promise Resolved\");\n});\n\n// Super VIP (nextTick Queue)\nprocess.nextTick(() => {\n  console.log(\"3. nextTick Executed! (Cut in front of the Promise!)\");\n});\n\n// Macrotask (Timers Phase)\nsetTimeout(() => {\n  console.log(\"5. setTimeout Executed\");\n}, 0);\n\nconsole.log(\"2. Script End\");\n\n/*\nOutput:\n1. Script Start\n2. Script End\n3. nextTick (Highest priority!)\n4. Promise\n5. setTimeout\n*/"
+}

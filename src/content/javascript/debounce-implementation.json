@@ -1,0 +1,31 @@
+{
+  "id": "debounce-implementation",
+  "title": "Implement: Debounce",
+  "difficulty": "Advanced",
+  "definition": "Write a function `debounce(func, wait)` that delays invoking the provided function until after `wait` milliseconds have elapsed since the last time the debounced function was invoked.",
+  "simpleExplanation": "Debounce is an elevator door. You press the button, the door starts closing (timer starts). Just before it shuts, someone else presses the button. The door opens, and the timer RESTARTS. The elevator will not actually move until the timer finishes without anyone interrupting it.",
+  "realWorldExample": "Typing in a Search Auto-complete box. You don't want to fire an API request for every single letter ('a', 'ap', 'app', 'appl'). You debounce by 500ms. The API only fires 500ms after the user STOPS typing.",
+  "useCases": [
+    "Search bars",
+    "Window resize events",
+    "Auto-saving forms"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Debounce and Throttle?"
+    ],
+    "intermediate": [
+      "Write a basic Debounce implementation using closures."
+    ],
+    "advanced": [
+      "How do you ensure the `this` context and `arguments` are passed correctly to the original function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Debounce vs Throttle?",
+      "answer": "Debounce groups a sudden burst of events into a SINGLE execution at the very end of the burst. Throttle ensures the function is executed steadily at a consistent rate (e.g., exactly once every 100ms) while the burst is happening."
+    }
+  ],
+  "codeExample": "function debounce(func, wait) {\n  let timeoutId; // Closure variable holds the timer\n\n  return function(...args) {\n    const context = this;\n\n    // 1. If the user clicked again, clear the old timer\n    clearTimeout(timeoutId);\n\n    // 2. Start a brand new timer\n    timeoutId = setTimeout(() => {\n      // 3. When timer finishes, execute the function with correct context\n      func.apply(context, args);\n    }, wait);\n  };\n}\n\n// Usage:\nconst fetchResults = debounce((query) => {\n  console.log('Fetching API for:', query);\n}, 500);\n\n// User types fast:\nfetchResults('a'); // Timer starts\nfetchResults('ap'); // Old timer killed, new timer starts\nfetchResults('app'); // Old timer killed, new timer starts\n// (500ms later) -> Output: \"Fetching API for: app\""
+}

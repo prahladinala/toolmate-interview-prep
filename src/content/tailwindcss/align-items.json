@@ -1,0 +1,31 @@
+{
+  "id": "align-items",
+  "title": "Align Items",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling how flex and grid items are positioned along a container's cross axis.",
+  "simpleExplanation": "If your flexbox is a horizontal row, `items-*` controls the Top-to-Bottom spacing. If you have a giant 100px tall button, and a tiny 12px text label next to it, `items-center` ensures they vertically align perfectly in the middle.",
+  "realWorldExample": "Centering a user's name vertically so it lines up perfectly with the middle of their circular profile picture.",
+  "useCases": [
+    "Vertical centering",
+    "Stretching items to match height"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class vertically centers items in a standard `flex-row` container?"
+    ],
+    "intermediate": [
+      "What is the default `align-items` behavior if you don't specify anything?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Vertically centers?",
+      "answer": "`items-center`"
+    },
+    {
+      "question": "Default behavior?",
+      "answer": "`items-stretch`. By default, flex children will stretch vertically to perfectly match the height of the tallest child in the row."
+    }
+  ],
+  "codeExample": "<!-- \n  The Holy Grail of Centering a Div:\n  A container taking up the full screen, \n  centering horizontally (justify) and vertically (items).\n-->\n<div class=\"h-screen flex justify-center items-center bg-gray-100\">\n  <div class=\"bg-white p-8 rounded shadow\">\n    I am perfectly in the absolute center of your monitor.\n  </div>\n</div>\n\n<!-- Aligning different sized elements -->\n<div class=\"flex items-center space-x-4\">\n  <img src=\"avatar.jpg\" class=\"w-16 h-16 rounded-full\" />\n  <span class=\"text-sm\">My text perfectly aligns with the middle of the image</span>\n</div>"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "micro-frontends",
+  "title": "Micro Frontends",
+  "difficulty": "Advanced",
+  "definition": "An architectural style where independently deliverable frontend applications are composed into a greater whole.",
+  "simpleExplanation": "Imagine a giant e-commerce site. The 'Shopping Cart' is built and deployed by Team A using React 18. The 'Product Recommendations' is built and deployed by Team B using Vue.js. Micro-frontends allow these two completely separate apps to be stitched together on the same webpage seamlessly.",
+  "realWorldExample": "Using Webpack Module Federation to load remote React components from different servers at runtime.",
+  "useCases": [
+    "Massive organizations (Netflix, Spotify, Amazon)",
+    "Gradually migrating a legacy app to a new framework"
+  ],
+  "questions": {
+    "basic": [
+      "What problem do Micro-frontends solve?"
+    ],
+    "intermediate": [
+      "What is Module Federation?"
+    ],
+    "advanced": [
+      "How do micro-frontends share state (like the User's session)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What problem do they solve?",
+      "answer": "They solve organizational scaling. In a massive company with 500 frontend devs, working in a single monolithic codebase causes massive merge conflicts, slow builds, and deployment bottlenecks. Micro-frontends allow teams to deploy their specific piece of the UI completely independently."
+    }
+  ],
+  "codeExample": "// Micro-frontends are an architectural concept usually implemented via Webpack Module Federation, iframes, or custom routing."
+}

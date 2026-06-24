@@ -1,0 +1,35 @@
+{
+  "id": "type-assertions",
+  "title": "Type Assertions",
+  "difficulty": "Intermediate",
+  "definition": "A mechanism that tells the compiler to treat a variable as a specific type, overriding its inferred or declared type.",
+  "simpleExplanation": "Type Assertion is you pulling rank on the compiler. You look TypeScript in the eyes and say: 'I know you think this variable is an unknown HTML element, but I am the developer, and I guarantee you it is specifically an HTMLCanvasElement.'",
+  "realWorldExample": "Selecting a canvas from the DOM: `const canvas = document.getElementById('my-game') as HTMLCanvasElement;` so you can access `.getContext('2d')` without TS complaining.",
+  "useCases": [
+    "DOM manipulation",
+    "Migrating JS to TS",
+    "Working with poorly typed 3rd-party libraries"
+  ],
+  "questions": {
+    "basic": [
+      "What keyword is used for Type Assertions?"
+    ],
+    "intermediate": [
+      "Does a Type Assertion actually change the variable at runtime?"
+    ],
+    "advanced": [
+      "What is 'double assertion' (`as unknown as Type`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it change the variable at runtime?",
+      "answer": "NO! Type Assertions ONLY exist at compile time. They are completely erased when converted to JavaScript. If you assert a string as a number, the app will still behave as if it is a string at runtime."
+    },
+    {
+      "question": "What is double assertion?",
+      "answer": "TS prevents impossible assertions (e.g., you can't assert a `string` as a `boolean`). If you MUST force a completely unrelated type, you have to cast it to `unknown` first: `let val = \"hello\" as unknown as number`. This is highly dangerous."
+    }
+  ],
+  "codeExample": "// The DOM API returns a generic HTMLElement or null\n// We ASSERT that we know it is an HTMLInputElement\nconst searchInput = document.getElementById('search') as HTMLInputElement;\n\n// Now TS allows us to access the .value property specific to inputs\nconsole.log(searchInput.value);\n\n// Alternative syntax (Not recommended if using React/JSX because it clashes with tags)\nconst altInput = <HTMLInputElement>document.getElementById('search');"
+}

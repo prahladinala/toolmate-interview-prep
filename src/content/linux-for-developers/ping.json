@@ -1,0 +1,30 @@
+{
+  "id": "ping",
+  "title": "ping",
+  "difficulty": "Beginner",
+  "definition": "A network utility used to test the reachability of a host on an IP network and measure the round-trip time for messages sent.",
+  "simpleExplanation": "Sonar for computers. You yell 'Marco' at a server, and you wait to see if it yells 'Polo' back, and how many milliseconds it takes.",
+  "realWorldExample": "The company website is down. The admin types `ping 8.8.8.8` to see if their own laptop has internet. It succeeds. They type `ping company.com`. It fails. They know the problem is the company server, not their laptop.",
+  "useCases": [
+    "Basic network troubleshooting",
+    "Checking latency"
+  ],
+  "questions": {
+    "basic": [
+      "If you type `ping google.com` on Linux, will it automatically stop after 4 pings like it does on Windows?"
+    ],
+    "intermediate": [
+      "What underlying protocol does the `ping` command actually use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it stop automatically?",
+      "answer": "No. On Linux, `ping` runs infinitely forever until you manually forcefully stop it by pressing `Ctrl+C`."
+    },
+    {
+      "question": "Which protocol?",
+      "answer": "ICMP (Internet Control Message Protocol). It does NOT use TCP or UDP."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "flux-architecture",
+  "title": "Flux Architecture",
+  "difficulty": "Intermediate",
+  "definition": "An application architecture devised by Facebook for building client-side web applications. It complements React's composable view components by utilizing a unidirectional data flow. Redux is inspired by Flux.",
+  "simpleExplanation": "Before Flux, data in apps flowed in every direction like a bowl of spaghetti (Two-Way Data Binding). Changing a model updated a view, which updated another model, causing an infinite loop. Flux enforces a strict ONE-WAY street: Action -> Dispatcher -> Store -> View.",
+  "realWorldExample": "A restaurant. You (View) cannot walk into the kitchen and grab food (Store). You must give an order (Action) to the Waiter (Dispatcher). The waiter gives it to the kitchen, and the kitchen brings the food back out to you. Traffic only flows one way.",
+  "useCases": [
+    "Understanding the historical context of Redux",
+    "Designing predictable UIs"
+  ],
+  "questions": {
+    "basic": [
+      "Does data in Flux flow in one direction or two directions?"
+    ],
+    "intermediate": [
+      "How does Redux differ from the original Facebook Flux architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "One or two directions?",
+      "answer": "One direction (Unidirectional Data Flow)."
+    },
+    {
+      "question": "Redux vs Flux?",
+      "answer": "In traditional Flux, you can have MULTIPLE Stores (a UserStore, a CartStore). Redux mandates exactly ONE single centralized Store. Redux also eliminates the 'Dispatcher' class in favor of pure function Reducers."
+    }
+  ],
+  "codeExample": "/*\n  The Flux Unidirectional Flow:\n\n  [ VIEW ] (User clicks a button)\n     │\n     ▼\n  [ ACTION ] (An object describing what happened: { type: 'CLICK' })\n     │\n     ▼\n  [ DISPATCHER ] (The traffic cop that sends the action to the stores)\n     │\n     ▼\n  [ STORE ] (Updates the data, then tells the view to re-render)\n     │\n     ▼\n  [ VIEW ] (UI updates!)\n*/"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "state-batching",
+  "title": "State Batching (React 18)",
+  "difficulty": "Intermediate",
+  "definition": "Batching is when React groups multiple state updates into a single re-render for better performance. In React 18, 'Automatic Batching' was introduced, which batches updates everywhere, including inside promises, setTimeout, and native event handlers.",
+  "simpleExplanation": "Imagine you are making a sandwich. Instead of walking to the fridge to get bread, walking back, walking to the fridge to get cheese, walking back, and walking to the fridge to get ham (which is exhausting), you grab the bread, cheese, and ham all at once in one single trip. State batching is React doing the exact same thing to avoid redrawing the screen multiple times.",
+  "realWorldExample": "If a user clicks a 'Checkout' button, you might need to set `isLoading(true)` and `setError(null)` at the exact same time. React will batch these two state updates and only re-render the screen once.",
+  "useCases": [
+    "Improving performance by reducing unnecessary re-renders",
+    "Preventing 'half-finished' UI states from appearing on screen"
+  ],
+  "questions": {
+    "basic": [
+      "What is state batching?",
+      "How did state batching change in React 18?"
+    ],
+    "intermediate": [
+      "How can you opt-out of automatic batching if you absolutely need to?"
+    ],
+    "advanced": [
+      "Why didn't React 17 batch updates inside `setTimeout` or `fetch` promises?",
+      "What is `flushSync`?"
+    ],
+    "trick": [
+      "If you call `setCount(c => c + 1)` three times synchronously, how many times does the component re-render?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How did state batching change in React 18?",
+      "answer": "Before React 18, React only batched state updates inside React event handlers (like `onClick`). It did NOT batch updates inside `setTimeout`, promises, or native event handlers. React 18 introduced Automatic Batching, which batches updates everywhere."
+    },
+    {
+      "question": "How can you opt-out of automatic batching?",
+      "answer": "You can use `ReactDOM.flushSync()`. Any state updates wrapped inside `flushSync` will force React to update the DOM synchronously and immediately."
+    },
+    {
+      "question": "If you call setCount 3 times synchronously, how many re-renders?",
+      "answer": "Exactly ONE. React sees all three updates happen in the same event loop tick, groups them together, updates the value to 3, and then triggers a single re-render."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\nimport { flushSync } from 'react-dom';\n\nexport default function BatchingDemo() {\n  const [count, setCount] = useState(0);\n  const [flag, setFlag] = useState(false);\n\n  const handleClick = () => {\n    // In React 18, this only triggers ONE re-render\n    setTimeout(() => {\n      setCount(c => c + 1);\n      setFlag(f => !f);\n    }, 1000);\n  };\n\n  const handleFlushSync = () => {\n    // Forcing synchronous, non-batched updates (triggers TWO re-renders!)\n    // Rarely used, but necessary if you need to read the DOM immediately after the first state change\n    flushSync(() => {\n      setCount(c => c + 1);\n    });\n    // Component re-renders immediately here!\n    \n    flushSync(() => {\n      setFlag(f => !f);\n    });\n  };\n\n  return (\n    <div>\n      <button onClick={handleClick}>Batch (1 Render)</button>\n      <button onClick={handleFlushSync}>FlushSync (2 Renders)</button>\n    </div>\n  );\n}"
+}

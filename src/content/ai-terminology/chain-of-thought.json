@@ -1,0 +1,31 @@
+{
+  "id": "chain-of-thought",
+  "title": "Chain of Thought",
+  "difficulty": "Advanced",
+  "definition": "A prompt engineering technique that forces the LLM to explicitly write out its step-by-step reasoning process before outputting the final answer, dramatically increasing its accuracy on complex logic and math problems.",
+  "simpleExplanation": "Asking the AI to 'Show its work' like in a math class. If you just ask for the answer, the AI might guess and get it wrong. If you say 'Think step-by-step', the AI talks to itself, processes the logic slowly, and gets it right.",
+  "realWorldExample": "Prompt: 'If John has 5 apples, eats 2, buys 10, and splits them with Mary, how many does he have? THINK STEP BY STEP.' The AI writes out every math operation on a new line before giving the final answer.",
+  "useCases": [
+    "Math problems",
+    "Logic puzzles",
+    "Complex decision making"
+  ],
+  "questions": {
+    "basic": [
+      "What is the magic phrase used to trigger Chain of Thought reasoning in a basic prompt?"
+    ],
+    "intermediate": [
+      "Mechanically, why does Chain of Thought make the AI smarter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Magic phrase?",
+      "answer": "'Let's think step by step.'"
+    },
+    {
+      "question": "Why does it work?",
+      "answer": "Because LLMs generate text sequentially. By forcing it to write out the intermediate steps, you are actually giving the AI more 'Compute Time' and generating a larger Context Window of logical tokens for the Attention Mechanism to rely on before generating the final answer."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "playwright",
+  "title": "Playwright",
+  "difficulty": "Advanced",
+  "definition": "A powerful End-to-End (E2E) testing framework maintained by Microsoft that spins up a real, headless browser (Chrome, Firefox, Safari) and completely automates user interactions across your entire running application.",
+  "simpleExplanation": "Unit tests (Jest) check a function. Component tests (RTL) check a button. E2E tests (Playwright) check the ENTIRE system. It boots up Next.js, opens a real Chrome browser, navigates to the login page, types in credentials, hits the real database, and checks if the dashboard loads.",
+  "realWorldExample": "Writing a script that runs every time you push to GitHub, opening 3 different browsers, simulating a user adding an item to the shopping cart, executing a checkout, and verifying the 'Thank You' page appears.",
+  "useCases": [
+    "End-to-End testing",
+    "Cross-browser testing",
+    "Critical user flow validation"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between Playwright and React Testing Library?"
+    ],
+    "intermediate": [
+      "Why do developers typically write hundreds of Unit tests, but only a dozen Playwright E2E tests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference?",
+      "answer": "React Testing Library only renders isolated components in a fake, virtual environment. Playwright launches an actual, real-world web browser and navigates a fully deployed Next.js server."
+    },
+    {
+      "question": "Why so few E2E tests?",
+      "answer": "Speed and Cost. A Unit test takes 1 millisecond. A Playwright test takes 10 seconds because it has to boot a browser, hit the network, and hit the database. E2E tests are expensive and fragile, so they are reserved for only the most critical flows (like Checkout or Login)."
+    }
+  ],
+  "codeExample": "// e2e/checkout.spec.ts\nimport { test, expect } from '@playwright/test';\n\ntest('User can successfully checkout', async ({ page }) => {\n  // 1. Navigate to the fully running Next.js app\n  await page.goto('http://localhost:3000');\n\n  // 2. Automate user behavior\n  await page.click('text=Buy Now');\n  await page.fill('input[name=\"email\"]', 'test@example.com');\n  await page.fill('input[name=\"creditCard\"]', '4242424242424242');\n  await page.click('button:has-text(\"Place Order\")');\n\n  // 3. Assert the entire system worked end-to-end\n  await expect(page).toHaveURL('/order-success');\n  await expect(page.locator('h1')).toContainText('Thank you for your purchase');\n});"
+}

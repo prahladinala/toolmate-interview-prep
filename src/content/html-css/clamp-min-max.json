@@ -1,0 +1,32 @@
+{
+  "id": "clamp-min-max",
+  "title": "clamp(), min(), max()",
+  "difficulty": "Advanced",
+  "definition": "Modern CSS math functions that allow you to set dynamic, mathematical boundaries for sizing and typography without needing media queries.",
+  "simpleExplanation": "You want a font to be big on desktop, and small on mobile. Normally you write 3 media queries. With `clamp(1rem, 5vw, 3rem)`, you say: 'The font should scale fluidly based on screen size (5vw). BUT, never let it get smaller than 1rem, and never let it get larger than 3rem.' It does all the math automatically.",
+  "realWorldExample": "Fluid Typography. The font size grows and shrinks smoothly like a rubber band as you resize the window, stopping perfectly at the boundaries you set.",
+  "useCases": [
+    "Fluid typography",
+    "Dynamic widths",
+    "Eliminating media queries"
+  ],
+  "questions": {
+    "basic": [
+      "How many arguments does the `clamp()` function take?"
+    ],
+    "intermediate": [
+      "If you write `width: min(500px, 100%);`, what happens on a 300px phone screen?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many arguments?",
+      "answer": "Three. `clamp(MIN_VALUE, PREFERRED_VALUE, MAX_VALUE)`."
+    },
+    {
+      "question": "What happens?",
+      "answer": "The browser compares 500px and 100%. Since 100% of the screen is 300px, it picks the SMALLER of the two values (300px). This prevents horizontal scrolling!"
+    }
+  ],
+  "codeExample": "<style>\n  .clamp-text {\n    /* \n      Math logic:\n      1. Prefer 5vw (5% of screen width). So it grows as the screen grows.\n      2. If 5vw drops below 24px (on phones), STOP shrinking and lock at 24px.\n      3. If 5vw goes above 60px (on massive TVs), STOP growing and lock at 60px.\n    */\n    font-size: clamp(24px, 5vw, 60px);\n    \n    font-weight: bold;\n    color: #0f766e;\n    background: #ccfbf1;\n    padding: 20px;\n    text-align: center;\n  }\n</style>\n\n<div class=\"clamp-text\">\n  Resize the window slowly!\n  <br><br>\n  Watch my text size scale smoothly like a rubber band, but never get too tiny or too huge.\n</div>"
+}

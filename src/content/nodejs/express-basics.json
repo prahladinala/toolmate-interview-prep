@@ -1,0 +1,32 @@
+{
+  "id": "express-basics",
+  "title": "Express Fundamentals",
+  "difficulty": "Beginner",
+  "definition": "Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+  "simpleExplanation": "Raw Node.js HTTP is like building a house with a handsaw and a hammer; it takes forever. Express is a team of contractors with power tools. It handles all the tedious plumbing—like parsing URLs, sending JSON, and handling errors—so you can focus purely on writing the actual business logic of your app.",
+  "realWorldExample": "It is the 'E' in the MERN stack (MongoDB, Express, React, Node). It powers the backend of massive platforms like Twitter, Uber, and IBM.",
+  "useCases": [
+    "Building REST APIs",
+    "Serving React/Angular SPAs",
+    "Microservices"
+  ],
+  "questions": {
+    "basic": [
+      "Is Express built into Node.js?"
+    ],
+    "intermediate": [
+      "What is the main `app` object in Express?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it built in?",
+      "answer": "No. It is a 3rd party package. You must run `npm install express`."
+    },
+    {
+      "question": "What is the app object?",
+      "answer": "It is an instance of Express. You use it to define routes (`app.get`), configure middleware (`app.use`), and start the server (`app.listen`)."
+    }
+  ],
+  "codeExample": "/* \n  To run this locally:\n  1. npm init -y\n  2. npm install express\n*/\n\n// const express = require('express');\n// const app = express();\n\n// // 1. Built-in middleware to parse incoming JSON bodies automatically!\n// app.use(express.json());\n\n// // 2. A simple GET route\n// app.get('/api/ping', (req, res) => {\n//   res.status(200).json({ message: 'Pong!' });\n// });\n\n// // 3. Start the server\n// app.listen(3000, () => console.log('Express running on port 3000'));\n\nconsole.log(\"Express drastically reduces the amount of boilerplate code needed compared to the raw HTTP module.\");"
+}

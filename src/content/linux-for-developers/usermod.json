@@ -1,0 +1,30 @@
+{
+  "id": "usermod",
+  "title": "usermod",
+  "difficulty": "Intermediate",
+  "definition": "User Modify. A command used to modify the properties of an existing user account, such as changing their login name, home directory, or group memberships.",
+  "simpleExplanation": "Updating an employee's badge. You use this to promote someone into a new team (group) or change their username.",
+  "realWorldExample": "You need to give Bob administrative `sudo` privileges. You type `sudo usermod -aG sudo bob`. This appends Bob to the 'sudo' group, granting him admin rights.",
+  "useCases": [
+    "Managing permissions",
+    "Locking/Unlocking accounts"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `-L` flag do in `usermod -L bob`?"
+    ],
+    "intermediate": [
+      "Why MUST you use the `-a` (append) flag when adding a user to a new group with `-G`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is -L?",
+      "answer": "Lock. It instantly locks the user's password, preventing them from logging in, without deleting their account."
+    },
+    {
+      "question": "Why use -aG?",
+      "answer": "If you use `-G` without `-a`, Linux will remove the user from ALL their current groups and only put them in the new one, heavily breaking their permissions."
+    }
+  ]
+}

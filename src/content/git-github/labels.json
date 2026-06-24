@@ -1,0 +1,31 @@
+{
+  "id": "labels",
+  "title": "Labels",
+  "difficulty": "Beginner",
+  "definition": "Colorful, customizable tags that can be applied to Issues and Pull Requests to help categorize and filter them.",
+  "simpleExplanation": "Sticky notes for your to-do list. When you look at a repository with 500 open issues, it's overwhelming. Labels let you quickly color-code them: Red for `bug`, Green for `enhancement`, Blue for `documentation`.",
+  "realWorldExample": "A new developer joins an open-source project. They filter the issues tab by the label `good first issue` to find an easy, beginner-friendly bug to fix.",
+  "useCases": [
+    "Organizing large projects",
+    "Triage workflows"
+  ],
+  "questions": {
+    "basic": [
+      "What are some default labels GitHub provides when you create a repository?"
+    ],
+    "intermediate": [
+      "Can you filter a repository to show ONLY issues that have the 'bug' label?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default labels?",
+      "answer": "`bug`, `documentation`, `enhancement`, `good first issue`, `help wanted`, `invalid`, `question`, `wontfix`."
+    },
+    {
+      "question": "Filter by label?",
+      "answer": "Yes! Clicking on a label anywhere in the UI automatically filters the list to only show items with that specific label."
+    }
+  ],
+  "codeExample": "/*\n  Custom Labels you might create for a Web Project:\n  \n  - 'priority: high' (Color: Bright Red)\n  - 'priority: low' (Color: Yellow)\n  - 'frontend' (Color: Blue)\n  - 'backend' (Color: Green)\n  - 'needs design' (Color: Purple)\n  \n  You can then query GitHub: `is:issue is:open label:frontend label:bug`\n*/"
+}

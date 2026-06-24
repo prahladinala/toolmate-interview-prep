@@ -1,0 +1,30 @@
+{
+  "id": "linux-containers",
+  "title": "Linux Containers (LXC)",
+  "difficulty": "Advanced",
+  "definition": "An operating-system-level virtualization method for running multiple isolated Linux systems (containers) on a single control host using a single Linux kernel.",
+  "simpleExplanation": "An apartment building. Virtual Machines are like building 5 separate houses, each with its own plumbing and foundation (Kernel). Containers are an apartment building; they all share the exact same foundation (Kernel), but the walls keep the tenants completely isolated from each other.",
+  "realWorldExample": "Before Docker, sysadmins used LXC to slice a single massive 64-core Linux server into 10 smaller, isolated 'virtual' Linux environments, assigning 6 cores to each, without the massive performance penalty of traditional VMs.",
+  "useCases": [
+    "High-density server consolidation",
+    "The foundational technology behind Docker"
+  ],
+  "questions": {
+    "basic": [
+      "Can you run a Windows container on a Linux host kernel?"
+    ],
+    "intermediate": [
+      "What is the core difference between LXC (Linux Containers) and Docker?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Windows on Linux?",
+      "answer": "No. Containers SHARE the host's Kernel. A Windows app cannot speak to a Linux Kernel. A Linux Kernel can only run Linux containers."
+    },
+    {
+      "question": "LXC vs Docker?",
+      "answer": "LXC was designed to emulate a full Operating System (like a lightweight VM). Docker was built on top of LXC technology but shifted the philosophy to single-application containers (e.g., a container that ONLY runs Node.js and nothing else)."
+    }
+  ]
+}

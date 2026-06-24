@@ -1,0 +1,32 @@
+{
+  "id": "api-contracts",
+  "title": "API Contracts",
+  "difficulty": "Intermediate",
+  "definition": "A formal, documented agreement between the API provider (backend) and the API consumer (frontend) regarding exactly what data will be sent and what data will be returned.",
+  "simpleExplanation": "A promise. The backend promises: 'If you send me an ID as a number, I guarantee I will return an object with a `firstName` string.' If the backend suddenly changes `firstName` to `givenName` without telling the frontend, they broke the contract, and the frontend app crashes.",
+  "realWorldExample": "The Frontend and Backend teams meet on Monday. They agree on an API Contract for the new `/checkout` endpoint. They write it down in Swagger. Now, both teams can work completely independently for the rest of the week, knowing exactly how the systems will eventually connect.",
+  "useCases": [
+    "Team coordination",
+    "Microservices alignment",
+    "Consumer-Driven Contract Testing"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if a backend developer 'breaks the API contract'?"
+    ],
+    "intermediate": [
+      "How do tools like OpenAPI enforce API contracts?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Break contract?",
+      "answer": "The client applications relying on that API (Mobile apps, React apps, Partner companies) will instantly crash because they receive data in a format they aren't programmed to handle."
+    },
+    {
+      "question": "How tools enforce?",
+      "answer": "You can set up automated tests that intercept backend responses and compare them to the OpenAPI blueprint. If the backend returns `givenName` but the blueprint says `firstName`, the test fails and stops the deployment."
+    }
+  ],
+  "codeExample": "/*\n  A Basic API Contract Agreement\n  \n  ENDPOINT: POST /api/v1/orders\n  \n  FRONTEND PROMISES TO SEND:\n  {\n    \"itemId\": number (Required),\n    \"qty\": number (Default: 1)\n  }\n  \n  BACKEND PROMISES TO RETURN (201 Created):\n  {\n    \"orderId\": string,\n    \"status\": \"PENDING\" | \"SHIPPED\"\n  }\n  \n  **If either side deviates from this exact shape, the system fails.**\n*/"
+}

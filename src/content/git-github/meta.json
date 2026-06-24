@@ -1,0 +1,207 @@
+{
+  "id": "git-github",
+  "title": "Git & GitHub",
+  "description": "Master Git and GitHub from fundamentals to advanced workflows. Learn version control, branching strategies, collaboration, pull requests, CI/CD integration, and enterprise development practices.",
+  "icon": "git",
+  "categories": [
+    {
+      "id": "git-fundamentals",
+      "title": "Git Fundamentals",
+      "topics": [
+        { "id": "what-is-git", "title": "What is Git?" },
+        { "id": "version-control", "title": "Version Control Systems" },
+        { "id": "git-vs-github", "title": "Git vs GitHub" },
+        { "id": "install-git", "title": "Installing Git" },
+        { "id": "git-config", "title": "Git Configuration" },
+        { "id": "git-workflow-overview", "title": "Git Workflow Overview" }
+      ]
+    },
+    {
+      "id": "repository-basics",
+      "title": "Repository Basics",
+      "topics": [
+        { "id": "git-init", "title": "git init" },
+        { "id": "git-clone", "title": "git clone" },
+        { "id": "local-vs-remote", "title": "Local vs Remote Repository" },
+        { "id": "working-directory", "title": "Working Directory" },
+        { "id": "staging-area", "title": "Staging Area" },
+        { "id": "git-history", "title": "Repository History" }
+      ]
+    },
+    {
+      "id": "basic-commands",
+      "title": "Basic Git Commands",
+      "topics": [
+        { "id": "git-status", "title": "git status" },
+        { "id": "git-add", "title": "git add" },
+        { "id": "git-commit", "title": "git commit" },
+        { "id": "git-log", "title": "git log" },
+        { "id": "git-show", "title": "git show" },
+        { "id": "git-diff", "title": "git diff" }
+      ]
+    },
+    {
+      "id": "branching",
+      "title": "Branching & Merging",
+      "topics": [
+        { "id": "what-is-branch", "title": "What is a Branch?" },
+        { "id": "git-branch", "title": "git branch" },
+        { "id": "git-checkout", "title": "git checkout" },
+        { "id": "git-switch", "title": "git switch" },
+        { "id": "git-merge", "title": "git merge" },
+        { "id": "merge-conflicts", "title": "Merge Conflicts" },
+        { "id": "conflict-resolution", "title": "Conflict Resolution" }
+      ]
+    },
+    {
+      "id": "remote-repositories",
+      "title": "Remote Repositories",
+      "topics": [
+        { "id": "git-remote", "title": "git remote" },
+        { "id": "git-fetch", "title": "git fetch" },
+        { "id": "git-pull", "title": "git pull" },
+        { "id": "git-push", "title": "git push" },
+        { "id": "upstream-branch", "title": "Upstream Branches" },
+        { "id": "origin", "title": "origin" }
+      ]
+    },
+    {
+      "id": "undoing-changes",
+      "title": "Undoing Changes",
+      "topics": [
+        { "id": "git-reset", "title": "git reset" },
+        { "id": "git-revert", "title": "git revert" },
+        { "id": "git-restore", "title": "git restore" },
+        { "id": "git-checkout-file", "title": "Restore Files" },
+        { "id": "soft-mixed-hard-reset", "title": "Soft vs Mixed vs Hard Reset" }
+      ]
+    },
+    {
+      "id": "advanced-branching",
+      "title": "Advanced Branching",
+      "topics": [
+        { "id": "git-rebase", "title": "git rebase" },
+        { "id": "interactive-rebase", "title": "Interactive Rebase" },
+        { "id": "squash-commits", "title": "Squash Commits" },
+        { "id": "cherry-pick", "title": "git cherry-pick" },
+        { "id": "git-stash", "title": "git stash" },
+        { "id": "git-tag", "title": "git tag" }
+      ]
+    },
+    {
+      "id": "github-fundamentals",
+      "title": "GitHub Fundamentals",
+      "topics": [
+        { "id": "what-is-github", "title": "What is GitHub?" },
+        { "id": "github-repositories", "title": "Repositories" },
+        { "id": "forking", "title": "Forking Repositories" },
+        { "id": "cloning", "title": "Cloning Repositories" },
+        { "id": "github-profile", "title": "GitHub Profile" },
+        { "id": "github-pages", "title": "GitHub Pages" }
+      ]
+    },
+    {
+      "id": "pull-requests",
+      "title": "Pull Requests & Code Reviews",
+      "topics": [
+        { "id": "pull-request", "title": "Pull Requests (PR)" },
+        { "id": "creating-pr", "title": "Creating a Pull Request" },
+        { "id": "code-review", "title": "Code Reviews" },
+        { "id": "review-comments", "title": "Review Comments" },
+        { "id": "approvals", "title": "Approvals & Merging" },
+        { "id": "draft-pr", "title": "Draft Pull Requests" }
+      ]
+    },
+    {
+      "id": "github-collaboration",
+      "title": "Collaboration",
+      "topics": [
+        { "id": "teams", "title": "Teams & Organizations" },
+        { "id": "repository-permissions", "title": "Repository Permissions" },
+        { "id": "branch-protection", "title": "Branch Protection Rules" },
+        { "id": "collaborators", "title": "Collaborators" },
+        { "id": "open-source-contributions", "title": "Open Source Contributions" }
+      ]
+    },
+    {
+      "id": "issues-projects",
+      "title": "Issues & Project Management",
+      "topics": [
+        { "id": "github-issues", "title": "GitHub Issues" },
+        { "id": "labels", "title": "Labels" },
+        { "id": "milestones", "title": "Milestones" },
+        { "id": "github-projects", "title": "GitHub Projects" },
+        { "id": "issue-templates", "title": "Issue Templates" }
+      ]
+    },
+    {
+      "id": "github-actions",
+      "title": "GitHub Actions",
+      "topics": [
+        { "id": "what-is-github-actions", "title": "What are GitHub Actions?" },
+        { "id": "workflows", "title": "Workflow Files" },
+        { "id": "jobs-steps", "title": "Jobs & Steps" },
+        { "id": "runners", "title": "GitHub Runners" },
+        { "id": "environment-secrets", "title": "Secrets & Environment Variables" },
+        { "id": "ci-cd-basics", "title": "CI/CD Basics" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security & Best Practices",
+      "topics": [
+        { "id": "ssh-keys", "title": "SSH Keys" },
+        { "id": "https-vs-ssh", "title": "HTTPS vs SSH" },
+        { "id": "gitignore", "title": ".gitignore" },
+        { "id": "secret-management", "title": "Managing Secrets" },
+        { "id": "signed-commits", "title": "Signed Commits" },
+        { "id": "dependabot", "title": "Dependabot" }
+      ]
+    },
+    {
+      "id": "branching-strategies",
+      "title": "Branching Strategies",
+      "topics": [
+        { "id": "gitflow", "title": "GitFlow" },
+        { "id": "github-flow", "title": "GitHub Flow" },
+        { "id": "trunk-based-development", "title": "Trunk Based Development" },
+        { "id": "release-branches", "title": "Release Branches" },
+        { "id": "hotfix-branches", "title": "Hotfix Branches" }
+      ]
+    },
+    {
+      "id": "advanced-git",
+      "title": "Advanced Git",
+      "topics": [
+        { "id": "git-internals", "title": "Git Internals" },
+        { "id": "git-objects", "title": "Blobs, Trees & Commits" },
+        { "id": "reflog", "title": "git reflog" },
+        { "id": "bisect", "title": "git bisect" },
+        { "id": "submodules", "title": "Git Submodules" },
+        { "id": "monorepo", "title": "Monorepos" }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment Workflows",
+      "topics": [
+        { "id": "github-pages-deployment", "title": "GitHub Pages Deployment" },
+        { "id": "vercel-deployment", "title": "Vercel Integration" },
+        { "id": "netlify-deployment", "title": "Netlify Integration" },
+        { "id": "auto-deployment", "title": "Automated Deployments" },
+        { "id": "release-management", "title": "Release Management" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "git-beginner", "title": "Beginner Questions" },
+        { "id": "git-intermediate", "title": "Intermediate Questions" },
+        { "id": "git-advanced", "title": "Advanced Questions" },
+        { "id": "git-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "git-debugging", "title": "Troubleshooting Questions" }
+      ]
+    }
+  ]
+}

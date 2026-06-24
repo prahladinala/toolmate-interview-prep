@@ -1,0 +1,31 @@
+{
+  "id": "display",
+  "title": "Display Utilities",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the display box type of an element, mapping directly to the CSS `display` property.",
+  "simpleExplanation": "Controlling how an element flows on the page. Is it a block (takes up the whole row)? Is it inline (sits next to text)? Is it hidden completely?",
+  "realWorldExample": "Using `hidden md:block` on a mobile hamburger menu to hide the desktop navigation links on phones, but show them on laptops.",
+  "useCases": [
+    "Hiding/showing elements",
+    "Changing element flow behavior"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class applies `display: none`?"
+    ],
+    "intermediate": [
+      "What is the difference between `inline` and `inline-block`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Class for display: none?",
+      "answer": "`hidden`"
+    },
+    {
+      "question": "inline vs inline-block?",
+      "answer": "`inline` elements (like `<span>`) ignore width, height, top/bottom margins, and top/bottom padding. `inline-block` allows the element to sit inline with text, but still respect width, height, and margins."
+    }
+  ],
+  "codeExample": "<!-- Block: Takes up the full width, forces line breaks -->\n<div class=\"block bg-gray-200\">\n  I am a block\n</div>\n\n<!-- Inline: Sits inside text flow, ignores width/height -->\n<p>Here is an <span class=\"inline font-bold\">inline element</span> in a sentence.</p>\n\n<!-- Hidden: Completely removes the element from the DOM flow -->\n<div class=\"hidden\">\n  You cannot see me, and I take up zero space.\n</div>"
+}

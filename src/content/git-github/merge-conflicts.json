@@ -1,0 +1,30 @@
+{
+  "id": "merge-conflicts",
+  "title": "Merge Conflicts",
+  "difficulty": "Intermediate",
+  "definition": "An event that occurs when Git is unable to automatically resolve differences in code between two commits. This usually happens when two branches modified the exact same line of the exact same file.",
+  "simpleExplanation": "Developer A changes the title to 'Hello World'. Developer B changes the title to 'Welcome to App'. They both try to merge their code into `main`. Git throws its hands up and says: 'I am a robot, I don't know which one is correct! You are a human, you fix it!'",
+  "realWorldExample": "A terrifying red error message in your terminal stating `CONFLICT (content): Merge conflict in index.html`. Your code is paused, and Git injects weird `<<<<<<<` symbols into your file.",
+  "useCases": [
+    "Team collaboration realities"
+  ],
+  "questions": {
+    "basic": [
+      "Does a merge conflict destroy your code?"
+    ],
+    "intermediate": [
+      "How does Git physically mark a conflict inside the file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Destroy code?",
+      "answer": "No! It just pauses the merge process safely. Your code is fine, Git is just waiting for you to tell it what to do."
+    },
+    {
+      "question": "How marked?",
+      "answer": "It injects conflict markers: `<<<<<<< HEAD` (your current code), `=======` (the divider), and `>>>>>>> branch-name` (the incoming code)."
+    }
+  ],
+  "codeExample": "/* \n  What a file looks like during a Merge Conflict:\n  \n  <<<<<<< HEAD (Current branch: main)\n  <h1>Hello World</h1>\n  =======\n  <h1>Welcome to App</h1>\n  >>>>>>> feature-login (Incoming branch)\n  \n  To fix it, you literally just delete the symbols (<<<, ===, >>>)\n  and type out what you want the final code to look like.\n*/"
+}

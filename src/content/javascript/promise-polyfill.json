@@ -1,0 +1,33 @@
+{
+  "id": "promise-polyfill",
+  "title": "Promise Polyfill / Mock",
+  "difficulty": "Advanced",
+  "definition": "One of the hardest interview questions: Implement the core functionality of a Promise from scratch. It requires deep understanding of the Event Loop, Callbacks, and State Machines.",
+  "simpleExplanation": "The interviewer wants to see if you understand that a Promise is just an object with a state (pending, fulfilled, rejected), a value, and an array of callbacks (`.then`) that are triggered asynchronously when the state changes.",
+  "realWorldExample": "Writing a custom `MyPromise` class with `resolve`, `reject`, and `then` methods.",
+  "useCases": [
+    "Senior Staff Engineering Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three states of a Promise?"
+    ],
+    "intermediate": [
+      "Why do you need an array to store `.then` callbacks instead of just a single variable?"
+    ],
+    "advanced": [
+      "Write a simplified implementation of a Promise."
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the three states?",
+      "answer": "Pending, Fulfilled, and Rejected. Once a promise transitions out of Pending, its state and value are permanently locked."
+    },
+    {
+      "question": "Why an array for .then callbacks?",
+      "answer": "Because you can chain multiple `.then()` calls to the same promise (e.g., `const p = fetch(); p.then(cb1); p.then(cb2);`). When the promise resolves, it must iterate through the array and fire all attached callbacks."
+    }
+  ],
+  "codeExample": "// A very basic, non-chained implementation for interviews\nclass MyPromise {\n  constructor(executor) {\n    this.state = 'pending';\n    this.value = undefined;\n    this.onResolveCallbacks = [];\n\n    const resolve = (val) => {\n      if (this.state === 'pending') {\n        this.state = 'fulfilled';\n        this.value = val;\n        // Promises run asynchronously, so use setTimeout\n        this.onResolveCallbacks.forEach(cb => setTimeout(() => cb(val), 0));\n      }\n    };\n\n    try {\n      executor(resolve);\n    } catch (err) {\n      // In a real implementation, handle reject here\n    }\n  }\n\n  then(callback) {\n    if (this.state === 'fulfilled') {\n      setTimeout(() => callback(this.value), 0);\n    } else if (this.state === 'pending') {\n      this.onResolveCallbacks.push(callback);\n    }\n    // Returns a new Promise to allow chaining in a full implementation\n    return this;\n  }\n}\n\nconst p = new MyPromise((resolve) => {\n  setTimeout(() => resolve(\"Hello Custom Promise!\"), 1000);\n});\n\np.then(res => console.log(res));"
+}

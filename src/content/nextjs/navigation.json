@@ -1,0 +1,31 @@
+{
+  "id": "navigation",
+  "title": "Navigation & Link Component",
+  "difficulty": "Beginner",
+  "definition": "The methods used to navigate between routes in a Next.js application, primarily using the `<Link>` component and the `useRouter` hook.",
+  "simpleExplanation": "Never use a standard HTML `<a href=\"/about\">` tag in Next.js. It forces the browser to do a full, slow page reload. Use Next.js `<Link href=\"/about\">` instead. It intercepts the click, fetches the new page in the background instantly, and feels like a native mobile app.",
+  "realWorldExample": "Building a Navbar where clicking 'Contact' instantly swaps the page content without the browser tab spinning.",
+  "useCases": [
+    "Internal linking",
+    "Programmatic navigation"
+  ],
+  "questions": {
+    "basic": [
+      "What component should you use for all internal navigation in Next.js?"
+    ],
+    "intermediate": [
+      "What is 'Prefetching', and how does the `<Link>` component use it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which component?",
+      "answer": "The `<Link>` component imported from `next/link`."
+    },
+    {
+      "question": "What is prefetching?",
+      "answer": "When a `<Link>` scrolls into the user's viewport, Next.js secretly downloads the code for that page in the background. By the time the user actually clicks it, the page loads instantly in 0 milliseconds."
+    }
+  ],
+  "codeExample": "// 1. Declarative Navigation (Clicking links)\nimport Link from 'next/link';\n\nexport default function Navbar() {\n  return (\n    <nav>\n      {/* ✅ Do this for internal links */}\n      <Link href=\"/about\">About Us</Link>\n      \n      {/* ❌ Never do this for internal links (causes full reload) */}\n      <a href=\"/contact\">Contact</a>\n    </nav>\n  );\n}\n\n// 2. Programmatic Navigation (After an action, like submitting a form)\n'use client'; // Must be a client component to use hooks!\nimport { useRouter } from 'next/navigation';\n\nexport default function LoginButton() {\n  const router = useRouter();\n  \n  const handleLogin = () => {\n    // ... authenticate user ...\n    router.push('/dashboard'); // Instantly redirects the user\n  };\n  \n  return <button onClick={handleLogin}>Login</button>;\n}"
+}

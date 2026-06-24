@@ -1,0 +1,31 @@
+{
+  "id": "avoid-rerenders",
+  "title": "Avoid Unnecessary Re-renders",
+  "difficulty": "Intermediate",
+  "definition": "The goal of ensuring that a React component connected to Redux only updates the DOM when the specific piece of state it relies on has been modified.",
+  "simpleExplanation": "If a user typing in an email input field causes the entire Navbar, Sidebar, and Footer to re-render, your app will feel laggy and terrible. You must architect your selectors so components ignore state changes they don't care about.",
+  "realWorldExample": "If your `UserProfile` component selects `state.user`, it should NOT re-render when `state.cart` updates.",
+  "useCases": [
+    "Optimizing React performance",
+    "Large scale application architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Should you put everything into one massive `useSelector` or split them up into multiple `useSelector` calls?"
+    ],
+    "intermediate": [
+      "If a parent component re-renders, do its children re-render even if their `useSelector` data didn't change?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "One massive or multiple?",
+      "answer": "Split them up! Calling `useSelector` 5 times for 5 specific strings is vastly better than calling `useSelector` once to return a massive object, because returning an object forces a re-render every time."
+    },
+    {
+      "question": "Do children re-render?",
+      "answer": "Yes! This is a core React rule. If a Parent re-renders, all Children re-render by default, completely bypassing `useSelector` optimizations. You must wrap the Children in `React.memo()` to stop this."
+    }
+  ],
+  "codeExample": "// ❌ POOR OPTIMIZATION\nfunction Navbar() {\n  // Returns an object. Will re-render every time ANYTHING in state.user changes.\n  const { username, avatar } = useSelector(state => state.user);\n}\n\n// ✅ GREAT OPTIMIZATION\nfunction Navbar() {\n  // Primitive values! Will ONLY re-render if the username or avatar specifically change.\n  const username = useSelector(state => state.user.username);\n  const avatar = useSelector(state => state.user.avatar);\n}"
+}

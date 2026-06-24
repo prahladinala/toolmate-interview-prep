@@ -1,0 +1,35 @@
+{
+  "id": "iife",
+  "title": "IIFE (Immediately Invoked Function Expression)",
+  "difficulty": "Intermediate",
+  "definition": "A JavaScript function that runs as soon as it is defined. It is wrapped in parentheses to make it an expression, followed by `()` to invoke it immediately.",
+  "simpleExplanation": "An IIFE is a disposable function. You write it, it runs instantly, it creates a private sandbox for variables so they don't leak into the global scope, and then it is immediately forgotten.",
+  "realWorldExample": "Before ES6 modules existed, developers used IIFEs to bundle libraries like jQuery, ensuring that their internal variables didn't accidentally overwrite the user's variables.",
+  "useCases": [
+    "Data privacy",
+    "Avoiding global namespace pollution",
+    "Top-level await alternatives in older JS"
+  ],
+  "questions": {
+    "basic": [
+      "What does IIFE stand for?"
+    ],
+    "intermediate": [
+      "Why are the outer parentheses necessary?"
+    ],
+    "advanced": [
+      "Are IIFEs still necessary in modern JavaScript (ES6+)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why are outer parentheses necessary?",
+      "answer": "If a line starts with the word `function`, the JS engine expects a Function Declaration, which requires a name. Wrapping it in `()` tells the engine it is a Function Expression, allowing it to be anonymous and invoked instantly."
+    },
+    {
+      "question": "Are they still necessary?",
+      "answer": "Mostly no. ES6 introduced `let` and `const` (which are block-scoped, so just using `{ ... }` creates a private scope) and ES Modules (which have their own file scope). However, IIFEs are still useful for executing `async/await` inside a synchronous `useEffect` hook in React."
+    }
+  ],
+  "codeExample": "(function() {\n  // Private scope\n  var secret = 'Nobody can access me outside';\n  console.log('IIFE ran instantly!');\n})();\n\n// Common React use case: Async inside useEffect\n/*\nuseEffect(() => {\n  (async () => {\n    const data = await fetchData();\n    setData(data);\n  })();\n}, []);\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "health-checks",
+  "title": "Health Checks",
+  "difficulty": "Advanced",
+  "definition": "An instruction added to a Dockerfile or Compose file that tells Docker how to test if the application running inside the container is actually functioning properly, not just whether the container process is running.",
+  "simpleExplanation": "Checking the pulse of the app. Just because a web server container is turned 'On' doesn't mean the website isn't returning 500 Crash Errors. A health check actively pings the website every 30 seconds. If the site fails to load, Docker marks the container as 'Unhealthy'.",
+  "realWorldExample": "In a `docker-compose.yml`, you configure a health check to run `curl -f http://localhost/ || exit 1` every 30 seconds. A load balancer watches this status. If the container becomes 'Unhealthy', the load balancer automatically stops sending user traffic to it.",
+  "useCases": [
+    "Zero-downtime deployments",
+    "Automated container restarts",
+    "Load balancer routing"
+  ],
+  "questions": {
+    "basic": [
+      "What does it mean if a container status says 'Up 5 hours (unhealthy)'?"
+    ],
+    "intermediate": [
+      "Why is relying purely on the container's 'Running' state dangerous in production?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does unhealthy mean?",
+      "answer": "It means the container process is physically turned on and running, but the internal application failed the defined Health Check test (e.g., the web server is completely frozen and not answering HTTP requests)."
+    },
+    {
+      "question": "Why is 'Running' state dangerous?",
+      "answer": "A Java application might enter an infinite loop (deadlock). The container is technically still 'Running' because the Java process hasn't crashed, but the application is entirely broken. Without Health Checks, the orchestrator thinks everything is fine and routes users to a broken app."
+    }
+  ]
+}

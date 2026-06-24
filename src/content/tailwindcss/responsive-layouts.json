@@ -1,0 +1,31 @@
+{
+  "id": "responsive-layouts",
+  "title": "Responsive Layouts",
+  "difficulty": "Intermediate",
+  "definition": "Applying breakpoints to structural elements (Flexbox and Grid) to completely rearrange a webpage based on the user's device.",
+  "simpleExplanation": "A website shouldn't just shrink; it should fundamentally rearrange itself. A navigation bar with 10 links works on a laptop. On a phone, it must physically morph into a Hamburger menu.",
+  "realWorldExample": "Creating a layout where a promotional banner sits to the right of the main content on Desktop, but physically moves BELOW the main content on Mobile.",
+  "useCases": [
+    "Application dashboards",
+    "E-commerce product pages"
+  ],
+  "questions": {
+    "basic": [
+      "How do you change a flex container from a vertical stack on mobile to a horizontal row on a laptop?"
+    ],
+    "intermediate": [
+      "If you have `flex flex-col md:flex-row` and you want the second item in the HTML to appear FIRST visually on mobile, but second on desktop, how do you do it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Vertical to horizontal?",
+      "answer": "`flex flex-col md:flex-row`"
+    },
+    {
+      "question": "Visual reordering?",
+      "answer": "Use the `order-*` utility. `<div class=\"order-2 md:order-1\">`."
+    }
+  ],
+  "codeExample": "<!-- Reordering Content Responsively -->\n<!-- \n  HTML Order: \n  1. Main Content \n  2. Image \n  \n  Mobile View: Image is on top, Content is below. \n  Desktop View: Content is on left, Image is on right.\n-->\n<div class=\"flex flex-col md:flex-row\">\n  <!-- This is 2nd in HTML, but order-first forces it to the top on mobile! \n       md:order-none resets it on desktop so it sits on the right. -->\n  <div class=\"order-first md:order-none md:w-1/2\">\n    <img src=\"product.jpg\" class=\"w-full\" />\n  </div>\n  \n  <div class=\"md:w-1/2 p-8\">\n    <h1>Product Title</h1>\n    <p>Product Description</p>\n  </div>\n</div>"
+}

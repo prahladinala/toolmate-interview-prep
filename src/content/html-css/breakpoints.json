@@ -1,0 +1,30 @@
+{
+  "id": "breakpoints",
+  "title": "Breakpoints",
+  "difficulty": "Intermediate",
+  "definition": "The specific pixel values defined in media queries where a website's layout 'breaks' and transforms into a new layout to accommodate a different device size.",
+  "simpleExplanation": "Breakpoints are the invisible lines in the sand. When the screen shrinks past 768px, BOOM, the layout snaps to a mobile view. 768px is the 'breakpoint'.",
+  "realWorldExample": "Standard industry breakpoints are usually: 640px (Phones), 768px (Tablets), 1024px (Laptops), and 1280px+ (Desktops).",
+  "useCases": [
+    "Tailoring UX for specific devices (iPad vs iPhone)"
+  ],
+  "questions": {
+    "basic": [
+      "Do you have to use exact device widths (like 375px for iPhone) for breakpoints?"
+    ],
+    "intermediate": [
+      "What happens between breakpoints?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exact device widths?",
+      "answer": "No! This is a common beginner mistake. There are thousands of different Android phones. You should set breakpoints based on WHEN YOUR DESIGN BREAKS, not based on a specific phone model."
+    },
+    {
+      "question": "Between breakpoints?",
+      "answer": "Your layout should be 'fluid' (using percentages, flexbox, or grid) so it smoothly stretches and shrinks in the space between the rigid breakpoints."
+    }
+  ],
+  "codeExample": "<style>\n  body { margin: 0; font-family: sans-serif; }\n  \n  .device-indicator {\n    height: 100vh;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 3rem;\n    font-weight: bold;\n    color: white;\n    text-align: center;\n    transition: background-color 0.3s ease;\n  }\n\n  /* 1. MOBILE (Default, < 640px) */\n  .device-indicator {\n    background-color: #ef4444; /* Red */\n  }\n  .device-indicator::after { content: \"📱 Mobile\"; }\n\n  /* 2. TABLET BREAKPOINT (>= 640px) */\n  @media (min-width: 640px) {\n    .device-indicator {\n      background-color: #f59e0b; /* Orange */\n    }\n    .device-indicator::after { content: \"💊 Tablet\"; }\n  }\n\n  /* 3. LAPTOP BREAKPOINT (>= 1024px) */\n  @media (min-width: 1024px) {\n    .device-indicator {\n      background-color: #10b981; /* Green */\n    }\n    .device-indicator::after { content: \"💻 Laptop\"; }\n  }\n</style>\n\n<div class=\"device-indicator\"></div>"
+}

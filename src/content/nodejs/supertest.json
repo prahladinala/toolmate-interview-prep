@@ -1,0 +1,31 @@
+{
+  "id": "supertest",
+  "title": "Supertest",
+  "difficulty": "Intermediate",
+  "definition": "A Node.js library specifically designed to test HTTP servers (like Express apps). It allows you to simulate network requests without having to actually start the server on a port.",
+  "simpleExplanation": "If Jest tests your internal functions, Supertest tests your external APIs. It acts like a fake web browser. You tell it: 'Send a POST request to `/login` with this JSON body, and verify that the server replies with a 200 Status Code and a Token'.",
+  "realWorldExample": "Testing Express endpoints. You pass your `app` object directly into Supertest. It boots up the app in memory, fires a request at it, measures the response, and shuts it down instantly.",
+  "useCases": [
+    "API Integration Testing",
+    "Verifying HTTP status codes and JSON payloads"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to call `app.listen()` to test an Express app with Supertest?"
+    ],
+    "intermediate": [
+      "How does Supertest chain assertions?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do you need app.listen()?",
+      "answer": "No! That is the magic of Supertest. It binds to the Express `app` object in memory without ever occupying a real network port. This prevents 'Port in use' errors during testing."
+    },
+    {
+      "question": "How does it chain assertions?",
+      "answer": "Using the `.expect()` method. You can chain `.expect(200)` to verify the status code, and `.expect('Content-Type', /json/)` to verify headers in a fluid, readable syntax."
+    }
+  ],
+  "codeExample": "/* \n  npm install jest supertest\n*/\n// const request = require('supertest');\n// const express = require('express');\n\n// // 1. Setup the Express App (but DO NOT call app.listen!)\n// const app = express();\n// app.get('/user', (req, res) => res.status(200).json({ name: 'Alice' }));\n\n// // 2. The Jest Test\n/*\ntest('GET /user responds with JSON and status 200', async () => {\n  // We pass the Express app directly into Supertest\n  const response = await request(app)\n    .get('/user')\n    .expect('Content-Type', /json/) // Supertest assertion\n    .expect(200);                   // Supertest assertion\n    \n  // We can also use standard Jest assertions on the response body\n  expect(response.body.name).toBe('Alice');\n});\n*/\n\nconsole.log(\"Supertest makes testing complex API endpoints incredibly simple and readable.\");"
+}

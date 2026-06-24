@@ -1,0 +1,32 @@
+{
+  "id": "focus",
+  "title": "Focus State",
+  "difficulty": "Beginner",
+  "definition": "A state variant (`focus:`) that applies a utility class ONLY when the element is currently selected/active (e.g., clicking into a text input, or tabbing to a button via keyboard).",
+  "simpleExplanation": "When you click inside an email `<input>`, the border should turn blue so you know you are actively typing in it. This is crucial for users who navigate websites using the 'Tab' key instead of a mouse.",
+  "realWorldExample": "Changing an input field from `border-gray-300` to `border-brand-500` the moment the user clicks into it to start typing.",
+  "useCases": [
+    "Forms",
+    "Accessibility",
+    "Keyboard navigation"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix is used to change the background color of an input field when the user clicks into it?"
+    ],
+    "intermediate": [
+      "What is `focus-visible:` and why is it sometimes better than `focus:`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`focus:bg-gray-100`"
+    },
+    {
+      "question": "focus-visible?",
+      "answer": "`focus-visible:` ONLY applies the focus ring if the user navigated to the element using a Keyboard. It hides the focus ring if they clicked it with a Mouse. This prevents ugly blue rings from appearing when mouse users click buttons, while still protecting accessibility for keyboard users."
+    }
+  ],
+  "codeExample": "<!-- \n  A highly accessible, beautifully styled Input Field \n  1. Base: Gray border\n  2. Focus: Removes default outline, turns border Blue, adds a Blue Ring\n-->\n<input \n  type=\"email\" \n  placeholder=\"Email Address\"\n  class=\"border border-gray-300 rounded px-4 py-2 w-full \n         focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500\" \n/>\n\n<!-- Using focus-visible to keep mouse users happy -->\n<button class=\"bg-blue-500 px-4 py-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300\">\n  No ring when clicked! Ring appears when Tabbed to!\n</button>"
+}

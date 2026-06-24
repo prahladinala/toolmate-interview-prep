@@ -1,0 +1,31 @@
+{
+  "id": "git-rebase",
+  "title": "git rebase",
+  "difficulty": "Advanced",
+  "definition": "A command that integrates changes from one branch into another by rewriting the commit history to create a perfectly linear, straight timeline.",
+  "simpleExplanation": "When you use `git merge`, Git creates a messy 'Merge Commit' that ties two diverging branches together. `git rebase` is cleaner. It literally unplugs your feature branch, moves it to the very tip of the `main` branch, and replugs it in. It makes it look like you wrote your feature today, rather than 3 weeks ago.",
+  "realWorldExample": "Keeping a feature branch up-to-date with a fast-moving `main` branch, without cluttering the history with 50 useless 'Merge branch main into feature' commits.",
+  "useCases": [
+    "Maintaining a clean, linear commit history",
+    "Updating stale feature branches"
+  ],
+  "questions": {
+    "basic": [
+      "Does `git rebase` rewrite commit history?"
+    ],
+    "intermediate": [
+      "What is the 'Golden Rule of Rebase'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Rewrite history?",
+      "answer": "Yes! It physically changes the cryptographic hashes of your commits. Because of this, it is dangerous."
+    },
+    {
+      "question": "Golden Rule?",
+      "answer": "NEVER rebase a public branch that other developers are working on. Because rebasing changes commit hashes, if you rebase `main` and push it, you will destroy the repository for all your coworkers."
+    }
+  ],
+  "codeExample": "# Scenario: You are on 'feature-branch', and 'main' has moved ahead of you.\n\n# Step 1: Download latest main\n$ git checkout main\n$ git pull origin main\n\n# Step 2: Go back to your feature branch\n$ git checkout feature-branch\n\n# Step 3: Rebase your feature onto the tip of main\n$ git rebase main\n\n# Now your feature branch has all the latest code from main, \n# and your custom commits are neatly stacked on the very top!"
+}

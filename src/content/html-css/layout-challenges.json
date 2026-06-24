@@ -1,0 +1,30 @@
+{
+  "id": "layout-challenges",
+  "title": "Layout Coding Challenges",
+  "difficulty": "Advanced",
+  "definition": "Live whiteboard or sandbox coding challenges where you must recreate a specific visual layout using only vanilla HTML and CSS.",
+  "simpleExplanation": "The interviewer shows you a picture of a UI component (like a Twitter tweet card or a Navigation bar) and says: 'Build this in 10 minutes'.",
+  "realWorldExample": "Building the Holy Grail Layout (Header, Footer, Left Sidebar, Main Content, Right Sidebar).",
+  "useCases": [
+    "Live coding rounds in interviews"
+  ],
+  "questions": {
+    "basic": [
+      "How do you perfectly center a `div` both vertically and horizontally?"
+    ],
+    "intermediate": [
+      "How do you make a footer stay at the absolute bottom of the screen, even if there is very little content on the page?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Center a div?",
+      "answer": "Apply `display: flex; justify-content: center; align-items: center;` to the parent container."
+    },
+    {
+      "question": "Sticky footer?",
+      "answer": "Make the `<body>` a flex container with `min-height: 100vh; flex-direction: column;`. Then give the main content area `flex-grow: 1;`. This forces the main area to eat all empty space, pushing the footer to the bottom."
+    }
+  ],
+  "codeExample": "<style>\n  /* THE HOLY GRAIL LAYOUT (Modern Solution using Grid) */\n  .layout {\n    display: grid;\n    grid-template-areas:\n      \"header header header\"\n      \"left   main   right\"\n      \"footer footer footer\";\n      \n    grid-template-columns: 150px 1fr 150px;\n    grid-template-rows: auto 1fr auto;\n    height: 300px; /* Simulated screen height */\n    gap: 5px;\n  }\n\n  .box { padding: 20px; color: white; font-weight: bold; text-align: center; }\n  .header { grid-area: header; background: #e11d48; }\n  .left { grid-area: left; background: #3b82f6; }\n  .main { grid-area: main; background: #10b981; }\n  .right { grid-area: right; background: #3b82f6; }\n  .footer { grid-area: footer; background: #475569; }\n</style>\n\n<div class=\"layout\">\n  <div class=\"box header\">Header</div>\n  <div class=\"box left\">L-Sidebar</div>\n  <div class=\"box main\">Main Content</div>\n  <div class=\"box right\">R-Sidebar</div>\n  <div class=\"box footer\">Footer</div>\n</div>"
+}

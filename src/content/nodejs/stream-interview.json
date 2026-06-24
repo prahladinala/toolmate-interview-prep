@@ -1,0 +1,31 @@
+{
+  "id": "stream-interview",
+  "title": "Streams Interview Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions assessing a developer's ability to handle massive datasets using memory-efficient Node.js Streams.",
+  "simpleExplanation": "If an interviewer asks 'How do you handle a file that is bigger than your server's RAM?', the only correct answer is 'Streams'.",
+  "realWorldExample": "Writing a custom Transform stream on a whiteboard to filter out bad words from a live Twitter feed.",
+  "useCases": [
+    "Data engineering interviews",
+    "Backend performance scaling"
+  ],
+  "questions": {
+    "basic": [
+      "What is backpressure in Node.js streams?"
+    ],
+    "intermediate": [
+      "How does `.pipe()` handle backpressure automatically?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is backpressure?",
+      "answer": "It occurs when a Readable stream is sending data MUCH faster than the Writable stream can process it. The Writable stream's internal memory buffer fills up and overflows."
+    },
+    {
+      "question": "How does .pipe() handle it?",
+      "answer": "If the Writable stream's buffer gets full, `.pipe()` automatically tells the Readable stream to `.pause()`. Once the Writable stream finishes processing its buffer, it emits a `'drain'` event, and `.pipe()` automatically tells the Readable stream to `.resume()`."
+    }
+  ],
+  "codeExample": "/* \n  SCENARIO:\n  You need to copy a 50GB file from one folder to another. \n  You only have 512MB of RAM. Write the code.\n*/\n\n// const fs = require('fs');\n\n// INTERVIEWER TRAP (Fails! Out of Memory crash):\n// const data = fs.readFileSync('50GB.mp4');\n// fs.writeFileSync('copy.mp4', data);\n\n// THE CORRECT ANSWER (Uses < 50MB of RAM regardless of file size):\n// const readable = fs.createReadStream('50GB.mp4');\n// const writable = fs.createWriteStream('copy.mp4');\n\n// readable.pipe(writable);\n\n// writable.on('finish', () => {\n//   console.log('Copy completed efficiently!');\n// });\n\nconsole.log(\"Always use streams when dealing with network payloads or files over a few Megabytes.\");"
+}

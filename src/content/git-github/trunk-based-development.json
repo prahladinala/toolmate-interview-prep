@@ -1,0 +1,31 @@
+{
+  "id": "trunk-based-development",
+  "title": "Trunk Based Development",
+  "difficulty": "Advanced",
+  "definition": "A version control management practice where all developers merge small, frequent updates to a core 'trunk' or `main` branch many times a day.",
+  "simpleExplanation": "The extreme version of GitHub flow. Feature branches are barely used. Instead, developers push code directly to `main` constantly. To prevent breaking the app, they hide unfinished features behind 'Feature Flags' (If/Else statements).",
+  "realWorldExample": "Facebook does this. A developer writes half of a new login page, pushes it straight to main, but wraps it in `if (showNewLogin == true)`. Since it evaluates to false, users don't see the broken half-page, but the code is safely integrated.",
+  "useCases": [
+    "Massive engineering teams (Google, Facebook)",
+    "Avoiding merge conflicts"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary benefit of Trunk Based Development?"
+    ],
+    "intermediate": [
+      "What is a Feature Flag (or Feature Toggle)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary benefit?",
+      "answer": "It completely eliminates 'Merge Hell'. Because everyone merges 5 times a day, branches never get far apart, so massive, devastating merge conflicts simply don't happen."
+    },
+    {
+      "question": "Feature Flag?",
+      "answer": "A variable managed on a dashboard that allows you to turn a block of code On or Off in production without needing to deploy new code."
+    }
+  ],
+  "codeExample": "// Concept of a Feature Flag in Trunk Based Development\n\nfunction renderLogin() {\n  // Even though the new UI isn't finished, the code is safely merged into 'main'!\n  // We just hide it using a configuration variable.\n  if (config.ENABLE_NEW_UI === true) {\n    return <NewExperimentalLogin />;\n  } else {\n    return <OldStableLogin />;\n  }\n}"
+}

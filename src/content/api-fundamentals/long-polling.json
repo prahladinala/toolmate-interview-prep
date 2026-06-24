@@ -1,0 +1,31 @@
+{
+  "id": "long-polling",
+  "title": "Long Polling",
+  "difficulty": "Intermediate",
+  "definition": "A variation of standard polling where the server holds the client's HTTP request open until new data actually becomes available, rather than instantly returning an empty response.",
+  "simpleExplanation": "The kid asks 'Are we there yet?'. The parent doesn't answer immediately. The parent waits 2 hours in silence, and the exact second they arrive, the parent says 'Yes'. The kid instantly hangs up, celebrates, and calls back later if needed.",
+  "realWorldExample": "Early chat applications before WebSockets were invented. The browser sends an HTTP request. The Node.js server literally `awaits` a new message event in its code. The connection stays pending in the browser's network tab for up to 30 seconds. Once a message arrives, the server completes the response.",
+  "useCases": [
+    "Real-time data without WebSockets",
+    "Strict corporate firewalls"
+  ],
+  "questions": {
+    "basic": [
+      "Does Long Polling reduce the number of HTTP requests compared to standard (Short) Polling?"
+    ],
+    "intermediate": [
+      "What happens if no data arrives during a Long Polling request and the server's timeout limit (e.g., 30 seconds) is reached?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Reduce requests?",
+      "answer": "Yes, drastically. Instead of 100 requests asking 'Any updates?', there is only 1 request that stays open until an update arrives."
+    },
+    {
+      "question": "What happens on timeout?",
+      "answer": "The server closes the connection with an empty response (or a 204/304 code). The client receives this, and immediately opens a brand new Long Polling request to start waiting again."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Flow of Long Polling \n*/\n\n// 1. Client: GET /api/messages/wait\n// 2. Server: (Does not respond immediately. Keeps connection open in memory.)\n// ... 15 seconds pass ...\n// 3. User B sends a message to the database.\n// 4. Server: Sees the message, immediately sends it to Client and closes the connection.\n// 5. Client: Receives message, processes it, and INSTANTLY sends a new GET /api/messages/wait."
+}

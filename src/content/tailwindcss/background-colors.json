@@ -1,0 +1,32 @@
+{
+  "id": "background-colors",
+  "title": "Background Colors",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling an element's background color.",
+  "simpleExplanation": "Works exactly like text colors, but uses the `bg-` prefix instead. `bg-{color}-{shade}`.",
+  "realWorldExample": "Creating a primary action button with `bg-blue-600 text-white`.",
+  "useCases": [
+    "Buttons",
+    "Card backgrounds",
+    "Page backgrounds"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix is used for background colors in Tailwind?"
+    ],
+    "intermediate": [
+      "What class would you use to make a background completely transparent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`bg-` (e.g., `bg-red-500`)."
+    },
+    {
+      "question": "Transparent class?",
+      "answer": "`bg-transparent`. This is incredibly useful when overriding a background color on a hover state or specific responsive breakpoint."
+    }
+  ],
+  "codeExample": "<!-- A standard Primary Button -->\n<button class=\"bg-indigo-600 text-white px-4 py-2 rounded\">\n  Click Me\n</button>\n\n<!-- Warning Banner -->\n<div class=\"bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4\">\n  Please verify your email address.\n</div>"
+}

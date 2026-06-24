@@ -1,0 +1,35 @@
+{
+  "id": "module-pattern",
+  "title": "Module Pattern",
+  "difficulty": "Intermediate",
+  "definition": "A design pattern used to emulate the concept of classes and true encapsulation (private variables) in JavaScript using Closures and IIFEs.",
+  "simpleExplanation": "Before modern JavaScript had the `import/export` syntax, everything was global. The Module Pattern was a clever trick to put your variables in a hidden box, and only cut a small hole in the box to let specific functions (the public API) out.",
+  "realWorldExample": "Creating a Shopping Cart where the `items` array is completely hidden from the rest of the application. The only way to interact with it is via the exposed `addItem()` and `getTotal()` methods.",
+  "useCases": [
+    "Encapsulation",
+    "Data Privacy",
+    "Legacy codebase architecture"
+  ],
+  "questions": {
+    "basic": [
+      "What is Encapsulation?"
+    ],
+    "intermediate": [
+      "How does the Module Pattern achieve privacy?"
+    ],
+    "advanced": [
+      "Is the Module Pattern still necessary with ES6 Modules?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does it achieve privacy?",
+      "answer": "It relies entirely on Closures. By defining an array inside a function, and then returning an object containing methods that reference that array, the array is kept alive in memory. But because the array itself wasn't returned, no outside code can possibly touch it directly."
+    },
+    {
+      "question": "Is it still necessary with ES6 Modules?",
+      "answer": "Mostly no. ES6 modules provide file-level scope. If you declare a variable inside `cart.js` but don't `export` it, it is perfectly private. The modern language has solved the problem the pattern was invented to fix."
+    }
+  ],
+  "codeExample": "const ShoppingCart = (function() {\n  // 1. Private variables (cannot be accessed outside)\n  const cart = [];\n  \n  function calculateTax(amount) { return amount * 0.1; }\n\n  // 2. The Public API (What gets returned)\n  return {\n    addItem: function(item) {\n      cart.push(item);\n      console.log(`${item.name} added.`);\n    },\n    getCartCount: function() {\n      return cart.length;\n    }\n  };\n})(); // IIFE runs instantly\n\nShoppingCart.addItem({ name: 'Apple', price: 1 });\nconsole.log(ShoppingCart.getCartCount()); // 1\n\n// Completely hidden and protected!\nconsole.log(ShoppingCart.cart); // undefined\n// ShoppingCart.calculateTax(100); // TypeError: not a function"
+}

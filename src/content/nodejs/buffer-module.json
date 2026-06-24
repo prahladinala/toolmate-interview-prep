@@ -1,0 +1,35 @@
+{
+  "id": "buffer-module",
+  "title": "Buffers",
+  "difficulty": "Intermediate",
+  "definition": "A core Node.js class used to represent fixed-length sequences of bytes. It is Node's way of interacting with raw binary data.",
+  "simpleExplanation": "JavaScript was designed for strings and numbers. It was never meant to read raw image data or video pixels (which are just 0s and 1s). A Buffer is a temporary storage area in memory explicitly designed to hold raw binary data coming from Streams or the File System before it is processed.",
+  "realWorldExample": "If you use `fs.readFile('image.png')`, Node doesn't return a string. It returns a `<Buffer 89 50 4e 47 ... >`. These are the raw hexadecimal bytes of the image.",
+  "useCases": [
+    "File uploads",
+    "Image/Video processing",
+    "Cryptography"
+  ],
+  "questions": {
+    "basic": [
+      "What does a Buffer hold?"
+    ],
+    "intermediate": [
+      "What happens if you print a Buffer to the console without calling `.toString()` on it?"
+    ],
+    "advanced": [
+      "Can you resize a Buffer after it is created?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if you print a Buffer?",
+      "answer": "It prints an array of two-digit hexadecimal numbers: `<Buffer 48 65 6c 6c 6f>`. You must explicitly convert it using `.toString('utf-8')` to see human text."
+    },
+    {
+      "question": "Can you resize it?",
+      "answer": "No. Buffers are fixed-size chunks of memory allocated outside the V8 JavaScript engine. Once created (e.g., `Buffer.alloc(10)`), it can only hold exactly 10 bytes forever."
+    }
+  ],
+  "codeExample": "// 1. Creating a Buffer from a String\nconst myBuffer = Buffer.from(\"Hello World\", \"utf-8\");\n\nconsole.log(\"Raw Buffer (Hex):\", myBuffer);\n// Output: <Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64>\n\n// 2. Converting back to a String\nconsole.log(\"Decoded String:\", myBuffer.toString());\n\n// 3. Allocating a fixed-size empty Buffer (10 bytes)\nconst emptyBuf = Buffer.alloc(10);\nemptyBuf.write(\"Node\"); // Writes to the first 4 bytes\nconsole.log(\"Allocated Buffer:\", emptyBuf);\n\n// 4. Checking length (in Bytes, NOT characters)\nconst emojiBuf = Buffer.from(\"🔥\");\nconsole.log(\"String length:\", \"🔥\".length); // 2 (JS quirk)\nconsole.log(\"Buffer byte length:\", emojiBuf.length); // 4 (Emojis take 4 real bytes!)"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "use-callback",
+  "title": "useCallback",
+  "difficulty": "Advanced",
+  "definition": "`useCallback` is a React Hook that lets you cache a function definition between re-renders. It is primarily used to prevent unnecessary re-renders of child components that rely on reference equality to avoid updating.",
+  "simpleExplanation": "Imagine you have a 'recipe' (a function) for baking cookies. Every time you clean your kitchen (re-render), you throw away the old recipe and write a brand new identical recipe. If you hand that recipe to your friend (a child component), they think it's a completely new recipe and they start baking again! `useCallback` is like laminating the recipe. You keep the exact same physical copy, so your friend knows nothing has changed.",
+  "realWorldExample": "You have a massive `<HeavyChart />` component wrapped in `React.memo()`. You pass it an `onClick={handlePointClick}` function. If you don't wrap `handlePointClick` in `useCallback`, a brand new function is created in memory on every render. The Chart sees a 'new' function prop, and re-renders entirely, completely defeating `React.memo`.",
+  "useCases": [
+    "Passing stable callback functions to heavily optimized child components (like those using `React.memo`)",
+    "Preventing infinite loops when a function is used as a dependency in a `useEffect` array"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main purpose of `useCallback`?",
+      "How is `useCallback` different from `useMemo`?"
+    ],
+    "intermediate": [
+      "If you wrap a function in `useCallback`, but you don't pass it to a child component, is it helping performance?",
+      "What causes a `useCallback` function to be recreated?"
+    ],
+    "advanced": [
+      "Why is inline function creation (e.g., `onClick={() => doSomething()}`) usually perfectly fine for standard DOM elements like `<button>`?",
+      "How does JavaScript's concept of 'Reference Equality' apply to `useCallback`?"
+    ],
+    "trick": [
+      "Does `useCallback` make your component render faster?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How is useCallback different from useMemo?",
+      "answer": "`useMemo` calls your function during render and caches the RESULT. `useCallback` does NOT call your function; it simply caches the FUNCTION ITSELF so it maintains the exact same memory address across renders."
+    },
+    {
+      "question": "Is inline function creation fine for standard DOM elements like <button>?",
+      "answer": "Yes! Standard HTML elements (like `div` or `button`) are not wrapped in `React.memo`. They are blazing fast to evaluate. Wrapping an `onClick` for a regular `<button>` in `useCallback` is actually worse for performance, because you add the overhead of the hook for zero benefit."
+    },
+    {
+      "question": "Does useCallback make your component render faster?",
+      "answer": "No, it actually makes the component it is defined inside slightly SLOWER because of the hook overhead. Its only purpose is to make CHILD components render faster by skipping renders via `React.memo`."
+    }
+  ],
+  "codeExample": "import React, { useState, useCallback } from 'react';\n\n// A child component heavily optimized with React.memo\n// It will ONLY re-render if 'title' or 'onAction' changes in memory.\nconst HeavyChild = React.memo(({ title, onAction }) => {\n  console.log(\"HeavyChild rendered!\");\n  return <button onClick={onAction}>{title}</button>;\n});\n\nexport default function ParentComponent() {\n  const [count, setCount] = useState(0);\n\n  // BAD: This creates a brand new function in memory every time Parent renders.\n  // If we passed this, HeavyChild would re-render every time 'count' changes.\n  // const handleAction = () => console.log(\"Action!\");\n\n  // GOOD: useCallback caches the function in memory.\n  // It will always be the exact same function reference.\n  const handleAction = useCallback(() => {\n    console.log(\"Action clicked!\");\n  }, []); // Empty array means it never needs to be recreated\n\n  return (\n    <div>\n      <h2>Parent Count: {count}</h2>\n      <button onClick={() => setCount(c => c + 1)}>Increment Parent</button>\n      \n      <hr />\n      {/* Passing the cached function to the optimized child */}\n      <HeavyChild title=\"Click Me\" onAction={handleAction} />\n    </div>\n  );\n}"
+}

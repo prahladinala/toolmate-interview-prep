@@ -1,0 +1,203 @@
+{
+  "id": "api-fundamentals",
+  "title": "API Fundamentals",
+  "description": "Master APIs from basics to advanced concepts. Learn REST, HTTP, authentication, API security, testing, versioning, performance optimization, and real-world API design principles.",
+  "icon": "api",
+  "categories": [
+    {
+      "id": "api-basics",
+      "title": "API Basics",
+      "topics": [
+        { "id": "what-is-api", "title": "What is an API?" },
+        { "id": "why-api", "title": "Why APIs are Important" },
+        { "id": "types-of-api", "title": "Types of APIs" },
+        { "id": "web-api", "title": "Web APIs" },
+        { "id": "api-architecture", "title": "API Architecture Overview" },
+        { "id": "client-server", "title": "Client-Server Architecture" }
+      ]
+    },
+    {
+      "id": "http-fundamentals",
+      "title": "HTTP Fundamentals",
+      "topics": [
+        { "id": "http-basics", "title": "HTTP Protocol" },
+        { "id": "http-request", "title": "HTTP Request Structure" },
+        { "id": "http-response", "title": "HTTP Response Structure" },
+        { "id": "http-methods", "title": "HTTP Methods" },
+        { "id": "headers", "title": "HTTP Headers" },
+        { "id": "cookies", "title": "Cookies" },
+        { "id": "sessions", "title": "Sessions" }
+      ]
+    },
+    {
+      "id": "rest-api",
+      "title": "REST APIs",
+      "topics": [
+        { "id": "rest-basics", "title": "What is REST?" },
+        { "id": "rest-principles", "title": "REST Principles" },
+        { "id": "resources", "title": "Resources & Endpoints" },
+        { "id": "crud", "title": "CRUD Operations" },
+        { "id": "restful-design", "title": "RESTful API Design" },
+        { "id": "rest-best-practices", "title": "REST Best Practices" }
+      ]
+    },
+    {
+      "id": "http-methods",
+      "title": "HTTP Methods",
+      "topics": [
+        { "id": "get", "title": "GET" },
+        { "id": "post", "title": "POST" },
+        { "id": "put", "title": "PUT" },
+        { "id": "patch", "title": "PATCH" },
+        { "id": "delete", "title": "DELETE" },
+        { "id": "options", "title": "OPTIONS" },
+        { "id": "head", "title": "HEAD" }
+      ]
+    },
+    {
+      "id": "status-codes",
+      "title": "HTTP Status Codes",
+      "topics": [
+        { "id": "1xx", "title": "1xx Informational" },
+        { "id": "2xx", "title": "2xx Success Codes" },
+        { "id": "3xx", "title": "3xx Redirection Codes" },
+        { "id": "4xx", "title": "4xx Client Errors" },
+        { "id": "5xx", "title": "5xx Server Errors" },
+        { "id": "common-status-codes", "title": "Most Common Status Codes" }
+      ]
+    },
+    {
+      "id": "request-response",
+      "title": "Request & Response",
+      "topics": [
+        { "id": "query-params", "title": "Query Parameters" },
+        { "id": "path-params", "title": "Path Parameters" },
+        { "id": "request-body", "title": "Request Body" },
+        { "id": "response-body", "title": "Response Body" },
+        { "id": "json-format", "title": "JSON Format" },
+        { "id": "content-types", "title": "Content Types" }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentication",
+      "topics": [
+        { "id": "authentication-vs-authorization", "title": "Authentication vs Authorization" },
+        { "id": "basic-auth", "title": "Basic Authentication" },
+        { "id": "api-keys", "title": "API Keys" },
+        { "id": "jwt", "title": "JWT Authentication" },
+        { "id": "oauth2", "title": "OAuth 2.0" },
+        { "id": "openid-connect", "title": "OpenID Connect" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "API Security",
+      "topics": [
+        { "id": "cors", "title": "CORS" },
+        { "id": "csrf", "title": "CSRF" },
+        { "id": "xss", "title": "XSS" },
+        { "id": "rate-limiting", "title": "Rate Limiting" },
+        { "id": "input-validation", "title": "Input Validation" },
+        { "id": "secure-api-design", "title": "Secure API Design" }
+      ]
+    },
+    {
+      "id": "api-testing",
+      "title": "API Testing",
+      "topics": [
+        { "id": "postman", "title": "Postman" },
+        { "id": "insomnia", "title": "Insomnia" },
+        { "id": "swagger-testing", "title": "Swagger UI" },
+        { "id": "manual-testing", "title": "Manual API Testing" },
+        { "id": "automation-testing", "title": "Automated API Testing" },
+        { "id": "mock-apis", "title": "Mock APIs" }
+      ]
+    },
+    {
+      "id": "documentation",
+      "title": "API Documentation",
+      "topics": [
+        { "id": "openapi", "title": "OpenAPI Specification" },
+        { "id": "swagger", "title": "Swagger" },
+        { "id": "api-contracts", "title": "API Contracts" },
+        { "id": "endpoint-documentation", "title": "Endpoint Documentation" }
+      ]
+    },
+    {
+      "id": "versioning",
+      "title": "API Versioning",
+      "topics": [
+        { "id": "why-versioning", "title": "Why API Versioning?" },
+        { "id": "url-versioning", "title": "URL Versioning" },
+        { "id": "header-versioning", "title": "Header Versioning" },
+        { "id": "backward-compatibility", "title": "Backward Compatibility" }
+      ]
+    },
+    {
+      "id": "graphql",
+      "title": "GraphQL Fundamentals",
+      "topics": [
+        { "id": "what-is-graphql", "title": "What is GraphQL?" },
+        { "id": "graphql-vs-rest", "title": "GraphQL vs REST" },
+        { "id": "queries", "title": "Queries" },
+        { "id": "mutations", "title": "Mutations" },
+        { "id": "subscriptions", "title": "Subscriptions" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "caching", "title": "API Caching" },
+        { "id": "pagination", "title": "Pagination" },
+        { "id": "compression", "title": "Compression" },
+        { "id": "cdn", "title": "CDN Usage" },
+        { "id": "batching", "title": "Request Batching" }
+      ]
+    },
+    {
+      "id": "real-time",
+      "title": "Real-Time APIs",
+      "topics": [
+        { "id": "websockets", "title": "WebSockets" },
+        { "id": "server-sent-events", "title": "Server-Sent Events (SSE)" },
+        { "id": "polling", "title": "Polling" },
+        { "id": "long-polling", "title": "Long Polling" }
+      ]
+    },
+    {
+      "id": "microservices",
+      "title": "APIs in Microservices",
+      "topics": [
+        { "id": "api-gateway", "title": "API Gateway" },
+        { "id": "service-discovery", "title": "Service Discovery" },
+        { "id": "inter-service-communication", "title": "Service Communication" },
+        { "id": "distributed-systems", "title": "Distributed Systems Basics" }
+      ]
+    },
+    {
+      "id": "advanced-api",
+      "title": "Advanced API Concepts",
+      "topics": [
+        { "id": "idempotency", "title": "Idempotency" },
+        { "id": "webhooks", "title": "Webhooks" },
+        { "id": "api-rate-limits", "title": "Rate Limits" },
+        { "id": "circuit-breaker", "title": "Circuit Breaker Pattern" },
+        { "id": "retry-pattern", "title": "Retry Mechanisms" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "api-beginner", "title": "Beginner Questions" },
+        { "id": "api-intermediate", "title": "Intermediate Questions" },
+        { "id": "api-advanced", "title": "Advanced Questions" },
+        { "id": "api-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "api-debugging", "title": "API Troubleshooting Questions" },
+        { "id": "api-system-design", "title": "API Design Questions" }
+      ]
+    }
+  ]
+}

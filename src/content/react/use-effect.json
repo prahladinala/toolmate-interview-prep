@@ -1,0 +1,45 @@
+{
+  "id": "use-effect",
+  "title": "Side Effects (useEffect)",
+  "difficulty": "Intermediate",
+  "definition": "The `useEffect` hook lets you perform side effects in functional components. A side effect is anything that reaches outside the React component (like fetching data, manually changing the DOM, or setting up subscriptions).",
+  "simpleExplanation": "React's main job is just turning data into UI. But sometimes you need to do things outside of that process, like knocking on a server's door to ask for data, or setting up a ticking clock. `useEffect` is a designated safe space where you can do these 'outside' tasks after React has safely finished painting the screen.",
+  "realWorldExample": "When a 'Profile' component appears on screen, you need to fetch that user's data from a database. You put the fetch request inside `useEffect` so it runs exactly once when the profile loads.",
+  "useCases": [
+    "Fetching data from an API on component mount",
+    "Setting up event listeners (like window resize)",
+    "Interacting with non-React libraries (like a D3 chart)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the dependency array in useEffect?",
+      "What happens if you leave the dependency array completely empty `[]`?"
+    ],
+    "intermediate": [
+      "What happens if you don't provide a dependency array at all?",
+      "What is the cleanup function in useEffect and when does it run?"
+    ],
+    "advanced": [
+      "Why shouldn't you make the useEffect callback itself an `async` function?",
+      "How do you deal with 'stale closures' inside useEffect?"
+    ],
+    "trick": [
+      "If you set state inside a useEffect that has no dependency array, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if you don't provide a dependency array at all?",
+      "answer": "The useEffect will run after EVERY single render of the component. This is rarely what you want and often leads to infinite loops if you update state inside it."
+    },
+    {
+      "question": "What is the cleanup function?",
+      "answer": "If you return a function from inside useEffect, React runs it right before the component unmounts (is destroyed) or before the effect runs again. It's crucial for cleaning up event listeners or intervals to prevent memory leaks."
+    },
+    {
+      "question": "Why shouldn't the callback be async? `useEffect(async () => {...})`",
+      "answer": "Because `useEffect` expects the callback to either return nothing, or return a synchronous cleanup function. An `async` function returns a Promise, which confuses React and prevents cleanup from working correctly."
+    }
+  ],
+  "codeExample": "import React, { useState, useEffect } from 'react';\n\nexport default function Timer() {\n  const [seconds, setSeconds] = useState(0);\n\n  // This effect runs exactly ONCE on mount because of []\n  useEffect(() => {\n    console.log(\"Timer started!\");\n    \n    // Set up a side effect (an interval)\n    const intervalId = setInterval(() => {\n      setSeconds(prev => prev + 1);\n    }, 1000);\n\n    // Cleanup Function\n    // Runs when the component unmounts (is removed from screen)\n    return () => {\n      console.log(\"Component destroyed, clearing interval!\");\n      clearInterval(intervalId);\n    };\n  }, []); // Empty dependency array\n\n  return (\n    <div>\n      <h2>Seconds elapsed: {seconds}</h2>\n    </div>\n  );\n}"
+}

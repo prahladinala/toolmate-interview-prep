@@ -1,0 +1,45 @@
+{
+  "id": "variables",
+  "title": "Variables (var, let, const)",
+  "difficulty": "Beginner",
+  "definition": "Variables are containers for storing data values. In JavaScript, you can declare them using var, let, or const. They determine how the stored data can be accessed and if it can be changed.",
+  "simpleExplanation": "Think of variables like labeled boxes. You put something inside the box, and you can find it later by looking for the label. 'let' is a box whose contents you can change. 'const' is a locked box where the contents cannot be swapped out. 'var' is an older type of box that behaves a bit unpredictably.",
+  "realWorldExample": "When playing a video game, your 'score' is a variable that changes (like 'let'), while your 'maxHealth' might be a fixed value that never changes (like 'const').",
+  "useCases": [
+    "Storing user input",
+    "Keeping track of application state (e.g., is user logged in?)",
+    "Holding configuration values that never change"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between let, const, and var?",
+      "Can you reassign a const variable?"
+    ],
+    "intermediate": [
+      "What does 'block scope' mean for let and const?",
+      "Can you mutate an object or array declared with const?"
+    ],
+    "advanced": [
+      "What is the Temporal Dead Zone (TDZ)?",
+      "How does the JavaScript engine handle variable declarations during the creation phase?"
+    ],
+    "trick": [
+      "If you declare a variable without a keyword inside a function, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between let, const, and var?",
+      "answer": "'var' is function-scoped and can be re-declared. 'let' is block-scoped and can be updated but not re-declared in the same scope. 'const' is block-scoped and cannot be updated or re-declared."
+    },
+    {
+      "question": "Can you mutate an object declared with const?",
+      "answer": "Yes. 'const' only prevents reassignment of the variable identifier. The properties of the object itself can still be changed (mutated)."
+    },
+    {
+      "question": "What is the Temporal Dead Zone?",
+      "answer": "The time between when a 'let' or 'const' variable is hoisted (moved to the top of the scope) and when it is actually initialized with a value. Accessing it during this time throws a ReferenceError."
+    }
+  ],
+  "codeExample": "// Using const for fixed values\nconst API_URL = 'https://api.example.com';\n\n// Using let for values that change\nlet currentScore = 0;\ncurrentScore += 10;\n\n// const objects can still be mutated\nconst user = { name: 'Alice' };\nuser.name = 'Bob'; // This works!\n\nconsole.log(user.name); // Bob\nconsole.log(currentScore); // 10"
+}

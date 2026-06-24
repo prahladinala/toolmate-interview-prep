@@ -1,0 +1,31 @@
+{
+  "id": "swagger",
+  "title": "Swagger",
+  "difficulty": "Intermediate",
+  "definition": "A suite of open-source tools built around the OpenAPI Specification that helps developers design, build, document, and consume REST APIs.",
+  "simpleExplanation": "If OpenAPI is the blueprint for a house, Swagger is the 3D viewing software you use to walk around the house before it's built.",
+  "realWorldExample": "Using the Swagger Editor online. As you type YAML on the left side of the screen, the right side of the screen instantly updates a beautiful, interactive documentation website.",
+  "useCases": [
+    "API visualization",
+    "Client code generation"
+  ],
+  "questions": {
+    "basic": [
+      "What does Swagger UI do?"
+    ],
+    "intermediate": [
+      "What is Swagger Codegen used for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does Swagger UI do?",
+      "answer": "It takes an OpenAPI JSON/YAML file and renders it as an interactive, beautiful HTML webpage where users can read docs and test endpoints."
+    },
+    {
+      "question": "What is Swagger Codegen?",
+      "answer": "A tool that reads your OpenAPI file and automatically writes the boilerplate code for your backend server or your frontend API client in almost any programming language."
+    }
+  ],
+  "codeExample": "/* \n  Swagger Ecosystem Flow:\n  \n  1. Developer writes the blueprint (OpenAPI spec).\n  2. Swagger Editor verifies the YAML syntax is valid.\n  3. Swagger UI displays the blueprint as a nice website for other teams.\n  4. Swagger Codegen reads the blueprint and automatically generates \n     an 'api-client.ts' file for the React team to use.\n*/"
+}

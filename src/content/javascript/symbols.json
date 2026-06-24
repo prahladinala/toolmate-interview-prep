@@ -1,0 +1,45 @@
+{
+  "id": "symbols",
+  "title": "Symbols",
+  "difficulty": "Advanced",
+  "definition": "A Symbol is a unique and immutable primitive value in JavaScript, introduced in ES6. Symbols are primarily used as unique property keys in objects to prevent naming collisions.",
+  "simpleExplanation": "Imagine giving your dog a name tag that says 'Fido'. Someone else might name their dog 'Fido' too. If you both yell 'Fido!', both dogs run over (a naming collision). A Symbol is like a microchip with a truly unique serial number. Even if you call it `Symbol('Fido')` and someone else creates `Symbol('Fido')`, they are mathematically guaranteed to be completely different and unique.",
+  "realWorldExample": "If you are writing a library and need to add a secret property to a user's object without accidentally overwriting a property they already created, you use a Symbol as the key.",
+  "useCases": [
+    "Creating hidden or private object properties",
+    "Preventing naming collisions when patching or extending third-party objects",
+    "Implementing well-known symbols (like Symbol.iterator) to change built-in object behaviors"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Symbol?",
+      "How do you create a Symbol?"
+    ],
+    "intermediate": [
+      "Does `Symbol('foo') === Symbol('foo')` evaluate to true or false?",
+      "How do Symbols interact with `for...in` loops and `Object.keys()`?"
+    ],
+    "advanced": [
+      "What is the global Symbol registry (`Symbol.for()`)?",
+      "What are 'well-known symbols' like `Symbol.iterator` used for?"
+    ],
+    "trick": [
+      "Can you create a Symbol using the `new` keyword (e.g., `new Symbol()`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does Symbol('foo') === Symbol('foo') evaluate to true?",
+      "answer": "False. Every `Symbol()` call is guaranteed to return a completely unique value, even if they have the same description string."
+    },
+    {
+      "question": "How do Symbols interact with for...in loops?",
+      "answer": "Symbols are completely completely ignored by `for...in` loops, `Object.keys()`, and `JSON.stringify()`. You have to specifically use `Object.getOwnPropertySymbols()` to find them."
+    },
+    {
+      "question": "Can you use the `new` keyword with Symbol?",
+      "answer": "No. Symbols are primitives, not objects. Using `new Symbol()` will throw a TypeError."
+    }
+  ],
+  "codeExample": "// Creating unique symbols\nconst sym1 = Symbol('id');\nconst sym2 = Symbol('id');\nconsole.log(sym1 === sym2); // false! They are completely unique.\n\nconst user = {\n  name: 'Alice',\n  age: 30,\n  [sym1]: 12345 // Using a symbol as an object key\n};\n\n// Symbols are hidden from normal iteration\nconsole.log(Object.keys(user)); // ['name', 'age'] (sym1 is hidden!)\n\n// How to access the symbol\nconsole.log(user[sym1]); // 12345\n\nconst symbolKeys = Object.getOwnPropertySymbols(user);\nconsole.log(symbolKeys); // [Symbol(id)]"
+}

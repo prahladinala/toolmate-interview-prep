@@ -1,0 +1,32 @@
+{
+  "id": "self-hosting",
+  "title": "Self Hosting",
+  "difficulty": "Advanced",
+  "definition": "Deploying and managing a Next.js application on your own infrastructure (AWS EC2, DigitalOcean, custom servers) rather than relying on managed platforms like Vercel.",
+  "simpleExplanation": "Vercel is a luxury hotel; they make your bed and cook your food, but it costs a premium. Self-hosting is buying land and building a house; it's much cheaper, but if the plumbing breaks, you have to fix it yourself.",
+  "realWorldExample": "A healthcare startup must comply with strict HIPAA regulations, requiring them to host the application on their own private, firewalled AWS servers, managing the Node.js process using PM2 or Docker.",
+  "useCases": [
+    "Data compliance",
+    "Cost reduction at extreme scale",
+    "Custom infrastructure requirements"
+  ],
+  "questions": {
+    "basic": [
+      "What command is used to start a production Next.js server when self-hosting?"
+    ],
+    "intermediate": [
+      "If you self-host Next.js on a single DigitalOcean droplet, what Vercel feature do you immediately lose?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which command?",
+      "answer": "`npm run start` (which runs `next start`). Note: You must run `npm run build` first."
+    },
+    {
+      "question": "What feature lost?",
+      "answer": "Global Edge CDN distribution. Vercel automatically copies your static assets and edge functions to 30+ servers around the world. On a single droplet, a user in Japan must wait for the signal to travel all the way to your server in New York."
+    }
+  ],
+  "codeExample": "/* \n  Steps to Self-Host Next.js on a Linux Server (Ubuntu):\n  \n  1. SSH into the server.\n  2. Clone the repository: `git clone ...`\n  3. Install dependencies: `npm install`\n  4. Build the project: `npm run build`\n  5. Start the process using a Process Manager (like PM2) \n     so it automatically restarts if the server crashes:\n     `pm2 start npm --name \"next-app\" -- run start`\n  6. Configure NGINX to reverse-proxy port 80 to port 3000.\n*/"
+}

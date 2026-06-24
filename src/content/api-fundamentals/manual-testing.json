@@ -1,0 +1,32 @@
+{
+  "id": "manual-testing",
+  "title": "Manual API Testing",
+  "difficulty": "Beginner",
+  "definition": "The process of a human developer manually interacting with the API (using tools like Postman, cURL, or the browser) to verify it returns the correct data and handles errors properly.",
+  "simpleExplanation": "Writing a new function and then manually poking it with a stick to see if it breaks. You send a good request, see if it works. You send a bad request, see if it crashes.",
+  "realWorldExample": "Using the terminal command `curl http://localhost:3000/api/health` to manually check if the server is running.",
+  "useCases": [
+    "Local development",
+    "Quick debugging",
+    "Exploratory testing"
+  ],
+  "questions": {
+    "basic": [
+      "What terminal command-line tool is universally used by developers to make manual HTTP requests?"
+    ],
+    "intermediate": [
+      "Why is relying strictly on Manual API Testing a terrible idea for production applications?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which tool?",
+      "answer": "`cURL`."
+    },
+    {
+      "question": "Why terrible idea?",
+      "answer": "Because humans are slow and forgetful. If you add a new feature, you might manually test that feature, but forget to manually test the 50 older features to ensure you didn't accidentally break them. Automated testing solves this."
+    }
+  ],
+  "codeExample": "# Manual Testing using cURL in the Terminal\n\n# 1. Simple GET request\ncurl https://api.github.com/users/octocat\n\n# 2. Complex POST request with JSON and Headers\ncurl -X POST https://api.com/login \\\n     -H \"Content-Type: application/json\" \\\n     -d '{\"email\": \"test@test.com\", \"password\": \"123\"}'\n     \n# 3. View the Headers returned by the server (-I flag)\ncurl -I https://google.com"
+}

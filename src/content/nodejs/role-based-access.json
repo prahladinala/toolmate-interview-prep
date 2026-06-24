@@ -1,0 +1,31 @@
+{
+  "id": "role-based-access",
+  "title": "Role Based Access Control (RBAC)",
+  "difficulty": "Intermediate",
+  "definition": "An approach to restricting system access to authorized users based on their assigned role (e.g., 'user', 'admin', 'moderator').",
+  "simpleExplanation": "Authentication (Login) asks: 'Who are you?'. Authorization (RBAC) asks: 'Are you allowed to do this?'. If an ordinary user tries to send a DELETE request to `/api/users/all`, the RBAC system checks their role. Since their role is 'user' and not 'admin', the system throws a 403 Forbidden error and blocks the request.",
+  "realWorldExample": "Adding a `role` field to your Mongoose User schema. Writing a generic `requireRole('admin')` Express middleware and plugging it into sensitive administrative routes.",
+  "useCases": [
+    "Admin dashboards",
+    "Multi-tier subscription models (free vs premium features)"
+  ],
+  "questions": {
+    "basic": [
+      "What HTTP status code is returned if a user is authenticated, but lacks the proper role?"
+    ],
+    "intermediate": [
+      "How do you implement RBAC in an Express application?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What status code?",
+      "answer": "403 Forbidden."
+    },
+    {
+      "question": "How to implement it in Express?",
+      "answer": "Create a middleware factory function. It checks the decoded JWT (or session) attached to the `req` object. If `req.user.role !== requiredRole`, send a 403. Otherwise, call `next()`."
+    }
+  ],
+  "codeExample": "// 1. The RBAC Middleware Factory\n// It takes the role we WANT to require, and returns a middleware function\nconst authorize = (requiredRole) => {\n  return (req, res, next) => {\n    \n    // Assume req.user was populated by a previous JWT authentication middleware\n    const user = req.user;\n\n    if (!user) {\n      return console.log(\"401 Unauthorized: Please log in.\");\n    }\n\n    if (user.role !== requiredRole) {\n      return console.log(`403 Forbidden: You are a ${user.role}, but this requires ${requiredRole}!`);\n    }\n\n    console.log(\"Access Granted! Proceeding to route...\");\n    next();\n  };\n};\n\n// 2. Simulated Requests\nconst mockNext = () => console.log(\"--> Reached Controller Logic\\n\");\n\nconsole.log(\"--- Alice (Admin) requesting Dashboard ---\");\nconst reqAlice = { user: { name: \"Alice\", role: \"admin\" } };\nauthorize('admin')(reqAlice, {}, mockNext);\n\nconsole.log(\"--- Bob (User) requesting Dashboard ---\");\nconst reqBob = { user: { name: \"Bob\", role: \"user\" } };\nauthorize('admin')(reqBob, {}, mockNext);"
+}

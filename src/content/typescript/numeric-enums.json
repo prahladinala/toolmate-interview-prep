@@ -1,0 +1,34 @@
+{
+  "id": "numeric-enums",
+  "title": "Numeric Enums",
+  "difficulty": "Beginner",
+  "definition": "An Enum (Enumeration) is a feature added by TypeScript that allows you to define a set of named constants. By default, enums are number-based, starting at 0 and auto-incrementing.",
+  "simpleExplanation": "Enums are like assigning human-readable names to confusing numbers. Instead of trying to remember that User Role `1` is Admin and `2` is Guest, you create an Enum. In your code you just type `Role.Admin`, and TS translates it to `1` under the hood.",
+  "realWorldExample": "Handling directional movement in a game (`Direction.Up`, `Direction.Down`) or API status codes (`Status.Success`, `Status.NotFound`).",
+  "useCases": [
+    "Replacing 'Magic Numbers' in code",
+    "Grouping related constants"
+  ],
+  "questions": {
+    "basic": [
+      "What value does the first item in a numeric enum have if unassigned?"
+    ],
+    "intermediate": [
+      "Can you assign a custom number to start the incrementing?"
+    ],
+    "advanced": [
+      "What is Reverse Mapping in numeric enums?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you assign a custom number?",
+      "answer": "Yes. If you do `enum Role { Admin = 5, Guest }`, Guest will automatically become `6`."
+    },
+    {
+      "question": "What is Reverse Mapping?",
+      "answer": "Unlike normal objects, numeric enums compile into a two-way mapping in JavaScript. If `Direction.Up` equals `1`, then `Direction[1]` evaluates back to the string `'Up'`."
+    }
+  ],
+  "codeExample": "// Default starting at 0\nenum Direction {\n  Up,    // 0\n  Down,  // 1\n  Left,  // 2\n  Right  // 3\n}\n\nlet playerMove = Direction.Left; \nconsole.log(playerMove); // Output: 2\n\n// Custom starting point\nenum HttpCode {\n  OK = 200,\n  BadRequest = 400,\n  NotFound = 404\n}\n\nconsole.log(HttpCode.NotFound); // 404\n\n// REVERSE MAPPING (Only works for numeric enums!)\nconsole.log(Direction[1]); // Output: \"Down\""
+}

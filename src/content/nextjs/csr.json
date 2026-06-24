@@ -1,0 +1,32 @@
+{
+  "id": "csr",
+  "title": "Client Side Rendering (CSR)",
+  "difficulty": "Beginner",
+  "definition": "A rendering strategy where the server sends a nearly empty HTML file to the browser, and React uses JavaScript to build the entire UI on the user's device.",
+  "simpleExplanation": "The browser downloads a blank page. Then it downloads a massive JavaScript file. Then React wakes up and painstakingly draws the website onto the screen. This is how standard React (Create React App) works.",
+  "realWorldExample": "Highly interactive applications hiding behind a login wall where SEO doesn't matter, like Figma or a complex internal admin dashboard.",
+  "useCases": [
+    "Complex interactive apps",
+    "Authenticated dashboards",
+    "Apps needing browser APIs (like geolocation)"
+  ],
+  "questions": {
+    "basic": [
+      "Why is Client-Side Rendering generally bad for SEO (Search Engine Optimization)?"
+    ],
+    "intermediate": [
+      "How do you force a component to use Client-Side Rendering in the Next.js App Router?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why bad for SEO?",
+      "answer": "When a Google Web Crawler visits the URL, it only sees the initial blank HTML file. It often doesn't wait around for the JavaScript to execute and draw the content, so it indexes the page as totally empty."
+    },
+    {
+      "question": "How to force CSR?",
+      "answer": "Add the `'use client'` directive to the very top of the file."
+    }
+  ],
+  "codeExample": "'use client'; // This directive tells Next.js to render this on the browser!\n\nimport { useState, useEffect } from 'react';\n\nexport default function Counter() {\n  // State and Effects ONLY work in Client Components\n  const [count, setCount] = useState(0);\n  \n  return (\n    <button onClick={() => setCount(count + 1)}>\n      Clicks: {count}\n    </button>\n  );\n}"
+}

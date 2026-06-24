@@ -1,0 +1,30 @@
+{
+  "id": "flatten-array",
+  "title": "Implement: Flatten Array",
+  "difficulty": "Intermediate",
+  "definition": "A highly common interview coding question: Write a function that takes an arbitrarily deeply nested array and flattens it into a 1D array without using the native `Array.flat()` method.",
+  "simpleExplanation": "The interviewer wants to see if you understand Recursion and type checking (`Array.isArray`).",
+  "realWorldExample": "Flattening `[1, [2, [3, 4], 5]]` into `[1, 2, 3, 4, 5]`.",
+  "useCases": [
+    "Recursion mastery",
+    "Interview screening"
+  ],
+  "questions": {
+    "basic": [
+      "How do you check if a variable is an array in JS?"
+    ],
+    "intermediate": [
+      "Write a recursive solution to flatten an array."
+    ],
+    "advanced": [
+      "How would you flatten an array iteratively (without recursion) using a Stack?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you check if a variable is an array?",
+      "answer": "`Array.isArray(variable)`. Using `typeof` will return `'object'`, which is not helpful."
+    }
+  ],
+  "codeExample": "// Recursive Solution (Most common answer)\nfunction flatten(arr) {\n  let result = [];\n  for (let i = 0; i < arr.length; i++) {\n    if (Array.isArray(arr[i])) {\n      // If it's an array, recursively flatten it and merge it into result\n      result = result.concat(flatten(arr[i]));\n    } else {\n      // If it's a number/string, just push it\n      result.push(arr[i]);\n    }\n  }\n  return result;\n}\n\n// Extremely modern one-liner using reduce:\n// const flatten = arr => arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);\n\nconsole.log(flatten([1, [2, [3, 4], 5]])); // [1, 2, 3, 4, 5]"
+}

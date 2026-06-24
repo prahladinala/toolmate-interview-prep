@@ -1,0 +1,32 @@
+{
+  "id": "server-fetching",
+  "title": "Server-Side Fetching",
+  "difficulty": "Beginner",
+  "definition": "The practice of fetching data directly inside Server Components using standard `async/await` syntax, removing the need for `useEffect` or client-side loading spinners.",
+  "simpleExplanation": "The old React way: Show a blank page, show a loading spinner, fetch data, show the data. The Next.js way: The server fetches the data *before* the page even loads. The user instantly sees the fully populated page. No spinners required.",
+  "realWorldExample": "Fetching a user's profile data from a secure database before rendering their dashboard. You don't want the user staring at a skeleton loader; you want the dashboard to appear instantly with their name on it.",
+  "useCases": [
+    "SEO critical data",
+    "Secure database queries",
+    "Reducing client network waterfalls"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to use `useEffect` to fetch data in a Server Component?"
+    ],
+    "intermediate": [
+      "If a server-side fetch takes 3 seconds, what does the user see in their browser during those 3 seconds?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need useEffect?",
+      "answer": "No. You cannot use `useEffect` in Server Components. You simply make the component `async` and use `await fetch()` directly in the component body."
+    },
+    {
+      "question": "What does user see?",
+      "answer": "They see the previous page they were on, or a blank white screen (Time to First Byte delay). This is why you MUST use `loading.tsx` (Streaming) to show a loading state while the server is fetching."
+    }
+  ],
+  "codeExample": "// Notice the component is async!\nexport default async function UserProfile({ params }) {\n  // The server pauses here and waits for the database.\n  // This code never ships to the browser!\n  const user = await db.user.findUnique({ where: { id: params.id } });\n\n  // By the time the browser gets this, it's just pure HTML.\n  return <div>Welcome back, {user.name}</div>;\n}"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "accuracy",
+  "title": "Accuracy",
+  "difficulty": "Beginner",
+  "definition": "The most fundamental evaluation metric in Machine Learning. It is the percentage of total predictions that the AI model got completely correct.",
+  "simpleExplanation": "If you take a 100-question test and get 90 questions right, your Accuracy is 90%.",
+  "realWorldExample": "An AI is built to predict if an email is spam or not. Out of 1,000 emails, it correctly categorized 950 of them. The Accuracy of the model is 95%.",
+  "useCases": [
+    "General model evaluation",
+    "Balanced datasets"
+  ],
+  "questions": {
+    "basic": [
+      "If an AI guesses correctly 80 times out of 100, what is its accuracy?"
+    ],
+    "intermediate": [
+      "Why is Accuracy a terrible, misleading metric if your dataset is highly imbalanced?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the accuracy?",
+      "answer": "80%."
+    },
+    {
+      "question": "Why misleading?",
+      "answer": "Imagine a hospital where 99% of people are healthy and 1% have a rare disease. You build a broken AI that just prints 'Healthy' every single time, without even looking at the patient. That broken AI will be mathematically 99% Accurate, even though it is completely useless at finding the disease."
+    }
+  ]
+}

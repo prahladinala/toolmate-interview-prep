@@ -1,0 +1,30 @@
+{
+  "id": "review-comments",
+  "title": "Review Comments",
+  "difficulty": "Beginner",
+  "definition": "Specific annotations made by reviewers on individual lines of code within a Pull Request.",
+  "simpleExplanation": "Instead of leaving a generic comment at the bottom of the page saying 'Fix the spelling on line 42', you hover your mouse over line 42, click the '+' button, and leave a comment directly attached to that specific line of code.",
+  "realWorldExample": "Leaving a 'Suggested Change' comment. GitHub allows you to literally type out the fixed code in the comment box, and the author can click one button to instantly apply your fix without even opening their code editor.",
+  "useCases": [
+    "Providing granular feedback on code"
+  ],
+  "questions": {
+    "basic": [
+      "What does LGTM mean in a code review?"
+    ],
+    "intermediate": [
+      "What is a 'Review' vs a 'Single Comment' on GitHub?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "LGTM?",
+      "answer": "Looks Good To Me. It's the universal developer acronym for approving a Pull Request."
+    },
+    {
+      "question": "Review vs Single Comment?",
+      "answer": "If you leave a 'Single Comment', it emails the author immediately. If you have 10 comments, they get 10 emails (annoying!). A 'Review' lets you draft all 10 comments privately, and then submit them all at once as a single batch (1 email)."
+    }
+  ],
+  "codeExample": "/*\n  Using GitHub's 'Suggested Change' feature in a comment:\n  \n  ```suggestion\n  const userName = user.firstName + ' ' + user.lastName;\n  ```\n  \n  When you leave a comment formatted like this, GitHub renders it as a \n  Diff block with an \"Commit Suggestion\" button. The PR author can click \n  that button to instantly fix their code right from the web browser!\n*/"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "express-router",
+  "title": "Express Router",
+  "difficulty": "Intermediate",
+  "definition": "A mini Express application without a server. It acts as a complete middleware and routing system, allowing you to split massive applications into smaller, modular files.",
+  "simpleExplanation": "If you put all 150 API routes in `server.js`, your file will be 5,000 lines long and impossible to read. The Router lets you create a completely separate `userRoutes.js` file just for Users, and a `productRoutes.js` file just for Products. You then 'plug' these files into the main server. It's the ultimate organization tool.",
+  "realWorldExample": "Building an API with versions. You can plug all your V1 routes into `/api/v1` (`app.use('/api/v1', v1Router)`), and completely separate V2 routes into `/api/v2`.",
+  "useCases": [
+    "Code organization",
+    "Micro-architectures",
+    "API Versioning"
+  ],
+  "questions": {
+    "basic": [
+      "How do you create a Router instance?"
+    ],
+    "intermediate": [
+      "If a Router defines a `router.get('/profile')`, and you plug the router into `app.use('/users', router)`, what is the final URL?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to create it?",
+      "answer": "`const router = express.Router();`"
+    },
+    {
+      "question": "What is the final URL?",
+      "answer": "The URLs combine! The final URL the client must hit is `/users/profile`. This makes nesting routes incredibly powerful."
+    }
+  ],
+  "codeExample": "/* --- file: routes/userRoutes.js --- */\n// const express = require('express');\n// const router = express.Router();\n\n// // This is relative to where the router is plugged in!\n// router.get('/', (req, res) => res.send('List of Users'));\n// router.get('/:id', (req, res) => res.send('Single User'));\n\n// module.exports = router;\n\n/* --- file: server.js --- */\n// const express = require('express');\n// const app = express();\n\n// // 1. Import the modular router\n// const userRoutes = require('./routes/userRoutes');\n\n// // 2. Mount the router onto a specific path\n// // Any traffic matching /api/users is funneled into the userRoutes file\n// app.use('/api/users', userRoutes);\n\nconsole.log(\"Express Router is the industry standard way to structure large Node applications.\");"
+}

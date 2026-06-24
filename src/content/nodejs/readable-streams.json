@@ -1,0 +1,32 @@
+{
+  "id": "readable-streams",
+  "title": "Readable Streams",
+  "difficulty": "Advanced",
+  "definition": "An abstraction for a source from which data is consumed (read) sequentially. Instead of reading an entire data source into memory at once, it reads it in small chunks.",
+  "simpleExplanation": "Imagine drinking a massive 2-liter bottle of soda. A normal `fs.readFile` forces you to chug the entire 2-liter bottle in one single gulp (crashing your computer's RAM if it's too big). A Readable Stream gives you a straw. You sip a little bit, swallow, and sip a little more until the bottle is empty.",
+  "realWorldExample": "Reading a 50GB database backup file to search for a specific user ID.",
+  "useCases": [
+    "Reading massive files",
+    "Parsing large HTTP request bodies",
+    "Streaming video"
+  ],
+  "questions": {
+    "basic": [
+      "What event is emitted when a new chunk of data is ready?"
+    ],
+    "intermediate": [
+      "What event is emitted when the entire file is finished reading?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What event for a new chunk?",
+      "answer": "The `'data'` event. e.g., `stream.on('data', (chunk) => { ... })`."
+    },
+    {
+      "question": "What event when finished?",
+      "answer": "The `'end'` event."
+    }
+  ],
+  "codeExample": "// NOTE: Since we don't have large files in this sandbox, we will\n// simulate a Readable Stream using Node's built-in array stream.\nconst { Readable } = require('stream');\n\n// Creating a custom Readable stream from an array\nconst myStream = Readable.from(['Chunk 1 ', 'Chunk 2 ', 'Chunk 3']);\n\nconsole.log(\"Starting stream...\");\n\n// Listen for data chunks\nmyStream.on('data', (chunk) => {\n  console.log(`Received: ${chunk}`);\n});\n\n// Listen for the end of the file\nmyStream.on('end', () => {\n  console.log(\"Stream finished successfully!\");\n});\n\n// If there's an error (e.g. file missing), handle it!\nmyStream.on('error', (err) => {\n  console.error(\"Stream crashed!\", err);\n});"
+}

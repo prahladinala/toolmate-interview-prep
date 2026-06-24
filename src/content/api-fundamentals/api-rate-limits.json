@@ -1,0 +1,32 @@
+{
+  "id": "api-rate-limits",
+  "title": "Handling Rate Limits",
+  "difficulty": "Intermediate",
+  "definition": "The strategies used by client applications to gracefully handle scenarios where they have exceeded the allowed number of API requests and are being blocked by the server.",
+  "simpleExplanation": "If you ask a free weather API for the forecast 100 times in one second, the API will slap you with a `429 Too Many Requests` error and put you in timeout. You must write code to detect this slap, wait patiently, and try again later instead of just crashing.",
+  "realWorldExample": "Writing a script to download 50,000 tweets from the Twitter API. Because Twitter only allows 900 requests per 15 minutes, your script must constantly check the 'Rate Limit' headers, pause its own execution, and resume when the timeout expires.",
+  "useCases": [
+    "Data scraping",
+    "Third-party integrations",
+    "Resilient frontend apps"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP Status Code indicates you have hit a Rate Limit?"
+    ],
+    "intermediate": [
+      "What specific HTTP Header does a server usually return alongside a 429 error to tell you exactly how long to wait?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which status code?",
+      "answer": "`429 Too Many Requests`."
+    },
+    {
+      "question": "Which header?",
+      "answer": "The `Retry-After` header. It provides either a number of seconds to wait, or a specific date/time when the limit resets."
+    }
+  ],
+  "codeExample": "/* \n  A Resilient Fetch function that handles Rate Limits \n*/\n\nasync function fetchWithRetry(url) {\n  const response = await fetch(url);\n\n  if (response.status === 429) {\n    // We got blocked! Read the header to see how long we are in timeout.\n    // (e.g., \"60\" means wait 60 seconds)\n    const retryAfter = response.headers.get('Retry-After');\n    const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000;\n\n    console.warn(`Rate limited! Pausing script for ${waitTime}ms...`);\n    \n    // Pause the JavaScript thread\n    await new Promise(resolve => setTimeout(resolve, waitTime));\n    \n    // Try the exact same request again!\n    return fetchWithRetry(url);\n  }\n\n  return response.json();\n}"
+}

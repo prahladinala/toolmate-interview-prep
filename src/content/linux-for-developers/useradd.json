@@ -1,0 +1,30 @@
+{
+  "id": "useradd",
+  "title": "useradd",
+  "difficulty": "Beginner",
+  "definition": "A low-level command used to create a new user account on the Linux system.",
+  "simpleExplanation": "Hiring a new employee and giving them a badge so they can log into the computer.",
+  "realWorldExample": "A new developer, Bob, joins the team. The admin types `sudo useradd -m bob`. This creates Bob's account and automatically generates his `/home/bob` personal folder.",
+  "useCases": [
+    "Onboarding new employees",
+    "Creating service accounts for apps"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `useradd` command automatically prompt you to set a password for the new user?"
+    ],
+    "intermediate": [
+      "What is the difference between `useradd` and `adduser`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prompt for password?",
+      "answer": "No. `useradd` just creates the account. It is locked until you explicitly run the `passwd` command to set a password."
+    },
+    {
+      "question": "useradd vs adduser?",
+      "answer": "`useradd` is the raw, low-level binary command standard across all Linux. `adduser` is a friendly, interactive script (common in Ubuntu) that walks you through prompts for the password, full name, and room number."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "bem",
+  "title": "BEM Methodology",
+  "difficulty": "Intermediate",
+  "definition": "Block Element Modifier (BEM) is a highly popular naming convention for classes in HTML and CSS. Its goal is to help developers better understand the relationship between HTML and CSS in a given project.",
+  "simpleExplanation": "Naming CSS classes is the hardest part of CSS. If you name a class `.title`, it might conflict with another `.title` somewhere else on your site. BEM solves this with strict naming rules: Block (`.card`), Element (`.card__title`), and Modifier (`.card--dark`).",
+  "realWorldExample": "Instead of writing `.button .text .icon`, you write `.button`, `.button__text`, and `.button__icon`. You know instantly that these elements belong to the button.",
+  "useCases": [
+    "Large team projects",
+    "Preventing CSS conflicts without using scoped CSS"
+  ],
+  "questions": {
+    "basic": [
+      "In the class `.menu__item--active`, what is the Block, Element, and Modifier?"
+    ],
+    "intermediate": [
+      "Why does BEM avoid using descendant selectors like `.card p`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Break it down.",
+      "answer": "Block: `menu`. Element: `item` (indicated by `__`). Modifier: `active` (indicated by `--`)."
+    },
+    {
+      "question": "Why avoid descendant selectors?",
+      "answer": "Because of specificity. `.card p` takes higher priority than just `p`. If you later try to override the paragraph color, you'll be forced to use `!important` or write even longer selectors. BEM ensures almost every CSS rule has a low, flat specificity of exactly 1 class (10 points)."
+    }
+  ],
+  "codeExample": "<!-- BAD NAMING (Confusing, likely to conflict) -->\n<div class=\"card\">\n  <h2 class=\"title\">Header</h2>\n  <button class=\"btn active\">Click</button>\n</div>\n\n<hr style=\"margin: 30px 0;\">\n\n<!-- GOOD NAMING (BEM Methodology) -->\n<!-- \n  BLOCK: article-card\n  ELEMENTS: __image, __title\n  MODIFIERS: --featured\n-->\n<style>\n  /* CSS is extremely flat and fast to process! */\n  .article-card { border: 1px solid #ccc; padding: 10px; }\n  .article-card--featured { border-color: gold; background: #fffbeb; }\n  .article-card__title { font-size: 20px; font-weight: bold; margin: 0; }\n  .article-card__author { color: gray; font-size: 14px; }\n</style>\n\n<article class=\"article-card article-card--featured\">\n  <h2 class=\"article-card__title\">How to write CSS</h2>\n  <p class=\"article-card__author\">By John Doe</p>\n</article>"
+}

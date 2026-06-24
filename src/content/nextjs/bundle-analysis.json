@@ -1,0 +1,31 @@
+{
+  "id": "bundle-analysis",
+  "title": "Bundle Analysis",
+  "difficulty": "Advanced",
+  "definition": "The process of visually inspecting the compiled JavaScript files produced by Next.js to identify massive dependencies that are slowing down the application.",
+  "simpleExplanation": "Your site feels slow. You run a 'Bundle Analyzer'. It generates a visual map of your code that looks like a bunch of colored boxes. You notice a giant red box taking up 50% of the space. You realize you accidentally imported the entire `lodash` library instead of just one function. You fix the import, and your site gets 2x faster.",
+  "realWorldExample": "Discovering that importing `import { format } from 'date-fns'` pulls in all 150 languages supported by date-fns, ruining performance. You switch it to `import format from 'date-fns/format'`.",
+  "useCases": [
+    "Performance auditing",
+    "Reducing bundle size"
+  ],
+  "questions": {
+    "basic": [
+      "What popular plugin is used to visualize the Next.js JavaScript bundle?"
+    ],
+    "intermediate": [
+      "Why do Server Components make bundle analysis slightly less terrifying?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which plugin?",
+      "answer": "`@next/bundle-analyzer`"
+    },
+    {
+      "question": "Why less terrifying?",
+      "answer": "Because dependencies imported into Server Components are NEVER sent to the browser bundle. You can import a massive 10 Megabyte library into a Server Component, and the user's bundle size stays perfectly at 0 bytes."
+    }
+  ],
+  "codeExample": "// 1. Install: npm install @next/bundle-analyzer\n\n// 2. next.config.js\n// We wrap the config in the analyzer. It only triggers if an env variable is set.\nconst withBundleAnalyzer = require('@next/bundle-analyzer')({\n  enabled: process.env.ANALYZE === 'true',\n})\n\nmodule.exports = withBundleAnalyzer({\n  // your standard next.js config here\n})\n\n// 3. Run the analysis in the terminal:\n// ANALYZE=true npm run build\n\n// Next.js will build the app and pop open a beautiful interactive HTML \n// treemap showing exactly which libraries are bloated!"
+}

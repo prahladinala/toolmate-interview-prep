@@ -1,0 +1,34 @@
+{
+  "id": "weakmap",
+  "title": "WeakMap & WeakSet",
+  "difficulty": "Advanced",
+  "definition": "WeakMap is a collection of key/value pairs in which the keys must be objects, and those keys are held 'weakly'—meaning if there are no other references to the key object, the Garbage Collector will delete the key/value pair from the WeakMap.",
+  "simpleExplanation": "Normal Maps keep objects alive forever. If you put a DOM element in a Map, and then remove the element from the screen, it stays in the computer's memory forever (Memory Leak). A WeakMap is a self-cleaning Map. If the DOM element is removed from the screen, the WeakMap realizes it's useless and throws it in the trash automatically.",
+  "realWorldExample": "Vue 3's Reactivity system uses WeakMaps heavily. When a component is destroyed, the WeakMap automatically cleans up the reactivity watchers associated with that component's data objects.",
+  "useCases": [
+    "Caching data attached to DOM nodes",
+    "Private class variables"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between a Map and a WeakMap?"
+    ],
+    "intermediate": [
+      "Why can't you iterate (`for...of`) over a WeakMap?"
+    ],
+    "advanced": [
+      "Can you use a string as a key in a WeakMap?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why can't you iterate over a WeakMap?",
+      "answer": "Because the Garbage Collector operates unpredictably. You never know exactly WHEN it will delete an unreferenced object. If you could iterate over a WeakMap, the length would randomly change based on when the GC decides to run, causing chaotic bugs."
+    },
+    {
+      "question": "Can you use a string as a key?",
+      "answer": "No. Keys in a WeakMap MUST be Objects or Symbols. Primitive values like strings or numbers cannot be garbage collected in the same way objects can, so they violate the entire purpose of a WeakMap."
+    }
+  ],
+  "codeExample": "let domNode = document.getElementById('btn');\n\n// If we used a regular Map here, removing 'btn' from the screen\n// wouldn't free up memory because the Map still references it.\nconst cache = new WeakMap();\n\n// Attach some heavy metadata to the DOM node\ncache.set(domNode, { clickCount: 0, heavyData: new Array(10000) });\n\n// Later, the button is removed from the DOM and 'domNode' is set to null\ndomNode.parentNode.removeChild(domNode);\ndomNode = null;\n\n// MAGIC: At this point, the Garbage Collector sees that 'domNode' \n// doesn't exist anywhere else in the code. It automatically wipes \n// the entry out of the WeakMap, freeing up the memory instantly!"
+}

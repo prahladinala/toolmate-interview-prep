@@ -1,0 +1,30 @@
+{
+  "id": "id-command",
+  "title": "id Command",
+  "difficulty": "Intermediate",
+  "definition": "A command that prints the real and effective user IDs (UID) and group IDs (GID) for a specified user.",
+  "simpleExplanation": "A much more detailed version of `whoami` and `groups` combined. It prints the actual mathematical numbers the Kernel uses to identify you.",
+  "realWorldExample": "Linux doesn't actually understand the name 'bob'. It only understands that Bob is User Number 1001. Typing `id` shows `uid=1001(bob) gid=1001(bob) groups=1001(bob),27(sudo)`. This is vital for Docker permissions.",
+  "useCases": [
+    "Debugging Docker volume permissions",
+    "Advanced troubleshooting"
+  ],
+  "questions": {
+    "basic": [
+      "What is the UID (User ID) of the `root` superuser?"
+    ],
+    "intermediate": [
+      "Why is the `id` command critical when mounting Host volumes into Docker containers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Root UID?",
+      "answer": "Zero (0). The Linux kernel grants absolute power to whichever user has UID 0, regardless of what their name is."
+    },
+    {
+      "question": "Why critical for Docker?",
+      "answer": "Because a Docker container might run its app as UID 1000. If your laptop user is UID 1001, and you mount a folder, the container won't be able to write to your folder due to a UID mismatch."
+    }
+  ]
+}

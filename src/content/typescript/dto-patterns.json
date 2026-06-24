@@ -1,0 +1,35 @@
+{
+  "id": "dto-patterns",
+  "title": "DTO (Data Transfer Object) Patterns",
+  "difficulty": "Advanced",
+  "definition": "An architectural pattern used to define objects that transport data between processes (e.g., between a Backend and Frontend). They decouple the internal database models from the external API shapes.",
+  "simpleExplanation": "A Database Model is the raw ingredients in the kitchen. The DTO is the beautiful plated meal served to the customer. You don't want to serve raw ingredients (like sending the user's password hash or database internal IDs to the frontend). The DTO is a strictly typed interface defining exactly what the frontend is allowed to see.",
+  "realWorldExample": "A Backend User entity has 20 fields. You create a `CreateUserDTO` interface for the Registration form (only needs email/password), and a `UserResponseDTO` for the frontend (strips the password).",
+  "useCases": [
+    "NestJS architecture",
+    "Full-stack TypeScript apps",
+    "Securing API boundaries"
+  ],
+  "questions": {
+    "basic": [
+      "What does DTO stand for?"
+    ],
+    "intermediate": [
+      "Why use a DTO instead of just returning the Database Model directly?"
+    ],
+    "advanced": [
+      "How do DTOs relate to Utility Types like `Omit` and `Pick`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use DTOs instead of DB models?",
+      "answer": "Security and Decoupling. If you return the DB model directly, you might accidentally expose sensitive fields (passwords, salts). Furthermore, if you change your database schema, you don't want every frontend application relying on that API to suddenly break. The DTO acts as a stable contract."
+    },
+    {
+      "question": "How do they relate to Utility types?",
+      "answer": "In full-stack TS, developers rarely write DTOs from scratch. They import the base Database Entity, and use Utilities to build the DTO: `export type UserPublicDTO = Omit<DbUser, 'password' | 'ssn'>;`."
+    }
+  ],
+  "codeExample": "// Backend Database Model\ninterface UserEntity {\n  id: string;\n  email: string;\n  passwordHash: string;\n  lastLoginIp: string;\n  createdAt: Date;\n}\n\n// DTO for the Frontend (Data traveling over the network)\n// We use Omit to perfectly strip sensitive data while keeping types in sync\nexport type UserResponseDTO = Omit<UserEntity, \"passwordHash\" | \"lastLoginIp\">;\n\n// DTO for what the Frontend sends to the Backend during signup\nexport type CreateUserRequestDTO = Pick<UserEntity, \"email\"> & {\n  passwordRaw: string; // The frontend sends a raw password, not a hash\n};\n\n// Frontend API Call using the DTO contract\nasync function signup(payload: CreateUserRequestDTO): Promise<UserResponseDTO> {\n  // fetch...\n}"
+}

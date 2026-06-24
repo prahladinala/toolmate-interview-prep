@@ -1,0 +1,31 @@
+{
+  "id": "state-normalization",
+  "title": "State Normalization",
+  "difficulty": "Advanced",
+  "definition": "Structuring state shape similar to a database, using flat lookup tables indexed by IDs rather than deeply nested arrays, to make state updates efficient and predictable.",
+  "simpleExplanation": "If you have a list of 1,000 Users, and each User has an array of 50 Posts. If you want to edit Post #42, searching through an Array inside an Array is painfully slow. Normalization splits them into two flat dictionaries: `users: { id: {} }` and `posts: { id: {} }`. You can look up Post #42 instantly.",
+  "realWorldExample": "Designing a Twitter clone. Instead of `user.tweets.replies[0]`, you store `usersById`, `tweetsById`, and `repliesById`. A tweet just holds an array of reply IDs: `[1, 2, 3]`.",
+  "useCases": [
+    "Optimizing massive lists",
+    "Preventing duplicated data bugs"
+  ],
+  "questions": {
+    "basic": [
+      "What data structure is used to hold the items in a Normalized state?"
+    ],
+    "intermediate": [
+      "What is `createEntityAdapter` in Redux Toolkit?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Data structure?",
+      "answer": "An Object (used as a dictionary/hash map), where the Keys are the Item IDs, and the Values are the Item data."
+    },
+    {
+      "question": "createEntityAdapter?",
+      "answer": "It is an RTK utility that literally writes all the boilerplate logic for normalizing data for you. It automatically generates reducers like `addOne`, `addMany`, and `removeOne`."
+    }
+  ],
+  "codeExample": "/* \n  ❌ BAD: Deeply nested arrays (Slow to search, hard to update)\n*/\nconst badState = [\n  {\n    id: 'user1',\n    name: 'John',\n    posts: [\n      { id: 'post1', text: 'Hello' }\n    ]\n  }\n];\n\n/* \n  ✅ GOOD: Normalized state (Instant lookup! O(1) time complexity)\n*/\nconst goodState = {\n  users: {\n    byId: {\n      'user1': { id: 'user1', name: 'John', postIds: ['post1'] }\n    },\n    allIds: ['user1']\n  },\n  posts: {\n    byId: {\n      'post1': { id: 'post1', author: 'user1', text: 'Hello' }\n    },\n    allIds: ['post1']\n  }\n};"
+}

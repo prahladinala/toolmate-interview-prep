@@ -1,0 +1,43 @@
+{
+  "id": "parent-child",
+  "title": "Parent to Child Communication",
+  "difficulty": "Beginner",
+  "definition": "The standard unidirectional data flow in React where a parent component passes data down to a child component using Props.",
+  "simpleExplanation": "Imagine a manager giving a task to an employee. The manager (Parent) writes the instructions on a clipboard (Props) and hands it down to the employee (Child). The employee just reads the clipboard and does the work.",
+  "realWorldExample": "A `<UserProfile>` component fetches user data from an API, and passes `name` and `avatarUrl` down as props to a `<ProfileAvatar>` child component.",
+  "useCases": [
+    "Passing pure data to presentational components",
+    "Configuring child component behavior (e.g., `isDisabled={true}`)"
+  ],
+  "questions": {
+    "basic": [
+      "How does a parent pass data to a child?",
+      "Can a child change the props passed to it by the parent?"
+    ],
+    "intermediate": [
+      "What happens to the child when the parent's state changes?",
+      "How do you pass a large number of props without writing them all out manually?"
+    ],
+    "advanced": [
+      "How can you prevent a child from re-rendering if the parent re-renders but the props haven't changed?"
+    ],
+    "trick": [
+      "If you pass a prop down as `initialValue={10}` and the parent later changes it to `20`, does the child's internal `useState(initialValue)` update to 20?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can a child change its props?",
+      "answer": "No. Props are strictly read-only. A component must never modify its own props. If the data needs to change, it must be managed as State."
+    },
+    {
+      "question": "How do you pass a large number of props easily?",
+      "answer": "You can use the object spread operator: `<ChildComponent {...userObject} />`. This will pass all keys in the object as individual props."
+    },
+    {
+      "question": "Does the child's internal useState update if the initial prop changes?",
+      "answer": "NO! `useState(initialValue)` ONLY looks at the initial value during the very first render. If the parent passes a new prop value later, `useState` completely ignores it. This is a very common bug."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\n// Child Component\nfunction Child({ name, age, isOnline }) {\n  return (\n    <div className=\"p-4 border bg-gray-100\">\n      <h3>Child Component</h3>\n      <p>Name: {name}</p>\n      <p>Age: {age}</p>\n      <p>Status: {isOnline ? \"🟢 Online\" : \"🔴 Offline\"}</p>\n    </div>\n  );\n}\n\n// Parent Component\nexport default function Parent() {\n  const [isOnline, setIsOnline] = useState(true);\n\n  // Passing data downwards via Props\n  return (\n    <div className=\"p-4\">\n      <h2>Parent Component</h2>\n      <button onClick={() => setIsOnline(!isOnline)}>\n        Toggle Child Status\n      </button>\n      <br /><br />\n      \n      {/* Data flows down to the child */}\n      <Child name=\"Alice\" age={28} isOnline={isOnline} />\n    </div>\n  );\n}"
+}

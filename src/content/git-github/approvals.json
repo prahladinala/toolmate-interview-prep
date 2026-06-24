@@ -1,0 +1,30 @@
+{
+  "id": "approvals",
+  "title": "Approvals & Merging",
+  "difficulty": "Intermediate",
+  "definition": "The final steps of a Pull Request workflow where reviewers formally accept the changes, and the code is subsequently integrated into the base branch.",
+  "simpleExplanation": "Once you fix all the things your reviewers pointed out, they click a button that says 'Approve' (which adds a big green checkmark to your PR). Once you have enough approvals, the 'Merge' button unlocks, and you can squash your code into the main branch.",
+  "realWorldExample": "A company policy might require strictly 2 Approvals from Senior Developers before any code can be merged into the `production` branch.",
+  "useCases": [
+    "Finalizing the PR process"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three statuses a reviewer can submit?"
+    ],
+    "intermediate": [
+      "What is the difference between 'Create a merge commit' and 'Squash and merge'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three statuses?",
+      "answer": "1. Comment (Just leaving thoughts), 2. Approve (Looks good, ready to merge), 3. Request Changes (Forces the PR to remain blocked until specific fixes are made)."
+    },
+    {
+      "question": "Merge commit vs Squash?",
+      "answer": "'Merge commit' takes all 50 of your tiny commits and dumps them into the main history timeline, plus adds a 51st commit tying them together. 'Squash and merge' crushes your 50 commits into 1 single clean commit and places it on the main timeline."
+    }
+  ],
+  "codeExample": "// No code needed. This is a GitHub UI process.\n\n// Step 1: Reviewer submits 'Approve' review.\n// Step 2: PR Author sees the green checkmark.\n// Step 3: PR Author clicks 'Squash and merge'.\n// Step 4: GitHub merges the code and asks: 'Delete branch?'\n// Step 5: ALWAYS click 'Delete branch' to keep the repository clean!"
+}

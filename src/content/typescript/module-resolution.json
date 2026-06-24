@@ -1,0 +1,35 @@
+{
+  "id": "module-resolution",
+  "title": "Module Resolution",
+  "difficulty": "Advanced",
+  "definition": "The process the TypeScript compiler uses to figure out what an import refers to. (e.g., figuring out exactly where `import { React } from 'react'` lives on your hard drive).",
+  "simpleExplanation": "When you tell TypeScript 'Go get the `lodash` package', Module Resolution is the GPS algorithm it uses to hunt through the `node_modules` folder, check `package.json` files, and finally locate the `index.d.ts` file so it can read the types.",
+  "realWorldExample": "Configuring your project to use `\"moduleResolution\": \"node16\"` so that TypeScript understands native ES Modules in Node.js environments.",
+  "useCases": [
+    "Monorepo setups",
+    "Fixing 'Cannot find module' errors",
+    "Library authoring"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two main module resolution strategies in TS?"
+    ],
+    "intermediate": [
+      "What happens if TS finds the `.js` file but cannot find the `.d.ts` file?"
+    ],
+    "advanced": [
+      "What is the purpose of the `types` array in `tsconfig.json`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the two main strategies?",
+      "answer": "`Classic` (legacy, almost never used) and `Node` (looks in `node_modules` recursively, exactly like Node.js does). Newer versions include `Node16` and `Bundler` for modern setups like Vite."
+    },
+    {
+      "question": "What if it can't find the .d.ts file?",
+      "answer": "TypeScript will throw an error: 'Could not find a declaration file for module X'. It knows the JS code exists, but it refuses to compile because it has no idea what Types the JS code uses. You usually fix this by running `npm i @types/package-name`."
+    }
+  ],
+  "codeExample": "// tsconfig.json\n{\n  \"compilerOptions\": {\n    // Tells TS to resolve imports exactly like Node.js does\n    \"moduleResolution\": \"node\", \n    \n    // Modern Vite/Webpack projects often use 'bundler' \n    // \"moduleResolution\": \"bundler\"\n  }\n}"
+}

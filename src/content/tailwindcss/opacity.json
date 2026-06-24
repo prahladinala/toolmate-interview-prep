@@ -1,0 +1,32 @@
+{
+  "id": "opacity",
+  "title": "Opacity",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the opacity (transparency) of an element.",
+  "simpleExplanation": "Ghost mode. `opacity-100` is fully solid. `opacity-50` is half invisible. `opacity-0` is completely invisible.",
+  "realWorldExample": "Fading out a 'Submit' button by applying `opacity-50` while an API request is loading, so the user knows it is temporarily disabled.",
+  "useCases": [
+    "Disabled states",
+    "Modal backdrops",
+    "Hover effects"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `opacity-0` and `hidden`?"
+    ],
+    "intermediate": [
+      "If you apply `opacity-50` to a parent `div`, what happens to the child `div` inside it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "opacity-0 vs hidden?",
+      "answer": "`hidden` deletes the element from the layout. `opacity-0` keeps the element in the exact same spot (it still takes up space), you just can't see it."
+    },
+    {
+      "question": "Parent opacity?",
+      "answer": "The child ALSO becomes 50% transparent! Opacity is inherited. If you only wanted the parent background to be transparent, you should use `bg-opacity-50` or `bg-black/50` instead of `opacity-50`."
+    }
+  ],
+  "codeExample": "<!-- A solid button -->\n<button class=\"bg-blue-500 opacity-100\">Solid</button>\n\n<!-- A faded, disabled-looking button -->\n<button class=\"bg-blue-500 opacity-50 cursor-not-allowed\">Disabled</button>\n\n<!-- MODERN TAILWIND SHORTCUT: Color/Opacity Syntax -->\n<!-- You can add /50 directly to ANY color to make just the color transparent! -->\n<div class=\"bg-red-500/20 text-red-500\">\n  This has a 20% transparent red background, but the text remains 100% solid!\n</div>"
+}

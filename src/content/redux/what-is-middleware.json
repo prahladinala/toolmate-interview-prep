@@ -1,0 +1,32 @@
+{
+  "id": "what-is-middleware",
+  "title": "What is Middleware?",
+  "difficulty": "Intermediate",
+  "definition": "Code you can put between the framework receiving a request, and the framework generating a response. In Redux, middleware provides a third-party extension point between dispatching an action, and the moment it reaches the reducer.",
+  "simpleExplanation": "The bouncer at a club. Before an Action is allowed to enter the Reducer club, the Bouncer stops it. The Bouncer can inspect the action, log it to a computer, delay it, or completely throw it in the trash. Once the Bouncer is done, it lets the Action pass through.",
+  "realWorldExample": "Analytics. You write a middleware that intercepts EVERY action. If the action is `ADD_TO_CART`, the middleware secretly fires an event to Google Analytics before passing the action on to the reducer.",
+  "useCases": [
+    "Logging",
+    "Crash reporting",
+    "Routing async actions (Thunks)"
+  ],
+  "questions": {
+    "basic": [
+      "Does Middleware run BEFORE or AFTER the Reducer processes the action?"
+    ],
+    "intermediate": [
+      "Can Middleware stop an action from reaching the Reducer entirely?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Before or after?",
+      "answer": "BEFORE. Middleware intercepts the action the exact moment it is dispatched."
+    },
+    {
+      "question": "Can it stop actions?",
+      "answer": "Yes! If a middleware function does not call `next(action)`, the action dies right there and the Reducer never sees it."
+    }
+  ],
+  "codeExample": "/*\n  The Redux Pipeline:\n\n  1. Component runs `dispatch({ type: 'ADD' })`\n         │\n         ▼\n  2. MIDDLEWARE 1 (e.g., Logger - Prints the action to the console)\n         │ calls next()\n         ▼\n  3. MIDDLEWARE 2 (e.g., Thunk - Checks if action is a function. It's not, so it passes it on)\n         │ calls next()\n         ▼\n  4. REDUCER (Catches the action and updates state)\n*/"
+}

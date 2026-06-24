@@ -1,0 +1,45 @@
+{
+  "id": "synthetic-events",
+  "title": "Synthetic Events",
+  "difficulty": "Intermediate",
+  "definition": "A Synthetic Event is a cross-browser wrapper around the browser's native event. It has the same interface as the browser's native event (like `preventDefault()` and `stopPropagation()`), but works identically across all browsers.",
+  "simpleExplanation": "Imagine every browser (Chrome, Safari, Firefox) speaks a slightly different language when a user clicks a button. In the old days, developers had to write code to translate all three languages (e.g., using jQuery). React solves this with the 'Synthetic Event'. When you click a button, React intercepts the browser's native click, translates it into its own universal 'React Language' (the Synthetic Event), and hands THAT to your `onClick` function. Now you don't have to worry about browser differences.",
+  "realWorldExample": "If you write `<button onClick={handleClick}>`, the `e` in `handleClick(e)` is NOT the standard DOM `MouseEvent`. It is a React `SyntheticEvent`. If you look inside it, you'll see a property called `e.nativeEvent` which holds the original, messy browser event.",
+  "useCases": [
+    "Providing a consistent Event API across all browsers (IE, Chrome, Safari)",
+    "Optimizing performance through 'Event Pooling' (in React 16 and older)",
+    "Delegating all events to the root of the document for performance"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Synthetic Event?",
+      "How do you stop a form from refreshing the page in React?"
+    ],
+    "intermediate": [
+      "How does React actually attach event listeners to the DOM?",
+      "What is 'Event Delegation' in React?"
+    ],
+    "advanced": [
+      "What was 'Event Pooling' in React 16, and why was it removed in React 17?",
+      "If you need to access the raw, underlying browser event, how do you do it?"
+    ],
+    "trick": [
+      "Can you return `false` from an `onClick` handler to prevent default behavior in React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does React actually attach event listeners?",
+      "answer": "React doesn't actually attach a real `addEventListener` to your specific `<button>`! Instead, it uses Event Delegation. It attaches ONE single giant event listener to the root of your application. When you click the button, the event bubbles up to the root, React intercepts it, figures out which component you clicked, creates a Synthetic Event, and triggers your specific `onClick` function."
+    },
+    {
+      "question": "What was Event Pooling (React 16)?",
+      "answer": "To save memory, React 16 used to 'recycle' event objects. If you tried to `console.log(e)` inside a `setTimeout`, all properties would be `null` because React already wiped the object clean to use for the next click! You had to call `e.persist()`. This was very confusing and was completely removed in React 17."
+    },
+    {
+      "question": "Can you return false to prevent default behavior?",
+      "answer": "No! In plain HTML/JS, returning `false` from an `onclick` prevents the default action (like a link navigating). In React, you MUST explicitly call `e.preventDefault()`. Returning `false` does nothing."
+    }
+  ],
+  "codeExample": "import React from 'react';\n\nexport default function EventDemo() {\n  const handleLinkClick = (e) => {\n    // In React, returning 'false' does NOT work.\n    // You must explicitly call preventDefault.\n    e.preventDefault();\n    console.log(\"Link was clicked, but we didn't navigate!\");\n    \n    // 'e' is a SyntheticEvent. \n    // If you ever desperately need the real browser event:\n    console.log(\"Native Event details:\", e.nativeEvent);\n  };\n\n  const handleDivClick = (e) => {\n    console.log(\"Div was clicked!\");\n  };\n\n  const handleButtonClick = (e) => {\n    // Stops the event from bubbling up to the div\n    e.stopPropagation();\n    console.log(\"Button was clicked!\");\n  };\n\n  return (\n    // Event bubbling still works perfectly with Synthetic Events\n    <div onClick={handleDivClick} className=\"p-8 border-2 border-dashed border-gray-400\">\n      <h3>Parent Div</h3>\n      <p>Clicking the button will NOT trigger the Div's onClick, because of stopPropagation.</p>\n      \n      <button onClick={handleButtonClick} className=\"bg-blue-500 text-white p-2 rounded mr-4\">\n        Click Me\n      </button>\n\n      <a href=\"https://google.com\" onClick={handleLinkClick} className=\"text-blue-600 underline\">\n        Fake Google Link\n      </a>\n    </div>\n  );\n}"
+}

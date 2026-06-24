@@ -1,0 +1,30 @@
+{
+  "id": "redux-vs-zustand",
+  "title": "Redux vs Zustand",
+  "difficulty": "Intermediate",
+  "definition": "A comparison between the enterprise-heavy Redux architecture and Zustand, a lightweight, minimalist state management library that has gained massive popularity.",
+  "simpleExplanation": "Redux requires wrapping your app in a Provider, writing slices, and strict architectural rules. Zustand is just a simple hook. You say `create((set) => ({ bears: 0, increase: () => set({ bears: bears + 1 }) }))`, and you're done. No boilerplate.",
+  "realWorldExample": "Using Zustand for a small to medium-sized dashboard because Redux feels like using a sledgehammer to crack a nut.",
+  "useCases": [
+    "Choosing a state management library for a new project"
+  ],
+  "questions": {
+    "basic": [
+      "Does Zustand require you to wrap your app in a `<Provider>` component?"
+    ],
+    "intermediate": [
+      "If Zustand is so much easier, why do massive enterprise companies still choose Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Require Provider?",
+      "answer": "No. Zustand uses hooks that can be imported and used anywhere instantly."
+    },
+    {
+      "question": "Why Redux?",
+      "answer": "Redux forces strict architectural patterns. On a team of 50 developers, strict rules prevent chaos. Redux also has RTK Query (unmatched for data fetching), the best DevTools in the industry, and a massive ecosystem of middleware."
+    }
+  ],
+  "codeExample": "// 🐻 ZUSTAND (Look how simple it is!)\nimport { create } from 'zustand'\n\n// 1. Create the store and actions in one block\nconst useStore = create((set) => ({\n  count: 0,\n  increment: () => set((state) => ({ count: state.count + 1 })),\n}))\n\n// 2. Use it anywhere. No Provider needed!\nfunction Counter() {\n  const count = useStore((state) => state.count)\n  const increment = useStore((state) => state.increment)\n  return <button onClick={increment}>{count}</button>\n}"
+}

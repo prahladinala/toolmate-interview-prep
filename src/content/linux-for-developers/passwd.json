@@ -1,0 +1,30 @@
+{
+  "id": "passwd",
+  "title": "passwd",
+  "difficulty": "Beginner",
+  "definition": "The command used to change a user's password. It updates the encrypted hashes stored in the `/etc/shadow` file.",
+  "simpleExplanation": "The password reset button.",
+  "realWorldExample": "Bob wants to change his password. He types `passwd`. It asks for his old password, then asks him to type his new password twice.",
+  "useCases": [
+    "Security hygiene",
+    "Initial account setup"
+  ],
+  "questions": {
+    "basic": [
+      "If you are logged in as the `root` administrator, do you need to know Bob's current password to change it for him?"
+    ],
+    "intermediate": [
+      "Why does the terminal not show any stars (***) or characters when you type your password?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need old password?",
+      "answer": "No. The root user can change any password using `sudo passwd bob` without knowing the old one."
+    },
+    {
+      "question": "Why no stars?",
+      "answer": "For absolute security. It prevents someone looking over your shoulder from knowing how many characters long your password is."
+    }
+  ]
+}

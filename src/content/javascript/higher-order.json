@@ -1,0 +1,45 @@
+{
+  "id": "higher-order",
+  "title": "Higher-Order Functions",
+  "difficulty": "Intermediate",
+  "definition": "A Higher-Order Function is a function that does at least one of two things: it takes one or more functions as arguments (callbacks), or it returns a function as its result.",
+  "simpleExplanation": "Think of a higher-order function like a factory manager. Instead of just taking raw materials (numbers, strings), the manager takes IN other workers (callbacks) and tells them when to do their job. Or, the manager might hire a new worker and give them to you (returning a function).",
+  "realWorldExample": "The `setTimeout` function is a built-in higher-order function. You pass it a function (what to do) and a time (when to do it). It takes your function as an argument and executes it later.",
+  "useCases": [
+    "Array methods like map, filter, and reduce",
+    "Adding event listeners (`addEventListener`)",
+    "Creating decorators or wrapper functions"
+  ],
+  "questions": {
+    "basic": [
+      "What makes a function a 'higher-order' function?",
+      "What is a callback function?"
+    ],
+    "intermediate": [
+      "Why are functions in JavaScript considered 'first-class citizens'?",
+      "Can you write a custom higher-order function that works like Array.map?"
+    ],
+    "advanced": [
+      "What is function composition?",
+      "How are higher-order functions used in React?"
+    ],
+    "trick": [
+      "If you pass `console.log` directly into `map()`, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a callback function?",
+      "answer": "A callback is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action."
+    },
+    {
+      "question": "Why are functions considered 'first-class citizens'?",
+      "answer": "Because functions in JavaScript are treated like any other variable. They can be passed as arguments, returned by other functions, and assigned to variables."
+    },
+    {
+      "question": "What happens if you pass console.log to map? [1,2,3].map(console.log)",
+      "answer": "It prints the value, the index, and the whole array for each element! Because map passes three arguments to its callback, and console.log accepts infinite arguments."
+    }
+  ],
+  "codeExample": "// 1. A Higher-Order Function that TAKES a function (Callback)\nfunction greetUser(name, formatCallback) {\n  const formattedName = formatCallback(name);\n  console.log(`Welcome, ${formattedName}!`);\n}\n\nconst makeUppercase = (str) => str.toUpperCase();\ngreetUser('alice', makeUppercase); // \"Welcome, ALICE!\"\n\n\n// 2. A Higher-Order Function that RETURNS a function\nfunction multiplyBy(factor) {\n  return function(number) {\n    return number * factor;\n  }\n}\n\nconst double = multiplyBy(2);\nconst triple = multiplyBy(3);\n\nconsole.log(double(5)); // 10\nconsole.log(triple(5)); // 15"
+}

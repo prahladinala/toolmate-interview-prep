@@ -1,0 +1,30 @@
+{
+  "id": "cloud-beginner",
+  "title": "Beginner Questions",
+  "difficulty": "Beginner",
+  "definition": "Introductory interview questions that test the candidate's understanding of the basic value proposition, economic models, and foundational vocabulary of Cloud Computing.",
+  "simpleExplanation": "Proving you know WHY companies use the cloud, not just HOW to use it.",
+  "realWorldExample": "Question: 'Explain the difference between CapEx and OpEx, and why it makes CFOs love the cloud.'",
+  "useCases": [
+    "Junior Cloud Engineer interviews",
+    "IT Sales roles"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three main service models of Cloud Computing?"
+    ],
+    "intermediate": [
+      "Explain the concept of 'High Availability' in simple terms."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three main models?",
+      "answer": "IaaS (Infrastructure as a Service), PaaS (Platform as a Service), and SaaS (Software as a Service)."
+    },
+    {
+      "question": "What is High Availability?",
+      "answer": "Designing a system so that even if a server, a hard drive, or an entire data center catches on fire, the application continues to run without the end-user ever experiencing downtime."
+    }
+  ]
+}

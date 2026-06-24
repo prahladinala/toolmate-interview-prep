@@ -1,0 +1,34 @@
+{
+  "id": "deep-clone",
+  "title": "Implement: Deep Clone Object",
+  "difficulty": "Advanced",
+  "definition": "Write a function that recursively copies an object so that no nested objects share a memory reference with the original. Cannot use `JSON.parse` or `structuredClone`.",
+  "simpleExplanation": "The interviewer wants to see if you can handle recursion with complex data types, specifically filtering out Arrays vs Objects vs Primitives, and handling edge cases like `null`.",
+  "realWorldExample": "Cloning `{ a: 1, b: { c: 2 } }`.",
+  "useCases": [
+    "Interview screening",
+    "Understanding JS data types"
+  ],
+  "questions": {
+    "basic": [
+      "Why does `typeof null` complicate this question?"
+    ],
+    "intermediate": [
+      "Write a recursive deep clone function."
+    ],
+    "advanced": [
+      "How would you handle circular references in a deep clone function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why does typeof null complicate it?",
+      "answer": "Because `typeof null === 'object'`. If your base case is `if (typeof obj === 'object')`, your code will crash when trying to loop over the keys of `null`. You must add an explicit check: `if (obj === null) return null;`."
+    },
+    {
+      "question": "How to handle circular references?",
+      "answer": "You must maintain a cache (usually a `WeakMap`) of objects you have already cloned. Before cloning an object, check the WeakMap. If it exists, return the cached clone. If not, clone it and save it to the WeakMap. This prevents infinite recursion."
+    }
+  ],
+  "codeExample": "function deepClone(obj) {\n  // 1. Base case: Primitive values or null\n  if (obj === null || typeof obj !== 'object') {\n    return obj;\n  }\n\n  // 2. Handle Arrays\n  if (Array.isArray(obj)) {\n    const copyArr = [];\n    for (let i = 0; i < obj.length; i++) {\n      copyArr[i] = deepClone(obj[i]); // Recursion!\n    }\n    return copyArr;\n  }\n\n  // 3. Handle Objects\n  const copyObj = {};\n  for (let key in obj) {\n    if (obj.hasOwnProperty(key)) {\n      copyObj[key] = deepClone(obj[key]); // Recursion!\n    }\n  }\n  return copyObj;\n}\n\nconst orig = { a: 1, b: { c: 2 } };\nconst clone = deepClone(orig);\nclone.b.c = 99;\nconsole.log(orig.b.c); // 2 (Original is safe!)"
+}

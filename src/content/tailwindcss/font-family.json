@@ -1,0 +1,32 @@
+{
+  "id": "font-family",
+  "title": "Font Family",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling the font family of an element.",
+  "simpleExplanation": "Tailwind provides 3 default font stacks: \n- `font-sans`: Clean, modern, no curly feet (Arial/Helvetica style).\n- `font-serif`: Classic, curly feet (Times New Roman style), great for long articles.\n- `font-mono`: Typewriter style (Courier), where every letter is the exact same width. Used for code blocks.",
+  "realWorldExample": "A developer blog where the article is `font-sans`, but the code snippets are wrapped in `font-mono`.",
+  "useCases": [
+    "Branding",
+    "Code formatting",
+    "Editorial design"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default font family class applied to the entire `<body>` in Tailwind?"
+    ],
+    "intermediate": [
+      "How do you change the default `font-sans` to be a custom Google Font like 'Inter'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default family?",
+      "answer": "`font-sans`"
+    },
+    {
+      "question": "Custom Google Font?",
+      "answer": "You import the font in your CSS or HTML, and then override `theme.extend.fontFamily.sans` in your `tailwind.config.js` file."
+    }
+  ],
+  "codeExample": "<!-- \n  Sans is default. \n  Serif is great for news sites or books.\n  Mono is essential for code.\n-->\n<article class=\"font-serif\">\n  <h1>The History of Typography</h1>\n  <p>Long ago, in a printing press far away...</p>\n  \n  <pre class=\"font-mono bg-gray-100 p-4\">\n    const code = \"Hello World\";\n  </pre>\n</article>"
+}

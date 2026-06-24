@@ -1,0 +1,30 @@
+{
+  "id": "conflict-resolution",
+  "title": "Conflict Resolution",
+  "difficulty": "Intermediate",
+  "definition": "The manual process of inspecting a conflicted file, choosing the correct code, removing Git's conflict markers, and finalizing the merge.",
+  "simpleExplanation": "When Git pauses a merge because of a conflict, you open VS Code. VS Code will highlight the conflicts brightly. You click 'Accept Current', 'Accept Incoming', or 'Accept Both'. Once you fix all the files, you tell Git 'I fixed it' by committing.",
+  "realWorldExample": "Getting on a Zoom call with your coworker to decide whose code should be kept and whose should be deleted during a nasty conflict.",
+  "useCases": [
+    "Unblocking a paused merge"
+  ],
+  "questions": {
+    "basic": [
+      "How do you tell Git that you have successfully resolved a conflict in a file?"
+    ],
+    "intermediate": [
+      "How can you abort a merge completely if the conflicts are too overwhelming?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Tell Git it's fixed?",
+      "answer": "You run `git add <filename>` to stage the resolved file. Once all files are staged, you run `git commit` to finalize the merge."
+    },
+    {
+      "question": "Abort merge?",
+      "answer": "Run `git merge --abort`. This safely cancels the merge entirely and puts your files exactly back to how they were before you typed `git merge`."
+    }
+  ],
+  "codeExample": "# 1. You type git merge, and get a CONFLICT error.\n$ git merge feature-branch\n# CONFLICT (content): Merge conflict in index.html\n# Automatic merge failed; fix conflicts and then commit the result.\n\n# 2. Open index.html in your editor and manually fix the text.\n\n# 3. Tell Git the file is fixed by adding it to the staging area.\n$ git add index.html\n\n# 4. Finalize the merge by committing!\n$ git commit -m \"Merge feature-branch and resolve conflict in index.html\"\n\n# PANIC BUTTON: If everything is ruined and you want to cancel the merge:\n$ git merge --abort"
+}

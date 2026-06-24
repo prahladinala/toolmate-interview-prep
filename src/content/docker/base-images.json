@@ -1,0 +1,30 @@
+{
+  "id": "base-images",
+  "title": "Base Images",
+  "difficulty": "Intermediate",
+  "definition": "An image that has no parent image, usually an operating system like Ubuntu or Alpine. It serves as the foundational starting point for building a custom Docker Image.",
+  "simpleExplanation": "The blank canvas you start painting on. You can't just put Python code in an empty box; it needs an operating system to run on. The Base Image provides that foundational OS.",
+  "realWorldExample": "Almost every Dockerfile starts with the word `FROM`. For example, `FROM node:18-alpine`. This tells Docker to download a pre-configured version of Linux that already has Node installed, and use that as the foundation to build your app upon.",
+  "useCases": [
+    "Dockerfile creation",
+    "Security hardening"
+  ],
+  "questions": {
+    "basic": [
+      "What keyword is always used at the very top of a Dockerfile to define the Base Image?"
+    ],
+    "intermediate": [
+      "What is the `scratch` base image used for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which keyword?",
+      "answer": "`FROM`"
+    },
+    {
+      "question": "What is 'scratch'?",
+      "answer": "`FROM scratch` is a completely, 100% empty image (0 bytes). It is usually only used by languages like Go or Rust that compile into standalone binary files and don't need a full operating system to run."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "drop-shadow",
+  "title": "Drop Shadow",
+  "difficulty": "Advanced",
+  "definition": "Utilities for applying a drop-shadow CSS filter, which perfectly traces the exact alpha transparency shape of an element, rather than just casting a square shadow from its bounding box.",
+  "simpleExplanation": "If you have a PNG image of a Star with a transparent background, and you apply `shadow-md` (Box Shadow), it will put a big ugly square shadow around the invisible borders of the image file. If you apply `drop-shadow-md`, it will cast a shadow that perfectly traces the exact shape of the Star.",
+  "realWorldExample": "Giving a drop shadow to an SVG logo or a complex shaped transparent PNG.",
+  "useCases": [
+    "SVGs",
+    "Transparent PNGs"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `shadow` and `drop-shadow`?"
+    ],
+    "intermediate": [
+      "Is `drop-shadow` more or less performant for the browser to render than `shadow`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "shadow vs drop-shadow?",
+      "answer": "`shadow` draws a shadow from the physical rectangular box of the HTML element. `drop-shadow` acts like a light source, casting a shadow only from the non-transparent pixels inside the element."
+    },
+    {
+      "question": "Performance?",
+      "answer": "Significantly LESS performant. `drop-shadow` is a CSS Filter that forces the browser to analyze pixel transparency. Use it sparingly on images/SVGs, never on standard rectangular `divs`."
+    }
+  ],
+  "codeExample": "<!-- \n  ❌ BAD: Box Shadow on an SVG.\n  This will draw a square shadow around the invisible bounding box of the SVG.\n-->\n<svg class=\"shadow-lg\"><path d=\"...\"/></svg>\n\n<!-- \n  ✅ GOOD: Drop Shadow on an SVG.\n  This will perfectly outline the complex shape of the SVG path with a shadow!\n-->\n<svg class=\"drop-shadow-lg\"><path d=\"...\"/></svg>"
+}

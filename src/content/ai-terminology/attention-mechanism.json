@@ -1,0 +1,30 @@
+{
+  "id": "attention-mechanism",
+  "title": "Attention Mechanism",
+  "difficulty": "Advanced",
+  "definition": "The core mathematical concept inside a Transformer that allows the model to dynamically focus on different parts of an input sequence when processing data, assigning different 'weights' of importance to different words.",
+  "simpleExplanation": "When you read the sentence 'The bank of the river', you pay special 'attention' to the word 'river' to understand that 'bank' means dirt, not money. The Attention mechanism mathematically teaches the AI to do exactly that.",
+  "realWorldExample": "Translating French to English. When the AI is generating an English verb, the Attention mechanism forces it to look backward and focus heavily on the specific French noun that came 5 words earlier to ensure the grammar matches.",
+  "useCases": [
+    "Transformers",
+    "Contextual understanding"
+  ],
+  "questions": {
+    "basic": [
+      "What problem did the Attention mechanism solve in early AI language models?"
+    ],
+    "intermediate": [
+      "What is the difference between 'Attention' and 'Self-Attention'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What problem did it solve?",
+      "answer": "The 'Short-Term Memory' problem. Older models forgot the beginning of a long sentence. Attention allows the model to instantly 'look back' at any previous word, no matter how far away it is."
+    },
+    {
+      "question": "Attention vs Self-Attention?",
+      "answer": "Standard attention usually looks between two different sequences (like looking from an English sentence to a French sentence during translation). Self-Attention looks at words *within the exact same sentence* to understand how they relate to each other."
+    }
+  ]
+}

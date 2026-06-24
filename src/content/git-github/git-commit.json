@@ -1,0 +1,30 @@
+{
+  "id": "git-commit",
+  "title": "git commit",
+  "difficulty": "Beginner",
+  "definition": "Captures a snapshot of the project's currently staged changes. Committed snapshots can be thought of as 'safe' versions of a project.",
+  "simpleExplanation": "Taking the photograph. You staged your files, now you are pressing the camera shutter. It permanently saves the current state of the staged files into the Git history database, and requires you to write a short message explaining what you did.",
+  "realWorldExample": "Saving your progress at the end of the day. `git commit -m \"Finished building the header navbar\"`",
+  "useCases": [
+    "Creating a permanent save point in history"
+  ],
+  "questions": {
+    "basic": [
+      "What flag allows you to write the commit message directly in the command line?"
+    ],
+    "intermediate": [
+      "What happens if you run `git commit` without the `-m` flag?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Message flag?",
+      "answer": "The `-m` flag. Example: `git commit -m \"message\"`."
+    },
+    {
+      "question": "Without -m?",
+      "answer": "Git will pause the terminal and open your default text editor (like Vim or Nano) so you can type a much longer, multi-line commit message."
+    }
+  ],
+  "codeExample": "# Standard commit with a message\n$ git commit -m \"Fix navigation bug on mobile\"\n\n# Shortcut! Add ALL tracked files and commit them in one single command\n$ git commit -a -m \"Quickly save all my changes\"\n# (Note: -a does NOT include brand new, untracked files!)\n\n# Oh no, I made a typo in my last commit message!\n# --amend lets you overwrite the very last commit message:\n$ git commit --amend -m \"Fix navigation bug on mobile (for real this time)\""
+}

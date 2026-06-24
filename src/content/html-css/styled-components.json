@@ -1,0 +1,30 @@
+{
+  "id": "styled-components",
+  "title": "Styled Components",
+  "difficulty": "Advanced",
+  "definition": "A popular library for React and React Native that allows you to use component-level styles in your application by mixing CSS directly inside JavaScript (CSS-in-JS).",
+  "simpleExplanation": "Instead of creating a React `<button>` and giving it a CSS class, you use JavaScript to literally create a new React component called `<PrimaryButton>` that has the CSS physically baked into it. You write the CSS inside backticks (template literals) right in your JS file.",
+  "realWorldExample": "Passing JavaScript variables directly into the CSS. `<Button primary={true}>`. The CSS inside the component reads the `primary` prop and automatically turns the background blue.",
+  "useCases": [
+    "Highly dynamic React applications where styles change based on JS state"
+  ],
+  "questions": {
+    "basic": [
+      "What pattern is Styled Components known for: CSS-in-JS or CSS Modules?"
+    ],
+    "intermediate": [
+      "How does Styled Components prevent class name conflicts?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which pattern?",
+      "answer": "CSS-in-JS."
+    },
+    {
+      "question": "Prevent conflicts?",
+      "answer": "Just like CSS Modules, it automatically generates random, unique class names (like `sc-bdvvtL gZMQgI`) for every component at runtime."
+    }
+  ],
+  "codeExample": "/* \n  Note: This is a conceptual example of Styled Components in React.\n  npm install styled-components\n*/\n\n/*\nimport styled from 'styled-components';\n\n// 1. Create a styled component!\n// It's a React component that renders an <a> tag with baked-in CSS.\nconst StyledLink = styled.a`\n  color: ${props => props.primary ? 'white' : 'blue'};\n  background: ${props => props.primary ? 'blue' : 'white'};\n  padding: 10px 20px;\n  border-radius: 4px;\n  text-decoration: none;\n  \n  /* You can even nest hover states! */\n  &:hover {\n    opacity: 0.8;\n  }\n`;\n\nexport default function App() {\n  return (\n    <div>\n      {/* 2. Use it like a normal React Component! */}\n      <StyledLink href=\"#\">Normal Link</StyledLink>\n      \n      {/* Because it's JS, the CSS reads the 'primary' prop dynamically! */}\n      <StyledLink href=\"#\" primary>Primary Link</StyledLink>\n    </div>\n  );\n}\n*/\n\n<div>See the source code to view the React implementation!</div>"
+}

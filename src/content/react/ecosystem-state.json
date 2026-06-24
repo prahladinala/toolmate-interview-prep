@@ -1,0 +1,45 @@
+{
+  "id": "ecosystem-state",
+  "title": "Global State (Redux vs Zustand)",
+  "difficulty": "Advanced",
+  "definition": "Global State Management libraries solve the problem of sharing state across massive, complex applications where the Context API becomes too slow or unwieldy. Redux is the traditional heavyweight, while Zustand and Recoil are modern, lightweight alternatives.",
+  "simpleExplanation": "Imagine a library. Context API is like everyone shouting book requests across the room; it works for a small room, but gets chaotic fast. Redux is a strict, heavily bureaucratic library: you must fill out 3 forms (Actions, Reducers, Dispatchers) just to check out a book. Zustand is like an open, modern library: there's a central desk with a very simple system to check out books immediately.",
+  "realWorldExample": "In a social media app, your 'Current User Profile', 'Unread Notifications Count', and 'Theme' need to be accessed by almost every component on screen. Using a global store prevents you from passing these via props down 20 levels.",
+  "useCases": [
+    "Managing highly complex, frequently updating state",
+    "Time-travel debugging (undo/redo functionality easily built with Redux)",
+    "Decoupling business logic from UI components"
+  ],
+  "questions": {
+    "basic": [
+      "Why use Redux or Zustand instead of just Context API?",
+      "What are the three core principles of Redux?"
+    ],
+    "intermediate": [
+      "What is a 'Store' in global state?",
+      "How does Zustand differ from Redux?"
+    ],
+    "advanced": [
+      "What is Redux Toolkit (RTK) and why was it created?",
+      "What are 'selectors' and why are they important for performance?"
+    ],
+    "trick": [
+      "Do you HAVE to use a state management library in React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use Redux instead of Context?",
+      "answer": "Context re-renders EVERY consumer when the value changes. Libraries like Redux/Zustand allow components to 'subscribe' to specific slices of state. If a component only cares about `state.user`, it won't re-render when `state.theme` changes."
+    },
+    {
+      "question": "What are the three core principles of Redux?",
+      "answer": "1. Single source of truth (one global store). 2. State is read-only (you must dispatch an action to change it). 3. Changes are made with pure functions (Reducers)."
+    },
+    {
+      "question": "How does Zustand differ from Redux?",
+      "answer": "Zustand is vastly less boilerplate. It doesn't require Context Providers, Actions, or Reducers. You just create a custom hook `useStore` that holds your state and methods, and you use it directly anywhere."
+    }
+  ],
+  "codeExample": "// --- A Simple Zustand Implementation ---\n// npm install zustand\n/* \nimport { create } from 'zustand'\n\n// 1. Create the global store\nconst useBearStore = create((set) => ({\n  bears: 0,\n  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),\n  removeAllBears: () => set({ bears: 0 }),\n}))\n\n// 2. Consume it anywhere in your app (No Providers needed!)\nfunction BearCounter() {\n  // Selecting only the specific data we need prevents unnecessary re-renders\n  const bears = useBearStore((state) => state.bears)\n  return <h1>{bears} around here ...</h1>\n}\n\nfunction Controls() {\n  const increasePopulation = useBearStore((state) => state.increasePopulation)\n  return <button onClick={increasePopulation}>one up</button>\n}\n*/\n\nconsole.log(\"Zustand provides a tiny, unopinionated global state solution compared to Redux's strict architecture.\");"
+}

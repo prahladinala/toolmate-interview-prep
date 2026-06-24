@@ -1,0 +1,32 @@
+{
+  "id": "text-colors",
+  "title": "Text Colors",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the text color of an element.",
+  "simpleExplanation": "The `text-{color}-{shade}` system. Choose a color (red, blue, green), and then choose how dark it is from 50 (almost white) to 900 (almost black).",
+  "realWorldExample": "Using `text-red-500` for a 'Delete Account' warning message, and `text-green-600` for a 'Payment Successful' message.",
+  "useCases": [
+    "Theming",
+    "Validation states (Success/Error)",
+    "Disabled states"
+  ],
+  "questions": {
+    "basic": [
+      "Which shade is darker: `text-blue-100` or `text-blue-900`?"
+    ],
+    "intermediate": [
+      "If you just want pure black or pure white text, what classes do you use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is darker?",
+      "answer": "`text-blue-900` (The higher the number, the darker/heavier the color)."
+    },
+    {
+      "question": "Black/White classes?",
+      "answer": "`text-black` and `text-white` (They don't need a numerical shade)."
+    }
+  ],
+  "codeExample": "<p class=\"text-white bg-black\">High Contrast!</p>\n\n<p class=\"text-red-500\">Error: Invalid Password.</p>\n\n<p class=\"text-green-600 font-bold\">Success: Payment Processed.</p>\n\n<!-- A common pattern for secondary, less important text -->\n<p class=\"text-gray-500 text-sm\">Posted 2 hours ago</p>"
+}

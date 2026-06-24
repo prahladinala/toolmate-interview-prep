@@ -1,0 +1,31 @@
+{
+  "id": "chroma",
+  "title": "ChromaDB",
+  "difficulty": "Beginner",
+  "definition": "A lightweight, open-source AI-native vector database designed heavily for developer experience, rapid prototyping, and seamless integration with frameworks like LangChain.",
+  "simpleExplanation": "The 'SQLite' of Vector Databases. It is incredibly easy to set up. You can run it entirely in memory on your laptop with just two lines of Python code, making it the favorite tool for developers learning to build RAG apps.",
+  "realWorldExample": "A student building their first AI chatbot over the weekend imports ChromaDB in Python. Without any complex server setup, they have a fully functioning vector database running locally in seconds.",
+  "useCases": [
+    "Prototyping",
+    "Local development",
+    "LangChain integration"
+  ],
+  "questions": {
+    "basic": [
+      "Which vector database is famous for being incredibly easy to run locally in a Python script for prototyping: Pinecone or ChromaDB?"
+    ],
+    "intermediate": [
+      "Why would a massive enterprise moving to production likely switch from an in-memory ChromaDB setup to something else?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pinecone or Chroma?",
+      "answer": "ChromaDB."
+    },
+    {
+      "question": "Why switch?",
+      "answer": "Running an in-memory database is great for testing with 100 PDFs. But if an enterprise has 50 Million documents, it will exceed the laptop's RAM and crash. They need a distributed, highly scalable architecture for production."
+    }
+  ]
+}

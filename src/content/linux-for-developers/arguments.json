@@ -1,0 +1,30 @@
+{
+  "id": "arguments",
+  "title": "Command Line Arguments",
+  "difficulty": "Intermediate",
+  "definition": "Input parameters passed directly into a script from the terminal when the script is executed, allowing the script to perform dynamically based on the user's input.",
+  "simpleExplanation": "Handing the script instructions before it runs. Instead of hardcoding 'Bob' into the script, you run the script and hand it 'Bob' from the outside.",
+  "realWorldExample": "You write a script `create_user.sh`. Instead of hardcoding the username, you run `./create_user.sh alice`. Inside the script, the variable `$1` magically contains the word 'alice', and the script creates her account.",
+  "useCases": [
+    "Dynamic scripting",
+    "Creating custom terminal tools"
+  ],
+  "questions": {
+    "basic": [
+      "In a script, what does the special variable `$1` represent?"
+    ],
+    "intermediate": [
+      "What does the special variable `$#` represent in a script?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is $1?",
+      "answer": "It is the very first argument provided to the script by the user."
+    },
+    {
+      "question": "What is $#?",
+      "answer": "It is a count of exactly how many arguments the user provided. It is heavily used in `if` statements to throw an error if the user forgets to provide a required argument (e.g., `if [ $# -eq 0 ]; then echo \"You forgot the argument!\"; fi`)."
+    }
+  ]
+}

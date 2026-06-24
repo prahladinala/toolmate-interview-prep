@@ -1,0 +1,30 @@
+{
+  "id": "create-slice",
+  "title": "createSlice()",
+  "difficulty": "Beginner",
+  "definition": "An RTK function that accepts an initial state, an object full of reducer functions, and a 'slice name', and automatically generates action creators and action types that correspond to the reducers and state.",
+  "simpleExplanation": "The holy grail of modern Redux. It combines Actions and Reducers into one single file. You write a function called `login`, and `createSlice` secretly creates an Action called `auth/login` and links them together perfectly.",
+  "realWorldExample": "Creating a `cartSlice.js` file. You define the initial cart state, and write methods like `addItem` and `removeItem`. You then export the slice to be used by the Store.",
+  "useCases": [
+    "Defining Redux logic feature-by-feature (Ducks pattern)"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `name` property do inside `createSlice`?"
+    ],
+    "intermediate": [
+      "Are you allowed to mutate the state directly inside `createSlice` reducers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does name do?",
+      "answer": "It is used as a prefix for the generated action types. If name is `'cart'`, and you have an `addItem` reducer, the generated action type will be `'cart/addItem'`."
+    },
+    {
+      "question": "Mutate directly?",
+      "answer": "Yes! `createSlice` uses the Immer library under the hood. You can write `state.value = 5`, and Immer translates it into a safe, immutable update."
+    }
+  ],
+  "codeExample": "import { createSlice } from '@reduxjs/toolkit';\n\nconst authSlice = createSlice({\n  name: 'auth', // This is the prefix for actions\n  initialState: { user: null, isLoggedIn: false },\n  reducers: {\n    // Immer allows us to 'mutate' state safely!\n    login: (state, action) => {\n      state.user = action.payload;\n      state.isLoggedIn = true;\n    },\n    logout: (state) => {\n      state.user = null;\n      state.isLoggedIn = false;\n    }\n  }\n});\n\n// createSlice automatically generated these action creators for us!\nexport const { login, logout } = authSlice.actions;\n\n// Export the reducer to be used in configureStore\nexport default authSlice.reducer;"
+}

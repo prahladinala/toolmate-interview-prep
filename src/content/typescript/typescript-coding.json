@@ -1,0 +1,30 @@
+{
+  "id": "typescript-coding",
+  "title": "Live Coding: TypeScript Algorithms",
+  "difficulty": "Intermediate",
+  "definition": "Typical technical interview questions requiring the use of TypeScript to solve algorithmic problems while maintaining strict type safety.",
+  "simpleExplanation": "In modern interviews, solving the algorithm isn't enough. If the role requires TypeScript, the interviewer will penalize you for using `any`, failing to define generic types, or writing unsafe object mutations.",
+  "realWorldExample": "Writing a `groupBy` function that groups an array of objects by a specific key, returning a strictly typed Dictionary object.",
+  "useCases": [
+    "Technical interviews",
+    "Building strongly-typed utility libraries (like Lodash)"
+  ],
+  "questions": {
+    "basic": [
+      "Why will an interviewer penalize you for using `any` during a TS interview?"
+    ],
+    "intermediate": [
+      "Implement a strictly-typed `groupBy` function."
+    ],
+    "advanced": [
+      "How do you type a deeply nested object flattening algorithm?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why penalize 'any'?",
+      "answer": "Using `any` defeats the entire purpose of the language. It tells the interviewer you don't know how to express the data structures mathematically, so you took the easy way out. Always use `unknown` or Generics instead."
+    }
+  ],
+  "codeExample": "// INTERVIEW QUESTION:\n// Write a strongly typed 'groupBy' function.\n\n// BAD (The JS way):\n// function groupBy(arr, key) { ... }\n\n// EXCELLENT (The TS way):\n// 1. T is the object inside the array\n// 2. K is the specific key we want to group by (Must be a key of T)\nfunction groupBy<T, K extends keyof T>(\n  array: T[], \n  key: K\n): Record<string, T[]> {  // Return type is a dictionary where values are arrays of T\n\n  return array.reduce((accumulator, item) => {\n    // We cast to string because object keys must be strings/symbols\n    const groupValue = String(item[key]); \n    \n    if (!accumulator[groupValue]) {\n      accumulator[groupValue] = [];\n    }\n    \n    accumulator[groupValue].push(item);\n    return accumulator;\n  }, {} as Record<string, T[]>);\n}\n\nconst users = [\n  { role: 'admin', name: 'Alice' },\n  { role: 'user', name: 'Bob' },\n  { role: 'admin', name: 'Charlie' }\n];\n\nconst grouped = groupBy(users, 'role');\n// TS knows exactly what 'grouped' looks like!\nconsole.log(grouped.admin.length); // 2"
+}

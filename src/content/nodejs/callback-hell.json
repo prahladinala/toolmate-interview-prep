@@ -1,0 +1,30 @@
+{
+  "id": "callback-hell",
+  "title": "Callback Hell",
+  "difficulty": "Intermediate",
+  "definition": "An anti-pattern consisting of deeply nested asynchronous callbacks, resulting in a pyramid-like structure that is incredibly difficult to read, maintain, and debug.",
+  "simpleExplanation": "Also known as the 'Pyramid of Doom'. If you need to: 1. Get a user from DB. 2. Use their ID to get their orders. 3. Use the order ID to get tracking info. 4. Send an email. You have to put each callback INSIDE the previous callback. The code slowly marches to the right side of the screen, creating a tangled, unreadable mess.",
+  "realWorldExample": "Legacy Node.js codebases from 2014 before Promises existed are notoriously filled with massive 6-level deep nested functions.",
+  "useCases": [
+    "Understanding why Promises/Async Await were invented"
+  ],
+  "questions": {
+    "basic": [
+      "What shape does Callback Hell visually resemble in code?"
+    ],
+    "intermediate": [
+      "Besides readability, what is a major problem with Callback Hell?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What shape does it resemble?",
+      "answer": "A pyramid pointing to the right `>`."
+    },
+    {
+      "question": "What is a major problem besides readability?",
+      "answer": "Error Handling! In a 4-level deep callback chain, you have to write `if (error) return console.log(error)` 4 separate times, once inside every single nested function."
+    }
+  ],
+  "codeExample": "function loginUser(email, pass, callback) { setTimeout(() => callback(null, { id: 1, email }), 100); }\nfunction getUserOrders(userId, callback) { setTimeout(() => callback(null, [{ id: 99, item: 'Book' }]), 100); }\nfunction getTracking(orderId, callback) { setTimeout(() => callback(null, { status: 'Shipped' }), 100); }\n\n// THE PYRAMID OF DOOM:\nloginUser(\"test@test.com\", \"123\", (error, user) => {\n  if (error) return console.log(error);\n  \n  // Nest 1\n  getUserOrders(user.id, (error, orders) => {\n    if (error) return console.log(error);\n    \n    // Nest 2\n    getTracking(orders[0].id, (error, tracking) => {\n      if (error) return console.log(error);\n      \n      // Nest 3\n      console.log(\"Finally! Tracking Status:\", tracking.status);\n      \n    });\n  });\n});"
+}

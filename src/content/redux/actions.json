@@ -1,0 +1,30 @@
+{
+  "id": "actions",
+  "title": "Actions",
+  "difficulty": "Beginner",
+  "definition": "Plain JavaScript objects that represent an intention to change the state. They are the only way to get data into the store. Actions MUST have a `type` property.",
+  "simpleExplanation": "A message or an instruction. It's a tiny object that says 'Hey, a user just did this!'. It always has a `type` (the name of the event), and optionally has a `payload` (the data attached to the event).",
+  "realWorldExample": "A postal letter. The `type` is the address indicating what department it goes to. The `payload` is the letter inside containing the actual data.",
+  "useCases": [
+    "Describing events that happen in the app"
+  ],
+  "questions": {
+    "basic": [
+      "What is the ONE required property that every Action object must have?"
+    ],
+    "intermediate": [
+      "Why should Action types usually be written as strings (like `'todos/ADD_TODO'`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Required property?",
+      "answer": "The `type` property."
+    },
+    {
+      "question": "Why strings?",
+      "answer": "Because strings are easily serializable. This allows Redux DevTools to record the actions, save them, and replay them perfectly for time-travel debugging."
+    }
+  ],
+  "codeExample": "// A basic action with no data\nconst incrementAction = {\n  type: 'counter/incremented'\n};\n\n// An action with a 'payload' (data attached to it)\nconst loginAction = {\n  type: 'auth/loginSuccess',\n  payload: {\n    userId: 123,\n    username: 'johndoe'\n  }\n};"
+}

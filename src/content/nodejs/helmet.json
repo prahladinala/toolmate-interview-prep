@@ -1,0 +1,31 @@
+{
+  "id": "helmet",
+  "title": "Helmet.js",
+  "difficulty": "Beginner",
+  "definition": "A popular Express middleware collection that helps secure Node.js apps by setting various HTTP headers to defend against common web vulnerabilities.",
+  "simpleExplanation": "When you start an Express server, it leaves a lot of security doors unlocked by default. It even broadcasts `X-Powered-By: Express` to the world, telling hackers exactly what vulnerabilities to look for. Helmet is a security guard that runs through the building, locking doors, disabling vulnerable legacy features, and removing the Express nametag.",
+  "realWorldExample": "Protecting against Clickjacking. Helmet sets the `X-Frame-Options` header to `DENY`, making it impossible for a hacker to embed your website inside an invisible `<iframe>` on their malicious site.",
+  "useCases": [
+    "Baseline API security",
+    "Passing penetration tests"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `helmet()` middleware do?"
+    ],
+    "intermediate": [
+      "What is Content Security Policy (CSP)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it do?",
+      "answer": "It is actually a wrapper around 15 smaller middlewares. By calling `app.use(helmet())`, you automatically set 15 secure HTTP headers to protect against XSS, clickjacking, and sniffing."
+    },
+    {
+      "question": "What is CSP?",
+      "answer": "A powerful header set by Helmet that dictates exactly which domains your website is allowed to load scripts, images, and fonts from. If a hacker injects an XSS script into your site, CSP will block the browser from executing it because the script didn't come from your approved domain list."
+    }
+  ],
+  "codeExample": "/* \n  npm install helmet\n*/\n\n// const express = require('express');\n// const helmet = require('helmet');\n// const app = express();\n\n// // Enable basic security features with one line of code\n// app.use(helmet());\n\n// console.log(\"Helmet automatically adds headers like:\");\n// console.log(\"- Strict-Transport-Security (Forces HTTPS)\");\n// console.log(\"- X-Content-Type-Options (Prevents MIME sniffing)\");\n// console.log(\"- X-Frame-Options (Prevents Clickjacking)\");\n\nconsole.log(\"Helmet is universally recommended for all production Express applications.\");"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "border-radius",
+  "title": "Border Radius",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the rounding of an element's corners.",
+  "simpleExplanation": "Softening the sharp 90-degree corners of a box. `rounded` gives a tiny 4px curve. `rounded-xl` gives a massive Apple-style curve. `rounded-full` creates a perfect circle or a pill shape.",
+  "realWorldExample": "Applying `rounded-full` to a square `w-12 h-12` image to instantly turn it into a circular profile avatar.",
+  "useCases": [
+    "Buttons",
+    "Avatars",
+    "Modern UI Cards"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class turns a square image into a perfect circle?"
+    ],
+    "intermediate": [
+      "Can you round only the top corners of a card, leaving the bottom corners sharp?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Perfect circle?",
+      "answer": "`rounded-full`"
+    },
+    {
+      "question": "Only top corners?",
+      "answer": "Yes. Use `rounded-t-lg` (rounded-top-large). You can also target specific corners like `rounded-tr-lg` (top-right)."
+    }
+  ],
+  "codeExample": "<!-- A standard modern button -->\n<button class=\"bg-blue-500 text-white px-4 py-2 rounded-md\">\n  Save\n</button>\n\n<!-- A circular Avatar -->\n<img src=\"face.jpg\" class=\"w-16 h-16 rounded-full object-cover\" />\n\n<!-- A Card where only the top image is rounded, preventing the image corners from poking out of the card -->\n<div class=\"bg-white rounded-lg shadow\">\n  <img src=\"header.jpg\" class=\"w-full h-32 rounded-t-lg\" />\n  <div class=\"p-4\">Content</div>\n</div>"
+}

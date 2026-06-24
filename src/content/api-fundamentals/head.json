@@ -1,0 +1,32 @@
+{
+  "id": "head",
+  "title": "HEAD",
+  "difficulty": "Advanced",
+  "definition": "An HTTP method identical to GET, except the server must NOT return a message body in the response. It is used strictly to read the response headers.",
+  "simpleExplanation": "Imagine you want to download a massive 50 Gigabyte video file, but you only have 2 GB of space on your hard drive. If you send a GET request, the server starts sending 50GB of data. If you send a HEAD request, the server just sends the Headers (which includes `Content-Length: 50GB`). You read the header, realize it's too big, and cancel.",
+  "realWorldExample": "Checking if a URL is valid (returns a 200) without actually downloading the entire webpage. Checking if an image has been modified recently before downloading it again.",
+  "useCases": [
+    "Bandwidth saving",
+    "Link validation",
+    "Cache validation"
+  ],
+  "questions": {
+    "basic": [
+      "What is the exact difference between a GET request and a HEAD request?"
+    ],
+    "intermediate": [
+      "Can a HEAD request modify data in the database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference?",
+      "answer": "The server's response to a HEAD request contains Headers, but absolutely no Body payload."
+    },
+    {
+      "question": "Modify database?",
+      "answer": "No. Like GET, HEAD is defined as a 'Safe' method. It must only be used for retrieval."
+    }
+  ],
+  "codeExample": "// Using a HEAD request to check file size before downloading\n\nasync function checkVideoSize() {\n  const response = await fetch('https://api.com/massive-video.mp4', {\n    method: 'HEAD' // Do NOT download the video!\n  });\n  \n  // Read the headers the server sent back\n  const sizeInBytes = response.headers.get('Content-Length');\n  const sizeInGB = sizeInBytes / (1024 * 1024 * 1024);\n  \n  if (sizeInGB > 5) {\n    alert(\"File is too large to download!\");\n  } else {\n    // Safe to run the actual GET request now\n  }\n}"
+}

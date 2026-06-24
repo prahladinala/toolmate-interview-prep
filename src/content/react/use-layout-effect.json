@@ -1,0 +1,45 @@
+{
+  "id": "use-layout-effect",
+  "title": "useLayoutEffect",
+  "difficulty": "Advanced",
+  "definition": "The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.",
+  "simpleExplanation": "Imagine the browser is an artist painting a screen. `useEffect` lets the artist finish painting the screen so the user can see it, and THEN runs your code in the background. `useLayoutEffect` grabs the artist's hand right before they put the paintbrush to the canvas, runs your code, adjusts the layout, and THEN lets them paint. It prevents visual flickering.",
+  "realWorldExample": "You have a tooltip that needs to appear exactly 10px above a button. If you use `useEffect`, the tooltip might briefly render at the top of the screen (default position), and a split-second later jump to the button (visual flicker). `useLayoutEffect` calculates the position and moves the tooltip before the user ever sees it.",
+  "useCases": [
+    "Measuring DOM elements (e.g., getting `getBoundingClientRect()`)",
+    "Preventing visual flickering for complex layout calculations",
+    "Synchronously animating elements"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `useEffect` and `useLayoutEffect`?",
+      "Which hook is preferred by default: useEffect or useLayoutEffect?"
+    ],
+    "intermediate": [
+      "Why does `useLayoutEffect` block the visual paint?",
+      "What happens if you use `useLayoutEffect` in Server-Side Rendering (SSR)?"
+    ],
+    "advanced": [
+      "How do you fix the SSR warning caused by `useLayoutEffect` in Next.js?",
+      "In what order do multiple `useLayoutEffect` hooks fire compared to `useEffect`?"
+    ],
+    "trick": [
+      "If you fetch data from an API inside `useLayoutEffect`, does it block the browser from painting until the API request finishes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between useEffect and useLayoutEffect?",
+      "answer": "`useEffect` is asynchronous and runs AFTER the browser paints the screen. `useLayoutEffect` is synchronous and runs BEFORE the browser paints the screen, blocking the paint."
+    },
+    {
+      "question": "What happens if you use useLayoutEffect in SSR (like Next.js)?",
+      "answer": "React will throw a warning. Server-Side Rendering doesn't have a DOM, so layout calculations are impossible. To fix it, you either conditionally use `useEffect` on the server, or dynamically import the component on the client only."
+    },
+    {
+      "question": "Does fetching an API inside useLayoutEffect block the paint until the request finishes?",
+      "answer": "No. The API fetch (e.g., fetch() or axios) is inherently asynchronous. The `useLayoutEffect` function finishes immediately after initiating the fetch, allowing the paint to happen. It does not wait for the promise to resolve."
+    }
+  ],
+  "codeExample": "import React, { useState, useLayoutEffect, useRef } from 'react';\n\nexport default function TooltipDemo() {\n  const [show, setShow] = useState(false);\n  const [topPos, setTopPos] = useState(0);\n  const buttonRef = useRef(null);\n\n  // If we used useEffect here, you might see the tooltip flash at the top \n  // of the screen for 1 frame before jumping down to the button.\n  // useLayoutEffect prevents this visual flicker.\n  useLayoutEffect(() => {\n    if (show && buttonRef.current) {\n      // Synchronously measure the DOM\n      const rect = buttonRef.current.getBoundingClientRect();\n      setTopPos(rect.bottom + 10); // Position exactly 10px below button\n    }\n  }, [show]);\n\n  return (\n    <div>\n      <button ref={buttonRef} onClick={() => setShow(s => !s)}>\n        Toggle Tooltip\n      </button>\n      \n      {show && (\n        <div style={{ position: 'absolute', top: topPos, background: 'black', color: 'white' }}>\n          I am a tooltip!\n        </div>\n      )}\n    </div>\n  );\n}"
+}

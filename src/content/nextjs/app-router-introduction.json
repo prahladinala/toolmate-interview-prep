@@ -1,0 +1,31 @@
+{
+  "id": "app-router-introduction",
+  "title": "App Router Overview",
+  "difficulty": "Intermediate",
+  "definition": "The new routing paradigm introduced in Next.js 13, built entirely on top of React Server Components, offering nested layouts, streaming, and advanced routing patterns.",
+  "simpleExplanation": "Next.js used to have a `pages` directory. The `app` router completely replaced it. The biggest change? By default, every component you write in the `app` router runs on the SERVER, not the browser. This makes apps significantly faster and more secure.",
+  "realWorldExample": "Building a dashboard where the Sidebar (layout) never re-renders, but the main content area (page) updates instantly as you navigate, all while streaming data from the server.",
+  "useCases": [
+    "Modern Next.js development",
+    "High-performance web apps"
+  ],
+  "questions": {
+    "basic": [
+      "Are components in the App Router client-side or server-side by default?"
+    ],
+    "intermediate": [
+      "What is the concept of 'Colocation' in the App Router?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Client or Server?",
+      "answer": "Server-side! They are React Server Components by default."
+    },
+    {
+      "question": "What is Colocation?",
+      "answer": "In the old Pages router, any file placed in the `pages` directory automatically became a public route. In the App Router, only files specifically named `page.tsx` become routes. This means you can safely put your database files, CSS, and helper components inside the `app` directory right next to the pages that use them without accidentally making them public URLs."
+    }
+  ],
+  "codeExample": "/* \n  Colocation Example in the App Router:\n  \n  app/\n  └── dashboard/\n      ├── page.tsx           (✅ Public Route: /dashboard)\n      ├── Button.tsx         (🔒 Not a route. Just a component!)\n      ├── styles.css         (🔒 Not a route. Just CSS!)\n      └── queries.ts         (🔒 Not a route. Safe database logic!)\n*/"
+}

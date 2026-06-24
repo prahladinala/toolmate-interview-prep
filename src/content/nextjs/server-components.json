@@ -1,0 +1,32 @@
+{
+  "id": "server-components",
+  "title": "Server Components",
+  "difficulty": "Beginner",
+  "definition": "React components that only ever execute and render on the server. They never ship their JavaScript code to the client's browser.",
+  "simpleExplanation": "The biggest paradigm shift in React history. By default in Next.js, your components run on the server, output pure HTML, and send ONLY that HTML to the browser. Because the browser doesn't have to download or run the component's JavaScript, your website becomes incredibly fast.",
+  "realWorldExample": "A `<MarkdownRenderer>` component that requires a massive 2 Megabyte library to parse markdown. If it's a Server Component, the server uses the 2MB library, generates the HTML, and sends 0 Megabytes of JavaScript to the user.",
+  "useCases": [
+    "Fetching data securely",
+    "Reducing bundle size",
+    "Accessing backend resources natively"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use the `useState` or `useEffect` hooks inside a Server Component?"
+    ],
+    "intermediate": [
+      "How do you declare that a component should be a Server Component in the Next.js App Router?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use hooks?",
+      "answer": "No! Server components execute once to generate HTML and then die. They have no concept of 'state', 'lifecycles', or 'user interaction' (like onClick)."
+    },
+    {
+      "question": "How to declare?",
+      "answer": "You do absolutely nothing. In the App Router, every component is a Server Component by default!"
+    }
+  ],
+  "codeExample": "import db from '@/lib/database';\n\n// Look at this! We are directly querying a database \n// right inside the React component! \n// This is completely secure because this code NEVER reaches the browser.\nexport default async function UserList() {\n  // 1. Await the DB query directly\n  const users = await db.query('SELECT * FROM users');\n\n  // 2. Render the HTML\n  return (\n    <ul>\n      {users.map(user => (\n        <li key={user.id}>{user.name}</li>\n      ))}\n    </ul>\n  );\n}"
+}

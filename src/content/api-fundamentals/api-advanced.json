@@ -1,0 +1,31 @@
+{
+  "id": "api-advanced",
+  "title": "Advanced Interview Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions testing architectural understanding of caching, security exploits, microservices, and protocol limitations.",
+  "simpleExplanation": "Interviewers are looking for Senior engineers who understand the hidden mechanics of the web. They will ask about Idempotency, JWT cryptographic signatures, and gRPC.",
+  "realWorldExample": "Being asked: 'Explain the OAuth 2.0 Authorization Code Flow.'",
+  "useCases": [
+    "Senior Engineering Interviews",
+    "Backend Architect Roles"
+  ],
+  "questions": {
+    "basic": [
+      "Explain the difference between Authentication and Authorization."
+    ],
+    "intermediate": [
+      "Why would a team choose GraphQL over REST?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auth vs Auth?",
+      "answer": "Authentication is proving WHO you are (checking your password/JWT). Authorization is checking WHAT you are allowed to do (checking if your role is Admin)."
+    },
+    {
+      "question": "Why GraphQL?",
+      "answer": "To solve overfetching and underfetching. In REST, getting a complex view requires multiple network round-trips to different endpoints, often returning unused data. GraphQL allows the client to request deeply nested relational data in a single network request, getting exactly what it needs."
+    }
+  ],
+  "codeExample": "/*\n  Common Advanced Question:\n  \"How does a JWT securely prove identity without a database lookup?\"\n  \n  Answer:\n  When the server creates the JWT, it hashes the Header + Payload together with a highly guarded SECRET_KEY. It appends this Hash to the end of the token as the Signature. \n  When the client sends the token back, the server re-runs the hashing algorithm on the Header + Payload using its secret key. If the result matches the Signature on the token, the server mathematically guarantees the payload was not tampered with, proving identity instantly without touching a database.\n*/"
+}

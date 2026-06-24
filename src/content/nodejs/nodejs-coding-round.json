@@ -1,0 +1,31 @@
+{
+  "id": "nodejs-coding-round",
+  "title": "Coding Questions",
+  "difficulty": "Advanced",
+  "definition": "Live programming challenges that require demonstrating Node.js specific patterns like asynchronous flow control, event emitters, or streams.",
+  "simpleExplanation": "The interviewer shares their screen and says: 'Write a function that reads 3 files simultaneously and returns their combined data in alphabetical order'. You must code it live.",
+  "realWorldExample": "Writing a custom `EventEmitter`, implementing a basic Express server from scratch using only the raw `http` module, or solving a Promise concurrency problem.",
+  "useCases": [
+    "Technical interviews",
+    "Pair programming assessments"
+  ],
+  "questions": {
+    "basic": [
+      "Can you implement `Promise.all` manually?"
+    ],
+    "intermediate": [
+      "Write a script to recursively find all `.js` files in a directory using the `fs` module."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Implement Promise.all?",
+      "answer": "You create an array to hold results, loop through the promises, use `.then()` to push results to the array, keep a counter of resolved promises, and resolve the main wrapper Promise only when the counter equals the length of the input array."
+    },
+    {
+      "question": "Find files recursively?",
+      "answer": "Use `fs.readdirSync`. Loop through the results. Use `fs.statSync(file).isDirectory()`. If it's a directory, call the function recursively. If it's a file, check if it ends with `.js`."
+    }
+  ],
+  "codeExample": "/* \n  LIVE CODING CHALLENGE:\n  \"Write a function that executes an array of asynchronous tasks, \n  but only runs exactly 2 tasks at a time (Concurrency Limiter).\"\n*/\n\nasync function limitConcurrency(tasks, limit) {\n  const results = [];\n  const executing = [];\n  \n  for (const task of tasks) {\n    // Start the task\n    const p = task().then(res => {\n      // When finished, remove it from the 'executing' array\n      executing.splice(executing.indexOf(p), 1);\n      return res;\n    });\n    \n    results.push(p);\n    executing.push(p);\n    \n    // If we hit the limit, pause the loop until at least ONE task finishes\n    if (executing.length >= limit) {\n      await Promise.race(executing);\n    }\n  }\n  \n  return Promise.all(results);\n}\n\nconsole.log(\"This tests your deep understanding of the Event Loop and Promise lifecycle!\");"
+}

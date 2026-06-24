@@ -1,0 +1,31 @@
+{
+  "id": "docker-inspect",
+  "title": "docker inspect",
+  "difficulty": "Intermediate",
+  "definition": "A diagnostic CLI command that returns low-level, highly detailed JSON metadata about Docker objects (containers, images, networks, or volumes).",
+  "simpleExplanation": "The ultimate X-Ray vision tool. It spits out a massive wall of JSON text telling you every single technical detail about a container, from its IP address to its mapped volumes.",
+  "realWorldExample": "Two containers on a custom network cannot communicate. A DevOps engineer runs `docker inspect network my-net`. The JSON output reveals that one of the containers was accidentally connected to the wrong subnet.",
+  "useCases": [
+    "Advanced debugging",
+    "Finding IP addresses",
+    "Verifying configurations"
+  ],
+  "questions": {
+    "basic": [
+      "What format does the `docker inspect` command output its data in?"
+    ],
+    "intermediate": [
+      "How can you extract just the IP Address from the massive wall of text `docker inspect` produces without reading the whole thing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which format?",
+      "answer": "JSON (JavaScript Object Notation)."
+    },
+    {
+      "question": "How to extract specific data?",
+      "answer": "Using the `--format` flag (which uses Go templates). For example: `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-container`."
+    }
+  ]
+}

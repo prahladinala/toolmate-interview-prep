@@ -1,0 +1,45 @@
+{
+  "id": "use-ref",
+  "title": "Refs (useRef)",
+  "difficulty": "Intermediate",
+  "definition": "The `useRef` hook returns a mutable ref object whose `.current` property is initialized to the passed argument. It is used to persist values across renders without causing a re-render, or to directly access DOM elements.",
+  "simpleExplanation": "Imagine you have a sticky note on your desk. `useState` is like writing a number on the main whiteboard (everyone sees it, and writing on it stops the whole class). `useRef` is like writing a number on your private sticky note. You can change it secretly as much as you want, and the teacher (React) will never stop the class (re-render) because of it.",
+  "realWorldExample": "You want a text input to automatically be focused (cursor blinking) when a modal opens. You use `useRef` to grab the actual HTML `<input>` element and call `inputRef.current.focus()`.",
+  "useCases": [
+    "Directly accessing and manipulating DOM elements (focus, measuring size)",
+    "Storing mutable values that shouldn't trigger re-renders (like a timer ID)",
+    "Keeping track of previous state values"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary difference between `useState` and `useRef`?",
+      "How do you attach a ref to a DOM element?"
+    ],
+    "intermediate": [
+      "If you update `myRef.current = 5`, will the component re-render?",
+      "When is the `.current` property attached to the DOM element?"
+    ],
+    "advanced": [
+      "What is `forwardRef` and when do you need it?",
+      "Can you use `useRef` inside a custom hook to prevent stale closures?"
+    ],
+    "trick": [
+      "Is `useRef(initialValue)` the same as `{ current: initialValue }`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the primary difference between useState and useRef?",
+      "answer": "Changing state triggers a component re-render. Changing a ref's `.current` value does NOT trigger a re-render. State is for data that affects the UI; Refs are for background data or DOM nodes."
+    },
+    {
+      "question": "When is the .current property attached to the DOM element?",
+      "answer": "React assigns the DOM element to `.current` after the component has rendered, but before `useEffect` fires. So it is perfectly safe to access it inside `useEffect`."
+    },
+    {
+      "question": "Is useRef the same as just creating an object { current: value }?",
+      "answer": "No. If you create a regular object, a brand new object is created on every render. `useRef` guarantees that you will get the exact same object reference across every single render."
+    }
+  ],
+  "codeExample": "import React, { useRef, useState } from 'react';\n\nexport default function StopWatch() {\n  const [time, setTime] = useState(0);\n  \n  // We use a ref to store the interval ID. \n  // If we used state for this, setting it would cause an unnecessary re-render!\n  const timerIdRef = useRef(null);\n\n  const start = () => {\n    if (timerIdRef.current) return; // Prevent multiple clicks\n    timerIdRef.current = setInterval(() => setTime(t => t + 1), 1000);\n  };\n\n  const stop = () => {\n    clearInterval(timerIdRef.current);\n    timerIdRef.current = null;\n  };\n\n  return (\n    <div>\n      <h2>Stopwatch: {time}s</h2>\n      <button onClick={start}>Start</button>\n      <button onClick={stop}>Stop</button>\n    </div>\n  );\n}"
+}

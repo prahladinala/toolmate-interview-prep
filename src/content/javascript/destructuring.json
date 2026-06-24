@@ -1,0 +1,45 @@
+{
+  "id": "destructuring",
+  "title": "Destructuring & Spread",
+  "difficulty": "Intermediate",
+  "definition": "Destructuring is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. The spread syntax (...) allows an iterable (like an array or string) to be expanded in places where zero or more arguments are expected.",
+  "simpleExplanation": "Imagine you get a big gift box (an object) with shoes, a shirt, and a hat. Instead of reaching into the box every single time you want one of them (`box.shoes`), you immediately take them out and put them on your bed (`const { shoes, hat } = box`). Now you can just use `shoes` directly. The spread operator is like taking everything out of one box and dumping it into a new, bigger box.",
+  "realWorldExample": "When receiving a large JSON response from a weather API, you probably only care about `temperature` and `humidity`. Destructuring lets you pull exactly those two pieces of data out immediately.",
+  "useCases": [
+    "Extracting specific properties from function parameters (especially in React props)",
+    "Merging arrays or objects easily",
+    "Copying arrays or objects without modifying the original (shallow copy)"
+  ],
+  "questions": {
+    "basic": [
+      "What is object destructuring?",
+      "What does the spread operator (...) do?"
+    ],
+    "intermediate": [
+      "How do you provide default values while destructuring?",
+      "What is the difference between the rest parameter and the spread operator?"
+    ],
+    "advanced": [
+      "How do you rename a variable while destructuring an object?",
+      "Does the spread operator create a deep copy or a shallow copy?"
+    ],
+    "trick": [
+      "Can you destructure nested objects?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between the rest parameter and the spread operator?",
+      "answer": "They look exactly the same (...), but do the opposite. 'Spread' expands an array into individual elements (used in function calls or array literals). 'Rest' collects multiple individual elements and bundles them back into an array (used in function definitions or destructuring)."
+    },
+    {
+      "question": "How do you rename a variable while destructuring?",
+      "answer": "You use a colon. Example: `const { oldName: newName } = myObject;`"
+    },
+    {
+      "question": "Does the spread operator create a deep copy or a shallow copy?",
+      "answer": "It creates a shallow copy. If the array or object contains nested objects, those nested objects are still passed by reference, not duplicated."
+    }
+  ],
+  "codeExample": "// Object Destructuring & Renaming & Default Values\nconst user = { name: 'Alice', age: 25, job: 'Developer' };\nconst { name, age: userAge, location = 'Unknown' } = user;\n\nconsole.log(name); // 'Alice'\nconsole.log(userAge); // 25 (renamed from age)\nconsole.log(location); // 'Unknown' (default value fallback)\n\n// Array Destructuring & Rest parameter\nconst colors = ['red', 'green', 'blue', 'yellow'];\nconst [primary, secondary, ...otherColors] = colors;\n\nconsole.log(primary); // 'red'\nconsole.log(otherColors); // ['blue', 'yellow']\n\n// Spread Operator for merging\nconst array1 = [1, 2];\nconst array2 = [3, 4];\nconst merged = [...array1, ...array2]; // [1, 2, 3, 4]"
+}

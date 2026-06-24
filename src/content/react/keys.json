@@ -1,0 +1,44 @@
+{
+  "id": "keys",
+  "title": "Lists & Keys",
+  "difficulty": "Beginner",
+  "definition": "Keys are special string attributes you must include when creating arrays of elements in React. They help React identify which items have changed, been added, or been removed.",
+  "simpleExplanation": "Imagine you are a teacher keeping track of 30 students in a line. If the line shuffles, you don't want to have to learn everyone's face again. You just look at their Student ID badge (the Key). React uses Keys to instantly know exactly which specific DOM element moved, so it doesn't have to destroy and recreate the entire list from scratch.",
+  "realWorldExample": "When rendering a list of `<TodoItem />` components from a database, you use the unique database ID as the key: `<TodoItem key={todo.id} />`.",
+  "useCases": [
+    "Rendering dynamic lists of data (`.map()`)",
+    "Forcing a component to completely unmount and remount by changing its key (Key Reset Pattern)"
+  ],
+  "questions": {
+    "basic": [
+      "Why does React need a `key` prop in lists?",
+      "What happens if you don't provide a key?"
+    ],
+    "intermediate": [
+      "Why is it a bad idea to use the array `index` as a key?",
+      "Where exactly should the key prop be placed in the mapped JSX?"
+    ],
+    "advanced": [
+      "How does the Diffing algorithm use keys for O(n) performance?",
+      "Can two different lists on the same page have elements with the same key?"
+    ],
+    "trick": [
+      "Does the component itself have access to `props.key`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is it bad to use the array index as a key?",
+      "answer": "If the list order changes (e.g., you delete the first item, or sort the list), all the index numbers shift. React will get confused, think the items themselves mutated, and might re-render the wrong data or show incorrect local state (like typed input values)."
+    },
+    {
+      "question": "Does the component itself have access to props.key?",
+      "answer": "No! React intercepts the `key` and `ref` props for internal use. If you try to read `props.key` inside the child component, it will be `undefined`. If you need the ID, you must pass it as a separate prop (e.g., `id={item.id}`)."
+    },
+    {
+      "question": "Can two different lists use the same key?",
+      "answer": "Yes. Keys only need to be unique among their SIBLINGS (within the same array). They do not need to be globally unique across the entire application."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\nexport default function ListExample() {\n  const [tasks, setTasks] = useState([\n    { id: \"t1\", text: \"Learn React\" },\n    { id: \"t2\", text: \"Master Keys\" },\n    { id: \"t3\", text: \"Get Hired\" }\n  ]);\n\n  const shuffle = () => {\n    const newTasks = [...tasks].sort(() => Math.random() - 0.5);\n    setTasks(newTasks);\n  };\n\n  return (\n    <div>\n      <button onClick={shuffle}>Shuffle List</button>\n      <ul>\n        {/* GOOD: Using unique IDs. When shuffled, React just moves the DOM nodes. */}\n        {tasks.map(task => (\n          <li key={task.id}>\n             <input type=\"checkbox\" /> {task.text}\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}"
+}

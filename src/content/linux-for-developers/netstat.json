@@ -1,0 +1,30 @@
+{
+  "id": "netstat",
+  "title": "netstat",
+  "difficulty": "Intermediate",
+  "definition": "Network Statistics. A classic command-line tool that displays network connections, routing tables, and a number of network interface statistics.",
+  "simpleExplanation": "The traffic camera. It shows you exactly which ports on your computer are open and listening, and exactly who is currently connected to them.",
+  "realWorldExample": "You start a database, but it crashes saying 'Port already in use'. You type `netstat -tulnp`. It reveals that a forgotten Python script is already secretly running on port 3306.",
+  "useCases": [
+    "Port checking",
+    "Security auditing (finding rogue connections)"
+  ],
+  "questions": {
+    "basic": [
+      "Is `netstat` considered a modern, actively updated command?"
+    ],
+    "intermediate": [
+      "In `netstat -tulnp`, what does the 'l' stand for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Modern command?",
+      "answer": "No. `netstat` is considered deprecated in modern Linux, though it is still widely used out of habit. The modern replacement is the `ss` command."
+    },
+    {
+      "question": "What is 'l'?",
+      "answer": "Listening. It filters the output to ONLY show ports that are actively waiting for an incoming connection, hiding established outbound connections."
+    }
+  ]
+}

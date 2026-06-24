@@ -1,0 +1,30 @@
+{
+  "id": "compose-volumes",
+  "title": "Compose Volumes",
+  "difficulty": "Intermediate",
+  "definition": "The declarative method for defining persistent Docker volumes at the bottom of a `docker-compose.yml` file, allowing multiple services to mount and share the same data.",
+  "simpleExplanation": "Telling the conductor to prepare the external hard drives before starting the orchestra.",
+  "realWorldExample": "You define a top-level `volumes: { db_data: {} }` block in the YAML. Then, inside the database service, you map `db_data:/var/lib/mysql`. When you run `docker-compose down`, the containers are destroyed, but Compose intelligently preserves the `db_data` volume on the hard drive.",
+  "useCases": [
+    "Data persistence",
+    "Multi-service data sharing"
+  ],
+  "questions": {
+    "basic": [
+      "If you run `docker-compose down`, does it automatically delete the Compose Volumes you created?"
+    ],
+    "intermediate": [
+      "How do you completely destroy the entire app, INCLUDING the persistent database volumes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it delete volumes?",
+      "answer": "No. By default, `docker-compose down` deletes containers and networks, but explicitly leaves Volumes intact to prevent accidental data loss."
+    },
+    {
+      "question": "Destroy everything?",
+      "answer": "You must append the volume flag: `docker-compose down --volumes` (or `-v`). This completely wipes the containers, networks, AND the persistent databases."
+    }
+  ]
+}

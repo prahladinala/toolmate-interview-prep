@@ -1,0 +1,35 @@
+{
+  "id": "url-module",
+  "title": "URL Module",
+  "difficulty": "Beginner",
+  "definition": "A core module providing utilities for URL resolution and parsing. It breaks down a full web address into readable, manageable pieces.",
+  "simpleExplanation": "If someone hands you `https://google.com:8080/search?q=cats&sort=new`, trying to manually split that string to find the search term is a nightmare. The URL module instantly dissects it into neat pieces: the protocol (https), hostname (google.com), port (8080), path (/search), and search parameters (q=cats).",
+  "realWorldExample": "Reading the `?sort=desc&page=2` query parameters from an incoming request in a Node server so you know how to query your database.",
+  "useCases": [
+    "Parsing incoming HTTP requests",
+    "Building URL strings dynamically",
+    "Extracting query parameters"
+  ],
+  "questions": {
+    "basic": [
+      "What global class is used in modern Node to parse URLs?"
+    ],
+    "intermediate": [
+      "How do you easily grab the value of `?user_id=123` from a URL?"
+    ],
+    "advanced": [
+      "Why is the old `url.parse()` method deprecated?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What global class is used?",
+      "answer": "The `URL` class. It is available globally without needing to require the module, as it matches the standard Browser URL API."
+    },
+    {
+      "question": "Why is url.parse() deprecated?",
+      "answer": "The old Node-specific `url.parse()` had security flaws (URL spoofing vulnerabilities) and didn't conform to the modern WHATWG web standard. The new `new URL()` global class solves this and works identically in both browsers and Node."
+    }
+  ],
+  "codeExample": "// We do NOT need to require('url') anymore. 'URL' is global!\n\nconst testUrl = 'https://mysite.com:8080/products/shoes?color=red&size=10#reviews';\n\n// Create a URL object\nconst parsed = new URL(testUrl);\n\nconsole.log(\"Hostname:\", parsed.hostname); // 'mysite.com'\nconsole.log(\"Pathname:\", parsed.pathname); // '/products/shoes'\nconsole.log(\"Port:\", parsed.port);         // '8080'\nconsole.log(\"Hash:\", parsed.hash);         // '#reviews'\n\n// The magic of URLSearchParams (parsing the ? query string)\nconst color = parsed.searchParams.get('color');\nconsole.log(\"Color Query:\", color); // 'red'\n\n// You can also easily build URLs!\nparsed.searchParams.append('discount', 'true');\nconsole.log(\"New URL:\", parsed.toString()); \n// https://mysite.com:8080/products/shoes?color=red&size=10&discount=true#reviews"
+}

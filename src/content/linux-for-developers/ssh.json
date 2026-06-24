@@ -1,0 +1,30 @@
+{
+  "id": "ssh",
+  "title": "SSH (Secure Shell)",
+  "difficulty": "Beginner",
+  "definition": "A cryptographic network protocol used for operating network services securely over an unsecured network. It provides a secure channel to log into a remote computer and execute commands.",
+  "simpleExplanation": "Teleporting into another computer. It lets you open a terminal window on your laptop, but everything you type actually executes on a server thousands of miles away, and hackers can't intercept the data.",
+  "realWorldExample": "An AWS server is running in Virginia. A developer in London types `ssh admin@198.51.100.14`. They are instantly connected and can run commands on the Virginia server as if they were sitting in front of it.",
+  "useCases": [
+    "Remote server administration",
+    "Secure file transfers (SCP)"
+  ],
+  "questions": {
+    "basic": [
+      "What port number does the SSH protocol run on by default?"
+    ],
+    "intermediate": [
+      "Why is it a major security risk to leave SSH accessible via a simple password instead of an SSH Key?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default port?",
+      "answer": "Port 22."
+    },
+    {
+      "question": "Why is password risky?",
+      "answer": "Because thousands of automated hacker bots constantly scan the internet for servers with Port 22 open, running 'brute force' attacks guessing thousands of common passwords a second until they break in."
+    }
+  ]
+}

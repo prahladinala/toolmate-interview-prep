@@ -1,0 +1,32 @@
+{
+  "id": "what-is-tailwind",
+  "title": "What is Tailwind CSS?",
+  "difficulty": "Beginner",
+  "definition": "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+  "simpleExplanation": "Instead of writing custom CSS rules in a separate file (like `.my-button { padding: 10px; color: red; }`), Tailwind gives you thousands of tiny, pre-made CSS classes. You just slap them directly onto your HTML elements: `<button class=\"p-2 text-red-500\">`.",
+  "realWorldExample": "Building a card component in 2 minutes without ever leaving your HTML/JSX file, and without having to invent class names like `card-container-outer-wrapper`.",
+  "useCases": [
+    "Rapid prototyping",
+    "Consistent design systems",
+    "Avoiding CSS file bloat"
+  ],
+  "questions": {
+    "basic": [
+      "Is Tailwind a UI Kit like Bootstrap (which provides pre-made buttons and navbars)?"
+    ],
+    "intermediate": [
+      "How does Tailwind handle massive CSS file sizes in production?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Like Bootstrap?",
+      "answer": "No. Bootstrap gives you pre-designed components (`btn btn-primary`). Tailwind gives you raw building blocks (`bg-blue-500 px-4 py-2 rounded`). You design your own components."
+    },
+    {
+      "question": "File sizes?",
+      "answer": "Tailwind automatically scans your HTML/JS files, detects exactly which classes you actually used, and completely deletes all the unused classes. The final production CSS file is usually less than 10kb."
+    }
+  ],
+  "codeExample": "/* ❌ TRADITIONAL CSS WAY */\n// HTML:\n<div class=\"chat-notification\">\n  <p class=\"chat-text\">You have a new message!</p>\n</div>\n\n// CSS:\n.chat-notification {\n  padding: 1.5rem;\n  max-width: 24rem;\n  margin: 0 auto;\n  background-color: white;\n  border-radius: 0.75rem;\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);\n}\n.chat-text { color: #1f2937; font-size: 1.25rem; }\n\n/* ✅ TAILWIND WAY (No external CSS file needed!) */\n<div class=\"p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md\">\n  <p class=\"text-gray-800 text-xl\">You have a new message!</p>\n</div>"
+}

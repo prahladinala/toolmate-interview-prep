@@ -1,0 +1,30 @@
+{
+  "id": "instruction-tuning",
+  "title": "Instruction Tuning",
+  "difficulty": "Advanced",
+  "definition": "A specific type of fine-tuning where the model is trained on a dataset composed strictly of 'Instruction-Response' pairs, teaching it to act as a helpful assistant rather than just an autocomplete engine.",
+  "simpleExplanation": "A raw LLM just predicts the next word. If you type 'What is the capital of France?', a raw model might predict the next word is '...and what is the capital of Spain?'. Instruction Tuning teaches the model to stop predicting, and instead answer the command.",
+  "realWorldExample": "The difference between GPT-3 (a raw base model) and ChatGPT (an instruction-tuned model). ChatGPT was heavily instruction-tuned to understand that when a human asks a question, it expects a conversational answer.",
+  "useCases": [
+    "Creating Chatbots",
+    "Aligning LLMs"
+  ],
+  "questions": {
+    "basic": [
+      "What format does the data in an Instruction Tuning dataset take?"
+    ],
+    "intermediate": [
+      "Why are 'Base Models' almost completely useless to the average consumer without Instruction Tuning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format?",
+      "answer": "Question/Answer or Command/Response pairs. (e.g., User: 'Write a poem', Assistant: 'Roses are red...')."
+    },
+    {
+      "question": "Why are Base Models useless?",
+      "answer": "Because they only know how to auto-complete. If a normal person asks a Base Model 'How do I bake a cake?', the model doesn't know it's supposed to help. It might just generate 5 more cooking-related questions because it saw that pattern on a forum."
+    }
+  ]
+}

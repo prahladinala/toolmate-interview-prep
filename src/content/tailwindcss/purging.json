@@ -1,0 +1,31 @@
+{
+  "id": "purging",
+  "title": "Unused CSS Removal (Purging)",
+  "difficulty": "Intermediate",
+  "definition": "The core optimization mechanism of Tailwind that guarantees incredibly small production CSS files by deleting any utility class that is not explicitly found in your source code.",
+  "simpleExplanation": "Tailwind has a 15 Megabyte dictionary of classes. When you run `npm run build`, it reads your HTML like a spell-checker. Any word from the dictionary that you didn't use gets deleted. The final file is usually around 10 Kilobytes.",
+  "realWorldExample": "You import the `@tailwindcss/typography` plugin which generates thousands of classes. Purging ensures that only the exact prose classes you used make it to the live website.",
+  "useCases": [
+    "Performance optimization",
+    "Core web vitals"
+  ],
+  "questions": {
+    "basic": [
+      "What file do you configure to tell Tailwind exactly which folders to scan for unused classes?"
+    ],
+    "intermediate": [
+      "If your production website has missing styles, but your local `npm run dev` environment looks fine, what is the most likely cause?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which config file?",
+      "answer": "`tailwind.config.js` (Specifically the `content` array)."
+    },
+    {
+      "question": "Missing production styles?",
+      "answer": "A Purge Configuration Error. Your `content` array missed a folder (e.g., you created a new `components/` folder but didn't tell Tailwind to scan it). It purged the classes because it couldn't find them."
+    }
+  ],
+  "codeExample": "// tailwind.config.js\nmodule.exports = {\n  // THIS IS THE MOST IMPORTANT SETTING FOR PERFORMANCE\n  // Tailwind will ONLY scan files matching these paths.\n  // If a file is not in this list, its Tailwind classes WILL BE DELETED in production.\n  content: [\n    \"./pages/**/*.{js,ts,jsx,tsx}\",\n    \"./components/**/*.{js,ts,jsx,tsx}\",\n    \"./app/**/*.{js,ts,jsx,tsx}\", // Don't forget new architecture folders!\n  ],\n  theme: { extend: {} },\n  plugins: [],\n}"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "optional-chaining",
+  "title": "Optional Chaining",
+  "difficulty": "Intermediate",
+  "definition": "The `?.` operator permits reading the value of a property located deep within a chain of connected objects without having to check that each reference in the chain is valid.",
+  "simpleExplanation": "Imagine trying to find a book in a library. Usually, if the library is closed, the program crashes with 'Cannot read properties of null'. Optional chaining says: 'Go into the library IF it's open, and find the book IF it exists. If anything is missing, just calmly return undefined instead of crashing.'",
+  "realWorldExample": "Safely reading data from an API response where nested objects might be missing: `const zip = user?.address?.zipCode;`",
+  "useCases": [
+    "Safe object traversal",
+    "Calling callbacks safely `onSuccess?.()`"
+  ],
+  "questions": {
+    "basic": [
+      "What error does Optional Chaining prevent?"
+    ],
+    "intermediate": [
+      "Can you use Optional Chaining on array indexes?"
+    ],
+    "advanced": [
+      "Does Optional Chaining short-circuit the rest of the expression?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What error does it prevent?",
+      "answer": "It prevents the dreaded `TypeError: Cannot read properties of undefined` which crashes the entire application."
+    },
+    {
+      "question": "Does it short-circuit?",
+      "answer": "Yes. If the left side of `?.` is null or undefined, the expression immediately stops evaluating and returns undefined. The right side is completely ignored."
+    }
+  ],
+  "codeExample": "const data = {\n  user: {\n    name: \"Alice\"\n    // Note: 'address' object is missing!\n  }\n};\n\n// OLD WAY (Verbose and ugly):\nconst zip1 = data.user && data.user.address && data.user.address.zipCode;\n\n// MODERN WAY (Clean and safe):\nconst zip2 = data.user?.address?.zipCode; \nconsole.log(zip2); // undefined (No crash!)\n\n// Safe function call:\nconst maybeFunction = null;\nmaybeFunction?.(); // Doesn't run, doesn't crash"
+}

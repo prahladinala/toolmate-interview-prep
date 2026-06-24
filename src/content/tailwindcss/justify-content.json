@@ -1,0 +1,31 @@
+{
+  "id": "justify-content",
+  "title": "Justify Content",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling how flex and grid items are positioned along a container's main axis.",
+  "simpleExplanation": "If your flexbox is a horizontal row, `justify` controls the Left-to-Right spacing. Do you want items bunched up on the left? Centered? Pushed to opposite edges? This is the tool.",
+  "realWorldExample": "Creating a classic header layout. You use `justify-between` to stick the Logo to the absolute left edge, and the Profile Picture to the absolute right edge.",
+  "useCases": [
+    "Spacing out nav elements",
+    "Horizontal centering"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class pushes one item to the far left and the other item to the far right?"
+    ],
+    "intermediate": [
+      "If your flex container is set to `flex-col` (a vertical column), does `justify-center` center items horizontally or vertically?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Far left / Far right?",
+      "answer": "`justify-between`"
+    },
+    {
+      "question": "justify in flex-col?",
+      "answer": "Vertically! `justify-content` always operates on the MAIN axis. In a row, the main axis is horizontal. In a column, the main axis is vertical."
+    }
+  ],
+  "codeExample": "<!-- Items bunched to the left (Default) -->\n<div class=\"flex justify-start\">\n  <div>1</div> <div>2</div>\n</div>\n\n<!-- Items perfectly centered horizontally -->\n<div class=\"flex justify-center\">\n  <div>1</div> <div>2</div>\n</div>\n\n<!-- Pushed to opposite edges (Classic Navbar) -->\n<div class=\"flex justify-between\">\n  <div>Logo</div> <div>Menu</div>\n</div>\n\n<!-- Equal spacing around every item -->\n<div class=\"flex justify-evenly\">\n  <div>1</div> <div>2</div> <div>3</div>\n</div>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "http-basics",
+  "title": "HTTP Protocol",
+  "difficulty": "Beginner",
+  "definition": "Hypertext Transfer Protocol (HTTP) is the foundation of data communication on the World Wide Web. It dictates the rules for how messages are formatted and transmitted.",
+  "simpleExplanation": "HTTP is the universal language of the internet. Just like English has rules for verbs and nouns, HTTP has rules for how a browser and a server must talk to each other. If your browser speaks HTTP and a server in Japan speaks HTTP, they understand each other perfectly.",
+  "realWorldExample": "Typing `http://www.google.com` into your browser. You are explicitly telling your browser to use the HTTP rulebook to ask Google's servers for their homepage.",
+  "useCases": [
+    "Web browsing",
+    "API communication"
+  ],
+  "questions": {
+    "basic": [
+      "What does HTTP stand for?"
+    ],
+    "intermediate": [
+      "What is the difference between HTTP and HTTPS?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stands for?",
+      "answer": "Hypertext Transfer Protocol."
+    },
+    {
+      "question": "HTTP vs HTTPS?",
+      "answer": "The 'S' stands for Secure. Standard HTTP sends data in plain text, meaning anyone on your WiFi network can intercept and read your passwords. HTTPS encrypts the data using TLS/SSL, making it look like random gibberish to hackers."
+    }
+  ],
+  "codeExample": "/*\n  A raw HTTP message looks like a plain text file!\n  If you intercepted the wire, you would literally see this text:\n  \n  --- CLIENT SENDS THIS ---\n  GET /index.html HTTP/1.1\n  Host: www.example.com\n  Accept-Language: en-US\n  \n  --- SERVER RESPONDS WITH THIS ---\n  HTTP/1.1 200 OK\n  Date: Mon, 23 May 2024 22:38:34 GMT\n  Content-Type: text/html\n  \n  <html>\n    <body>Hello World</body>\n  </html>\n*/"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "unit-testing",
+  "title": "Unit Testing",
+  "difficulty": "Intermediate",
+  "definition": "Unit testing isolates a single piece of code (like a utility function or a pure React component) and tests its behavior independently from the rest of the application.",
+  "simpleExplanation": "Imagine testing a car. Unit testing is taking the engine out, putting it on a workbench, and making sure the pistons fire correctly. You aren't testing the steering wheel or the brakes; you are only testing the engine.",
+  "realWorldExample": "Testing a `formatCurrency(amount)` function to ensure `formatCurrency(1000)` returns `'$1,000.00'`.",
+  "useCases": [
+    "Testing pure utility functions",
+    "Testing custom hooks using `@testing-library/react-hooks`",
+    "Testing Presentational/Dumb components that just accept props and render UI"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Unit Test?",
+      "Why are pure functions easier to unit test?"
+    ],
+    "intermediate": [
+      "How do you unit test a Custom Hook?",
+      "What is Code Coverage?"
+    ],
+    "advanced": [
+      "Why is it discouraged to unit test every single internal React component?",
+      "What is the AAA pattern?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why are pure functions easier to test?",
+      "answer": "Because they have no side effects (like database calls or random numbers) and their output is completely determined by their input. You don't need to set up complicated mocks."
+    },
+    {
+      "question": "What is the AAA pattern?",
+      "answer": "Arrange, Act, Assert. Arrange: Set up the data and render the component. Act: Click the button or call the function. Assert: Check if the result matches your expectations."
+    }
+  ],
+  "codeExample": "// math.js\nexport const multiply = (a, b) => a * b;\n\n// math.test.js\nimport { multiply } from './math';\n\ntest('multiplies positive numbers', () => {\n  // Arrange\n  const num1 = 5;\n  const num2 = 10;\n  \n  // Act\n  const result = multiply(num1, num2);\n  \n  // Assert\n  expect(result).toBe(50);\n});"
+}

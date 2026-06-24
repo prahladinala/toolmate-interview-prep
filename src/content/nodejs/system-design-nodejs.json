@@ -1,0 +1,31 @@
+{
+  "id": "system-design-nodejs",
+  "title": "Node.js System Design",
+  "difficulty": "Advanced",
+  "definition": "High-level architectural interviews where you must design a massive, scalable system (like Twitter or Uber) using Node.js and its ecosystem.",
+  "simpleExplanation": "You don't write code here. You draw boxes on a whiteboard. The interviewer says 'Design Netflix'. You draw a Load Balancer, point it to an API Gateway, point that to Node.js Microservices, attach a Redis Cache for fast movie lookups, and use AWS S3 to store the video files.",
+  "realWorldExample": "Explaining why Node.js is perfect for a Chat App (because of WebSockets and non-blocking I/O) but a terrible choice for an AI Image Generation API (because heavy math blocks the single thread).",
+  "useCases": [
+    "Senior/Staff Engineer interviews",
+    "Architect roles"
+  ],
+  "questions": {
+    "basic": [
+      "Why is Node.js highly recommended for I/O heavy applications (like Chat apps)?"
+    ],
+    "intermediate": [
+      "If you are building a CPU-heavy Video Encoding service, should you use Node.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why Node for I/O?",
+      "answer": "Because of its asynchronous, non-blocking Event Loop. It can juggle thousands of concurrent WebSocket connections waiting for data with almost zero RAM/CPU overhead."
+    },
+    {
+      "question": "Should you use Node for Video Encoding?",
+      "answer": "Generally, no. Heavy CPU tasks block the single-threaded Event Loop, freezing the server for all other users. If you MUST use Node, you have to offload the work to Worker Threads or a separate Microservice written in C++/Go/Rust."
+    }
+  ],
+  "codeExample": "// --- SYSTEM DESIGN: URL SHORTENER (e.g. Bitly) ---\n\nconsole.log(\"1. CLIENT: Sends long URL to Load Balancer.\");\nconsole.log(\"2. LOAD BALANCER: Routes traffic to one of 10 Node.js API servers.\");\n\nconsole.log(\"3. NODE.JS SERVER: Generates a random 7-character string.\");\n\nconsole.log(\"4. CACHE (REDIS): The server saves { 'xyz123': 'https://massive-url.com' } in fast RAM.\");\nconsole.log(\"5. DATABASE (MONGODB): The server saves it to the persistent DB just in case Redis crashes.\");\n\nconsole.log(\"\\n--- WHEN A USER CLICKS THE SHORT LINK ---\");\nconsole.log(\"1. Request hits Node.js Server.\");\nconsole.log(\"2. Server checks Redis (Takes 1ms). Cache Hit!\");\nconsole.log(\"3. Server returns 'HTTP 301 Redirect' to the long URL.\");\n\nconsole.log(\"\\n(Redis handles the massive read traffic, Mongo stores it permanently, Node connects the pieces).\");"
+}

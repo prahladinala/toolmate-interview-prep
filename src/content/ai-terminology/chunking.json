@@ -1,0 +1,30 @@
+{
+  "id": "chunking",
+  "title": "Chunking",
+  "difficulty": "Intermediate",
+  "definition": "The data-preprocessing step in RAG where large documents (like a 100-page PDF) are broken down into smaller, discrete blocks of text (chunks) before being embedded into the vector database.",
+  "simpleExplanation": "You can't eat a whole steak in one bite. You cut it into pieces. An AI can't embed a 100-page book as a single vector, because it would lose all specific details. You chop the book into 500-word paragraphs and embed them individually.",
+  "realWorldExample": "Using LangChain's RecursiveCharacterTextSplitter to take an employee handbook and chop it into chunks of exactly 1,000 characters, with an 'overlap' of 100 characters so sentences don't get cut in half.",
+  "useCases": [
+    "RAG data prep",
+    "NLP text processing"
+  ],
+  "questions": {
+    "basic": [
+      "Why do developers include an 'Overlap' when chunking documents?"
+    ],
+    "intermediate": [
+      "What happens to your RAG system if your Chunk Size is way too small (e.g., 10 words per chunk)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why Overlap?",
+      "answer": "If you slice a document aggressively, you might cut a sentence exactly in half, destroying its meaning. An overlap ensures the end of Chunk A is repeated at the beginning of Chunk B, preserving the context."
+    },
+    {
+      "question": "Chunk size too small?",
+      "answer": "The context is destroyed. If the user asks 'What is the company policy on remote work?', a 10-word chunk might just say 'remote work is usually allowed on Tuesdays and Thursdays depending', which lacks the surrounding context needed to give a good answer."
+    }
+  ]
+}

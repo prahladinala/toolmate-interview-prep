@@ -1,0 +1,30 @@
+{
+  "id": "types-of-ai",
+  "title": "Types of AI",
+  "difficulty": "Intermediate",
+  "definition": "The classification of AI systems based on their capabilities, typically categorized as Narrow AI (Weak), General AI (Strong), and Superintelligent AI.",
+  "simpleExplanation": "We categorize AI by how smart it is compared to humans. Right now, we only have Narrow AI (good at one specific task). General AI would be exactly as smart as a human at everything. Superintelligent AI would be vastly smarter than the smartest human.",
+  "realWorldExample": "Narrow AI: AlphaGo (it can beat the world champion at the board game Go, but it doesn't know how to tie its shoes or make a cup of coffee). General AI: C-3PO from Star Wars.",
+  "useCases": [
+    "Understanding technological limits",
+    "AI safety discussions"
+  ],
+  "questions": {
+    "basic": [
+      "Does human-level Artificial General Intelligence (AGI) currently exist?"
+    ],
+    "intermediate": [
+      "What is Artificial Superintelligence (ASI)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does AGI exist?",
+      "answer": "No. As of today, all existing AI systems, including powerful models like GPT-4, are strictly classified as 'Narrow AI' because they lack true generalized human reasoning and consciousness."
+    },
+    {
+      "question": "What is ASI?",
+      "answer": "A hypothetical future point where an AI becomes vastly smarter than the best human brains in practically every field, including scientific creativity, general wisdom, and social skills."
+    }
+  ]
+}

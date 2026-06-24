@@ -1,0 +1,30 @@
+{
+  "id": "wget",
+  "title": "wget",
+  "difficulty": "Beginner",
+  "definition": "Web Get. A command-line utility specifically designed to download files from the web. It supports downloading entire directories recursively.",
+  "simpleExplanation": "The ultimate download manager. You give it a link to a file, hit enter, and it silently downloads it to your folder.",
+  "realWorldExample": "You are building a server and need to install Docker. You type `wget https://get.docker.com/install.sh`. The script is instantly saved to your computer.",
+  "useCases": [
+    "Downloading massive files",
+    "Scripting software installations"
+  ],
+  "questions": {
+    "basic": [
+      "If your internet disconnects halfway through a 10GB download, can `wget` resume the download later?"
+    ],
+    "intermediate": [
+      "What is the primary difference in philosophy between `curl` and `wget`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it resume?",
+      "answer": "Yes. If you add the `-c` (continue) flag, `wget` will look at the partially downloaded file and resume right where it left off."
+    },
+    {
+      "question": "curl vs wget?",
+      "answer": "`curl` is designed to be a pipe—it takes data from the internet and streams it directly to your terminal screen for you to interact with. `wget` is designed to be a downloader—it takes data from the internet and actively saves it as a file on your hard drive."
+    }
+  ]
+}

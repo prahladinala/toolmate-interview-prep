@@ -1,0 +1,30 @@
+{
+  "id": "csrf",
+  "title": "CSRF Protection",
+  "difficulty": "Advanced",
+  "definition": "Cross-Site Request Forgery. A vulnerability where a malicious site tricks a user's web browser into performing an unwanted action on a trusted site where the user is currently authenticated.",
+  "simpleExplanation": "You log into `yourbank.com`. A cookie is saved in your browser. You leave the tab open and visit `evil.com`. Evil.com has a hidden form that submits a POST request to `yourbank.com/transfer?amount=1000&to=hacker`. Because your browser automatically attaches the bank cookie to the request, the bank thinks YOU made the request and transfers the money.",
+  "realWorldExample": "Financial applications or social media platforms where state-changing actions (deleting accounts, transferring funds) are done via cookie-based authentication.",
+  "useCases": [
+    "Protecting session-based applications"
+  ],
+  "questions": {
+    "basic": [
+      "Are JWTs stored in `localStorage` vulnerable to CSRF?"
+    ],
+    "intermediate": [
+      "How does a CSRF Token prevent this attack?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Are JWTs in localStorage vulnerable?",
+      "answer": "No! CSRF exclusively relies on the browser's behavior of automatically sending Cookies. If you use JWTs in `localStorage` and manually attach them via `Authorization` headers, CSRF is completely impossible."
+    },
+    {
+      "question": "How do tokens prevent it?",
+      "answer": "The server generates a unique, random string (CSRF Token) and gives it to the frontend. When the frontend submits a form, it must include that token. When `evil.com` tries to forge a request, they don't know the secret token, so the server rejects the request."
+    }
+  ],
+  "codeExample": "// CSRF Protection is only necessary if you use Cookie-based authentication.\n// In modern Express apps, this is handled via middleware.\n\n/*\n  npm install csurf cookie-parser\n*/\n\n// const csrf = require('csurf');\n// const cookieParser = require('cookie-parser');\n// const express = require('express');\n// const app = express();\n\n// // 1. Setup middleware\n// app.use(cookieParser());\n// const csrfProtection = csrf({ cookie: true });\n\n// // 2. Send the token to the frontend\n// app.get('/api/getToken', csrfProtection, (req, res) => {\n//   res.json({ csrfToken: req.csrfToken() });\n// });\n\n// // 3. Protect state-changing routes\n// // If a POST request arrives WITHOUT the token, this middleware throws a 403 Forbidden error.\n// app.post('/api/transfer', csrfProtection, (req, res) => {\n//   res.send('Transfer successful. Token verified!');\n// });\n\nconsole.log(\"If you use modern JWTs in Authorization headers, CSRF attacks are not possible.\");"
+}

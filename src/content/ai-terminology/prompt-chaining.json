@@ -1,0 +1,31 @@
+{
+  "id": "prompt-chaining",
+  "title": "Prompt Chaining",
+  "difficulty": "Intermediate",
+  "definition": "The architectural practice of breaking a complex, multi-step task into several smaller, separate API calls to an LLM, where the output of one prompt becomes the input of the next.",
+  "simpleExplanation": "An assembly line. You don't ask the AI to write a whole book at once. Prompt 1: 'Write an outline.' Prompt 2: 'Take this outline and write Chapter 1.' Prompt 3: 'Take Chapter 1 and fix the grammar.'",
+  "realWorldExample": "A legal AI app. Step 1: Extract all dates from the contract. Step 2: Pass those dates to the AI and ask it to determine which one is the expiration date. Step 3: Pass that expiration date to the AI and ask it to draft a warning email.",
+  "useCases": [
+    "Complex automation",
+    "Agentic workflows",
+    "Error reduction"
+  ],
+  "questions": {
+    "basic": [
+      "Why use Prompt Chaining instead of just writing one massive, complex prompt?"
+    ],
+    "intermediate": [
+      "What is a major downside of Prompt Chaining in a production application?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use it?",
+      "answer": "If you ask an AI to do 10 complex things at once in a single prompt, it usually gets confused and forgets steps. Breaking it into 10 separate, hyper-focused API calls ensures near 100% accuracy on every step."
+    },
+    {
+      "question": "Downside?",
+      "answer": "Cost and Latency. Making 5 separate API calls to GPT-4 takes 5 times as long and costs significantly more money than making 1 call."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "iaas-paas-saas",
+  "title": "IaaS vs PaaS vs SaaS",
+  "difficulty": "Intermediate",
+  "definition": "The three primary service models of cloud computing, representing different levels of management responsibility. Infrastructure (IaaS), Platform (PaaS), and Software (SaaS) as a Service.",
+  "simpleExplanation": "The Pizza Analogy. IaaS: Buying dough, cheese, and an oven, but baking it yourself. PaaS: Getting a frozen pizza delivered and just baking it. SaaS: Going to a restaurant and having the pizza handed to you fully cooked.",
+  "realWorldExample": "IaaS: AWS EC2 (Raw virtual server, you install the OS). PaaS: Heroku or AWS Elastic Beanstalk (You just upload your code, they handle the servers). SaaS: Gmail or Salesforce (You just log in and use the app).",
+  "useCases": [
+    "Choosing architectures",
+    "Budgeting IT resources"
+  ],
+  "questions": {
+    "basic": [
+      "Is Google Docs an example of IaaS, PaaS, or SaaS?"
+    ],
+    "intermediate": [
+      "If you use a PaaS, do you need to worry about installing monthly Linux security patches on the underlying servers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Google Docs?",
+      "answer": "SaaS (Software as a Service). The software is fully managed and delivered over the web."
+    },
+    {
+      "question": "PaaS patching?",
+      "answer": "No. In a PaaS model, the cloud provider manages the underlying operating system, networking, and runtime. You only manage your application code and data."
+    }
+  ]
+}

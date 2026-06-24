@@ -1,0 +1,30 @@
+{
+  "id": "lora",
+  "title": "LoRA",
+  "difficulty": "Advanced",
+  "definition": "Low-Rank Adaptation. A highly efficient fine-tuning technique that freezes the original massive neural network weights and injects tiny, trainable 'adapter' matrices into the layers, allowing you to fine-tune massive LLMs on consumer hardware.",
+  "simpleExplanation": "You want to edit a 500-page book. Instead of rewriting the entire book (which takes forever), you freeze the book, write your notes on sticky-notes, and slap the sticky-notes on the pages. The 'sticky notes' are the LoRA.",
+  "realWorldExample": "To traditionally fine-tune a 70B parameter LLaMA model, you need a $50,000 server. Using LoRA, you only train 1% of the network (the sticky notes), allowing you to fine-tune it on a standard $1,000 gaming PC.",
+  "useCases": [
+    "Open-source AI development",
+    "Cost-effective fine-tuning"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary benefit of using LoRA over full Fine-Tuning?"
+    ],
+    "intermediate": [
+      "If you train 5 different LoRAs for 5 different tasks, do you need to store 5 massive copies of the Base LLM on your hard drive?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary benefit?",
+      "answer": "Cost and hardware efficiency. It requires a fraction of the GPU VRAM to train."
+    },
+    {
+      "question": "Store 5 copies?",
+      "answer": "No! This is the brilliance of LoRA. You store exactly ONE copy of the massive base model. The LoRA files (the sticky notes) are only a few megabytes each. You can swap them in and out instantly depending on what task you want the AI to do."
+    }
+  ]
+}

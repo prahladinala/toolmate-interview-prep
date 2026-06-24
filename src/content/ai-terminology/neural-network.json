@@ -1,0 +1,31 @@
+{
+  "id": "neural-network",
+  "title": "Neural Networks",
+  "difficulty": "Intermediate",
+  "definition": "A computational model inspired by the human brain, consisting of interconnected nodes (neurons) structured in layers, designed to recognize complex patterns in data.",
+  "simpleExplanation": "It's a digital brain. Instead of biological brain cells, it uses tiny mathematical functions. Information goes in the front, passes through thousands of connected nodes that each do a tiny piece of math, and the final answer pops out the back.",
+  "realWorldExample": "When you write a check, the ATM scans the handwritten numbers. The image goes into a Neural Network. Layer 1 detects curves. Layer 2 detects circles. Layer 3 realizes a circle with a tail is a '9'. The network predicts '9'.",
+  "useCases": [
+    "Deep learning foundation",
+    "Image recognition",
+    "Text generation"
+  ],
+  "questions": {
+    "basic": [
+      "Are Artificial Neural Networks exactly the same as biological human brains?"
+    ],
+    "intermediate": [
+      "What makes a Neural Network 'Deep'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exactly the same?",
+      "answer": "No. They are loosely inspired by the brain. An artificial neuron is just a very simple math equation (like `y = mx + b`). True human neurons are vastly more complex."
+    },
+    {
+      "question": "What makes it Deep?",
+      "answer": "The number of 'Hidden Layers' sandwiched between the Input and Output. A simple network has 1 hidden layer. A 'Deep' Neural Network (Deep Learning) has dozens or hundreds of hidden layers stacked on top of each other."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "critical-css",
+  "title": "Critical CSS",
+  "difficulty": "Advanced",
+  "definition": "A technique that extracts the CSS for above-the-fold content and inlines it directly into the HTML document, while deferring the rest of the CSS.",
+  "simpleExplanation": "When a user visits your site, they only see the top 20% of the page (the hero banner and navigation). They don't see the footer until they scroll down. Critical CSS grabs ONLY the CSS needed to paint that top 20%, shoves it directly into the HTML `<head>`, and loads the footer CSS later. This makes the website appear instantly on the screen.",
+  "realWorldExample": "Getting a perfect 100/100 score on Google PageSpeed Insights. Without Critical CSS, the browser stares at a blank white screen for 2 seconds while it downloads the massive `styles.css` file.",
+  "useCases": [
+    "Extreme performance optimization",
+    "Core Web Vitals improvement (LCP)"
+  ],
+  "questions": {
+    "basic": [
+      "Where does Critical CSS go in the HTML document?"
+    ],
+    "intermediate": [
+      "If Critical CSS is so good, why not inline the entire `styles.css` file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where does it go?",
+      "answer": "It is written inside a `<style>` tag directly in the `<head>` of the HTML."
+    },
+    {
+      "question": "Why not inline everything?",
+      "answer": "Because external CSS files can be cached by the browser. If the user visits a second page on your site, the browser instantly loads the cached `.css` file from their hard drive. If you inline EVERYTHING into the HTML, the user has to re-download the massive CSS chunk on every single page they visit."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Critical CSS Example</title>\n  \n  <!-- 1. CRITICAL CSS (Inlined for instant rendering) -->\n  <style>\n    body { margin: 0; font-family: sans-serif; }\n    .hero { background: #1e293b; color: white; padding: 100px 20px; text-align: center; }\n    h1 { font-size: 3rem; }\n  </style>\n\n  <!-- \n    2. NON-CRITICAL CSS (Deferred until the page finishes painting!)\n    This is a modern hack to load CSS asynchronously.\n  -->\n  <link \n    rel=\"preload\" \n    href=\"/styles/heavy-footer-and-animations.css\" \n    as=\"style\" \n    onload=\"this.onload=null;this.rel='stylesheet'\"\n  >\n  <!-- Fallback for users with JavaScript disabled -->\n  <noscript><link rel=\"stylesheet\" href=\"/styles/heavy-footer-and-animations.css\"></noscript>\n</head>\n<body>\n  <!-- This content will render in 50 milliseconds! -->\n  <div class=\"hero\">\n    <h1>Welcome to the Fast Site</h1>\n  </div>\n</body>\n</html>"
+}

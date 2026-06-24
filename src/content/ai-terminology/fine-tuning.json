@@ -1,0 +1,31 @@
+{
+  "id": "fine-tuning",
+  "title": "Fine-Tuning",
+  "difficulty": "Intermediate",
+  "definition": "The process of taking a pre-trained foundational AI model and continuing its training on a smaller, highly specific dataset to adapt it for a specialized task or tone.",
+  "simpleExplanation": "The AI already went to college and got a general degree (Pre-training). Fine-tuning is sending the AI to a 2-week bootcamp to learn how to be a specialized lawyer or a specific company's brand ambassador.",
+  "realWorldExample": "You take the open-source LLaMA model and Fine-Tune it on 10,000 examples of your company's support emails. The model stops talking like a generic AI and starts using your exact corporate catchphrases and tone.",
+  "useCases": [
+    "Tone matching",
+    "Specialized coding tasks",
+    "Medical/Legal AI"
+  ],
+  "questions": {
+    "basic": [
+      "Is Fine-Tuning a good way to teach an AI new facts (like your company's updated vacation policy)?"
+    ],
+    "intermediate": [
+      "What is 'Pre-Training' compared to 'Fine-Tuning'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Good for teaching facts?",
+      "answer": "NO. Fine-tuning is for teaching an AI *how* to behave (tone, format, style). It is terrible at memorizing specific facts. Use RAG for teaching facts."
+    },
+    {
+      "question": "Pre-Training vs Fine-Tuning?",
+      "answer": "Pre-training is the initial phase where the model reads the entire internet for 6 months on supercomputers to learn basic English. Fine-tuning happens afterward, takes a few hours, and adjusts the model for a specific job."
+    }
+  ]
+}

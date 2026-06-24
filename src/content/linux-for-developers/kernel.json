@@ -1,0 +1,30 @@
+{
+  "id": "kernel",
+  "title": "Linux Kernel",
+  "difficulty": "Intermediate",
+  "definition": "The core component of the Linux operating system. It acts as the direct bridge between the physical hardware (CPU, RAM) and the software applications.",
+  "simpleExplanation": "The ultimate boss of the computer. If a video game wants to draw graphics on the screen, it cannot touch the graphics card directly. It must politely ask the Kernel to do it.",
+  "realWorldExample": "When you type on your keyboard, electrical signals are sent to the computer. The Linux Kernel intercepts those hardware signals, translates them into the letter 'A', and passes it to your text editor software.",
+  "useCases": [
+    "Hardware management",
+    "System performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "Is the Kernel the same thing as the Terminal?"
+    ],
+    "intermediate": [
+      "What is a 'Kernel Panic'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Kernel vs Terminal?",
+      "answer": "No. The Terminal is just a software application you use to type commands. The Kernel is the invisible, deep-level system actually executing those commands on the hardware."
+    },
+    {
+      "question": "What is a Kernel Panic?",
+      "answer": "The Linux equivalent of the Windows 'Blue Screen of Death'. It happens when the Kernel encounters an unrecoverable hardware or software error and physically halts the entire system to prevent data corruption."
+    }
+  ]
+}

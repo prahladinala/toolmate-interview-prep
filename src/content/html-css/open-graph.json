@@ -1,0 +1,31 @@
+{
+  "id": "open-graph",
+  "title": "Open Graph Tags",
+  "difficulty": "Intermediate",
+  "definition": "A protocol created by Facebook that allows web pages to become rich objects in a social graph. It dictates what image, title, and description appear when a link is shared on social media.",
+  "simpleExplanation": "Have you ever pasted a link into an iMessage, WhatsApp, or Twitter, and a beautiful preview card magically appeared with a massive picture and a catchy title? That doesn't happen by accident. The developer specifically wrote Open Graph (`og:`) tags in the HTML.",
+  "realWorldExample": "Adding `<meta property=\"og:image\" content=\"preview.jpg\">` so that when a user shares your blog post on LinkedIn, a giant thumbnail of your blog cover image is displayed instead of a blank box.",
+  "useCases": [
+    "Social media marketing",
+    "Link previews in chat applications (Slack, Discord, iMessage)"
+  ],
+  "questions": {
+    "basic": [
+      "Which social network originally created the Open Graph protocol?"
+    ],
+    "intermediate": [
+      "What is the equivalent protocol used specifically by Twitter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who created it?",
+      "answer": "Facebook."
+    },
+    {
+      "question": "Twitter's equivalent?",
+      "answer": "Twitter Cards (`<meta name=\"twitter:card\">`). However, if Twitter doesn't find Twitter-specific tags, it will automatically fall back and use the Open Graph tags instead."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Awesome Article</title>\n\n  <!-- === OPEN GRAPH TAGS (For Facebook, LinkedIn, Discord, etc.) === -->\n  <!-- The title of the article -->\n  <meta property=\"og:title\" content=\"10 Ways to Master HTML\">\n  <!-- The type of content -->\n  <meta property=\"og:type\" content=\"article\">\n  <!-- The URL of the article -->\n  <meta property=\"og:url\" content=\"https://example.com/article\">\n  <!-- The magical preview image URL -->\n  <meta property=\"og:image\" content=\"https://placehold.co/1200x630/blue/white?text=Article+Preview\">\n  <!-- The description text under the title -->\n  <meta property=\"og:description\" content=\"Learn the secrets of modern HTML5 in just 10 minutes.\">\n\n  <!-- === TWITTER SPECIFIC TAGS === -->\n  <!-- Tells Twitter to use a massive full-width image card instead of a tiny square -->\n  <meta name=\"twitter:card\" content=\"summary_large_image\">\n  <meta name=\"twitter:site\" content=\"@yourtwitterhandle\">\n</head>\n<body>\n  <h2>Copying a link to this page into Slack would create a gorgeous preview card!</h2>\n</body>\n</html>"
+}

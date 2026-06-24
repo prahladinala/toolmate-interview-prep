@@ -1,0 +1,30 @@
+{
+  "id": "self-attention",
+  "title": "Self Attention",
+  "difficulty": "Advanced",
+  "definition": "A specific type of attention mechanism where the model relates different positions of a single sequence in order to compute a representation of that same sequence. It maps the relationship of every word to every other word.",
+  "simpleExplanation": "Consider the sentence: 'The animal didn't cross the street because IT was too tired.' What is 'IT'? A human knows 'IT' is the animal. Self-Attention mathematically connects the word 'IT' directly back to the word 'animal' by calculating relationship scores.",
+  "realWorldExample": "Inside GPT-4, Self-Attention matrices are calculated for every single word you type in your prompt. This is what gives the model its seemingly magical ability to understand the deep context of your question.",
+  "useCases": [
+    "LLM contextualization",
+    "Pronoun resolution"
+  ],
+  "questions": {
+    "basic": [
+      "Does Self-Attention look at words that came before it, words that came after it, or both?"
+    ],
+    "intermediate": [
+      "Why does computing Self-Attention become incredibly expensive as a document gets longer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Before, after, or both?",
+      "answer": "Both (in encoder models like BERT). It looks at the entire sentence simultaneously. (Note: In decoder models like GPT, it only looks backward to prevent 'cheating' during generation)."
+    },
+    {
+      "question": "Why expensive?",
+      "answer": "Because it has quadratic complexity (O(n^2)). If you have a 1,000-word document, the AI must calculate the relationship of EVERY word against EVERY OTHER word (1,000 x 1,000 = 1,000,000 calculations). If you double the document to 2,000 words, the math quadruples to 4,000,000."
+    }
+  ]
+}

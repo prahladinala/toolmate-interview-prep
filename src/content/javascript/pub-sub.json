@@ -1,0 +1,35 @@
+{
+  "id": "pub-sub",
+  "title": "Publish-Subscribe Pattern",
+  "difficulty": "Advanced",
+  "definition": "A messaging pattern where senders (Publishers) do not program the messages to be sent directly to specific receivers (Subscribers). Instead, published messages are categorized into channels via a central Event Bus.",
+  "simpleExplanation": "Pub-Sub is a radio station. The radio DJ (Publisher) broadcasts music on frequency 99.5 FM. They have no idea who is listening. You (Subscriber) tune your car radio to 99.5 FM. If 100 people tune in, everyone hears the song. If nobody tunes in, the DJ still plays the song. The DJ and the listeners never actually meet; the Radio Tower (Event Bus) connects them.",
+  "realWorldExample": "Redux. A component dispatches an action (Publisher). The Redux Store (Event Bus) receives it. Any component that mapped that state (Subscriber) automatically updates. Also used in WebSockets and Node.js EventEmitters.",
+  "useCases": [
+    "Decoupling massive applications",
+    "Global state management systems",
+    "Microservices communication"
+  ],
+  "questions": {
+    "basic": [
+      "What is the 'Event Bus'?"
+    ],
+    "intermediate": [
+      "What is the primary difference between Pub-Sub and Observer?"
+    ],
+    "advanced": [
+      "What is the main downside of a heavily Pub-Sub architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Event Bus?",
+      "answer": "It is the middleman. A simple JavaScript object that holds a dictionary of topics (channels) and an array of callbacks for each topic. `events = { 'USER_LOGIN': [cb1, cb2] }`."
+    },
+    {
+      "question": "What is the main downside?",
+      "answer": "It can be impossible to debug. Because components are perfectly decoupled, tracing the flow of data is a nightmare. A button is clicked, an event is fired into the void, and somehow a deeply nested component changes state. Without good dev tools, finding the connection is very difficult."
+    }
+  ],
+  "codeExample": "class EventBus {\n  constructor() { this.channels = {}; }\n\n  // Subscriber tunes in\n  subscribe(channelName, callback) {\n    if (!this.channels[channelName]) this.channels[channelName] = [];\n    this.channels[channelName].push(callback);\n  }\n\n  // Publisher broadcasts\n  publish(channelName, data) {\n    const channel = this.channels[channelName];\n    if (!channel || channel.length === 0) return; // Nobody is listening, do nothing\n    channel.forEach(callback => callback(data));\n  }\n}\n\nconst bus = new EventBus();\n\n// Module A: Subscribes\nbus.subscribe('USER_LOGIN', user => console.log(`Load Dashboard for ${user}`));\nbus.subscribe('USER_LOGIN', user => console.log(`Fetch Cart for ${user}`));\n\n// Module B: Publishes (It doesn't know Module A exists!)\nbus.publish('USER_LOGIN', 'Alice');\n// Output: Load Dashboard for Alice\n// Output: Fetch Cart for Alice"
+}

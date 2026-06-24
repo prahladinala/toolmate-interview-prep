@@ -1,0 +1,32 @@
+{
+  "id": "responsive-grid",
+  "title": "Responsive Grid",
+  "difficulty": "Advanced",
+  "definition": "Using breakpoints specifically with CSS Grid `grid-cols-*` to create complex wrapping data layouts without writing media queries.",
+  "simpleExplanation": "The fastest way to build an image gallery. Start with `grid-cols-1` for phones. Jump to `sm:grid-cols-2` for big phones. Jump to `md:grid-cols-3` for iPads. Jump to `lg:grid-cols-4` for laptops. The browser does all the complex math perfectly.",
+  "realWorldExample": "An Airbnb search results page. On a phone, you see 1 house per row. On a massive monitor, you see 5 houses per row.",
+  "useCases": [
+    "Product listings",
+    "Photo galleries",
+    "Data dashboards"
+  ],
+  "questions": {
+    "basic": [
+      "If you write `<div class=\"grid grid-cols-1 md:grid-cols-3\">`, how many items will fit on one row on a tablet (md) screen?"
+    ],
+    "intermediate": [
+      "How can you make a specific 'Featured Item' span across all columns on mobile, but only span 2 columns on desktop?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many on tablet?",
+      "answer": "3 items."
+    },
+    {
+      "question": "Responsive spanning?",
+      "answer": "Apply `col-span-full md:col-span-2` to the specific child item."
+    }
+  ],
+  "codeExample": "<!-- A standard highly responsive card grid -->\n<div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6\">\n  <!-- Card 1 -->\n  <div class=\"bg-white rounded-lg shadow-md p-4\">House 1</div>\n  <!-- Card 2 -->\n  <div class=\"bg-white rounded-lg shadow-md p-4\">House 2</div>\n  <!-- Card 3 -->\n  <div class=\"bg-white rounded-lg shadow-md p-4\">House 3</div>\n  <!-- Card 4 -->\n  <div class=\"bg-white rounded-lg shadow-md p-4\">House 4</div>\n  <!-- Card 5 -->\n  <div class=\"bg-white rounded-lg shadow-md p-4\">House 5</div>\n</div>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "keyboard-nav",
+  "title": "Keyboard Navigation",
+  "difficulty": "Intermediate",
+  "definition": "Ensuring that all interactive elements in a React application can be reached and operated using only a keyboard.",
+  "simpleExplanation": "Unplug your mouse and try to use your app using only the 'Tab' and 'Enter' keys. If you get stuck, or if you can't tell which button is currently selected, your app fails keyboard navigation.",
+  "realWorldExample": "Creating a custom dropdown menu and adding an `onKeyDown` listener so that pressing the 'Escape' key closes the menu.",
+  "useCases": [
+    "Power users",
+    "Users with motor disabilities",
+    "Accessibility compliance"
+  ],
+  "questions": {
+    "basic": [
+      "What HTML attribute controls the Tab order?"
+    ],
+    "intermediate": [
+      "How do you manage focus when a Modal opens?"
+    ],
+    "advanced": [
+      "What is a 'Focus Trap'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you manage focus when a Modal opens?",
+      "answer": "You should use a 'Focus Trap'. When the modal opens, focus should automatically move to the first input inside the modal. If the user presses Tab repeatedly, focus should cycle INSIDE the modal, never escaping to the background page until the modal closes."
+    }
+  ],
+  "codeExample": "// Ensure custom interactive elements can be focused\n<div tabIndex={0} onKeyDown={(e) => { if(e.key === 'Enter') doAction(); }}>\n  Custom Button\n</div>"
+}

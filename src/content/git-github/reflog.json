@@ -1,0 +1,31 @@
+{
+  "id": "reflog",
+  "title": "git reflog",
+  "difficulty": "Advanced",
+  "definition": "The Reference Logs record when the tips of branches and other references were updated in the local repository. It is the ultimate safety net.",
+  "simpleExplanation": "Git secretly records every single time your `HEAD` pointer moves. Did you accidentally run `git reset --hard` and permanently delete 5 commits? `git log` says they are gone. But `git reflog` has a secret backup list of where you were before you made the mistake.",
+  "realWorldExample": "You do a messy Interactive Rebase, accidentally delete an entire feature, and panic. You type `git reflog`, find the hash of where you were 5 minutes ago, and `git reset --hard` back to it, restoring everything.",
+  "useCases": [
+    "Recovering 'lost' commits",
+    "Undoing a bad rebase or reset"
+  ],
+  "questions": {
+    "basic": [
+      "Does the reflog sync to GitHub when you push?"
+    ],
+    "intermediate": [
+      "How long does Git keep items in the reflog before permanently deleting them?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Sync to GitHub?",
+      "answer": "NO. The reflog is strictly local to your specific laptop. It is a log of YOUR actions."
+    },
+    {
+      "question": "How long?",
+      "answer": "By default, unreachable commits in the reflog expire after 30 days. After that, Git's 'Garbage Collector' permanently deletes them from your hard drive."
+    }
+  ],
+  "codeExample": "# Oh no! I accidentally hard reset and lost my work!\n$ git reset --hard HEAD~3\n\n# 1. Open the secret diary of my actions\n$ git reflog\n/* Output:\n   a1b2c3d HEAD@{0}: reset: moving to HEAD~3\n   9f8e7d6 HEAD@{1}: commit: Add shopping cart   <--- I WANT THIS BACK!\n   5e4d3c2 HEAD@{2}: commit: Update CSS\n*/\n\n# 2. Travel back to the moment before I messed up\n$ git reset --hard 9f8e7d6\n\n# Everything is completely restored!"
+}

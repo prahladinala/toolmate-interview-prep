@@ -1,0 +1,31 @@
+{
+  "id": "git-clone",
+  "title": "git clone",
+  "difficulty": "Beginner",
+  "definition": "A command that creates a local copy of a specific remote repository (usually from GitHub, GitLab, etc.).",
+  "simpleExplanation": "The Download button on steroids. Instead of downloading a ZIP file of the code, `git clone` downloads the code AND the entire history of every change ever made to it, while also setting up a connection to the original internet server.",
+  "realWorldExample": "You get hired at a new company. On day 1, they give you a link to the company's codebase on GitHub. You run `git clone <link>` to download the project to your work laptop so you can start working.",
+  "useCases": [
+    "Contributing to Open Source",
+    "Onboarding to new projects"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to run `git init` after running `git clone`?"
+    ],
+    "intermediate": [
+      "What is the default name given to the remote server connection when you clone a repository?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need to run git init?",
+      "answer": "No! `git clone` automatically runs `git init` for you. The downloaded folder is already a fully functioning Git repository."
+    },
+    {
+      "question": "Default remote name?",
+      "answer": "`origin`. Git automatically creates a bookmark pointing back to the URL you cloned from, and names that bookmark 'origin'."
+    }
+  ],
+  "codeExample": "# Clone a repository from GitHub\n$ git clone https://github.com/facebook/react.git\n\n# This creates a folder named 'react' in your current directory.\n# Navigate into it:\n$ cd react\n\n# You now have the entire React source code and history on your machine!\n\n# You can also clone it and give the folder a custom name:\n$ git clone https://github.com/facebook/react.git my-react-folder"
+}

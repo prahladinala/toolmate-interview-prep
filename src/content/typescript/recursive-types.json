@@ -1,0 +1,35 @@
+{
+  "id": "recursive-types",
+  "title": "Recursive Types",
+  "difficulty": "Advanced",
+  "definition": "Types that reference themselves within their own definition. This allows you to accurately type deeply nested data structures of unknown depth.",
+  "simpleExplanation": "Imagine a Russian Nesting Doll. To describe it, you say: 'It is a Wooden Doll that contains either nothing, OR another identical Russian Nesting Doll.' A recursive type is exactly that—it calls itself until it reaches a base case.",
+  "realWorldExample": "Typing a JSON object! A JSON object can contain strings, numbers, OR another JSON object, which can contain strings, numbers, OR another JSON object... to infinity.",
+  "useCases": [
+    "JSON data structures",
+    "File system trees (Folders containing Folders)",
+    "Linked Lists"
+  ],
+  "questions": {
+    "basic": [
+      "What is a recursive type?"
+    ],
+    "intermediate": [
+      "Why did recursive types previously require an interface, but now work with type aliases?"
+    ],
+    "advanced": [
+      "What is the 'Type instantiation is excessively deep' error?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why did it require an interface?",
+      "answer": "In older versions of TS, `type` aliases evaluated eagerly (instantly), causing infinite loops if they referenced themselves. Interfaces evaluate lazily. TS 3.7 fixed this, so now `type` aliases can be fully recursive."
+    },
+    {
+      "question": "Excessively deep error?",
+      "answer": "If your recursive type logic is extremely complex (e.g., recursive conditional mapped types), the TS compiler has a built-in safety limit (usually around 50 levels of recursion) to prevent the IDE from crashing. If it hits this limit, it throws this error."
+    }
+  ],
+  "codeExample": "// Defining a deeply nested folder structure\ntype FileNode = {\n  name: string;\n  isFile: boolean;\n  // The magic: referencing itself!\n  children?: FileNode[]; \n};\n\nconst myFileSystem: FileNode = {\n  name: \"root\",\n  isFile: false,\n  children: [\n    { name: \"document.txt\", isFile: true },\n    {\n      name: \"images\",\n      isFile: false,\n      children: [ // Nesting forever...\n        { name: \"photo.png\", isFile: true }\n      ]\n    }\n  ]\n};\n\n// Defining valid JSON:\ntype JSONValue = string | number | boolean | null | JSONObject | JSONArray;\ninterface JSONObject { [key: string]: JSONValue; }\ninterface JSONArray extends Array<JSONValue> {}"
+}

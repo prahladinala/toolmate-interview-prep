@@ -1,0 +1,45 @@
+{
+  "id": "react-router",
+  "title": "React Router",
+  "difficulty": "Intermediate",
+  "definition": "React Router is the standard routing library for React. It keeps the UI in sync with the URL, allowing you to build Single Page Applications (SPAs) with navigation without refreshing the page.",
+  "simpleExplanation": "In a traditional website, clicking a link forces the browser to download a completely new HTML page from the server, causing the screen to flash white. In a React Single Page Application (SPA), there is only ONE HTML page. React Router simply watches the URL bar. If you click a link to `/about`, React Router instantly hides the 'Home' component and shows the 'About' component, making navigation feel lightning fast without a page reload.",
+  "realWorldExample": "When you use Twitter or Gmail, clicking on a profile or an email changes the URL (e.g., `twitter.com/user/123`), but the music you are listening to doesn't stop and the sidebar doesn't flash. React Router is handling the URL change and swapping out the middle content dynamically.",
+  "useCases": [
+    "Building Single Page Applications (SPAs) with multiple views",
+    "Extracting dynamic parameters from the URL (like Product IDs)",
+    "Protecting routes (e.g., redirecting unauthenticated users from `/dashboard` to `/login`)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between an `<a>` tag and React Router's `<Link>` component?",
+      "How do you define a basic route in React Router v6?"
+    ],
+    "intermediate": [
+      "What are URL Parameters and how do you access them?",
+      "How do you navigate programmatically (e.g., redirecting after a successful login)?"
+    ],
+    "advanced": [
+      "What is Nested Routing and what is the `<Outlet>` component used for?",
+      "How does Client-Side Routing actually work under the hood in the browser?"
+    ],
+    "trick": [
+      "If you refresh a page on a React Router SPA hosted on a static server (like S3), why might you get a 404 error?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between <a> and <Link>?",
+      "answer": "An `<a>` tag triggers a full page refresh by making a new request to the server. A `<Link>` component intercepts the click, updates the URL using the browser's History API, and tells React to re-render the correct component immediately without a refresh."
+    },
+    {
+      "question": "How do you navigate programmatically?",
+      "answer": "In React Router v6, you use the `useNavigate` hook. `const navigate = useNavigate();` and then call `navigate('/dashboard')` when a form submits successfully."
+    },
+    {
+      "question": "Why might refreshing a page give a 404 error on a static server?",
+      "answer": "Because the server is looking for a physical file at that path (e.g., `/dashboard.html`). In an SPA, only `index.html` exists. You must configure the server to always redirect 404 requests back to `index.html` so React Router can take over."
+    }
+  ],
+  "codeExample": "import { BrowserRouter, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';\n\n// 1. A Component using URL Parameters\nfunction UserProfile() {\n  const { userId } = useParams(); // Extracts the dynamic part of the URL\n  return <h2>Viewing Profile for User: {userId}</h2>;\n}\n\n// 2. A Component with Programmatic Navigation\nfunction Login() {\n  const navigate = useNavigate();\n  const handleLogin = () => {\n    // Simulate API call\n    setTimeout(() => navigate('/dashboard'), 1000); \n  };\n  return <button onClick={handleLogin}>Log In</button>;\n}\n\n// 3. The Router Setup\nexport default function App() {\n  return (\n    <BrowserRouter>\n      <nav>\n        {/* Use <Link> instead of <a> to avoid full page reloads */}\n        <Link to=\"/\">Home</Link> | \n        <Link to=\"/user/123\">Profile 123</Link> | \n        <Link to=\"/login\">Login</Link>\n      </nav>\n\n      <Routes>\n        <Route path=\"/\" element={<h1>Home Page</h1>} />\n        <Route path=\"/login\" element={<Login />} />\n        {/* The :userId is a dynamic URL parameter */}\n        <Route path=\"/user/:userId\" element={<UserProfile />} />\n        {/* A Catch-All route for 404s */}\n        <Route path=\"*\" element={<h2>404 Not Found</h2>} />\n      </Routes>\n    </BrowserRouter>\n  );\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "aria-support",
+  "title": "ARIA Support",
+  "difficulty": "Advanced",
+  "definition": "Using Tailwind's `aria-*` variants to style components based on their accessibility attributes, bridging the gap between styling and screen readers.",
+  "simpleExplanation": "An accordion has an `aria-expanded=\"true\"` attribute to tell blind users that it is open. You can use Tailwind's `aria-expanded:bg-blue-500` to magically change the background color ONLY when the accordion is open, relying strictly on the accessibility attribute as the source of truth.",
+  "realWorldExample": "Styling an active tab in a Tab Component using `aria-selected:border-b-2 aria-selected:border-blue-500`.",
+  "useCases": [
+    "Headless UI integration",
+    "Complex interactive components"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind variant allows you to style an element when its `aria-checked` attribute is set to true?"
+    ],
+    "intermediate": [
+      "Why is styling based on ARIA attributes considered a best practice for modern React components?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which variant?",
+      "answer": "`aria-checked:` (e.g., `aria-checked:bg-blue-500`)."
+    },
+    {
+      "question": "Why a best practice?",
+      "answer": "Because it forces developers to add the correct ARIA attributes to their HTML. If the visual styling relies on the ARIA attribute to work, the developer cannot forget to include the ARIA attribute, ensuring the app is always accessible to screen readers."
+    }
+  ],
+  "codeExample": "<!-- \n  A Custom Toggle Switch driven by ARIA states! \n  When JS sets aria-checked=\"true\", Tailwind instantly reacts.\n-->\n<button \n  role=\"switch\" \n  aria-checked=\"true\"\n  class=\"\n    w-12 h-6 rounded-full bg-gray-300 transition-colors\n    aria-checked:bg-green-500    /* Turns green when checked! */\n  \"\n>\n  <span \n    class=\"\n      block w-4 h-4 mt-1 ml-1 bg-white rounded-full transition-transform\n      group-aria-checked:translate-x-6  /* Slides the circle right! */\n    \"\n  ></span>\n</button>"
+}

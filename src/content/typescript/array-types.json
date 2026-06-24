@@ -1,0 +1,35 @@
+{
+  "id": "array-types",
+  "title": "Array Types & Tuples",
+  "difficulty": "Beginner",
+  "definition": "Defining the type of elements that an array is allowed to hold. Tuples are a special type of array with a fixed length and specific types at specific indexes.",
+  "simpleExplanation": "An Array Type says: 'This box can hold an infinite number of Strings, but absolutely NO numbers'. A Tuple says: 'This box holds exactly two things: the first must be a String, the second must be a Number.'",
+  "realWorldExample": "Typing a list of string IDs: `string[]`. Typing the return value of React's `useState`: `[number, (val: number) => void]`. This is a classic Tuple!",
+  "useCases": [
+    "Lists of data",
+    "React hooks returns (Tuples)",
+    "CSV data rows"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two syntaxes for typing an array?"
+    ],
+    "intermediate": [
+      "What is a Tuple?"
+    ],
+    "advanced": [
+      "Can you push a new element into a Tuple?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the two syntaxes?",
+      "answer": "`number[]` and `Array<number>`. They are functionally identical, but `number[]` is generally preferred for readability."
+    },
+    {
+      "question": "Can you push into a Tuple?",
+      "answer": "Yes. Ironically, TS only enforces Tuple lengths on assignment. If you define `let tuple: [string, number] = ['A', 1]`, TS allows you to do `tuple.push('B')`. This is a known quirk in the TS type system."
+    }
+  ],
+  "codeExample": "// Standard Array\nconst names: string[] = [\"Alice\", \"Bob\", \"Charlie\"];\n// names.push(5); // Error!\n\n// Array of Objects\nconst users: { id: number }[] = [{ id: 1 }, { id: 2 }];\n\n// TUPLE: Fixed length, strict order\nlet coordinates: [string, number, number] = [\"New York\", 40.71, -74.00];\n// coordinates = [40.71, \"New York\", -74.00]; // Error: Types are out of order!"
+}

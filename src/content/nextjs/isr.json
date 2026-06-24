@@ -1,0 +1,32 @@
+{
+  "id": "isr",
+  "title": "Incremental Static Regeneration (ISR)",
+  "difficulty": "Advanced",
+  "definition": "A hybrid rendering strategy that creates static pages at build time (like SSG), but allows them to be updated in the background periodically without needing to rebuild the entire site.",
+  "simpleExplanation": "The magic bullet of Next.js. You serve ultra-fast static HTML pages to users. But, you tell Next.js: 'If this page is older than 60 seconds, secretly rebuild a fresh version in the background'. The next user gets the fresh page.",
+  "realWorldExample": "An e-commerce product page. You want the ultra-fast load times of SSG, but if the price changes in the database, you don't want to redeploy the whole site. ISR updates the price automatically in the background.",
+  "useCases": [
+    "E-commerce products",
+    "News articles",
+    "Large-scale content sites"
+  ],
+  "questions": {
+    "basic": [
+      "Does ISR require the entire application to be rebuilt and redeployed to show new data?"
+    ],
+    "intermediate": [
+      "If a page has an ISR revalidation time of 60 seconds, and a user visits it at 61 seconds, do they see the old data or the new data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Requires rebuild?",
+      "answer": "No! That is the primary benefit of ISR. It updates individual pages on the fly while the server is running."
+    },
+    {
+      "question": "Old or new data?",
+      "answer": "They see the OLD data! The visit at 61 seconds triggers the server to build the new page in the background. The user who visited gets the old static page instantly. The *next* user who visits will get the newly updated page."
+    }
+  ],
+  "codeExample": "/* \n  Incremental Static Regeneration in the App Router \n*/\n\n// Option 1: Revalidate a specific fetch request every 60 seconds\nexport default async function ProductPage() {\n  const res = await fetch('https://api.store.com/product/1', {\n    next: { revalidate: 60 } // The magic ISR property!\n  });\n  const product = await res.json();\n  // ...\n}\n\n// Option 2: Route Segment Config (Revalidate the entire page)\nexport const revalidate = 60; // Revalidate this page every 60 seconds\n\nexport default async function Page() {\n  // All fetches in this component will use the 60s rule\n  // ...\n}"
+}

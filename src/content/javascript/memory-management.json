@@ -1,0 +1,34 @@
+{
+  "id": "memory-management",
+  "title": "Memory Management",
+  "difficulty": "Advanced",
+  "definition": "The process by which the JavaScript engine (V8) allocates memory for objects when they are created, and frees it when they are no longer used via Garbage Collection.",
+  "simpleExplanation": "When you create a variable, V8 rents a storage unit for you. In languages like C++, you have to manually call the landlord to end the lease when you are done. If you forget, the city runs out of units (Memory Leak). In JS, the landlord (Garbage Collector) walks around every few seconds. If he sees a storage unit that you threw away the keys to (lost the reference), he empties it for you automatically.",
+  "realWorldExample": "V8 splits memory into two main areas: The Stack (for primitive values and function frames, very fast, automatically cleared on function return) and The Heap (for large objects and arrays, slower, requires Garbage Collection).",
+  "useCases": [
+    "Optimizing massive data visualizations",
+    "Node.js heap size tuning"
+  ],
+  "questions": {
+    "basic": [
+      "What is Garbage Collection?"
+    ],
+    "intermediate": [
+      "What is the 'Mark-and-Sweep' algorithm?"
+    ],
+    "advanced": [
+      "What is the difference between New Space and Old Space in the V8 Heap?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Mark-and-Sweep?",
+      "answer": "The modern GC algorithm. The GC starts at the 'Roots' (the global `window` object). It 'Marks' every object it can reach. Any object that cannot be reached (e.g., an object whose only reference was inside a function that has finished executing) is left unmarked. The GC then 'Sweeps' through memory and deletes all unmarked objects."
+    },
+    {
+      "question": "New Space vs Old Space?",
+      "answer": "V8 uses a Generational Hypothesis: 'Most objects die young'. New Space is small and garbage collected very frequently (Minor GC). If an object survives two Minor GCs (e.g., a long-lived Redux store), it gets promoted to Old Space, which is much larger and rarely collected (Major GC) to save CPU cycles."
+    }
+  ],
+  "codeExample": "let user = { name: 'Alice' }; // Rents space in the Heap\n\nconst admin = user; // 'admin' points to the same Heap address\n\nuser = null; \n// Is the object garbage collected? \n// NO! 'admin' still has the key to the storage unit.\n\nadmin = null;\n// Now NO variable points to the object. It is unreachable.\n// The Mark-and-Sweep algorithm will delete it on its next pass."
+}

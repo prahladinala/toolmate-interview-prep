@@ -1,0 +1,30 @@
+{
+  "id": "public-private-hybrid",
+  "title": "Public vs Private vs Hybrid Cloud",
+  "difficulty": "Beginner",
+  "definition": "The three deployment models for cloud resources. Public (shared infrastructure via internet), Private (infrastructure solely for one organization), and Hybrid (a mix of both).",
+  "simpleExplanation": "Public is taking a city bus (shared by everyone, cheap). Private is owning a car (yours alone, expensive). Hybrid is driving your car to the bus station (using both securely).",
+  "realWorldExample": "A highly-regulated Bank uses a Hybrid Cloud. They keep all sensitive customer financial data on a Private Cloud (servers locked in their own basement), but run their public-facing marketing website on a Public Cloud (AWS) to handle massive web traffic.",
+  "useCases": [
+    "Compliance strategies",
+    "Data security planning"
+  ],
+  "questions": {
+    "basic": [
+      "Are AWS, Azure, and Google Cloud considered Public or Private clouds?"
+    ],
+    "intermediate": [
+      "Why would a company choose a highly expensive Private Cloud over a Public Cloud?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "AWS/Azure/GCP?",
+      "answer": "They are Public Clouds. Anyone with a credit card can rent space on them."
+    },
+    {
+      "question": "Why Private?",
+      "answer": "Usually for strict legal, regulatory, or compliance reasons (like government data or severe healthcare privacy laws) that legally forbid the data from touching a shared public network."
+    }
+  ]
+}

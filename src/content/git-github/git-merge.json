@@ -1,0 +1,31 @@
+{
+  "id": "git-merge",
+  "title": "git merge",
+  "difficulty": "Intermediate",
+  "definition": "A command that joins two or more development histories together. It takes the contents of a source branch and integrates them into a target branch.",
+  "simpleExplanation": "You finished building 'Dark Mode' on your experimental branch. Now you want to put that code into the official `main` codebase. You go to `main`, and 'merge' the dark mode branch into it.",
+  "realWorldExample": "Shipping a feature. Once the code is reviewed, it is merged into the master branch so it can be deployed to users.",
+  "useCases": [
+    "Integrating feature branches",
+    "Receiving updates from teammates"
+  ],
+  "questions": {
+    "basic": [
+      "Before running `git merge feature-branch`, which branch must you be currently checked out on?"
+    ],
+    "intermediate": [
+      "What is a 'Fast-Forward' merge?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which branch to be on?",
+      "answer": "You must be on the RECEIVING branch. If you want `main` to receive the feature, you must `git checkout main` first, and then run `git merge feature-branch`."
+    },
+    {
+      "question": "Fast-Forward?",
+      "answer": "If the `main` branch hasn't changed at all since you created your feature branch, Git doesn't need to do any complex math. It just instantly moves the `main` pointer forward to match your feature branch. No extra 'Merge Commit' is required."
+    }
+  ],
+  "codeExample": "# Scenario: You finished 'feature-login' and want to merge it into 'main'\n\n# Step 1: Switch to the receiving branch (main)\n$ git checkout main\n\n# Step 2: Merge the feature branch INTO main\n$ git merge feature-login\n\n# Step 3 (Optional): Delete the feature branch now that it is merged\n$ git branch -d feature-login"
+}

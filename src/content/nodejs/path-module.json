@@ -1,0 +1,34 @@
+{
+  "id": "path-module",
+  "title": "Path Module",
+  "difficulty": "Beginner",
+  "definition": "A core module that provides utilities for working with file and directory paths safely across different operating systems.",
+  "simpleExplanation": "Macs use forward slashes (`/Users/admin/file`). Windows uses backslashes (`C:\\Users\\admin\\file`). If you hardcode slashes in your code, your app will break when someone runs it on a different computer. The `path` module automatically calculates the correct slashes for whatever OS the code is currently running on.",
+  "realWorldExample": "Connecting a static public folder in Express: `app.use(express.static(path.join(__dirname, 'public')))` guarantees the folder is found regardless of Windows or Mac.",
+  "useCases": [
+    "Cross-platform file manipulation",
+    "Extracting file extensions (.jpg, .txt) from strings"
+  ],
+  "questions": {
+    "basic": [
+      "What does `path.join()` do?"
+    ],
+    "intermediate": [
+      "What is the difference between `path.join()` and `path.resolve()`?"
+    ],
+    "advanced": [
+      "How do you get just the filename ('image.png') from a massive file path string?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "join vs resolve?",
+      "answer": "`path.join('a', 'b')` simply glues them together: `a/b`. `path.resolve('a', 'b')` resolves to an ABSOLUTE path from the root of your hard drive, acting like the `cd` command in a terminal."
+    },
+    {
+      "question": "How to get the filename?",
+      "answer": "Use `path.basename('/users/admin/desktop/image.png')`. It will return exactly `'image.png'`."
+    }
+  ],
+  "codeExample": "const path = require('path');\n\n// 1. Safely glueing paths together\n// If running on Windows, this outputs: folder\\subfolder\\file.txt\n// If running on Mac/Linux, outputs: folder/subfolder/file.txt\nconst safePath = path.join('folder', 'subfolder', 'file.txt');\nconsole.log(\"Joined Path:\", safePath);\n\n// 2. Getting file info\nconst filePath = '/var/www/website/index.html';\n\nconsole.log(\"Base name:\", path.basename(filePath)); // 'index.html'\nconsole.log(\"Extension:\", path.extname(filePath));  // '.html'\nconsole.log(\"Directory:\", path.dirname(filePath));  // '/var/www/website'\n\n// 3. Creating an Absolute Path (Resolves relative to your current working directory)\nconst absolute = path.resolve('public', 'css', 'style.css');\nconsole.log(\"Absolute Path:\", absolute);"
+}

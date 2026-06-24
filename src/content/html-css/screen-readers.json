@@ -1,0 +1,31 @@
+{
+  "id": "screen-readers",
+  "title": "Screen Readers",
+  "difficulty": "Beginner",
+  "definition": "Assistive technologies that render text and image content as speech or braille output. They are essential for blind or visually impaired users to navigate the web.",
+  "simpleExplanation": "Software that reads the code of your website out loud. Because the user cannot see the screen, the software jumps through the HTML tags. It relies entirely on your HTML being structured correctly (Headings in order, Images having ALT text, Buttons being actual `<button>` tags).",
+  "realWorldExample": "VoiceOver on Mac/iOS, NVDA or JAWS on Windows.",
+  "useCases": [
+    "Testing web accessibility",
+    "Ensuring ADA compliance"
+  ],
+  "questions": {
+    "basic": [
+      "How do screen reader users quickly navigate a long webpage?"
+    ],
+    "intermediate": [
+      "What happens if an image is purely decorative, but a screen reader tries to read it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do they navigate?",
+      "answer": "They don't read the whole page top-to-bottom. They use keyboard shortcuts to jump from Heading to Heading (H1 -> H2 -> H3) to scan the page's outline. This is why proper heading structure is critical."
+    },
+    {
+      "question": "Decorative images?",
+      "answer": "If an image is just a decorative background swoosh, you don't want the screen reader to waste time announcing it. You MUST give it an empty alt tag: `alt=\"\"`. This explicitly tells the screen reader to skip it."
+    }
+  ],
+  "codeExample": "<!-- What you code vs What the Screen Reader says -->\n\n<!-- You code: -->\n<img src=\"chart.jpg\" alt=\"Sales grew by 20% in Q3\">\n<!-- Screen Reader: \"Image. Sales grew by 20% in Q3.\" -->\n\n<br>\n\n<!-- You code: (DECORATIVE IMAGE) -->\n<img src=\"fancy-border.png\" alt=\"\">\n<!-- Screen Reader completely ignores it. (This is good!) -->\n\n<br>\n\n<!-- You code: -->\n<button aria-label=\"Close Menu\">X</button>\n<!-- Screen Reader: \"Button. Close Menu.\" -->\n<!-- Without aria-label, it would just say \"Button. X\", which is confusing! -->\n\n<br>\n\n<!-- The sr-only class (Screen Reader Only) -->\n<!-- This text is hidden from sighted users via CSS, but read aloud by screen readers! -->\n<style>\n  .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip: rect(0, 0, 0, 0);\n    border: 0;\n  }\n</style>\n\n<a href=\"/cart\">\n  🛒 <span class=\"sr-only\">Shopping Cart (3 items)</span>\n</a>"
+}

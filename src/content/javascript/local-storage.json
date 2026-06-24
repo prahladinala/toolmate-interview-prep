@@ -1,0 +1,35 @@
+{
+  "id": "local-storage",
+  "title": "Local / Session Storage",
+  "difficulty": "Beginner",
+  "definition": "Web Storage APIs that provide mechanisms by which browsers can store key/value pairs in a much more intuitive fashion than using cookies. LocalStorage persists permanently. SessionStorage clears when the tab is closed.",
+  "simpleExplanation": "LocalStorage is a notebook you keep on your desk. Even if you go to sleep and restart your computer, the notes are still there. SessionStorage is a whiteboard. It's great while you're working, but as soon as you close the door (close the tab), the janitor wipes it clean.",
+  "realWorldExample": "Storing the user's Dark/Light mode preference in `localStorage` so the site remembers their choice on their next visit a month from now.",
+  "useCases": [
+    "Persisting user preferences",
+    "Caching non-sensitive API data temporarily",
+    "Shopping carts for guest users"
+  ],
+  "questions": {
+    "basic": [
+      "How much data can you store in LocalStorage?"
+    ],
+    "intermediate": [
+      "Can you store JavaScript Objects in LocalStorage?"
+    ],
+    "advanced": [
+      "Is LocalStorage synchronous or asynchronous, and why does it matter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you store objects?",
+      "answer": "No. LocalStorage ONLY stores Strings. If you pass an object, it will save as `\"[object Object]\"`. You must use `JSON.stringify(obj)` when saving, and `JSON.parse(str)` when reading."
+    },
+    {
+      "question": "Is it synchronous or async?",
+      "answer": "It is completely synchronous. If you try to read or write a massive 5MB string to LocalStorage, it will block the main thread and freeze the UI until it finishes. For huge data, use IndexedDB."
+    }
+  ],
+  "codeExample": "const userPrefs = { theme: 'dark', fontSize: 16 };\n\n// Write to Storage (Must stringify objects!)\nlocalStorage.setItem('prefs', JSON.stringify(userPrefs));\n\n// Read from Storage (Must parse strings!)\nconst savedData = localStorage.getItem('prefs');\nif (savedData) {\n  const parsed = JSON.parse(savedData);\n  console.log('User prefers:', parsed.theme);\n}\n\n// Remove a specific item\nlocalStorage.removeItem('prefs');\n\n// Clear entire storage for this domain\n// localStorage.clear();"
+}

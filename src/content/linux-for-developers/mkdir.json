@@ -1,0 +1,30 @@
+{
+  "id": "mkdir",
+  "title": "mkdir",
+  "difficulty": "Beginner",
+  "definition": "Make Directory. The command used to create new directories (folders) in the file system.",
+  "simpleExplanation": "The 'Create New Folder' button in the terminal.",
+  "realWorldExample": "You start a new project. You type `mkdir src` and it creates a folder named 'src'.",
+  "useCases": [
+    "Organizing files",
+    "Scripting project setups"
+  ],
+  "questions": {
+    "basic": [
+      "What does `mkdir` stand for?"
+    ],
+    "intermediate": [
+      "How do you create a folder AND a subfolder inside it at the exact same time (e.g., `mkdir parent/child`) without getting an error?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Make Directory."
+    },
+    {
+      "question": "Create parent and child?",
+      "answer": "Use the `-p` (parents) flag: `mkdir -p parent/child`. It automatically creates any missing parent directories required."
+    }
+  ]
+}

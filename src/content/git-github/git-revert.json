@@ -1,0 +1,31 @@
+{
+  "id": "git-revert",
+  "title": "git revert",
+  "difficulty": "Intermediate",
+  "definition": "A safe 'undo' command. Instead of erasing a commit from history (like `git reset`), it figures out the changes introduced by a commit and creates a BRAND NEW commit that does the exact opposite.",
+  "simpleExplanation": "If Commit A added the word 'Hello', `git revert` creates Commit B which deletes the word 'Hello'. The timeline moves forward, not backward.",
+  "realWorldExample": "You pushed a feature to the live website, and it immediately crashed the server. Because the commit is public, you cannot use `git reset`. You use `git revert <hash>` to instantly generate an 'Anti-Commit' that removes the broken code, and push that.",
+  "useCases": [
+    "Safely undoing public commits",
+    "Maintaining a perfect audit trail"
+  ],
+  "questions": {
+    "basic": [
+      "Which is safer for public, shared branches: `reset` or `revert`?"
+    ],
+    "intermediate": [
+      "Does `git revert` delete the original broken commit from `git log`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Safer?",
+      "answer": "`git revert`. It never alters existing history, it only adds new history."
+    },
+    {
+      "question": "Delete from log?",
+      "answer": "No. The original broken commit stays in the history forever. Right above it in the log will be a new commit titled 'Revert: [broken commit name]'."
+    }
+  ],
+  "codeExample": "# Oh no! Commit 9f8e7d broke the production server!\n# It is already pushed to GitHub, so we must use revert.\n\n# Generate the Anti-Commit\n$ git revert 9f8e7d\n\n# Git will open your text editor with a default message like:\n# \"Revert 'Add new payment gateway'\"\n# Save and close the editor.\n\n# Push the fix to the server!\n$ git push origin main"
+}

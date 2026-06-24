@@ -1,0 +1,34 @@
+{
+  "id": "utility-type-questions",
+  "title": "Utility Type Deep Dives",
+  "difficulty": "Intermediate",
+  "definition": "Interview questions focusing heavily on combining TS built-in utility types to solve complex architectural mapping requirements.",
+  "simpleExplanation": "The interviewer will present a messy API response type and ask you to 'clean it up' using utilities like `Omit`, `Extract`, `NonNullable`, and `ReturnType` without rewriting the interfaces from scratch.",
+  "realWorldExample": "You have a `User` union `type User = Admin | Guest | Member`. The interviewer asks: 'Write a type that extracts ONLY the Admin and Member types, and removes the password field from both'.",
+  "useCases": [
+    "Refactoring legacy types",
+    "Interview screening"
+  ],
+  "questions": {
+    "basic": [
+      "Combine `Omit` and `ReturnType` in a single statement."
+    ],
+    "intermediate": [
+      "What is the difference between `Exclude` and `Omit`?"
+    ],
+    "advanced": [
+      "How do you create an `OmitByType` utility?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exclude vs Omit?",
+      "answer": "`Exclude` operates on UNION types (e.g., extracting 'a' from `'a'|'b'|'c'`). `Omit` operates on OBJECT types (e.g., removing the 'password' key from the `{ name, password }` interface)."
+    },
+    {
+      "question": "What is OmitByType?",
+      "answer": "A custom utility that removes properties based on their VALUE type, not their key name. E.g., 'Remove all properties from this object that are booleans'. Uses mapped type remapping: `[K in keyof T as T[K] extends boolean ? never : K]: T[K]`."
+    }
+  ],
+  "codeExample": "// INTERVIEW SCENARIO:\n// You are given a massive Union of string logs.\n// Extract only the Error logs, and then remove the timestamp.\n\ntype Logs = \n  | { type: 'INFO', msg: string, time: number }\n  | { type: 'ERROR', code: number, time: number }\n  | { type: 'WARNING', msg: string, time: number };\n\n// Step 1: Use Extract to filter the Union based on a specific discriminant\ntype ErrorLogs = Extract<Logs, { type: 'ERROR' }>;\n\n// Step 2: Use Omit to clean the object\ntype CleanError = Omit<ErrorLogs, 'time'>;\n\n// Combined into one fluid, highly impressive step:\ntype ProcessedError = Omit<Extract<Logs, { type: 'ERROR' }>, 'time'>;\n\nconst err: ProcessedError = {\n  type: 'ERROR',\n  code: 500\n  // time is strictly prohibited here now!\n};"
+}

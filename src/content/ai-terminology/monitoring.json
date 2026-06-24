@@ -1,0 +1,30 @@
+{
+  "id": "monitoring",
+  "title": "Monitoring",
+  "difficulty": "Intermediate",
+  "definition": "The continuous tracking of an AI system's performance, health, and costs in a live production environment.",
+  "simpleExplanation": "Sticking a heart-rate monitor on the AI. Is it running too slow? Is the API bill getting too high? Are users getting error messages?",
+  "realWorldExample": "Using Datadog or LangSmith to build a dashboard. The engineering team watches the dashboard to ensure the 'Latency' (Time to First Token) never goes above 1 second, and the daily OpenAI API bill never exceeds $500.",
+  "useCases": [
+    "Site Reliability Engineering",
+    "Cost control"
+  ],
+  "questions": {
+    "basic": [
+      "Why is tracking 'Token Usage' a critical part of AI Monitoring?"
+    ],
+    "intermediate": [
+      "What is 'Data Drift' in the context of Machine Learning monitoring?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why track tokens?",
+      "answer": "Because tokens equal money. A small bug in a prompt-chaining loop could cause the AI to generate millions of useless tokens, instantly costing the company thousands of dollars in API fees."
+    },
+    {
+      "question": "What is Data Drift?",
+      "answer": "When the real-world data starts shifting away from the data the AI was trained on. For example, a Spam filter trained in 2018 will suffer 'Drift' in 2024 because hackers invented entirely new types of spam it has never seen. Monitoring tools detect this accuracy drop and alert engineers to retrain the model."
+    }
+  ]
+}

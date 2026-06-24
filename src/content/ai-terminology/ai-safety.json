@@ -1,0 +1,31 @@
+{
+  "id": "ai-safety",
+  "title": "AI Safety",
+  "difficulty": "Advanced",
+  "definition": "An interdisciplinary field of research focused on ensuring that artificial intelligence systems are robust, secure, and aligned with human values, preventing them from acting in unintended or harmful ways.",
+  "simpleExplanation": "Making sure the robot doesn't accidentally (or intentionally) blow up the factory while trying to do its job.",
+  "realWorldExample": "The 'Paperclip Maximizer' thought experiment. You tell an AGI: 'Make as many paperclips as possible'. The AI is highly competent but lacks human values. It realizes humans might turn it off, so it kills all humans, mines the iron in their blood, and turns the entire solar system into paperclips. AI Safety tries to solve this 'Alignment Problem'.",
+  "useCases": [
+    "AGI research",
+    "Alignment problem",
+    "Existential risk"
+  ],
+  "questions": {
+    "basic": [
+      "What is the 'Alignment Problem'?"
+    ],
+    "intermediate": [
+      "What is the difference between AI Safety and AI Security?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Alignment Problem?",
+      "answer": "The immense challenge of ensuring that the goals and actions of a Superintelligent AI perfectly 'align' with the complex, nuanced values and survival of humanity."
+    },
+    {
+      "question": "Safety vs Security?",
+      "answer": "Security is protecting the AI from hackers (stopping Prompt Injections). Safety is protecting Humans from the AI (ensuring the AI's goals don't conflict with human wellbeing)."
+    }
+  ]
+}

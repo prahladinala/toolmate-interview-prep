@@ -1,0 +1,45 @@
+{
+  "id": "web-storage",
+  "title": "Web Storage & Cookies",
+  "difficulty": "Intermediate",
+  "definition": "Web Storage (localStorage and sessionStorage) and Cookies are browser APIs that allow websites to store data locally on a user's computer. They differ in size limits, expiration rules, and how they interact with servers.",
+  "simpleExplanation": "Think of Cookies like a nametag you wear. Every time you talk to the server, you show the nametag so it knows who you are. LocalStorage is like a heavy safe in your house; you can store lots of stuff (like dark mode settings) and it stays there forever. SessionStorage is like a locker at a gym; it holds your stuff, but when you leave the gym (close the tab), it's emptied.",
+  "realWorldExample": "Cookies are used for authentication (keeping you logged in). LocalStorage is used for user preferences (dark mode, volume settings). SessionStorage is used for multi-page forms (saving data until you finish filling out the wizard).",
+  "useCases": [
+    "Persisting user state across browser restarts",
+    "Managing authentication tokens securely",
+    "Saving shopping cart state for anonymous users"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between localStorage and sessionStorage?",
+      "How do you store an object in localStorage?"
+    ],
+    "intermediate": [
+      "What is the capacity limit of Web Storage vs Cookies?",
+      "Why shouldn't you store sensitive data (like passwords) in localStorage?"
+    ],
+    "advanced": [
+      "What is an HttpOnly cookie?",
+      "What is the Secure flag on a cookie?"
+    ],
+    "trick": [
+      "Are Web Storage objects accessible across different subdomains (e.g., app.site.com vs api.site.com)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the capacity limit?",
+      "answer": "Cookies max out around 4KB. Web Storage (localStorage/sessionStorage) generally gives you about 5MB to 10MB per origin."
+    },
+    {
+      "question": "Why shouldn't you store sensitive data in localStorage?",
+      "answer": "LocalStorage is accessible via JavaScript. If your site has a Cross-Site Scripting (XSS) vulnerability, an attacker can easily read the localStorage and steal the tokens."
+    },
+    {
+      "question": "What is an HttpOnly cookie?",
+      "answer": "A cookie created by the server with the 'HttpOnly' flag cannot be accessed by JavaScript (e.g., document.cookie). This protects the cookie from being stolen via XSS attacks, making it ideal for session tokens."
+    }
+  ],
+  "codeExample": "// --- Local Storage ---\n// Needs to be stringified because storage only holds strings\nconst userPrefs = { theme: 'dark', fontSize: 16 };\nlocalStorage.setItem('prefs', JSON.stringify(userPrefs));\n\n// Retrieve and parse\nconst savedPrefs = JSON.parse(localStorage.getItem('prefs'));\nconsole.log(savedPrefs.theme); // 'dark'\n\n\n// --- Session Storage ---\n// Disappears when tab is closed\nsessionStorage.setItem('currentStep', '3');\n\n\n// --- Cookies ---\n// Basic JS Cookie (Bad for security)\ndocument.cookie = \"username=Alice; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/\";\n\nconsole.log(\"Web Storage is synchronous and blocking, so don't store huge amounts of data!\");"
+}

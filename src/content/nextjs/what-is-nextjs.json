@@ -1,0 +1,33 @@
+{
+  "id": "what-is-nextjs",
+  "title": "What is Next.js?",
+  "difficulty": "Beginner",
+  "definition": "Next.js is a React framework that gives you building blocks to create web applications. By framework, it means Next.js handles the tooling and configuration needed for React, and provides additional structure, features, and optimizations for your application.",
+  "simpleExplanation": "React is a library for building user interfaces. Next.js is a full framework built ON TOP of React. It takes the UI you built with React and gives it superpowers: automatic routing, server-side rendering, SEO optimizations, and API endpoints.",
+  "realWorldExample": "If React is the engine of a car, Next.js is the entire car (chassis, wheels, steering wheel, and AC). You don't have to build the car from scratch; you just hop in and start driving.",
+  "useCases": [
+    "SEO-heavy websites",
+    "Full-stack web applications",
+    "E-commerce platforms",
+    "Blogs"
+  ],
+  "questions": {
+    "basic": [
+      "Is Next.js a library or a framework?"
+    ],
+    "intermediate": [
+      "Why would a team choose to use Next.js instead of plain Create React App (CRA)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Library or Framework?",
+      "answer": "It is a Framework. It enforces conventions (like file-based routing) and provides built-in solutions for common web development problems."
+    },
+    {
+      "question": "Why use it over CRA?",
+      "answer": "Create React App only generates static, client-side rendered HTML (bad for SEO and initial load times). Next.js provides Server-Side Rendering (SSR), Static Site Generation (SSG), built-in routing, and image optimization out of the box."
+    }
+  ],
+  "codeExample": "/* \n  You don't need 'react-router-dom'. \n  You don't need 'webpack' configuration. \n  You just create a file in the 'app' directory, and it instantly becomes a webpage.\n*/\n\n// app/about/page.tsx -> Automatically creates the route 'yoursite.com/about'\nexport default function AboutPage() {\n  return <h1>About Us</h1>;\n}"
+}

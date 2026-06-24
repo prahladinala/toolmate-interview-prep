@@ -1,0 +1,32 @@
+{
+  "id": "sitemaps",
+  "title": "Sitemaps",
+  "difficulty": "Intermediate",
+  "definition": "An XML file (`sitemap.xml`) that acts as a roadmap of your website for search engines, listing all public URLs so Google doesn't have to guess where your pages are.",
+  "simpleExplanation": "If your site has 5,000 blog posts, Google's bot might miss some if it just clicks around randomly. A sitemap is a list you hand directly to Google saying: 'Here are the exact 5,000 URLs I want you to rank in search results.'",
+  "realWorldExample": "Creating a dynamic `sitemap.ts` file in Next.js that queries your database, gets all 5,000 blog post slugs, and automatically generates the XML file for Google.",
+  "useCases": [
+    "Technical SEO",
+    "Large e-commerce catalogs",
+    "Content-heavy blogs"
+  ],
+  "questions": {
+    "basic": [
+      "If you just have a 3-page portfolio site, do you strictly need a complex dynamic sitemap?"
+    ],
+    "intermediate": [
+      "How does Next.js automatically generate a sitemap using code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Strictly need it?",
+      "answer": "No. Google's crawlers are incredibly smart and will easily find 3 pages just by following the links in your Navbar. Sitemaps are critical for massive, dynamic sites with thousands of URLs."
+    },
+    {
+      "question": "How to generate?",
+      "answer": "By creating a special `sitemap.ts` file at the root of the `app` directory that exports a default async function returning an array of URL objects."
+    }
+  ],
+  "codeExample": "// app/sitemap.ts\nimport { MetadataRoute } from 'next';\nimport db from '@/lib/db';\n\n// Google will visit /sitemap.xml and Next.js will execute this function!\nexport default async function sitemap(): Promise<MetadataRoute.Sitemap> {\n  // 1. Fetch dynamic URLs from database\n  const posts = await db.post.findMany();\n  \n  const postUrls = posts.map((post) => ({\n    url: `https://mywebsite.com/blog/${post.slug}`,\n    lastModified: post.updatedAt,\n    changeFrequency: 'weekly',\n    priority: 0.8,\n  }));\n\n  // 2. Combine with static URLs\n  return [\n    {\n      url: 'https://mywebsite.com',\n      lastModified: new Date(),\n      changeFrequency: 'yearly',\n      priority: 1,\n    },\n    ...postUrls,\n  ];\n}"
+}

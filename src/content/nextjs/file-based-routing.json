@@ -1,0 +1,31 @@
+{
+  "id": "file-based-routing",
+  "title": "File-Based Routing",
+  "difficulty": "Beginner",
+  "definition": "A routing paradigm where the physical folder structure of the file system perfectly mirrors the URLs in the application.",
+  "simpleExplanation": "You don't write a giant file mapping URLs to components. If you want a webpage at `/about/team`, you literally create a folder called `about`, put a folder called `team` inside it, and drop a `page.tsx` file in there.",
+  "realWorldExample": "Building a standard marketing site with `/`, `/pricing`, and `/contact` routes just by creating three folders.",
+  "useCases": [
+    "Rapid application structuring",
+    "Intuitive route management"
+  ],
+  "questions": {
+    "basic": [
+      "What specific file name MUST be used to make a folder publicly accessible as a route in the App Router?"
+    ],
+    "intermediate": [
+      "If you create a file named `components.tsx` inside the `app/about` folder, what is the URL to access it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Specific file name?",
+      "answer": "`page.tsx` (or `.jsx`, `.js`)."
+    },
+    {
+      "question": "URL to access it?",
+      "answer": "It has no URL! It is impossible to access it via the browser. Only `page.tsx` files are publicly routable. This is called Colocation."
+    }
+  ],
+  "codeExample": "/* \n  Next.js File-Based Routing Map:\n  \n  app/page.tsx               --->  mywebsite.com/\n  app/about/page.tsx         --->  mywebsite.com/about\n  app/contact/page.tsx       --->  mywebsite.com/contact\n  \n  app/pricing/page.tsx       --->  mywebsite.com/pricing\n  app/pricing/Button.tsx     --->  (NO URL. Just a React component!)\n*/"
+}

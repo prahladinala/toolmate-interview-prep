@@ -1,0 +1,31 @@
+{
+  "id": "margin",
+  "title": "Margin",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the margin (outer spacing) of an element.",
+  "simpleExplanation": "Personal space. Margin pushes OTHER elements away from you. The Tailwind scale is based on `0.25rem` (4px). So `m-4` is `1rem` (16px), and `m-8` is `2rem` (32px).",
+  "realWorldExample": "Adding `mb-4` (margin-bottom: 1rem) to a paragraph so it doesn't slam into the paragraph below it.",
+  "useCases": [
+    "Pushing elements apart",
+    "Centering items (`mx-auto`)"
+  ],
+  "questions": {
+    "basic": [
+      "What does `mx-auto` do to a block-level element that has a defined width?"
+    ],
+    "intermediate": [
+      "What do the `x` and `y` stand for in `my-4` and `mx-4`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does mx-auto do?",
+      "answer": "It centers the element horizontally on the screen by setting margin-left and margin-right to `auto`."
+    },
+    {
+      "question": "x and y?",
+      "answer": "X-axis (left and right simultaneously). Y-axis (top and bottom simultaneously)."
+    }
+  ],
+  "codeExample": "<!-- \n  m-4: Margin all sides (16px)\n  mt-4: Margin top\n  mr-4: Margin right\n  mb-4: Margin bottom\n  ml-4: Margin left\n  mx-4: Margin left & right (X axis)\n  my-4: Margin top & bottom (Y axis)\n-->\n\n<div class=\"flex\">\n  <button class=\"mr-4\">Button 1 (Pushes button 2 to the right)</button>\n  <button>Button 2</button>\n</div>\n\n<!-- Negative margins! Pulls the element UP, overlapping the element above it -->\n<div class=\"-mt-8\">I am pulled upwards!</div>"
+}

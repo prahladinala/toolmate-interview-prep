@@ -1,0 +1,30 @@
+{
+  "id": "html-interview-questions",
+  "title": "HTML Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common questions asked during front-end interviews to test foundational HTML knowledge.",
+  "simpleExplanation": "Interviewers use these to check if you skipped the basics and went straight to React. They want to know if you understand accessibility, SEO, and document structure.",
+  "realWorldExample": "Being asked the difference between a `<div>` and a `<span>`, or why the `alt` attribute exists.",
+  "useCases": [
+    "Junior/Mid Front-End Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a `<div>` and a `<span>`?"
+    ],
+    "intermediate": [
+      "What is the difference between `<script defer>` and `<script async>`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "div vs span?",
+      "answer": "A `<div>` is a block-level element (takes up full width, creates a line break). A `<span>` is an inline element (takes up only necessary width, sits inside sentences)."
+    },
+    {
+      "question": "defer vs async?",
+      "answer": "`async` downloads the script and runs it immediately, pausing HTML parsing. `defer` downloads the script in the background but guarantees it won't execute until the HTML is fully parsed."
+    }
+  ],
+  "codeExample": "/* \n  Q: Explain Semantic HTML and give an example of why it matters.\n\n  A: Semantic HTML means using tags that describe the MEANING of the content, \n     not just how it looks. \n     \n     Example: Using a <button> instead of a <div class=\"btn\">.\n     \n     Why it matters:\n     1. Accessibility: Screen readers know a <button> can be clicked, but \n        they think a <div> is just plain text.\n     2. Usability: A <button> natively supports keyboard navigation (Tab key) \n        and the 'Enter' key to trigger clicks. A <div> does not.\n     3. SEO: Search engines understand the structure of the page better when \n        you use <article>, <nav>, and <footer>.\n*/"
+}

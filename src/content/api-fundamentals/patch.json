@@ -1,0 +1,31 @@
+{
+  "id": "patch",
+  "title": "PATCH",
+  "difficulty": "Intermediate",
+  "definition": "An HTTP method used to apply partial modifications to a resource.",
+  "simpleExplanation": "While PUT replaces the entire car, PATCH just replaces the tires. You only send the exact specific pieces of data that you want to change, and the server leaves everything else completely alone.",
+  "realWorldExample": "A user clicks a 'Like' button. You don't want to download their entire profile and upload it again (PUT). You just send a PATCH request saying `{ \"likes\": +1 }`.",
+  "useCases": [
+    "Partial updates",
+    "Saving bandwidth"
+  ],
+  "questions": {
+    "basic": [
+      "If you only want to update a user's email address, which method should you use: PUT or PATCH?"
+    ],
+    "intermediate": [
+      "Why is PATCH generally preferred over PUT in modern REST APIs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "PUT or PATCH?",
+      "answer": "PATCH. You are partially updating the resource, not replacing the entire user object."
+    },
+    {
+      "question": "Why preferred?",
+      "answer": "Bandwidth and complexity. If an object has 50 fields, sending a PUT requires transmitting all 50 fields over the network just to change 1. PATCH only requires sending the 1 field."
+    }
+  ],
+  "codeExample": "// The existing Database Record:\n// { id: 1, name: \"John\", age: 30, role: \"Admin\" }\n\n// ✅ GOOD PATCH REQUEST\nfetch('/api/users/1', {\n  method: 'PATCH',\n  body: JSON.stringify({ name: \"Johnny\" })\n})\n\n// Result: { id: 1, name: \"Johnny\", age: 30, role: \"Admin\" }\n// It ONLY updated the name. Age and role were safely ignored."
+}

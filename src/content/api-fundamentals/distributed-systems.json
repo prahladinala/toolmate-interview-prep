@@ -1,0 +1,32 @@
+{
+  "id": "distributed-systems",
+  "title": "Distributed Systems Basics",
+  "difficulty": "Advanced",
+  "definition": "A computing paradigm where multiple independent computers appear to the end-user as a single unified system, working together to achieve massive scale and fault tolerance.",
+  "simpleExplanation": "Instead of buying one 10-million-dollar supercomputer that will take down your whole company if its power supply breaks, you buy 1,000 cheap laptops and wire them together. If 5 laptops catch fire, the system doesn't even notice. But programming them to perfectly share data without confusing each other is extremely difficult.",
+  "realWorldExample": "Netflix. When you load Netflix, your UI is assembled by querying dozens of different databases running on thousands of different AWS servers simultaneously.",
+  "useCases": [
+    "Cloud architecture",
+    "High availability",
+    "Fault tolerance"
+  ],
+  "questions": {
+    "basic": [
+      "What does 'Fault Tolerance' mean in a Distributed System?"
+    ],
+    "intermediate": [
+      "Explain the CAP Theorem in one sentence."
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Fault Tolerance?",
+      "answer": "The ability of a system to continue operating properly even if one or more of its components completely fails or crashes."
+    },
+    {
+      "question": "What is CAP Theorem?",
+      "answer": "It states that a distributed database can only provide two out of three guarantees simultaneously: Consistency (everyone sees the same data), Availability (the system is always up), and Partition Tolerance (the system works even if the network cable between the servers is cut)."
+    }
+  ],
+  "codeExample": "/* \n  The challenge of Distributed Systems: Data Consistency\n  \n  1. User updates their profile picture.\n  2. The request goes to Server A (in New York). Server A updates Database A.\n  3. Database A begins copying the new picture to Database B (in London).\n  4. Milliseconds later, a friend in London views the profile.\n  5. The request hits Server B. Database B hasn't received the copy yet.\n  6. The friend sees the OLD profile picture. (This is called Eventual Consistency).\n*/"
+}

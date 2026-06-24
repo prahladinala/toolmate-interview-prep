@@ -1,0 +1,30 @@
+{
+  "id": "apt",
+  "title": "APT (Advanced Package Tool)",
+  "difficulty": "Beginner",
+  "definition": "The primary package manager used by Debian-based Linux distributions (like Ubuntu and Mint). It handles installing, updating, and removing software and automatically resolves dependencies.",
+  "simpleExplanation": "The App Store for Ubuntu. If you want a program, you don't go to a website to download an `.exe` file. You ask `apt` to find it, download it, and install it automatically.",
+  "realWorldExample": "You want to install Python. You type `sudo apt update` to refresh the store's catalog, then type `sudo apt install python3`. It automatically downloads Python and the 15 invisible libraries Python needs to function.",
+  "useCases": [
+    "Installing software on Ubuntu/Debian",
+    "Applying system security updates"
+  ],
+  "questions": {
+    "basic": [
+      "What command do you run to upgrade all installed software on your Ubuntu system to the latest versions?"
+    ],
+    "intermediate": [
+      "Why do you almost always have to run `apt update` BEFORE you run `apt install`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Upgrade command?",
+      "answer": "`sudo apt upgrade`"
+    },
+    {
+      "question": "Why update first?",
+      "answer": "`apt update` doesn't actually update your software. It updates the *catalog index* of what software exists in the world. If you don't update the catalog, `apt install` might try to download a version of a package that was deleted from the internet years ago."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "utility-first",
+  "title": "Utility-First Approach",
+  "difficulty": "Beginner",
+  "definition": "The core philosophy of building complex components from a constrained set of primitive utilities.",
+  "simpleExplanation": "It feels incredibly wrong at first. Your HTML looks messy, crowded, and ugly with 15 classes on a single `div`. But after 2 days, you realize you can build an entire website 5x faster because you never have to switch tabs to a CSS file.",
+  "realWorldExample": "Building a custom gradient button with hover states, focus rings, and dark mode support entirely inside a React component file.",
+  "useCases": [
+    "Mindset shift for new developers"
+  ],
+  "questions": {
+    "basic": [
+      "Why does Tailwind HTML look so crowded?"
+    ],
+    "intermediate": [
+      "Doesn't utility-first CSS violate the 'Separation of Concerns' principle?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Crowded HTML?",
+      "answer": "Because you are composing complex designs using many tiny, single-purpose classes. (e.g., `flex`, `items-center`, `justify-between`, `p-4`)."
+    },
+    {
+      "question": "Separation of Concerns?",
+      "answer": "Historically, we separated HTML (Structure) and CSS (Style). However, modern frameworks like React proved that separating by Component (Structure + Style + Logic together) is vastly superior for maintainability."
+    }
+  ],
+  "codeExample": "<!-- This might look horrifying if you are used to traditional CSS... -->\n<button class=\"bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition-colors duration-200\">\n  Save Changes\n</button>\n\n<!-- ...But it is incredibly maintainable because you know exactly what every class does, and deleting this button won't leave dead CSS code in your project! -->"
+}

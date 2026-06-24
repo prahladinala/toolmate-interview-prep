@@ -1,0 +1,30 @@
+{
+  "id": "use-dispatch",
+  "title": "useDispatch()",
+  "difficulty": "Beginner",
+  "definition": "A React hook that returns a reference to the `dispatch` function from the Redux store. You use it to dispatch actions as needed.",
+  "simpleExplanation": "The 'Writer'. If `useSelector` is how you read the data, `useDispatch` is how you change the data. You grab the dispatch function, and throw an action at it when a user clicks a button.",
+  "realWorldExample": "A 'Dark Mode' toggle switch. When the user clicks the switch, it calls `dispatch(toggleTheme())`.",
+  "useCases": [
+    "Triggering state mutations from UI events"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to pass the Redux `store` into `useDispatch()`?"
+    ],
+    "intermediate": [
+      "Does the `dispatch` function reference change on every re-render?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pass store?",
+      "answer": "No. Because you wrapped your app in `<Provider>`, `useDispatch()` magically knows where the store is behind the scenes."
+    },
+    {
+      "question": "Reference change?",
+      "answer": "No. The `dispatch` function reference is stable for the lifetime of the component. It is perfectly safe to include in `useEffect` dependency arrays."
+    }
+  ],
+  "codeExample": "import { useDispatch, useSelector } from 'react-redux';\n// Import the action creator from our slice!\nimport { increment, decrement } from './counterSlice'; \n\nfunction Counter() {\n  const count = useSelector((state) => state.counter.value);\n  const dispatch = useDispatch();\n\n  return (\n    <div>\n      <span>{count}</span>\n      {/* Dispatch the action when the button is clicked */}\n      <button onClick={() => dispatch(increment())}>+</button>\n      <button onClick={() => dispatch(decrement())}>-</button>\n    </div>\n  );\n}"
+}

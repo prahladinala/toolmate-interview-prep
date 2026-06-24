@@ -1,0 +1,32 @@
+{
+  "id": "jit-engine",
+  "title": "Just-In-Time (JIT) Engine",
+  "difficulty": "Advanced",
+  "definition": "The compiler engine introduced in Tailwind v3 that generates CSS instantly on-demand as you write it, rather than generating all 15MB of CSS upfront and purging it later.",
+  "simpleExplanation": "Before JIT, Tailwind pre-built thousands of classes when you started your server, which took 5-10 seconds. With JIT, Tailwind builds absolutely nothing. When you type `bg-red-500` and hit save, the JIT engine detects it and compiles that ONE single CSS class in 3 milliseconds.",
+  "realWorldExample": "JIT makes 'Arbitrary Values' possible. You can type `w-[314px]`. The JIT engine instantly reads it and compiles a custom CSS rule for 314 pixels on the fly.",
+  "useCases": [
+    "Developer experience",
+    "Arbitrary values",
+    "Rapid compilation"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to manually enable the JIT engine in Tailwind v3+?"
+    ],
+    "intermediate": [
+      "How does the JIT engine change the way Tailwind handles variants like `focus:hover:md:text-red-500`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manually enable?",
+      "answer": "No. JIT is the default and only engine in Tailwind v3 and above."
+    },
+    {
+      "question": "Stacked variants?",
+      "answer": "Before JIT, generating every possible combination of variants would create gigabytes of CSS, so it was restricted. JIT generates them on-demand, meaning you can stack infinite variants (`md:focus-visible:hover:bg-red-500`) with zero file size penalty."
+    }
+  ],
+  "codeExample": "<!-- \n  Things made possible by the JIT Engine: \n-->\n\n<!-- 1. Arbitrary Values (Compiling exactly 314px on the fly) -->\n<div class=\"w-[314px] bg-[#1da1f2]\">Twitter Blue Box</div>\n\n<!-- 2. Stacked Variants (Only applies red if: Screen is medium AND Button is hovered AND Button is disabled) -->\n<button class=\"md:hover:disabled:bg-red-500\">Complex Button</button>\n\n<!-- 3. Arbitrary Variants (Targeting the 3rd child purely in HTML) -->\n<ul class=\"[&>li:nth-child(3)]:text-blue-500\">\n  <li>1</li> <li>2</li> <li>3 (I am blue!)</li>\n</ul>"
+}

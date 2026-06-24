@@ -1,0 +1,32 @@
+{
+  "id": "headers",
+  "title": "Headers & Cookies",
+  "difficulty": "Intermediate",
+  "definition": "Reading, setting, and deleting HTTP Headers and Cookies within Next.js Middleware and Route Handlers.",
+  "simpleExplanation": "Headers are invisible metadata attached to every request (like 'Language: English'). Cookies are tiny text files the server forces the browser to hold onto (like 'AuthToken: 123'). Next.js gives you powerful tools to manipulate both.",
+  "realWorldExample": "Reading the `Accept-Language` header to figure out if the user is in France, and automatically redirecting them to the `/fr` version of the website.",
+  "useCases": [
+    "Authentication",
+    "Internationalization",
+    "A/B Testing routing"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Client Component (browser) read an HTTP-Only cookie?"
+    ],
+    "intermediate": [
+      "How do you set a new cookie inside Next.js Middleware?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Read HTTP-Only?",
+      "answer": "No. That is the entire point of 'HTTP-Only' cookies. They are highly secure because Javascript (`document.cookie`) cannot access them. Only the Server can read them during an HTTP request."
+    },
+    {
+      "question": "Set a cookie?",
+      "answer": "You create a `NextResponse`, use `response.cookies.set('name', 'value')`, and then return that response."
+    }
+  ],
+  "codeExample": "import { NextResponse } from 'next/server';\n\nexport function middleware(request) {\n  // 1. Read an incoming header\n  const language = request.headers.get('accept-language');\n  \n  // 2. Read an incoming cookie\n  const theme = request.cookies.get('theme');\n  \n  // 3. Create the response object early so we can modify it\n  const response = NextResponse.next();\n  \n  // 4. Set a new cookie to send BACK to the browser\n  response.cookies.set('visited', 'true', {\n    httpOnly: true,\n    secure: process.env.NODE_ENV === 'production',\n  });\n  \n  // 5. Append a new header to send DOWNSTREAM to our Next.js pages\n  response.headers.set('x-user-language', language);\n  \n  return response;\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "error-handling",
+  "title": "Error Handling",
+  "difficulty": "Advanced",
+  "definition": "The process of catching, serializing, and storing API errors or logic errors inside the Redux state so the UI can accurately render error states to the user.",
+  "simpleExplanation": "When an API call fails, you need to tell the user WHY it failed. Was it a 404? Was the password wrong? You catch the error in the Thunk, store the error message in the Redux state (e.g., `state.error = 'Wrong Password'`), and display that string in the UI.",
+  "realWorldExample": "If `fetchBaseQuery` in RTK Query receives a 401 Unauthorized status, it stores that error. The UI reads the error, sees the 401, and forces a redirect to the `/login` page.",
+  "useCases": [
+    "Form validation",
+    "Network resilience"
+  ],
+  "questions": {
+    "basic": [
+      "Which state of `createAsyncThunk` is used for handling errors?"
+    ],
+    "intermediate": [
+      "What does the `rejectWithValue` function do in an Async Thunk?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which state?",
+      "answer": "The `rejected` state."
+    },
+    {
+      "question": "rejectWithValue?",
+      "answer": "If an API returns a specific error object (like `{ error: 'Email taken' }`), `rejectWithValue` allows you to extract that exact object and pass it into the `rejected` action payload, rather than relying on generic JavaScript error messages."
+    }
+  ],
+  "codeExample": "export const login = createAsyncThunk(\n  'auth/login',\n  async (credentials, { rejectWithValue }) => {\n    try {\n      const response = await axios.post('/login', credentials);\n      return response.data;\n    } catch (err) {\n      // The server threw a 400 error! \n      // We intercept it and pass the specific server message to the Reducer.\n      if (!err.response) throw err;\n      return rejectWithValue(err.response.data.message);\n    }\n  }\n);\n\n// In the slice:\nbuilder.addCase(login.rejected, (state, action) => {\n  // action.payload is exactly what we passed into rejectWithValue!\n  state.errorMessage = action.payload; \n});"
+}

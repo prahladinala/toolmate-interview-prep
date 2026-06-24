@@ -1,0 +1,30 @@
+{
+  "id": "observability",
+  "title": "Observability",
+  "difficulty": "Advanced",
+  "definition": "While Monitoring tells you THAT something broke, Observability is the deep architectural instrumentation that allows you to understand WHY it broke by analyzing logs, traces, and internal model states.",
+  "simpleExplanation": "Monitoring is the 'Check Engine' light on your dashboard. Observability is plugging a mechanic's computer into the car to see the exact spark plug that misfired.",
+  "realWorldExample": "A user complains the AI gave a terrible answer. Using LangSmith (an observability tool), the engineer opens the specific trace for that chat session. They can see exactly what the User Prompt was, exactly what chunks the RAG Vector Database retrieved, and exactly how the System Prompt was formatted. They see the Vector Database grabbed the wrong file.",
+  "useCases": [
+    "Debugging RAG",
+    "Prompt optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Does Observability focus more on the final Output of the AI, or the internal intermediate steps?"
+    ],
+    "intermediate": [
+      "Why is tracing highly critical in an Agentic workflow?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Output or intermediate?",
+      "answer": "The internal intermediate steps. It is all about 'tracing' the journey of the data through the system."
+    },
+    {
+      "question": "Tracing in Agents?",
+      "answer": "Because AI Agents often run in massive loops, calling 5 different tools autonomously before answering the user. If the final answer is wrong, the only way to debug it is to 'Observe' the trace and read the internal monologue to see exactly which tool the Agent misused."
+    }
+  ]
+}

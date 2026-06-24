@@ -1,0 +1,29 @@
+{
+  "id": "killall",
+  "title": "killall",
+  "difficulty": "Intermediate",
+  "definition": "A command that kills processes by their exact name, rather than their numeric Process ID (PID). It sends a signal to every single process sharing that name.",
+  "simpleExplanation": "The shotgun. Instead of looking up 5 different ID numbers to kill 5 Python scripts, you just say 'Kill everything named Python'.",
+  "realWorldExample": "You accidentally started 10 background instances of the `nginx` web server. Finding and killing all 10 PIDs manually would take forever. You type `killall nginx`, and all 10 are terminated instantly.",
+  "useCases": [
+    "Bulk terminating identical processes"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you type `killall python` but accidentally spell it `killall pyhton`?"
+    ],
+    "intermediate": [
+      "Why is running `killall` generally considered dangerous on a shared production server?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Misspell name?",
+      "answer": "It will simply output 'no process found' and do nothing."
+    },
+    {
+      "question": "Why dangerous?",
+      "answer": "Because it doesn't ask questions. If you type `killall node`, it will kill YOUR node app, but it will also kill the production node app being run by the database team, bringing down the entire company's website."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "debugging-css",
+  "title": "CSS Debugging Questions",
+  "difficulty": "Advanced",
+  "definition": "Scenario-based questions where you are presented with a broken layout and asked how you would diagnose and fix it.",
+  "simpleExplanation": "The interviewer describes a bug: 'The horizontal scrollbar keeps appearing on mobile, but there are no elements wider than 100%. Why?'. You have to explain your thought process and Chrome DevTools workflow.",
+  "realWorldExample": "Debugging margin collapse, z-index stacking context traps, or missing `box-sizing: border-box` resets.",
+  "useCases": [
+    "Senior Front-End Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the easiest way to visually find an element that is causing a horizontal scrollbar??"
+    ],
+    "intermediate": [
+      "What is Margin Collapse?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Find overflow elements?",
+      "answer": "Add `* { outline: 1px solid red; }` to your CSS. This instantly draws a red box around every single element on the page, revealing which one is sticking out past the screen edge."
+    },
+    {
+      "question": "Margin Collapse?",
+      "answer": "If a top div has `margin-bottom: 30px` and the bottom div has `margin-top: 20px`, they don't add up to 50px! Vertical margins collapse into each other, and the browser just picks the largest one. So the total space between them will be exactly 30px."
+    }
+  ],
+  "codeExample": "<style>\n  /* BUG SCENARIO: Margin Collapse */\n  .box-1 {\n    background: #3b82f6;\n    color: white;\n    padding: 20px;\n    margin-bottom: 40px; /* I want 40px space below me! */\n  }\n  \n  .box-2 {\n    background: #ef4444;\n    color: white;\n    padding: 20px;\n    margin-top: 40px; /* I want 40px space above me! */\n  }\n</style>\n\n<div class=\"box-1\">Box 1</div>\n<!-- You would expect 80px of space here, but there is only 40px! -->\n<!-- The margins literally merged into each other. -->\n<div class=\"box-2\">Box 2</div>\n\n<p style=\"font-size: 14px; color: gray;\">\n  Fixes: Margin collapse only happens in normal block flow. If you change the parent to a Flexbox container (`display: flex; flex-direction: column; gap: 80px;`), margin collapse is completely disabled!\n</p>"
+}

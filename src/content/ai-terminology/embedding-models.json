@@ -1,0 +1,30 @@
+{
+  "id": "embedding-models",
+  "title": "Embedding Models",
+  "difficulty": "Advanced",
+  "definition": "Specialized neural networks optimized exclusively for converting text, images, or audio into dense mathematical vectors. They are fundamentally different from generative LLMs.",
+  "simpleExplanation": "The translator that turns English into Math. You give it a paragraph, and it spits out a list of 1,500 numbers.",
+  "realWorldExample": "OpenAI's `text-embedding-3-small` or the open-source `BGE-M3`. They are significantly smaller and vastly cheaper to run than GPT-4, because they only translate to math; they don't generate new text.",
+  "useCases": [
+    "Creating vectors",
+    "Semantic search pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use an Embedding Model to generate a poem?"
+    ],
+    "intermediate": [
+      "If you change your Embedding Model halfway through a project, what must you do to your Vector Database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it generate a poem?",
+      "answer": "No. Embedding models only output arrays of numbers. They have no ability to generate human language."
+    },
+    {
+      "question": "Change model halfway?",
+      "answer": "You must completely wipe the database and re-embed every single document using the new model. Different embedding models use entirely different mathematical scales. A vector from OpenAI's model cannot be compared to a vector from Google's model."
+    }
+  ]
+}

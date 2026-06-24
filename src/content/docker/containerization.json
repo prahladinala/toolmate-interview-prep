@@ -1,0 +1,30 @@
+{
+  "id": "containerization",
+  "title": "Containerization",
+  "difficulty": "Beginner",
+  "definition": "The overarching process of packaging an application along with its required libraries, frameworks, and configuration files together so that it can be run in various computing environments consistently.",
+  "simpleExplanation": "The act of taking your messy, complicated software project and locking it inside a standardized Docker box so you can ship it anywhere.",
+  "realWorldExample": "A company decides to 'Containerize' their legacy PHP application. They stop installing PHP directly on their web servers, and instead write a script to build a single Docker box containing PHP and their code, dramatically simplifying their deployment process.",
+  "useCases": [
+    "Cloud migration",
+    "Modernizing legacy apps"
+  ],
+  "questions": {
+    "basic": [
+      "Is Docker the only software company in the world that does Containerization?"
+    ],
+    "intermediate": [
+      "How does containerization benefit the QA (Quality Assurance) testing team?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Only Docker?",
+      "answer": "No. Docker is the most famous brand, but Containerization is an open industry standard (OCI - Open Container Initiative). Other tools like Podman or containerd also create and run containers."
+    },
+    {
+      "question": "Benefit to QA?",
+      "answer": "Absolute consistency. QA teams no longer waste time complaining 'I couldn't get the app to install on my test laptop'. They simply run the container, guaranteeing they are testing the exact identical environment the developer built."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "log-analysis",
+  "title": "Log Analysis & Pipelines",
+  "difficulty": "Advanced",
+  "definition": "The practice of using combining command-line tools (grep, awk, sort, uniq) to extract meaningful business or security intelligence from massive, unstructured raw log files.",
+  "simpleExplanation": "Turning a billion lines of garbage text into a neat pie chart. Finding the needle in the haystack.",
+  "realWorldExample": "A website is under a DDoS attack. The admin needs to block the hacker. They run a pipeline: `cat access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head -n 10`. Within 5 seconds, it processes 2 million log lines and prints the top 10 IP addresses attacking the site.",
+  "useCases": [
+    "Incident response",
+    "Security forensics",
+    "Traffic analysis"
+  ],
+  "questions": {
+    "basic": [
+      "Why is it important to use `head` at the end of a long log analysis pipeline?"
+    ],
+    "intermediate": [
+      "In enterprise environments, do engineers usually use terminal commands to analyze logs across 500 servers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use head?",
+      "answer": "Because a log file might contain 50,000 unique IP addresses. Without `head`, the terminal will print all 50,000 to your screen. `head -n 10` restricts the output to just the Top 10 most relevant results."
+    },
+    {
+      "question": "Use terminal for 500 servers?",
+      "answer": "No. In modern enterprise environments, logs are streamed off the servers into centralized aggregator platforms (like ELK Stack, Splunk, or Datadog) where they are queried using web dashboards, not bash scripts."
+    }
+  ]
+}

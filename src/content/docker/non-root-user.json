@@ -1,0 +1,30 @@
+{
+  "id": "non-root-user",
+  "title": "Running as Non-Root User",
+  "difficulty": "Intermediate",
+  "definition": "The security best practice of explicitly changing the active user inside the container from the default `root` superuser to a highly restricted standard user before the main application starts.",
+  "simpleExplanation": "By default, Docker containers run as the all-powerful 'Administrator'. If a hacker breaks in, they are the Administrator. By explicitly telling Docker to run as 'Guest', the hacker breaks in and finds they don't have permission to do anything.",
+  "realWorldExample": "In a Node.js Dockerfile, the developer writes `USER node` at the very bottom. When the container starts, it drops its superuser privileges. If an attacker exploits the app and tries to run `rm -rf /`, the system rejects the command due to insufficient permissions.",
+  "useCases": [
+    "Dockerfile best practices",
+    "Compliance requirements"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default User inside a Docker container if you don't specify one in the Dockerfile?"
+    ],
+    "intermediate": [
+      "Why do you usually see the `USER` command placed at the absolute bottom of a Dockerfile, rather than the top?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default User?",
+      "answer": "The `root` user (the ultimate superuser)."
+    },
+    {
+      "question": "Why at the bottom?",
+      "answer": "Because installing software (like `apt-get install python`) requires `root` privileges. You must leave the Dockerfile as root while building the image, and then drop down to the restricted user right before the `CMD` instruction executes the live app."
+    }
+  ]
+}

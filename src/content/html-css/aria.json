@@ -1,0 +1,31 @@
+{
+  "id": "aria",
+  "title": "ARIA Attributes",
+  "difficulty": "Intermediate",
+  "definition": "Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and applications more accessible to people with disabilities.",
+  "simpleExplanation": "HTML5 semantic tags (`<nav>`, `<main>`) are great, but they don't cover everything. If you build a complex custom dropdown menu out of `<div>` tags, a blind person's screen reader thinks it's just plain text. ARIA attributes let you secretly whisper to the screen reader: 'Hey, this is actually a dropdown, and right now it's closed'.",
+  "realWorldExample": "Using `aria-expanded=\"true\"` on an accordion button. The screen reader reads 'Accordion, Expanded'. When the user clicks it, JavaScript changes it to `false`, and the screen reader says 'Collapsed'.",
+  "useCases": [
+    "Making complex UI widgets accessible",
+    "Alerting screen readers of dynamic content changes"
+  ],
+  "questions": {
+    "basic": [
+      "What does ARIA stand for?"
+    ],
+    "intermediate": [
+      "What is the First Rule of ARIA?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Accessible Rich Internet Applications."
+    },
+    {
+      "question": "First Rule of ARIA?",
+      "answer": "'No ARIA is better than bad ARIA'. If you can use a native HTML element (like `<button>`) instead of a custom `<div>` with an `role=\"button\"`, always use the native HTML element. Native elements have accessibility built-in for free."
+    }
+  ],
+  "codeExample": "<!-- BAD ACCESSIBILITY -->\n<!-- The screen reader just says \"Click Me\", it doesn't know it's a button -->\n<div class=\"btn\" onclick=\"submit()\">Click Me</div>\n\n<br><br>\n\n<!-- BETTER ACCESSIBILITY (Using ARIA) -->\n<!-- We tell the screen reader it acts like a button, and can be focused -->\n<div role=\"button\" tabindex=\"0\" class=\"btn\" onclick=\"submit()\">\n  Click Me\n</div>\n\n<br><br>\n\n<!-- BEST ACCESSIBILITY (Native HTML) -->\n<!-- No ARIA needed! The browser handles everything perfectly. -->\n<button onclick=\"submit()\">Click Me</button>\n\n<hr>\n\n<!-- ARIA state example for a custom toggle switch -->\n<div>\n  <span id=\"toggle-label\">Dark Mode</span>\n  <!-- aria-labelledby connects the button to the text -->\n  <!-- aria-pressed tells the screen reader the current state -->\n  <button \n    role=\"switch\" \n    aria-checked=\"false\" \n    aria-labelledby=\"toggle-label\"\n    onclick=\"this.setAttribute('aria-checked', this.getAttribute('aria-checked') === 'true' ? 'false' : 'true')\">\n    Toggle\n  </button>\n</div>"
+}

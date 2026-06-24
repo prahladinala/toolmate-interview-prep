@@ -1,0 +1,31 @@
+{
+  "id": "create-api",
+  "title": "createApi()",
+  "difficulty": "Intermediate",
+  "definition": "The core function of RTK Query. It allows you to define a set of endpoints describe how to retrieve data from a series of endpoints, including configuration of how to fetch and transform that data.",
+  "simpleExplanation": "The blueprint for your server communication. You use `createApi` to define your Base URL (e.g., `api.com/v1`), and then list out every single endpoint your app needs (`/users`, `/posts`, `/comments`).",
+  "realWorldExample": "Creating an `apiSlice.js` file using `createApi` that becomes the central hub for all network requests in your application.",
+  "useCases": [
+    "Defining network interfaces",
+    "Generating React Hooks automatically"
+  ],
+  "questions": {
+    "basic": [
+      "What is the recommended number of `createApi` slices a standard application should have?"
+    ],
+    "intermediate": [
+      "What property inside `createApi` holds all the specific endpoints you want to fetch?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many slices?",
+      "answer": "Exactly ONE. The RTK Query documentation strongly recommends keeping all your endpoints in a single `createApi` call so that they can share cache tags and invalidate each other."
+    },
+    {
+      "question": "Which property?",
+      "answer": "The `endpoints` property (which is a builder function)."
+    }
+  ],
+  "codeExample": "import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'\n\n// 1. Define the API slice\nexport const pokemonApi = createApi({\n  reducerPath: 'pokemonApi',\n  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),\n  \n  // 2. Define the endpoints\n  endpoints: (builder) => ({\n    getPokemonByName: builder.query({\n      // This appends to the baseUrl: https://pokeapi.co/api/v2/pokemon/pikachu\n      query: (name) => `pokemon/${name}`,\n    }),\n  }),\n})\n\n// 3. RTK Query magically generated this hook based on the endpoint name!\nexport const { useGetPokemonByNameQuery } = pokemonApi;"
+}

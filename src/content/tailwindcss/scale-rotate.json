@@ -1,0 +1,32 @@
+{
+  "id": "scale-rotate",
+  "title": "Scale & Rotate",
+  "difficulty": "Beginner",
+  "definition": "Specific transform utilities used to enlarge/shrink an element (`scale`) or spin it around its center point (`rotate`).",
+  "simpleExplanation": "- `scale-110` makes it 10% larger.\n- `scale-90` makes it 10% smaller.\n- `rotate-45` tilts it exactly 45 degrees clockwise.",
+  "realWorldExample": "Creating an accordion chevron icon `<svg>` that rotates 180 degrees (`rotate-180`) to point downwards when the accordion is opened.",
+  "useCases": [
+    "Interactive icons",
+    "Image zoom effects",
+    "Card hover states"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class makes an element grow exactly twice its original size?"
+    ],
+    "intermediate": [
+      "If you scale an element up to `scale-150`, does it push the elements next to it away to make room?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Twice the size?",
+      "answer": "`scale-200` (Because scale-100 is the 1x baseline)."
+    },
+    {
+      "question": "Push elements away?",
+      "answer": "No. Transforms do not affect document flow. The scaled element will visually overlap the elements next to it."
+    }
+  ],
+  "codeExample": "<!-- The Classic E-Commerce Image Zoom Effect -->\n<!-- overflow-hidden on the parent traps the image. \n     When hovered, the image scales up by 10%, but stays inside the box! -->\n<div class=\"w-64 h-64 overflow-hidden rounded-xl\">\n  <img \n    src=\"sneaker.jpg\" \n    class=\"w-full h-full object-cover transition-transform duration-500 hover:scale-110\"\n  />\n</div>\n\n<!-- Rotating an icon 180 degrees (Upside down) -->\n<svg class=\"w-6 h-6 transition-transform duration-300 group-hover:rotate-180\">\n  <!-- Arrow pointing up -->\n</svg>"
+}

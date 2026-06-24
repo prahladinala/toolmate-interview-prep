@@ -1,0 +1,29 @@
+{
+  "id": "screen-readers",
+  "title": "Screen Readers",
+  "difficulty": "Intermediate",
+  "definition": "Software programs that allow blind or visually impaired users to read the text that is displayed on the computer screen with a speech synthesizer or braille display.",
+  "simpleExplanation": "A screen reader is a robot that reads your website out loud. If you use a bunch of nested `<div>` tags with no text, the robot will just say 'group, group, group' and the user will have no idea what is happening. You must structure your React app logically.",
+  "realWorldExample": "Using the `.sr-only` CSS class in Tailwind to visually hide a label like 'Search Bar', but keep it in the DOM so the screen reader announces it.",
+  "useCases": [
+    "Ensuring compliance with ADA/WCAG standards"
+  ],
+  "questions": {
+    "basic": [
+      "What is `alt` text on an image?"
+    ],
+    "intermediate": [
+      "What happens if an image is purely decorative?"
+    ],
+    "advanced": [
+      "How do you announce dynamic React state changes to a screen reader?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you announce dynamic changes?",
+      "answer": "Use an `aria-live` region. If a user submits a form and a success message appears, adding `aria-live='polite'` to the message container tells the screen reader to read the new text out loud without the user having to focus it."
+    }
+  ],
+  "codeExample": "<img src='icon.png' alt='' /> {/* Empty alt text tells screen readers to ignore decorative images */}"
+}

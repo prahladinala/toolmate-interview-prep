@@ -1,0 +1,31 @@
+{
+  "id": "large-scale-performance",
+  "title": "Performance in Large Apps",
+  "difficulty": "Advanced",
+  "definition": "The architectural strategies required to prevent a Redux application from crashing the browser when managing massive amounts of state (e.g., 50,000+ records) or handling high-frequency updates (e.g., WebSockets).",
+  "simpleExplanation": "If your app is slow, it is almost never Redux's fault. Redux can handle dispatching actions in milliseconds. The app is slow because your React components are needlessly re-rendering 50,000 DOM elements every time an action fires.",
+  "realWorldExample": "A stock trading dashboard receiving 100 price updates per second via WebSockets. If you dispatch 100 actions a second, React will freeze. You must 'batch' the actions.",
+  "useCases": [
+    "Enterprise app optimization",
+    "Real-time data feeds"
+  ],
+  "questions": {
+    "basic": [
+      "If you receive 50 WebSocket messages a second, should you dispatch 50 Redux actions a second?"
+    ],
+    "intermediate": [
+      "What is action batching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Dispatch 50?",
+      "answer": "NO. Your UI will freeze. You should gather the messages in a local buffer, and dispatch one single action every 1 or 2 seconds with the batched array of updates."
+    },
+    {
+      "question": "Action batching?",
+      "answer": "The process of grouping multiple Redux dispatches together so that React only triggers a SINGLE re-render at the very end, rather than re-rendering after every individual dispatch. (React 18 does this automatically!)."
+    }
+  ],
+  "codeExample": "/*\n  The Golden Rules of Large-Scale Redux Performance:\n  \n  1. Normalize your State (Use createEntityAdapter).\n  2. Connect children directly to Redux. Don't pass data from \n     a massive Parent component down to 1000 Children as props.\n  3. Use Memoized Selectors (createSelector) for ALL derived data.\n  4. Throttle or Batch high-frequency dispatch events (WebSockets, Mouse movements).\n  5. Use the shallowEqual function in useSelector when returning objects.\n*/"
+}

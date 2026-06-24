@@ -1,0 +1,32 @@
+{
+  "id": "html-attributes",
+  "title": "HTML Attributes",
+  "difficulty": "Beginner",
+  "definition": "Special words used inside the opening tag of an HTML element to control the element's behavior or provide additional information.",
+  "simpleExplanation": "If an HTML tag is a noun (like a Dog), an attribute is an adjective (like 'Brown'). You add attributes to tags to configure them. For example, an `<img>` tag is useless without the `src` attribute telling it WHICH image to load.",
+  "realWorldExample": "`<a href=\"https://google.com\">`. The `href` attribute tells the link where to go. `<img src=\"cat.jpg\" alt=\"A cute cat\">`. The `src` and `alt` attributes configure the image.",
+  "useCases": [
+    "Linking to URLs",
+    "Defining image sources",
+    "Adding CSS classes/IDs"
+  ],
+  "questions": {
+    "basic": [
+      "Where are attributes placed in an HTML tag?"
+    ],
+    "intermediate": [
+      "What is the difference between the `id` and `class` attributes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where are they placed?",
+      "answer": "Always in the OPENING tag. Never in the closing tag."
+    },
+    {
+      "question": "id vs class?",
+      "answer": "The `id` attribute MUST be completely unique on the page (like a Social Security Number). The `class` attribute can be reused on hundreds of elements (like a uniform)."
+    }
+  ],
+  "codeExample": "<!-- The 'href' attribute makes the link work -->\n<!-- The 'target' attribute tells it to open in a new tab -->\n<a href=\"https://example.com\" target=\"_blank\">Click Me</a>\n\n<br><br>\n\n<!-- The 'src' attribute points to the image file -->\n<!-- The 'alt' attribute provides text for blind users -->\n<!-- The 'width' attribute scales the image -->\n<img \n  src=\"https://placehold.co/150\" \n  alt=\"A placeholder box\" \n  width=\"100\"\n/>\n\n<br><br>\n\n<!-- The 'disabled' attribute is a boolean attribute (it doesn't need a value!) -->\n<button disabled>You cannot click me</button>\n\n<br><br>\n\n<!-- The 'style' attribute applies inline CSS -->\n<p style=\"color: red; font-weight: bold;\">This text is red.</p>"
+}

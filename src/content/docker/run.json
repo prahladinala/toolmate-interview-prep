@@ -1,0 +1,31 @@
+{
+  "id": "run",
+  "title": "RUN",
+  "difficulty": "Beginner",
+  "definition": "An instruction that executes any valid Linux/terminal command inside the container during the Image Building phase, committing the results to a new image layer.",
+  "simpleExplanation": "Telling Docker to literally type a command into the terminal while it is building the box.",
+  "realWorldExample": "`RUN apt-get update && apt-get install -y git`. This tells Docker to open the terminal inside the image, download the 'git' software from the internet, and install it permanently into the image.",
+  "useCases": [
+    "Installing packages",
+    "Creating folders",
+    "Downloading dependencies"
+  ],
+  "questions": {
+    "basic": [
+      "Does a `RUN` command execute when you BUILD the image, or when you RUN the live container?"
+    ],
+    "intermediate": [
+      "Why is it a best practice to chain commands together with `&&` in a single `RUN` line?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When does it execute?",
+      "answer": "It executes ONLY when you BUILD the image. Once the image is built, the `RUN` commands are over and permanently frozen."
+    },
+    {
+      "question": "Why chain with &&?",
+      "answer": "Because every separate `RUN` instruction creates a brand new, physical Image Layer on the hard drive. If you write 5 separate `RUN` lines, you create 5 layers, bloating the file size. Chaining them with `&&` does all 5 tasks in a single layer."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "linux-debugging",
+  "title": "Troubleshooting Questions",
+  "difficulty": "Advanced",
+  "definition": "Scenario-based questions testing a candidate's ability to logically isolate and fix broken systems under pressure.",
+  "simpleExplanation": "The 'Everything is broken, fix it' test.",
+  "realWorldExample": "Interview Question: 'A user complains the website is down. Walk me through exactly what commands you run, in order, to figure out why.'",
+  "useCases": [
+    "DevOps interviews",
+    "System Admin interviews"
+  ],
+  "questions": {
+    "basic": [
+      "You type a command and get 'Permission Denied'. What is the easiest way to quickly run the exact same command with admin rights without retyping it?"
+    ],
+    "intermediate": [
+      "A server is completely out of disk space, but `df -h` says there is 50GB free. What is the likely cause?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Rerun with sudo?",
+      "answer": "Type `sudo !!`. The `!!` tells the shell to insert the previous command."
+    },
+    {
+      "question": "Out of space but df shows free space?",
+      "answer": "The server has run out of Inodes. Millions of tiny files have consumed all the index cards, even though the physical disk isn't full. You verify this with `df -i`."
+    }
+  ]
+}

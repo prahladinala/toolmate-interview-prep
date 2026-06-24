@@ -1,0 +1,32 @@
+{
+  "id": "parallel-routes",
+  "title": "Parallel Routes",
+  "difficulty": "Advanced",
+  "definition": "Simultaneously rendering multiple pages within the same layout, created by using the `@folder` syntax (named slots).",
+  "simpleExplanation": "A standard layout only has one `{children}` slot. Parallel routes allow you to have multiple slots. Imagine a complex dashboard where the 'Analytics' panel and the 'Team Chat' panel are totally different pages, fetching their own data, loading independently, but displayed side-by-side on the exact same screen.",
+  "realWorldExample": "A split-view UI where the left side of the screen is an `@analytics` route and the right side is an `@activity` route. If `@analytics` takes 5 seconds to load, it shows a spinner, but `@activity` loads instantly.",
+  "useCases": [
+    "Complex dashboards",
+    "Split-screen UIs",
+    "Independent loading states"
+  ],
+  "questions": {
+    "basic": [
+      "What character is used to define a parallel route slot?"
+    ],
+    "intermediate": [
+      "How do you access a parallel route inside the `layout.tsx` file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which character?",
+      "answer": "The `@` symbol (e.g., `@analytics`)."
+    },
+    {
+      "question": "How to access?",
+      "answer": "The named slot is passed as a prop to the layout component, right alongside the standard `children` prop."
+    }
+  ],
+  "codeExample": "/* \n  File Structure:\n  app/\n  ├── layout.tsx\n  ├── @analytics/page.tsx\n  └── @team/page.tsx\n*/\n\n// app/layout.tsx\n// The layout receives the slots as props matching the folder names!\nexport default function RootLayout({ \n  children, \n  analytics, \n  team \n}: {\n  children: React.ReactNode\n  analytics: React.ReactNode\n  team: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>\n        {/* Main Content */}\n        <main>{children}</main>\n        \n        {/* Parallel Routes rendered side-by-side! */}\n        <div className=\"flex\">\n          <section>{analytics}</section>\n          <section>{team}</section>\n        </div>\n      </body>\n    </html>\n  )\n}"
+}

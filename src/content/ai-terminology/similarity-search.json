@@ -1,0 +1,30 @@
+{
+  "id": "similarity-search",
+  "title": "Similarity Search",
+  "difficulty": "Intermediate",
+  "definition": "The algorithmic process of comparing a query vector against a database of document vectors to find the nearest neighbors (the most conceptually related documents).",
+  "simpleExplanation": "Finding the needle in the haystack by throwing a magnet. You don't read every piece of hay; you just pull the metal closest to you.",
+  "realWorldExample": "You search a movie database for 'Space war with laser swords'. The Similarity Search instantly returns 'Star Wars', even though the actual movie description never uses the words 'Space war' or 'laser swords'.",
+  "useCases": [
+    "Information retrieval",
+    "Image matching"
+  ],
+  "questions": {
+    "basic": [
+      "What is KNN (K-Nearest Neighbors) in the context of Similarity Search?"
+    ],
+    "intermediate": [
+      "Why do massive vector databases use ANN (Approximate Nearest Neighbors) instead of Exact KNN?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is KNN?",
+      "answer": "An algorithm that returns the exact 'K' number of items that are mathematically closest to your query (e.g., K=5 returns the top 5 results)."
+    },
+    {
+      "question": "Why ANN?",
+      "answer": "Because doing exact math on 1 billion vectors takes too long. ANN uses smart shortcuts (like HNSW) to guess the closest vectors in milliseconds. It sacrifices 1% accuracy for a 10,000x speed boost."
+    }
+  ]
+}

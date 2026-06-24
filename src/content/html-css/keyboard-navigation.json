@@ -1,0 +1,31 @@
+{
+  "id": "keyboard-navigation",
+  "title": "Keyboard Navigation",
+  "difficulty": "Intermediate",
+  "definition": "The ability to fully navigate and interact with a website using only a keyboard (primarily the Tab, Space, Enter, and Arrow keys), without a mouse.",
+  "simpleExplanation": "Many users have motor disabilities that prevent them from using a mouse. They navigate by pressing the 'Tab' key to jump between clickable elements. If your website is built properly, every link, button, and form field can be reached and activated with just a keyboard.",
+  "realWorldExample": "Try navigating Amazon.com using only the Tab key. You will see a blue outline jump from link to link.",
+  "useCases": [
+    "Accessibility for motor-impaired users",
+    "Power users who prefer keyboard shortcuts"
+  ],
+  "questions": {
+    "basic": [
+      "Which key moves you FORWARD through clickable elements, and which key moves you BACKWARDS?"
+    ],
+    "intermediate": [
+      "What is the CSS `:focus` pseudo-class?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Forward and Backward?",
+      "answer": "`Tab` moves forward. `Shift + Tab` moves backward."
+    },
+    {
+      "question": "What is :focus?",
+      "answer": "It is the CSS selector used to style the element that currently has the keyboard's attention. If you remove the focus outline (e.g., `outline: none;`), keyboard users literally cannot see where they are on the page."
+    }
+  ],
+  "codeExample": "<style>\n  /* NEVER do this unless you replace it with a custom focus style! */\n  /* .bad-button { outline: none; } */\n\n  /* Good practice: Provide a highly visible custom focus state */\n  .custom-focus:focus {\n    outline: 4px solid #ff00ff;\n    outline-offset: 4px;\n    background: #eee;\n  }\n</style>\n\n<p>Click inside this window, then press the <b>TAB</b> key repeatedly to see focus outlines!</p>\n\n<!-- Native elements are focusable by default -->\n<a href=\"#\">I am a link (Press Tab)</a>\n<br><br>\n\n<input type=\"text\" placeholder=\"I am an input (Press Tab)\">\n<br><br>\n\n<button class=\"custom-focus\">I have a custom focus ring!</button>\n<br><br>\n\n<!-- A plain div is NOT focusable. -->\n<div>I am a normal div. The Tab key skips me.</div>\n<br>\n\n<!-- Using tabindex=\"0\" forces a div into the keyboard tab order -->\n<div tabindex=\"0\" style=\"border: 1px solid black; padding: 5px; display: inline-block;\">\n  I am a div with tabindex=\"0\". You CAN tab to me!\n</div>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "grid-template",
+  "title": "Grid Template",
+  "difficulty": "Advanced",
+  "definition": "The `grid-template-columns` and `grid-template-rows` properties define the line names and track sizing functions of the grid columns and rows.",
+  "simpleExplanation": "This is where you draw the blueprint. You can say: 'I want 3 columns. The first one should be exactly 200px wide. The second one should take up all remaining space (1fr). The third one should be exactly 50px wide'.",
+  "realWorldExample": "A dashboard layout: `grid-template-columns: 250px 1fr;`. The sidebar is locked at 250px wide, and the dashboard content dynamically fills the rest of the screen.",
+  "useCases": [
+    "Sidebar + Main content layouts",
+    "Asymmetrical grids"
+  ],
+  "questions": {
+    "basic": [
+      "What does `grid-template-columns: 100px 100px;` do?"
+    ],
+    "intermediate": [
+      "What does the `repeat()` function do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it do?",
+      "answer": "It creates a grid with exactly two columns, each fixed at 100 pixels wide."
+    },
+    {
+      "question": "What is repeat()?",
+      "answer": "Instead of writing `1fr 1fr 1fr 1fr`, you can write `repeat(4, 1fr)`. It is a shortcut to quickly generate many columns of the same size."
+    }
+  ],
+  "codeExample": "<style>\n  .dashboard {\n    display: grid;\n    \n    /* THE BLUEPRINT */\n    /* Column 1: Fixed Sidebar (200px) */\n    /* Column 2: Fluid Content (1fr = all leftover space) */\n    grid-template-columns: 200px 1fr;\n    \n    /* Define row heights. We'll just let them automatically fit the content. */\n    grid-template-rows: auto;\n    \n    height: 300px;\n    gap: 15px;\n  }\n\n  .sidebar {\n    background: #334155;\n    color: white;\n    padding: 20px;\n  }\n\n  .content {\n    background: #cbd5e1;\n    padding: 20px;\n  }\n</style>\n\n<p>Resize the window! The dark sidebar stays exactly 200px, while the gray content shrinks.</p>\n\n<div class=\"dashboard\">\n  <div class=\"sidebar\">Sidebar (200px fixed)</div>\n  <div class=\"content\">Main Dashboard Content (1fr fluid)</div>\n</div>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "git-checkout",
+  "title": "git checkout",
+  "difficulty": "Beginner",
+  "definition": "A command used to switch branches or restore working tree files. It updates files in the working directory to match the version stored in that branch.",
+  "simpleExplanation": "The teleporter. You have created a new branch, but you need to travel to it. `git checkout branch-name` instantly rewrites all the files in your VS Code to look exactly like that branch's universe.",
+  "realWorldExample": "You are working on a new feature, but your boss says there is a critical bug on the live site. You run `git checkout main` to teleport back to the stable code, fix the bug, and then checkout your feature branch again.",
+  "useCases": [
+    "Switching between branches",
+    "Time traveling to old commits"
+  ],
+  "questions": {
+    "basic": [
+      "What shortcut command creates a new branch AND switches to it at the exact same time?"
+    ],
+    "intermediate": [
+      "Why did Git introduce `git switch` to replace `git checkout`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Shortcut command?",
+      "answer": "`git checkout -b new-branch-name` (The -b stands for branch)."
+    },
+    {
+      "question": "Why replace?",
+      "answer": "Because `git checkout` does too many things. It can switch branches, but it can ALSO overwrite and delete uncommitted files (e.g., `git checkout -- file.txt`). This dual-purpose was highly confusing for beginners."
+    }
+  ],
+  "codeExample": "# Switch to an existing branch\n$ git checkout main\n\n# CREATE and SWITCH to a new branch in one command (Extremely common!)\n$ git checkout -b feature/shopping-cart\n\n# Teleport back in time to an old commit (Detached HEAD state)\n$ git checkout a1b2c3d\n\n# Danger: Discard any unsaved changes made to index.html and revert it to the last commit\n$ git checkout -- index.html"
+}

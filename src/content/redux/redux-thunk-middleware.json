@@ -1,0 +1,30 @@
+{
+  "id": "redux-thunk-middleware",
+  "title": "Redux Thunk Middleware",
+  "difficulty": "Advanced",
+  "definition": "A specific piece of middleware that looks at every dispatched action. If the action is a plain object, it lets it pass. If the action is a FUNCTION, it intercepts it, stops it from hitting the reducer, and executes the function.",
+  "simpleExplanation": "The Thunk middleware is literally just 14 lines of code. It acts as a traffic cop. It says: 'Are you an Object? Go to the Reducer. Are you a Function? Step out of the car, I need to execute you right now.'",
+  "realWorldExample": "This is the entire mechanism that makes Async API calls possible in Redux.",
+  "useCases": [
+    "Enabling asynchronous actions in Redux"
+  ],
+  "questions": {
+    "basic": [
+      "Is Redux Thunk included by default in plain, legacy Redux?"
+    ],
+    "intermediate": [
+      "If a Thunk function executes, can it dispatch OTHER actions?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Included by default?",
+      "answer": "No. In legacy Redux, you had to `npm install redux-thunk` and configure it manually. (However, RTK `configureStore` does include it automatically)."
+    },
+    {
+      "question": "Dispatch other actions?",
+      "answer": "Yes! The Thunk middleware explicitly passes the `dispatch` function INTO your Thunk, allowing your Thunk to dispatch as many plain object actions as it wants."
+    }
+  ],
+  "codeExample": "// This is literally the entire source code for Redux Thunk middleware!\n\nconst thunkMiddleware = (store) => (next) => (action) => {\n  // If the action is a FUNCTION (A Thunk)...\n  if (typeof action === 'function') {\n    // Execute the function, and pass it dispatch and getState!\n    return action(store.dispatch, store.getState);\n  }\n  \n  // If the action is a normal object, just pass it along to the Reducer\n  return next(action);\n};"
+}

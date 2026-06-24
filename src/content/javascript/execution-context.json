@@ -1,0 +1,30 @@
+{
+  "id": "execution-context",
+  "title": "Execution Context",
+  "difficulty": "Advanced",
+  "definition": "An abstract concept representing the environment where JavaScript code is evaluated and executed. It contains the code, the 'this' binding, and the Lexical Environment (variables).",
+  "simpleExplanation": "Imagine executing a JS file is like building a house. The Execution Context is the fenced-off construction site. It holds the blueprints (code), the workers (call stack), and the toolboxes (variables) needed to get the job done.",
+  "realWorldExample": "When a script runs, the engine creates the 'Global Execution Context'. Every time a function is called, a brand new 'Function Execution Context' is created and pushed onto the Call Stack.",
+  "useCases": [
+    "Understanding hoisting",
+    "Debugging scope issues"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two phases of an Execution Context?"
+    ],
+    "intermediate": [
+      "What is the difference between Global and Function Execution Context?"
+    ],
+    "advanced": [
+      "What is an Activation Object / Variable Environment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the two phases?",
+      "answer": "1. Creation Phase: The engine scans for variables/functions and allocates memory (Hoisting), and determines the value of `this`. 2. Execution Phase: The code is executed line by line and values are assigned to variables."
+    }
+  ],
+  "codeExample": "// Global Execution Context created\nvar name = 'Alice';\n\nfunction sayHello() {\n  // New Function Execution Context created here\n  var message = 'Hello ' + name;\n  console.log(message);\n}\n\nsayHello(); // Pushes context to stack"
+}

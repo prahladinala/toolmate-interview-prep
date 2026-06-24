@@ -1,0 +1,45 @@
+{
+  "id": "strict-mode",
+  "title": "Strict Mode",
+  "difficulty": "Beginner",
+  "definition": "Strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of 'sloppy mode'. It intentionally has different semantics from normal code, turning some previously-accepted silent mistakes into actual errors.",
+  "simpleExplanation": "Imagine playing a game where the referee normally lets minor rule breaks slide. Turning on 'Strict Mode' is like telling the referee to blow the whistle for absolutely every foul. It forces you to play cleaner, safer code by complaining when you do sloppy things like using a variable without declaring it.",
+  "realWorldExample": "If you misspell a variable name (like typing `x = 5` when you meant `let X = 5`), sloppy mode will just silently create a new global variable called `x`. Strict mode will crash and tell you 'x is not defined', saving you hours of debugging.",
+  "useCases": [
+    "Preventing accidental global variables",
+    "Making debugging easier by throwing errors instead of silently failing",
+    "Preparing code for future versions of ECMAScript (disallows future reserved keywords)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you enable strict mode?",
+      "What is 'sloppy mode'?"
+    ],
+    "intermediate": [
+      "Name three things that are allowed in sloppy mode but throw an error in strict mode.",
+      "Can you enable strict mode for just one specific function?"
+    ],
+    "advanced": [
+      "How does strict mode affect the 'this' keyword?",
+      "Are ES6 modules and classes strictly evaluated by default?"
+    ],
+    "trick": [
+      "If you concatenate two scripts, one with strict mode and one without, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you enable strict mode?",
+      "answer": "By placing the exact string `\"use strict\";` at the very top of a script file, or at the top of a specific function body."
+    },
+    {
+      "question": "How does strict mode affect the 'this' keyword?",
+      "answer": "In sloppy mode, if 'this' is undefined or null in a function, it defaults to the global object (window in browsers). In strict mode, 'this' remains undefined."
+    },
+    {
+      "question": "Are ES6 modules strictly evaluated by default?",
+      "answer": "Yes. The entire contents of JavaScript modules (import/export) and Classes are automatically in strict mode, with no statement needed."
+    }
+  ],
+  "codeExample": "\"use strict\"; // Enable strict mode for the whole script\n\ntry {\n  // In sloppy mode, this silently creates a global window.myVar\n  // In strict mode, it throws a ReferenceError\n  myVar = \"Hello World!\"; \n} catch (e) {\n  console.log(\"Error caught:\", e.message);\n}\n\nfunction sloppyFunction() {\n  // If we didn't have \"use strict\" at the top, we could do:\n  // \"use strict\"; just for this function\n}\n\nfunction checkThis() {\n  console.log(this);\n}\n\ncheckThis(); // undefined in strict mode, but Window in sloppy mode"
+}

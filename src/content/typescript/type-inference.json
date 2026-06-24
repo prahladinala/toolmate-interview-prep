@@ -1,0 +1,34 @@
+{
+  "id": "type-inference",
+  "title": "Type Inference",
+  "difficulty": "Beginner",
+  "definition": "TypeScript's ability to automatically deduce the type of a variable without requiring an explicit type annotation.",
+  "simpleExplanation": "If you write `let x = 10`, TypeScript isn't stupid. It sees the 10 and says, 'Okay, 10 is a number. Therefore, x must forever be a number.' You don't have to explicitly tell it.",
+  "realWorldExample": "Hovering over a variable in VS Code that has no explicit type, and seeing that TS perfectly understood it was a `string[]` based on how you initialized it.",
+  "useCases": [
+    "Keeping code clean and less verbose",
+    "Relying on return types from standard functions"
+  ],
+  "questions": {
+    "basic": [
+      "Do I need to type every single variable in TypeScript?"
+    ],
+    "intermediate": [
+      "When does type inference fail and require explicit annotations?"
+    ],
+    "advanced": [
+      "How does inference work with Array `.map()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do I need to type every variable?",
+      "answer": "No. It is considered an anti-pattern to write `let name: string = 'Alice';`. Because TS infers it perfectly, adding `: string` is just visual clutter. Let inference do the work."
+    },
+    {
+      "question": "When does it fail?",
+      "answer": "When you declare a variable without giving it an initial value: `let data;`. TS doesn't know what it will be, so it falls back to the dangerous `any` type."
+    }
+  ],
+  "codeExample": "// BAD: Redundant typing\nlet greeting: string = \"Hello World\";\n\n// GOOD: Rely on inference\nlet inferredGreeting = \"Hello World\"; \n// TS knows this is a string\n// inferredGreeting = 5; // Error!\n\n// FAILS: TS infers 'any' because it has no clues\nlet unknownData;\nunknownData = 5;\nunknownData = \"Wait, now I'm a string\";"
+}

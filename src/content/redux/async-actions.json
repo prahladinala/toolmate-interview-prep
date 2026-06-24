@@ -1,0 +1,32 @@
+{
+  "id": "async-actions",
+  "title": "Async Actions",
+  "difficulty": "Intermediate",
+  "definition": "Actions in Redux that involve asynchronous operations (like fetching data from a server). Because pure reducers cannot handle promises, middleware is required to process them.",
+  "simpleExplanation": "Redux is impatient. When you dispatch an action, the Reducer runs instantly. If you dispatch an API call that takes 2 seconds, Redux throws an error. You need an 'Async Action' (a Thunk) which pauses Redux, waits 2 seconds for the data, and THEN dispatches the real action.",
+  "realWorldExample": "Fetching a list of products from a database. You dispatch `fetchProducts()`. Redux waits for the network request to finish, and then places the products into the store.",
+  "useCases": [
+    "Fetching API data",
+    "Timers (setTimeout)",
+    "Complex multi-step logic"
+  ],
+  "questions": {
+    "basic": [
+      "Can you put a `fetch()` call directly inside a Reducer?"
+    ],
+    "intermediate": [
+      "What is the most popular middleware used to handle Async Actions in Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fetch in reducer?",
+      "answer": "NO. Reducers must be 100% synchronous and pure. Side effects like API calls are strictly forbidden."
+    },
+    {
+      "question": "Most popular middleware?",
+      "answer": "Redux Thunk. (It is built into Redux Toolkit by default)."
+    }
+  ],
+  "codeExample": "// ❌ BAD: Reducers cannot handle Promises!\nfunction badReducer(state, action) {\n  // Redux will crash. Reducers must return data instantly.\n  const data = await fetch('/api/data'); \n  return data;\n}\n\n// ✅ GOOD: Handle async logic outside the reducer using Thunks!\n// (See next topic for Thunk implementation)"
+}

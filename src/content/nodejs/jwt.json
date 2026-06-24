@@ -1,0 +1,39 @@
+{
+  "id": "jwt",
+  "title": "JWT Authentication",
+  "difficulty": "Intermediate",
+  "definition": "JSON Web Token. A compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature structure.",
+  "simpleExplanation": "A JWT is a digital VIP wristband. When you log in, the server checks your password. If it's correct, it generates a JWT string containing your User ID and cryptographically signs it. It gives you the wristband. Now, every time you want to view a private page, you show the wristband. The server mathematically verifies the signature. If it's legit, it lets you in without ever having to check your password or the database again!",
+  "realWorldExample": "Stateless authentication in React/Node apps. The Node server issues a JWT. The React app saves it in `localStorage` or an `httpOnly` cookie. The React app attaches it to the `Authorization: Bearer <token>` header on every single `fetch()` request.",
+  "useCases": [
+    "Stateless REST APIs",
+    "Single Sign-On (SSO)",
+    "Microservice authentication"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three parts of a JWT?"
+    ],
+    "intermediate": [
+      "Is the payload of a JWT encrypted? Can anyone read it?"
+    ],
+    "advanced": [
+      "How do you invalidate or destroy a JWT before it expires?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the three parts?",
+      "answer": "Header, Payload, and Signature. Separated by dots (xxxxx.yyyyy.zzzzz)."
+    },
+    {
+      "question": "Is the payload encrypted?",
+      "answer": "NO! The payload is simply base64 encoded. Anyone who finds your JWT can paste it into jwt.io and read everything inside it. Never put passwords or secrets in the payload. The JWT is SIGNED (so it can't be tampered with), but it is NOT encrypted."
+    },
+    {
+      "question": "How do you invalidate it?",
+      "answer": "You inherently cannot. Because JWTs are stateless, the server doesn't keep a list of them. Once issued, a JWT is valid until its expiration date. To revoke them early, you must build a 'Token Blacklist' in your database, which defeats the entire 'stateless' benefit of JWTs."
+    }
+  ],
+  "codeExample": "/* \n  npm install jsonwebtoken\n*/\n// const jwt = require('jsonwebtoken');\n\n// 1. The Secret Key (Store this safely in process.env!)\nconst SECRET_KEY = \"super_secret_server_key\";\n\n// 2. Generating a Token (Login)\nconst payload = { userId: 123, role: \"admin\" };\n// const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' });\nconst token = \"eyJhbGciOiJIUzI1Ni... (Simulated Token)\";\nconsole.log(\"Generated JWT:\", token);\n\n// 3. Verifying a Token (Middleware for protected routes)\nfunction verifyToken(incomingToken) {\n  try {\n    // This will throw an error if the token is expired or tampered with!\n    // const decoded = jwt.verify(incomingToken, SECRET_KEY);\n    const decoded = payload; // Simulated success\n    console.log(\"Token Valid! User ID is:\", decoded.userId);\n  } catch (err) {\n    console.error(\"401 Unauthorized: Invalid Token\");\n  }\n}\n\nverifyToken(token);"
+}

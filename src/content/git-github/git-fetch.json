@@ -1,0 +1,31 @@
+{
+  "id": "git-fetch",
+  "title": "git fetch",
+  "difficulty": "Intermediate",
+  "definition": "Downloads commits, files, and refs from a remote repository into your local repo, but does NOT merge those changes into your working directory.",
+  "simpleExplanation": "The safe way to see what your team has been working on. It downloads all their new code from GitHub into your local `.git` hidden folder, but it explicitly DOES NOT touch the code you are currently looking at in VS Code. You can review their code safely before merging it.",
+  "realWorldExample": "Checking if anyone pushed changes to the `main` branch over the weekend without actually risking breaking the code you are currently writing.",
+  "useCases": [
+    "Safe syncing",
+    "Reviewing teammate code"
+  ],
+  "questions": {
+    "basic": [
+      "Does `git fetch` overwrite the files in your Working Directory?"
+    ],
+    "intermediate": [
+      "How do you view the changes you just fetched?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Overwrite files?",
+      "answer": "No. Never. That is the entire point of `fetch`. It is completely safe."
+    },
+    {
+      "question": "View changes?",
+      "answer": "You can use `git log origin/main` to see the newly downloaded commits, or `git diff main origin/main` to see the exact code differences."
+    }
+  ],
+  "codeExample": "# Download all new data from the 'origin' server\n$ git fetch origin\n\n# Look at what your coworkers pushed to the 'main' branch on the server\n$ git log origin/main\n\n# Compare your local 'main' branch with the server's 'main' branch\n$ git diff main origin/main\n\n# If you like their changes, you manually merge them in!\n$ git merge origin/main"
+}

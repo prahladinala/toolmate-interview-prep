@@ -1,0 +1,30 @@
+{
+  "id": "system-monitoring",
+  "title": "System Monitoring",
+  "difficulty": "Intermediate",
+  "definition": "The continuous observation of a Linux system's resource utilization (CPU, RAM, Disk I/O, Network traffic) using tools like `top`, `vmstat`, `iostat`, and `free`.",
+  "simpleExplanation": "Taking the vital signs (heart rate, blood pressure) of the server to make sure it isn't having a heart attack.",
+  "realWorldExample": "A database is responding incredibly slowly, but CPU usage is low. The admin runs `iostat`. The tool reveals that the physical Hard Drive is at 100% capacity trying to read/write data. The admin realizes they need to upgrade to a faster SSD.",
+  "useCases": [
+    "Performance tuning",
+    "Bottleneck identification"
+  ],
+  "questions": {
+    "basic": [
+      "What simple command instantly shows you exactly how much total RAM is installed on the server and how much is currently free?"
+    ],
+    "intermediate": [
+      "If a Linux server uses 95% of its RAM, but the `free` command shows almost all of it is being used for 'buff/cache', should you be worried?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which RAM command?",
+      "answer": "`free -m` (or `free -h`)."
+    },
+    {
+      "question": "Worried about cache?",
+      "answer": "No! Linux is designed to intentionally hoard free RAM and use it to cache hard drive files to speed up the system. If a real application suddenly needs that RAM, Linux will instantly dump the cache and give it to the app. Unused RAM is wasted RAM."
+    }
+  ]
+}

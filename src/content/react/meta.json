@@ -1,0 +1,217 @@
+{
+  "id": "react",
+  "title": "React",
+  "description": "Master the world's most popular UI library. Learn components, hooks, state management, and modern React patterns.",
+  "icon": "react",
+  "categories": [
+    {
+      "id": "basics",
+      "title": "React Basics",
+      "topics": [
+        { "id": "components", "title": "Components & Props" },
+        { "id": "functional-vs-class", "title": "Functional vs Class Components" },
+        { "id": "react-elements", "title": "React Elements" },
+        { "id": "keys", "title": "Lists & Keys" },
+        { "id": "lifting-state", "title": "Lifting State Up" },
+        { "id": "composition", "title": "Composition vs Inheritance" },
+        { "id": "jsx-rendering", "title": "JSX & Conditional Rendering" },
+        { "id": "use-state", "title": "State (useState)" }
+      ]
+    },
+    {
+      "id": "component-communication",
+      "title": "Component Communication",
+      "topics": [
+        { "id": "parent-child", "title": "Parent to Child Communication" },
+        { "id": "child-parent", "title": "Child to Parent Communication" },
+        { "id": "sibling-components", "title": "Sibling Communication" },
+        { "id": "prop-drilling", "title": "Prop Drilling" },
+        { "id": "context-vs-props", "title": "Context vs Props" }
+      ]
+    },
+    {
+      "id": "forms",
+      "title": "Forms & Validation",
+      "topics": [
+        { "id": "controlled-uncontrolled", "title": "Controlled vs Uncontrolled Forms" },
+        { "id": "form-validation", "title": "Form Validation" },
+        { "id": "react-hook-form", "title": "React Hook Form" },
+        { "id": "formik", "title": "Formik" }
+      ]
+    },
+    {
+      "id": "rendering",
+      "title": "Rendering & Re-rendering",
+      "topics": [
+        { "id": "render-cycle", "title": "Render Cycle" },
+        { "id": "re-render-causes", "title": "What Causes Re-renders?" },
+        { "id": "strict-mode", "title": "React Strict Mode" },
+        { "id": "render-vs-commit", "title": "Render vs Commit Phase" }
+      ]
+    },
+    {
+      "id": "under-the-hood",
+      "title": "React Under the Hood",
+      "topics": [
+        { "id": "virtual-dom", "title": "Virtual DOM & Reconciliation" },
+        { "id": "component-lifecycle", "title": "Component Lifecycle" },
+        { "id": "synthetic-events", "title": "Synthetic Events" },
+        { "id": "state-batching", "title": "State Batching (React 18)" }
+      ]
+    },
+    {
+      "id": "core-hooks",
+      "title": "Core Hooks",
+      "topics": [
+        { "id": "use-effect", "title": "Side Effects (useEffect)" },
+        { "id": "use-context", "title": "useContext" },
+        { "id": "use-ref", "title": "Refs (useRef)" },
+        { "id": "custom-hooks", "title": "Custom Hooks" }
+      ]
+    },
+    {
+      "id": "advanced-hooks",
+      "title": "Advanced Hooks",
+      "topics": [
+        { "id": "use-layout-effect", "title": "useLayoutEffect" },
+        { "id": "use-imperative-handle", "title": "useImperativeHandle" },
+        { "id": "use-id", "title": "useId" },
+        { "id": "use-debug-value", "title": "useDebugValue" },
+        { "id": "use-deferred-value", "title": "useDeferredValue" },
+        { "id": "use-insertion-effect", "title": "useInsertionEffect" },
+        { "id": "use-sync-external-store", "title": "useSyncExternalStore" }
+      ]
+    },
+    {
+      "id": "advanced-state",
+      "title": "Advanced State",
+      "topics": [
+        { "id": "context-api", "title": "Context API" },
+        { "id": "use-reducer", "title": "useReducer" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "use-memo", "title": "useMemo" },
+        { "id": "use-callback", "title": "useCallback" },
+        { "id": "react-memo", "title": "React.memo" },
+        { "id": "key-optimization", "title": "Keys & Rendering Optimization" },
+        { "id": "virtualization", "title": "List Virtualization" },
+        { "id": "bundle-analysis", "title": "Bundle Analysis" },
+        { "id": "avoid-rerenders", "title": "Avoiding Unnecessary Re-renders" },
+        { "id": "code-splitting", "title": "Code Splitting & Lazy Loading" }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced Concepts",
+      "topics": [
+        { "id": "hoc-render-props", "title": "HOCs & Render Props" },
+        { "id": "error-boundaries", "title": "Error Boundaries" },
+        { "id": "portals", "title": "Portals" }
+      ]
+    },
+    {
+      "id": "api-integration",
+      "title": "API Integration",
+      "topics": [
+        { "id": "fetch-api", "title": "Fetch API" },
+        { "id": "axios", "title": "Axios" },
+        { "id": "loading-states", "title": "Loading & Error States" },
+        { "id": "abort-controller", "title": "AbortController" },
+        { "id": "data-fetching-patterns", "title": "Data Fetching Patterns" }
+      ]
+    },
+    {
+      "id": "server-state",
+      "title": "Server State Management",
+      "topics": [
+        { "id": "tanstack-query", "title": "TanStack Query" },
+        { "id": "query-caching", "title": "Caching" },
+        { "id": "optimistic-updates", "title": "Optimistic Updates" },
+        { "id": "mutations", "title": "Mutations" }
+      ]
+    },
+    {
+      "id": "concurrent-react",
+      "title": "React 18 & Concurrent Features",
+      "topics": [
+        { "id": "suspense", "title": "React Suspense" },
+        { "id": "use-transition", "title": "Transitions & Deferred Values" },
+        { "id": "server-components", "title": "React Server Components" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "React Testing",
+      "topics": [
+        { "id": "jest", "title": "Jest" },
+        { "id": "rtl", "title": "React Testing Library" },
+        { "id": "unit-testing", "title": "Unit Testing" },
+        { "id": "integration-testing", "title": "Integration Testing" },
+        { "id": "mocking", "title": "Mocking APIs" }
+      ]
+    },
+    {
+      "id": "patterns",
+      "title": "React Design Patterns",
+      "topics": [
+        { "id": "compound-components", "title": "Compound Components" },
+        { "id": "container-presentational", "title": "Container vs Presentational" },
+        { "id": "hooks-pattern", "title": "Custom Hook Pattern" },
+        { "id": "provider-pattern", "title": "Provider Pattern" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "React Security",
+      "topics": [
+        { "id": "xss", "title": "XSS Prevention" },
+        { "id": "dangerously-set-html", "title": "dangerouslySetInnerHTML" },
+        { "id": "auth-handling", "title": "Authentication Handling" },
+        { "id": "token-storage", "title": "Token Storage" }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "topics": [
+        { "id": "aria", "title": "ARIA Attributes" },
+        { "id": "keyboard-nav", "title": "Keyboard Navigation" },
+        { "id": "screen-readers", "title": "Screen Readers" },
+        { "id": "semantic-html", "title": "Semantic HTML" }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "React Architecture",
+      "topics": [
+        { "id": "folder-structure", "title": "Folder Structure" },
+        { "id": "feature-based-architecture", "title": "Feature Based Architecture" },
+        { "id": "scalable-react", "title": "Scalable React Apps" },
+        { "id": "micro-frontends", "title": "Micro Frontends" }
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "title": "React Ecosystem",
+      "topics": [
+        { "id": "ecosystem-state", "title": "Global State (Redux/Zustand)" },
+        { "id": "react-router", "title": "React Router" }
+      ]
+    },
+    {
+      "id": "interview-questions",
+      "title": "React Interview Questions",
+      "topics": [
+        { "id": "beginner-react-questions", "title": "Beginner Questions" },
+        { "id": "intermediate-react-questions", "title": "Intermediate Questions" },
+        { "id": "advanced-react-questions", "title": "Advanced Questions" },
+        { "id": "scenario-based-react", "title": "Scenario Based Questions" },
+        { "id": "debugging-react", "title": "Debugging Questions" }
+      ]
+    }
+  ]
+}

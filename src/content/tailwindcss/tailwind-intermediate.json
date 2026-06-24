@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-intermediate",
+  "title": "Intermediate Interview Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions testing practical experience with configuring Tailwind, managing bundle sizes, and responsive design concepts.",
+  "simpleExplanation": "The interviewer wants to know if you can actually configure a project for production, not just write `bg-red-500`.",
+  "realWorldExample": "Being asked: 'Explain how Tailwind's purging system works and why it is important.'",
+  "useCases": [
+    "Mid-level Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "How does Tailwind ensure the final production CSS file is so small?"
+    ],
+    "intermediate": [
+      "Explain Tailwind's 'Mobile-First' breakpoint system."
+    ]
+  },
+  "answers": [
+    {
+      "question": "How is it so small?",
+      "answer": "Through 'Purging' (or the JIT engine). Tailwind scans your source code files looking for class names. It only generates the CSS for the specific classes it finds in your code, resulting in a tiny, strictly-capped file size."
+    },
+    {
+      "question": "Mobile-First system?",
+      "answer": "Unprefixed classes (like `w-full`) apply to all screen sizes by default, starting from mobile. Prefixed classes (like `md:w-1/2`) act as `min-width` media queries, applying styles only when the screen reaches that breakpoint or larger."
+    }
+  ],
+  "codeExample": "/*\n  Q: A developer wrote `<div class={`bg-${color}-500`}>`. In development it works, but in production, the color is missing. Why?\n  \n  A: Tailwind's Purge engine does not execute JavaScript; it performs a static text scan of the files. It looks for complete, unbroken strings. It sees `bg-${color}-500`, fails to recognize it as a valid Tailwind class, and deletes the color from the production CSS. You must map complete strings (e.g., `color === 'red' ? 'bg-red-500' : 'bg-blue-500'`).\n*/"
+}

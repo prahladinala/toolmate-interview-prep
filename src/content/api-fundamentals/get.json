@@ -1,0 +1,32 @@
+{
+  "id": "get",
+  "title": "GET",
+  "difficulty": "Beginner",
+  "definition": "An HTTP method used to request data from a specified resource. It should ONLY be used to retrieve data and should have no other effect on the server.",
+  "simpleExplanation": "When you visit a website, your browser sends a GET request. It is the internet equivalent of saying 'Please show me this document.' It does not delete, change, or create anything.",
+  "realWorldExample": "Fetching a user's profile data (`GET /api/users/123`) or fetching a list of active products (`GET /api/products?active=true`).",
+  "useCases": [
+    "Fetching HTML pages",
+    "Retrieving JSON data",
+    "Downloading images"
+  ],
+  "questions": {
+    "basic": [
+      "Should a GET request be used to submit a password reset form?"
+    ],
+    "intermediate": [
+      "Why are GET requests considered 'Safe' and 'Idempotent'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use for forms?",
+      "answer": "No! GET request parameters are appended to the URL (e.g., `?password=123`). This means the password would be visible in the browser history and server logs. Always use POST for sensitive data."
+    },
+    {
+      "question": "Safe and Idempotent?",
+      "answer": "'Safe' means calling it doesn't change anything on the server. 'Idempotent' means calling it 1 time has the exact same effect as calling it 1,000 times (it just returns the same data without corrupting the database)."
+    }
+  ],
+  "codeExample": "// Node.js Express Example for handling a GET request\napp.get('/api/articles/:id', async (req, res) => {\n  // 1. Read the ID from the URL path\n  const articleId = req.params.id;\n  \n  // 2. Fetch data (DO NOT modify data here!)\n  const article = await db.articles.findById(articleId);\n  \n  // 3. Return the data\n  res.status(200).json(article);\n});"
+}

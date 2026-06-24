@@ -1,0 +1,31 @@
+{
+  "id": "component-boundaries",
+  "title": "Component Boundaries",
+  "difficulty": "Advanced",
+  "definition": "The strict rules governing how Server Components and Client Components can interact and be nested within each other.",
+  "simpleExplanation": "Rule 1: Server Components can import Client Components. Rule 2: Client Components CANNOT import Server Components. Once you are on the Client, you cannot magically go back to the Server. (However, you CAN pass a Server Component as a `children` prop into a Client Component).",
+  "realWorldExample": "You have a Client Component `<CollapsibleSidebar>` that manages `isOpen` state. You want to put a Server Component `<DatabaseUserList>` inside it. You cannot import it directly. You must pass it as a `children` prop from a higher-level Server page.",
+  "useCases": [
+    "Advanced Layout Architecture",
+    "Interleaving server and client code"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Server Component import a Client Component?"
+    ],
+    "intermediate": [
+      "If a Client Component cannot import a Server Component, how do you put Server-rendered content inside a Client-side wrapper?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Server import Client?",
+      "answer": "Yes! This is the standard pattern. The Server builds the page, and drops the interactive Client Components into the 'holes' it leaves."
+    },
+    {
+      "question": "How to nest them?",
+      "answer": "Using the React `children` prop pattern (Composition). The Client Component accepts `children`. The parent Server Component imports BOTH of them, and passes the Server child into the Client wrapper."
+    }
+  ],
+  "codeExample": "/* ❌ ILLEGAL: Client Component importing a Server Component */\n// ClientWrapper.tsx\n'use client';\nimport ServerChild from './ServerChild'; // ERROR! Cannot do this.\n\n\n/* ✅ LEGAL: Using Composition (The \"Hole\" pattern) */\n// ClientWrapper.tsx\n'use client';\nexport default function ClientWrapper({ children }) {\n  const [isOpen, setIsOpen] = useState(false);\n  return <div onClick={() => setIsOpen(true)}>{isOpen && children}</div>;\n}\n\n// page.tsx (Server Component)\nimport ClientWrapper from './ClientWrapper';\nimport ServerChild from './ServerChild'; // Fetches DB data\n\nexport default function Page() {\n  return (\n    // The Server Component orchestrates them together!\n    <ClientWrapper>\n      <ServerChild /> \n    </ClientWrapper>\n  );\n}"
+}

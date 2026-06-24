@@ -1,0 +1,38 @@
+{
+  "id": "container-presentational",
+  "title": "Container vs Presentational",
+  "difficulty": "Intermediate",
+  "definition": "A classic React architecture pattern separating components into two categories: Containers (which handle data fetching and state) and Presentational components (which only render UI based on props).",
+  "simpleExplanation": "Imagine a restaurant. The Container component is the Chef in the kitchen: gathering ingredients, cooking the food, and managing the chaos. The Presentational component is the Waiter: they don't know how to cook, they just take the finished plate (Props) and present it nicely to the customer on the table (UI).",
+  "realWorldExample": "A `UserProfileContainer.js` component executes `useEffect` to fetch user data, and then returns `<UserProfile data={userData} />`. The `UserProfile.js` is a pure function that just renders HTML.",
+  "useCases": [
+    "Separating concerns (Logic vs UI)",
+    "Making UI components highly reusable across different data sources",
+    "Making UI components easily testable with Snapshot testing"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Presentational Component?",
+      "What is a Container Component?"
+    ],
+    "intermediate": [
+      "Why is this pattern less common today than it was in 2018?",
+      "Can Presentational components have state?"
+    ],
+    "advanced": [
+      "How did React Hooks largely replace the need for Container components?",
+      "When is it still a good idea to use this pattern?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is this pattern less common today?",
+      "answer": "React Hooks solved the problem this pattern tried to solve. Before hooks, only Class components could have state/lifecycles, so developers separated 'Smart Classes' from 'Dumb Functions'. Now, custom hooks allow you to cleanly abstract logic without creating a wrapper Container component."
+    },
+    {
+      "question": "Can Presentational components have state?",
+      "answer": "Yes, but only UI state! For example, a Presentational component can have `useState(false)` to track if a dropdown menu is open. It just shouldn't have state related to business logic or database data."
+    }
+  ],
+  "codeExample": "// --- MODERN APPROACH (Using Custom Hooks instead of Containers) ---\n// This has largely replaced the Container/Presentational pattern.\n\n// 1. The Logic (Extracted into a Custom Hook)\nfunction useUserData(userId) {\n  const [data, setData] = useState(null);\n  useEffect(() => { fetchUser(userId).then(setData); }, [userId]);\n  return data;\n}\n\n// 2. The Component (Cleanly handles both UI and calls the logic)\nexport default function UserProfile({ userId }) {\n  const data = useUserData(userId);\n  \n  if (!data) return <p>Loading...</p>;\n  return <div>{data.name}</div>;\n}"
+}

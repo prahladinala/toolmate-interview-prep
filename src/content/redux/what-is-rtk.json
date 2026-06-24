@@ -1,0 +1,30 @@
+{
+  "id": "what-is-rtk",
+  "title": "What is Redux Toolkit?",
+  "difficulty": "Beginner",
+  "definition": "The official, recommended approach for writing Redux logic. It wraps around the core Redux package, containing utilities to simplify common use cases like store setup, creating reducers, and immutable update logic.",
+  "simpleExplanation": "Legacy Redux was famously hated because it required writing 5 different files just to add a single variable to the state. Redux Toolkit (RTK) is the modern savior. It deletes 80% of the boilerplate code and makes Redux actually fun to use.",
+  "realWorldExample": "Instead of writing action types, action creators, and a massive switch-statement reducer by hand, RTK gives you `createSlice()`, which does all three of those things automatically in 10 lines of code.",
+  "useCases": [
+    "All modern Redux applications"
+  ],
+  "questions": {
+    "basic": [
+      "Do you still need to install the original `redux` package if you use `@reduxjs/toolkit`?"
+    ],
+    "intermediate": [
+      "What library does RTK use under the hood to let you write 'mutating' code safely?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Still install redux?",
+      "answer": "No. `@reduxjs/toolkit` completely includes and exports everything from the core `redux` package."
+    },
+    {
+      "question": "Which library?",
+      "answer": "`Immer`. It allows you to write `state.value += 1` (which used to be strictly forbidden) by secretly turning it into a safe, immutable copy behind the scenes."
+    }
+  ],
+  "codeExample": "// ❌ LEGACY REDUX (Requires manual action types, action creators, and pure switch statements)\n\n// ✅ MODERN REDUX TOOLKIT (RTK)\nimport { createSlice } from '@reduxjs/toolkit';\n\nconst counterSlice = createSlice({\n  name: 'counter',\n  initialState: 0,\n  reducers: {\n    // Immer lets you \"mutate\" the state directly! No more {...state} spreading!\n    increment: (state) => state + 1,\n  },\n});"
+}

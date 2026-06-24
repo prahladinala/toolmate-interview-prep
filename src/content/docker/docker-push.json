@@ -1,0 +1,30 @@
+{
+  "id": "docker-push",
+  "title": "docker push",
+  "difficulty": "Beginner",
+  "definition": "The CLI command used to upload a locally built Docker image to a remote Docker registry (like Docker Hub or AWS ECR).",
+  "simpleExplanation": "Uploading your finished blueprint to the cloud so other computers can download it.",
+  "realWorldExample": "You finish writing code on your laptop. You build the image. You type `docker push myusername/my-app:v2`. Docker uploads the layers to the internet. Now your boss can pull the image and test it.",
+  "useCases": [
+    "CI/CD pipelines",
+    "Image distribution"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you run `docker push` before running `docker login`?"
+    ],
+    "intermediate": [
+      "If an image has 10 layers, and you only changed 1 line of code, does `docker push` upload all 10 layers again?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Push without login?",
+      "answer": "Docker will throw an 'Access Denied / Unauthorized' error because it doesn't know who you are."
+    },
+    {
+      "question": "Upload all layers?",
+      "answer": "No! Docker is smart. It checks the Registry, sees that the first 9 layers are already uploaded, and only uploads the tiny 1 new layer. This makes pushing updates incredibly fast."
+    }
+  ]
+}

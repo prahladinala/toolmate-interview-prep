@@ -1,0 +1,31 @@
+{
+  "id": "header-versioning",
+  "title": "Header Versioning",
+  "difficulty": "Advanced",
+  "definition": "A versioning strategy where the URL remains exactly the same, but the client specifies which version of the API they want by sending a custom HTTP Header.",
+  "simpleExplanation": "You only have one URL: `/api/users`. But when you send the request, you attach a sticky note (Header) that says 'Please give me the 2022 version of this data'. The server reads the sticky note and formats the data accordingly.",
+  "realWorldExample": "GitHub's API uses a custom Accept header: `Accept: application/vnd.github.v3+json`. Stripe uses a custom Stripe-Version header: `Stripe-Version: 2023-10-16`.",
+  "useCases": [
+    "Enterprise APIs",
+    "REST purist design"
+  ],
+  "questions": {
+    "basic": [
+      "Which versioning strategy is easier for a non-developer to test in a web browser: URL Versioning or Header Versioning?"
+    ],
+    "intermediate": [
+      "What is 'Content Negotiation' in the context of Header Versioning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Easier to test?",
+      "answer": "URL Versioning. You can just type `/v1/users` into Chrome and hit enter. To test Header versioning, you must use a tool like Postman or write code to manually attach the HTTP headers."
+    },
+    {
+      "question": "Content Negotiation?",
+      "answer": "It is the process where the client uses the `Accept` header to tell the server what format and version of data it wants, and the server negotiates to provide that exact format."
+    }
+  ],
+  "codeExample": "/* \n  Using Custom Headers for Versioning \n*/\n\n// Frontend Request\nfetch('https://api.stripe.com/v1/charges', {\n  headers: {\n    'Authorization': 'Bearer sk_test_123',\n    // Asking the server to use the legacy 2020 API behavior!\n    'Stripe-Version': '2020-08-27'\n  }\n});\n\n// Backend Logic\napp.get('/charges', (req, res) => {\n  const version = req.headers['stripe-version'];\n  \n  if (version === '2020-08-27') {\n    return res.json(formatChargeLegacy());\n  }\n  return res.json(formatChargeModern());\n});"
+}

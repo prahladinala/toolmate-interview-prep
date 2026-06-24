@@ -1,0 +1,204 @@
+{
+  "id": "redux",
+  "title": "Redux & Redux Toolkit",
+  "description": "Master Redux and Redux Toolkit from fundamentals to advanced state management patterns. Learn store architecture, reducers, middleware, async operations, performance optimization, and enterprise-scale application design.",
+  "icon": "redux",
+  "categories": [
+    {
+      "id": "redux-fundamentals",
+      "title": "Redux Fundamentals",
+      "topics": [
+        { "id": "what-is-redux", "title": "What is Redux?" },
+        { "id": "why-redux", "title": "Why Use Redux?" },
+        { "id": "redux-principles", "title": "Three Principles of Redux" },
+        { "id": "flux-architecture", "title": "Flux Architecture" },
+        { "id": "redux-data-flow", "title": "Redux Data Flow" },
+        { "id": "redux-vs-context", "title": "Redux vs Context API" }
+      ]
+    },
+    {
+      "id": "core-concepts",
+      "title": "Core Redux Concepts",
+      "topics": [
+        { "id": "store", "title": "Store" },
+        { "id": "actions", "title": "Actions" },
+        { "id": "action-creators", "title": "Action Creators" },
+        { "id": "reducers", "title": "Reducers" },
+        { "id": "root-reducer", "title": "Root Reducer" },
+        { "id": "dispatch", "title": "Dispatch" },
+        { "id": "state-tree", "title": "State Tree" }
+      ]
+    },
+    {
+      "id": "redux-toolkit-basics",
+      "title": "Redux Toolkit Fundamentals",
+      "topics": [
+        { "id": "what-is-rtk", "title": "What is Redux Toolkit?" },
+        { "id": "configure-store", "title": "configureStore()" },
+        { "id": "create-slice", "title": "createSlice()" },
+        { "id": "create-action", "title": "createAction()" },
+        { "id": "create-reducer", "title": "createReducer()" },
+        { "id": "redux-toolkit-benefits", "title": "Benefits of Redux Toolkit" }
+      ]
+    },
+    {
+      "id": "react-redux",
+      "title": "React Redux Integration",
+      "topics": [
+        { "id": "provider", "title": "Provider" },
+        { "id": "use-selector", "title": "useSelector()" },
+        { "id": "use-dispatch", "title": "useDispatch()" },
+        { "id": "typed-hooks", "title": "Typed Hooks" },
+        { "id": "connect-hoc", "title": "connect() HOC" },
+        { "id": "react-redux-flow", "title": "React Redux Data Flow" }
+      ]
+    },
+    {
+      "id": "state-management",
+      "title": "Managing State",
+      "topics": [
+        { "id": "global-state", "title": "Global State" },
+        { "id": "local-vs-global", "title": "Local vs Global State" },
+        { "id": "state-normalization", "title": "State Normalization" },
+        { "id": "nested-state", "title": "Managing Nested State" },
+        { "id": "state-design", "title": "State Design Patterns" }
+      ]
+    },
+    {
+      "id": "immer",
+      "title": "Immer & Immutable Updates",
+      "topics": [
+        { "id": "what-is-immer", "title": "What is Immer?" },
+        { "id": "immutable-updates", "title": "Immutable State Updates" },
+        { "id": "draft-state", "title": "Draft State" },
+        { "id": "mutable-syntax", "title": "Mutable Syntax with Immer" },
+        { "id": "manual-vs-immer", "title": "Manual Updates vs Immer" }
+      ]
+    },
+    {
+      "id": "async-redux",
+      "title": "Async State Management",
+      "topics": [
+        { "id": "async-actions", "title": "Async Actions" },
+        { "id": "redux-thunk", "title": "Redux Thunk" },
+        { "id": "create-async-thunk", "title": "createAsyncThunk()" },
+        { "id": "pending-fulfilled-rejected", "title": "Pending/Fulfilled/Rejected States" },
+        { "id": "api-calls-redux", "title": "API Calls with Redux" },
+        { "id": "error-handling", "title": "Error Handling" }
+      ]
+    },
+    {
+      "id": "middleware",
+      "title": "Middleware",
+      "topics": [
+        { "id": "what-is-middleware", "title": "What is Middleware?" },
+        { "id": "redux-thunk-middleware", "title": "Redux Thunk Middleware" },
+        { "id": "custom-middleware", "title": "Custom Middleware" },
+        { "id": "logging-middleware", "title": "Logging Middleware" },
+        { "id": "middleware-flow", "title": "Middleware Execution Flow" }
+      ]
+    },
+    {
+      "id": "rtk-query",
+      "title": "RTK Query",
+      "topics": [
+        { "id": "what-is-rtk-query", "title": "What is RTK Query?" },
+        { "id": "create-api", "title": "createApi()" },
+        { "id": "fetch-base-query", "title": "fetchBaseQuery()" },
+        { "id": "queries", "title": "Queries" },
+        { "id": "mutations", "title": "Mutations" },
+        { "id": "cache-management", "title": "Cache Management" },
+        { "id": "tag-invalidation", "title": "Tag Invalidation" },
+        { "id": "polling", "title": "Polling & Refetching" }
+      ]
+    },
+    {
+      "id": "selectors",
+      "title": "Selectors",
+      "topics": [
+        { "id": "basic-selectors", "title": "Basic Selectors" },
+        { "id": "memoized-selectors", "title": "Memoized Selectors" },
+        { "id": "reselect", "title": "Reselect" },
+        { "id": "derived-state", "title": "Derived State" },
+        { "id": "selector-performance", "title": "Selector Performance" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "avoid-rerenders", "title": "Avoid Unnecessary Re-renders" },
+        { "id": "state-splitting", "title": "State Splitting" },
+        { "id": "memoization-redux", "title": "Memoization" },
+        { "id": "normalized-state", "title": "Normalized State" },
+        { "id": "large-scale-performance", "title": "Performance in Large Apps" }
+      ]
+    },
+    {
+      "id": "advanced-redux",
+      "title": "Advanced Redux Toolkit",
+      "topics": [
+        { "id": "entity-adapter", "title": "createEntityAdapter()" },
+        { "id": "listener-middleware", "title": "Listener Middleware" },
+        { "id": "dynamic-slices", "title": "Dynamic Reducers" },
+        { "id": "code-splitting-redux", "title": "Redux Code Splitting" },
+        { "id": "lazy-loading-slices", "title": "Lazy Loaded Reducers" }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentication with Redux",
+      "topics": [
+        { "id": "auth-flow", "title": "Authentication Flow" },
+        { "id": "jwt-storage", "title": "JWT Storage" },
+        { "id": "user-session", "title": "User Session Management" },
+        { "id": "protected-routes", "title": "Protected Routes" },
+        { "id": "logout-patterns", "title": "Logout Patterns" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Redux Testing",
+      "topics": [
+        { "id": "testing-slices", "title": "Testing Slices" },
+        { "id": "testing-reducers", "title": "Testing Reducers" },
+        { "id": "testing-actions", "title": "Testing Actions" },
+        { "id": "testing-thunks", "title": "Testing Async Thunks" },
+        { "id": "testing-rtk-query", "title": "Testing RTK Query" }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture & Best Practices",
+      "topics": [
+        { "id": "feature-based-structure", "title": "Feature-Based Structure" },
+        { "id": "redux-folder-structure", "title": "Folder Structure" },
+        { "id": "scalable-redux", "title": "Scalable Redux Applications" },
+        { "id": "domain-driven-redux", "title": "Domain Driven Design" },
+        { "id": "redux-best-practices", "title": "Redux Best Practices" }
+      ]
+    },
+    {
+      "id": "comparison",
+      "title": "Redux Ecosystem Comparisons",
+      "topics": [
+        { "id": "redux-vs-zustand", "title": "Redux vs Zustand" },
+        { "id": "redux-vs-context", "title": "Redux vs Context API" },
+        { "id": "redux-vs-mobx", "title": "Redux vs MobX" },
+        { "id": "rtk-query-vs-react-query", "title": "RTK Query vs React Query" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "redux-beginner", "title": "Beginner Questions" },
+        { "id": "redux-intermediate", "title": "Intermediate Questions" },
+        { "id": "redux-advanced", "title": "Advanced Questions" },
+        { "id": "redux-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "redux-debugging", "title": "Debugging Questions" },
+        { "id": "redux-system-design", "title": "System Design Questions" }
+      ]
+    }
+  ]
+}

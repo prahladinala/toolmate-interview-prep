@@ -1,0 +1,34 @@
+{
+  "id": "rest-parameters",
+  "title": "Rest Parameters",
+  "difficulty": "Beginner",
+  "definition": "The rest parameter syntax `...` allows a function to accept an indefinite number of arguments as an array.",
+  "simpleExplanation": "Imagine a garbage bag at the end of a function signature. It sweeps up any 'extra' arguments passed to the function that didn't get their own specific variable name, and dumps them all into an array.",
+  "realWorldExample": "A `sum(...numbers)` function that can accept `sum(1, 2)` or `sum(1, 2, 3, 4, 5)` and handles them elegantly by reducing the array.",
+  "useCases": [
+    "Replacing the old `arguments` object",
+    "Functions with variable arity"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Spread and Rest?"
+    ],
+    "intermediate": [
+      "Can the rest parameter be placed at the beginning of the arguments list?"
+    ],
+    "advanced": [
+      "Why is Rest preferred over the `arguments` keyword?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Spread vs Rest?",
+      "answer": "They look exactly the same (`...`). Rest is used to COLLECT multiple elements and condense them into a single array (e.g., in function parameters). Spread is used to UNPACK an array into multiple individual elements (e.g., in array literals or function calls)."
+    },
+    {
+      "question": "Can it be placed at the beginning?",
+      "answer": "No. The rest parameter MUST be the very last parameter in the function definition, otherwise a SyntaxError is thrown. It scoops up the 'rest' of the arguments."
+    }
+  ],
+  "codeExample": "// The '...' here is the REST parameter collecting the arguments\nfunction calculateOrder(discount, ...prices) {\n  const total = prices.reduce((acc, curr) => acc + curr, 0);\n  return total - discount;\n}\n\n// 5 is discount, the rest (10, 20, 30) become the 'prices' array\nconsole.log(calculateOrder(5, 10, 20, 30)); // 55"
+}

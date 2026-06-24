@@ -1,0 +1,45 @@
+{
+  "id": "child-parent",
+  "title": "Child to Parent Communication",
+  "difficulty": "Intermediate",
+  "definition": "Because React has one-way data flow (downwards), the only way for a child to communicate back up to a parent is for the parent to pass a callback function down to the child as a prop, which the child then executes.",
+  "simpleExplanation": "If the manager (Parent) gives the employee (Child) a clipboard (Props), the employee can't write on it. But, if the manager gives the employee a Walkie-Talkie (a Callback Function), the employee can press the button and talk back to the manager whenever a job is done.",
+  "realWorldExample": "A `<SearchBar>` child component has an input field. When the user clicks \"Search\", it calls the `onSearchSubmit(query)` function passed down from the `<App>` parent, allowing the parent to fetch the data.",
+  "useCases": [
+    "Form submissions inside child components",
+    "Triggering modals or UI changes in the parent layout",
+    "Passing child-generated data back up the tree"
+  ],
+  "questions": {
+    "basic": [
+      "How does a child send data to a parent?",
+      "Does data actually flow \"up\" in React?"
+    ],
+    "intermediate": [
+      "What happens if the child calls a parent callback that calls `setState`?",
+      "How do you pass arguments from the child to the parent's function?"
+    ],
+    "advanced": [
+      "Why might passing inline arrow functions as callbacks to children cause performance issues?",
+      "How do you handle multiple deeply nested children passing data up to one parent?"
+    ],
+    "trick": [
+      "Can a child directly access the parent's `useState` setter function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does data actually flow \"up\"?",
+      "answer": "Strictly speaking, no. Data in React ALWAYS flows down. What is happening is that a *function reference* flows down, and the child simply invokes it. The actual state change happens in the parent."
+    },
+    {
+      "question": "Can a child directly access the parent's setState function?",
+      "answer": "Yes! `setCount` is just a function. If the parent passes `setCount` down as a prop, the child can call `props.setCount(5)` directly. However, it is usually better practice to wrap it in a named handler like `onUpdateCount`."
+    },
+    {
+      "question": "Why might inline arrow functions cause performance issues?",
+      "answer": "If the parent does `<Child onAction={() => doSomething()} />`, a brand new function is created in memory on every render. If `<Child>` is wrapped in `React.memo`, this new function breaks the memoization cache. Use `useCallback` to fix this."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\n// Child Component\nfunction Child({ onMessageSend }) {\n  const [text, setText] = useState(\"\");\n\n  const handleSubmit = () => {\n    // Child invokes the Walkie-Talkie (Callback) and passes its internal data UP\n    onMessageSend(text);\n    setText(\"\");\n  };\n\n  return (\n    <div className=\"p-4 border bg-gray-100\">\n      <h3>Child</h3>\n      <input \n        value={text} \n        onChange={e => setText(e.target.value)} \n        placeholder=\"Message for parent...\" \n      />\n      <button onClick={handleSubmit}>Send to Parent</button>\n    </div>\n  );\n}\n\n// Parent Component\nexport default function Parent() {\n  const [message, setMessage] = useState(\"No message yet\");\n\n  // This function is passed down to the child\n  const handleReceiveMessage = (childData) => {\n    setMessage(childData);\n  };\n\n  return (\n    <div className=\"p-4\">\n      <h2>Parent</h2>\n      <p className=\"text-blue-600 font-bold\">Message received: {message}</p>\n      <br />\n      <Child onMessageSend={handleReceiveMessage} />\n    </div>\n  );\n}"
+}

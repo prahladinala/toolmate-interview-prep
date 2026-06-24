@@ -1,0 +1,31 @@
+{
+  "id": "narrow-vs-general-ai",
+  "title": "Narrow AI vs AGI",
+  "difficulty": "Intermediate",
+  "definition": "Narrow AI (ANI) is trained to perform a single, specific task. Artificial General Intelligence (AGI) is a theoretical system that can understand, learn, and apply knowledge across any completely novel domain, identically to a human.",
+  "simpleExplanation": "Narrow AI is a calculator—it's way better than you at math, but it can't write a poem. AGI is a human brain—it can learn to do math, write a poem, cook dinner, and drive a car.",
+  "realWorldExample": "Siri is Narrow AI. It can set a timer, but if you ask it to explain quantum physics or drive your car, it fails entirely. AGI would be capable of learning to do any job a human can do.",
+  "useCases": [
+    "Futurism",
+    "AI alignment",
+    "Evaluating AI model capabilities"
+  ],
+  "questions": {
+    "basic": [
+      "Is ChatGPT considered Artificial General Intelligence (AGI)?"
+    ],
+    "intermediate": [
+      "Why do many experts believe achieving AGI is extremely dangerous?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is ChatGPT AGI?",
+      "answer": "No. Despite being highly versatile, it is still technically a form of Narrow AI optimized specifically for predicting the next word in a sequence based on its training data. It lacks true autonomy and generalized understanding."
+    },
+    {
+      "question": "Why dangerous?",
+      "answer": "Because an entity with generalized intelligence greater than humans could act unpredictably, rapidly improve itself beyond human control, and pursue goals that might be misaligned with human survival (the 'Alignment Problem')."
+    }
+  ]
+}

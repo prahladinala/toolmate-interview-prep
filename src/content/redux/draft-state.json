@@ -1,0 +1,30 @@
+{
+  "id": "draft-state",
+  "title": "Draft State",
+  "difficulty": "Intermediate",
+  "definition": "The term used by Immer to describe the Proxy object you interact with inside an RTK reducer. It represents the 'in-progress' changes before they become the final immutable state.",
+  "simpleExplanation": "A temporary scratchpad. Inside `createSlice`, the `state` variable passed into your reducer is not the REAL state. It is a 'Draft'. You can scribble all over the draft, and when the function ends, Immer prints a final, clean copy based on your scribbles.",
+  "realWorldExample": "Modifying `state.user.name = 'Bob'` inside a slice reducer.",
+  "useCases": [
+    "Understanding RTK reducer mechanics"
+  ],
+  "questions": {
+    "basic": [
+      "Can you `console.log(state)` directly inside an RTK reducer to see your data?"
+    ],
+    "intermediate": [
+      "How do you properly log the Draft State in RTK so you can read it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Console log directly?",
+      "answer": "No! If you `console.log(state)`, you will see a massive, unreadable `Proxy` object, not your actual data."
+    },
+    {
+      "question": "How to log properly?",
+      "answer": "RTK provides a utility called `current()`. You must import it and log `console.log(current(state))` to read the plain data."
+    }
+  ],
+  "codeExample": "import { createSlice, current } from '@reduxjs/toolkit';\n\nconst slice = createSlice({\n  name: 'example',\n  initialState: { items: [] },\n  reducers: {\n    doSomething: (state) => {\n      // ❌ Logs a weird Proxy object. Very confusing!\n      console.log(state);\n\n      // ✅ Logs the actual JavaScript data perfectly!\n      console.log(current(state));\n      \n      // Mutate the draft state safely\n      state.items.push(1);\n    }\n  }\n});"
+}

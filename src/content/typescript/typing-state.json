@@ -1,0 +1,35 @@
+{
+  "id": "typing-state",
+  "title": "React: Typing State",
+  "difficulty": "Beginner",
+  "definition": "Providing type parameters to the `useState` and `useReducer` hooks to enforce the type of data stored in React state.",
+  "simpleExplanation": "Usually, TS is smart enough to guess your state. If you write `useState(0)`, TS knows the state is a number. But what if the state starts out empty, like `useState()`? TS has no idea what will go in there later. You must tell it: 'This empty state will eventually hold an Array of Users' using Generics.",
+  "realWorldExample": "Fetching a user profile. The initial state is `null` because the data hasn't loaded yet. You type it as `const [user, setUser] = useState<User | null>(null);`.",
+  "useCases": [
+    "Complex state objects",
+    "State that starts as null/undefined",
+    "useReducer actions"
+  ],
+  "questions": {
+    "basic": [
+      "Do you always need to type `useState` explicitly?"
+    ],
+    "intermediate": [
+      "How do you type `useState` for an array of objects that starts empty?"
+    ],
+    "advanced": [
+      "How do you type the Action object in `useReducer`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do you always need to type it?",
+      "answer": "No! Rely on inference for primitives. `useState(false)` is perfectly inferred as a boolean. Only add `<Type>` when inference fails or the state starts as null."
+    },
+    {
+      "question": "How to type an empty array?",
+      "answer": "`const [items, setItems] = useState<Item[]>([]);`. If you don't provide `<Item[]>`, TS infers it as `never[]`, meaning it will NEVER let you push anything into that array!"
+    }
+  ],
+  "codeExample": "import { useState } from 'react';\n\ninterface User {\n  id: number;\n  name: string;\n}\n\nexport function Profile() {\n  // 1. INFERENCE (Good for primitives)\n  const [isLoading, setIsLoading] = useState(false); // Inferred as boolean\n\n  // 2. EXPLICIT GENERICS (Required for null/undefined starts)\n  const [user, setUser] = useState<User | null>(null);\n\n  // 3. EXPLICIT ARRAYS (Required for empty arrays)\n  const [followers, setFollowers] = useState<User[]>([]);\n\n  const handleLoad = () => {\n    setUser({ id: 1, name: \"Alice\" }); // TS guarantees this matches the interface\n  };\n\n  return <div>{user ? user.name : \"Loading...\"}</div>;\n}"
+}

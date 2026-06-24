@@ -1,0 +1,33 @@
+{
+  "id": "absolute",
+  "title": "Absolute",
+  "difficulty": "Advanced",
+  "definition": "Removes an element completely from the normal document flow. It is positioned relative to its closest positioned ancestor (not necessarily the viewport).",
+  "simpleExplanation": "The element is ripped out of the HTML document entirely, like picking up a sticker. The elements below it instantly slide up to fill the empty space. You can then stick that element anywhere on the screen using coordinates.",
+  "realWorldExample": "A red notification badge (like '3 new messages') sitting in the top-right corner of a profile picture.",
+  "useCases": [
+    "Tooltips",
+    "Dropdown menus",
+    "Notification badges",
+    "Overlay modals"
+  ],
+  "questions": {
+    "basic": [
+      "If an element is `position: absolute`, what happens to the elements below it?"
+    ],
+    "intermediate": [
+      "How does an absolute element decide where `top: 0` is?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Elements below it?",
+      "answer": "They ignore it completely. They slide up as if the absolute element was deleted from the HTML code."
+    },
+    {
+      "question": "Where is top 0?",
+      "answer": "It looks UP the HTML tree for the first parent element that has `position: relative`. If it finds one, `top: 0` means 'The top of that parent'. If it finds nothing, it goes all the way up to the `<body>` and `top: 0` means 'The top of the entire webpage'."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. The Container MUST be relative to trap the absolute child! */\n  .parent-container {\n    position: relative;\n    width: 300px; height: 200px;\n    background: #e2e8f0;\n    border: 2px solid black;\n    margin: 50px;\n  }\n\n  /* 2. The Child is ripped out of the flow and pinned to the top-right corner of the parent */\n  .notification-badge {\n    position: absolute;\n    top: -10px;  /* Nudge it OUTSIDE the top boundary */\n    right: -10px; /* Nudge it OUTSIDE the right boundary */\n    \n    background: red;\n    color: white;\n    padding: 5px 10px;\n    border-radius: 50%;\n    font-weight: bold;\n  }\n  \n  .normal-content {\n    padding: 20px;\n  }\n</style>\n\n<div class=\"parent-container\">\n  <!-- This badge doesn't push the text down. It floats above it. -->\n  <div class=\"notification-badge\">3</div>\n  \n  <div class=\"normal-content\">\n    <h3>Profile Settings</h3>\n    <p>This gray box is position: relative.</p>\n    <p>The red badge is position: absolute. It is 'trapped' inside this box.</p>\n  </div>\n</div>"
+}

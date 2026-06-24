@@ -1,0 +1,45 @@
+{
+  "id": "classes",
+  "title": "ES6 Classes",
+  "difficulty": "Intermediate",
+  "definition": "Classes are a template for creating objects. They encapsulate data with code to work on that data. JavaScript classes, introduced in ES6, are primarily syntactical sugar over JavaScript's existing prototype-based inheritance.",
+  "simpleExplanation": "Think of a Class like a blueprint for a house. The blueprint itself isn't a house you can live in, but it tells you exactly how to build one. When you use the `new` keyword, you are telling JavaScript to use the blueprint to build a real, physical house (an object).",
+  "realWorldExample": "In a game, you might have a `Player` class. The blueprint says every player needs a name and health. You can use it to spawn `const player1 = new Player('Alice')` and `const player2 = new Player('Bob')`.",
+  "useCases": [
+    "Object-Oriented Programming (OOP) in JavaScript",
+    "Creating multiple objects that share the same methods",
+    "Extending base functionality (like React class components)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you create an instance of a class?",
+      "What is the 'constructor' method used for?"
+    ],
+    "intermediate": [
+      "How do you inherit from another class?",
+      "What does the 'super()' function do?"
+    ],
+    "advanced": [
+      "What are static methods and properties?",
+      "What are private class features (using #)?"
+    ],
+    "trick": [
+      "Are JavaScript classes hoisted like function declarations?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does the 'super()' function do?",
+      "answer": "When creating a subclass using 'extends', you must call `super()` inside the constructor before accessing `this`. It calls the constructor of the parent class, setting up the inheritance properly."
+    },
+    {
+      "question": "What are static methods?",
+      "answer": "Static methods belong to the Class itself, not to the instances (objects) created from the class. You call them directly on the class, like `Math.random()`, not on a new object."
+    },
+    {
+      "question": "Are JavaScript classes hoisted?",
+      "answer": "Class declarations are hoisted, but they remain in the Temporal Dead Zone (like `let` and `const`). You cannot instantiate a class before it is defined in the code."
+    }
+  ],
+  "codeExample": "class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n\n  speak() {\n    console.log(`${this.name} makes a noise.`);\n  }\n}\n\n// Inheritance\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name); // Call the parent constructor\n    this.breed = breed;\n  }\n\n  speak() {\n    console.log(`${this.name} barks!`);\n  }\n  \n  // Static method (belongs to the class, not the dog)\n  static info() {\n    console.log(\"Dogs are great pets.\");\n  }\n}\n\nconst d = new Dog('Rex', 'German Shepherd');\nd.speak(); // \"Rex barks!\"\nconsole.log(d.breed); // \"German Shepherd\"\n\nDog.info(); // \"Dogs are great pets.\""
+}

@@ -1,0 +1,23 @@
+{
+  "id": "docker-restart",
+  "title": "docker restart",
+  "difficulty": "Beginner",
+  "definition": "A convenience CLI command that stops a running container and immediately starts it back up again in one fluid motion.",
+  "simpleExplanation": "Turning it off and back on again.",
+  "realWorldExample": "You changed a configuration file inside a running Apache container. Apache needs to reboot to read the new file. You type `docker restart apache-web`, and the container reboots instantly.",
+  "useCases": [
+    "Applying configuration changes",
+    "Recovering crashed apps"
+  ],
+  "questions": {
+    "basic": [
+      "Is `docker restart` the exact same thing as running `docker stop` followed by `docker start`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it the same?",
+      "answer": "Yes. It is functionally identical, just faster to type."
+    }
+  ]
+}

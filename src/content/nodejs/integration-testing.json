@@ -1,0 +1,32 @@
+{
+  "id": "integration-testing",
+  "title": "Integration Testing",
+  "difficulty": "Intermediate",
+  "definition": "The phase in software testing where individual software modules are combined and tested as a group to verify they work together correctly.",
+  "simpleExplanation": "If Unit Testing is verifying the puzzle pieces individually, Integration Testing is verifying that two pieces actually snap together. Does the Express Route properly talk to the Mongoose Model, and does the Mongoose Model successfully write to the Test Database?",
+  "realWorldExample": "Spinning up an in-memory MongoDB server (using `mongodb-memory-server`), sending a Supertest request to your API, and verifying the data was actually written to the database.",
+  "useCases": [
+    "Testing database queries",
+    "Verifying middleware pipelines",
+    "Testing 3rd party API integrations"
+  ],
+  "questions": {
+    "basic": [
+      "Is an Integration Test generally faster or slower than a Unit Test?"
+    ],
+    "intermediate": [
+      "Why do we use separate 'Test Databases' for Integration tests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Faster or slower?",
+      "answer": "Slower. Because they interact with databases, file systems, or networks, they take significantly longer to execute than raw JavaScript unit tests."
+    },
+    {
+      "question": "Why use Test Databases?",
+      "answer": "Because Integration Tests perform real CRUD operations! If you run tests against your Production database, your automated test suite will delete real users and inject fake garbage data into your live app."
+    }
+  ],
+  "codeExample": "console.log(\"--- INTEGRATION TEST FLOW ---\");\n\nconsole.log(\"1. Setup Phase (beforeAll):\");\nconsole.log(\"   - Spin up a temporary isolated Database.\");\nconsole.log(\"   - Connect Express App to the temporary DB.\");\n\nconsole.log(\"\\n2. Test Phase:\");\nconsole.log(\"   - Send POST /api/users { name: 'Integration Test' }\");\nconsole.log(\"   - Verify HTTP Response is 201 Created.\");\nconsole.log(\"   - QUERY THE DATABASE DIRECTLY to ensure the user was actually saved!\");\n\nconsole.log(\"\\n3. Teardown Phase (afterAll):\");\nconsole.log(\"   - Wipe the temporary database completely clean.\");\nconsole.log(\"   - Close connections.\");"
+}

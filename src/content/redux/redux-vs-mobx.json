@@ -1,0 +1,30 @@
+{
+  "id": "redux-vs-mobx",
+  "title": "Redux vs MobX",
+  "difficulty": "Advanced",
+  "definition": "A comparison between Redux's strict, immutable, functional architecture and MobX's mutable, observable-based reactive architecture.",
+  "simpleExplanation": "Redux is strict math: state is completely frozen, and you dispatch actions to generate new copies. MobX is magic: state is fully mutable. You literally just write `state.user.name = 'John'`, and MobX automatically 'observes' the change and magically updates any React component looking at that data.",
+  "realWorldExample": "A team of object-oriented Java developers often prefers MobX because it relies heavily on Classes and mutability. A team of functional programming enthusiasts prefers Redux.",
+  "useCases": [
+    "Architectural paradigms"
+  ],
+  "questions": {
+    "basic": [
+      "Which library relies on strict Immutable Updates: Redux or MobX?"
+    ],
+    "intermediate": [
+      "Why is debugging sometimes considered harder in MobX than in Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which relies on Immutable?",
+      "answer": "Redux. (MobX explicitly relies on Mutable data)."
+    },
+    {
+      "question": "Why debugging harder?",
+      "answer": "Because MobX data can be mutated from ANYWHERE at ANY TIME. There is no strict 'Action -> Dispatch -> Reducer' trail. Redux DevTools provides a flawless, time-stamped history of exactly WHY the state changed, which is invaluable."
+    }
+  ],
+  "codeExample": "// 🟢 MOBX ARCHITECTURE (Object-Oriented, Mutable, Observable)\nimport { makeAutoObservable } from \"mobx\"\n\nclass TimerStore {\n  secondsPassed = 0 // Mutable state!\n\n  constructor() {\n    makeAutoObservable(this) // Makes React watch this object magically\n  }\n\n  increaseTimer() {\n    this.secondsPassed += 1 // Direct mutation! Completely legal in MobX.\n  }\n}\n\nexport const timerStore = new TimerStore()"
+}

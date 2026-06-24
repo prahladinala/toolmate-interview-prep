@@ -1,0 +1,23 @@
+{
+  "id": "docker-pull-registry",
+  "title": "Pulling Images",
+  "difficulty": "Beginner",
+  "definition": "The automated process of downloading image layers from a registry to a local machine. It checks the local cache first before communicating with the remote server.",
+  "simpleExplanation": "Downloading the app from the cloud to your computer.",
+  "realWorldExample": "A Kubernetes cluster needs to scale up. It commands 5 new servers to spin up the app. Each server automatically executes a `docker pull` to fetch the image from the registry before starting the container.",
+  "useCases": [
+    "Deploying applications",
+    "Updating software"
+  ],
+  "questions": {
+    "basic": [
+      "If you don't specify a tag during a pull, what tag does Docker default to?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default tag?",
+      "answer": "The `:latest` tag."
+    }
+  ]
+}

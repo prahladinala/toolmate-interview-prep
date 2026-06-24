@@ -1,0 +1,30 @@
+{
+  "id": "host-network",
+  "title": "Host Network",
+  "difficulty": "Intermediate",
+  "definition": "A network driver that completely removes network isolation between the container and the Docker host. The container shares the host's networking namespace directly.",
+  "simpleExplanation": "Taking the lock off the door. The container no longer gets a fake virtual IP address. It uses the exact same IP address and network ports as the physical computer running it.",
+  "realWorldExample": "You run a web server container on port 80 using the Host network. You do not need to do any 'Port Mapping'. The container instantly takes over port 80 on the actual physical server.",
+  "useCases": [
+    "High-performance networking",
+    "Optimizing network latency"
+  ],
+  "questions": {
+    "basic": [
+      "Does the Host network driver work on Docker Desktop for Mac/Windows?"
+    ],
+    "intermediate": [
+      "What is a major downside of using the Host network?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Work on Mac/Windows?",
+      "answer": "No. The Host network driver only functions properly on native Linux environments. On Mac/Windows, it just attaches to the virtual machine running Docker, not your actual laptop."
+    },
+    {
+      "question": "Major downside?",
+      "answer": "Port conflicts and loss of isolation. If you try to run two containers that both want port 80 using the Host network, the second container will crash immediately because the port is already claimed by the first."
+    }
+  ]
+}

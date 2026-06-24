@@ -1,0 +1,32 @@
+{
+  "id": "openapi",
+  "title": "OpenAPI Specification",
+  "difficulty": "Advanced",
+  "definition": "A widely adopted, language-agnostic standard for describing the structure of REST APIs. It defines endpoints, input parameters, and output JSON schemas in a strictly formatted YAML or JSON document.",
+  "simpleExplanation": "It's the architectural blueprint of an API. Instead of writing a Word document explaining how your API works, you write a machine-readable OpenAPI file. Other programs can read this file to automatically generate documentation, generate API clients, or generate testing suites.",
+  "realWorldExample": "Writing an `openapi.yaml` file. A tool reads it and automatically creates a beautiful Swagger webpage. Another tool reads it and automatically generates a complete TypeScript SDK for frontend developers to download.",
+  "useCases": [
+    "Standardizing documentation",
+    "Code generation",
+    "API discovery"
+  ],
+  "questions": {
+    "basic": [
+      "Is the OpenAPI Specification tied to a specific programming language like Java or Node.js?"
+    ],
+    "intermediate": [
+      "What is the difference between OpenAPI and Swagger?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Tied to language?",
+      "answer": "No. It is completely language-agnostic. It is simply a YAML or JSON file describing HTTP rules."
+    },
+    {
+      "question": "OpenAPI vs Swagger?",
+      "answer": "OpenAPI is the official *Specification* (the rules/blueprint). Swagger is the *tooling ecosystem* built around it (like Swagger UI, which turns the blueprint into a webpage)."
+    }
+  ],
+  "codeExample": "# A simple openapi.yaml blueprint\nopenapi: 3.0.0\ninfo:\n  title: My Simple API\n  version: 1.0.0\npaths:\n  /users:\n    get:\n      summary: Get all users\n      responses:\n        '200':\n          description: A list of users\n          content:\n            application/json:\n              schema:\n                type: array\n                items:\n                  type: object\n                  properties:\n                    id:\n                      type: integer\n                    name:\n                      type: string"
+}

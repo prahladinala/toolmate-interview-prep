@@ -1,0 +1,32 @@
+{
+  "id": "keyframes",
+  "title": "@keyframes",
+  "difficulty": "Intermediate",
+  "definition": "The `@keyframes` CSS at-rule controls the intermediate steps in a CSS animation sequence by establishing waypoints along the animation sequence.",
+  "simpleExplanation": "Transitions only go from Point A to Point B. But what if you want an element to shake back and forth 10 times? You use `@keyframes` to write a script: 'At 0%, be here. At 50%, go left. At 100%, go right'.",
+  "realWorldExample": "A loading spinner. You create a keyframe script that says 'At 100%, rotate 360 degrees', and you set it to loop infinitely.",
+  "useCases": [
+    "Complex multi-step animations",
+    "Loading spinners",
+    "Pulsing notification dots"
+  ],
+  "questions": {
+    "basic": [
+      "How do you assign a `@keyframes` animation to a specific `<div>`?"
+    ],
+    "intermediate": [
+      "Can you use words instead of percentages inside `@keyframes`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Assign to a div?",
+      "answer": "You use the `animation` property on the div, and pass it the exact name you gave the `@keyframes` rule. (e.g., `animation: myBounce 2s;`)."
+    },
+    {
+      "question": "Words instead of percentages?",
+      "answer": "Yes. You can use `from` (which equals 0%) and `to` (which equals 100%) for simple two-step animations."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. Define the script (The Keyframes) */\n  @keyframes rainbowPulse {\n    0%   { background-color: red; transform: scale(1); }\n    33%  { background-color: yellow; transform: scale(1.2); }\n    66%  { background-color: blue; transform: scale(0.8); }\n    100% { background-color: red; transform: scale(1); }\n  }\n\n  .animated-box {\n    width: 100px;\n    height: 100px;\n    margin: 50px auto;\n    border-radius: 50%;\n    \n    /* 2. Apply the script to the element */\n    /* name | duration | timing-function | delay | iteration-count */\n    animation: rainbowPulse 3s linear infinite;\n  }\n</style>\n\n<div class=\"animated-box\"></div>\n<p style=\"text-align: center;\">This box runs the keyframe script forever!</p>"
+}

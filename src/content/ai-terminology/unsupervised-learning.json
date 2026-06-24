@@ -1,0 +1,31 @@
+{
+  "id": "unsupervised-learning",
+  "title": "Unsupervised Learning",
+  "difficulty": "Intermediate",
+  "definition": "A Machine Learning approach where the model is trained using data that is neither classified nor labeled. The algorithm must act on that information without prior guidance, finding hidden patterns or intrinsic structures within the data.",
+  "simpleExplanation": "Learning without an answer key. You dump 10,000 random photos of animals into the computer. You don't tell it what any of them are. The computer automatically sorts them into groups based on similarities (e.g., 'These ones have pointy ears', 'These ones have scales').",
+  "realWorldExample": "Customer Segmentation in marketing. A grocery store feeds its purchase history into an algorithm. The algorithm automatically groups shoppers into 'Budget Shoppers', 'Bulk Buyers', and 'Organic Only' without anyone telling it those categories existed.",
+  "useCases": [
+    "Clustering",
+    "Anomaly detection",
+    "Dimensionality reduction"
+  ],
+  "questions": {
+    "basic": [
+      "Are datasets labeled in Unsupervised Learning?"
+    ],
+    "intermediate": [
+      "What is 'Clustering' in the context of Unsupervised Learning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Datasets labeled?",
+      "answer": "No. The data is entirely unlabeled."
+    },
+    {
+      "question": "What is Clustering?",
+      "answer": "The most common unsupervised learning technique. It involves automatically grouping a set of objects in such a way that objects in the same group (a cluster) are more similar to each other than to those in other groups."
+    }
+  ]
+}

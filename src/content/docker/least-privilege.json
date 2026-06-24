@@ -1,0 +1,30 @@
+{
+  "id": "least-privilege",
+  "title": "Least Privilege Principle",
+  "difficulty": "Advanced",
+  "definition": "A core security concept dictating that a container (and the application inside it) should be granted only the absolute minimum permissions, access rights, and network capabilities necessary to perform its specific function.",
+  "simpleExplanation": "Don't give the janitor the keys to the bank vault. If the container only needs to read a database, do not give it permission to format the hard drive or restart the server.",
+  "realWorldExample": "A developer runs a container using `--privileged`. This disables all security features and gives the container full god-mode over the host server. A hacker breaches the web app, uses the god-mode privileges, and deletes the host operating system. The developer violated the Least Privilege principle.",
+  "useCases": [
+    "Hardening environments",
+    "Access control"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `--privileged` flag do to a Docker container?"
+    ],
+    "intermediate": [
+      "How do Linux 'Capabilities' apply to the Least Privilege principle in Docker?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does --privileged do?",
+      "answer": "It completely turns off Docker's security isolation, giving the container raw, unfettered 'Root' access to the Host machine's hardware and kernel. It should almost never be used in production."
+    },
+    {
+      "question": "Linux Capabilities?",
+      "answer": "By default, Docker drops many Linux Capabilities (like the ability to change system time or modify network interfaces). Following Least Privilege means explicitly dropping ALL capabilities (`--cap-drop=ALL`), and then surgically adding back only the specific one or two capabilities the app actually needs."
+    }
+  ]
+}

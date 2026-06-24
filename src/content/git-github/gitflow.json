@@ -1,0 +1,31 @@
+{
+  "id": "gitflow",
+  "title": "GitFlow",
+  "difficulty": "Advanced",
+  "definition": "A strict Git branching model that involves the use of two long-running branches (`master` and `develop`) and multiple short-lived branches (`feature`, `release`, `hotfix`).",
+  "simpleExplanation": "An older, very rigid set of rules for managing massive software releases. You never touch `master`. You do all your work on `develop`. When `develop` is ready, you branch into `release`, test it for a week, and then finally merge it into `master`.",
+  "realWorldExample": "Used by companies that release software on a strict schedule, like video game studios releasing 'Version 1.0', 'Version 1.1', etc.",
+  "useCases": [
+    "Enterprise software releases",
+    "Apps with strict versioning"
+  ],
+  "questions": {
+    "basic": [
+      "What two permanent branches exist in GitFlow?"
+    ],
+    "intermediate": [
+      "Why has GitFlow fallen out of favor in modern web development?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two permanent branches?",
+      "answer": "`master` (production-ready code only) and `develop` (the active integration branch)."
+    },
+    {
+      "question": "Why fallen out of favor?",
+      "answer": "It is too complex and slow. Modern web apps deploy multiple times a day using 'Continuous Deployment'. Maintaining a rigid `develop` and `release` branch adds unnecessary bureaucratic overhead."
+    }
+  ],
+  "codeExample": "// The GitFlow Workflow Pattern:\n\n/*\n  [master] (v1.0) ---------------------------------------> [master] (v1.1)\n             \\                                           /\n            [develop] ---> [feature-A] ---> [develop] --/ \n*/"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "async-await",
+  "title": "Async / Await",
+  "difficulty": "Intermediate",
+  "definition": "async and await are extensions of Promises. They act as syntactic sugar on top of Promises, allowing you to write asynchronous, promise-based behavior in a cleaner style that looks like synchronous code.",
+  "simpleExplanation": "Using Promises with '.then()' can get messy, like a long chain of instructions. 'async/await' lets you write code top-to-bottom, pausing execution on the 'await' line until the task is done, making it read like a simple recipe.",
+  "realWorldExample": "When fetching a user's profile, and then fetching their posts based on their ID. With async/await, you just 'await' the profile, then on the very next line, 'await' the posts, rather than nesting callbacks.",
+  "useCases": [
+    "Simplifying complex Promise chains",
+    "Making asynchronous code easier to read and maintain",
+    "Handling asynchronous errors cleanly using standard try/catch blocks"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'async' keyword do to a function?",
+      "Where can you use the 'await' keyword?"
+    ],
+    "intermediate": [
+      "How do you handle errors with async/await?",
+      "Can you use await inside a regular for-loop? What happens?"
+    ],
+    "advanced": [
+      "How can you await multiple promises concurrently instead of sequentially?",
+      "What is top-level await?"
+    ],
+    "trick": [
+      "If you don't put 'await' in front of a function that returns a Promise, what does the variable contain?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does the 'async' keyword do to a function?",
+      "answer": "It ensures that the function always returns a Promise. Even if you just return a regular value like '5', it will automatically wrap it in a resolved Promise."
+    },
+    {
+      "question": "How do you handle errors with async/await?",
+      "answer": "You wrap your awaited calls inside a standard try...catch block, just like you would for synchronous errors."
+    },
+    {
+      "question": "How can you await multiple promises concurrently?",
+      "answer": "If they don't depend on each other, you shouldn't await them one by one. Instead, create all the promises, put them in an array, and use 'await Promise.all([p1, p2])'."
+    }
+  ],
+  "codeExample": "// A simulated API call\nfunction fetchUserData() {\n  return new Promise(resolve => {\n    setTimeout(() => resolve({ id: 1, name: 'Alice' }), 1000);\n  });\n}\n\n// Using async/await\nasync function displayUser() {\n  console.log(\"Fetching user...\");\n  \n  try {\n    // Code pauses here until the Promise resolves\n    const user = await fetchUserData(); \n    console.log(`Hello, ${user.name}!`);\n  } catch (error) {\n    // Handles any rejections from the Promise\n    console.error(\"Failed to fetch user:\", error);\n  }\n}\n\ndisplayUser();\nconsole.log(\"This runs immediately, before the user is fetched!\");"
+}

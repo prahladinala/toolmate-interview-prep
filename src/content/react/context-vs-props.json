@@ -1,0 +1,44 @@
+{
+  "id": "context-vs-props",
+  "title": "Context vs Props",
+  "difficulty": "Intermediate",
+  "definition": "Props represent explicit, direct, one-to-one communication between components. Context represents implicit, broadcast, one-to-many communication across the component tree.",
+  "simpleExplanation": "Props are like sending a text message directly to your friend. It is private, explicit, and easy to trace. Context is like making an announcement over a school PA system. Everyone in the building can hear it immediately without you having to find them, but if used too much, the school becomes chaotic and noisy.",
+  "realWorldExample": "Use Props for: The `label` on a specific button, the `imageUrl` on a profile picture, or the `items` in a shopping cart list. Use Context for: The active Theme (Dark/Light), the currently logged-in User Session, or the active Locale/Language (en-US).",
+  "useCases": [
+    "Props: High component reusability, strict data flow, isolated logic.",
+    "Context: Global app state, avoiding Prop Drilling, ambient data."
+  ],
+  "questions": {
+    "basic": [
+      "When should you use Props instead of Context?",
+      "When should you use Context instead of Props?"
+    ],
+    "intermediate": [
+      "Why does using Context make a component harder to reuse?",
+      "How does a Context Provider update its consumers?"
+    ],
+    "advanced": [
+      "What is the performance penalty of Context compared to Props?",
+      "How can you optimize Context to prevent unnecessary renders?"
+    ],
+    "trick": [
+      "Can a component receive data from both Props and Context at the same time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why does Context make a component harder to reuse?",
+      "answer": "If a `<Button>` relies on `useContext(ThemeContext)`, you can never use that button in another project or another part of the app without ALSO wrapping it in a `ThemeContext.Provider`. It becomes tightly coupled to its environment. Props keep components pure and isolated."
+    },
+    {
+      "question": "What is the performance penalty of Context?",
+      "answer": "Whenever the `value` of a Provider changes, EVERY single component that calls `useContext` for that provider will re-render immediately. There is no built-in way to \"bail out\" of this render, unlike Props where you can use `React.memo`."
+    },
+    {
+      "question": "Can you receive data from both at the same time?",
+      "answer": "Yes! It is extremely common. A component might receive `text=\"Submit\"` via Props, but receive the `theme` from Context."
+    }
+  ],
+  "codeExample": "// Conceptual comparison, no execution needed.\nconsole.log(\"Props are Explicit. Context is Implicit. Prefer Props until the pain of drilling outweighs the loss of component reusability.\");"
+}

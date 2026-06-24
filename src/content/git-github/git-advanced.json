@@ -1,0 +1,30 @@
+{
+  "id": "git-advanced",
+  "title": "Advanced Interview Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions targeting Senior Developers, focusing on Git internals, destructive commands, history rewriting, and CI/CD architecture.",
+  "simpleExplanation": "Proving you can rescue a junior developer who accidentally deleted the production database credentials and force-pushed it to the server.",
+  "realWorldExample": "Explaining the difference between Soft, Mixed, and Hard resets.",
+  "useCases": [
+    "Senior Developer / DevOps Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What command allows you to combine multiple commits into one?"
+    ],
+    "intermediate": [
+      "What is the `git reflog` and why is it important?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Combine commits?",
+      "answer": "Interactive Rebase (`git rebase -i`), using the 'squash' option."
+    },
+    {
+      "question": "What is reflog?",
+      "answer": "The Reference Log records every time the HEAD pointer moves on your local machine. It is the ultimate safety net. Even if you use `git reset --hard` and 'permanently' delete commits, they are still in the reflog for 30 days and can be fully recovered."
+    }
+  ],
+  "codeExample": "/*\n  Q: What is a detached HEAD state?\n  \n  A: Normally, HEAD points to a Branch pointer (like `main`), which then \n     points to a Commit. \n     If you check out a specific commit hash (e.g., `git checkout a1b2c3d`), \n     HEAD detaches from the branch and points directly to the commit.\n     \n     If you make new commits in a detached HEAD state, they do not belong \n     to any branch. If you switch away, those commits will become orphaned \n     and eventually deleted by the garbage collector. \n     To save them, you must create a new branch: `git checkout -b new-branch`.\n*/"
+}

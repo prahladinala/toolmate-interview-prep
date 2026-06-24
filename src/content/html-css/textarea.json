@@ -1,0 +1,30 @@
+{
+  "id": "textarea",
+  "title": "Textarea",
+  "difficulty": "Beginner",
+  "definition": "The `<textarea>` element represents a multi-line plain-text editing control.",
+  "simpleExplanation": "An `<input type=\"text\">` is a single-line box, perfect for names or emails. A `<textarea>` is a massive, multi-line box, perfect for comments, essays, or messages.",
+  "realWorldExample": "The comment box on YouTube or the 'Message' field on a Contact Us page.",
+  "useCases": [
+    "Collecting long-form text input"
+  ],
+  "questions": {
+    "basic": [
+      "Is `<textarea>` a self-closing tag like `<input>`?"
+    ],
+    "intermediate": [
+      "How do you control the initial size of a textarea?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it self-closing?",
+      "answer": "No! It has an opening and a closing tag (`<textarea></textarea>`). Any text you put BETWEEN the tags becomes the default value."
+    },
+    {
+      "question": "How to control size?",
+      "answer": "You can use CSS (`width` and `height`), or you can use the native HTML attributes `rows` (number of text lines visible) and `cols` (width in characters)."
+    }
+  ],
+  "codeExample": "<label for=\"short\">Short Input (Single Line):</label><br>\n<input type=\"text\" id=\"short\"><br><br>\n\n<label for=\"long\">Long Textarea (Multi Line):</label><br>\n<!-- The rows and cols attributes define the initial box size -->\n<textarea id=\"long\" rows=\"5\" cols=\"40\">\nThis is the default text inside the textarea. \nNotice how it can span multiple lines.\n\nYou can also click and drag the bottom right corner to resize me in most browsers!\n</textarea>"
+}

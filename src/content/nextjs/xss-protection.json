@@ -1,0 +1,31 @@
+{
+  "id": "xss-protection",
+  "title": "XSS Prevention",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Site Scripting (XSS): A vulnerability where an attacker injects malicious JavaScript into a website, which then executes in the browser of other users.",
+  "simpleExplanation": "An attacker writes `<script>stealPasswords()</script>` in a blog comment. If your website blindly renders that comment, the browser will execute the script. React and Next.js automatically prevent this by 'escaping' all text.",
+  "realWorldExample": "A forum website. You must ensure that if someone pastes JavaScript into a forum post, it displays as raw text on the screen, rather than actually running the code.",
+  "useCases": [
+    "Application security",
+    "Sanitizing user inputs"
+  ],
+  "questions": {
+    "basic": [
+      "Does React automatically protect you from XSS attacks when rendering variables like `<div>{userData}</div>`?"
+    ],
+    "intermediate": [
+      "What specific React property explicitly bypasses this protection and leaves you vulnerable to XSS?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Automatically protect?",
+      "answer": "Yes. React automatically sanitizes (escapes) all variables placed in curly braces before rendering them to the DOM."
+    },
+    {
+      "question": "Which property bypasses?",
+      "answer": "`dangerouslySetInnerHTML`. If you use this, you MUST manually sanitize the input using a library like DOMPurify."
+    }
+  ],
+  "codeExample": "export default function UserComment({ commentText, rawHtml }) {\n  return (\n    <div>\n      {/* \n        ✅ SAFE BY DEFAULT. \n        If commentText contains <script>alert('Hacked')</script>, \n        React turns it into plain text. It will NOT run.\n      */}\n      <p>{commentText}</p>\n\n      {/* \n        ❌ EXTREMELY DANGEROUS. \n        This explicitly tells React to execute whatever is in rawHtml as code.\n        Only use this if you ran DOMPurify on rawHtml first!\n      */}\n      <div dangerouslySetInnerHTML={{ __html: rawHtml }} />\n    </div>\n  );\n}"
+}

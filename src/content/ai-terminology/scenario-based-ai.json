@@ -1,0 +1,30 @@
+{
+  "id": "scenario-based-ai",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Complex system-design questions where you must architect an AI pipeline to solve a specific, high-scale business problem.",
+  "simpleExplanation": "There is no 'right' answer. The interviewer wants to hear you debate the trade-offs between Cost, Latency, Accuracy, and Security.",
+  "realWorldExample": "Scenario: 'We want to build a customer support bot for a massive bank. It must be highly accurate, NEVER hallucinate financial advice, and cost less than $0.01 per query. Design the architecture.'",
+  "useCases": [
+    "System Design interviews",
+    "Principal Engineering"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: Your RAG system is accurately retrieving the right documents, but the LLM is taking 10 seconds to generate the answer. How do you fix this?"
+    ],
+    "intermediate": [
+      "Scenario: Users are tricking your company's AI into swearing at them. How do you architect a solution?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fix 10-second latency?",
+      "answer": "Implement Semantic Caching so repeat questions return instantly. Use a smaller, faster model (like LLaMA-3-8B instead of GPT-4) for summarization. Ensure the UI uses 'Streaming' so the user sees words appearing immediately rather than waiting for the whole paragraph."
+    },
+    {
+      "question": "Prevent swearing?",
+      "answer": "Implement an external 'Guardrail' architecture. Before the AI's response is sent to the user, pass it through a secondary, lightweight classification model. If the classifier detects toxicity or prompt injection success, intercept the message and return a canned error response."
+    }
+  ]
+}

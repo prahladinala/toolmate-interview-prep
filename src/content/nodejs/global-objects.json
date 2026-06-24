@@ -1,0 +1,35 @@
+{
+  "id": "global-objects",
+  "title": "Global Objects",
+  "difficulty": "Beginner",
+  "definition": "Variables and functions that are globally available in all Node.js modules without needing to be imported via `require()`.",
+  "simpleExplanation": "These are built-in cheat codes. Instead of importing `console` or `setTimeout` into every single file, Node injects them globally so you can use them immediately anywhere in your app.",
+  "realWorldExample": "Using `__dirname` to dynamically find the current folder path so you can read a configuration file safely, regardless of where the app was launched from.",
+  "useCases": [
+    "Path resolution",
+    "Timers",
+    "Environment variable access"
+  ],
+  "questions": {
+    "basic": [
+      "Name three global objects in Node.js."
+    ],
+    "intermediate": [
+      "What is the difference between `__dirname` and `__filename`?"
+    ],
+    "advanced": [
+      "Are `module`, `require`, and `exports` truly global objects?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference between __dirname and __filename?",
+      "answer": "`__dirname` gives you the absolute path to the directory (folder) the current file lives in. `__filename` gives you the absolute path to the actual file itself (including the .js extension)."
+    },
+    {
+      "question": "Are require and module truly global?",
+      "answer": "Trick question! No. They appear global, but Node actually wraps every single file in a hidden function before executing it. `require`, `exports`, and `__dirname` are actually just arguments passed into that hidden wrapper function!"
+    }
+  ],
+  "codeExample": "// GLOBAL VARIABLES (No imports needed!)\n\n// 1. console (Prints to stdout/stderr)\nconsole.log(\"I am globally available!\");\n\n// 2. Timers\n// setTimeout(() => console.log(\"Timer finished\"), 1000);\n\n// 3. Current Directory and File (In CommonJS)\n// Note: These don't work in standard ES Modules unless specifically enabled\nconsole.log(\"Current Directory:\", __dirname);\nconsole.log(\"Current File:\", __filename);\n\n// 4. The 'process' object (Information about the running app)\nconsole.log(\"Node Version:\", process.version);\nconsole.log(\"Platform:\", process.platform);\n\n// 5. The actual root global object (equivalent to 'window' in browsers)\n// You can attach things to it (but it's considered bad practice)\nglobal.myCustomAppSecret = \"12345\";\nconsole.log(global.myCustomAppSecret);"
+}

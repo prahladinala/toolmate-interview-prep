@@ -1,0 +1,31 @@
+{
+  "id": "image-tagging",
+  "title": "Image Tagging",
+  "difficulty": "Intermediate",
+  "definition": "The process of assigning a human-readable alias/version number to a specific image ID to easily identify different variations of an image.",
+  "simpleExplanation": "Giving a name to a version. Instead of remembering the ID `f4a9b2c8`, you attach a tag so you can just call it `myapp:v1.0`.",
+  "realWorldExample": "You build your code and tag it `my-website:v1`. A month later, you change the code and tag the new build `my-website:v2`. Now you can easily run either version just by specifying the tag.",
+  "useCases": [
+    "Version control",
+    "Rollbacks",
+    "Environment staging"
+  ],
+  "questions": {
+    "basic": [
+      "If you run `docker pull ubuntu` without specifying a tag, what tag does Docker automatically assume you want?"
+    ],
+    "intermediate": [
+      "Why is it a terrible idea to use the `:latest` tag in a production deployment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which default tag?",
+      "answer": "The `:latest` tag."
+    },
+    {
+      "question": "Why avoid latest in production?",
+      "answer": "Because `:latest` points to a moving target. If you tell your production server to run `node:latest`, it might be Node v18 today. Tomorrow, the Node team releases v20, the server pulls it, and your app crashes because of breaking changes. You should always use exact semantic versions (like `node:18.4.0`) in production to guarantee stability."
+    }
+  ]
+}

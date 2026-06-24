@@ -1,0 +1,33 @@
+{
+  "id": "query-params",
+  "title": "Query Parameters",
+  "difficulty": "Beginner",
+  "definition": "Optional key-value pairs appended to the very end of a URL after a question mark (`?`), used primarily to filter, sort, or paginate data in a GET request.",
+  "simpleExplanation": "If the URL is a filing cabinet (`/users`), Query Parameters are the specific instructions to the librarian on how to search the cabinet (`?age=25&sort=name`).",
+  "realWorldExample": "Searching for red shoes on Amazon: `amazon.com/products?category=shoes&color=red&max_price=50`.",
+  "useCases": [
+    "Filtering data",
+    "Pagination",
+    "Sorting lists",
+    "Search bars"
+  ],
+  "questions": {
+    "basic": [
+      "What character is used to separate multiple query parameters from each other in a URL?"
+    ],
+    "intermediate": [
+      "Why shouldn't you put a user's password in a query parameter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which character?",
+      "answer": "The ampersand (`&`). Example: `?name=John&age=30`."
+    },
+    {
+      "question": "Why no passwords?",
+      "answer": "Query parameters are fully visible in the browser's address bar. They are also permanently saved in the browser's history and recorded in plain text in backend server logs. Passwords must go in the encrypted Request Body."
+    }
+  ],
+  "codeExample": "/* \n  URL: https://api.store.com/shoes?color=red&size=10&sort=-price\n*/\n\n// Backend Example (Express.js)\napp.get('/api/shoes', (req, res) => {\n  // The framework automatically parses the query string into an object!\n  const { color, size, sort } = req.query;\n  \n  console.log(color); // \"red\"\n  console.log(size);  // \"10\"\n  \n  // Use them in a database query\n  const shoes = await db.query(`\n    SELECT * FROM shoes \n    WHERE color = ${color} AND size = ${size}\n  `);\n});\n\n// Frontend Example (Using URLSearchParams)\nconst params = new URLSearchParams({\n  color: 'red',\n  size: '10'\n});\nfetch(`/api/shoes?${params.toString()}`);"
+}

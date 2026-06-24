@@ -1,0 +1,31 @@
+{
+  "id": "transform",
+  "title": "Transform Utilities",
+  "difficulty": "Intermediate",
+  "definition": "The foundation for performing 2D hardware-accelerated manipulations (Scaling, Rotating, Translating) on an element.",
+  "simpleExplanation": "Changing the physical geometry of a box without messing up the rest of the website layout. Because Transforms use the computer's Graphics Card (GPU), moving an element with `translate` is infinitely smoother than moving it using `margin-top`.",
+  "realWorldExample": "Any time an element 'slides in' from the side of the screen, or a button 'shrinks' when clicked, it is using CSS Transforms.",
+  "useCases": [
+    "Hardware-accelerated animations",
+    "Complex positioning"
+  ],
+  "questions": {
+    "basic": [
+      "In older versions of Tailwind, you had to add the `transform` class before scaling or rotating. Do you still need to do this in Tailwind v3+?"
+    ],
+    "intermediate": [
+      "Why is it better for performance to animate a sliding menu using `translate-x` instead of animating its `margin-left`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Still need transform class?",
+      "answer": "No! In Tailwind v3, the JIT compiler automatically injects the base transform CSS if you use any scale/rotate/translate utility."
+    },
+    {
+      "question": "Translate vs Margin?",
+      "answer": "Changing `margin` forces the browser to recalculate the layout of every single element on the page 60 times a second (Layout Thrashing). `translate` happens on a separate GPU layer and does not affect surrounding elements at all, resulting in buttery 60fps performance."
+    }
+  ],
+  "codeExample": "<!-- \n  DO NOT DO THIS: Animating Width \n  Causes massive CPU lag on low-end devices!\n-->\n<div class=\"w-32 hover:w-64 transition-all duration-300 bg-red-500\">Bad</div>\n\n<!-- \n  DO THIS: Animating Scale/Transform \n  Uses the GPU. Buttery smooth 60fps!\n-->\n<div class=\"w-32 hover:scale-x-200 origin-left transition-transform duration-300 bg-green-500\">Good</div>"
+}

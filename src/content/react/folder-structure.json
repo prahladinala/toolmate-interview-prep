@@ -1,0 +1,34 @@
+{
+  "id": "folder-structure",
+  "title": "Folder Structure",
+  "difficulty": "Intermediate",
+  "definition": "The architectural organization of files and directories in a React project to ensure maintainability.",
+  "simpleExplanation": "If you throw all your clothes into one giant pile on the floor, it takes forever to find a pair of socks. Folder structure is like a dresser with specific drawers for shirts, pants, and socks. As your React app grows, having organized drawers prevents chaos.",
+  "realWorldExample": "Moving from a flat `src/components` folder to categorized folders: `src/layouts`, `src/pages`, `src/features`, `src/utils`.",
+  "useCases": [
+    "Scaling teams",
+    "Onboarding new developers quickly"
+  ],
+  "questions": {
+    "basic": [
+      "Is there a single 'official' folder structure for React?"
+    ],
+    "intermediate": [
+      "What is the difference between `components` and `pages`?"
+    ],
+    "advanced": [
+      "What is Colocation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is there an official structure?",
+      "answer": "No. React is highly unopinionated. However, frameworks like Next.js DO enforce strict folder structures (like the `app/` router)."
+    },
+    {
+      "question": "What is Colocation?",
+      "answer": "Colocation is the principle of keeping files that change together close together. Instead of putting a component's CSS in `src/styles`, you put it right next to the component in `src/components/Button/Button.css`."
+    }
+  ],
+  "codeExample": "// Standard pattern\n// src/components\n// src/hooks\n// src/utils\n// src/services (API calls)"
+}

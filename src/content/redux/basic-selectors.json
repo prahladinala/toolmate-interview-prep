@@ -1,0 +1,31 @@
+{
+  "id": "basic-selectors",
+  "title": "Basic Selectors",
+  "difficulty": "Beginner",
+  "definition": "Functions used to extract specific pieces of data from the Redux store state.",
+  "simpleExplanation": "A selector is just a simple arrow function: `(state) => state.auth.user`. You pass this function into the `useSelector` hook so the component knows exactly which slice of the pie it's allowed to eat.",
+  "realWorldExample": "Instead of writing `(state) => state.auth.user` in 10 different components, you define `export const selectUser = (state) => state.auth.user` inside `authSlice.js`, and import that function into your components.",
+  "useCases": [
+    "Encapsulating state shape",
+    "Reusable data extraction"
+  ],
+  "questions": {
+    "basic": [
+      "Where is the best place to define your selector functions?"
+    ],
+    "intermediate": [
+      "If the shape of your state changes (e.g., `state.user` becomes `state.auth.user`), why are selectors helpful?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to define?",
+      "answer": "In the same file as the Slice that manages that data (e.g., `userSlice.js`)."
+    },
+    {
+      "question": "Why helpful for shape changes?",
+      "answer": "If you hardcoded `state.user` in 50 components, you have to update 50 files. If you used a single `selectUser` selector function, you only have to update the path in ONE file, and all 50 components magically work."
+    }
+  ],
+  "codeExample": "// userSlice.js\nconst userSlice = createSlice({ ... });\n\n// Define Selectors alongside the slice\nexport const selectIsLoggedIn = (state) => state.user.isLoggedIn;\nexport const selectUsername = (state) => state.user.profile.name;\n\n// Component.js\nimport { selectUsername } from './userSlice';\nimport { useSelector } from 'react-redux';\n\nfunction Header() {\n  // Clean, reusable, and resilient to state shape changes!\n  const username = useSelector(selectUsername);\n}"
+}

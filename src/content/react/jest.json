@@ -1,0 +1,38 @@
+{
+  "id": "jest",
+  "title": "Jest",
+  "difficulty": "Intermediate",
+  "definition": "Jest is a delightful JavaScript Testing Framework with a focus on simplicity. It acts as the test runner, assertion library, and mocking framework all in one.",
+  "simpleExplanation": "Jest is like the referee of a soccer game. It runs the match (test runner), blows the whistle when someone breaks the rules (assertion library), and occasionally swaps players out for practice dummies (mocking).",
+  "realWorldExample": "Writing `test('adds 1 + 2 to equal 3', () => { expect(sum(1, 2)).toBe(3); });` and running `npm test`. Jest finds the file, runs the code, and prints a green checkmark.",
+  "useCases": [
+    "Unit testing JavaScript logic and utility functions",
+    "Mocking backend API calls so tests run without the internet",
+    "Snapshot testing UI components"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Jest and React Testing Library?",
+      "What does `describe` and `it` mean in Jest?"
+    ],
+    "intermediate": [
+      "How do you mock an external module in Jest?",
+      "What is Snapshot Testing?"
+    ],
+    "advanced": [
+      "How does `jest.mock()` get hoisted to the top of the file?",
+      "What is the difference between `jest.fn()`, `jest.spyOn()`, and `jest.mock()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between Jest and RTL?",
+      "answer": "Jest is the test runner that executes the JavaScript code in Node.js and provides the `expect()` functions. React Testing Library is a set of utilities that renders the React component into a fake DOM so Jest can interact with it."
+    },
+    {
+      "question": "What is Snapshot Testing?",
+      "answer": "Jest takes a serialized snapshot of your rendered component and saves it to a file. On the next test run, it compares the new render to the saved file. If even a single CSS class changed, the test fails. It is useful for preventing accidental UI changes, but notorious for causing 'snapshot fatigue'."
+    }
+  ],
+  "codeExample": "import { sum } from './math';\nimport axios from 'axios';\n\n// Hoisted to the top automatically by Jest\njest.mock('axios');\n\ndescribe('Math operations', () => {\n  it('should add two numbers', () => {\n    expect(sum(1, 2)).toBe(3);\n    expect(sum(2, 2)).not.toBe(5);\n  });\n});\n\ndescribe('API Calls', () => {\n  it('should mock axios', async () => {\n    // We swap out the real axios with a fake return value\n    axios.get.mockResolvedValue({ data: { user: 'Alice' } });\n    \n    const res = await axios.get('/user');\n    expect(res.data.user).toBe('Alice');\n  });\n});"
+}

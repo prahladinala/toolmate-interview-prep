@@ -1,0 +1,31 @@
+{
+  "id": "nodejs-scenario-based",
+  "title": "Scenario Based Questions",
+  "difficulty": "Intermediate",
+  "definition": "Interview questions that present a real-world problem and ask how you would architect a solution using Node.js.",
+  "simpleExplanation": "These questions test your practical experience. Anyone can memorize definitions, but can you figure out why a server is crashing under load?",
+  "realWorldExample": "Scenario: 'Your Node app works perfectly for 10 users, but crashes completely when 10,000 users upload images at the exact same time. How do you fix it?'",
+  "useCases": [
+    "Mid-level to Senior interviews",
+    "System design warm-ups"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: You need to parse a 10GB CSV file in Node.js. How do you do it?"
+    ],
+    "intermediate": [
+      "Scenario: Your server is experiencing random 5-second freezes where it doesn't respond to any HTTP requests. What is likely causing this?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "10GB CSV file?",
+      "answer": "Use Streams. If you use `fs.readFile`, Node attempts to load all 10GB into RAM at once, crashing the V8 engine (which usually caps around 1.5GB). Using `fs.createReadStream` pipes the file chunk-by-chunk."
+    },
+    {
+      "question": "5-second server freezes?",
+      "answer": "You are blocking the Event Loop. Someone wrote a massive synchronous `for` loop, or used a synchronous crypto/JSON parsing function. Because Node is single-threaded, the entire server halts until that math finishes."
+    }
+  ],
+  "codeExample": "/* \n  SCENARIO: \n  You are building an Express route that generates a massive PDF report.\n  It takes 15 seconds to generate. \n  If a user hits this route, the entire server freezes for 15 seconds.\n*/\n\n// BAD SOLUTION:\n// app.get('/report', (req, res) => {\n//   const pdf = generatePDFSynchronously(); // BLOCKS THE EVENT LOOP!\n//   res.send(pdf);\n// });\n\n// GOOD SOLUTION:\nconsole.log(\"Offload the heavy generation to a Worker Thread or a Message Queue (like RabbitMQ).\");\nconsole.log(\"The route should return a '202 Accepted' instantly, and email the user the PDF when the background worker finishes 15 seconds later.\");"
+}

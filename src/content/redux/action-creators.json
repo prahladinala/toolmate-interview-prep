@@ -1,0 +1,31 @@
+{
+  "id": "action-creators",
+  "title": "Action Creators",
+  "difficulty": "Beginner",
+  "definition": "Functions that simply return an action object. They encapsulate the logic of creating the action so you don't have to manually write out the object every time.",
+  "simpleExplanation": "Instead of typing `{ type: 'ADD_ITEM', payload: 'Apple' }` 50 times across your app, you create a function `addItem('Apple')` that generates that object for you. It prevents typos.",
+  "realWorldExample": "A factory machine that stamps out identical forms. You just hand it the specific data (the payload), and it prints out the perfectly formatted official form (the Action).",
+  "useCases": [
+    "Reducing boilerplate",
+    "Preventing spelling errors in action types"
+  ],
+  "questions": {
+    "basic": [
+      "Do Action Creators actually dispatch the action to the store?"
+    ],
+    "intermediate": [
+      "How does Redux Toolkit eliminate the need to manually write Action Creators?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do they dispatch?",
+      "answer": "No. They simply CREATE the object and return it. You still have to wrap them in `dispatch(myActionCreator())`."
+    },
+    {
+      "question": "RTK elimination?",
+      "answer": "When you use `createSlice` in Redux Toolkit, it automatically generates action creators for you under the hood based on the names of your reducer functions."
+    }
+  ],
+  "codeExample": "// ❌ BAD: Hardcoding objects everywhere\ndispatch({ type: 'ADD_TODO', payload: 'Buy milk' });\ndispatch({ type: 'ADD_TODO', payload: 'Do laundry' });\n\n// ✅ GOOD: Using an Action Creator\nfunction addTodo(taskText) {\n  return {\n    type: 'ADD_TODO',\n    payload: taskText\n  };\n}\n\ndispatch(addTodo('Buy milk'));\ndispatch(addTodo('Do laundry'));"
+}

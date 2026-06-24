@@ -1,0 +1,31 @@
+{
+  "id": "hallucination",
+  "title": "Hallucinations",
+  "difficulty": "Intermediate",
+  "definition": "A phenomenon where an AI model confidently generates false, fabricated, or nonsensical information that is not backed by facts or its training data.",
+  "simpleExplanation": "The AI is a chronic people-pleaser. If it doesn't know the answer, it won't say 'I don't know'. Instead, it uses math to string together words that *sound* highly plausible, accidentally lying to you with extreme confidence.",
+  "realWorldExample": "A lawyer used ChatGPT to prepare for a trial. ChatGPT invented 5 fake court cases, complete with fake judges, fake dates, and fake quotes. The lawyer submitted them to the judge and was severely penalized.",
+  "useCases": [
+    "AI Safety",
+    "Fact-checking",
+    "System limitations"
+  ],
+  "questions": {
+    "basic": [
+      "Why do LLMs hallucinate?"
+    ],
+    "intermediate": [
+      "What architectural technique is currently the industry standard for preventing LLMs from hallucinating company data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why?",
+      "answer": "Because they are not databases of facts. They are probability engines predicting the next word. Sometimes, a fictional word has a higher statistical probability than a factual word."
+    },
+    {
+      "question": "Standard prevention technique?",
+      "answer": "Retrieval-Augmented Generation (RAG). By forcing the AI to read a verified internal document before answering, you ground its math in reality, drastically reducing hallucinations."
+    }
+  ]
+}

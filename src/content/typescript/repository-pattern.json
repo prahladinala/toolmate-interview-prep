@@ -1,0 +1,35 @@
+{
+  "id": "repository-pattern",
+  "title": "Repository Pattern",
+  "difficulty": "Advanced",
+  "definition": "An architecture pattern that mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects.",
+  "simpleExplanation": "Your business logic (e.g., 'Calculate User Taxes') shouldn't care if the user data is saved in a PostgreSQL database, a MongoDB database, or a simple JSON file. The Repository is a shield between your logic and the database. It provides clean methods like `UserRepository.findById(id)`.",
+  "realWorldExample": "Heavily used in Node.js backends (like NestJS or TypeORM). You inject a `UserRepository` into your service, completely decoupling your code from the underlying SQL queries.",
+  "useCases": [
+    "Backend TypeScript architecture",
+    "Decoupling business logic from databases",
+    "Making code easily testable/mockable"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main goal of the Repository Pattern?"
+    ],
+    "intermediate": [
+      "How do Generics power a Base Repository?"
+    ],
+    "advanced": [
+      "How does this pattern make unit testing easier?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the main goal?",
+      "answer": "Separation of concerns. It hides the complexity of data access (SQL queries, ORM syntax) behind a simple interface so the core application logic remains clean and unaware of the database technology."
+    },
+    {
+      "question": "How does it make unit testing easier?",
+      "answer": "Because the business logic relies on the `Repository Interface`, you can easily build a `MockUserRepository` that just returns hardcoded objects in memory, allowing you to run unit tests blindingly fast without ever spinning up a real database."
+    }
+  ],
+  "codeExample": "// 1. The Generic Interface Contract\ninterface IRepository<T> {\n  findById(id: string): Promise<T>;\n  save(item: T): Promise<void>;\n}\n\ninterface User { id: string; name: string; }\n\n// 2. The Concrete Implementation (e.g., using MongoDB)\nclass MongoUserRepository implements IRepository<User> {\n  async findById(id: string) {\n    console.log(`Executing Mongo query for ${id}...`);\n    return { id, name: \"Alice\" };\n  }\n  \n  async save(user: User) {\n    console.log(`Saving ${user.name} to MongoDB...`);\n  }\n}\n\n// 3. Business Logic (Completely blind to MongoDB!)\nclass UserService {\n  // It only asks for the Interface contract\n  constructor(private repo: IRepository<User>) {}\n\n  async upgradeUser(id: string) {\n    const user = await this.repo.findById(id);\n    // business logic here...\n    await this.repo.save(user);\n  }\n}"
+}

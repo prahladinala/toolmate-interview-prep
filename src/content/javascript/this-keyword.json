@@ -1,0 +1,45 @@
+{
+  "id": "this-keyword",
+  "title": "The 'this' Keyword",
+  "difficulty": "Intermediate",
+  "definition": "In JavaScript, the 'this' keyword refers to the object it belongs to. However, its value depends completely on HOW a function is called, not where it was defined.",
+  "simpleExplanation": "Imagine the word 'this' as the word 'me' in English. If I say 'my name is AI', 'me' refers to the AI. If YOU say 'my name is John', 'me' refers to John. The meaning of 'this' changes depending on who is talking (or in code, which object is calling the function).",
+  "realWorldExample": "If a user clicks a button, and the button triggers a function, 'this' inside that function refers to the button that was clicked. It tells the function who caused it to run.",
+  "useCases": [
+    "Accessing properties of an object from within its own methods",
+    "Creating reusable functions that can operate on different objects using call, apply, or bind",
+    "Handling events in the DOM"
+  ],
+  "questions": {
+    "basic": [
+      "What does 'this' refer to in a regular object method?",
+      "What does 'this' refer to in the global scope?"
+    ],
+    "intermediate": [
+      "How do arrow functions handle the 'this' keyword differently?",
+      "What is the difference between call, apply, and bind?"
+    ],
+    "advanced": [
+      "How does 'new' binding work?",
+      "What happens to 'this' when you pass an object method as a callback (e.g., to setTimeout)?"
+    ],
+    "trick": [
+      "How can you manually set the value of 'this'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do arrow functions handle 'this' differently?",
+      "answer": "Arrow functions do NOT have their own 'this' binding. Instead, they inherit 'this' from the outer (lexical) scope where they were defined."
+    },
+    {
+      "question": "What is the difference between call, apply, and bind?",
+      "answer": "All three change the value of 'this'. 'call' takes arguments separated by commas. 'apply' takes arguments as an array. 'bind' doesn't execute the function immediately, but returns a new function with 'this' permanently set."
+    },
+    {
+      "question": "What happens when you pass an object method as a callback?",
+      "answer": "It loses its 'this' context and defaults to the global object (or undefined in strict mode). You must use .bind(), or wrap it in an arrow function to preserve the context."
+    }
+  ],
+  "codeExample": "const user = {\n  name: 'Alice',\n  // Normal function: 'this' refers to the object calling it (user)\n  greet: function() {\n    console.log(`Hello, my name is ${this.name}`);\n  },\n  // Arrow function: 'this' is inherited from the outer scope (Global)\n  greetArrow: () => {\n    console.log(`Arrow says: my name is ${this.name}`);\n  }\n};\n\nuser.greet(); // \"Hello, my name is Alice\"\nuser.greetArrow(); // \"Arrow says: my name is undefined\"\n\n// Losing 'this' context\nconst unboundGreet = user.greet;\nunboundGreet(); // \"Hello, my name is undefined\" (or throws error in strict mode)\n\n// Fixing it with bind\nconst boundGreet = user.greet.bind(user);\nboundGreet(); // \"Hello, my name is Alice\""
+}

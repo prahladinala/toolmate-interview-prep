@@ -1,0 +1,30 @@
+{
+  "id": "batch-size",
+  "title": "Batch Size",
+  "difficulty": "Intermediate",
+  "definition": "A hyperparameter that defines the number of training samples to work through before updating the internal model parameters.",
+  "simpleExplanation": "If you have 10,000 math problems to solve. Do you solve 1, check the answer, and adjust your brain? (Batch Size 1). Or do you solve 32 problems, check all 32 answers, and adjust your brain based on the average? (Batch Size 32).",
+  "realWorldExample": "Most modern deep learning relies on GPUs. A GPU loves doing things in parallel. A batch size of 32 or 64 allows the GPU to process 64 images at the exact same millisecond, making training vastly faster.",
+  "useCases": [
+    "Memory management",
+    "GPU optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Does a larger Batch Size use more or less RAM/Memory on a graphics card?"
+    ],
+    "intermediate": [
+      "What is the difference between an Epoch and a Batch?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More or less RAM?",
+      "answer": "Significantly MORE. A batch size of 128 means the GPU has to hold 128 high-res images in its memory simultaneously. If the GPU runs out of VRAM, the training script crashes with an 'Out Of Memory' (OOM) error."
+    },
+    {
+      "question": "Epoch vs Batch?",
+      "answer": "A Batch is a small chunk of data. An Epoch is when all the chunks have been processed. If you have 1,000 images and a Batch Size of 100, it takes 10 Batches to complete 1 Epoch."
+    }
+  ]
+}

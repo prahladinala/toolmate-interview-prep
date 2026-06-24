@@ -1,0 +1,32 @@
+{
+  "id": "automation-testing",
+  "title": "Automated API Testing",
+  "difficulty": "Intermediate",
+  "definition": "Writing scripts that programmatically send hundreds of HTTP requests to an API and assert that the responses match expected values, running automatically in CI/CD pipelines.",
+  "simpleExplanation": "Instead of clicking 'Send' in Postman 50 times every morning, you write a script. The script boots up the server, hits all 50 endpoints in 2 seconds, and prints a green checkmark if they all work. If you break the code, the script instantly fails and yells at you.",
+  "realWorldExample": "Using Jest and Supertest in a Node.js project to write a test suite that automatically registers a user, logs them in, extracts the JWT, and verifies they can access a protected route.",
+  "useCases": [
+    "Regression testing",
+    "CI/CD pipelines",
+    "TDD"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Regression' in software development?"
+    ],
+    "intermediate": [
+      "Why do automated API tests usually use a separate 'Test Database' instead of the development database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Regression?",
+      "answer": "When you write new code that accidentally breaks an old feature that used to work perfectly. Automated tests catch regressions instantly."
+    },
+    {
+      "question": "Why Test Database?",
+      "answer": "Because automated tests constantly create and delete fake data. If you ran tests on your development database, your database would be polluted with thousands of fake 'testUser123' accounts."
+    }
+  ],
+  "codeExample": "// Automated API Test using Jest + Supertest\n\nconst request = require('supertest');\nconst app = require('../app'); // Your Express Server\n\ndescribe('POST /api/users', () => {\n  \n  it('should create a new user and return 201', async () => {\n    // The script hits the API automatically\n    const response = await request(app)\n      .post('/api/users')\n      .send({ email: 'test@test.com', password: '123' });\n      \n    // The script verifies the API behavior automatically\n    expect(response.statusCode).toBe(201);\n    expect(response.body).toHaveProperty('id');\n    expect(response.body.email).toBe('test@test.com');\n  });\n\n});"
+}

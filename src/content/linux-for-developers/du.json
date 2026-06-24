@@ -1,0 +1,30 @@
+{
+  "id": "du",
+  "title": "du",
+  "difficulty": "Intermediate",
+  "definition": "Disk Usage. A command used to estimate and display the exact file space usage of a specific directory and its subdirectories.",
+  "simpleExplanation": "The 'Which folder is eating all my space?' command. It calculates the exact size of every folder inside a directory.",
+  "realWorldExample": "You know the hard drive is 99% full, but you don't know why. You navigate to the root directory and type `du -sh *`. It summarizes the size of every folder, revealing that the `/var/logs` folder is inexplicably 500 Gigabytes.",
+  "useCases": [
+    "Finding large hidden files",
+    "Freeing up disk space"
+  ],
+  "questions": {
+    "basic": [
+      "If you run `du` without any flags on the root `/` directory, what happens?"
+    ],
+    "intermediate": [
+      "What does the `-s` flag do in `du -sh`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens?",
+      "answer": "It will recursively print the exact size of every single file and folder on the entire computer, scrolling thousands of lines across your screen indefinitely."
+    },
+    {
+      "question": "What is -s?",
+      "answer": "Summarize. Instead of printing the size of every individual file inside a folder, it just prints one single grand total size for the folder itself."
+    }
+  ]
+}

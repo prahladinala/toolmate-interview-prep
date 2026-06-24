@@ -1,0 +1,31 @@
+{
+  "id": "middleware-flow",
+  "title": "Middleware Execution Flow",
+  "difficulty": "Advanced",
+  "definition": "The exact sequential order in which multiple middlewares execute, often referred to as an 'onion' model where the action passes inward through the middlewares, hits the reducer, and the response passes outward.",
+  "simpleExplanation": "If you have Middleware A, B, and C. The action hits A, then B, then C, then the Reducer. The Reducer updates the state. Then control flows BACKWARDS: C finishes, then B finishes, then A finishes.",
+  "realWorldExample": "Setting up middleware where `redux-thunk` must be executed BEFORE `redux-logger`, otherwise the logger will try to log a Function (the thunk) instead of a proper object.",
+  "useCases": [
+    "Debugging middleware clashes",
+    "Architecting complex pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Does the order in which you list your middlewares in `configureStore` matter?"
+    ],
+    "intermediate": [
+      "What is the 'Onion Model' in middleware?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does order matter?",
+      "answer": "YES. Massively. Middleware executes in the exact array order you define. `[thunk, logger]` is correct. `[logger, thunk]` will break because the logger will crash when it receives a function."
+    },
+    {
+      "question": "Onion Model?",
+      "answer": "A middleware wraps around the `next()` call. The code you write BEFORE `next()` executes on the way IN to the reducer. The code you write AFTER `next()` executes on the way OUT."
+    }
+  ],
+  "codeExample": "const middlewareA = store => next => action => {\n  console.log('A: Entering');\n  next(action); // Passes to B\n  console.log('A: Exiting');\n};\n\nconst middlewareB = store => next => action => {\n  console.log('B: Entering');\n  next(action); // Passes to Reducer!\n  console.log('B: Exiting');\n};\n\n/* \n  If an action is dispatched, the console output is:\n  A: Entering\n  B: Entering\n  --- (Reducer updates state) ---\n  B: Exiting\n  A: Exiting\n*/"
+}

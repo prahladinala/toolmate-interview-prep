@@ -1,0 +1,43 @@
+{
+  "id": "hoisting",
+  "title": "Hoisting",
+  "difficulty": "Intermediate",
+  "definition": "Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (script or function) prior to execution of the code.",
+  "simpleExplanation": "Imagine you are giving a speech. Before you even start talking, the organizer reads through your speech and pulls all the character names (variable declarations) and main points (function declarations) to the top of the page. So, even if you mention a character before officially introducing them, the audience already knows they exist.",
+  "realWorldExample": "This is why you can call a function in your code before you actually write the function definition lines further down in the file.",
+  "useCases": [
+    "Organizing code by placing helper functions at the bottom of a file, keeping the main logic at the top."
+  ],
+  "questions": {
+    "basic": [
+      "What is hoisting in JavaScript?",
+      "Does JavaScript hoist variable initializations (assignments)?"
+    ],
+    "intermediate": [
+      "How does hoisting differ between var, let, and const?",
+      "What is the difference between function declarations and function expressions in terms of hoisting?"
+    ],
+    "advanced": [
+      "What takes precedence in hoisting: variable declarations or function declarations?",
+      "What is the Temporal Dead Zone (TDZ)?"
+    ],
+    "trick": [
+      "What happens if you declare a variable with var after you've already assigned it a value?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does JavaScript hoist variable initializations?",
+      "answer": "No. JavaScript only hoists declarations, not initializations. If a variable is declared and initialized after using it, the value will be undefined."
+    },
+    {
+      "question": "How does hoisting differ between var, let, and const?",
+      "answer": "Variables declared with 'var' are hoisted and initialized with 'undefined'. 'let' and 'const' are also hoisted, but they are NOT initialized. Accessing them before declaration results in a ReferenceError (due to the Temporal Dead Zone)."
+    },
+    {
+      "question": "What is the difference between function declarations and expressions?",
+      "answer": "Function declarations (function foo() {}) are fully hoisted, so you can call them before they are defined. Function expressions (const foo = function() {}) are treated like variable declarations; only the variable is hoisted, not the function assignment."
+    }
+  ],
+  "codeExample": "// Function Declarations are fully hoisted\nhello(); // Prints: \"Hello World!\"\n\nfunction hello() {\n  console.log(\"Hello World!\");\n}\n\n// var is hoisted but NOT initialized (it is undefined)\nconsole.log(myVar); // Prints: undefined\nvar myVar = 10;\n\n// let and const are hoisted but stay in the Temporal Dead Zone\ntry {\n  console.log(myLet);\n} catch (e) {\n  console.log(\"Error! Cannot access myLet before initialization\");\n}\nlet myLet = 20;"
+}

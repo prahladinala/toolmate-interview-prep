@@ -1,0 +1,32 @@
+{
+  "id": "overflow",
+  "title": "Overflow",
+  "difficulty": "Beginner",
+  "definition": "The `overflow` property specifies whether to clip the content, add a scrollbar, or display overflow content when it is too large to fit in its block-level container.",
+  "simpleExplanation": "If you have a tiny cardboard box, and you try to shove a massive book into it, what happens? By default in CSS, the book just sticks out the side of the box (it overflows). The `overflow` property lets you tell the browser to either cut off the part sticking out, or create a scrollbar inside the box.",
+  "realWorldExample": "A Terms and Conditions box. You have 50 paragraphs of legal text, but you only want it to take up 300px of screen height. You use `overflow-y: scroll` to put a scrollbar inside the box.",
+  "useCases": [
+    "Scrollable sidebars",
+    "Hiding elements that animate off-screen",
+    "Terms of service text boxes"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default value of the `overflow` property?"
+    ],
+    "intermediate": [
+      "What is the difference between `overflow: hidden` and `overflow: auto`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default value?",
+      "answer": "`visible`. The content just spills out of the container."
+    },
+    {
+      "question": "hidden vs auto?",
+      "answer": "`hidden` physically chops off any text that doesn't fit. The user cannot scroll to see it. `auto` is smart: if the text fits, it does nothing. If the text is too big, it automatically adds a scrollbar so the user can read it."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    width: 200px;\n    height: 100px;\n    border: 2px solid black;\n    margin-bottom: 60px; /* Extra margin to fit the spilling text */\n    background: #eee;\n  }\n\n  .visible { overflow: visible; }\n  .hidden { overflow: hidden; }\n  .scroll { overflow: auto; }\n</style>\n\n<h3>1. Overflow: Visible (Default)</h3>\n<div class=\"container visible\">\n  This text is way too long for a 100px high box! \n  Look at it! It's spilling completely out of the box and crashing into the elements below it!\n</div>\n\n<h3>2. Overflow: Hidden</h3>\n<div class=\"container hidden\">\n  This text is way too long for a 100px high box!\n  But because it is hidden, it just gets chopped off. You cannot read the rest of this sentence no matter what you do.\n</div>\n\n<h3>3. Overflow: Auto (Scrollbar)</h3>\n<div class=\"container scroll\">\n  This text is way too long for a 100px high box!\n  But because it is auto, a scrollbar appears! Scroll down to read the rest of the text!\n</div>"
+}

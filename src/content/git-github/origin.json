@@ -1,0 +1,30 @@
+{
+  "id": "origin",
+  "title": "origin",
+  "difficulty": "Beginner",
+  "definition": "The default conventional name that Git assigns to the remote repository that a project was cloned from.",
+  "simpleExplanation": "'Origin' is not a magic keyword, it is literally just a nickname. Instead of typing `git push https://github.com/facebook/react.git main` 50 times a day, Git saves that URL in its address book under the nickname 'origin'. You type `git push origin main` instead.",
+  "realWorldExample": "When you clone a repository, Git automatically sets up the 'origin' remote for you behind the scenes.",
+  "useCases": [
+    "Shorthand URL referencing"
+  ],
+  "questions": {
+    "basic": [
+      "Do you HAVE to use the word 'origin'?"
+    ],
+    "intermediate": [
+      "If you start a project with `git init` instead of `git clone`, does 'origin' exist?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Have to use it?",
+      "answer": "No. You can name your remote 'banana' if you want (`git push banana main`). However, 'origin' is a universal industry standard, and changing it will confuse your coworkers."
+    },
+    {
+      "question": "Does it exist?",
+      "answer": "No. `git init` creates a purely local repo. You must manually add the remote by typing `git remote add origin <URL>`."
+    }
+  ],
+  "codeExample": "# Check where 'origin' actually points to\n$ git remote -v\n# Output:\n# origin  https://github.com/user/repo.git (fetch)\n# origin  https://github.com/user/repo.git (push)\n\n# You can change the URL that 'origin' points to!\n$ git remote set-url origin https://github.com/user/NEW-repo.git"
+}

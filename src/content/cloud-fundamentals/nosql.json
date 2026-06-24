@@ -1,0 +1,31 @@
+{
+  "id": "nosql",
+  "title": "NoSQL Databases",
+  "difficulty": "Intermediate",
+  "definition": "Cloud-native, non-relational databases built for massive scale, low latency, and flexible schemas. They store data as Key-Value pairs or JSON documents rather than rigid tables.",
+  "simpleExplanation": "A giant digital filing cabinet with zero rules. You don't have to define columns. You just toss JSON documents into the cabinet, and it retrieves them in milliseconds, even if you have millions of users.",
+  "realWorldExample": "AWS DynamoDB, Azure Cosmos DB, GCP Firestore. A mobile game needs to save player high-scores. Since millions of players might finish a level at the same second, a traditional SQL database would lock up. DynamoDB handles millions of concurrent writes perfectly.",
+  "useCases": [
+    "Real-time gaming",
+    "IoT sensor data",
+    "Session management"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to pre-define the columns and schema in a NoSQL database before inserting data?"
+    ],
+    "intermediate": [
+      "What does it mean that cloud NoSQL databases are usually 'Serverless'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pre-define schema?",
+      "answer": "No. NoSQL is 'Schema-less'. You can insert a document with 5 fields, and immediately insert another document with 50 completely different fields into the exact same database."
+    },
+    {
+      "question": "What makes them Serverless?",
+      "answer": "Unlike RDS (where you rent a specific database server and pay hourly), services like DynamoDB are fully serverless. You don't provision servers; you just pay for the exact number of read/write requests your app actually makes."
+    }
+  ]
+}

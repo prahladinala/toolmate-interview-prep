@@ -1,0 +1,30 @@
+{
+  "id": "container-runtime",
+  "title": "Container Runtime",
+  "difficulty": "Advanced",
+  "definition": "The low-level software component responsible for actually pulling images, unpacking them, and communicating with the Linux kernel to start and stop the isolated container processes (e.g., `containerd`, `CRI-O`).",
+  "simpleExplanation": "The actual physical engine doing the heavy lifting. 'Docker' is a massive brand with CLI tools, GUIs, and cloud services. The 'Runtime' is the tiny, invisible core program deep inside Docker that actually talks to the computer's hardware to make the box.",
+  "realWorldExample": "Kubernetes famously 'deprecated Docker' in 2020. They didn't stop supporting Docker Images. They just bypassed the bloated Docker UI/CLI and started talking directly to `containerd` (the raw Runtime that Docker itself uses under the hood) for better performance.",
+  "useCases": [
+    "Kubernetes architecture",
+    "System engineering"
+  ],
+  "questions": {
+    "basic": [
+      "What is the name of the industry-standard container runtime developed by Docker and later donated to the CNCF?"
+    ],
+    "intermediate": [
+      "Why did Kubernetes deprecate the 'Docker Shim' (direct Docker engine integration)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which runtime?",
+      "answer": "`containerd`."
+    },
+    {
+      "question": "Why deprecate Docker Shim?",
+      "answer": "Because the full Docker Engine was bloated with developer tools (like build commands and volumes) that a production Kubernetes cluster simply didn't need. Kubernetes switched to using pure, lightweight runtimes (like `containerd` or `CRI-O`) directly to save resources."
+    }
+  ]
+}

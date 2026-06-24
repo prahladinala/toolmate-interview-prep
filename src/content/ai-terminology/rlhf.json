@@ -1,0 +1,31 @@
+{
+  "id": "rlhf",
+  "title": "RLHF",
+  "difficulty": "Advanced",
+  "definition": "Reinforcement Learning from Human Feedback. The final, critical training step where human reviewers grade the AI's answers, teaching the AI to align its outputs with human values, safety guidelines, and conversational norms.",
+  "simpleExplanation": "The finishing school for AI. The AI writes 3 different answers. A human reads them and says 'Answer A is polite. Answer B is dangerous. Answer C is weird.' The AI learns to favor answers like A.",
+  "realWorldExample": "The secret sauce of ChatGPT. OpenAI hired thousands of humans to chat with the early GPT models and press 'Thumbs Up' or 'Thumbs Down' on responses. This mathematical reinforcement is what made ChatGPT so friendly and safe.",
+  "useCases": [
+    "AI Safety",
+    "Model alignment",
+    "Chatbot optimization"
+  ],
+  "questions": {
+    "basic": [
+      "What does RLHF stand for?"
+    ],
+    "intermediate": [
+      "What is a 'Reward Model' in the RLHF process?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Reinforcement Learning from Human Feedback."
+    },
+    {
+      "question": "What is a Reward Model?",
+      "answer": "Humans are slow. Instead of having humans grade every single answer forever, developers train a SECOND AI model (the Reward Model) using the human feedback data. This second AI then automatically grades the main AI at lightning speed."
+    }
+  ]
+}

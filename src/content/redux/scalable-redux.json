@@ -1,0 +1,30 @@
+{
+  "id": "scalable-redux",
+  "title": "Scalable Redux Applications",
+  "difficulty": "Advanced",
+  "definition": "Architecting Redux so that an app can grow to hundreds of thousands of lines of code without becoming a tangled, unmaintainable mess.",
+  "simpleExplanation": "If 50 developers are working on the same app, you need strict rules. Rules like: Don't put form state in Redux. Use RTK Query for all API calls. Normalize data. Use TypeScript. Use Memoized Selectors for everything.",
+  "realWorldExample": "Twitter/X using Redux to manage the main feed, notifications, and DMs seamlessly without the UI freezing when a new tweet arrives.",
+  "useCases": [
+    "Enterprise software architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Is it a good idea to store the UI state of every single dropdown menu and modal in Redux to ensure the app is highly scalable?"
+    ],
+    "intermediate": [
+      "How does strict TypeScript typing aid in Redux scalability?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Store every UI state in Redux?",
+      "answer": "NO! That is a massive anti-pattern. Global state should be kept as small as possible. Local UI state belongs in React `useState`."
+    },
+    {
+      "question": "How does TS aid scalability?",
+      "answer": "When an app is massive, developers cannot memorize the shape of the State Tree. TypeScript provides autocomplete and catches errors instantly if a developer tries to select `state.user.firstname` instead of `state.user.firstName`."
+    }
+  ],
+  "codeExample": "/*\n  Checklist for a Scalable Redux App:\n\n  [x] Are we using Redux Toolkit exclusively? (No legacy Redux)\n  [x] Are we using RTK Query for data fetching instead of manual Thunks?\n  [x] Is our state Normalized (flat) instead of deeply nested arrays?\n  [x] Are we using useAppSelector (Typed Hooks) instead of useSelector?\n  [x] Is Local state used for forms/modals, reserving Redux for Global data?\n*/"
+}

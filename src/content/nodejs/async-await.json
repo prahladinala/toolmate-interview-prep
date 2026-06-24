@@ -1,0 +1,34 @@
+{
+  "id": "async-await",
+  "title": "Async / Await",
+  "difficulty": "Beginner",
+  "definition": "Syntactic sugar built on top of Promises that allows asynchronous code to be written in a top-to-bottom, synchronous-looking style.",
+  "simpleExplanation": "Promises fixed the callback pyramid, but `.then().then()` still looked a bit messy. `async/await` lets you tell JavaScript: 'Pause the function on this line. Wait for the database to finish. Once it finishes, put the result in this variable and proceed to the next line.' It makes async code read exactly like normal sync code.",
+  "realWorldExample": "Writing an Express route: `const user = await User.findById(req.params.id); res.send(user);`",
+  "useCases": [
+    "Clean, readable asynchronous logic",
+    "Easy try/catch error handling"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you use `await` inside a function that doesn't have the `async` keyword?"
+    ],
+    "intermediate": [
+      "What does an `async` function always return, even if you just `return 5`?"
+    ],
+    "advanced": [
+      "Does `await` actually pause the entire Node.js server thread?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does an async function return?",
+      "answer": "It ALWAYS returns a Promise. If you write `async function getNum() { return 5; }`, calling `getNum()` returns a Promise that resolves to 5. You must `.then()` or `await` it."
+    },
+    {
+      "question": "Does await pause the Node server?",
+      "answer": "NO! This is a crucial concept. `await` ONLY pauses the specific function it is inside. The rest of the Node.js server (the Event Loop) keeps spinning, happily serving thousands of other users while that one function waits."
+    }
+  ],
+  "codeExample": "// A simulated API call\nfunction fetchUserData() {\n  return new Promise(resolve => setTimeout(() => resolve({ name: \"Alice\" }), 500));\n}\n\n// The Async/Await way!\nasync function initApp() {\n  try {\n    console.log(\"1. Fetching...\");\n    \n    // Code pauses here (for this function only) until the Promise resolves\n    const data = await fetchUserData(); \n    \n    console.log(\"2. Data received:\", data.name);\n  } catch (error) {\n    // We can use standard try/catch blocks instead of .catch()!\n    console.log(\"Error!\", error);\n  }\n}\n\ninitApp();\nconsole.log(\"This runs immediately, proving the thread isn't blocked!\");"
+}

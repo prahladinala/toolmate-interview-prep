@@ -1,0 +1,30 @@
+{
+  "id": "prompt",
+  "title": "Prompt",
+  "difficulty": "Beginner",
+  "definition": "The specific text or instructions provided by a human user to an AI model to elicit a desired response or action.",
+  "simpleExplanation": "The question or command you type into the chat box. If you type 'Write a poem', that is your prompt.",
+  "realWorldExample": "Typing 'Summarize this 10-page PDF into 3 bullet points targeting a 5th-grade reading level' into ChatGPT.",
+  "useCases": [
+    "Interacting with GenAI",
+    "Content generation"
+  ],
+  "questions": {
+    "basic": [
+      "If an AI gives you a terrible answer, whose fault is it usually: the AI, or the Prompt?"
+    ],
+    "intermediate": [
+      "What is 'Prompt Engineering'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Whose fault?",
+      "answer": "Usually the Prompt. Vague prompts ('write code') yield generic, bad answers. Highly specific prompts yield highly accurate answers."
+    },
+    {
+      "question": "What is Prompt Engineering?",
+      "answer": "The emerging discipline of strategically structuring, phrasing, and formatting text inputs to force an LLM to produce the absolute highest-quality output possible."
+    }
+  ]
+}

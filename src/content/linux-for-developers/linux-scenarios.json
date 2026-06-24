@@ -1,0 +1,29 @@
+{
+  "id": "linux-scenarios",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions that present a real-world problem and ask for the specific bash command pipeline used to solve it.",
+  "simpleExplanation": "Translating business problems into terminal commands.",
+  "realWorldExample": "Interview Question: 'You have a 10GB log file. How do you find all the lines containing the word ERROR, and save only those lines into a new file?' (Answer: `grep 'ERROR' large.log > errors.log`)",
+  "useCases": [
+    "Technical screening tests"
+  ],
+  "questions": {
+    "basic": [
+      "How do you find the Process ID of a service named 'apache2' and kill it forcefully in one command?"
+    ],
+    "intermediate": [
+      "How do you find every file in `/var/log` that is older than 30 days and automatically delete it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Kill apache2?",
+      "answer": "`killall -9 apache2` or `pkill -9 apache2`."
+    },
+    {
+      "question": "Delete older than 30 days?",
+      "answer": "`find /var/log -type f -mtime +30 -exec rm {} \\;`"
+    }
+  ]
+}

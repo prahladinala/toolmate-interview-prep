@@ -1,0 +1,34 @@
+{
+  "id": "process-env",
+  "title": "process.env",
+  "difficulty": "Intermediate",
+  "definition": "A property of the global `process` object containing the user environment. It is the standard way to pass secret configuration (like API keys) to a Node.js app.",
+  "simpleExplanation": "You NEVER hardcode your database passwords or Stripe API keys in your code, because if you upload it to GitHub, hackers will steal them. Instead, you put secrets inside a hidden `.env` file on your computer. When Node runs, it reads that file and injects the secrets into `process.env`.",
+  "realWorldExample": "Connecting to a database: `mongoose.connect(process.env.DATABASE_URL)`.",
+  "useCases": [
+    "Storing secrets safely",
+    "Switching between Development, Staging, and Production databases dynamically"
+  ],
+  "questions": {
+    "basic": [
+      "What popular NPM package is used to load a `.env` file into `process.env`?"
+    ],
+    "intermediate": [
+      "What is `process.env.NODE_ENV` conventionally used for?"
+    ],
+    "advanced": [
+      "Should you ever commit a `.env` file to a public git repository?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What npm package is used?",
+      "answer": "`dotenv`. By calling `require('dotenv').config()`, it magically reads the `.env` file and populates the `process.env` object."
+    },
+    {
+      "question": "What is NODE_ENV used for?",
+      "answer": "It is a standard convention used to define the environment type. Typically it is set to `'development'`, `'production'`, or `'test'`. Frameworks like Express read this variable; if it's set to 'production', Express automatically caches views and hides stack traces to run 3x faster."
+    }
+  ],
+  "codeExample": "// Usually you need the 'dotenv' package to read from a .env file:\n// require('dotenv').config();\n\n// For this example, we will manually inject a variable into the environment:\nprocess.env.API_KEY = \"super_secret_123\";\nprocess.env.NODE_ENV = \"production\";\n\n// Using the variables in your code\nconsole.log(\"Connecting to Stripe with API Key:\", process.env.API_KEY);\n\nif (process.env.NODE_ENV === 'production') {\n  console.log(\"Running in PRODUCTION mode. Logging is minimized.\");\n} else {\n  console.log(\"Running in DEV mode. Verbose logging enabled.\");\n}\n\n// Fallback pattern (highly recommended)\nconst port = process.env.PORT || 3000;\nconsole.log(`Server starting on port ${port}...`);"
+}

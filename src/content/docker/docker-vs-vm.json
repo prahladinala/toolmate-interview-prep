@@ -1,0 +1,30 @@
+{
+  "id": "docker-vs-vm",
+  "title": "Docker vs Virtual Machines",
+  "difficulty": "Intermediate",
+  "definition": "A Virtual Machine (VM) includes a full copy of an operating system (Guest OS), the application, and hardware virtualization. A Docker Container shares the host system's kernel, making it vastly smaller, faster, and more efficient.",
+  "simpleExplanation": "A VM is buying an entirely separate house for every single person (slow to build, wastes massive amounts of space). A Container is renting an apartment building. Everyone shares the same plumbing and roof (the Kernel), but has their own locked door.",
+  "realWorldExample": "Booting up an Ubuntu Virtual Machine takes 2 to 3 minutes and requires 20GB of hard drive space because it has to simulate an entire computer. Booting up an Ubuntu Docker Container takes 0.5 seconds and requires 50MB of space.",
+  "useCases": [
+    "Choosing infrastructure",
+    "Optimizing server costs"
+  ],
+  "questions": {
+    "basic": [
+      "Which requires significantly more RAM and Disk Space: A Virtual Machine or a Docker Container?"
+    ],
+    "intermediate": [
+      "Why can you run a Windows Virtual Machine on a Mac, but you cannot natively run a Windows Docker Container on a Linux machine?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More RAM/Disk?",
+      "answer": "A Virtual Machine. It must run a full, heavy Guest Operating System, whereas containers share the Host OS."
+    },
+    {
+      "question": "Why Windows on Linux fails?",
+      "answer": "Because Virtual Machines simulate the entire hardware, allowing them to boot a completely foreign OS. Containers SHARE the underlying Host Kernel. A Linux kernel cannot process Windows system calls, so a Windows container cannot natively run on a Linux host."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "docker-debugging",
+  "title": "Troubleshooting Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions testing your practical ability to use CLI tools to diagnose failing containers, network issues, and build errors.",
+  "simpleExplanation": "Proving you know what to type when the screen goes red.",
+  "realWorldExample": "Question: 'A container starts and then immediately exits with a Status code 137. What does that code mean and how do you investigate it?'",
+  "useCases": [
+    "Operational readiness checks"
+  ],
+  "questions": {
+    "basic": [
+      "If a container is failing to boot and restarting infinitely, what is the first command you type to figure out why?"
+    ],
+    "intermediate": [
+      "Two containers on a custom bridge network cannot ping each other. What command would you use to verify they are actually on the same network?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "First command?",
+      "answer": "`docker logs <container_name>`. The logs will output the application's crash stack trace (e.g., Syntax Error, Database Connection Refused)."
+    },
+    {
+      "question": "Verify network?",
+      "answer": "Use `docker inspect <network_name>`. It outputs a JSON payload listing every single container attached to that specific network. If one is missing, you found the problem."
+    }
+  ]
+}

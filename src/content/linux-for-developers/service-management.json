@@ -1,0 +1,30 @@
+{
+  "id": "service-management",
+  "title": "Service Management",
+  "difficulty": "Intermediate",
+  "definition": "The operational process of controlling background daemon processes (services) that run continuously on a server, waiting for requests.",
+  "simpleExplanation": "Babysitting the invisible programs that make a server actually do its job, like serving websites, storing database records, or sending emails.",
+  "realWorldExample": "A developer updates a website's code, but the changes aren't showing up. They realize the web server service needs to be reloaded to read the new files. They run `sudo systemctl reload apache2`.",
+  "useCases": [
+    "Deploying applications",
+    "Applying configuration changes without downtime"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Daemon' in Linux?"
+    ],
+    "intermediate": [
+      "What is the difference between `reload` and `restart` when managing a service?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a daemon?",
+      "answer": "A daemon is just a fancy name for a background process that runs continuously without any user interaction, usually waiting for events or requests. Their names usually end in 'd' (e.g., `httpd`, `sshd`, `systemd`)."
+    },
+    {
+      "question": "reload vs restart?",
+      "answer": "`restart` completely kills the process, dropping all active user connections, and starts a new one. `reload` tells the active process to gracefully re-read its configuration files while keeping current user connections alive. Reloading is much safer for production."
+    }
+  ]
+}

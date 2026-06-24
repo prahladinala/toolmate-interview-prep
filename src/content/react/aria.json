@@ -1,0 +1,30 @@
+{
+  "id": "aria",
+  "title": "ARIA Attributes",
+  "difficulty": "Intermediate",
+  "definition": "Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications more accessible to people with disabilities.",
+  "simpleExplanation": "ARIA attributes are like invisible labels stuck to your UI. Sighted users can see that a red icon means 'Delete'. Blind users using screen readers cannot see the icon. ARIA attributes (like `aria-label='Delete item'`) tell the screen reader exactly what the button does.",
+  "realWorldExample": "A custom styled toggle switch made out of a `<div>`. Because it's not a real `<button>`, you must add `role='switch'` and `aria-checked={true}` so screen readers know what it is.",
+  "useCases": [
+    "Custom UI components (Modals, Tabs, Tooltips)",
+    "Icon-only buttons"
+  ],
+  "questions": {
+    "basic": [
+      "What does `aria-label` do?"
+    ],
+    "intermediate": [
+      "When should you NOT use ARIA attributes?"
+    ],
+    "advanced": [
+      "What is the difference between `aria-hidden` and `display: none`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When should you NOT use ARIA?",
+      "answer": "The first rule of ARIA is: don't use ARIA if you can use native HTML. A real `<button>` is always better than `<div role='button'>` because native HTML has keyboard accessibility built-in."
+    }
+  ],
+  "codeExample": "<button aria-label='Close Dialog'>X</button>"
+}

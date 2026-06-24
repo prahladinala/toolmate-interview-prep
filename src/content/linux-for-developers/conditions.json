@@ -1,0 +1,30 @@
+{
+  "id": "conditions",
+  "title": "If/Else Statements",
+  "difficulty": "Intermediate",
+  "definition": "Conditional logic structures in Bash that allow a script to execute different commands based on whether a specific test evaluates to True or False.",
+  "simpleExplanation": "Decision making for scripts. 'IF the database is turned off, THEN start it up. ELSE, do nothing.'",
+  "realWorldExample": "A script checks if a critical file exists before trying to read it:\n`if [ -f \"config.json\" ]; then`\n`  cat config.json`\n`else`\n`  echo \"Error: File missing!\"`\n`fi`",
+  "useCases": [
+    "Error handling",
+    "System checks before execution"
+  ],
+  "questions": {
+    "basic": [
+      "What mandatory word must you use to close (end) an `if` statement block in Bash?"
+    ],
+    "intermediate": [
+      "What does the test condition `[ -d \"/var/log\" ]` evaluate?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Close the if block?",
+      "answer": "`fi` (which is literally the word 'if' spelled backward)."
+    },
+    {
+      "question": "What does -d do?",
+      "answer": "It is a Directory check. The condition evaluates to True ONLY if the path `/var/log` actually exists on the hard drive AND is a directory (not a file)."
+    }
+  ]
+}

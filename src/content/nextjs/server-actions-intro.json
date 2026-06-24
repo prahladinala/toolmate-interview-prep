@@ -1,0 +1,32 @@
+{
+  "id": "server-actions-intro",
+  "title": "Introduction to Server Actions",
+  "difficulty": "Intermediate",
+  "definition": "Asynchronous JavaScript functions that execute securely on the server, designed to handle form submissions and data mutations without writing separate API endpoints.",
+  "simpleExplanation": "Historically, to save a user's name to a database, you had to build a frontend React form, build a backend `/api/save-name` endpoint, use `fetch()` to connect them, and manage loading states. Server Actions let you write the database code directly inside the React component and attach it straight to the `<form action={saveName}>`. No API routes needed.",
+  "realWorldExample": "Creating a 'Like' button. Clicking it fires a Server Action that directly executes an SQL `UPDATE` query on your server.",
+  "useCases": [
+    "Form submissions",
+    "Database mutations",
+    "Rapid full-stack development"
+  ],
+  "questions": {
+    "basic": [
+      "What directive must be placed at the top of a function to turn it into a Server Action?"
+    ],
+    "intermediate": [
+      "Can you call a Server Action from a Client Component (a file with `'use client'`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What directive?",
+      "answer": "`'use server'`"
+    },
+    {
+      "question": "Call from Client?",
+      "answer": "Yes! You can define the Server Action in a separate file (e.g., `actions.ts`), export it, and import it into your Client Component. Next.js automatically wires up the invisible API call behind the scenes."
+    }
+  ],
+  "codeExample": "/* Server Actions inside a Server Component */\nimport db from '@/lib/db';\n\nexport default function ServerForm() {\n  // 1. Define the action\n  // It MUST be async, and it MUST have 'use server'\n  async function createPost(formData: FormData) {\n    'use server';\n    \n    // 2. This code runs securely on the Node.js server!\n    const title = formData.get('title');\n    await db.post.create({ data: { title } });\n  }\n\n  return (\n    // 3. Attach it directly to the native HTML action attribute!\n    <form action={createPost}>\n      <input name=\"title\" type=\"text\" />\n      <button type=\"submit\">Publish</button>\n    </form>\n  );\n}"
+}

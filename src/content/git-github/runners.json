@@ -1,0 +1,31 @@
+{
+  "id": "runners",
+  "title": "GitHub Runners",
+  "difficulty": "Intermediate",
+  "definition": "A runner is a server that runs your workflows when they're triggered. Each runner can run a single job at a time.",
+  "simpleExplanation": "The actual physical computer in a Microsoft datacenter that wakes up to do your work. You can request a Ubuntu Linux server, a Windows server, or even an Apple macOS server (which is required if you are building an iOS app!).",
+  "realWorldExample": "Running a massive test suite that takes 30 minutes on your laptop. On GitHub, you request 20 Runners to run 20 pieces of the test suite simultaneously, finishing the entire test in 90 seconds.",
+  "useCases": [
+    "Cross-platform testing",
+    "Speeding up builds"
+  ],
+  "questions": {
+    "basic": [
+      "What operating system do most developers choose for their Runners because it boots up the fastest?"
+    ],
+    "intermediate": [
+      "What is a 'Self-Hosted' Runner?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fastest OS?",
+      "answer": "`ubuntu-latest` (Linux). It is extremely lightweight and fast."
+    },
+    {
+      "question": "Self-Hosted?",
+      "answer": "If your company has strict security rules, or needs massive supercomputers to train AI, you can install the GitHub Action software on your OWN private servers. GitHub will ping your server to run the jobs instead of using Microsoft's servers."
+    }
+  ],
+  "codeExample": "# Running the exact same tests across THREE different Operating Systems simultaneously!\njobs:\n  test-multi-os:\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n    runs-on: ${{ matrix.os }}\n    steps:\n      - run: echo \"Running on ${{ matrix.os }}\""
+}

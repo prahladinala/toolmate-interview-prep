@@ -1,0 +1,43 @@
+{
+  "id": "sibling-components",
+  "title": "Sibling Communication",
+  "difficulty": "Intermediate",
+  "definition": "React components cannot communicate directly with their siblings. They must use \"Lifting State Up\" to pass data to their common parent, which then passes the data down to the other sibling.",
+  "simpleExplanation": "Two siblings are in separate rooms. They can't hear each other through the walls. If Sibling A wants to tell Sibling B something, Sibling A has to use the walkie-talkie to call Mom (Parent), and then Mom walks into Sibling B's room and delivers the message.",
+  "realWorldExample": "You have a `<Sidebar>` with a list of categories, and a `<ProductList>` showing items. When you click a category in the Sidebar, it tells the `<MainLayout>` (parent), which then passes the `activeCategoryId` down to the `<ProductList>` (sibling).",
+  "useCases": [
+    "Synchronizing two UI components on the same screen (like a Nav bar and a Main Content area)",
+    "Master-Detail view patterns"
+  ],
+  "questions": {
+    "basic": [
+      "Can Sibling A directly call a function inside Sibling B?",
+      "What is the standard React pattern for sibling communication?"
+    ],
+    "intermediate": [
+      "What is the performance drawback of lifting state to a common parent?",
+      "If Sibling A updates the parent state, does Sibling A also re-render?"
+    ],
+    "advanced": [
+      "How can you communicate between siblings without re-rendering the parent? (Hint: Global state or Event Emitters)"
+    ],
+    "trick": [
+      "Can you use a React `ref` to let one sibling control another directly?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can Sibling A directly call a function in Sibling B?",
+      "answer": "No. React enforces strict one-way data flow. Siblings are isolated from each other."
+    },
+    {
+      "question": "If Sibling A updates the parent state, does Sibling A re-render?",
+      "answer": "Yes! When the parent state changes, the parent re-renders. This causes ALL children (both Sibling A and Sibling B) to re-render, unless they are wrapped in `React.memo`."
+    },
+    {
+      "question": "Can you use a ref to let siblings control each other?",
+      "answer": "Yes, technically. The parent can create a `ref`, pass it down to Sibling B using `forwardRef` and `useImperativeHandle`, and pass the ref object to Sibling A. This bypasses state updates, but it is highly imperative and generally considered an anti-pattern in React."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\n// Sibling A\nfunction Controls({ onColorChange }) {\n  return (\n    <div className=\"p-4 border\">\n      <h3>Controls (Sibling A)</h3>\n      <button onClick={() => onColorChange(\"red\")}>Red</button>\n      <button onClick={() => onColorChange(\"blue\")}>Blue</button>\n    </div>\n  );\n}\n\n// Sibling B\nfunction Display({ color }) {\n  return (\n    <div className=\"p-4 border\">\n      <h3>Display (Sibling B)</h3>\n      <div style={{ width: 100, height: 100, background: color }}></div>\n    </div>\n  );\n}\n\n// The Common Parent\nexport default function App() {\n  // 1. Lift state to the common parent\n  const [boxColor, setBoxColor] = useState(\"gray\");\n\n  return (\n    <div className=\"flex gap-4\">\n      {/* 2. Sibling A talks UP to the parent */}\n      <Controls onColorChange={setBoxColor} />\n      \n      {/* 3. Parent talks DOWN to Sibling B */}\n      <Display color={boxColor} />\n    </div>\n  );\n}"
+}

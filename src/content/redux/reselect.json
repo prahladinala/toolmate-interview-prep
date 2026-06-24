@@ -1,0 +1,30 @@
+{
+  "id": "reselect",
+  "title": "Reselect Library",
+  "difficulty": "Advanced",
+  "definition": "A standalone library for creating memoized selector functions. It was historically a separate install, but is now bundled directly into Redux Toolkit.",
+  "simpleExplanation": "The engine powering `createSelector`. It allows you to compose multiple selectors together. You can pass the output of 3 different selectors into a final calculator function, and it perfectly manages the cache for all of them.",
+  "realWorldExample": "Creating a `selectTaxRate` and `selectCartTotal` selector, and piping them both into a `selectFinalPrice` memoized selector.",
+  "useCases": [
+    "Composing complex derived state pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to `npm install reselect` in a modern RTK project?"
+    ],
+    "intermediate": [
+      "What is the 'Cache Size' of a standard `createSelector` function by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install it?",
+      "answer": "No. RTK re-exports `createSelector` directly from `@reduxjs/toolkit`."
+    },
+    {
+      "question": "Cache size?",
+      "answer": "By default, Reselect only has a cache size of 1. It only remembers the VERY LAST execution. If it alternates between two different inputs repeatedly, it will recalculate every time."
+    }
+  ],
+  "codeExample": "import { createSelector } from '@reduxjs/toolkit';\n\nconst selectSubtotal = state => state.cart.subtotal;\nconst selectTaxPercent = state => state.cart.taxPercent;\n\n// Reselect allows you to chain selectors together indefinitely\nexport const selectTotalWithTax = createSelector(\n  [selectSubtotal, selectTaxPercent],\n  (subtotal, taxPercent) => {\n    return subtotal + (subtotal * (taxPercent / 100));\n  }\n);"
+}

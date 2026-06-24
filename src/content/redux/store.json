@@ -1,0 +1,30 @@
+{
+  "id": "store",
+  "title": "Store",
+  "difficulty": "Beginner",
+  "definition": "The object that brings Actions and Reducers together. The store holds the application state, allows access to state via `getState()`, allows state to be updated via `dispatch(action)`, and registers listeners.",
+  "simpleExplanation": "The giant brain of your app. It's a single JavaScript object that holds all your data. You create it once when your app starts, and you wrap your entire React app inside of it.",
+  "realWorldExample": "The central database of a company. All employees (components) look at this database to get their information.",
+  "useCases": [
+    "Centralizing application state"
+  ],
+  "questions": {
+    "basic": [
+      "How many Redux Stores should you have in a standard application?"
+    ],
+    "intermediate": [
+      "What method do you use to get the current state out of the Store object?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many stores?",
+      "answer": "Exactly ONE."
+    },
+    {
+      "question": "Get current state?",
+      "answer": "`store.getState()`."
+    }
+  ],
+  "codeExample": "import { createStore } from 'redux';\n\n// A basic reducer\nfunction counterReducer(state = { value: 0 }, action) {\n  switch (action.type) {\n    case 'counter/incremented':\n      return { value: state.value + 1 };\n    default:\n      return state;\n  }\n}\n\n// Create the Store! (Legacy Redux way)\nlet store = createStore(counterReducer);\n\n// You can ask the store what the state is:\nconsole.log(store.getState()); // { value: 0 }"
+}

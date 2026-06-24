@@ -1,0 +1,31 @@
+{
+  "id": "benchmarking",
+  "title": "Benchmarking",
+  "difficulty": "Intermediate",
+  "definition": "The process of running a series of standardized, universally recognized tests on an AI model to evaluate its intelligence, reasoning, and coding capabilities compared to competitor models.",
+  "simpleExplanation": "The SATs or Final Exams for Artificial Intelligence. Just like students take the SATs to prove how smart they are to colleges, tech companies force their AIs to take standard tests to prove who built the smartest model.",
+  "realWorldExample": "The MMLU (Massive Multitask Language Understanding) is a famous benchmark consisting of 16,000 multiple-choice questions across 57 subjects (Math, Law, Medicine). GPT-4 scored ~86% on the MMLU, beating earlier models.",
+  "useCases": [
+    "Model selection",
+    "Academic research",
+    "Marketing AI"
+  ],
+  "questions": {
+    "basic": [
+      "What does the MMLU test measure?"
+    ],
+    "intermediate": [
+      "What is 'Data Contamination' in AI Benchmarking?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does MMLU measure?",
+      "answer": "Massive Multitask Language Understanding. It tests the general world knowledge and problem-solving ability of an LLM across dozens of academic subjects."
+    },
+    {
+      "question": "Data Contamination?",
+      "answer": "It is like a student stealing the test answers before the exam. If the questions to the MMLU benchmark were accidentally included in the billions of web pages the AI read during Training, the AI will score 100% on the benchmark. But it isn't actually smart; it just memorized the answer key."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "few-shot",
+  "title": "Few-Shot Prompting",
+  "difficulty": "Intermediate",
+  "definition": "A prompt engineering technique where you provide the LLM with a small number of examples (usually 2 to 5) demonstrating exactly how you want it to behave, before asking it to perform the actual task.",
+  "simpleExplanation": "Teaching by example. Instead of just saying 'Translate English to French', you say: \n'Apple -> Pomme' \n'Dog -> Chien' \n'Cat -> ?'. \nThe AI looks at the pattern and perfectly answers 'Chat'.",
+  "realWorldExample": "You want the AI to format data into strict JSON. Instead of writing a massive paragraph explaining the JSON schema, you just provide two examples of perfectly formatted JSON in the prompt. The AI will effortlessly copy that exact format.",
+  "useCases": [
+    "Formatting enforcement",
+    "Complex classification",
+    "Tone matching"
+  ],
+  "questions": {
+    "basic": [
+      "If you provide ZERO examples in your prompt, what is that technique called?"
+    ],
+    "intermediate": [
+      "Why is Few-Shot prompting often better than just writing a highly detailed set of instructions?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Zero examples?",
+      "answer": "Zero-Shot Prompting."
+    },
+    {
+      "question": "Why better than instructions?",
+      "answer": "LLMs are incredibly good at pattern matching. Showing them a pattern (Few-Shot) is often mathematically easier for the attention mechanism to lock onto than trying to parse complex, multi-layered English instructions."
+    }
+  ]
+}

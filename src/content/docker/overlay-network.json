@@ -1,0 +1,30 @@
+{
+  "id": "overlay-network",
+  "title": "Overlay Network",
+  "difficulty": "Advanced",
+  "definition": "A distributed network driver that creates a virtual network on top of multiple physical Docker hosts, allowing containers on entirely different physical servers to communicate securely as if they were on the same local switch.",
+  "simpleExplanation": "A magic tunnel. Container A is on a server in New York. Container B is on a server in London. The Overlay network builds an encrypted tunnel over the public internet, allowing them to talk to each other securely over a private local IP address.",
+  "realWorldExample": "Used heavily in Docker Swarm and Kubernetes architectures. A 100-server cluster uses an Overlay network so the load balancer on Server 1 can route traffic to an API container randomly running on Server 87.",
+  "useCases": [
+    "Container Orchestration",
+    "Multi-host clustering"
+  ],
+  "questions": {
+    "basic": [
+      "Which network driver allows containers on two completely different physical computers to communicate?"
+    ],
+    "intermediate": [
+      "What underlying technology secures the traffic passing through a Docker Overlay network over the public internet?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which driver?",
+      "answer": "The Overlay Network driver."
+    },
+    {
+      "question": "Secured how?",
+      "answer": "Docker natively uses IPSec (Internet Protocol Security) to encrypt all data traffic moving between the different host machines in the overlay."
+    }
+  ]
+}

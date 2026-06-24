@@ -1,0 +1,30 @@
+{
+  "id": "hotfix-branches",
+  "title": "Hotfix Branches",
+  "difficulty": "Intermediate",
+  "definition": "Branches created to quickly patch production releases without interrupting pending changes on the development branch.",
+  "simpleExplanation": "A fire alarm. Production is completely broken, users can't buy products, and the company is losing $10,000 an hour. You cannot wait for the standard 2-week Sprint. You branch DIRECTLY off `main`, fix the bug in 5 minutes, and merge it immediately back to `main`.",
+  "realWorldExample": "Fixing a typo on the homepage pricing table that accidentally says '$1' instead of '$100'.",
+  "useCases": [
+    "Emergency production patches"
+  ],
+  "questions": {
+    "basic": [
+      "Which branch do you typically branch off of to create a hotfix?"
+    ],
+    "intermediate": [
+      "After merging a hotfix into `main`, where else must you merge it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which branch?",
+      "answer": "You branch directly off `main` (or the specific release branch currently in production), because `main` represents the live state of the website."
+    },
+    {
+      "question": "Where else?",
+      "answer": "You MUST merge it back into `develop` (or your active feature branches). If you don't, the next time `develop` merges into `main`, the bug will be reintroduced!"
+    }
+  ],
+  "codeExample": "# FIRE ALARM! Production is broken!\n\n# 1. Branch straight off the live code (main)\n$ git checkout main\n$ git checkout -b hotfix-pricing-typo\n\n# 2. Fix the typo, test it, commit it\n$ git commit -am \"Fix critical pricing typo\"\n\n# 3. Merge immediately to main and deploy\n$ git checkout main\n$ git merge hotfix-pricing-typo\n\n# 4. Crucial: Merge back to the development branch so it isn't lost!\n$ git checkout develop\n$ git merge hotfix-pricing-typo"
+}

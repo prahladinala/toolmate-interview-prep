@@ -1,0 +1,31 @@
+{
+  "id": "autocomplete",
+  "title": "Autocomplete",
+  "difficulty": "Intermediate",
+  "definition": "The `autocomplete` attribute provides a hint to the web browser on how to automatically fill out form fields based on the user's previously saved data.",
+  "simpleExplanation": "When you checkout on an e-commerce site, and you click the 'First Name' box, a yellow dropdown appears with your actual name, and clicking it magically fills out your address, phone number, and credit card instantly. That happens because the developer specifically tagged the inputs with `autocomplete=\"given-name\"` and `autocomplete=\"street-address\"`.",
+  "realWorldExample": "Speeding up checkout flows. Users hate typing their address. Proper autocomplete increases conversion rates massively.",
+  "useCases": [
+    "E-commerce checkouts",
+    "User registration flows"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute turns on browser autofill for a specific field?"
+    ],
+    "intermediate": [
+      "How do you completely turn OFF autocomplete for a sensitive field?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "The `autocomplete` attribute. (e.g., `autocomplete=\"email\"`)."
+    },
+    {
+      "question": "How to turn it off?",
+      "answer": "Set it to `off` or a random string. (e.g., `autocomplete=\"off\"` or `autocomplete=\"new-password\"`). This stops the browser from suggesting previous entries."
+    }
+  ],
+  "codeExample": "<!-- A highly optimized checkout form -->\n<form action=\"#\">\n  \n  <h3>Shipping Details</h3>\n  \n  <!-- The browser instantly knows this is a First Name field -->\n  <label for=\"fname\">First Name</label>\n  <input type=\"text\" id=\"fname\" autocomplete=\"given-name\">\n  \n  <label for=\"lname\">Last Name</label>\n  <input type=\"text\" id=\"lname\" autocomplete=\"family-name\">\n  \n  <!-- The browser knows this is a full street address -->\n  <label for=\"address\">Street Address</label>\n  <input type=\"text\" id=\"address\" autocomplete=\"street-address\">\n  \n  <!-- The browser will suggest saved credit cards -->\n  <label for=\"cc\">Credit Card Number</label>\n  <input type=\"text\" id=\"cc\" autocomplete=\"cc-number\">\n\n  <!-- Turn off autocomplete for a highly secure one-time PIN -->\n  <label for=\"otp\">One Time Passcode</label>\n  <input type=\"text\" id=\"otp\" autocomplete=\"off\">\n\n</form>\n\n<p><em>Note: Autocomplete magic requires you to test this in a real browser where you have your address saved!</em></p>"
+}

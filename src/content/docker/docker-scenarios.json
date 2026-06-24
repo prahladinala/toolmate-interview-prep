@@ -1,0 +1,30 @@
+{
+  "id": "docker-scenarios",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Complex, open-ended interview questions where candidates must architect a solution to a hypothetical production outage or requirement.",
+  "simpleExplanation": "There is no 'right' answer. The interviewer wants to hear how you troubleshoot systems under pressure and debate trade-offs.",
+  "realWorldExample": "Scenario: 'You deploy a new container and suddenly the Host server's hard drive fills up completely to 100%, crashing the server. How do you find what caused it and how do you prevent it?'",
+  "useCases": [
+    "System Design",
+    "Troubleshooting validation"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: Your application requires a secret database password to boot. How do you securely get that password into the container in production?"
+    ],
+    "intermediate": [
+      "Scenario: You have a Node.js container that crashes randomly in production due to memory leaks. How do you ensure it restarts automatically, and how do you limit the damage it can cause?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Secure password injection?",
+      "answer": "You DO NOT put it in the Dockerfile, and you avoid plaintext `.env` files. In production, you use a Secret Management system (like AWS Secrets Manager, Kubernetes Secrets, or Docker Swarm Secrets) to inject the password securely into an in-memory temp file (`tmpfs`) at runtime."
+    },
+    {
+      "question": "Memory leak crashing?",
+      "answer": "First, apply strict Resource Limits (`--memory=\"512m\"`) to ensure the memory leak crashes the container BEFORE it consumes all the Host's RAM. Second, use a Restart Policy (`--restart on-failure`) or a health check orchestrator to automatically reboot the container immediately after it crashes."
+    }
+  ]
+}

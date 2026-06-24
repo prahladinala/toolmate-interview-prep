@@ -1,0 +1,31 @@
+{
+  "id": "pages-vs-app-router",
+  "title": "Pages Router vs App Router",
+  "difficulty": "Intermediate",
+  "definition": "The architectural differences between the legacy Next.js routing system (`pages/`) and the modern routing system (`app/`).",
+  "simpleExplanation": "Pages router: Fetched data at the page level using weird Next.js specific functions like `getServerSideProps`. App router: Uses standard async/await directly inside React components, and leverages React Server Components.",
+  "realWorldExample": "Migrating an old Next.js 12 blog to Next.js 14, changing `export async function getStaticProps` into standard `const data = await fetch()` inside the component.",
+  "useCases": [
+    "Legacy code migration",
+    "Understanding Next.js history"
+  ],
+  "questions": {
+    "basic": [
+      "Which router is the recommended, modern way to build Next.js applications?"
+    ],
+    "intermediate": [
+      "Can you use the `pages` and `app` router in the same project?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is recommended?",
+      "answer": "The App Router (`app/` directory)."
+    },
+    {
+      "question": "Use both simultaneously?",
+      "answer": "Yes! Next.js supports incremental adoption. You can have both directories running at the same time, allowing you to migrate an enterprise app one page at a time."
+    }
+  ],
+  "codeExample": "/* ❌ OLD WAY: Pages Router (pages/users.tsx) */\nexport default function Users({ users }) {\n  return <div>{users.map(u => <p>{u.name}</p>)}</div>\n}\n\n// Special framework-specific function to fetch data\nexport async function getServerSideProps() {\n  const res = await fetch('https://api/users')\n  const users = await res.json()\n  return { props: { users } }\n}\n\n/* ✅ NEW WAY: App Router (app/users/page.tsx) */\n// Standard async React component! No special functions needed.\nexport default async function Users() {\n  const res = await fetch('https://api/users')\n  const users = await res.json()\n  \n  return <div>{users.map(u => <p>{u.name}</p>)}</div>\n}"
+}

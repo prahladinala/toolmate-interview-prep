@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-with-nextjs",
+  "title": "Tailwind with Next.js",
+  "difficulty": "Intermediate",
+  "definition": "The integration and optimization of Tailwind CSS within the Next.js framework.",
+  "simpleExplanation": "Next.js and Tailwind are a match made in heaven. When you run `npx create-next-app`, Tailwind is configured automatically. The most important thing to know is that Tailwind works perfectly with Next.js Server Components, shipping zero CSS-in-JS runtime payload to the client.",
+  "realWorldExample": "Using Tailwind classes directly inside a Next.js App Router layout file (`app/layout.tsx`) to style the global `<body>` tag.",
+  "useCases": [
+    "Full-stack React apps"
+  ],
+  "questions": {
+    "basic": [
+      "When creating a new Next.js app, do you have to install Tailwind manually?"
+    ],
+    "intermediate": [
+      "Does Tailwind CSS impact the JavaScript bundle size of a Next.js Server Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install manually?",
+      "answer": "No. The Next.js CLI asks you 'Would you like to use Tailwind CSS?' and sets up the PostCSS configuration, config file, and global CSS automatically."
+    },
+    {
+      "question": "Impact JS bundle?",
+      "answer": "Zero impact. Tailwind outputs raw, static CSS. Unlike styled-components or Emotion, Tailwind does not require any JavaScript to calculate or inject styles at runtime."
+    }
+  ],
+  "codeExample": "// app/layout.tsx (Next.js App Router)\nimport './globals.css' // Where @tailwind directives live\n\nexport default function RootLayout({ children }) {\n  return (\n    <html lang=\"en\">\n      {/* Applying global styles directly to the body! */}\n      <body className=\"bg-slate-50 text-slate-900 antialiased min-h-screen\">\n        {/* A global responsive container */}\n        <main className=\"container mx-auto px-4\">\n          {children}\n        </main>\n      </body>\n    </html>\n  )\n}"
+}

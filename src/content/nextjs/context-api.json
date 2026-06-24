@@ -1,0 +1,32 @@
+{
+  "id": "context-api",
+  "title": "Context API in Next.js",
+  "difficulty": "Beginner",
+  "definition": "Using React Context to share global state (like Light/Dark theme or User Authentication status) across an entire Next.js application.",
+  "simpleExplanation": "Context lets you teleport data. Instead of passing `isDarkMode` down through 10 layers of components (prop drilling), you wrap your app in a `<ThemeProvider>`. Any component deep inside can instantly grab the theme.",
+  "realWorldExample": "Providing the current logged-in user's data to the Navbar, the Sidebar, and the Settings page simultaneously.",
+  "useCases": [
+    "Theming",
+    "Auth state",
+    "UI toggles (Sidebar open/close)"
+  ],
+  "questions": {
+    "basic": [
+      "Can you create a Context Provider inside a Server Component?"
+    ],
+    "intermediate": [
+      "If you wrap your entire `app/layout.tsx` in a Client Component `<Provider>`, does it force every page in your app to become a Client Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Provider in Server Component?",
+      "answer": "No. React Context relies on state and interactivity, which means the file defining the Context MUST have the `'use client'` directive."
+    },
+    {
+      "question": "Forces everything to client?",
+      "answer": "No! This is the magic of React Composition (`children` prop). The Provider itself is a Client Component, but the `children` it wraps can still be 100% pure Server Components."
+    }
+  ],
+  "codeExample": "/* 1. Create the Provider (Must be a Client Component!) */\n'use client';\nimport { createContext, useState } from 'react';\n\nexport const ThemeContext = createContext({});\n\nexport function ThemeProvider({ children }) {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={{ theme, setTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\n/* 2. Wrap the Root Layout */\n// app/layout.tsx (This is a Server Component!)\nimport { ThemeProvider } from './ThemeProvider';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {/* The Client Provider wraps the Server children perfectly! */}\n        <ThemeProvider>\n          {children}\n        </ThemeProvider>\n      </body>\n    </html>\n  );\n}"
+}

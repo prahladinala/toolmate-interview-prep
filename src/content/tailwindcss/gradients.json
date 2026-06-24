@@ -1,0 +1,32 @@
+{
+  "id": "gradients",
+  "title": "Gradients",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for creating background gradients using a combination of direction, from, via, and to colors.",
+  "simpleExplanation": "A smooth transition between colors. You define three things: \n1. Direction (`bg-gradient-to-r` for Right). \n2. Starting Color (`from-purple-500`). \n3. Ending Color (`to-pink-500`).",
+  "realWorldExample": "A striking Instagram-style logo background or a 'Web3/Crypto' style landing page hero section.",
+  "useCases": [
+    "Modern UI aesthetics",
+    "Hero sections",
+    "Premium tier badges"
+  ],
+  "questions": {
+    "basic": [
+      "If you want a gradient to fade from Top to Bottom, what direction class do you use?"
+    ],
+    "intermediate": [
+      "What happens if you define a `from-*` color, but forget to define a `to-*` color?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Top to bottom?",
+      "answer": "`bg-gradient-to-b` (to-bottom)."
+    },
+    {
+      "question": "Forget to-* color?",
+      "answer": "Tailwind automatically fades the `from-*` color into a fully transparent version of itself, so it gracefully disappears into whatever background is underneath it."
+    }
+  ],
+  "codeExample": "<!-- A beautiful, vibrant button -->\n<button class=\"bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded-full\">\n  Start Free Trial\n</button>\n\n<!-- A complex 3-color gradient! (Purple -> Pink -> Red) -->\n<div class=\"h-64 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500\">\n  <!-- The 'via' class adds a middle checkpoint to the gradient -->\n</div>\n\n<!-- 🔥 MAGIC TEXT GRADIENT (Makes the text itself gradient colored!) -->\n<h1 class=\"text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-black text-6xl\">\n  Hello World\n</h1>"
+}

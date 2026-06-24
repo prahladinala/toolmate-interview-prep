@@ -1,0 +1,31 @@
+{
+  "id": "managed-sql",
+  "title": "Managed SQL Databases",
+  "difficulty": "Intermediate",
+  "definition": "Cloud services that provide fully automated Relational Database Management Systems. The provider handles provisioning, patching, backups, and failover, while the customer simply connects and runs SQL queries.",
+  "simpleExplanation": "Running a database without a Database Administrator. AWS installs the database, updates it, backs it up every night, and fixes it if it breaks. You just write the SQL code.",
+  "realWorldExample": "AWS RDS, Azure SQL Database, GCP Cloud SQL. A startup needs a MySQL database. Instead of spinning up a raw VM and installing MySQL manually, they click a button in RDS. AWS provides a connection string, and automatically handles all future maintenance.",
+  "useCases": [
+    "Traditional web applications",
+    "Transactional systems (ACID)",
+    "ERP systems"
+  ],
+  "questions": {
+    "basic": [
+      "In a Managed SQL service, do you have SSH access to the underlying Linux server running the database?"
+    ],
+    "intermediate": [
+      "What is a 'Multi-AZ' deployment in cloud databases?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Have SSH access?",
+      "answer": "No. The underlying server is completely hidden and managed by the cloud provider. You only get access to the database engine itself."
+    },
+    {
+      "question": "What is Multi-AZ?",
+      "answer": "A High-Availability configuration. The cloud provider automatically creates a hidden, synchronous replica of your database in a completely different data center. If the main database explodes, the system automatically redirects your app to the replica in 60 seconds."
+    }
+  ]
+}

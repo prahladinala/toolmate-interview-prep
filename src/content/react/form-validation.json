@@ -1,0 +1,45 @@
+{
+  "id": "form-validation",
+  "title": "Form Validation",
+  "difficulty": "Intermediate",
+  "definition": "Form validation is the process of ensuring that user input is clean, correct, and useful before submitting it to a server. In React, this is typically done using Controlled Components and local state.",
+  "simpleExplanation": "Think of validation like a bouncer at a club. Before the user is allowed to hit \"Submit\" and enter the club, the bouncer checks their ID (Is the email valid? Is the password 8 characters?). If they fail, the bouncer stops them and hands them a sticky note explaining what went wrong.",
+  "realWorldExample": "As a user types in a \"Password\" field, a red error message appears below saying \"Password must contain a number\". The Submit button is also completely disabled until the error goes away.",
+  "useCases": [
+    "Providing immediate, accessible feedback to users on their input",
+    "Preventing malformed data from reaching your backend API",
+    "Managing complex interdependent fields (e.g., \"Confirm Password\" must match \"Password\")"
+  ],
+  "questions": {
+    "basic": [
+      "Why do we do frontend form validation if the backend also validates data?",
+      "How do you show an error message conditionally in JSX?"
+    ],
+    "intermediate": [
+      "What is the difference between \"onChange\" validation and \"onBlur\" validation?",
+      "How do you prevent the browser from reloading the page when a form is submitted?"
+    ],
+    "advanced": [
+      "How do you handle validation for a form with 20+ fields without writing 20 `useState` hooks?",
+      "What are Yup and Zod?"
+    ],
+    "trick": [
+      "If you use HTML5 validation attributes (like `required` or `type=\"email\"`), do you still need React validation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why do frontend validation if the backend does it?",
+      "answer": "Frontend validation is strictly for User Experience (UX). It gives the user instant feedback without waiting for a slow network request. Backend validation is for Security (never trust the client). You MUST do both."
+    },
+    {
+      "question": "What is onChange vs onBlur validation?",
+      "answer": "`onChange` validates every single time a key is pressed (can be annoying for users currently typing an email). `onBlur` validates only when the user clicks out of the input field (usually preferred for UX)."
+    },
+    {
+      "question": "What are Yup and Zod?",
+      "answer": "They are schema validation libraries. Instead of writing messy `if (password.length < 8)` logic, you declare a schema: `z.string().min(8)`. They integrate perfectly with React Hook Form."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\nexport default function SimpleForm() {\n  const [email, setEmail] = useState(\"\");\n  const [error, setError] = useState(\"\");\n\n  const handleSubmit = (e) => {\n    e.preventDefault(); // Stop page reload\n    \n    // Validation Logic\n    if (!email.includes(\"@\")) {\n      setError(\"Please enter a valid email address.\");\n      return;\n    }\n    \n    setError(\"\");\n    alert(\"Form submitted safely!\");\n  };\n\n  return (\n    <form onSubmit={handleSubmit} className=\"p-4 border\">\n      <label>Email Address:</label>\n      <input \n        value={email} \n        onChange={(e) => {\n          setEmail(e.target.value);\n          if (error) setError(\"\"); // Clear error when they start typing\n        }} \n        className={`border p-2 block mt-2 ${error ? \"border-red-500\" : \"\"}`}\n      />\n      \n      {/* Conditional Error Message */}\n      {error && <p className=\"text-red-500 text-sm mt-1\">{error}</p>}\n      \n      <button type=\"submit\" className=\"mt-4 bg-blue-500 text-white p-2 rounded\">\n        Submit\n      </button>\n    </form>\n  );\n}"
+}

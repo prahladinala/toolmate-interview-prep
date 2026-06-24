@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-basics-interview",
+  "title": "Beginner Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common introductory questions asked to ensure a candidate understands what Tailwind is and why it exists.",
+  "simpleExplanation": "The interviewer wants to know if you understand the paradigm shift of Utility-First CSS, or if you just memorize classes.",
+  "realWorldExample": "Being asked: 'Why would I use Tailwind instead of just writing my own CSS classes?'",
+  "useCases": [
+    "Junior Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between Tailwind CSS and Bootstrap?"
+    ],
+    "intermediate": [
+      "Doesn't Tailwind violate the 'Separation of Concerns' principle by putting styling in the HTML?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Tailwind vs Bootstrap?",
+      "answer": "Bootstrap provides pre-styled, opinionated UI components (like a Navbar). Tailwind provides low-level utility classes (like `flex`, `p-4`) allowing you to build completely custom designs without fighting framework overrides."
+    },
+    {
+      "question": "Separation of Concerns?",
+      "answer": "Historically, we separated HTML (structure) and CSS (styling) into different files. However, modern frameworks like React proved that 'Separation of Concerns' is better achieved by separating features into reusable *Components*. A React Component encapsulates its own structure, logic, and styling (via Tailwind) in one maintainable file."
+    }
+  ],
+  "codeExample": "/*\n  Q: If Tailwind puts everything in the HTML, won't my HTML file become incredibly bloated and unreadable?\n  \n  A: Initially, it looks cluttered. However, in modern web development, we don't write raw HTML files with 50 repeated buttons. We use component-based frameworks (React/Vue/Svelte). You write the heavily-classed Tailwind button exactly ONCE in a `Button.tsx` file, and reuse the component cleanly everywhere else.\n*/"
+}

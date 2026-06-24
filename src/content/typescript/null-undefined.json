@@ -1,0 +1,34 @@
+{
+  "id": "null-undefined",
+  "title": "null & undefined",
+  "difficulty": "Beginner",
+  "definition": "`undefined` means a variable has been declared but has not yet been assigned a value. `null` is an assignment value representing no value or no object.",
+  "simpleExplanation": "`undefined` is a drawer that you just built but haven't put anything inside yet. `null` is opening the drawer and finding a specific note that says 'This drawer is intentionally empty'.",
+  "realWorldExample": "In a database query, `findUser()` returns `null` if the user is not found. An optional config parameter is `undefined` if the developer didn't pass it.",
+  "useCases": [
+    "Representing missing data",
+    "Strict Null Checks configuration in TS"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between null and undefined?"
+    ],
+    "intermediate": [
+      "What does the `strictNullChecks` flag do in tsconfig?"
+    ],
+    "advanced": [
+      "What is the Non-Null Assertion Operator `!`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does strictNullChecks do?",
+      "answer": "If `strictNullChecks` is false, TS allows you to assign `null` to a variable typed as `string`. This is terrible and causes bugs. If true, `string` means ONLY string, and you must explicitly allow nulls using a union type: `string | null`."
+    },
+    {
+      "question": "What is the Non-Null Assertion Operator '!'?",
+      "answer": "If TS warns that a value might be null, but YOU know for a 100% fact it is not (e.g., getting an element by ID that is hardcoded in the HTML), you append `!` to tell TS to shut up: `document.getElementById('app')!.innerHTML`."
+    }
+  ],
+  "codeExample": "// With strictNullChecks: true (Best Practice)\nlet username: string;\n// username = null; // Error: Type 'null' is not assignable to type 'string'\n\nlet optionalUser: string | null = null; // Correct way to handle missing data\n\nfunction printName(name: string | undefined) {\n  // Must check before using string methods!\n  if (name !== undefined) {\n    console.log(name.toUpperCase());\n  }\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "server-vs-client",
+  "title": "Server vs Client Components",
+  "difficulty": "Intermediate",
+  "definition": "The architectural decision-making process of choosing exactly when to leave a component on the server, and when to opt-in to the client.",
+  "simpleExplanation": "The golden rule of modern Next.js: Keep EVERYTHING as a Server Component by default. Only extract the tiny, interactive pieces (like a button or an input field) into Client Components.",
+  "realWorldExample": "You have a massive Blog Post page. The Header, the Article Text, and the Footer should all be Server Components. The tiny 'Like Button' at the bottom should be extracted into its own file, marked with `'use client'`, and imported into the Server Component.",
+  "useCases": [
+    "Optimizing application performance",
+    "Architecting Next.js layouts"
+  ],
+  "questions": {
+    "basic": [
+      "If you need to fetch secret API keys from the environment variables, should you use a Server or Client component?"
+    ],
+    "intermediate": [
+      "What happens if you try to use `window.innerWidth` inside a Server Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Server or Client for secrets?",
+      "answer": "Server Component! Client components are sent to the browser, meaning users can inspect the code and steal your API keys. Server components stay safely on the server."
+    },
+    {
+      "question": "window in Server Component?",
+      "answer": "It will throw an error: `window is not defined`. The `window` object only exists in web browsers. Server Components run in Node.js, which has no concept of a browser window."
+    }
+  ],
+  "codeExample": "/* ❌ BAD ARCHITECTURE (Whole page is a Client Component) */\n'use client'; // This forces the massive article text to be sent as JS to the browser!\nimport { useState } from 'react';\nexport default function BlogPost({ article }) {\n  const [likes, setLikes] = useState(0);\n  return (\n    <article>\n      <h1>{article.title}</h1>\n      <p>{article.massiveContent}</p>\n      <button onClick={() => setLikes(l=>l+1)}>Like {likes}</button>\n    </article>\n  );\n}\n\n/* ✅ GOOD ARCHITECTURE (Push interactivity down the tree) */\n// app/blog/page.tsx (Server Component)\nimport LikeButton from './LikeButton'; // Import the tiny interactive part\nexport default function BlogPost({ article }) {\n  return (\n    <article>\n      {/* This massive text stays on the server, never sent as JS! */}\n      <h1>{article.title}</h1>\n      <p>{article.massiveContent}</p>\n      {/* Only this tiny button gets sent to the browser */}\n      <LikeButton />\n    </article>\n  );\n}"
+}

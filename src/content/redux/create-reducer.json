@@ -1,0 +1,31 @@
+{
+  "id": "create-reducer",
+  "title": "createReducer()",
+  "difficulty": "Intermediate",
+  "definition": "A utility that simplifies creating Redux reducer functions. It uses a 'builder callback' notation to define how the state updates in response to specific actions.",
+  "simpleExplanation": "The manual way to write a reducer in RTK if you don't want to use `createSlice`. It replaces the ugly, legacy `switch` statements and gives you Immer's mutating capabilities.",
+  "realWorldExample": "Mostly used under the hood by `createSlice`, but occasionally used directly if you are migrating an older codebase to RTK piece by piece.",
+  "useCases": [
+    "Migrating legacy reducers",
+    "Advanced reducer composition"
+  ],
+  "questions": {
+    "basic": [
+      "Does `createReducer` use Immer for safe mutations just like `createSlice`?"
+    ],
+    "intermediate": [
+      "Why does RTK force you to use a `builder` callback instead of just a map object?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use Immer?",
+      "answer": "Yes. All RTK functions that create reducers wrap your code in Immer automatically."
+    },
+    {
+      "question": "Why builder callback?",
+      "answer": "It provides significantly better TypeScript support. The builder allows TS to perfectly infer the action payload types."
+    }
+  ],
+  "codeExample": "import { createAction, createReducer } from '@reduxjs/toolkit';\n\nconst increment = createAction('counter/increment');\nconst decrement = createAction('counter/decrement');\n\n// Using the modern Builder syntax (Replaces the old switch statement!)\nconst counterReducer = createReducer(0, (builder) => {\n  builder\n    .addCase(increment, (state, action) => {\n      return state + 1;\n    })\n    .addCase(decrement, (state, action) => {\n      return state - 1;\n    })\n    .addDefaultCase((state, action) => {\n      return state;\n    });\n});"
+}

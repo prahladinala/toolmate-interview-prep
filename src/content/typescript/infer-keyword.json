@@ -1,0 +1,35 @@
+{
+  "id": "infer-keyword",
+  "title": "infer Keyword",
+  "difficulty": "Advanced",
+  "definition": "Used strictly within Conditional Types to declare a new local type variable that TypeScript will automatically deduce (infer) during compilation.",
+  "simpleExplanation": "The `infer` keyword is a detective. You give TS a complex type (like an Array of Promises containing Strings) and say: 'I know this is a Promise. Please *infer* what type is buried inside the Promise, save it to a variable, and give it back to me.'",
+  "realWorldExample": "The native `ReturnType<T>` utility. It inspects a function type, uses `infer` to figure out what the function returns, and hands that exact type back to you.",
+  "useCases": [
+    "Extracting return types of functions",
+    "Extracting values from Promises",
+    "Advanced utility types"
+  ],
+  "questions": {
+    "basic": [
+      "Where is the ONLY place you can use the `infer` keyword?"
+    ],
+    "intermediate": [
+      "How do you write a type that unwraps an Array type into its inner item type?"
+    ],
+    "advanced": [
+      "Can you use multiple `infer` declarations in a single condition?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where is the ONLY place you can use it?",
+      "answer": "It can ONLY be used inside the `extends` clause of a Conditional Type. You cannot use it anywhere else in TypeScript."
+    },
+    {
+      "question": "Can you use multiple infers?",
+      "answer": "Yes. For example, if checking a function signature `T extends (a: infer A, b: infer B) => any`, TS will deduce the types of both arguments simultaneously."
+    }
+  ],
+  "codeExample": "// A custom utility to extract what's inside an Array\n// Logic: If T is an Array containing SOME type (infer U), return U. Otherwise, return T.\ntype UnpackArray<T> = T extends Array<infer U> ? U : T;\n\ntype A = UnpackArray<string[]>; // TS infers U is string. Returns: string\ntype B = UnpackArray<number>;   // Not an array. Returns: number\n\n// How the built-in ReturnType works:\n// If T is a function returning SOME type (infer R), return R.\ntype MyReturnType<T> = T extends (...args: any[]) => infer R ? R : never;\n\ntype Func = () => boolean;\ntype Ret = MyReturnType<Func>; // Evaluates to: boolean"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "hoc-render-props",
+  "title": "HOCs & Render Props",
+  "difficulty": "Advanced",
+  "definition": "Higher-Order Components (HOCs) and Render Props are two advanced React patterns used to share logic between components. An HOC is a function that takes a component and returns a new component. A Render Prop is a technique for sharing code using a prop whose value is a function.",
+  "simpleExplanation": "Imagine you have a 'Hover Detector' logic. Instead of copying that code into 10 different buttons and images, you can use these patterns. An HOC is like a jacket you put on your component: `withHover(Button)`. A Render Prop is like handing the component a remote control: `<HoverDetector render={(isHovered) => <Button active={isHovered} />} />`.",
+  "realWorldExample": "Before Hooks, Redux's `connect()` was the most famous HOC. React Router used Render Props extensively. Today, Custom Hooks have mostly replaced both of these patterns, but they are highly common in legacy codebases and still asked in senior interviews.",
+  "useCases": [
+    "Reusing cross-cutting concerns (like analytics tracking or authentication checks)",
+    "Injecting extra props into a component",
+    "Maintaining legacy React codebases built before Hooks (React 16.8)"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Higher-Order Component (HOC)?",
+      "What is a Render Prop?"
+    ],
+    "intermediate": [
+      "Why did Custom Hooks largely replace HOCs and Render Props?",
+      "What is the 'Wrapper Hell' problem?"
+    ],
+    "advanced": [
+      "How do you pass refs through an HOC? (Hint: React.forwardRef)",
+      "Why shouldn't you define an HOC inside the render method of another component?"
+    ],
+    "trick": [
+      "Does a Render Prop literally have to be named 'render'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why did Custom Hooks replace them?",
+      "answer": "HOCs and Render Props cause 'Wrapper Hell'—deeply nested DOM trees of wrapper components just to share logic. Custom Hooks allow you to extract stateful logic into a simple function call without altering the component tree."
+    },
+    {
+      "question": "Why shouldn't you define an HOC inside a render method?",
+      "answer": "If you dynamically create an HOC inside a render method, React sees it as a brand new component on every render. It will unmount the old one and mount the new one entirely, destroying all state and DOM nodes."
+    },
+    {
+      "question": "Does a Render Prop literally have to be named 'render'?",
+      "answer": "No! It can be named anything. In fact, using the `children` prop as a function is one of the most common ways to implement the Render Props pattern."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\n// --- 1. The Render Props Pattern ---\n// It handles the state, and 'renders' whatever you pass it\nconst MouseTracker = ({ renderCallback }) => {\n  const [position, setPosition] = useState({ x: 0, y: 0 });\n\n  const handleMouseMove = (e) => setPosition({ x: e.clientX, y: e.clientY });\n\n  return (\n    <div style={{ height: '100px', background: '#eee' }} onMouseMove={handleMouseMove}>\n      {/* We call the prop as a function, passing the state to it */}\n      {renderCallback(position)}\n    </div>\n  );\n};\n\nexport default function App() {\n  return (\n    <div>\n      <h2>Render Props Example:</h2>\n      <MouseTracker \n        renderCallback={(mouse) => (\n          <p>The mouse is at X: {mouse.x}, Y: {mouse.y}</p>\n        )}\n      />\n    </div>\n  );\n}\n\n// --- 2. The HOC Pattern (For Reference) ---\n// const withMouse = (WrappedComponent) => {\n//   return (props) => {\n//     const [pos, setPos] = useState({x: 0, y: 0});\n//     return <WrappedComponent {...props} mouse={pos} />\n//   }\n// }"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "insomnia",
+  "title": "Insomnia",
+  "difficulty": "Beginner",
+  "definition": "A lightweight, open-source alternative to Postman, favored by many developers for its speed, simplicity, and excellent support for GraphQL and gRPC.",
+  "simpleExplanation": "Postman became very bloated, requiring cloud accounts and team workspaces. Insomnia is the fast, clean, offline-first alternative. It does the exact same thing (tests APIs), but feels faster and less cluttered.",
+  "realWorldExample": "Testing a complex GraphQL query. Insomnia's built-in schema introspection automatically provides autocomplete for your GraphQL queries as you type them.",
+  "useCases": [
+    "API testing",
+    "GraphQL development",
+    "Local development"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary reason developers might choose Insomnia over Postman?"
+    ],
+    "intermediate": [
+      "Does Insomnia support Environment Variables for swapping between Localhost and Production URLs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why choose Insomnia?",
+      "answer": "Speed, lightweight design, and the ability to use it completely offline without creating a cloud account."
+    },
+    {
+      "question": "Support Env Variables?",
+      "answer": "Yes. Just like Postman, you can define an Environment named 'Local' where `base_url = localhost:3000`, and 'Prod' where `base_url = api.com`. Changing the dropdown swaps the URLs for all your saved requests instantly."
+    }
+  ],
+  "codeExample": "/*\n  Insomnia Environment Variable Configuration:\n  \n  { \"base_url\": \"http://localhost:3000/api/v1\" }\n  \n  URL Input Bar:\n  {{ base_url }}/users\n  \n  When you switch the environment to Production, \n  {{ base_url }} automatically becomes https://myapi.com/api/v1\n*/"
+}

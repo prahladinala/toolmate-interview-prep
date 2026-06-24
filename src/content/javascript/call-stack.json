@@ -1,0 +1,34 @@
+{
+  "id": "call-stack",
+  "title": "Call Stack",
+  "difficulty": "Intermediate",
+  "definition": "A LIFO (Last In, First Out) data structure used by the JavaScript engine to keep track of its place in a script that calls multiple functions.",
+  "simpleExplanation": "The Call Stack is like a stack of dirty plates. You wash the plate on the very top first. If someone hands you a new dirty plate (a new function call), it goes on top. You cannot wash the bottom plate until all the top plates are done.",
+  "realWorldExample": "If `function A` calls `function B`, which calls `function C`, the stack looks like: C (top), B, A (bottom). Once C finishes, it pops off, leaving B.",
+  "useCases": [
+    "Reading stack traces in error logs",
+    "Understanding Maximum Call Stack Size Exceeded errors (Recursion)"
+  ],
+  "questions": {
+    "basic": [
+      "Is JavaScript single-threaded?"
+    ],
+    "intermediate": [
+      "What happens if the call stack gets too large?"
+    ],
+    "advanced": [
+      "How do asynchronous callbacks interact with the Call Stack?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if it gets too large?",
+      "answer": "If you write an infinite recursive loop without a base case, the stack overflows and the browser throws a 'Maximum call stack size exceeded' error."
+    },
+    {
+      "question": "How do async callbacks interact with it?",
+      "answer": "Async callbacks (like setTimeout) are pushed to the Task Queue. They wait there until the Call Stack is completely empty. The Event Loop then pushes them from the queue onto the Call Stack to run."
+    }
+  ],
+  "codeExample": "function first() {\n  second();\n  console.log(\"First Finished\");\n}\n\nfunction second() {\n  third();\n  console.log(\"Second Finished\");\n}\n\nfunction third() {\n  console.log(\"Third Finished\");\n}\n\nfirst();\n// Stack Trace execution order:\n// 1. third() runs and pops\n// 2. second() resumes and pops\n// 3. first() resumes and pops"
+}

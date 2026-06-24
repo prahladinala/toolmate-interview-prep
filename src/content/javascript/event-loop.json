@@ -1,0 +1,45 @@
+{
+  "id": "event-loop",
+  "title": "The Event Loop",
+  "difficulty": "Advanced",
+  "definition": "The Event Loop is a mechanism in JavaScript that allows it to perform non-blocking I/O operations despite being single-threaded. It constantly checks if the call stack is empty, and if so, it pushes tasks from the task queue (and microtask queue) onto the stack to be executed.",
+  "simpleExplanation": "Imagine a chef (JavaScript) working alone in a kitchen (single-threaded). They can only chop one carrot at a time. If they put a turkey in the oven (an async task), they don't stand there staring at the oven for 2 hours. They set a timer and go back to chopping. When the timer rings (event loop), they pull the turkey out when they finish their current carrot.",
+  "realWorldExample": "This is why UI doesn't freeze when making an API call, and why `setTimeout(fn, 0)` doesn't execute immediately, but instead waits for the current code to finish.",
+  "useCases": [
+    "Understanding the order of execution in complex applications",
+    "Preventing UI blocking by breaking up heavy tasks",
+    "Debugging race conditions in asynchronous code"
+  ],
+  "questions": {
+    "basic": [
+      "Is JavaScript single-threaded or multi-threaded?",
+      "What is the Call Stack?"
+    ],
+    "intermediate": [
+      "What is the difference between the Call Stack and the Task Queue?",
+      "If you use setTimeout with 0 milliseconds, does it run immediately?"
+    ],
+    "advanced": [
+      "What is the difference between Macrotasks (Task Queue) and Microtasks?",
+      "Which has higher priority: Promises or setTimeout?"
+    ],
+    "trick": [
+      "In what order do console.logs appear when mixing synchronous code, Promises, and setTimeout?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is JavaScript single-threaded?",
+      "answer": "Yes. It has a single Call Stack and can only execute one piece of code at a time. The browser (or Node.js) provides Web APIs (like setTimeout or fetch) that run in the background and push callbacks to the queue when done."
+    },
+    {
+      "question": "What is the difference between Macrotasks and Microtasks?",
+      "answer": "Microtasks (like Promise.then and MutationObserver) have higher priority. The Event Loop empties the entire Microtask queue before it moves on to the next Macrotask (like setTimeout or setInterval)."
+    },
+    {
+      "question": "If you use setTimeout with 0 milliseconds, does it run immediately?",
+      "answer": "No. It gets pushed to the Web APIs, which immediately pushes the callback to the Task Queue. However, the Event Loop must wait for the current synchronous code (Call Stack) to finish completely before executing it."
+    }
+  ],
+  "codeExample": "console.log('1. Start'); // Synchronous (Call Stack)\n\nsetTimeout(() => {\n  console.log('4. setTimeout'); // Macrotask (Queue)\n}, 0);\n\nPromise.resolve().then(() => {\n  console.log('3. Promise'); // Microtask (Queue - higher priority)\n});\n\nconsole.log('2. End'); // Synchronous (Call Stack)\n\n// Output Order:\n// 1. Start\n// 2. End\n// 3. Promise\n// 4. setTimeout"
+}

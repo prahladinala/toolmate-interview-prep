@@ -1,0 +1,30 @@
+{
+  "id": "ps",
+  "title": "ps",
+  "difficulty": "Beginner",
+  "definition": "Process Status. A command that provides a snapshot of the current running processes on the system.",
+  "simpleExplanation": "Taking a photograph of the Task Manager. It lists all the invisible background apps currently running, but it doesn't update live.",
+  "realWorldExample": "You start a Node.js server in the background and forget its Process ID. You type `ps aux | grep node`. It outputs the exact Process ID (e.g., 4598) so you can kill it.",
+  "useCases": [
+    "Finding Process IDs (PIDs)",
+    "Checking if a service is running"
+  ],
+  "questions": {
+    "basic": [
+      "What do the flags `aux` do in the extremely common command `ps aux`?"
+    ],
+    "intermediate": [
+      "Does the `ps` command show you how much CPU a process is using right this exact second?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is aux?",
+      "answer": "`a` shows processes for all users, `u` displays the user/owner and memory details, and `x` shows processes not attached to a terminal (background daemons)."
+    },
+    {
+      "question": "Show live CPU?",
+      "answer": "No. `ps` is a static snapshot of the exact millisecond you hit Enter. To see live, fluctuating CPU usage, you must use `top` or `htop`."
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "id": "nextjs",
+  "title": "Next.js",
+  "description": "Master Next.js from fundamentals to advanced full-stack application development. Learn routing, rendering strategies, Server Components, data fetching, performance optimization, authentication, deployment, and system design.",
+  "icon": "nextjs",
+  "categories": [
+    {
+      "id": "fundamentals",
+      "title": "Next.js Fundamentals",
+      "topics": [
+        { "id": "what-is-nextjs", "title": "What is Next.js?" },
+        { "id": "nextjs-vs-react", "title": "Next.js vs React" },
+        { "id": "project-structure", "title": "Project Structure" },
+        { "id": "app-router-introduction", "title": "App Router Overview" },
+        { "id": "pages-vs-app-router", "title": "Pages Router vs App Router" },
+        { "id": "nextjs-lifecycle", "title": "Request Lifecycle" }
+      ]
+    },
+    {
+      "id": "routing",
+      "title": "Routing",
+      "topics": [
+        { "id": "file-based-routing", "title": "File-Based Routing" },
+        { "id": "nested-routes", "title": "Nested Routes" },
+        { "id": "dynamic-routes", "title": "Dynamic Routes" },
+        { "id": "catch-all-routes", "title": "Catch-All Routes" },
+        { "id": "route-groups", "title": "Route Groups" },
+        { "id": "parallel-routes", "title": "Parallel Routes" },
+        { "id": "intercepting-routes", "title": "Intercepting Routes" },
+        { "id": "navigation", "title": "Navigation & Link Component" }
+      ]
+    },
+    {
+      "id": "rendering",
+      "title": "Rendering Strategies",
+      "topics": [
+        { "id": "csr", "title": "Client Side Rendering (CSR)" },
+        { "id": "ssr", "title": "Server Side Rendering (SSR)" },
+        { "id": "ssg", "title": "Static Site Generation (SSG)" },
+        { "id": "isr", "title": "Incremental Static Regeneration (ISR)" },
+        { "id": "streaming", "title": "Streaming" },
+        { "id": "partial-prerendering", "title": "Partial Prerendering (PPR)" },
+        { "id": "rendering-comparison", "title": "SSR vs CSR vs SSG vs ISR" }
+      ]
+    },
+    {
+      "id": "server-components",
+      "title": "React Server Components",
+      "topics": [
+        { "id": "server-components", "title": "Server Components" },
+        { "id": "client-components", "title": "Client Components" },
+        { "id": "use-client", "title": "\"use client\" Directive" },
+        { "id": "server-vs-client", "title": "Server vs Client Components" },
+        { "id": "component-boundaries", "title": "Component Boundaries" }
+      ]
+    },
+    {
+      "id": "data-fetching",
+      "title": "Data Fetching",
+      "topics": [
+        { "id": "fetch-api", "title": "Fetch API in Next.js" },
+        { "id": "server-fetching", "title": "Server-Side Fetching" },
+        { "id": "client-fetching", "title": "Client-Side Fetching" },
+        { "id": "parallel-fetching", "title": "Parallel Data Fetching" },
+        { "id": "sequential-fetching", "title": "Sequential Data Fetching" },
+        { "id": "revalidation", "title": "Revalidation" },
+        { "id": "cache-options", "title": "Cache Control" }
+      ]
+    },
+    {
+      "id": "server-actions",
+      "title": "Server Actions",
+      "topics": [
+        { "id": "server-actions-intro", "title": "Introduction to Server Actions" },
+        { "id": "form-actions", "title": "Form Actions" },
+        { "id": "mutations", "title": "Data Mutations" },
+        { "id": "revalidate-path", "title": "revalidatePath()" },
+        { "id": "revalidate-tag", "title": "revalidateTag()" }
+      ]
+    },
+    {
+      "id": "api-routes",
+      "title": "API Routes & Backend",
+      "topics": [
+        { "id": "route-handlers", "title": "Route Handlers" },
+        { "id": "get-post-put-delete", "title": "REST API Endpoints" },
+        { "id": "request-response", "title": "Request & Response Objects" },
+        { "id": "middleware-api", "title": "Middleware" },
+        { "id": "error-handling-api", "title": "API Error Handling" }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentication & Authorization",
+      "topics": [
+        { "id": "auth-overview", "title": "Authentication Concepts" },
+        { "id": "nextauth", "title": "NextAuth.js / Auth.js" },
+        { "id": "jwt-auth", "title": "JWT Authentication" },
+        { "id": "session-auth", "title": "Session Authentication" },
+        { "id": "protected-routes", "title": "Protected Routes" },
+        { "id": "role-based-access", "title": "Role-Based Access Control" }
+      ]
+    },
+    {
+      "id": "middleware",
+      "title": "Middleware",
+      "topics": [
+        { "id": "middleware-basics", "title": "Middleware Fundamentals" },
+        { "id": "redirects", "title": "Redirects" },
+        { "id": "rewrites", "title": "Rewrites" },
+        { "id": "headers", "title": "Headers & Cookies" },
+        { "id": "auth-middleware", "title": "Authentication Middleware" }
+      ]
+    },
+    {
+      "id": "seo",
+      "title": "SEO & Metadata",
+      "topics": [
+        { "id": "metadata-api", "title": "Metadata API" },
+        { "id": "dynamic-metadata", "title": "Dynamic Metadata" },
+        { "id": "open-graph", "title": "Open Graph Tags" },
+        { "id": "twitter-cards", "title": "Twitter Cards" },
+        { "id": "sitemaps", "title": "Sitemaps" },
+        { "id": "robots", "title": "robots.txt" }
+      ]
+    },
+    {
+      "id": "images-fonts",
+      "title": "Images & Fonts",
+      "topics": [
+        { "id": "next-image", "title": "Image Component" },
+        { "id": "image-optimization", "title": "Image Optimization" },
+        { "id": "responsive-images", "title": "Responsive Images" },
+        { "id": "next-font", "title": "next/font" },
+        { "id": "font-optimization", "title": "Font Optimization" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "code-splitting", "title": "Code Splitting" },
+        { "id": "dynamic-imports", "title": "Dynamic Imports" },
+        { "id": "lazy-loading", "title": "Lazy Loading" },
+        { "id": "bundle-analysis", "title": "Bundle Analysis" },
+        { "id": "web-vitals", "title": "Core Web Vitals" },
+        { "id": "caching-strategies", "title": "Caching Strategies" }
+      ]
+    },
+    {
+      "id": "state-management",
+      "title": "State Management",
+      "topics": [
+        { "id": "context-api", "title": "Context API" },
+        { "id": "zustand", "title": "Zustand" },
+        { "id": "redux-toolkit", "title": "Redux Toolkit" },
+        { "id": "tanstack-query", "title": "TanStack Query" },
+        { "id": "server-state-vs-client-state", "title": "Server State vs Client State" }
+      ]
+    },
+    {
+      "id": "database-integration",
+      "title": "Database Integration",
+      "topics": [
+        { "id": "prisma", "title": "Prisma ORM" },
+        { "id": "mongodb", "title": "MongoDB Integration" },
+        { "id": "postgresql", "title": "PostgreSQL Integration" },
+        { "id": "drizzle", "title": "Drizzle ORM" },
+        { "id": "connection-pooling", "title": "Connection Pooling" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "topics": [
+        { "id": "xss-protection", "title": "XSS Prevention" },
+        { "id": "csrf-protection", "title": "CSRF Protection" },
+        { "id": "secure-cookies", "title": "Secure Cookies" },
+        { "id": "environment-variables", "title": "Environment Variables" },
+        { "id": "security-headers", "title": "Security Headers" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Testing",
+      "topics": [
+        { "id": "jest", "title": "Jest" },
+        { "id": "react-testing-library", "title": "React Testing Library" },
+        { "id": "playwright", "title": "Playwright" },
+        { "id": "cypress", "title": "Cypress" },
+        { "id": "integration-testing", "title": "Integration Testing" }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment & DevOps",
+      "topics": [
+        { "id": "vercel", "title": "Vercel Deployment" },
+        { "id": "docker", "title": "Docker" },
+        { "id": "self-hosting", "title": "Self Hosting" },
+        { "id": "ci-cd", "title": "CI/CD Pipelines" },
+        { "id": "environment-config", "title": "Environment Configuration" }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture & Scalability",
+      "topics": [
+        { "id": "feature-based-architecture", "title": "Feature-Based Architecture" },
+        { "id": "folder-structure", "title": "Scalable Folder Structure" },
+        { "id": "monorepo", "title": "Monorepo Architecture" },
+        { "id": "micro-frontends", "title": "Micro Frontends" },
+        { "id": "system-design", "title": "System Design for Next.js Apps" }
+      ]
+    },
+    {
+      "id": "advanced-nextjs",
+      "title": "Advanced Next.js",
+      "topics": [
+        { "id": "edge-runtime", "title": "Edge Runtime" },
+        { "id": "edge-functions", "title": "Edge Functions" },
+        { "id": "streaming-ui", "title": "Streaming UI" },
+        { "id": "suspense", "title": "Suspense in Next.js" },
+        { "id": "server-component-patterns", "title": "Server Component Patterns" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "beginner-nextjs", "title": "Beginner Interview Questions" },
+        { "id": "intermediate-nextjs", "title": "Intermediate Interview Questions" },
+        { "id": "advanced-nextjs", "title": "Advanced Interview Questions" },
+        { "id": "scenario-based", "title": "Scenario-Based Questions" },
+        { "id": "debugging-nextjs", "title": "Debugging Questions" },
+        { "id": "system-design-nextjs", "title": "System Design Questions" }
+      ]
+    }
+  ]
+}

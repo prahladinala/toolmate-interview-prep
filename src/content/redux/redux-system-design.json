@@ -1,0 +1,30 @@
+{
+  "id": "redux-system-design",
+  "title": "System Design Questions",
+  "difficulty": "Advanced",
+  "definition": "High-level architectural questions testing your ability to decide WHEN to use Redux, and how to structure it for massive scalability.",
+  "simpleExplanation": "The interviewer says: 'We are building a clone of Google Docs. Where does Redux fit in?'",
+  "realWorldExample": "Debating between Redux, Context API, Zustand, and React Query based on specific business requirements.",
+  "useCases": [
+    "Lead / Principal Engineer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "If you are building a static blog that only needs to store the Dark Mode preference, should you use Redux?"
+    ],
+    "intermediate": [
+      "How do you handle WebSocket data streams in Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use Redux for blog?",
+      "answer": "Absolutely not. That is massive over-engineering. React Context or LocalStorage is perfect for a simple theme toggle."
+    },
+    {
+      "question": "WebSockets in Redux?",
+      "answer": "You should not dispatch an action for every single WebSocket ping (it will crash React). You should use a Custom Middleware to listen to the WebSocket, throttle/batch the incoming data into a buffer, and dispatch a single bulk-update action to the reducer every 1 second."
+    }
+  ],
+  "codeExample": "/*\n  Q: We are building an e-commerce platform. \n     Explain your state management architecture.\n     \n  A: \n  1. UI State (modals, active tabs, form inputs): React `useState`.\n     No need to clutter the global store.\n     \n  2. Server State (products list, inventory data): `RTK Query`.\n     This handles all caching, deduplication, and loading spinners automatically.\n     \n  3. Global Client State (shopping cart, current user auth): `Redux Toolkit`.\n     This data is accessed by hundreds of components and needs predictable, \n     global synchronization via standard Redux Slices.\n*/"
+}

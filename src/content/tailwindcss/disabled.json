@@ -1,0 +1,32 @@
+{
+  "id": "disabled",
+  "title": "Disabled State",
+  "difficulty": "Beginner",
+  "definition": "A state variant (`disabled:`) that applies classes when an element (usually a form input or button) has the HTML `disabled` attribute applied to it.",
+  "simpleExplanation": "If an input field is disabled (meaning the user cannot type in it), it shouldn't look like a normal input field. You use `disabled:opacity-50` to fade it out, signaling to the user that it is off-limits.",
+  "realWorldExample": "A 'Submit Form' button that remains `disabled:opacity-50` and `disabled:cursor-not-allowed` until the user checks the 'I agree to terms' checkbox.",
+  "useCases": [
+    "Form validation",
+    "Loading states",
+    "Permissions"
+  ],
+  "questions": {
+    "basic": [
+      "What HTML attribute MUST be present on the element for the `disabled:` Tailwind variant to trigger?"
+    ],
+    "intermediate": [
+      "Does adding `disabled:opacity-50` to a `div` do anything?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which attribute?",
+      "answer": "The `disabled` attribute (e.g., `<button disabled>`)."
+    },
+    {
+      "question": "On a div?",
+      "answer": "No. Standard `div` elements cannot inherently be 'disabled' in HTML. The `disabled` attribute is strictly for form elements like `<button>`, `<input>`, `<select>`, and `<textarea>`."
+    }
+  ],
+  "codeExample": "<!-- \n  A button that changes styles completely when disabled in React. \n  If `isSubmitting` is true, the button fades out and the cursor turns into a red circle with a slash.\n-->\n<button \n  disabled={isSubmitting}\n  class=\"bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded\n         disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-400\"\n>\n  Checkout Now\n</button>"
+}

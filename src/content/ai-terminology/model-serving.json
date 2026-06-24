@@ -1,0 +1,30 @@
+{
+  "id": "model-serving",
+  "title": "Model Serving",
+  "difficulty": "Intermediate",
+  "definition": "The infrastructure phase where a trained AI model is wrapped in an API and hosted on a cloud server so that external applications can send it data and receive predictions (inference) in real-time.",
+  "simpleExplanation": "Taking the AI 'brain' off the scientist's laptop and plugging it into the internet so the whole world can use it.",
+  "realWorldExample": "Using vLLM or Hugging Face Text Generation Inference (TGI) to host an open-source model like Mistral on an AWS GPU. The software creates a REST API so frontend React apps can send it JSON payloads.",
+  "useCases": [
+    "Cloud architecture",
+    "Scaling AI applications"
+  ],
+  "questions": {
+    "basic": [
+      "What type of computer hardware is almost always required to Serve a modern LLM efficiently?"
+    ],
+    "intermediate": [
+      "What is 'Continuous Batching' in modern LLM model serving?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which hardware?",
+      "answer": "GPUs (Graphics Processing Units), like Nvidia A100s or H100s. Serving LLMs on standard CPUs is incredibly slow."
+    },
+    {
+      "question": "Continuous Batching?",
+      "answer": "A highly advanced queue system. Instead of waiting for User 1's entire paragraph to finish generating before starting User 2's request, the server processes the math for User 1, User 2, and User 3 simultaneously token-by-token, dramatically increasing server throughput."
+    }
+  ]
+}

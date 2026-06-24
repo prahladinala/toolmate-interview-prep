@@ -1,0 +1,31 @@
+{
+  "id": "cors",
+  "title": "CORS",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Origin Resource Sharing. A browser security mechanism that restricts web pages from making HTTP requests to a different domain than the one that served the web page, unless the server explicitly allows it.",
+  "simpleExplanation": "Imagine you live at `localhost:3000`. You try to borrow sugar from your neighbor at `api.com`. The browser acts as a security guard and stops you, saying 'You don't live there.' To get the sugar, the neighbor (`api.com`) must put a sign on their door (a Header) that explicitly says 'I allow `localhost:3000` to borrow sugar'.",
+  "realWorldExample": "You build a React app on Vercel and a Node API on Heroku. When React tries to fetch the API, the browser blocks it and throws a massive red CORS error. You must configure the Node API to send the `Access-Control-Allow-Origin` header.",
+  "useCases": [
+    "Frontend-to-Backend communication",
+    "Third-party APIs"
+  ],
+  "questions": {
+    "basic": [
+      "Does a CORS error mean the backend server crashed?"
+    ],
+    "intermediate": [
+      "If you bypass the browser and make a request using Postman or cURL, will you get a CORS error?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Did server crash?",
+      "answer": "No. A CORS error is purely a client-side security mechanism enforced by the web browser. The server actually received the request perfectly fine, but the browser refused to let your JavaScript read the response."
+    },
+    {
+      "question": "Postman CORS?",
+      "answer": "No! Postman is not a web browser. It does not enforce CORS policies. CORS only exists to protect users running untrusted JavaScript inside a web browser environment."
+    }
+  ],
+  "codeExample": "// Node.js Express Backend fixing a CORS error\n\nconst cors = require('cors');\n\n// ❌ BAD: Allows literally any website in the world to hit your API\napp.use(cors({ origin: '*' }));\n\n// ✅ GOOD: Only allows your specific frontend React app to hit the API\napp.use(cors({\n  origin: 'https://my-react-app.vercel.app',\n  methods: ['GET', 'POST'],\n  credentials: true // Required if you are sending secure cookies!\n}));"
+}

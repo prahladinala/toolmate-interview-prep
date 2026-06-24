@@ -1,0 +1,30 @@
+{
+  "id": "working-directory",
+  "title": "Working Directory",
+  "difficulty": "Intermediate",
+  "definition": "A single checkout of one version of the project. These files are pulled out of the compressed database in the `.git` directory and placed on disk for you to use or modify.",
+  "simpleExplanation": "The files you actually see and edit in VS Code. It's the physical folder on your computer. If you delete a line of code and hit Save, you have modified the Working Directory, but Git hasn't saved that change to its history yet.",
+  "realWorldExample": "Your messy desk. It's where you actively chop up paper and glue things together before taking a final photograph of the finished craft.",
+  "useCases": [
+    "Active development"
+  ],
+  "questions": {
+    "basic": [
+      "If you make a typo in the Working Directory, is it permanently saved in Git?"
+    ],
+    "intermediate": [
+      "What happens to the Working Directory when you switch branches?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Typo saved?",
+      "answer": "No. The Working Directory is just a sandbox. Git doesn't record anything until you explicitly 'add' and 'commit' those changes."
+    },
+    {
+      "question": "Switching branches?",
+      "answer": "Git physically deletes, adds, and modifies the files in your Working Directory in real-time to match the exact state they were in on the branch you are switching to. It's like magic."
+    }
+  ],
+  "codeExample": "# You open 'index.html' and type some code.\n# At this point, the changes ONLY exist in the Working Directory.\n\n# To see what is currently modified in your Working Directory:\n$ git status\n# Output: Changes not staged for commit:\n#         modified:   index.html"
+}

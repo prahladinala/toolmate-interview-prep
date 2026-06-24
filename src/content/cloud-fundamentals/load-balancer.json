@@ -1,0 +1,31 @@
+{
+  "id": "load-balancer",
+  "title": "Load Balancer",
+  "difficulty": "Intermediate",
+  "definition": "A networking service that automatically distributes incoming application traffic evenly across multiple healthy servers or containers to ensure no single server is overwhelmed.",
+  "simpleExplanation": "The traffic cop. 1,000 users try to access the website at the same time. The Load Balancer stands at the front door, points 500 users to Server A, and 500 users to Server B.",
+  "realWorldExample": "AWS Application Load Balancer (ALB). A web server crashes due to a bug. The Load Balancer instantly detects the server failed its Health Check, and immediately stops sending users to it, routing all traffic to the remaining healthy servers so the site stays online.",
+  "useCases": [
+    "High availability",
+    "Traffic distribution",
+    "SSL termination"
+  ],
+  "questions": {
+    "basic": [
+      "If you only have one single server running your website, do you fundamentally need a Load Balancer?"
+    ],
+    "intermediate": [
+      "What is SSL/TLS Termination at the Load Balancer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need it for one server?",
+      "answer": "Not strictly necessary for traffic distribution, though it can still be useful for managing SSL certificates and obscuring the server's real IP."
+    },
+    {
+      "question": "What is SSL Termination?",
+      "answer": "Decrypting HTTPS traffic requires intense CPU power. Instead of forcing your tiny web servers to decrypt the traffic, you put the SSL certificate on the massive Load Balancer. It decrypts the traffic at the edge, and forwards standard HTTP to your internal servers."
+    }
+  ]
+}

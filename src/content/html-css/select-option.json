@@ -1,0 +1,31 @@
+{
+  "id": "select-option",
+  "title": "Select & Option",
+  "difficulty": "Beginner",
+  "definition": "The `<select>` element is used to create a drop-down list. The `<option>` tags inside it define the available choices in the list.",
+  "simpleExplanation": "It's a dropdown menu. You use `<select>` to build the outer box, and you put multiple `<option>` tags inside it to represent the choices the user can click on.",
+  "realWorldExample": "Selecting your Country or State during a checkout process.",
+  "useCases": [
+    "Conserving screen space when there are many choices",
+    "Forcing a user to pick from a predetermined list"
+  ],
+  "questions": {
+    "basic": [
+      "Which tag acts as the container, and which acts as the choices?"
+    ],
+    "intermediate": [
+      "How do you make an option selected by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Container vs Choices?",
+      "answer": "`<select>` is the container. `<option>` represents the individual choices."
+    },
+    {
+      "question": "Selected by default?",
+      "answer": "Add the `selected` attribute to the specific `<option>` tag you want to show first."
+    }
+  ],
+  "codeExample": "<label for=\"cars\">Choose a car:</label>\n\n<!-- The Select acts as the dropdown container -->\n<select id=\"cars\" name=\"cars\">\n  <!-- The Options are the items in the list -->\n  <!-- 'value' is what gets sent to the server, the text is what the user sees -->\n  <option value=\"volvo\">Volvo</option>\n  <option value=\"saab\">Saab</option>\n  \n  <!-- This option will be pre-selected when the page loads -->\n  <option value=\"fiat\" selected>Fiat (Selected by default)</option>\n  \n  <option value=\"audi\">Audi</option>\n</select>\n\n<br><br>\n\n<!-- Grouping options together -->\n<label for=\"food\">Choose food:</label>\n<select id=\"food\">\n  <optgroup label=\"Fruits\">\n    <option value=\"apple\">Apple</option>\n    <option value=\"banana\">Banana</option>\n  </optgroup>\n  <optgroup label=\"Vegetables\">\n    <option value=\"carrot\">Carrot</option>\n    <option value=\"potato\">Potato</option>\n  </optgroup>\n</select>"
+}

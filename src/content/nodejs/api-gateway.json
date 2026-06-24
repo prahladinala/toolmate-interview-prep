@@ -1,0 +1,32 @@
+{
+  "id": "api-gateway",
+  "title": "API Gateway",
+  "difficulty": "Advanced",
+  "definition": "An API management tool that sits between a client and a collection of backend services. It acts as a reverse proxy to accept all API calls, aggregate the various services required to fulfill them, and return the appropriate result.",
+  "simpleExplanation": "The front desk receptionist at a massive hotel. If the hotel has 50 different departments (Microservices), you don't want the customer (React App) wandering the halls trying to find the Kitchen server, the Billing server, and the Cleaning server. The customer talks ONLY to the Receptionist (API Gateway). The Receptionist figures out exactly which department to call, gathers the info, and hands it to the customer.",
+  "realWorldExample": "AWS API Gateway or Kong. The mobile app only knows one URL: `api.mycompany.com`. When it requests `/users`, the Gateway secretly routes it to Microservice A (Internal IP 10.0.0.1). When it requests `/products`, the Gateway routes it to Microservice B (Internal IP 10.0.0.2).",
+  "useCases": [
+    "Microservice routing",
+    "Centralized Authentication (Gateway checks JWT before letting it into the internal network)",
+    "Rate Limiting"
+  ],
+  "questions": {
+    "basic": [
+      "Does the frontend application need to know the IP addresses of all the underlying microservices?"
+    ],
+    "intermediate": [
+      "Why is Centralized Authentication a major benefit of an API Gateway?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Frontend need IPs?",
+      "answer": "No. The frontend only communicates with the single URL of the API Gateway."
+    },
+    {
+      "question": "Centralized Auth benefit?",
+      "answer": "If you have 20 Microservices, you don't want to write JWT verification code 20 different times. You put the Auth check directly on the API Gateway. If the token is invalid, the Gateway rejects it. If it's valid, it passes the request to the internal microservices, which can now safely assume the user is legitimate."
+    }
+  ],
+  "codeExample": "// A primitive example of how an API Gateway routes traffic\n// Usually done with NGINX, AWS, or 'http-proxy-middleware' in Node.\n\nconst gatewayReq = { path: \"/billing/invoice/123\" };\n\nfunction apiGatewayRouter(req) {\n  console.log(`[Gateway] Received request from internet: ${req.path}`);\n  \n  // 1. Centralized Security Check\n  console.log(\"[Gateway] Validating JWT... OK!\");\n\n  // 2. Routing logic\n  if (req.path.startsWith(\"/users\")) {\n    console.log(\"[Gateway] Routing proxy to User Microservice (10.0.1.5)...\");\n  } \n  else if (req.path.startsWith(\"/billing\")) {\n    console.log(\"[Gateway] Routing proxy to Billing Microservice (10.0.1.8)...\");\n  }\n  else {\n    console.log(\"[Gateway] 404 Not Found\");\n  }\n}\n\napiGatewayRouter(gatewayReq);"
+}

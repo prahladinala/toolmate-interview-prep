@@ -1,0 +1,31 @@
+{
+  "id": "immutable-updates",
+  "title": "Immutable State Updates",
+  "difficulty": "Beginner",
+  "definition": "The requirement in React and Redux that state objects must never be directly modified. Instead, a new copy of the object must be created with the desired changes.",
+  "simpleExplanation": "If you have a piece of paper, you cannot erase what is written on it. To make a change, you must place a brand new piece of paper over it, trace everything exactly, and draw your new changes on the new paper. The old paper remains untouched.",
+  "realWorldExample": "Using the spread operator `[...oldArray, newItem]` instead of `oldArray.push(newItem)`.",
+  "useCases": [
+    "React rendering triggers",
+    "Time travel debugging"
+  ],
+  "questions": {
+    "basic": [
+      "Why does React require immutable updates?"
+    ],
+    "intermediate": [
+      "What happens if you accidentally mutate an array using `.push()` in plain Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why?",
+      "answer": "Because of reference equality (`===`). React is fast because it doesn't compare the actual data deeply. It just checks if the memory address of the object changed. If you mutate the object, the memory address stays the same, and React assumes the data hasn't changed, causing your UI to freeze."
+    },
+    {
+      "question": "What happens?",
+      "answer": "The state inside the Redux store will actually change, but React will NOT re-render. Your screen will show outdated data."
+    }
+  ],
+  "codeExample": "// ❌ MUTABLE (Forbidden in React/Redux)\nconst state = [1, 2, 3];\nstate.push(4);\n\n// ✅ IMMUTABLE (Correct!)\nconst state = [1, 2, 3];\nconst newState = [...state, 4];\n\n// ❌ MUTABLE Object\nconst user = { name: 'John' };\nuser.name = 'Jane';\n\n// ✅ IMMUTABLE Object\nconst user = { name: 'John' };\nconst newUser = { ...user, name: 'Jane' };"
+}

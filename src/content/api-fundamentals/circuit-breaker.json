@@ -1,0 +1,31 @@
+{
+  "id": "circuit-breaker",
+  "title": "Circuit Breaker Pattern",
+  "difficulty": "Advanced",
+  "definition": "A software design pattern used in distributed systems to prevent an application from repeatedly trying to execute an operation that is highly likely to fail, allowing the failing system time to recover.",
+  "simpleExplanation": "If a lightbulb blows out and creates a short circuit, you don't want electricity to keep pumping in and start a fire. A physical circuit breaker 'trips' and cuts the power. In APIs, if the Database is dead, you 'trip' the circuit breaker in your code so the API instantly returns an error, rather than forcing 5,000 users to wait 30 seconds for a timeout.",
+  "realWorldExample": "Microservices. The 'Search' service calls the 'Recommendation' service. The Recommendation service crashes. If the Search service keeps trying to call it, the Search service will run out of memory waiting for responses and ALSO crash (Cascading Failure). A Circuit Breaker stops the calls instantly.",
+  "useCases": [
+    "Microservices architecture",
+    "Preventing cascading failures"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three states of a Circuit Breaker? (Hint: Think of electrical switches)"
+    ],
+    "intermediate": [
+      "What happens when the Circuit Breaker is in the 'Half-Open' state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three states?",
+      "answer": "Closed (Electricity flows, everything is fine). Open (Tripped, electricity is blocked, instant errors). Half-Open (Testing to see if the system is fixed)."
+    },
+    {
+      "question": "Half-Open state?",
+      "answer": "After being 'Open' (blocked) for a while, the breaker transitions to Half-Open. It allows a single test request to go through to the broken service. If it succeeds, the breaker Closes (fixes itself). If it fails, it violently Opens again."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Circuit Breaker Logic\n*/\n\nlet consecutiveFailures = 0;\nlet isCircuitOpen = false;\n\nasync function safeFetchRecommendations() {\n  if (isCircuitOpen) {\n    // INSTANTLY return a fallback to save server resources.\n    // Don't even try to make the HTTP request!\n    return { data: [], message: \"Recommendations temporarily offline\" };\n  }\n\n  try {\n    const res = await fetch('http://flaky-recommendation-service/api');\n    consecutiveFailures = 0; // Success! Reset counter.\n    return res.json();\n  } catch (error) {\n    consecutiveFailures++;\n    \n    if (consecutiveFailures > 5) {\n      console.error(\"SERVICE IS DEAD. TRIPPING CIRCUIT BREAKER!\");\n      isCircuitOpen = true;\n      \n      // Automatically try to heal in 60 seconds (Transition to Half-Open)\n      setTimeout(() => { isCircuitOpen = false; }, 60000);\n    }\n    throw error;\n  }\n}"
+}

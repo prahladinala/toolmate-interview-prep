@@ -1,0 +1,44 @@
+{
+  "id": "lifting-state",
+  "title": "Lifting State Up",
+  "difficulty": "Intermediate",
+  "definition": "Lifting state up is a pattern where state is moved from a child component to its closest common parent so that multiple child components can share and synchronize that state.",
+  "simpleExplanation": "Imagine two siblings in their bedrooms. One has the TV remote, and the other wants to watch a specific channel. Since they are separated by walls (components), they can't share the remote directly. To fix this, they give the remote to their Mom in the living room (the parent component). Now, Mom controls the TV, and both siblings just yell their requests to her (via callback props).",
+  "realWorldExample": "You have a `<TemperatureInput scale=\"celsius\">` and a `<TemperatureInput scale=\"fahrenheit\">`. If you type in Celsius, Fahrenheit must update instantly. If both components held their own state, they would fall out of sync. By moving the state to their parent `<Calculator>`, the parent passes the single true value down to both.",
+  "useCases": [
+    "Synchronizing data between two sibling components",
+    "Sharing a form's input values with a generic submit button component"
+  ],
+  "questions": {
+    "basic": [
+      "What does \"lifting state up\" mean?",
+      "Why can't siblings just pass data directly to each other?"
+    ],
+    "intermediate": [
+      "How does the child component update the state that lives in the parent?",
+      "What is the downside of lifting state too high up the component tree?"
+    ],
+    "advanced": [
+      "When should you use Context or Redux instead of lifting state up?",
+      "Does lifting state up cause unnecessary re-renders?"
+    ],
+    "trick": [
+      "Can a child component \"force\" a parent to re-render without changing parent state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does the child update the parent's state?",
+      "answer": "The parent passes the state-updater function (e.g., `setCount`) down to the child as a prop (often named something like `onCountChange`). The child calls that function when an event happens."
+    },
+    {
+      "question": "What is the downside of lifting state too high?",
+      "answer": "Performance and Prop Drilling. If you lift state all the way to the root `<App>` component, then EVERY time that state changes, the entire application tree will re-render. State should be kept as close to where it is used as possible."
+    },
+    {
+      "question": "When should you use Context instead?",
+      "answer": "If you have to pass the state through many intermediate components that don't actually use the data (Prop Drilling), or if the data is truly global (like Theme or User Session), you should use Context/Redux."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\n// 1. The Sibling Component (Receives state and updater function as props)\nfunction CounterDisplay({ count, onIncrement }) {\n  return (\n    <div className=\"p-4 border\">\n      <h3>Count is: {count}</h3>\n      <button onClick={onIncrement}>Increment (Updates Parent)</button>\n    </div>\n  );\n}\n\n// 2. The Sibling Component (Just receives the state)\nfunction WarningMessage({ count }) {\n  if (count < 5) return null;\n  return <p style={{ color: \"red\" }}>Warning: Count is getting high!</p>;\n}\n\n// 3. The Parent Component (Holds the single source of truth)\nexport default function ParentApp() {\n  const [sharedCount, setSharedCount] = useState(0);\n\n  const handleIncrement = () => {\n    setSharedCount(prev => prev + 1);\n  };\n\n  return (\n    <div>\n      <h2>Parent Component</h2>\n      {/* We pass the shared state to both siblings! */}\n      <CounterDisplay count={sharedCount} onIncrement={handleIncrement} />\n      <WarningMessage count={sharedCount} />\n    </div>\n  );\n}"
+}

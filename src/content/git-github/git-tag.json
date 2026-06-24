@@ -1,0 +1,31 @@
+{
+  "id": "git-tag",
+  "title": "git tag",
+  "difficulty": "Intermediate",
+  "definition": "Tags are ref marks pointing to specific points in Git history. They are generally used to capture a point in history that is used for a marked version release (i.e. v1.0.0).",
+  "simpleExplanation": "A permanent, unmoving bookmark. While branch pointers (`main`, `dev`) constantly move forward as new commits are added, a Tag is glued to a single commit forever. It says 'This exact moment in time is Version 1.0'.",
+  "realWorldExample": "When a software company releases an update, they tag the commit `v2.4.1`. If a user finds a bug in v2.4.1, developers can instantly jump back to that exact tag to investigate.",
+  "useCases": [
+    "Software versioning (Semantic Versioning)",
+    "Creating release milestones"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between an 'Annotated' tag and a 'Lightweight' tag?"
+    ],
+    "intermediate": [
+      "Does `git push` automatically upload your tags to GitHub?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Annotated vs Lightweight?",
+      "answer": "A lightweight tag is just a name (like a branch). An annotated tag stores extra metadata: who created the tag, when it was created, and a descriptive message (similar to a commit)."
+    },
+    {
+      "question": "Push automatically?",
+      "answer": "No! By default, `git push` ignores tags entirely. You must explicitly run `git push --tags` to send them to the server."
+    }
+  ],
+  "codeExample": "# Create a lightweight tag on the current commit\n$ git tag v1.0.0\n\n# Create an Annotated tag (Recommended for releases!)\n$ git tag -a v2.0.0 -m \"Major release including the new UI overhaul\"\n\n# View all tags\n$ git tag\n\n# View the specific details of a tag\n$ git show v2.0.0\n\n# Push all your local tags to GitHub (Crucial step!)\n$ git push origin --tags"
+}

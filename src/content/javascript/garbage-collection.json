@@ -1,0 +1,44 @@
+{
+  "id": "garbage-collection",
+  "title": "Garbage Collection",
+  "difficulty": "Advanced",
+  "definition": "Garbage Collection is a form of automatic memory management. The garbage collector attempts to reclaim memory which was allocated by the program, but is no longer referenced (used) by the application.",
+  "simpleExplanation": "Imagine your computer's memory is a hotel. When variables are created, they check into rooms. When your code stops using those variables (like a function finishing), the 'Garbage Collector' (the hotel maid) sees that the room is empty and cleans it out so new guests can use it.",
+  "realWorldExample": "If you build an app that runs for days (like a dashboard), and you keep adding event listeners without removing them when components hide, those elements stay 'checked in' to the hotel. Eventually, the hotel gets full and the app crashes. This is called a Memory Leak.",
+  "useCases": [
+    "Understanding memory leaks to prevent app crashes over time",
+    "Writing performant code for long-running Single Page Applications (SPAs)"
+  ],
+  "questions": {
+    "basic": [
+      "Does JavaScript require manual memory allocation (like C or C++)?",
+      "What is a Memory Leak?"
+    ],
+    "intermediate": [
+      "What is the 'Mark-and-Sweep' algorithm?",
+      "How do closures contribute to memory leaks?"
+    ],
+    "advanced": [
+      "Name three common causes of memory leaks in JavaScript.",
+      "How does the browser determine if an object is 'reachable'?"
+    ],
+    "trick": [
+      "Can you force the JavaScript Garbage Collector to run manually?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Mark-and-Sweep algorithm?",
+      "answer": "It's the primary GC algorithm in JS. The collector assumes a set of 'roots' (like the global window object). It 'marks' all roots and everything referenced by them. Then it 'sweeps' (deletes) any object in memory that wasn't marked."
+    },
+    {
+      "question": "Name three common causes of memory leaks.",
+      "answer": "1. Accidental global variables. 2. Forgotten timers or callbacks (setInterval). 3. Out of DOM references (saving a DOM node in JS, deleting it from the DOM, but keeping the JS reference)."
+    },
+    {
+      "question": "Can you force the GC to run manually?",
+      "answer": "No. In standard JavaScript, you cannot explicitly trigger garbage collection. It is non-deterministic and entirely up to the JS engine (like V8) to decide when to run it."
+    }
+  ],
+  "codeExample": "// Example of a common memory leak: Forgotten Timers\nfunction startLeaking() {\n  const massiveData = new Array(1000000).fill('leak');\n  \n  // This interval runs forever, keeping massiveData in memory\n  // because the closure references it!\n  setInterval(() => {\n    console.log('Still tracking massive data length:', massiveData.length);\n  }, 1000);\n}\n\n// Correct approach: Clean up intervals\nfunction runSafely() {\n  const temp = \"safe data\";\n  const intervalId = setInterval(() => console.log(temp), 1000);\n  \n  // Clear it when done\n  setTimeout(() => clearInterval(intervalId), 5000);\n}"
+}

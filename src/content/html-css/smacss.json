@@ -1,0 +1,30 @@
+{
+  "id": "smacss",
+  "title": "SMACSS",
+  "difficulty": "Advanced",
+  "definition": "Scalable and Modular Architecture for CSS (SMACSS) is a style guide that categorizes CSS rules into five categories: Base, Layout, Module, State, and Theme.",
+  "simpleExplanation": "If BEM is a rule for naming individual classes, SMACSS is a rule for organizing your entire folder of CSS files. It tells you to stop putting 5000 lines of CSS in `style.css`, and instead break it into logical pieces.",
+  "realWorldExample": "Having a folder structure like: `base.css` (resetting margins), `layout.css` (the main grid), `button-module.css` (just button styles), and `is-active.css` (state changes).",
+  "useCases": [
+    "Organizing massive enterprise applications"
+  ],
+  "questions": {
+    "basic": [
+      "What does SMACSS stand for?"
+    ],
+    "intermediate": [
+      "According to SMACSS, how should you name a 'State' class (like when a dropdown is open)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Scalable and Modular Architecture for CSS."
+    },
+    {
+      "question": "Naming state classes?",
+      "answer": "Prefix them with `is-` or `has-`. Examples: `.is-active`, `.is-hidden`, `.has-error`. This instantly tells developers that this class represents a temporary JavaScript state, not a permanent structural element."
+    }
+  ],
+  "codeExample": "<!-- Applying SMACSS Philosophy to a component -->\n\n<style>\n  /* 1. BASE: Raw elements (No classes!) */\n  a { text-decoration: none; }\n  \n  /* 2. LAYOUT: Prefixed with l- or layout- */\n  .l-grid { display: grid; grid-template-columns: 1fr 1fr; }\n  \n  /* 3. MODULE: The reusable components (similar to BEM Blocks) */\n  .nav-item { padding: 10px; color: blue; }\n  \n  /* 4. STATE: Prefixed with is- or has- (Usually toggled via JS) */\n  /* These OVERRIDE module styles! */\n  .is-active { font-weight: bold; border-bottom: 2px solid blue; }\n  .is-hidden { display: none !important; }\n</style>\n\n<div class=\"l-grid\">\n  <!-- This item has its Module class, plus a State class applied to it -->\n  <a href=\"#\" class=\"nav-item is-active\">Home</a>\n  <a href=\"#\" class=\"nav-item\">About</a>\n</div>"
+}

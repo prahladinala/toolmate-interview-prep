@@ -1,0 +1,32 @@
+{
+  "id": "web-storage",
+  "title": "LocalStorage & SessionStorage",
+  "difficulty": "Intermediate",
+  "definition": "Web Storage API provides mechanisms by which browsers can store key/value pairs locally, much more intuitively than using cookies.",
+  "simpleExplanation": "It's a tiny database right inside your web browser. LocalStorage saves data forever (until the user manually clears their history). SessionStorage saves data only until the user closes the specific browser tab.",
+  "realWorldExample": "Saving a user's 'Dark Mode' preference. You save `theme = dark` in LocalStorage. Next week when they visit your site again, the browser checks LocalStorage and instantly turns the screen black.",
+  "useCases": [
+    "Saving user preferences",
+    "Shopping cart data for unauthenticated users",
+    "Saving form progress"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between LocalStorage and SessionStorage?"
+    ],
+    "intermediate": [
+      "Can Web Storage store JavaScript Objects?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Local vs Session?",
+      "answer": "LocalStorage persists even after the browser is closed and reopened. SessionStorage is instantly deleted the moment the tab is closed."
+    },
+    {
+      "question": "Store Objects?",
+      "answer": "No. Web Storage can ONLY store Strings. If you want to store a complex object or array, you must convert it to a string using `JSON.stringify()` before saving, and `JSON.parse()` when reading it back."
+    }
+  ],
+  "codeExample": "<div style=\"padding: 20px; background: #eee;\">\n  <h2 id=\"greeting\">Hello, Guest!</h2>\n  <input type=\"text\" id=\"nameInput\" placeholder=\"Enter your name\">\n  <button onclick=\"saveName()\">Save to LocalStorage</button>\n  <button onclick=\"clearName()\">Clear</button>\n</div>\n\n<script>\n  // This code runs in the browser, not Node.js!\n  \n  function updateUI() {\n    // 1. Read from LocalStorage\n    const savedName = localStorage.getItem('username');\n    const greeting = document.getElementById('greeting');\n    if (savedName) {\n      greeting.innerText = `Welcome back, ${savedName}!`;\n    } else {\n      greeting.innerText = `Hello, Guest!`;\n    }\n  }\n\n  function saveName() {\n    const name = document.getElementById('nameInput').value;\n    // 2. Write to LocalStorage (Key, Value)\n    localStorage.setItem('username', name);\n    updateUI();\n  }\n\n  function clearName() {\n    // 3. Delete from LocalStorage\n    localStorage.removeItem('username');\n    updateUI();\n  }\n\n  // Run once on load\n  setTimeout(updateUI, 500);\n</script>"
+}

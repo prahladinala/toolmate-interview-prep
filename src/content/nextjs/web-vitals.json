@@ -1,0 +1,31 @@
+{
+  "id": "web-vitals",
+  "title": "Core Web Vitals",
+  "difficulty": "Intermediate",
+  "definition": "A set of three specific performance metrics defined by Google that directly impact a website's Search Engine Ranking.",
+  "simpleExplanation": "Google cares about 3 things: \n1. LCP (Largest Contentful Paint): How fast does the biggest image/text load? \n2. FID / INP (Interaction to Next Paint): If I click a button, does the site instantly respond, or is it frozen? \n3. CLS (Cumulative Layout Shift): Does the page violently jump around while images load, causing me to click the wrong button?",
+  "realWorldExample": "Using the `<Image>` component to solve CLS, and using Server Components to solve LCP.",
+  "useCases": [
+    "SEO optimization",
+    "UX measurement"
+  ],
+  "questions": {
+    "basic": [
+      "Which Core Web Vital measures how visually stable a page is while it loads?"
+    ],
+    "intermediate": [
+      "What built-in Next.js hook allows you to measure and report Core Web Vitals to an analytics service?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which vital?",
+      "answer": "Cumulative Layout Shift (CLS)."
+    },
+    {
+      "question": "Which hook?",
+      "answer": "`useReportWebVitals()`"
+    }
+  ],
+  "codeExample": "'use client';\nimport { useReportWebVitals } from 'next/web-vitals';\n\nexport function WebVitalsReporter() {\n  // This hook automatically calculates the exact Google Web Vitals metrics\n  // as real users interact with the site!\n  useReportWebVitals((metric) => {\n    \n    // You can send these metrics to Google Analytics, Vercel Analytics, etc.\n    if (metric.name === 'LCP') {\n      console.log(`Largest Contentful Paint took ${metric.value} milliseconds`);\n      \n      // Example: Send to custom analytics endpoint\n      fetch('/api/analytics', { body: JSON.stringify(metric), method: 'POST' });\n    }\n  });\n\n  return null;\n}"
+}

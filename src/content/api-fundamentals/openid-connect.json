@@ -1,0 +1,31 @@
+{
+  "id": "openid-connect",
+  "title": "OpenID Connect",
+  "difficulty": "Advanced",
+  "definition": "An identity layer built directly on top of the OAuth 2.0 protocol. While OAuth handles Authorization (permissions), OpenID Connect handles Authentication (identity).",
+  "simpleExplanation": "OAuth 2.0 was designed to say: 'Give this app access to my photos.' Developers started hacking it to say: 'Give this app my profile picture so I can log in.' OpenID Connect formalized this. It is OAuth 2.0, plus a specific 'ID Token' (a JWT) that contains the user's name, email, and profile picture.",
+  "realWorldExample": "Almost every modern 'Sign in with Google/Apple/Microsoft' button uses OpenID Connect (OIDC). It standardizes the identity data so your app always gets a predictable JWT containing the user's email.",
+  "useCases": [
+    "Social Login",
+    "Enterprise Identity Providers (Okta, Auth0)"
+  ],
+  "questions": {
+    "basic": [
+      "What specific type of token does OpenID Connect introduce that standard OAuth 2.0 does not have?"
+    ],
+    "intermediate": [
+      "Why did the industry need to build OpenID Connect on top of OAuth?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which token?",
+      "answer": "The ID Token (which is always a JWT)."
+    },
+    {
+      "question": "Why build on top?",
+      "answer": "Because OAuth only provides an opaque 'Access Token' meant for accessing APIs, not identifying humans. Developers had to manually use that access token to hit a custom `/me` endpoint just to get the user's email, and every company built their `/me` endpoint differently. OIDC standardized identity delivery."
+    }
+  ],
+  "codeExample": "// When completing an OpenID Connect flow, the server returns TWO tokens:\n\nconst tokenResponse = {\n  // 1. The standard OAuth Access Token (used to hit APIs)\n  \"access_token\": \"slkdfjlskdjflksjdflkjsdf\",\n  \n  // 2. The OpenID Connect ID Token (a JWT containing identity)\n  \"id_token\": \"eyJhbGciOiJSUz... (Decodes to JSON below)\",\n  \n  \"expires_in\": 3600,\n  \"token_type\": \"Bearer\"\n};\n\n// Decoding the id_token payload reveals standard OIDC claims:\n{\n  \"iss\": \"https://accounts.google.com\", // Who issued it\n  \"sub\": \"107691503500061507151\",       // Unique User ID\n  \"email\": \"user@example.com\",\n  \"name\": \"John Doe\",\n  \"picture\": \"https://google.com/pic.jpg\"\n}"
+}

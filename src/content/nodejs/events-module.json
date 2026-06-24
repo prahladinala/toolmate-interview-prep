@@ -1,0 +1,35 @@
+{
+  "id": "events-module",
+  "title": "Events Module",
+  "difficulty": "Intermediate",
+  "definition": "A core module that provides the `EventEmitter` class, which is the foundational architecture for Node's event-driven, asynchronous nature.",
+  "simpleExplanation": "Imagine a radio station. The radio station broadcasts a signal (Emits an Event). People in their cars tune their radios to that frequency and listen (Add an Event Listener). When the station plays a song, all the listening cars instantly play the song. Node uses this to say 'Hey, a user just logged in!' and lets 5 different parts of your code react to it instantly.",
+  "realWorldExample": "In an e-commerce app, when a user completes checkout, you `emit('orderPlaced')`. You have listeners set up to catch that event: one listener sends the email receipt, another updates inventory, and another notifies shipping.",
+  "useCases": [
+    "Decoupling heavy logic",
+    "Publish-Subscribe patterns",
+    "WebSockets implementation internals"
+  ],
+  "questions": {
+    "basic": [
+      "What two methods are primarily used on an EventEmitter?"
+    ],
+    "intermediate": [
+      "What happens if you emit an event, but no listeners are set up for it?"
+    ],
+    "advanced": [
+      "Can you handle events asynchronously in EventEmitter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two methods?",
+      "answer": "`.on('eventName', callback)` to listen, and `.emit('eventName', data)` to broadcast."
+    },
+    {
+      "question": "What happens if there are no listeners?",
+      "answer": "Absolutely nothing. The event fires into the void and is safely ignored. (Exception: if you emit an event specifically named `'error'` with no listener, Node.js will crash the application!)."
+    }
+  ],
+  "codeExample": "const EventEmitter = require('events');\n\n// Create a custom Radio Station\nconst myEmitter = new EventEmitter();\n\n// 1. Setup Listeners (Tuning the radio)\n// Listener 1: Send a welcome email\nmyEmitter.on('userRegistered', (user) => {\n  console.log(`[Email Service]: Sending welcome email to ${user.name}`);\n});\n\n// Listener 2: Update analytics\nmyEmitter.on('userRegistered', (user) => {\n  console.log(`[Analytics Service]: Incrementing total users stat.`);\n});\n\n// 2. Trigger the Event (Broadcasting the signal)\nconsole.log(\"App running... user clicks register button.\");\n\n// Emitting triggers all listeners sequentially, passing the data object to them\nmyEmitter.emit('userRegistered', { id: 1, name: 'Alice' });"
+}

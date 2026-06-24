@@ -1,0 +1,32 @@
+{
+  "id": "transform-streams",
+  "title": "Transform Streams",
+  "difficulty": "Advanced",
+  "definition": "A special type of Duplex stream where the output (Readable) is mathematically computed from the input (Writable).",
+  "simpleExplanation": "It's an assembly line machine. You feed raw potatoes into one side (Writable), the machine slices them, and out the other side comes potato chips (Readable). The output is a direct transformation of the input.",
+  "realWorldExample": "Zipping a file. You pipe a massive 50GB file into `zlib.createGzip()`. As chunks enter the Gzip Transform stream, it compresses the bytes, and spits out compressed chunks to be saved to the hard drive.",
+  "useCases": [
+    "File compression (zlib)",
+    "Data encryption (crypto ciphers)",
+    "Parsing massive CSV files into JSON on-the-fly"
+  ],
+  "questions": {
+    "basic": [
+      "How is a Transform stream different from a Duplex stream?"
+    ],
+    "intermediate": [
+      "What core Node module heavily utilizes Transform streams for encryption?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Transform vs Duplex?",
+      "answer": "In a Duplex stream, reading and writing are completely independent. In a Transform stream, the data you Read is the modified result of the data you Wrote."
+    },
+    {
+      "question": "Which module uses it for encryption?",
+      "answer": "The `crypto` module. `crypto.createCipheriv()` returns a Transform stream that scrambles data as it passes through."
+    }
+  ],
+  "codeExample": "const { Transform } = require('stream');\n\n// Let's build a machine that converts all text to UPPERCASE\nconst uppercaseMachine = new Transform({\n  transform(chunk, encoding, callback) {\n    // 1. Receive the raw chunk\n    const rawText = chunk.toString();\n    \n    // 2. Transform the data\n    const upperText = rawText.toUpperCase();\n    \n    // 3. Push the transformed data out the readable side\n    this.push(upperText);\n    \n    // 4. Signal we are done with this chunk\n    callback();\n  }\n});\n\n// We listen to the readable side of the machine\nuppercaseMachine.on('data', (chunk) => {\n  console.log(\"Output:\", chunk.toString());\n});\n\n// We write to the machine\nuppercaseMachine.write(\"hello \");\nuppercaseMachine.write(\"world!\");\nuppercaseMachine.end();"
+}

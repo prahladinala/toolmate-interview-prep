@@ -1,0 +1,31 @@
+{
+  "id": "folder-structure",
+  "title": "Scalable Folder Structure",
+  "difficulty": "Advanced",
+  "definition": "Designing a project directory hierarchy that anticipates immense growth, preventing 'spaghetti code' as the application scales to hundreds of routes and components.",
+  "simpleExplanation": "If you throw all your clothes onto the floor, finding a sock takes 10 minutes. If you use a dresser with labeled drawers, finding a sock takes 2 seconds. A scalable folder structure is the dresser for your code.",
+  "realWorldExample": "Creating strict boundaries between the `app` directory (strictly for routing and layouts) and a `lib` or `features` directory (where the actual business logic lives), so the router doesn't get cluttered.",
+  "useCases": [
+    "Enterprise applications",
+    "Onboarding new developers"
+  ],
+  "questions": {
+    "basic": [
+      "What is the purpose of a `components/ui` folder vs a `components/shared` folder?"
+    ],
+    "intermediate": [
+      "Why do enterprise teams often prefer placing the `app` directory inside a `src` directory?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "UI vs Shared?",
+      "answer": "`components/ui` is strictly for dumb, generic, highly reusable design elements (like a standard Button or Input field). `components/shared` is for business-specific components used across the app (like a `UserProfileBadge`)."
+    },
+    {
+      "question": "Why use src/ directory?",
+      "answer": "It physically separates the application's source code from configuration files (`next.config.js`, `package.json`, `.eslintrc`, `.env`). It makes the root of the project much cleaner."
+    }
+  ],
+  "codeExample": "/* \n  Enterprise Next.js Folder Structure:\n  \n  my-project/\n  ├── .env\n  ├── next.config.js\n  ├── package.json\n  └── src/\n      ├── app/                 # Strictly routing, pages, layouts\n      │   ├── (auth)/login/page.tsx\n      │   └── dashboard/page.tsx\n      │\n      ├── components/          # Global UI elements\n      │   ├── ui/              # Dumb components (Button, Modal)\n      │   └── layouts/         # Shared wrappers (Navbar, Footer)\n      │\n      ├── features/            # Feature-based logic\n      │   ├── authentication/  # Everything related to auth\n      │   └── billing/         # Everything related to Stripe/payments\n      │\n      ├── lib/                 # Core utilities and configs\n      │   ├── db.ts            # Prisma/Postgres connection\n      │   ├── stripe.ts        # Stripe client\n      │   └── utils.ts         # Math/Date helpers\n      │\n      └── types/               # Global TypeScript definitions\n*/"
+}

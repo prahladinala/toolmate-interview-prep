@@ -1,0 +1,32 @@
+{
+  "id": "hooks-pattern",
+  "title": "Custom Hook Pattern",
+  "difficulty": "Intermediate",
+  "definition": "The practice of extracting reusable stateful logic from components into standalone JavaScript functions that start with 'use'.",
+  "simpleExplanation": "If 5 different components need to know if the user is online or offline, you don't want to copy and paste the `window.addEventListener('online')` code 5 times. You write it once in a `useIsOnline()` hook, and then all 5 components can just call that one line of code.",
+  "realWorldExample": "Creating a `useWindowSize()` hook that returns `{ width, height }` and automatically updates whenever the browser window is resized.",
+  "useCases": [
+    "Extracting data fetching logic",
+    "Abstracting complex event listeners",
+    "Sharing form validation logic"
+  ],
+  "questions": {
+    "basic": [
+      "What must a custom hook's name start with?",
+      "Can a custom hook call other hooks?"
+    ],
+    "intermediate": [
+      "If two components use the same custom hook, do they share the same state?"
+    ],
+    "advanced": [
+      "How do you test a custom hook?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do they share state?",
+      "answer": "NO! Custom hooks only share the LOGIC, not the state. Each component that calls the hook gets its own completely isolated copy of the state."
+    }
+  ],
+  "codeExample": "import { useState, useEffect } from 'react';\n\nexport function useOnlineStatus() {\n  const [isOnline, setIsOnline] = useState(true);\n  useEffect(() => {\n    // Setup listeners...\n  }, []);\n  return isOnline;\n}"
+}

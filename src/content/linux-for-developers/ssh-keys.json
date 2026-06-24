@@ -1,0 +1,30 @@
+{
+  "id": "ssh-keys",
+  "title": "SSH Keys",
+  "difficulty": "Intermediate",
+  "definition": "An access credential used by the SSH protocol, based on public-key cryptography. A key pair consists of a Public Key (which you put on the server) and a Private Key (which never leaves your laptop).",
+  "simpleExplanation": "A digital padlock and a physical key. You put the padlock (Public Key) on the server's door. You keep the key (Private Key) on your laptop. When you connect, they mathematically match, and you are let in without typing a password.",
+  "realWorldExample": "You generate a key pair on your Macbook using `ssh-keygen`. You copy the `.pub` (public) file to GitHub. Now, whenever you `git push`, GitHub verifies your private key mathematically and accepts the code without asking for your password.",
+  "useCases": [
+    "Passwordless logins",
+    "Automated deployment scripts (CI/CD)"
+  ],
+  "questions": {
+    "basic": [
+      "Which key is safe to share with the world: the Public key or the Private key?"
+    ],
+    "intermediate": [
+      "What is the specific name of the file on a Linux server where you must paste your Public Key to allow access?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is safe to share?",
+      "answer": "The Public key. It can only be used to *lock* or verify. The Private key must NEVER be shared with anyone, ever. If someone steals it, they are you."
+    },
+    {
+      "question": "Which file on the server?",
+      "answer": "`~/.ssh/authorized_keys`."
+    }
+  ]
+}

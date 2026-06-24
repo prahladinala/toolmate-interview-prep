@@ -1,0 +1,45 @@
+{
+  "id": "react-hook-form",
+  "title": "React Hook Form",
+  "difficulty": "Advanced",
+  "definition": "React Hook Form is a high-performance, flexible library for building forms in React. It embraces uncontrolled components and refs to minimize re-renders, while still providing a declarative API for validation.",
+  "simpleExplanation": "Standard React forms are \"Controlled\", meaning every time you press a single key, the entire form re-renders. If you have 50 inputs, this gets very slow. React Hook Form is like giving each input its own isolated brain. You register the inputs with the library, and it watches them silently in the background without causing React to re-render, only stepping in when validation fails or you hit submit.",
+  "realWorldExample": "Building a massive multi-step checkout wizard. React Hook Form easily manages the complex state and validation schemas (using Zod or Yup) without bringing the browser to a crawl on every keystroke.",
+  "useCases": [
+    "Complex forms with dozens of inputs",
+    "Schema-based validation (Zod/Yup integration)",
+    "Highly performant UIs that cannot afford render blocking"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary advantage of React Hook Form over traditional controlled forms?",
+      "What hook do you import to start using the library?"
+    ],
+    "intermediate": [
+      "What does the `register` function do?",
+      "How does React Hook Form prevent unnecessary re-renders?"
+    ],
+    "advanced": [
+      "How do you integrate React Hook Form with external UI libraries like Material UI or shadcn/ui?",
+      "What is the `Controller` component used for?"
+    ],
+    "trick": [
+      "Can you use React Hook Form to manage state completely unrelated to forms?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does it prevent unnecessary re-renders?",
+      "answer": "It relies on Uncontrolled Components. By attaching a `ref` to the native HTML input via the `register` function, it reads the values directly from the DOM when needed, completely bypassing React's state/render cycle until an error occurs."
+    },
+    {
+      "question": "How do you integrate with UI libraries (MUI, AntD)?",
+      "answer": "External UI components are often \"Controlled\" by design. To use them with React Hook Form, you must wrap them in the `Controller` component or use the `useController` hook to bridge the gap between the uncontrolled engine and the controlled UI component."
+    },
+    {
+      "question": "What does the register function do?",
+      "answer": "It returns an object containing `onChange`, `onBlur`, `name`, and `ref`. You spread this directly onto your HTML input: `<input {...register(\"firstName\")} />`."
+    }
+  ],
+  "codeExample": "/* \n// Conceptual Example - Requires npm install react-hook-form\nimport { useForm } from \"react-hook-form\";\n\nexport default function HookForm() {\n  // Initialize the hook\n  const { register, handleSubmit, formState: { errors } } = useForm();\n\n  // This only runs if validation passes!\n  const onSubmit = data => console.log(data);\n\n  return (\n    <form onSubmit={handleSubmit(onSubmit)}>\n      {/* 1. Register the input and set validation rules */}\n      <input {...register(\"firstName\", { required: true, maxLength: 20 })} />\n      {errors.firstName && <span>First name is required</span>}\n      \n      {/* 2. Min age validation */}\n      <input type=\"number\" {...register(\"age\", { min: 18 })} />\n      {errors.age && <span>Must be 18 or older</span>}\n      \n      <input type=\"submit\" />\n    </form>\n  );\n}\n*/\nconsole.log(\"React Hook Form is the industry standard for modern React forms.\");"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dark-system-strategy",
+  "title": "System Preference Strategy",
+  "difficulty": "Beginner",
+  "definition": "Relying entirely on the browser and OS to determine the theme, providing a seamless experience with zero JavaScript required.",
+  "simpleExplanation": "The lazy (and often best) way. You do absolutely nothing in JS. You just write `<div class=\"bg-white dark:bg-black\">`. If the user's Mac is set to Dark Mode, the browser automatically tells the website, and Tailwind switches the colors instantly.",
+  "realWorldExample": "A simple landing page or portfolio site where you want to support dark mode, but don't want the technical overhead of building a toggle button and managing `localStorage`.",
+  "useCases": [
+    "Static sites",
+    "Simple landing pages",
+    "Zero-JS apps"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to write any JavaScript to make the System Preference Strategy work?"
+    ],
+    "intermediate": [
+      "If a user is using the System strategy and wants your website to be Dark, but their Windows OS is set to Light, can they change your website?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need JavaScript?",
+      "answer": "No. It works purely via native CSS media queries."
+    },
+    {
+      "question": "Can they change it?",
+      "answer": "No. They are trapped by their OS setting. This is the main downside of the System strategy; it offers no manual override for the user."
+    }
+  ],
+  "codeExample": "<!-- \n  Assuming `darkMode: 'media'` (which is the default in Tailwind) \n  This is literally all the code required. No JS. No toggles. \n  It just reads the Operating System natively.\n-->\n\n<body class=\"bg-gray-100 text-gray-900 transition-colors \n             dark:bg-slate-900 dark:text-gray-100\">\n  \n  <div class=\"max-w-md mx-auto mt-10 p-6 bg-white dark:bg-slate-800 shadow-xl rounded-2xl\">\n    <h1 class=\"text-2xl font-bold\">System Dark Mode is Magic</h1>\n    <p class=\"mt-4\">Change your OS settings right now and watch me change instantly!</p>\n  </div>\n\n</body>"
+}

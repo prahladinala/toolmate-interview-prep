@@ -1,0 +1,31 @@
+{
+  "id": "supervised-learning",
+  "title": "Supervised Learning",
+  "difficulty": "Beginner",
+  "definition": "A Machine Learning approach where the model is trained on a labeled dataset. The algorithm learns by mapping input data to the known, correct output.",
+  "simpleExplanation": "Learning with an answer key. You show the computer 1,000 pictures and explicitly tell it 'This is a cat' or 'This is a dog'. The computer learns the difference. When you show it a new picture, it guesses based on what it learned from the answer key.",
+  "realWorldExample": "Email Spam Filters. Developers feed the algorithm millions of emails explicitly tagged as 'Spam' or 'Not Spam'. The model learns the keywords (like 'Free Money') associated with the 'Spam' label.",
+  "useCases": [
+    "Classification",
+    "Regression",
+    "Image recognition"
+  ],
+  "questions": {
+    "basic": [
+      "In Supervised Learning, does the training data contain the correct answers (labels)?"
+    ],
+    "intermediate": [
+      "What is the difference between Classification and Regression in Supervised Learning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Contain correct answers?",
+      "answer": "Yes. The presence of known 'labels' (the answer key) is the defining characteristic of Supervised Learning."
+    },
+    {
+      "question": "Classification vs Regression?",
+      "answer": "Classification predicts a category (e.g., 'Is this tumor malignant or benign?'). Regression predicts a continuous numerical value (e.g., 'What will the price of this house be?')."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ip-command",
+  "title": "ip Command",
+  "difficulty": "Intermediate",
+  "definition": "The modern, powerful suite of commands used for network interface configuration, routing, and checking IP addresses on Linux.",
+  "simpleExplanation": "The command that tells you your computer's digital address on the network.",
+  "realWorldExample": "You want to know your server's local IP address. You type `ip addr show`. It outputs a block of text revealing your IP is `192.168.1.15`.",
+  "useCases": [
+    "Checking IP addresses",
+    "Configuring network interfaces"
+  ],
+  "questions": {
+    "basic": [
+      "What older, highly famous command did the `ip` command replace?"
+    ],
+    "intermediate": [
+      "What does the command `ip link set eth0 down` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command did it replace?",
+      "answer": "`ifconfig`. (Note: `ifconfig` is technically deprecated in modern Linux, though many admins still use it out of habit)."
+    },
+    {
+      "question": "What does 'down' do?",
+      "answer": "It physically disables (turns off) the network card named 'eth0', instantly disconnecting the server from the internet."
+    }
+  ]
+}

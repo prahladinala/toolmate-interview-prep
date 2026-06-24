@@ -1,0 +1,31 @@
+{
+  "id": "genai",
+  "title": "Generative AI",
+  "difficulty": "Beginner",
+  "definition": "A broad class of Artificial Intelligence systems that are capable of creating brand new, original content (text, images, audio, video) based on the patterns they learned from their training data.",
+  "simpleExplanation": "Traditional AI analyzes things (e.g., 'Is this an image of a dog?'). Generative AI creates things (e.g., 'Draw me a brand new picture of a dog playing poker in space').",
+  "realWorldExample": "ChatGPT generating an essay, Midjourney generating a digital painting, or Suno generating a pop song.",
+  "useCases": [
+    "Content creation",
+    "Creative arts",
+    "Code generation"
+  ],
+  "questions": {
+    "basic": [
+      "Is a spam filter considered Generative AI?"
+    ],
+    "intermediate": [
+      "Why did Generative AI suddenly explode in popularity around 2022?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is spam filter GenAI?",
+      "answer": "No. A spam filter is an 'Analytical' or 'Discriminative' AI. It categorizes existing data. It does not create new data."
+    },
+    {
+      "question": "Why 2022?",
+      "answer": "Breakthroughs in computing power and architecture (specifically Transformers and Diffusion models) finally allowed models to scale to a size where the generated content crossed the 'uncanny valley' and became virtually indistinguishable from human-created content."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "locate",
+  "title": "locate",
+  "difficulty": "Beginner",
+  "definition": "A command that searches for files by name. It is significantly faster than `find` because it queries a pre-built database instead of actively scanning the live hard drive.",
+  "simpleExplanation": "Asking the librarian. Instead of walking through every aisle checking every book (which is what `find` does), `locate` just checks the library's pre-written index card catalog. It's instant.",
+  "realWorldExample": "You know you have a file called 'passwords.txt' somewhere on the computer. You type `locate passwords.txt`. It instantly prints the path.",
+  "useCases": [
+    "Rapidly finding lost files by name"
+  ],
+  "questions": {
+    "basic": [
+      "Why is `locate` so much faster than the `find` command?"
+    ],
+    "intermediate": [
+      "You create a new file and immediately search for it using `locate`, but it says the file doesn't exist. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why faster?",
+      "answer": "Because it doesn't search the hard drive. It searches a tiny text database that is usually built by the system once a day."
+    },
+    {
+      "question": "Why can't it find new files?",
+      "answer": "Because the index database hasn't been updated yet. To find a file you just created, you must run the `updatedb` command first, or just use the `find` command."
+    }
+  ]
+}

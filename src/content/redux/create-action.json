@@ -1,0 +1,31 @@
+{
+  "id": "create-action",
+  "title": "createAction()",
+  "difficulty": "Intermediate",
+  "definition": "A utility function from RTK that takes an action type string and returns an action creator function for that type.",
+  "simpleExplanation": "While `createSlice` is the standard, sometimes you need to create a standalone action that isn't tied to a specific slice. `createAction` does this in one line.",
+  "realWorldExample": "Creating a global `APP_RESET` action. You dispatch it when the user clicks 'Logout', and 5 different slices listen for this standalone action to clear their individual states.",
+  "useCases": [
+    "Creating standalone actions",
+    "Cross-slice communication"
+  ],
+  "questions": {
+    "basic": [
+      "If you create an action using `const login = createAction('LOGIN')`, how do you dispatch it?"
+    ],
+    "intermediate": [
+      "How does a `createSlice` listen for an action created by `createAction`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to dispatch?",
+      "answer": "`dispatch(login(userData))`"
+    },
+    {
+      "question": "How to listen?",
+      "answer": "You must use the `extraReducers` property inside `createSlice` to listen for actions that were not created by the slice itself."
+    }
+  ],
+  "codeExample": "import { createAction, createSlice } from '@reduxjs/toolkit';\n\n// 1. Create a standalone global action\nexport const resetApp = createAction('app/reset');\n\n// 2. A slice can listen to it using extraReducers\nconst userSlice = createSlice({\n  name: 'user',\n  initialState: { name: 'John' },\n  reducers: {},\n  extraReducers: (builder) => {\n    // When the global reset action is dispatched anywhere in the app, do this:\n    builder.addCase(resetApp, (state) => {\n      state.name = null;\n    });\n  }\n});"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "theme-extension",
+  "title": "Theme Extension",
+  "difficulty": "Intermediate",
+  "definition": "The practice of adding custom colors, fonts, spacing, and sizing to Tailwind's default design system via the `tailwind.config.js` file.",
+  "simpleExplanation": "Tailwind comes with 100 default colors. If your company uses a highly specific shade of 'Brand Purple', you don't write `style=\"color: #6B21A8\"`. You register 'brand-purple' in the config file, and Tailwind instantly generates `bg-brand-purple`, `text-brand-purple`, `border-brand-purple`, etc.",
+  "realWorldExample": "Defining a custom `fontFamily` called 'Corporate' so developers can just type `font-corporate`.",
+  "useCases": [
+    "Implementing company design systems",
+    "White-labeling apps"
+  ],
+  "questions": {
+    "basic": [
+      "Which property inside `tailwind.config.js` do you use to add new values without deleting the default ones?"
+    ],
+    "intermediate": [
+      "What happens if you define a custom color outside of the `extend` block, directly inside `theme.colors`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which property?",
+      "answer": "`theme.extend`"
+    },
+    {
+      "question": "Outside extend?",
+      "answer": "You will completely overwrite Tailwind's default color palette. Every default color (`bg-blue-500`, `text-red-200`) will instantly break and disappear from your app."
+    }
+  ],
+  "codeExample": "module.exports = {\n  theme: {\n    // ❌ OVERRIDE (DANGEROUS): Only 'my-red' will exist. 'blue-500' will break.\n    // colors: { 'my-red': '#ff0000' },\n    \n    // ✅ EXTEND (SAFE): Adds 'brand-blue' alongside the default colors.\n    extend: {\n      colors: {\n        brand: {\n          light: '#4d90fe',  // Used as: bg-brand-light\n          DEFAULT: '#3b82f6', // Used as: bg-brand\n          dark: '#2563eb',   // Used as: bg-brand-dark\n        }\n      },\n      spacing: {\n        '128': '32rem', // Adds a massive custom spacing value: w-128, m-128, p-128\n      }\n    }\n  }\n}"
+}

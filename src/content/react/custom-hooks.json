@@ -1,0 +1,45 @@
+{
+  "id": "custom-hooks",
+  "title": "Custom Hooks",
+  "difficulty": "Intermediate",
+  "definition": "A Custom Hook is a JavaScript function whose name starts with 'use' and that may call other Hooks. It is the primary mechanism for reusing stateful logic across multiple React components.",
+  "simpleExplanation": "Imagine you have two different robots: one cleans the floor, one washes the dishes. Both robots need to know what time it is so they know when to start. Instead of building a clock inside the floor robot, and another clock inside the dish robot, you build a separate 'Clock Module' (a Custom Hook). You plug this module into both robots. Now they both share the exact same time-telling logic without copy-pasting the code.",
+  "realWorldExample": "If you need to fetch data from an API in 5 different components, you don't write `useEffect` and `fetch()` 5 times. You create a `useFetch(url)` custom hook, and simply call `const { data, loading } = useFetch('/api/users')` in any component that needs it.",
+  "useCases": [
+    "Abstracting complex API fetching logic",
+    "Managing form state and validation across different forms",
+    "Listening to global events like window resizing or dark mode toggles"
+  ],
+  "questions": {
+    "basic": [
+      "What is the naming convention for a custom hook?",
+      "Can a custom hook call other built-in hooks?"
+    ],
+    "intermediate": [
+      "If two components use the same custom hook, do they share state?",
+      "Why must custom hooks start with 'use'?"
+    ],
+    "advanced": [
+      "How do you test a custom hook that uses context or side effects?",
+      "Can you conditionally call a custom hook inside a component?"
+    ],
+    "trick": [
+      "Does a custom hook have to return an array like `useState`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "If two components use the same custom hook, do they share state?",
+      "answer": "No! Custom hooks reuse stateful LOGIC, not the state itself. Every time you call a custom hook inside a component, it creates a completely independent instance of that state."
+    },
+    {
+      "question": "Why must custom hooks start with 'use'?",
+      "answer": "It's a strict React convention. React's linter uses this naming convention to automatically check for violations of the Rules of Hooks (like ensuring hooks aren't called inside loops or if statements)."
+    },
+    {
+      "question": "Does a custom hook have to return an array?",
+      "answer": "No. A custom hook is just a regular JavaScript function. It can return an array, an object, a single string, or absolutely nothing at all. Returning an object is often better if you have many return values."
+    }
+  ],
+  "codeExample": "import { useState, useEffect } from 'react';\n\n// 1. Define the Custom Hook\nfunction useWindowWidth() {\n  // State to hold the width\n  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);\n\n  useEffect(() => {\n    // The side effect logic\n    const handleResize = () => setWidth(window.innerWidth);\n    window.addEventListener('resize', handleResize);\n    \n    // Cleanup\n    return () => window.removeEventListener('resize', handleResize);\n  }, []);\n\n  // Return the data we want components to use\n  return width;\n}\n\n// 2. Use the Custom Hook in a component\nexport default function ResponsiveComponent() {\n  const currentWidth = useWindowWidth();\n\n  return (\n    <div>\n      <h2>Window Width: {currentWidth}px</h2>\n      {currentWidth < 600 ? <p>Mobile View</p> : <p>Desktop View</p>}\n    </div>\n  );\n}"
+}

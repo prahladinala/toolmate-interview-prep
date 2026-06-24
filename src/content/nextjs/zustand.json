@@ -1,0 +1,31 @@
+{
+  "id": "zustand",
+  "title": "Zustand",
+  "difficulty": "Intermediate",
+  "definition": "A minimalist, fast, and highly popular global state management library for React that requires almost zero boilerplate compared to Redux or Context.",
+  "simpleExplanation": "React Context is great for things that rarely change (like Themes). But if you have complex, rapidly changing state (like a drag-and-drop Kanban board), Context will cause your entire app to lag and re-render. Zustand solves this by storing state outside of React, and only updating the exact components that need it.",
+  "realWorldExample": "Managing the complex state of an E-commerce Shopping Cart across the Navbar, Checkout Page, and Product Pages without causing the entire layout to re-render when an item is added.",
+  "useCases": [
+    "Complex client state",
+    "High-performance interactive UIs"
+  ],
+  "questions": {
+    "basic": [
+      "Does Zustand require you to wrap your entire application in a `<Provider>` component?"
+    ],
+    "intermediate": [
+      "Can you access Zustand state inside a Next.js Server Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Require Provider?",
+      "answer": "No! That is the main appeal of Zustand. You just define the store in a file, import the hook, and use it anywhere."
+    },
+    {
+      "question": "Access in Server Component?",
+      "answer": "No. State management libraries (Zustand, Redux, Context) manage *Client* state (interactivity). Server Components run once and die; they do not have state."
+    }
+  ],
+  "codeExample": "// 1. Create the Store (store.ts)\nimport { create } from 'zustand';\n\ninterface CartState {\n  bears: number;\n  increase: () => void;\n}\n\n// Extremely simple API! No reducers, no providers, no boilerplate.\nexport const useCartStore = create<CartState>((set) => ({\n  bears: 0,\n  increase: () => set((state) => ({ bears: state.bears + 1 })),\n}));\n\n// 2. Use it in a Client Component\n'use client';\nimport { useCartStore } from './store';\n\nexport function BearCounter() {\n  // Only this exact component re-renders when 'bears' changes!\n  const bears = useCartStore((state) => state.bears);\n  const increase = useCartStore((state) => state.increase);\n  \n  return <button onClick={increase}>{bears} bears</button>;\n}"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "form-actions",
+  "title": "Form Actions",
+  "difficulty": "Intermediate",
+  "definition": "Using Server Actions specifically within HTML `<form>` elements, leveraging native browser behaviors like Progressive Enhancement.",
+  "simpleExplanation": "When you attach a Server Action to a `<form action={...}>`, it works even if the user has JavaScript completely disabled in their browser. Next.js intercepts the native HTML form POST request and handles it beautifully.",
+  "realWorldExample": "A newsletter signup form. You don't need `useState` for the input, you don't need `e.preventDefault()`, and you don't need `fetch`. The browser handles the input, passes a `FormData` object to your Server Action, and you save it to the DB.",
+  "useCases": [
+    "Robust forms",
+    "Progressive Enhancement",
+    "Reducing client-side JavaScript"
+  ],
+  "questions": {
+    "basic": [
+      "What object is automatically passed as the first argument to a Server Action when it is attached to a `<form action>`?"
+    ],
+    "intermediate": [
+      "Do you need to use `e.preventDefault()` when using Server Actions in forms?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What object?",
+      "answer": "A native `FormData` object containing all the input values."
+    },
+    {
+      "question": "Need preventDefault?",
+      "answer": "No! Next.js automatically intercepts the form submission, prevents the default full-page reload, and handles the request via seamless AJAX behind the scenes."
+    }
+  ],
+  "codeExample": "export default function ContactForm() {\n  \n  async function submitContact(formData: FormData) {\n    'use server';\n    // Extract values using the 'name' attribute from the HTML inputs\n    const email = formData.get('email');\n    const message = formData.get('message');\n    \n    await sendEmailToAdmin(email, message);\n  }\n\n  return (\n    <form action={submitContact}>\n      {/* The 'name' attribute is critical! It acts as the key in FormData */}\n      <input name=\"email\" type=\"email\" required />\n      <textarea name=\"message\" required />\n      <button type=\"submit\">Send</button>\n    </form>\n  );\n}"
+}

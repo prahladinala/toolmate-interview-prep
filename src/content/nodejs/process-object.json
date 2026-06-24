@@ -1,0 +1,35 @@
+{
+  "id": "process-object",
+  "title": "process Object",
+  "difficulty": "Intermediate",
+  "definition": "A global object that provides information about, and control over, the current Node.js process executing the script.",
+  "simpleExplanation": "The `process` object is your walkie-talkie to the computer's operating system. You use it to find out what command-line arguments the user typed, what environment the app is running in (Development or Production), or to forcefully tell Node.js to exit and shut down immediately.",
+  "realWorldExample": "If someone runs `node script.js --user=alice`, you read `process.argv` to figure out they typed '--user=alice' and adjust your logic.",
+  "useCases": [
+    "Command Line Interface (CLI) scripts",
+    "Graceful shutdowns",
+    "Memory diagnostics"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to `require('process')` to use it?"
+    ],
+    "intermediate": [
+      "What does `process.exit(1)` do?"
+    ],
+    "advanced": [
+      "How do you read command-line arguments passed to a Node script?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do you need to require it?",
+      "answer": "No. The `process` object is globally available in all Node.js environments."
+    },
+    {
+      "question": "What does process.exit(1) do?",
+      "answer": "It forcefully and immediately terminates the Node.js application. Passing `0` means it closed successfully. Passing `1` (or any non-zero number) signals to the operating system that the app crashed due to an error."
+    }
+  ],
+  "codeExample": "// Run this script via terminal: `node index.js --force`\n\n// 1. Reading Command Line Arguments\n// process.argv is an array. \n// Index 0: Path to Node executable\n// Index 1: Path to this script\n// Index 2+: The actual arguments typed by the user\nconst args = process.argv.slice(2);\nconsole.log(\"Arguments passed:\", args); \n\n// 2. Checking memory usage\nconst memory = process.memoryUsage();\nconsole.log(`Using ${Math.round(memory.heapUsed / 1024 / 1024)} MB of RAM`);\n\n// 3. Process Information\nconsole.log(\"Process ID (PID):\", process.pid);\nconsole.log(\"Node Version:\", process.version);\n\n// 4. Forcefully Exiting\nif (args.includes('--crash')) {\n  console.error(\"Fatal flag passed! Shutting down immediately.\");\n  process.exit(1); \n}"
+}

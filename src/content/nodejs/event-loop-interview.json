@@ -1,0 +1,30 @@
+{
+  "id": "event-loop-interview",
+  "title": "Event Loop Coding Questions",
+  "difficulty": "Advanced",
+  "definition": "Trick questions designed to test your exact knowledge of the Microtask vs Macrotask queues and execution order.",
+  "simpleExplanation": "The interviewer gives you a 15-line block of code containing nested `setTimeout`, `Promise.resolve`, `process.nextTick`, and synchronous `console.log` statements. They ask: 'What is the exact output order in the terminal?'.",
+  "realWorldExample": "These questions are extremely common at Big Tech (FAANG) interviews to filter out candidates who don't deeply understand JavaScript.",
+  "useCases": [
+    "Advanced technical interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Does `Promise.resolve().then()` run before or after `setTimeout(..., 0)`?"
+    ],
+    "intermediate": [
+      "What happens if `process.nextTick` calls itself recursively?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Promise vs setTimeout?",
+      "answer": "Promise runs first! Promises go to the Microtask queue, which has higher priority and completely drains before the Event Loop even looks at the Timers (setTimeout) queue."
+    },
+    {
+      "question": "Recursive nextTick?",
+      "answer": "It completely blocks the Event Loop. Because `nextTick` has the absolute highest priority, Node will endlessly process the recursive `nextTick` calls and will NEVER move on to network requests or timers. Your server will freeze."
+    }
+  ],
+  "codeExample": "// --- THE ULTIMATE INTERVIEW QUESTION ---\n// Can you predict the order?\n\nconsole.log('1. Start');\n\nsetTimeout(() => {\n  console.log('5. setTimeout 1');\n  Promise.resolve().then(() => console.log('6. Promise inside setTimeout'));\n}, 0);\n\nPromise.resolve().then(() => {\n  console.log('4. Promise 1');\n  setTimeout(() => console.log('8. setTimeout inside Promise'), 0);\n});\n\nprocess.nextTick(() => {\n  console.log('3. nextTick 1');\n});\n\nsetTimeout(() => {\n  console.log('7. setTimeout 2');\n}, 0);\n\nconsole.log('2. End');\n\n/*\n  THE ANSWER:\n  1. Start (Sync code)\n  2. End (Sync code)\n  3. nextTick 1 (Highest priority microtask)\n  4. Promise 1 (Standard microtask)\n  --- Microtasks are empty, Event Loop begins Timers Phase! ---\n  5. setTimeout 1 (First timer)\n  6. Promise inside setTimeout (Wait! Microtask created! Event loop pauses to run it!)\n  7. setTimeout 2 (Next timer)\n  8. setTimeout inside Promise (Queued later)\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "docker-in-ci",
+  "title": "Docker in CI/CD",
+  "difficulty": "Intermediate",
+  "definition": "The integration of Docker into Continuous Integration and Continuous Deployment pipelines to ensure that software is built, tested, and deployed in perfectly identical, isolated environments.",
+  "simpleExplanation": "Using Docker as the ultimate automated assembly line. When a developer pushes code, an automated robot boots up a Docker container, tests the code inside it, builds a new Image, and ships that Image to the production server.",
+  "realWorldExample": "A team uses GitLab CI. Whenever code is committed, GitLab spins up a temporary 'Test Container' loaded with a database. It runs all unit tests. If they pass, it runs `docker build` to create a final image, and pushes it to Docker Hub automatically.",
+  "useCases": [
+    "Automated testing",
+    "Reliable builds",
+    "Deployment pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Why do CI/CD pipelines prefer running tests inside Docker containers rather than directly on the CI server?"
+    ],
+    "intermediate": [
+      "What is 'Docker-in-Docker' (DinD)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why test inside containers?",
+      "answer": "To prevent 'Works on my machine' syndrome. The CI server might have different versions of Python or Node installed than the developer. Testing inside a container guarantees the code is tested in the exact environment it will ultimately run in."
+    },
+    {
+      "question": "What is DinD?",
+      "answer": "A complex setup where a Docker Daemon is run *inside* a Docker Container. This is often required by CI/CD pipelines (like Jenkins or GitLab) so the pipeline itself can execute `docker build` commands without exposing the Host machine's core daemon."
+    }
+  ]
+}

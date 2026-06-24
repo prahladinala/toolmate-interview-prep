@@ -1,0 +1,30 @@
+{
+  "id": "cloud-scenarios",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Open-ended, problem-solving interviews where the candidate must analyze a hypothetical production outage or requirement and propose a solution.",
+  "simpleExplanation": "The interviewer creates a nightmare scenario, and you have to explain how to fix it while balancing cost, security, and performance.",
+  "realWorldExample": "Scenario: 'Our company's AWS bill just doubled overnight. What steps do you take to identify the cause and reduce the cost?'",
+  "useCases": [
+    "Architect interviews",
+    "Troubleshooting validation"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: You have a web server running on EC2. Users are complaining they cannot access the site, but the server shows it is running. What is the most likely culprit?"
+    ],
+    "intermediate": [
+      "Scenario: Your application has highly unpredictable traffic. It sits idle for days, then receives 100,000 hits in 5 minutes. What compute architecture should you choose?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Web server unreachable?",
+      "answer": "Security Groups (Firewalls) or Network ACLs. The server is fine, but the networking rules are likely blocking inbound HTTP traffic on Port 80/443."
+    },
+    {
+      "question": "Unpredictable traffic?",
+      "answer": "Serverless Functions (Lambda/Cloud Functions). They scale instantly from 0 to 100,000 concurrent executions, and when the traffic drops to zero, you pay absolutely nothing. Standard VMs with Auto Scaling are often too slow to react to instant 5-minute spikes."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "outline",
+  "title": "Outline & Ring",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for creating focus rings and outlines, essential for accessibility and modern form styling.",
+  "simpleExplanation": "When you click on an input field, it glows blue. This is called a focus ring. Tailwind's `ring` utility uses CSS box-shadows to create perfectly smooth, customizable glow effects around buttons and inputs that don't mess up your layout dimensions.",
+  "realWorldExample": "Removing the ugly default browser outline from an input field (`focus:outline-none`) and replacing it with a beautiful branded Tailwind ring (`focus:ring-2 focus:ring-brand-500`).",
+  "useCases": [
+    "Accessibility focus states",
+    "Input fields",
+    "Active states"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a `border` and an `outline/ring`?"
+    ],
+    "intermediate": [
+      "Why is Tailwind's `ring` utility often preferred over standard `outline`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Border vs Outline?",
+      "answer": "A `border` takes up physical space and pushes other elements away. An `outline` or `ring` is drawn OVER the surrounding elements and takes up zero physical space."
+    },
+    {
+      "question": "Ring vs Outline?",
+      "answer": "Standard CSS `outline` is historically rigid and hard to style with rounded corners. Tailwind's `ring` is built using box-shadows, which flawlessly follow the exact curve of your `border-radius`."
+    }
+  ],
+  "codeExample": "<!-- The Ultimate Accessible Button -->\n<!-- \n  1. focus:outline-none removes the ugly default browser square ring.\n  2. focus:ring-2 adds a 2px custom ring.\n  3. focus:ring-blue-400 colors it.\n  4. focus:ring-offset-2 adds a tiny gap between the button and the ring!\n-->\n<button class=\"bg-blue-600 text-white px-4 py-2 rounded-full \n               focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2\">\n  Click Me\n</button>"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "performance-analysis",
+  "title": "Performance Analysis",
+  "difficulty": "Advanced",
+  "definition": "The systematic methodology of diagnosing system bottlenecks (CPU, Memory, Disk I/O, Network) using advanced profiling tools like `strace`, `perf`, `tcpdump`, and `sar`.",
+  "simpleExplanation": "Being a computer doctor. An app is slow, but `top` shows CPU is fine. You have to use advanced tools to figure out if the app is waiting on the hard drive, waiting on the network, or stuck in a bad loop.",
+  "realWorldExample": "A Python script takes 10 minutes to run. The developer runs it through `strace python script.py`. The output reveals the script is making 50,000 tiny, inefficient 'read' system calls to the hard drive instead of reading the file into memory once.",
+  "useCases": [
+    "Advanced troubleshooting",
+    "Code optimization"
+  ],
+  "questions": {
+    "basic": [
+      "What does the highly advanced `strace` command do?"
+    ],
+    "intermediate": [
+      "What is a 'Zombie Process' and does it consume CPU resources?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is strace?",
+      "answer": "System Call Trace. It intercepts and prints every single microscopic interaction an application has with the Linux Kernel (like opening files, requesting memory, or opening network sockets)."
+    },
+    {
+      "question": "Zombie process?",
+      "answer": "A process that has finished executing and died, but its parent process hasn't read its exit status yet, so its dead body remains in the process table. It consumes zero CPU or RAM, but it does consume one Process ID slot."
+    }
+  ]
+}

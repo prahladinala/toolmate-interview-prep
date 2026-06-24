@@ -1,0 +1,30 @@
+{
+  "id": "2xx",
+  "title": "2xx Success Codes",
+  "difficulty": "Beginner",
+  "definition": "HTTP status codes ranging from 200-299. They indicate that the client's request was successfully received, understood, and accepted by the server.",
+  "simpleExplanation": "The server saying: 'Everything worked perfectly. Here is what you asked for.'",
+  "realWorldExample": "You ask for a user's profile (`GET /user`). The server finds it and returns it with a `200 OK`. You submit a new post (`POST /posts`). The server saves it and returns `201 Created`.",
+  "useCases": [
+    "Successful API responses"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most common successful HTTP status code?"
+    ],
+    "intermediate": [
+      "What is the difference between `200 OK`, `201 Created`, and `204 No Content`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most common?",
+      "answer": "`200 OK`."
+    },
+    {
+      "question": "200 vs 201 vs 204?",
+      "answer": "`200` means success (used for GET/PUT). `201` means success AND a new resource was physically created in the database (used for POST). `204` means success, but I have absolutely no data to send back to you (used for DELETE)."
+    }
+  ],
+  "codeExample": "// Express.js Backend returning precise 2xx codes\n\n// Standard Read -> 200 OK\napp.get('/api/users', (req, res) => {\n  res.status(200).json([{ name: \"John\" }]);\n});\n\n// Creation -> 201 Created\napp.post('/api/users', async (req, res) => {\n  const newUser = await db.create(req.body);\n  res.status(201).json(newUser);\n});\n\n// Deletion -> 204 No Content\napp.delete('/api/users/1', async (req, res) => {\n  await db.delete(1);\n  // We use .send() instead of .json() because 204 forbids a response body!\n  res.status(204).send(); \n});"
+}

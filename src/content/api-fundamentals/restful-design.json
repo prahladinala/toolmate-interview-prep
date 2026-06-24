@@ -1,0 +1,31 @@
+{
+  "id": "restful-design",
+  "title": "RESTful API Design",
+  "difficulty": "Intermediate",
+  "definition": "The art of structuring API endpoints, status codes, and JSON response bodies so that they are highly predictable, logical, and easy for other developers to consume.",
+  "simpleExplanation": "If you build an API that returns a `200 OK` status code when a user fails to login, but the JSON says `{ \"error\": true }`, you have built a terrible API. Good RESTful design means using HTTP features exactly as they were intended to be used.",
+  "realWorldExample": "Stripe's API is considered the gold standard of RESTful design. It uses strict nouns, predictable nested relationships, standard HTTP error codes, and consistent JSON object wrappers.",
+  "useCases": [
+    "System Architecture",
+    "Developer Experience (DX)"
+  ],
+  "questions": {
+    "basic": [
+      "Should API URLs use uppercase letters, snake_case, or kebab-case?"
+    ],
+    "intermediate": [
+      "If a client successfully `POST`s a new user to the database, what should the API return in the response body?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which casing?",
+      "answer": "kebab-case (lowercase words separated by hyphens). E.g., `/api/user-profiles`."
+    },
+    {
+      "question": "What to return on POST?",
+      "answer": "It should return a `201 Created` status code, and the body should contain the newly created object (including its new database-generated ID), so the client doesn't have to make a second GET request to fetch the ID."
+    }
+  ],
+  "codeExample": "/* \n  Excellent RESTful JSON Response Design\n*/\n\n// Request: GET /api/v1/articles\n\n// Response: 200 OK\n{\n  // Wrap data in a 'data' object so you can easily add metadata later\n  \"data\": [\n    { \"id\": 1, \"title\": \"REST Rules\" },\n    { \"id\": 2, \"title\": \"APIs 101\" }\n  ],\n  // Metadata (Pagination data is crucial!)\n  \"meta\": {\n    \"total_count\": 500,\n    \"current_page\": 1,\n    \"has_next\": true\n  }\n}"
+}

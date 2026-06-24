@@ -1,0 +1,30 @@
+{
+  "id": "token-storage",
+  "title": "Token Storage",
+  "difficulty": "Advanced",
+  "definition": "The secure management of authentication tokens (like JWTs) in a React application to prevent theft via XSS or CSRF attacks.",
+  "simpleExplanation": "If you leave your house key under the doormat (localStorage), a thief can easily find it and break in (XSS). If you give your key to the bank and they check your ID every time (HttpOnly Cookies), it's much safer.",
+  "realWorldExample": "Instead of storing a `jwt` in `localStorage.setItem('token', jwt)`, you configure your backend to send the token as an `HttpOnly` cookie. This makes it impossible for malicious JavaScript to read the token.",
+  "useCases": [
+    "Securing user sessions",
+    "Preventing XSS data theft"
+  ],
+  "questions": {
+    "basic": [
+      "Is it safe to store JWTs in localStorage?"
+    ],
+    "intermediate": [
+      "What is an HttpOnly cookie?"
+    ],
+    "advanced": [
+      "How do you handle CSRF attacks if you use Cookies?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it safe in localStorage?",
+      "answer": "Generally, no. Any JavaScript running on your page (including third-party analytics or malicious XSS scripts) can read localStorage and steal the token."
+    }
+  ],
+  "codeExample": "// The safest way is to let the backend set an HttpOnly cookie.\n// In React, you simply ensure credentials are sent with requests:\n// fetch('/api/data', { credentials: 'include' });"
+}

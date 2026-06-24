@@ -1,0 +1,35 @@
+{
+  "id": "singleton",
+  "title": "Singleton Pattern (TS)",
+  "difficulty": "Intermediate",
+  "definition": "A creational design pattern that restricts the instantiation of a class to one single instance, enforcing strict typing on that instance globally.",
+  "simpleExplanation": "Imagine the Database of your app. You don't want 50 different files opening 50 different connections to the database. The Singleton pattern hides the `new Database()` constructor, and provides a `.getInstance()` method. The first time it's called, it connects. Every time after that, it hands out the exact same connection.",
+  "realWorldExample": "Creating a global logger or a configuration manager. `const logger = Logger.getInstance(); logger.log('Hello');`",
+  "useCases": [
+    "Database connection pools",
+    "Global application state (pre-Redux)",
+    "Hardware interface access"
+  ],
+  "questions": {
+    "basic": [
+      "How do you prevent a developer from writing `new Singleton()`?"
+    ],
+    "intermediate": [
+      "What is the `static` keyword used for in a Singleton?"
+    ],
+    "advanced": [
+      "Why do many developers consider Singletons an anti-pattern in React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to prevent new Singleton()?",
+      "answer": "Make the constructor `private`. This is a TypeScript-specific feature. By writing `private constructor() {}`, TypeScript throws a compile error if anyone outside the class tries to use the `new` keyword on it."
+    },
+    {
+      "question": "Why is it an anti-pattern in React?",
+      "answer": "React relies on unidirectional data flow and immutability. If you mutate a global Singleton class, React has no idea the data changed, so it won't re-render the UI. Global state in React should be managed via Context or state managers like Zustand, not pure Singletons."
+    }
+  ],
+  "codeExample": "class Database {\n  // 1. Static property to hold the single instance\n  private static instance: Database;\n\n  // 2. PRIVATE constructor prevents 'new Database()'\n  private constructor() {\n    console.log(\"Initializing Database Connection...\");\n  }\n\n  // 3. Static method controls access to the instance\n  public static getInstance(): Database {\n    if (!Database.instance) {\n      Database.instance = new Database();\n    }\n    return Database.instance;\n  }\n\n  public query(sql: string) {\n    console.log(`Executing: ${sql}`);\n  }\n}\n\n// ERROR: Constructor of class 'Database' is private\n// const db = new Database(); \n\nconst db1 = Database.getInstance(); // Prints: Initializing Database...\nconst db2 = Database.getInstance(); // Doesn't print anything!\n\nconsole.log(db1 === db2); // true (Exact same object in memory)"
+}

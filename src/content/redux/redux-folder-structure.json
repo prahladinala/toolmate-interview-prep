@@ -1,0 +1,30 @@
+{
+  "id": "redux-folder-structure",
+  "title": "Folder Structure",
+  "difficulty": "Intermediate",
+  "definition": "The standard layout for a modern React-Redux application, combining feature folders with an `app` folder for core setup.",
+  "simpleExplanation": "You need a central place to boot up the Redux brain, and feature folders to hold the actual logic. The official template uses an `app/` folder for `store.js`, and a `features/` folder for everything else.",
+  "realWorldExample": "Running `npx create-react-app my-app --template redux`. It generates this exact, perfected folder structure automatically.",
+  "useCases": [
+    "Bootstrapping new projects"
+  ],
+  "questions": {
+    "basic": [
+      "In the official Redux template, what is usually placed inside the `app/` folder?"
+    ],
+    "intermediate": [
+      "Where should you place generic UI components like a `<Button />` that are used by many features?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is in app/?",
+      "answer": "The core configuration files: `store.js` and `hooks.js`."
+    },
+    {
+      "question": "Where to place generic components?",
+      "answer": "In a `common/` or `components/` folder outside of the `features/` directory, because they are not tied to a specific Redux feature."
+    }
+  ],
+  "codeExample": "/*\n  The Official Modern Redux Toolkit Folder Structure:\n\n  src/\n  ├── app/\n  │   ├── store.js      (configures the root store)\n  │   └── hooks.js      (exports typed useAppDispatch/useAppSelector)\n  │\n  ├── features/\n  │   ├── counter/\n  │   │   ├── Counter.jsx     (React component)\n  │   │   ├── counterSlice.js (Redux logic)\n  │   │   └── counterAPI.js   (API requests)\n  │   │\n  │   └── auth/\n  │       ├── Login.jsx\n  │       └── authSlice.js\n  │\n  ├── components/       (Dumb UI components: Buttons, Inputs)\n  └── index.js          (Wraps App in <Provider>)\n*/"
+}

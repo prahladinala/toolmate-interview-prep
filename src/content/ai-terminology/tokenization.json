@@ -1,0 +1,30 @@
+{
+  "id": "tokenization",
+  "title": "Tokenization",
+  "difficulty": "Intermediate",
+  "definition": "The process of breaking down raw text into smaller, mathematically manageable pieces called 'Tokens', which can be individual words, sub-words, or characters.",
+  "simpleExplanation": "AI cannot read English words. It only reads math. Tokenization takes a sentence like 'I love cats!', chops it into pieces ['I', 'love', 'cats', '!'], and then assigns a unique ID number to each piece (e.g., [42, 99, 102, 5]).",
+  "realWorldExample": "When you type 'Hamburger' into ChatGPT, the tokenizer might split it into three sub-word tokens: ['Ham', 'burg', 'er']. This allows the AI to understand root words and prefixes even if it has never seen the full word before.",
+  "useCases": [
+    "Text preprocessing",
+    "LLM input formatting"
+  ],
+  "questions": {
+    "basic": [
+      "Does a 'Token' always represent exactly one whole word?"
+    ],
+    "intermediate": [
+      "Why do LLMs generally prefer 'Sub-word' tokenization over 'Whole-word' tokenization?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Always one word?",
+      "answer": "No. A token can be a whole word, but it is often just a syllable (sub-word) or even a single letter. In OpenAI's models, 1 token is roughly equal to 4 characters of English text."
+    },
+    {
+      "question": "Why sub-word?",
+      "answer": "If an AI uses Whole-word tokenization, it crashes when it sees a typo or a brand new word it never learned. Sub-word tokenization allows the AI to break the unknown word down into syllables it DOES know, allowing it to guess the meaning."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "context-window",
+  "title": "Context Window",
+  "difficulty": "Beginner",
+  "definition": "The maximum amount of text (measured in tokens) that an LLM can hold in its working memory at one single time. It includes both the user's prompt and the AI's response.",
+  "simpleExplanation": "The size of the AI's 'RAM' or short-term memory. If an AI has a context window of 4,000 tokens, it can read about a 10-page document. If you feed it an 11-page document, it immediately forgets page 1.",
+  "realWorldExample": "Older models (like GPT-3) had a 4k context window. If you pasted a whole book into it, it would crash. Modern models like Gemini 1.5 Pro have a 1-million-token context window, allowing you to upload the entire Harry Potter series and ask questions about it in one shot.",
+  "useCases": [
+    "Document analysis",
+    "Long-form coding",
+    "Multi-turn conversations"
+  ],
+  "questions": {
+    "basic": [
+      "If you chat with an AI for 3 hours and it suddenly forgets your name, what likely happened?"
+    ],
+    "intermediate": [
+      "Why do API providers charge money based on 'Tokens' rather than 'Words'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why did it forget?",
+      "answer": "The conversation grew so long that it exceeded the model's Context Window. The older messages (including your name) were pushed out of the AI's short-term memory."
+    },
+    {
+      "question": "Why charge by tokens?",
+      "answer": "Because the underlying math (Self-Attention) processes Tokens, not English words. A short complex word and a long simple word might require vastly different amounts of computational math. Tokens represent the actual CPU work the server is doing."
+    }
+  ]
+}

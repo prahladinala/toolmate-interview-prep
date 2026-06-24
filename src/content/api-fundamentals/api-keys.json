@@ -1,0 +1,32 @@
+{
+  "id": "api-keys",
+  "title": "API Keys",
+  "difficulty": "Beginner",
+  "definition": "A long, randomly generated alphanumeric string provided by an API service to uniquely identify the client making the request, primarily used for tracking usage and rate limiting.",
+  "simpleExplanation": "It's like a VIP pass at an amusement park. Instead of logging in with a username and password, Google Maps just gives you a long random string of text. You attach that string to every request you make. Google checks the string, says 'Oh, this is John's app', and adds 1 to your billing meter.",
+  "realWorldExample": "Integrating Stripe payments. Stripe gives you a Secret Key (`sk_live_123abc`). Your backend sends that key in the header of every request so Stripe knows to deposit the money into your specific bank account.",
+  "useCases": [
+    "Server-to-Server communication",
+    "Rate limiting",
+    "Monetization billing"
+  ],
+  "questions": {
+    "basic": [
+      "Are API keys usually meant to identify a specific human user, or a specific application/project?"
+    ],
+    "intermediate": [
+      "If you are building a React frontend, is it safe to put a Stripe Secret API Key in your client-side JavaScript code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Human or App?",
+      "answer": "A specific Application/Project. API keys track machine-to-machine communication. (To identify humans, you use Sessions or JWTs)."
+    },
+    {
+      "question": "Safe in React?",
+      "answer": "Absolutely NOT. Any code shipped to the browser can be inspected by anyone. A malicious user will steal your Secret Key, use it to process fake refunds, and drain your bank account. Secret API keys MUST stay on the backend server."
+    }
+  ],
+  "codeExample": "// Making a request to the OpenAI API using an API Key\n\nconst OPENAI_API_KEY = process.env.OPENAI_SECRET_KEY; // Loaded securely from backend .env\n\nfetch('https://api.openai.com/v1/chat/completions', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    // The API Key is passed via the Authorization header using 'Bearer'\n    'Authorization': `Bearer ${OPENAI_API_KEY}`\n  },\n  body: JSON.stringify({ \n    model: \"gpt-4\", \n    messages: [{ role: \"user\", content: \"Say hi\" }] \n  })\n});"
+}

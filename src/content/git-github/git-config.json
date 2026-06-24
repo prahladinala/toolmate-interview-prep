@@ -1,0 +1,32 @@
+{
+  "id": "git-config",
+  "title": "Git Configuration",
+  "difficulty": "Beginner",
+  "definition": "The `git config` command lets you get and set configuration variables that control all aspects of how Git looks and operates.",
+  "simpleExplanation": "Before you save any files, Git needs to know who you are! If you save a file, Git stamps your name and email on it. You have to tell Git your name and email using `git config` when you first install it, or it will yell at you.",
+  "realWorldExample": "Setting your global username and email so that when you push code to GitHub, your profile picture actually shows up next to the code you wrote.",
+  "useCases": [
+    "Identifying authors of commits",
+    "Setting default text editors",
+    "Creating command aliases"
+  ],
+  "questions": {
+    "basic": [
+      "What two configurations MUST you set before making your first commit?"
+    ],
+    "intermediate": [
+      "What is the difference between `--global` and `--local` config?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two mandatory configs?",
+      "answer": "Your `user.name` and your `user.email`."
+    },
+    {
+      "question": "Global vs Local?",
+      "answer": "`--global` applies the setting to your entire computer (every project). `--local` (which is the default if you omit the flag) applies the setting ONLY to the specific repository you are currently inside."
+    }
+  ],
+  "codeExample": "# 1. Set your identity (Crucial!)\n$ git config --global user.name \"John Doe\"\n$ git config --global user.email \"johndoe@example.com\"\n\n# 2. Check your settings to make sure they saved\n$ git config --list\n\n# 3. Set your default text editor for commit messages (e.g., VS Code)\n$ git config --global core.editor \"code --wait\"\n\n# 4. Change the default branch name from 'master' to 'main'\n$ git config --global init.defaultBranch main"
+}

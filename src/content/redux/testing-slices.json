@@ -1,0 +1,30 @@
+{
+  "id": "testing-slices",
+  "title": "Testing Slices",
+  "difficulty": "Intermediate",
+  "definition": "The practice of writing unit tests for RTK slices (which encompasses testing the initial state and the reducers).",
+  "simpleExplanation": "Because reducers are 'Pure Functions', they are the easiest thing in the world to test. You don't need a browser or a fake DOM. You just call the reducer function, hand it a fake state and a fake action, and assert that the output matches what you expect.",
+  "realWorldExample": "Using Jest or Vitest to test that dispatching `increment()` changes the state from `0` to `1`.",
+  "useCases": [
+    "Unit testing core business logic"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to mock a full Redux Store just to test a reducer function?"
+    ],
+    "intermediate": [
+      "How do you test the initial state of a reducer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Mock full store?",
+      "answer": "No! A reducer is just a plain JavaScript function: `(state, action) => newState`. You can import it and call it directly in your test file."
+    },
+    {
+      "question": "Test initial state?",
+      "answer": "Call the reducer with `undefined` as the state, and an empty action `{ type: 'unknown' }`. It should return your defined `initialState`."
+    }
+  ],
+  "codeExample": "import counterReducer, { increment } from './counterSlice';\n\ndescribe('counter reducer', () => {\n  \n  it('should handle initial state', () => {\n    // Pass undefined state, expect the default initial state\n    expect(counterReducer(undefined, { type: 'unknown' })).toEqual({ value: 0 });\n  });\n\n  it('should handle increment', () => {\n    const startingState = { value: 5 };\n    \n    // Call the reducer directly with the starting state and the action\n    const nextState = counterReducer(startingState, increment());\n    \n    // Verify the math works!\n    expect(nextState.value).toEqual(6);\n  });\n});"
+}

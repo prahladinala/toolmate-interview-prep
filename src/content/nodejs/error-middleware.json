@@ -1,0 +1,32 @@
+{
+  "id": "error-middleware",
+  "title": "Error Handling Middleware",
+  "difficulty": "Advanced",
+  "definition": "A special type of Express middleware designed specifically to catch and process errors that occur anywhere in the application's synchronous or asynchronous routes.",
+  "simpleExplanation": "A safety net under a tightrope walker. If a database query crashes, or a developer writes bad code, the app will normally crash and shut down the server. If you have an Error Middleware installed, the crash falls directly into the net. The middleware catches it, gracefully returns a 500 error to the user, and keeps the server running.",
+  "realWorldExample": "Writing a global error handler that checks if the error is a `ValidationError` (return 400 Bad Request to user) or an unknown database crash (hide details, log to Sentry, return 500 Internal Error).",
+  "useCases": [
+    "Global error catching",
+    "Centralized logging to Datadog/Sentry",
+    "Hiding stack traces from users in production"
+  ],
+  "questions": {
+    "basic": [
+      "How does Express know a middleware is an Error Handler and not a normal middleware?"
+    ],
+    "intermediate": [
+      "How do you send an error from a route directly into the Error Middleware?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does Express know?",
+      "answer": "By the number of arguments! Normal middleware has 3 arguments `(req, res, next)`. Error middleware MUST have exactly 4 arguments: `(err, req, res, next)`."
+    },
+    {
+      "question": "How do you send an error to it?",
+      "answer": "You pass the error object directly into the next function: `next(new Error('Crash'))`. Express instantly skips all other routes and jumps straight to the Error Middleware."
+    }
+  ],
+  "codeExample": "// 1. A simulated crashing route\n/*\napp.get('/profile', async (req, res, next) => {\n  try {\n    // Something goes horribly wrong...\n    throw new Error(\"Database connection lost!\");\n  } catch (error) {\n    // Pass the error to the global handler\n    next(error);\n  }\n});\n*/\n\n// 2. THE ERROR MIDDLEWARE (Must have 4 arguments!)\n// This MUST be the very last app.use() in your file!\nconst globalErrorHandler = (err, req, res, next) => {\n  console.error(\"[CRITICAL LOGGER]:\", err.message);\n  \n  // Determine the type of error and respond safely\n  if (err.name === 'ValidationError') {\n    // res.status(400).json({ error: err.message });\n  } else {\n    // Hide internal crashes from the user\n    // res.status(500).json({ error: \"Something went wrong on our end!\" });\n  }\n};\n\nconsole.log(\"Express error handlers act as a centralized 'catch' block for your entire application.\");"
+}

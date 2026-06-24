@@ -1,0 +1,30 @@
+{
+  "id": "advanced-generics",
+  "title": "Live Coding: Advanced Generics",
+  "difficulty": "Advanced",
+  "definition": "The toughest tier of TS interview questions, usually requiring the implementation of advanced utility types from scratch using Mapped Types, Conditional Types, and `infer`.",
+  "simpleExplanation": "The interviewer says: 'Don't use the built-in `Omit` utility. Write your own custom version of `Omit` from absolute scratch.'",
+  "realWorldExample": "Writing a `DeepPartial<T>` utility that makes all properties, and all nested properties inside objects infinitely deep, optional.",
+  "useCases": [
+    "Deep type-system mastery",
+    "Library authoring"
+  ],
+  "questions": {
+    "basic": [
+      "Re-implement the `Pick` utility type."
+    ],
+    "intermediate": [
+      "Implement a `DeepPartial` utility type."
+    ],
+    "advanced": [
+      "Implement a `TupleToObject` type that converts an array like `['a', 'b']` to `{ a: 'a', b: 'b' }`."
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to implement Pick from scratch?",
+      "answer": "`type MyPick<T, K extends keyof T> = { [P in K]: T[P] };`. It maps over the requested keys, and reaches into T to grab the corresponding value type."
+    }
+  ],
+  "codeExample": "// INTERVIEW QUESTION:\n// Implement 'DeepPartial', which makes all nested object properties optional.\n\ntype DeepPartial<T> = {\n  // 1. Loop through all keys\n  // 2. Add '?' to make the current key optional\n  [K in keyof T]?:\n    // 3. Condition: Is the property an object (and not an array/function)?\n    T[K] extends object \n      ? DeepPartial<T[K]> // 4. YES: Recursively call DeepPartial on it!\n      : T[K]              // 5. NO: Just return the base primitive type\n};\n\ninterface Config {\n  theme: string;\n  api: {\n    url: string;\n    retries: number;\n  };\n}\n\n// If we used normal Partial<Config>, 'api' would be optional, \n// but if provided, 'url' and 'retries' would still be strictly required.\n\nconst myConfig: DeepPartial<Config> = {\n  api: {\n    // Valid! 'retries' is omitted safely because DeepPartial drilled down into 'api'\n    url: \"https://api.com\"\n  }\n};"
+}

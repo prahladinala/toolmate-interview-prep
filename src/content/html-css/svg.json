@@ -1,0 +1,32 @@
+{
+  "id": "svg",
+  "title": "SVG",
+  "difficulty": "Intermediate",
+  "definition": "Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional based vector graphics. They can be embedded directly into HTML.",
+  "simpleExplanation": "Unlike a JPEG (which is made of colored pixels), an SVG is made of math. The HTML code literally tells the browser 'Draw a circle here with a radius of 50'. Because it's math, you can zoom in infinitely, and it will never, ever get blurry.",
+  "realWorldExample": "Company logos and small icons (like a magnifying glass for a search bar). SVGs are incredibly small file sizes and scale perfectly to any screen size.",
+  "useCases": [
+    "Logos",
+    "Icons",
+    "Interactive maps"
+  ],
+  "questions": {
+    "basic": [
+      "What does SVG stand for?"
+    ],
+    "intermediate": [
+      "Why would you use an SVG instead of a PNG for a logo?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Scalable Vector Graphics."
+    },
+    {
+      "question": "SVG vs PNG?",
+      "answer": "If you put a 100x100 PNG logo on a giant 4K monitor, it looks terrible and pixelated. An SVG uses math to redraw itself perfectly crisp at any resolution. Plus, SVGs are usually smaller files, so they load faster."
+    }
+  ],
+  "codeExample": "<!-- This entire image is drawn using ONLY code! No image file was downloaded. -->\n\n<svg width=\"200\" height=\"200\">\n  <!-- A simple yellow circle with a black border -->\n  <circle \n    cx=\"100\" \n    cy=\"100\" \n    r=\"80\" \n    stroke=\"black\" \n    stroke-width=\"4\" \n    fill=\"gold\" \n  />\n  \n  <!-- Two smaller circles for eyes -->\n  <circle cx=\"70\" cy=\"80\" r=\"10\" fill=\"black\" />\n  <circle cx=\"130\" cy=\"80\" r=\"10\" fill=\"black\" />\n  \n  <!-- A path (curve) for the smile -->\n  <path \n    d=\"M 60 130 Q 100 170 140 130\" \n    stroke=\"black\" \n    stroke-width=\"6\" \n    fill=\"transparent\" \n  />\n</svg>\n\n<p>Because SVGs are part of the HTML DOM, you can even use CSS to animate them!</p>"
+}

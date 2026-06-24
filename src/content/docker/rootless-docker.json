@@ -1,0 +1,31 @@
+{
+  "id": "rootless-docker",
+  "title": "Rootless Docker",
+  "difficulty": "Advanced",
+  "definition": "An execution mode where both the Docker daemon (`dockerd`) and the containers it creates run entirely within an unprivileged user namespace, without requiring root privileges on the host machine.",
+  "simpleExplanation": "Taking the master key away from the Docker engine. Normally, Docker requires ultimate God-mode (Root) to function. If a hacker breaches Docker, they breach the whole server. Rootless Docker restricts the entire system to a normal user account.",
+  "realWorldExample": "A university provides a shared Linux server for 50 students. If they install standard Docker, any student could use it to gain Root access and delete the server. They install Rootless Docker, allowing students to build containers safely without compromising the host.",
+  "useCases": [
+    "Shared hosting environments",
+    "Strict enterprise compliance",
+    "Zero-trust security"
+  ],
+  "questions": {
+    "basic": [
+      "Is Rootless Docker more or less secure than standard Docker?"
+    ],
+    "intermediate": [
+      "What is a major limitation of running Rootless Docker regarding Networking?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More or less secure?",
+      "answer": "Significantly MORE secure. It mitigates almost all container-escape vulnerabilities."
+    },
+    {
+      "question": "Networking limitation?",
+      "answer": "Unprivileged users in Linux are not allowed to bind to 'privileged ports' (Ports below 1024, like Port 80 for HTTP or Port 443 for HTTPS). Rootless Docker containers cannot natively listen on Port 80 without complex workarounds."
+    }
+  ]
+}

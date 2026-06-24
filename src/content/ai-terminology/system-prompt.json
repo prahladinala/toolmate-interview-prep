@@ -1,0 +1,31 @@
+{
+  "id": "system-prompt",
+  "title": "System Prompt",
+  "difficulty": "Intermediate",
+  "definition": "The foundational, hidden instruction set given to an LLM before the user even starts chatting. It defines the AI's overarching persona, rules, boundaries, and formatting constraints.",
+  "simpleExplanation": "The AI's 'Prime Directive'. It runs in the background. If the System Prompt says 'You are a pirate', then no matter what the user asks, the AI will answer using pirate slang.",
+  "realWorldExample": "When you build an AI customer support bot, you write a System Prompt: 'You are a polite support agent for Acme Corp. NEVER offer refunds. Keep answers under 50 words.' The user never sees this prompt, but it controls all of the AI's behavior.",
+  "useCases": [
+    "AI Application Development",
+    "Guardrails",
+    "Persona design"
+  ],
+  "questions": {
+    "basic": [
+      "Does the end-user (the customer) normally see the System Prompt?"
+    ],
+    "intermediate": [
+      "If a User Prompt explicitly tells the AI to ignore the rules, but the System Prompt tells the AI to follow the rules, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does user see it?",
+      "answer": "No. It is configured by the developer on the backend and remains hidden from the chat interface."
+    },
+    {
+      "question": "System vs User override?",
+      "answer": "This is called a 'Prompt Injection' attack. Historically, the AI would get confused and often obey the User. Modern models are heavily trained to treat the System Prompt as the ultimate authority, rejecting the user's attempt to break the rules."
+    }
+  ]
+}

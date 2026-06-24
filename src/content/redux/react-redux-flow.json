@@ -1,0 +1,30 @@
+{
+  "id": "react-redux-flow",
+  "title": "React Redux Data Flow",
+  "difficulty": "Beginner",
+  "definition": "The complete, circular lifecycle of an event originating from a React UI, passing through Redux, and resulting in a UI update.",
+  "simpleExplanation": "User clicks a button -> `useDispatch()` fires an Action -> The Store catches it -> The Reducer does the math and updates the State -> `useSelector()` notices the State changed -> The React Component automatically re-renders with the new data.",
+  "realWorldExample": "Adding a song to a playlist. Click '+' -> Dispatch `ADD_SONG` -> Reducer pushes song to array -> Sidebar re-renders showing 1 new song.",
+  "useCases": [
+    "Understanding the big picture architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Who initiates the Redux Data Flow?"
+    ],
+    "intermediate": [
+      "If you dispatch an action, but the UI doesn't update, what is the most likely cause?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who initiates?",
+      "answer": "The User interacting with the React View (UI), or a background process like an API response."
+    },
+    {
+      "question": "Why didn't UI update?",
+      "answer": "You probably mutated the state directly in your reducer (e.g., `state.list.push(item)`) instead of returning a new copy. React relies on reference equality to know when to re-render. If the object reference doesn't change, React thinks nothing changed."
+    }
+  ],
+  "codeExample": "/*\n  THE REACT-REDUX CIRCLE OF LIFE:\n\n  1. [VIEW] React Component renders using initial state.\n       ▲\n       │ (Re-renders via useSelector)\n       │\n  4. [STORE] Updates state and alerts subscribers.\n       ▲\n       │ (Calculates new State)\n       │\n  3. [REDUCER] Looks at current State + Action.\n       ▲\n       │ (Sent via useDispatch)\n       │\n  2. [ACTION] Created when user clicks a button.\n*/"
+}

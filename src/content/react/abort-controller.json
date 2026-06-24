@@ -1,0 +1,45 @@
+{
+  "id": "abort-controller",
+  "title": "AbortController",
+  "difficulty": "Advanced",
+  "definition": "AbortController is a browser API that allows you to abort (cancel) one or more Web requests (like `fetch` or `axios`) as and when desired.",
+  "simpleExplanation": "Imagine ordering a pizza. While it's cooking, you change your mind and decide to go out to eat instead. If you don't call the restaurant to cancel, the pizza delivery guy will still show up at your empty house and get confused. AbortController is how you call the API to cancel the order so the data doesn't arrive after your component has unmounted.",
+  "realWorldExample": "A user is typing in an autocomplete search bar. They type \"A\", which fires a fetch. They immediately type \"P\", firing a second fetch. You use AbortController to cancel the \"A\" fetch so that if the \"A\" fetch takes longer to return than the \"P\" fetch, it doesn't overwrite the correct \"P\" results.",
+  "useCases": [
+    "Search autocomplete fields",
+    "Preventing \"state update on an unmounted component\" memory leak warnings",
+    "Canceling large file downloads"
+  ],
+  "questions": {
+    "basic": [
+      "What does AbortController do?",
+      "Why do we need to cancel API requests in React?"
+    ],
+    "intermediate": [
+      "How do you connect an AbortController to a `fetch` request?",
+      "How do you trigger the cancellation?"
+    ],
+    "advanced": [
+      "How do you properly catch an aborted fetch without crashing your app?",
+      "How do you use AbortController inside a `useEffect` cleanup function?"
+    ],
+    "trick": [
+      "Does `controller.abort()` stop the server from processing the request?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it stop the server from processing?",
+      "answer": "No! The request has already been sent over the internet. The server is still doing the work and sending the response back. AbortController just tells the *browser* to immediately close the connection and ignore the incoming data."
+    },
+    {
+      "question": "How do you use it in useEffect cleanup?",
+      "answer": "You instantiate `const controller = new AbortController();` inside the effect, pass `signal: controller.signal` to `fetch()`, and return `() => controller.abort();` as the cleanup function. When the component unmounts, React runs the cleanup, cancelling the flight request."
+    },
+    {
+      "question": "How do you catch an aborted fetch?",
+      "answer": "When aborted, fetch throws an error with `err.name === \"AbortError\"`. You must specifically check for this in your catch block and do nothing (ignore it), otherwise you will accidentally show an error message to the user."
+    }
+  ],
+  "codeExample": "import React, { useState, useEffect } from \"react\";\n\nexport default function SearchWithAbort() {\n  const [query, setQuery] = useState(\"\");\n  const [results, setResults] = useState([]);\n\n  useEffect(() => {\n    if (query === \"\") {\n      setResults([]);\n      return;\n    }\n\n    // 1. Create the controller\n    const controller = new AbortController();\n\n    fetch(`https://jsonplaceholder.typicode.com/posts?q=${query}`, {\n      // 2. Connect the signal to the fetch request\n      signal: controller.signal\n    })\n    .then(res => res.json())\n    .then(data => setResults(data))\n    .catch(err => {\n      // 3. Handle the deliberate abort safely\n      if (err.name === \"AbortError\") {\n        console.log(\"Fetch aborted successfully for query:\", query);\n      } else {\n        console.error(\"Real error:\", err);\n      }\n    });\n\n    // 4. CLEANUP: If the user types a new letter before this fetch finishes, \n    // React runs this cleanup, cancelling the old fetch!\n    return () => {\n      controller.abort();\n    };\n  }, [query]); // Runs every time query changes\n\n  return (\n    <div className=\"p-4 border\">\n      <h3>Type fast and check the console!</h3>\n      <input \n        value={query} \n        onChange={e => setQuery(e.target.value)} \n        placeholder=\"Search posts...\"\n        className=\"border p-2 w-full\"\n      />\n      <ul className=\"mt-2 text-sm text-gray-600\">\n        {results.slice(0, 3).map(post => <li key={post.id}>{post.title}</li>)}\n      </ul>\n    </div>\n  );\n}"
+}

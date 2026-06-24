@@ -1,0 +1,31 @@
+{
+  "id": "animations",
+  "title": "CSS Animations",
+  "difficulty": "Intermediate",
+  "definition": "The `animation` property is a shorthand for eight individual animation properties (name, duration, timing-function, delay, iteration-count, direction, fill-mode, and play-state).",
+  "simpleExplanation": "Once you write a `@keyframes` script, you use the `animation` property as the 'Play Button'. You can tell the browser to play it fast, play it in reverse, delay the start by 5 seconds, or play it on an infinite loop.",
+  "realWorldExample": "A success checkmark that scales up and pops into existence exactly 0.5 seconds after a modal opens (`animation-delay: 0.5s;`).",
+  "useCases": [
+    "Chaining animations together",
+    "Infinite loops"
+  ],
+  "questions": {
+    "basic": [
+      "What does `animation-iteration-count: infinite;` do?"
+    ],
+    "intermediate": [
+      "What is `animation-fill-mode: forwards;`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Infinite?",
+      "answer": "It makes the animation repeat forever (perfect for loading spinners)."
+    },
+    {
+      "question": "Fill mode forwards?",
+      "answer": "By default, when an animation finishes 100%, the element snaps back to its original 0% state. `forwards` tells the element: 'When the animation is done, freeze in place at the 100% state'."
+    }
+  ],
+  "codeExample": "<style>\n  @keyframes slideIn {\n    from { transform: translateX(-200px); opacity: 0; }\n    to   { transform: translateX(0); opacity: 1; }\n  }\n\n  .notification {\n    background: #10b981;\n    color: white;\n    padding: 20px;\n    width: 200px;\n    border-radius: 8px;\n    font-weight: bold;\n    \n    /* Shorthand: name | duration | timing-function | fill-mode */\n    animation: slideIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;\n  }\n</style>\n\n<p>Click 'Run' to restart the code and see the animation!</p>\n<div class=\"notification\">\n  🎉 Success Message!\n</div>\n<p style=\"margin-top: 10px; font-size: 12px; color: gray;\">\n  Notice how it 'bounces' slightly at the end? That is caused by the custom 'cubic-bezier' timing curve!\n</p>"
+}

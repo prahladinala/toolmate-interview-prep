@@ -1,0 +1,32 @@
+{
+  "id": "revalidate-tag",
+  "title": "revalidateTag()",
+  "difficulty": "Advanced",
+  "definition": "A utility function that purges cached data across multiple different URLs simultaneously based on a custom string label (tag).",
+  "simpleExplanation": "If you update a Product's price, that price might be displayed on the `/home` page, the `/shop` page, and the `/product/123` page. Calling `revalidatePath` three times is annoying. Instead, you tag all those fetches with `'pricing'`. When the price changes, you just call `revalidateTag('pricing')` and it updates the price everywhere instantly.",
+  "realWorldExample": "A headless CMS webhook. When an editor publishes an article, the CMS pings your API. Your API runs `revalidateTag('articles')`, instantly updating every page on your site that displays articles.",
+  "useCases": [
+    "Complex cache architectures",
+    "Global data updates",
+    "CMS Webhooks"
+  ],
+  "questions": {
+    "basic": [
+      "Where do you assign a tag to a specific fetch request?"
+    ],
+    "intermediate": [
+      "What is the primary advantage of `revalidateTag` over `revalidatePath`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to assign?",
+      "answer": "Inside the fetch options object: `fetch('url', { next: { tags: ['my-tag'] } })`."
+    },
+    {
+      "question": "Primary advantage?",
+      "answer": "`revalidatePath` is tied to URLs. If a piece of data exists on 15 different URLs, updating it is a nightmare. `revalidateTag` is tied to the DATA itself, allowing you to update it globally across the entire app with one function call."
+    }
+  ],
+  "codeExample": "// 1. The Fetching Side (Happening on multiple different pages)\nexport async function getProducts() {\n  // We tag this specific request with the label 'catalog'\n  const res = await fetch('https://api.store.com/products', {\n    next: { tags: ['catalog'] }\n  });\n  return res.json();\n}\n\n// 2. The Mutation Side (Inside a Server Action or API Route)\nimport { revalidateTag } from 'next/cache';\n\nexport async function restockInventory() {\n  'use server';\n  await db.updateInventory();\n  \n  // BOOM! Every fetch request anywhere in the app tagged with 'catalog' \n  // is instantly purged and refetched.\n  revalidateTag('catalog');\n}"
+}

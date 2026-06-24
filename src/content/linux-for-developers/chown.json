@@ -1,0 +1,30 @@
+{
+  "id": "chown",
+  "title": "chown",
+  "difficulty": "Intermediate",
+  "definition": "Change Owner. The command used to change the user and/or group ownership of a given file or directory.",
+  "simpleExplanation": "Transferring the deed to a house. If I create a file, I own it. I can use `chown` to give the file to you.",
+  "realWorldExample": "A web server runs as the user `www-data`. You upload website files as the user `root`. The web server gets a 'Permission Denied' error because it doesn't own the files. You run `chown -R www-data:www-data /var/www/html` to fix it.",
+  "useCases": [
+    "Fixing web server permissions",
+    "Transferring file ownership"
+  ],
+  "questions": {
+    "basic": [
+      "Can a normal user use `chown` to give away their files to the `root` user?"
+    ],
+    "intermediate": [
+      "In the command `chown alice:developers file.txt`, what does 'developers' represent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Give files to root?",
+      "answer": "No. Only the `root` superuser (or someone using `sudo`) is allowed to change the ownership of files. Regular users cannot give files away."
+    },
+    {
+      "question": "What is 'developers'?",
+      "answer": "It is the Group. The command changes the User owner to 'alice' and the Group owner to 'developers' simultaneously."
+    }
+  ]
+}

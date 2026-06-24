@@ -1,0 +1,30 @@
+{
+  "id": "feature-based-architecture",
+  "title": "Feature Based Architecture",
+  "difficulty": "Advanced",
+  "definition": "An organizational pattern where files are grouped by the business feature they belong to, rather than their file type.",
+  "simpleExplanation": "Instead of putting all your hooks in a 'hooks' folder, and all your components in a 'components' folder, you create a 'Cart' folder. Inside the Cart folder, you put the cart hooks, the cart components, and the cart API calls. Everything related to the Cart lives together.",
+  "realWorldExample": "If you decide to delete the 'Cart' feature from your app, you just delete the `src/features/cart` folder. If you used type-based architecture, you would have to hunt down files in 5 different folders.",
+  "useCases": [
+    "Massive enterprise applications",
+    "Micro-frontend architectures"
+  ],
+  "questions": {
+    "basic": [
+      "What is Feature Based Architecture?"
+    ],
+    "intermediate": [
+      "How does this prevent spaghetti code?"
+    ],
+    "advanced": [
+      "What happens when two features need to share a component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What if features need to share a component?",
+      "answer": "If a component (like a generic Button) is used by multiple features, it gets promoted to a global `src/components` folder. Features should NEVER import files from other features directly."
+    }
+  ],
+  "codeExample": "// src/features/auth\n//   - components/LoginForm.jsx\n//   - api/login.js\n//   - hooks/useAuth.js\n//   - index.js (Public API for this feature)"
+}

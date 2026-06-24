@@ -1,0 +1,30 @@
+{
+  "id": "what-is-image",
+  "title": "What is a Docker Image?",
+  "difficulty": "Beginner",
+  "definition": "A read-only, immutable template that contains a set of instructions for creating a Docker container. It includes the application code, libraries, tools, dependencies, and files needed to run the app.",
+  "simpleExplanation": "A snapshot of a computer hard drive. Once an Image is created, it cannot be changed (immutable). It is the perfect, frozen blueprint used to stamp out live Containers.",
+  "realWorldExample": "You download the `postgres:15` Image from the internet. It is a 300MB file. You cannot edit the file. But you can use it to spin up 50 separate, running PostgreSQL databases (Containers).",
+  "useCases": [
+    "Software distribution",
+    "Version control"
+  ],
+  "questions": {
+    "basic": [
+      "Can you edit a file permanently inside a Docker Image after it has been built?"
+    ],
+    "intermediate": [
+      "What is the relationship between an Image and a Container?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Edit permanently?",
+      "answer": "No. Images are strictly read-only and immutable. To change a file, you must build a brand new image."
+    },
+    {
+      "question": "Relationship?",
+      "answer": "An Image is the class definition (the blueprint). A Container is the instantiated object (the live, running instance)."
+    }
+  ]
+}

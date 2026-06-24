@@ -1,0 +1,30 @@
+{
+  "id": "redux-debugging",
+  "title": "Debugging Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions testing your ability to use the Redux DevTools and identify common fatal errors in Redux logic.",
+  "simpleExplanation": "If you don't know how to use the DevTools Extension, you don't really know Redux.",
+  "realWorldExample": "Being asked what the 'Time Travel' feature actually does under the hood.",
+  "useCases": [
+    "Technical proficiency verification"
+  ],
+  "questions": {
+    "basic": [
+      "What error will Redux throw if you try to put a Promise into the state tree?"
+    ],
+    "intermediate": [
+      "How does the Time Travel Debugger work in Redux DevTools?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What error?",
+      "answer": "A 'Non-Serializable Value' error. RTK includes a middleware that strictly blocks functions, Promises, and class instances from entering the store."
+    },
+    {
+      "question": "How Time Travel works?",
+      "answer": "Because state is immutable and actions are serializable objects, the DevTools literally records an array of every Action dispatched. When you 'scrub' backwards in time, it simply recalculates the state from the beginning up to that specific point in the action array."
+    }
+  ],
+  "codeExample": "/*\n  Q: You dispatch an action, you can see the action in the Redux DevTools, \n     and you can see the State update in the DevTools. \n     BUT, your React component does not re-render. What is wrong?\n     \n  A: You mutated the state directly in a legacy reducer!\n     (e.g., `state.list.push(newItem); return state;`)\n     \n     Redux caught the change, but React relies on reference equality. \n     Because you returned the exact same object reference in memory, \n     React thinks nothing changed, and ignores the UI update. \n     You must return a brand new copy: `return { ...state, list: [...] }`.\n*/"
+}

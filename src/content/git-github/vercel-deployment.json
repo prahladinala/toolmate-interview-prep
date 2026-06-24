@@ -1,0 +1,31 @@
+{
+  "id": "vercel-deployment",
+  "title": "Vercel Integration",
+  "difficulty": "Intermediate",
+  "definition": "The seamless CI/CD integration between GitHub and Vercel, the cloud platform built specifically for Next.js and frontend frameworks.",
+  "simpleExplanation": "The absolute easiest way to deploy a modern web app. You log into Vercel, click 'Import from GitHub', select your repository, and you are done. Vercel automatically watches your GitHub repo. Whenever you push code, Vercel builds it and deploys it globally.",
+  "realWorldExample": "Deploying a Next.js application. Because Vercel created Next.js, the deployment process requires zero configuration and includes advanced features like Edge Functions and Server-Side Rendering out of the box.",
+  "useCases": [
+    "Next.js deployment",
+    "Serverless frontend apps"
+  ],
+  "questions": {
+    "basic": [
+      "What happens automatically when you open a Pull Request on a repo linked to Vercel?"
+    ],
+    "intermediate": [
+      "Is Vercel only for Next.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When you open a PR?",
+      "answer": "Vercel creates a 'Preview Deployment'. It builds a temporary, fully functional version of your app just for that PR, and posts a unique URL in the GitHub comments. You can click the link to test the feature live before merging!"
+    },
+    {
+      "question": "Only Next.js?",
+      "answer": "No. Vercel supports almost every framework natively (React, Vue, Svelte, Nuxt, Angular, and even plain HTML)."
+    }
+  ],
+  "codeExample": "// No code required! This is a UI-driven process.\n\n/*\n  1. Push your Next.js/React app to GitHub.\n  2. Go to Vercel.com and log in with GitHub.\n  3. Click 'Add New Project'.\n  4. Select your GitHub repository.\n  5. Click 'Deploy'.\n  \n  Vercel handles the SSL certificates, domains, CDN caching, and serverless \n  functions completely automatically.\n*/"
+}

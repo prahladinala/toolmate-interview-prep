@@ -1,0 +1,31 @@
+{
+  "id": "iframes",
+  "title": "IFrames",
+  "difficulty": "Intermediate",
+  "definition": "The `<iframe>` (Inline Frame) element represents a nested browsing context, embedding another HTML page into the current one.",
+  "simpleExplanation": "A window cut into your website that looks out at another website. The website inside the iframe functions completely independently of your main website.",
+  "realWorldExample": "Embedding a YouTube video or a Google Map. YouTube doesn't give you the MP4 file; they give you an `<iframe>` code that loads their custom video player webpage in a small box on your site.",
+  "useCases": [
+    "Embedding third-party media (YouTube, Spotify)",
+    "Embedding external widgets (Maps, Chatbots)"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute is used to tell the iframe what website to display?"
+    ],
+    "intermediate": [
+      "Can you use JavaScript on your main site to click buttons inside an iframe from another domain?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "The `src` attribute."
+    },
+    {
+      "question": "Cross-domain JavaScript control?",
+      "answer": "No. This is blocked by the Same-Origin Policy for security. If you embed `bank.com` in an iframe, your JavaScript cannot reach inside the iframe and click 'Transfer Funds'. The browser strictly separates them."
+    }
+  ],
+  "codeExample": "<h2>Embedding a YouTube Video</h2>\n<p>This is my website. Below is a window looking into YouTube's website.</p>\n\n<iframe \n  width=\"560\" \n  height=\"315\" \n  src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" \n  title=\"YouTube video player\" \n  frameborder=\"0\" \n  allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" \n  allowfullscreen>\n</iframe>\n\n<h2>Embedding Wikipedia</h2>\n<iframe \n  src=\"https://en.wikipedia.org/wiki/HTML\"\n  width=\"100%\"\n  height=\"300\"\n  style=\"border: 2px solid blue;\">\n</iframe>"
+}

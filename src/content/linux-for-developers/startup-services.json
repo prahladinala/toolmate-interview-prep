@@ -1,0 +1,30 @@
+{
+  "id": "startup-services",
+  "title": "Startup Services (Enable / Disable)",
+  "difficulty": "Beginner",
+  "definition": "Configuring services to automatically start when the Linux operating system boots up.",
+  "simpleExplanation": "Telling a program 'Turn yourself on automatically every time the server restarts, so I don't have to log in and do it manually.'",
+  "realWorldExample": "A company server reboots after a power outage. The website comes back online, but the database doesn't. The admin forgot to type `sudo systemctl enable postgresql` when they installed it. Because it wasn't 'enabled', it didn't start on boot.",
+  "useCases": [
+    "Ensuring high availability",
+    "Disabling bloatware to speed up boot times"
+  ],
+  "questions": {
+    "basic": [
+      "If you run `systemctl enable nginx`, does it instantly turn Nginx on right then and there?"
+    ],
+    "intermediate": [
+      "How do you check a list of every single service configured to run at startup?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it turn it on now?",
+      "answer": "No. `enable` ONLY tells Linux to start the service on the *next* boot. To start it immediately AND on boot, you must run `systemctl enable --now nginx`."
+    },
+    {
+      "question": "Check startup list?",
+      "answer": "You can run `systemctl list-unit-files --state=enabled`."
+    }
+  ]
+}

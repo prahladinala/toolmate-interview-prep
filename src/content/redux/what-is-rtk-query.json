@@ -1,0 +1,32 @@
+{
+  "id": "what-is-rtk-query",
+  "title": "What is RTK Query?",
+  "difficulty": "Beginner",
+  "definition": "A powerful data fetching and caching tool built directly into Redux Toolkit. It is designed to simplify common cases for loading data in a web application.",
+  "simpleExplanation": "Writing Redux Thunks for API calls is exhausting. You have to write 'loading', 'success', and 'error' logic every single time. RTK Query says: 'Just give me the URL. I will fetch the data, cache it, generate the loading spinners, and even write the React Hooks for you automatically.'",
+  "realWorldExample": "You define a `/users` endpoint. RTK Query automatically generates a React hook called `useGetUsersQuery()`. You drop that hook into your component, and it magically returns `{ data, isLoading, error }`.",
+  "useCases": [
+    "Replacing Axios + Redux Thunk",
+    "Caching server data",
+    "Preventing duplicate API calls"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to install a separate package to use RTK Query?"
+    ],
+    "intermediate": [
+      "How does RTK Query prevent duplicate requests if two components ask for the same data at the same time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Separate package?",
+      "answer": "No. It is fully included inside the `@reduxjs/toolkit` package."
+    },
+    {
+      "question": "Prevent duplicate requests?",
+      "answer": "If Component A and Component B both call `useGetUsersQuery()`, RTK Query intercepts them, makes exactly ONE network request to the server, and shares the result with both components from its Cache."
+    }
+  ],
+  "codeExample": "// ❌ OLD WAY: 50 lines of Thunks, Reducers, and useEffects.\n\n// ✅ NEW WAY (RTK Query in a Component):\nimport { useGetPokemonByNameQuery } from './pokemonApi'\n\nexport const PokemonView = ({ name }) => {\n  // That's it. One line of code handles the fetch, the cache, and the loading state!\n  const { data, error, isLoading } = useGetPokemonByNameQuery(name)\n\n  if (isLoading) return <div>Loading...</div>\n  if (error) return <div>Error!</div>\n  return <div>{data.sprites.front_default}</div>\n}"
+}

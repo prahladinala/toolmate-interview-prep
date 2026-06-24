@@ -1,0 +1,32 @@
+{
+  "id": "mutations",
+  "title": "GraphQL Mutations",
+  "difficulty": "Beginner",
+  "definition": "The GraphQL equivalent of REST `POST`, `PUT`, `PATCH`, and `DELETE` requests. Mutations are used to modify server-side data and return a response.",
+  "simpleExplanation": "Queries are for reading. Mutations are for changing. If you want to create a new user, you send a Mutation. The best part is, immediately after creating the user, the Mutation allows you to ask for exactly what data you want returned about the newly created user.",
+  "realWorldExample": "Submitting a 'Sign Up' form. The frontend executes a `createUser` mutation, passing the email and password as arguments, and requests that the server return the new user's ID and Auth Token.",
+  "useCases": [
+    "Creating records",
+    "Updating records",
+    "Deleting records"
+  ],
+  "questions": {
+    "basic": [
+      "While Queries are used to read data, what are Mutations used for?"
+    ],
+    "intermediate": [
+      "Why does a GraphQL Mutation usually include a block of requested fields at the very end of it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Mutations used for?",
+      "answer": "Writing, updating, or deleting data."
+    },
+    {
+      "question": "Why include fields?",
+      "answer": "GraphQL allows you to mutate data and query the updated result in the exact same request. By including fields at the end, you tell the server: 'Create the user, and then immediately return the new user's ID and Email to me so I can update the UI.'"
+    }
+  ],
+  "codeExample": "/* \n  GraphQL Mutation Example \n*/\n\nmutation CreateNewUser($email: String!, $password: String!) {\n  # The Action: Call the 'createUser' function on the server\n  createUser(email: $email, password: $password) {\n    \n    # The Return Request: \n    # If successful, give me back these specific fields\n    id\n    email\n    createdAt\n  }\n}"
+}

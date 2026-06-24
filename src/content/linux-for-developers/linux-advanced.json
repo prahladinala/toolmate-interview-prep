@@ -1,0 +1,30 @@
+{
+  "id": "linux-advanced",
+  "title": "Advanced Linux Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions covering kernel architecture, networking stacks, disk management, and performance tuning.",
+  "simpleExplanation": "Proving you understand how the operating system actually works under the hood.",
+  "realWorldExample": "Interview Question: 'Explain the Linux boot process from the moment you press the power button to the login prompt.'",
+  "useCases": [
+    "Senior DevOps interviews",
+    "SRE (Site Reliability Engineer) interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Hard Link and a Soft Link?"
+    ],
+    "intermediate": [
+      "Explain Load Average. If a 4-core server has a 1-minute load average of 4.0, is it overloaded?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Hard vs Soft link?",
+      "answer": "A soft link points to a file name; if the original is deleted, the link breaks. A hard link points to the inode; the data remains safe until all hard links are deleted."
+    },
+    {
+      "question": "Load average of 4.0 on 4-cores?",
+      "answer": "No, it is exactly at 100% capacity. A load of 1.0 means one core is fully utilized. For 4 cores, a load of 4.0 is optimal maximum usage. Anything above 4.0 means tasks are waiting in queue (overloaded)."
+    }
+  ]
+}

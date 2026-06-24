@@ -1,0 +1,32 @@
+{
+  "id": "request-response",
+  "title": "Request & Response Objects",
+  "difficulty": "Intermediate",
+  "definition": "Next.js Route Handlers strictly use the native Web standard `Request` and `Response` objects, replacing the old Node.js/Express `req` and `res` objects.",
+  "simpleExplanation": "When handling APIs, you need to read the incoming data (Request) and send data back (Response). Next.js uses the exact same `Request` object that Service Workers and the `fetch` API use, making the knowledge transferable.",
+  "realWorldExample": "Reading a `?search=shoes` URL query parameter from the incoming Request, and returning a `404 Not Found` Response if no shoes exist.",
+  "useCases": [
+    "Reading URL parameters",
+    "Parsing JSON bodies",
+    "Setting HTTP headers"
+  ],
+  "questions": {
+    "basic": [
+      "How do you read the JSON body sent by a client in a `POST` request?"
+    ],
+    "intermediate": [
+      "How do you read a query parameter (like `?id=5`) from a `NextRequest` object?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Read JSON body?",
+      "answer": "By calling `await request.json()`."
+    },
+    {
+      "question": "Read query parameter?",
+      "answer": "By using the `searchParams` property of the URL object: `request.nextUrl.searchParams.get('id')`."
+    }
+  ],
+  "codeExample": "import { NextRequest, NextResponse } from 'next/server';\n\n// NextRequest provides extra Next.js specific helpers over standard Request\nexport async function GET(request: NextRequest) {\n  \n  // 1. Read Query Parameters (?query=apple)\n  const searchParams = request.nextUrl.searchParams;\n  const query = searchParams.get('query');\n  \n  // 2. Read Headers (e.g. Authorization token)\n  const authHeader = request.headers.get('authorization');\n  \n  if (!authHeader) {\n    // 3. Return a custom error Response with headers\n    return NextResponse.json(\n      { error: 'Unauthorized' }, \n      { status: 401, headers: { 'x-custom-header': 'hello' } }\n    );\n  }\n  \n  return NextResponse.json({ success: true, query });\n}"
+}

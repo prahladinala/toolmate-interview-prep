@@ -1,0 +1,44 @@
+{
+  "id": "functional-vs-class",
+  "title": "Functional vs Class Components",
+  "difficulty": "Beginner",
+  "definition": "Functional components are simple JavaScript functions that accept props and return JSX. Class components are ES6 classes that extend React.Component and require a render() method.",
+  "simpleExplanation": "Imagine building a chair. A Class component is like a complex factory assembly line with a manual you have to read (constructors, 'this' keyword, lifecycle methods). A Functional component is like a simple 3D printer: you give it a design (props), and it prints the chair (JSX). Before 2019, only the factory (Class) could remember things (State). Now, thanks to Hooks, the 3D printer can do everything the factory can do, but with way less headache.",
+  "realWorldExample": "If you look at an old 2017 React codebase, you will see `class App extends React.Component`. You will see `this.state = {}` and `this.handleClick.bind(this)`. In modern React, you will exclusively see `function App()` and `const [state, setState] = useState()`.",
+  "useCases": [
+    "Functional Components: The modern standard for building 99% of all React UI.",
+    "Class Components: Maintaining legacy codebases, or specifically building an Error Boundary (which currently requires a Class)."
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between Functional and Class components?",
+      "Can you use Hooks (like `useState`) inside a Class Component?"
+    ],
+    "intermediate": [
+      "Why did React shift away from Class components?",
+      "What is the `this` keyword, and why did it cause problems in Class components?"
+    ],
+    "advanced": [
+      "How do Functional components handle the concept of `componentDidMount` compared to Class components?",
+      "What is a 'PureComponent' and how do you achieve the same thing with Functional components?"
+    ],
+    "trick": [
+      "Are Functional components actually faster/more performant than Class components?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you use Hooks inside a Class Component?",
+      "answer": "No. Hooks were specifically designed to solve the problems of Class components. They are strictly for Functional components."
+    },
+    {
+      "question": "Why did React shift away from Class components?",
+      "answer": "Classes required understanding the confusing `this` keyword, required binding event handlers manually, and made it very difficult to reuse stateful logic (forcing developers to use complex patterns like HOCs or Render Props). Hooks solved all of this elegantly."
+    },
+    {
+      "question": "Are Functional components actually faster?",
+      "answer": "Not necessarily. While they avoid the overhead of instantiating an ES6 Class, the performance difference is negligible in most apps. The shift was primarily about Developer Experience (DX) and code reusability, not raw speed."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\n// --- MODERN FUNCTIONAL COMPONENT ---\n// Simple, readable, no 'this' keyword.\nexport default function ModernCounter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div className=\"p-4 border rounded mb-4\">\n      <h2>Functional Component</h2>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(c => c + 1)}>Increment</button>\n    </div>\n  );\n}\n\n// --- LEGACY CLASS COMPONENT ---\n// Verbose, requires constructor, 'this', and manual binding (if not using arrow functions)\nexport class LegacyCounter extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { count: 0 };\n    // We used to have to do this: this.handleClick = this.handleClick.bind(this);\n  }\n\n  handleClick = () => {\n    this.setState({ count: this.state.count + 1 });\n  }\n\n  render() {\n    return (\n      <div className=\"p-4 border rounded\">\n        <h2>Class Component</h2>\n        {/* Notice how we have to use 'this' everywhere */}\n        <p>Count: {this.state.count}</p>\n        <button onClick={this.handleClick}>Increment</button>\n      </div>\n    );\n  }\n}"
+}

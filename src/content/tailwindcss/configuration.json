@@ -1,0 +1,31 @@
+{
+  "id": "configuration",
+  "title": "tailwind.config.js",
+  "difficulty": "Intermediate",
+  "definition": "The central configuration file where you define your project's custom design system (colors, fonts, breakpoints) and tell Tailwind which files to scan for classes.",
+  "simpleExplanation": "Tailwind's brain. If your company brand color is 'Spotify Green' (#1DB954), you don't type `bg-[#1DB954]` everywhere. You open `tailwind.config.js`, add a color called `spotify`, and now you can type `bg-spotify` anywhere in your app.",
+  "realWorldExample": "Adding a custom font family like 'Inter' or overriding the default `sm`, `md`, and `lg` responsive breakpoints to match a specific UI design.",
+  "useCases": [
+    "Design system enforcement",
+    "Theming"
+  ],
+  "questions": {
+    "basic": [
+      "What is the name of the file used to customize Tailwind?"
+    ],
+    "intermediate": [
+      "What is the difference between `theme.extend.colors` and `theme.colors` in the config?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Config file name?",
+      "answer": "`tailwind.config.js` (or `.ts`)"
+    },
+    {
+      "question": "extend vs override?",
+      "answer": "If you put your colors inside `theme.colors`, you OVERWRITE Tailwind's entire default color palette (you lose `bg-blue-500`). If you put them inside `theme.extend.colors`, you KEEP the defaults and ADD your custom colors alongside them."
+    }
+  ],
+  "codeExample": "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  // 1. Tell Tailwind where to look for class names\n  content: [\n    \"./src/**/*.{js,jsx,ts,tsx}\",\n  ],\n  // 2. Customize your design system\n  theme: {\n    extend: {\n      colors: {\n        brand: {\n          light: '#3fbaeb',\n          DEFAULT: '#0fa9e6', // Use via 'bg-brand'\n          dark: '#0c87b8',\n        }\n      },\n      fontFamily: {\n        sans: ['Inter', 'sans-serif'], // Overrides the default sans font\n      }\n    },\n  },\n  plugins: [],\n}"
+}

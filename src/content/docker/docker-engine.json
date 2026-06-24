@@ -1,0 +1,30 @@
+{
+  "id": "docker-engine",
+  "title": "Docker Engine",
+  "difficulty": "Intermediate",
+  "definition": "The core, underlying client-server application that powers the entire Docker system. It consists of the `dockerd` daemon, a REST API, and the `docker` CLI.",
+  "simpleExplanation": "The actual engine under the hood of the car. It is the invisible background program doing all the heavy lifting to keep the containers running.",
+  "realWorldExample": "When a DevOps engineer sets up a new Ubuntu server on AWS, they do not install Docker Desktop. They write a script to install `docker-ce` (Docker Community Edition Engine) directly onto the Linux kernel for maximum performance and zero bloat.",
+  "useCases": [
+    "Production deployment",
+    "Server configuration"
+  ],
+  "questions": {
+    "basic": [
+      "Does the Docker Engine require a Graphical User Interface (like a desktop window) to run?"
+    ],
+    "intermediate": [
+      "What is `dockerd`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Requires a GUI?",
+      "answer": "No. The Docker Engine is purely a background service (daemon) and works perfectly in a terminal-only environment."
+    },
+    {
+      "question": "What is dockerd?",
+      "answer": "It is the actual name of the Docker Daemon process running in the background on the host machine. It manages the containers, networks, and volumes."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "pwd",
+  "title": "pwd",
+  "difficulty": "Beginner",
+  "definition": "Print Working Directory. A command that outputs the absolute, full path of the directory (folder) you are currently located in.",
+  "simpleExplanation": "The 'Where am I right now?' button. The terminal has no visual folders. If you get lost, typing `pwd` tells you exactly where you are standing.",
+  "realWorldExample": "You open a terminal and type `pwd`. It outputs `/home/alice/Documents/projects`. This tells you any file you create right now will be saved in the 'projects' folder.",
+  "useCases": [
+    "Navigation",
+    "Scripting path verification"
+  ],
+  "questions": {
+    "basic": [
+      "If you are lost in the terminal, what command tells you your current location?"
+    ],
+    "intermediate": [
+      "Does `pwd` show the relative path or the absolute path?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which command?",
+      "answer": "`pwd`."
+    },
+    {
+      "question": "Relative or Absolute?",
+      "answer": "Always the absolute path, starting all the way from the root directory `/`."
+    }
+  ]
+}

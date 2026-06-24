@@ -1,0 +1,32 @@
+{
+  "id": "dynamic-routes",
+  "title": "Dynamic Routes",
+  "difficulty": "Intermediate",
+  "definition": "Routes that are not fixed strings, but act as variables to capture data from the URL (like an ID or a slug). Created by wrapping a folder name in square brackets: `[param]`.",
+  "simpleExplanation": "If you have 10,000 blog posts, you can't create 10,000 folders. You create ONE folder called `[slug]`. If the user visits `/blog/my-trip-to-japan`, Next.js routes it to the `[slug]` folder and passes 'my-trip-to-japan' into your component as a variable.",
+  "realWorldExample": "An e-commerce site where `/products/123` and `/products/456` both use the exact same React component, but fetch different product data based on the ID.",
+  "useCases": [
+    "Blog posts",
+    "User profiles",
+    "E-commerce product pages"
+  ],
+  "questions": {
+    "basic": [
+      "How do you define a dynamic route folder that captures a user's ID?"
+    ],
+    "intermediate": [
+      "How do you access the dynamic variable inside your `page.tsx` component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to define?",
+      "answer": "Name the folder with square brackets: `[id]` or `[userId]`."
+    },
+    {
+      "question": "How to access?",
+      "answer": "Next.js automatically passes a `params` prop to your page component. You would access it via `params.id`."
+    }
+  ],
+  "codeExample": "/* \n  File Path: app/users/[id]/page.tsx\n  URL Visited: mywebsite.com/users/99\n*/\n\n// The component receives the 'params' object automatically!\nexport default function UserProfile({ params }: { params: { id: string } }) {\n  \n  // params.id will equal \"99\"\n  const userId = params.id;\n  \n  return (\n    <div>\n      <h1>User Profile for ID: {userId}</h1>\n      {/* You would usually fetch data from a DB using this ID here */}\n    </div>\n  )\n}"
+}

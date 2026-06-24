@@ -1,0 +1,34 @@
+{
+  "id": "singleton",
+  "title": "Singleton Pattern",
+  "difficulty": "Intermediate",
+  "definition": "A software design pattern that restricts the instantiation of a class to a singular, single instance. It guarantees that no matter how many times you try to create the object, you always get the exact same one back.",
+  "simpleExplanation": "A Singleton is like the President of a country. No matter which state asks 'Who is the President?', they all get pointed to the exact same person. You cannot instantiate a 'second' President.",
+  "realWorldExample": "A database connection pool, a global Redux store, or a configuration object. If 10 different files import the Database module, they should all be sharing the exact same connection, not spinning up 10 different connections.",
+  "useCases": [
+    "Global state management",
+    "Shared resource coordination (Loggers, Database connections)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the purpose of a Singleton?"
+    ],
+    "intermediate": [
+      "Why are Singletons sometimes considered an anti-pattern?"
+    ],
+    "advanced": [
+      "How do ES6 Modules behave like Singletons by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why are they sometimes an anti-pattern?",
+      "answer": "Singletons are essentially glorified Global Variables. They make unit testing very difficult because state is shared across tests. If Test 1 modifies the Singleton Database, Test 2 might fail unexpectedly because the Database state bled over."
+    },
+    {
+      "question": "How do ES6 modules behave like Singletons?",
+      "answer": "Node.js and Webpack cache modules after the first time they are imported. If `fileA.js` imports `db.js`, the code runs and exports the object. If `fileB.js` then imports `db.js`, the code does NOT run again; it just receives the exact same cached object reference in memory."
+    }
+  ],
+  "codeExample": "class Database {\n  constructor() {\n    // Check if an instance already exists\n    if (Database.instance) {\n      // Return the existing one instead of creating a new one\n      return Database.instance;\n    }\n    \n    this.connection = \"Connected to DB\";\n    this.logs = [];\n    \n    // Save the instance for future calls\n    Database.instance = this;\n  }\n}\n\nconst db1 = new Database();\nconst db2 = new Database();\n\n// They are the EXACT same object in memory!\nconsole.log(db1 === db2); // true\n\ndb1.logs.push(\"User logged in\");\nconsole.log(db2.logs); // [\"User logged in\"]"
+}

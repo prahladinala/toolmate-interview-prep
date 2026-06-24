@@ -1,0 +1,31 @@
+{
+  "id": "api-architecture",
+  "title": "API Architecture Overview",
+  "difficulty": "Intermediate",
+  "definition": "The structural design patterns used to build APIs, primarily including REST, GraphQL, SOAP, and gRPC.",
+  "simpleExplanation": "Just like there are different ways to build a house (Wood frame, Brick, Concrete), there are different ways to build APIs. REST uses standard URLs. GraphQL lets the client ask for exactly what it wants. SOAP uses strict XML envelopes. gRPC uses hyper-fast binary streams.",
+  "realWorldExample": "A legacy bank from 2005 probably uses SOAP (extremely strict and secure XML). A standard modern web startup uses REST. A complex social network with deeply nested data (like Facebook) uses GraphQL.",
+  "useCases": [
+    "System design",
+    "Choosing the right tool for the job"
+  ],
+  "questions": {
+    "basic": [
+      "Which API architecture is currently the most popular and widespread on the internet?"
+    ],
+    "intermediate": [
+      "Why would a team choose gRPC over REST for microservice communication?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most popular?",
+      "answer": "REST (Representational State Transfer)."
+    },
+    {
+      "question": "Why gRPC over REST?",
+      "answer": "Speed. REST sends data as text (JSON). gRPC (developed by Google) sends data as compressed binary code (Protobuf). For internal servers talking to each other millions of times a second, gRPC is vastly faster and consumes less bandwidth."
+    }
+  ],
+  "codeExample": "/* \n  The same request in different architectures:\n  \n  1. REST (Predictable URL paths)\n  GET /api/users/123\n  Response: { \"id\": 123, \"name\": \"John\", \"email\": \"john@test.com\" }\n  \n  2. GraphQL (Client defines exactly what it wants)\n  POST /graphql\n  Body: query { user(id: 123) { name } }\n  Response: { \"data\": { \"user\": { \"name\": \"John\" } } }\n  \n  3. SOAP (Extremely verbose XML)\n  POST /UserService\n  Body: \n  <Envelope>\n    <Body>\n      <GetUser><id>123</id></GetUser>\n    </Body>\n  </Envelope>\n*/"
+}

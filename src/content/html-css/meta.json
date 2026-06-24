@@ -1,0 +1,215 @@
+{
+  "id": "html-css",
+  "title": "HTML & CSS",
+  "description": "Master HTML and CSS from fundamentals to advanced responsive layouts, accessibility, animations, and modern CSS architecture used in production applications.",
+  "icon": "htmlcss",
+  "categories": [
+    {
+      "id": "html-fundamentals",
+      "title": "HTML Fundamentals",
+      "topics": [
+        { "id": "html-introduction", "title": "What is HTML?" },
+        { "id": "html-document-structure", "title": "HTML Document Structure" },
+        { "id": "semantic-html", "title": "Semantic HTML" },
+        { "id": "block-inline-elements", "title": "Block vs Inline Elements" },
+        { "id": "html-attributes", "title": "HTML Attributes" },
+        { "id": "meta-tags", "title": "Meta Tags" },
+        { "id": "comments", "title": "HTML Comments" }
+      ]
+    },
+    {
+      "id": "html-elements",
+      "title": "HTML Elements",
+      "topics": [
+        { "id": "headings", "title": "Headings" },
+        { "id": "paragraphs", "title": "Paragraphs" },
+        { "id": "links", "title": "Links & Navigation" },
+        { "id": "images", "title": "Images" },
+        { "id": "lists", "title": "Lists" },
+        { "id": "tables", "title": "Tables" },
+        { "id": "iframes", "title": "IFrames" }
+      ]
+    },
+    {
+      "id": "forms",
+      "title": "Forms & Inputs",
+      "topics": [
+        { "id": "form-basics", "title": "HTML Forms" },
+        { "id": "input-types", "title": "Input Types" },
+        { "id": "labels", "title": "Labels" },
+        { "id": "textarea", "title": "Textarea" },
+        { "id": "select-option", "title": "Select & Option" },
+        { "id": "form-validation", "title": "HTML Validation" },
+        { "id": "autocomplete", "title": "Autocomplete" }
+      ]
+    },
+    {
+      "id": "html5",
+      "title": "HTML5 Features",
+      "topics": [
+        { "id": "audio-video", "title": "Audio & Video" },
+        { "id": "canvas", "title": "Canvas" },
+        { "id": "svg", "title": "SVG" },
+        { "id": "web-storage", "title": "LocalStorage & SessionStorage" },
+        { "id": "geolocation", "title": "Geolocation API" },
+        { "id": "drag-drop", "title": "Drag & Drop API" }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility (A11Y)",
+      "topics": [
+        { "id": "aria", "title": "ARIA Attributes" },
+        { "id": "screen-readers", "title": "Screen Readers" },
+        { "id": "keyboard-navigation", "title": "Keyboard Navigation" },
+        { "id": "focus-management", "title": "Focus Management" },
+        { "id": "accessible-forms", "title": "Accessible Forms" }
+      ]
+    },
+    {
+      "id": "seo",
+      "title": "SEO Fundamentals",
+      "topics": [
+        { "id": "seo-meta-tags", "title": "SEO Meta Tags" },
+        { "id": "open-graph", "title": "Open Graph Tags" },
+        { "id": "structured-data", "title": "Structured Data" },
+        { "id": "robots-txt", "title": "robots.txt" },
+        { "id": "sitemap", "title": "Sitemap.xml" }
+      ]
+    },
+    {
+      "id": "css-fundamentals",
+      "title": "CSS Fundamentals",
+      "topics": [
+        { "id": "css-introduction", "title": "What is CSS?" },
+        { "id": "css-selectors", "title": "Selectors" },
+        { "id": "specificity", "title": "Specificity" },
+        { "id": "inheritance", "title": "Inheritance" },
+        { "id": "units", "title": "CSS Units (px, rem, em, %, vh, vw)" },
+        { "id": "colors", "title": "Colors" },
+        { "id": "fonts", "title": "Fonts & Typography" }
+      ]
+    },
+    {
+      "id": "box-model",
+      "title": "CSS Box Model",
+      "topics": [
+        { "id": "content-padding-border-margin", "title": "Content, Padding, Border, Margin" },
+        { "id": "box-sizing", "title": "box-sizing" },
+        { "id": "overflow", "title": "Overflow" },
+        { "id": "outline", "title": "Outline vs Border" }
+      ]
+    },
+    {
+      "id": "positioning",
+      "title": "Positioning",
+      "topics": [
+        { "id": "static", "title": "Static" },
+        { "id": "relative", "title": "Relative" },
+        { "id": "absolute", "title": "Absolute" },
+        { "id": "fixed", "title": "Fixed" },
+        { "id": "sticky", "title": "Sticky" },
+        { "id": "z-index", "title": "z-index & Stacking Context" }
+      ]
+    },
+    {
+      "id": "flexbox",
+      "title": "Flexbox",
+      "topics": [
+        { "id": "flex-container", "title": "Flex Container" },
+        { "id": "flex-items", "title": "Flex Items" },
+        { "id": "justify-content", "title": "justify-content" },
+        { "id": "align-items", "title": "align-items" },
+        { "id": "flex-grow-shrink-basis", "title": "flex-grow, shrink, basis" },
+        { "id": "flex-wrap", "title": "flex-wrap" }
+      ]
+    },
+    {
+      "id": "grid",
+      "title": "CSS Grid",
+      "topics": [
+        { "id": "grid-container", "title": "Grid Container" },
+        { "id": "grid-template", "title": "Grid Template" },
+        { "id": "grid-areas", "title": "Grid Areas" },
+        { "id": "grid-auto-flow", "title": "Grid Auto Flow" },
+        { "id": "grid-vs-flexbox", "title": "Grid vs Flexbox" }
+      ]
+    },
+    {
+      "id": "responsive-design",
+      "title": "Responsive Design",
+      "topics": [
+        { "id": "media-queries", "title": "Media Queries" },
+        { "id": "mobile-first", "title": "Mobile First Design" },
+        { "id": "responsive-images", "title": "Responsive Images" },
+        { "id": "breakpoints", "title": "Breakpoints" },
+        { "id": "fluid-layouts", "title": "Fluid Layouts" }
+      ]
+    },
+    {
+      "id": "modern-css",
+      "title": "Modern CSS",
+      "topics": [
+        { "id": "css-variables", "title": "CSS Variables" },
+        { "id": "clamp-min-max", "title": "clamp(), min(), max()" },
+        { "id": "container-queries", "title": "Container Queries" },
+        { "id": "aspect-ratio", "title": "aspect-ratio" },
+        { "id": "logical-properties", "title": "Logical Properties" }
+      ]
+    },
+    {
+      "id": "animations",
+      "title": "Animations & Transitions",
+      "topics": [
+        { "id": "transitions", "title": "CSS Transitions" },
+        { "id": "keyframes", "title": "@keyframes" },
+        { "id": "animations", "title": "CSS Animations" },
+        { "id": "transform", "title": "Transform" },
+        { "id": "translate-scale-rotate", "title": "Translate, Scale, Rotate" }
+      ]
+    },
+    {
+      "id": "css-architecture",
+      "title": "CSS Architecture",
+      "topics": [
+        { "id": "bem", "title": "BEM Methodology" },
+        { "id": "smacss", "title": "SMACSS" },
+        { "id": "css-modules", "title": "CSS Modules" },
+        { "id": "styled-components", "title": "Styled Components" },
+        { "id": "tailwind-css", "title": "Tailwind CSS" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "critical-css", "title": "Critical CSS" },
+        { "id": "render-blocking", "title": "Render Blocking Resources" },
+        { "id": "lazy-loading-images", "title": "Lazy Loading Images" },
+        { "id": "font-optimization", "title": "Font Optimization" }
+      ]
+    },
+    {
+      "id": "browser-rendering",
+      "title": "Browser Rendering",
+      "topics": [
+        { "id": "dom-cssom", "title": "DOM & CSSOM" },
+        { "id": "render-tree", "title": "Render Tree" },
+        { "id": "reflow", "title": "Reflow" },
+        { "id": "repaint", "title": "Repaint" },
+        { "id": "compositing", "title": "Compositing" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "html-interview-questions", "title": "HTML Interview Questions" },
+        { "id": "css-interview-questions", "title": "CSS Interview Questions" },
+        { "id": "layout-challenges", "title": "Layout Coding Challenges" },
+        { "id": "responsive-design-questions", "title": "Responsive Design Questions" },
+        { "id": "debugging-css", "title": "CSS Debugging Questions" }
+      ]
+    }
+  ]
+}

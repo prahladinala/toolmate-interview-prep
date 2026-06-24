@@ -1,0 +1,30 @@
+{
+  "id": "redux-principles",
+  "title": "Three Principles of Redux",
+  "difficulty": "Beginner",
+  "definition": "The three fundamental rules that dictate how Redux operates: Single Source of Truth, State is Read-Only, and Changes are made with Pure Functions.",
+  "simpleExplanation": "1. There is only ONE giant object holding all data. \n2. You cannot edit that object directly. \n3. To change the object, you must write a strict mathematical function (Reducer) that takes the old object, makes a copy, and returns the new copy.",
+  "realWorldExample": "A ledger at a bank. 1. There is only one master ledger. 2. You cannot use an eraser to change past transactions. 3. To update a balance, the accountant must write a brand new line at the bottom of the ledger.",
+  "useCases": [
+    "Understanding the philosophy behind Redux architecture"
+  ],
+  "questions": {
+    "basic": [
+      "What does 'Single Source of Truth' mean in Redux?"
+    ],
+    "intermediate": [
+      "What is a 'Pure Function'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Single Source of Truth?",
+      "answer": "The state of your entire application is stored in an object tree within a single, centralized Store. You don't have 5 different stores for 5 different features."
+    },
+    {
+      "question": "Pure Function?",
+      "answer": "A function that ALWAYS returns the exact same output for the exact same input, and causes NO side effects (like API calls or mutating external variables). Reducers MUST be pure functions."
+    }
+  ],
+  "codeExample": "/*\n  The 3 Principles in Code:\n*/\n\n// 1. Single Source of Truth (One object holds everything)\nconst store = { \n  user: { name: 'John' },\n  cart: { items: 3 }\n};\n\n// 2. State is Read-Only (Never do this!)\n// store.cart.items = 4; \n\n// 3. Changes are made with Pure Functions (Reducers)\nfunction reducer(state, action) {\n  if (action.type === 'ADD_TO_CART') {\n    // Return a BRAND NEW object (Immutable update)\n    return { ...state, cart: { items: state.cart.items + 1 } };\n  }\n  return state;\n}"
+}

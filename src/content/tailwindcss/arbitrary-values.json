@@ -1,0 +1,31 @@
+{
+  "id": "arbitrary-values",
+  "title": "Arbitrary Values",
+  "difficulty": "Advanced",
+  "definition": "Using square brackets to generate hyper-specific, one-off utility classes on the fly without having to add them to `tailwind.config.js`.",
+  "simpleExplanation": "Tailwind has `top-4` (16px) and `top-5` (20px). If you desperately need exactly 17px for a weird alignment issue, you don't need to write inline CSS. You just type `top-[17px]`. The JIT engine instantly creates that custom class.",
+  "realWorldExample": "Creating a highly specific branding color for a single landing page without polluting the global config file: `bg-[#1da1f2]` (Twitter blue).",
+  "useCases": [
+    "One-off highly specific values",
+    "Dynamic CSS grid layouts (`grid-cols-[1fr_500px_2fr]`)"
+  ],
+  "questions": {
+    "basic": [
+      "What characters are used to denote an arbitrary value in Tailwind?"
+    ],
+    "intermediate": [
+      "When should you use an Arbitrary Value instead of updating the `tailwind.config.js`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which characters?",
+      "answer": "Square brackets `[]`."
+    },
+    {
+      "question": "When to use?",
+      "answer": "Use arbitrary values for 'One-off' magic numbers that you only ever plan to use once in your entire app. If you plan to reuse the value (like a brand color), put it in the config file."
+    }
+  ],
+  "codeExample": "<!-- One-off exact pixel height -->\n<div class=\"h-[314px] bg-gray-200\">Exact Height</div>\n\n<!-- One-off exact HEX color -->\n<button class=\"bg-[#8a2be2] text-white px-4 py-2\">\n  Purple Button\n</button>\n\n<!-- Highly complex CSS Grid layout using arbitrary values -->\n<!-- Column 1: Fit content, Column 2: Exactly 500px, Column 3: Fill remaining -->\n<div class=\"grid grid-cols-[auto_500px_1fr]\">\n  <div>Nav</div>\n  <div>Main</div>\n  <div>Sidebar</div>\n</div>"
+}

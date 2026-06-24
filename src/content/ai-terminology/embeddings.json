@@ -1,0 +1,31 @@
+{
+  "id": "embeddings",
+  "title": "Embeddings",
+  "difficulty": "Advanced",
+  "definition": "The mathematical translation of concepts (words, sentences, or images) into high-dimensional arrays of numbers (vectors) in such a way that similar concepts are located close to each other in mathematical space.",
+  "simpleExplanation": "Giving words GPS coordinates. The AI plots the word 'King' on a map. It plots the word 'Man' nearby. It plots the word 'Apple' a million miles away. If you tell the AI 'Find me words near King', it looks at the map and finds 'Queen' and 'Prince'.",
+  "realWorldExample": "Spotify uses embeddings. It turns every song into a mathematical vector. When you listen to a Rock song, Spotify's algorithm searches the 'Vector Map' for other songs with very similar mathematical coordinates and puts them in your Discover Weekly playlist.",
+  "useCases": [
+    "Semantic Search",
+    "RAG systems",
+    "Recommendation engines"
+  ],
+  "questions": {
+    "basic": [
+      "Do Embeddings represent words as text strings, or as arrays of numbers?"
+    ],
+    "intermediate": [
+      "What is 'High-Dimensional Space' in the context of Embeddings?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Strings or numbers?",
+      "answer": "Arrays of floating-point numbers (Vectors)."
+    },
+    {
+      "question": "What is High-Dimensional Space?",
+      "answer": "A standard map has 2 dimensions (X and Y). A 3D graph has 3 dimensions (X, Y, Z). OpenAI's embeddings plot words in 1,536 dimensions! Each dimension represents a highly abstract concept (like 'royalty', 'gender', 'fluffiness') allowing the AI to perfectly capture the nuance of a word."
+    }
+  ]
+}

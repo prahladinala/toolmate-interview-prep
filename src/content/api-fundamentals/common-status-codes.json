@@ -1,0 +1,31 @@
+{
+  "id": "common-status-codes",
+  "title": "Most Common Status Codes",
+  "difficulty": "Beginner",
+  "definition": "A cheat sheet of the absolute must-know HTTP status codes that every web developer will encounter on a daily basis.",
+  "simpleExplanation": "There are dozens of status codes, but you only memorize about 10 of them. \n200 = OK. \n201 = Created. \n301 = Moved. \n400 = Bad Request. \n401 = Not Logged In. \n403 = Not Allowed. \n404 = Not Found. \n500 = Server Blew Up.",
+  "realWorldExample": "When writing an API client using Axios or Fetch, you write `if (response.status === 404) { showNotFoundUI() }`.",
+  "useCases": [
+    "Frontend error handling",
+    "Backend API design"
+  ],
+  "questions": {
+    "basic": [
+      "What is the famous status code for a page or resource that does not exist?"
+    ],
+    "intermediate": [
+      "What is a `429 Too Many Requests` code used for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which code?",
+      "answer": "`404 Not Found`."
+    },
+    {
+      "question": "What is 429?",
+      "answer": "Rate Limiting. If a malicious bot tries to brute-force a login page by sending 10,000 requests per second, the server uses 429 to instantly block them and say 'Slow down'."
+    }
+  ],
+  "codeExample": "/* \n  The Developer's Cheat Sheet:\n\n  SUCCESS (2xx):\n  200 OK: Everything worked.\n  201 Created: You POSTed data, and it was successfully saved.\n  204 No Content: You DELETEd data successfully.\n\n  CLIENT ERRORS (4xx) - \"It's the Frontend's fault\"\n  400 Bad Request: You sent invalid JSON or missing fields.\n  401 Unauthorized: You forgot to send your Auth Token.\n  403 Forbidden: You sent an Auth Token, but you aren't an Admin.\n  404 Not Found: The URL is wrong, or the DB item doesn't exist.\n  429 Too Many Requests: You hit the API too fast. Rate limited.\n\n  SERVER ERRORS (5xx) - \"It's the Backend's fault\"\n  500 Internal Server Error: The backend code crashed entirely.\n  503 Service Unavailable: The server is down for maintenance.\n*/"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "creating-pr",
+  "title": "Creating a Pull Request",
+  "difficulty": "Beginner",
+  "definition": "The process of opening a PR on GitHub, which involves selecting a base branch, a compare branch, writing a descriptive title, and providing context in the description body.",
+  "simpleExplanation": "When you push a new branch to GitHub, a big green button automatically appears saying 'Compare & pull request'. Clicking it opens a form where you write a title and a description (using Markdown) to explain to your team what your code does.",
+  "realWorldExample": "Writing a great PR description: 'This PR fixes Issue #42. I added a debounce function to the search bar so it stops crashing the database when users type too fast. Attached is a screenshot of the new UI.'",
+  "useCases": [
+    "Initiating a code review"
+  ],
+  "questions": {
+    "basic": [
+      "What is the 'Base' branch in a Pull Request?"
+    ],
+    "intermediate": [
+      "How do you automatically close an Issue when a PR is merged?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Base branch?",
+      "answer": "The Base branch is the destination (usually `main`). The Compare branch is your feature branch. You are requesting to pull the Compare branch INTO the Base branch."
+    },
+    {
+      "question": "Automatically close issue?",
+      "answer": "Include special keywords in your PR description. If you type `Fixes #42` or `Closes #42` in the PR description, GitHub will magically close Issue #42 the exact second your PR is merged."
+    }
+  ],
+  "codeExample": "<!-- A great Pull Request Template (Markdown) -->\n\n## What does this PR do?\nAdds a user authentication flow and connects it to the PostgreSQL database.\n\n## Why are we doing this?\nResolves #104 (Users could not log in).\n\n## How should this be tested?\n1. Run `npm run db:seed` locally.\n2. Navigate to `/login`.\n3. Enter credentials `test@test.com` / `password123`.\n4. Verify you are redirected to the Dashboard.\n\n## Screenshots\n![Login UI](https://link-to-screenshot.png)"
+}

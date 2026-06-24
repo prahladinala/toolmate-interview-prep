@@ -1,0 +1,31 @@
+{
+  "id": "provider-pattern",
+  "title": "Provider Pattern",
+  "difficulty": "Advanced",
+  "definition": "A pattern that uses React Context to 'provide' data to many components deep in the tree, completely bypassing prop drilling.",
+  "simpleExplanation": "It's like installing a Wi-Fi router in your house. The Provider is the router. Once it's turned on, any device in the house (any nested component) can connect to the Wi-Fi using the password (`useContext`), without running a physical wire (Props) through every room.",
+  "realWorldExample": "Wrapping the entire `<App>` in a `<ThemeProvider>` so that any component, no matter how deep, can call `const theme = useTheme()`.",
+  "useCases": [
+    "Theming",
+    "Authentication",
+    "Routing state"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two parts of the Provider pattern?"
+    ],
+    "intermediate": [
+      "Why should you be careful about what data you put in a Provider?"
+    ],
+    "advanced": [
+      "How do you prevent massive re-renders when a Provider value changes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the two parts?",
+      "answer": "1. The Context.Provider (which holds and shares the value). 2. The Context.Consumer (or useContext hook) which reads the value."
+    }
+  ],
+  "codeExample": "import { createContext, useContext, useState } from 'react';\nconst ThemeContext = createContext();\n\nexport function ThemeProvider({ children }) {\n  const [theme, setTheme] = useState('light');\n  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;\n}"
+}

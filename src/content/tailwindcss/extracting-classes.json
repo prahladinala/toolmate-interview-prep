@@ -1,0 +1,31 @@
+{
+  "id": "extracting-classes",
+  "title": "Extracting Common Styles (@apply)",
+  "difficulty": "Intermediate",
+  "definition": "Using the `@apply` directive to combine multiple Tailwind utilities into a single custom CSS class. (A practice that should be used very sparingly).",
+  "simpleExplanation": "If you are NOT using React/Vue, and you are building a static HTML site, you can't build a `<Button>` component. To avoid copy-pasting 15 classes on every button, you go to your CSS file, create a `.btn-primary` class, and use `@apply bg-blue-500 text-white rounded;` to suck the Tailwind styles into it.",
+  "realWorldExample": "Creating a global `.btn` class for a legacy Laravel or Ruby on Rails application.",
+  "useCases": [
+    "Legacy server-side rendered apps",
+    "Global styling of third-party HTML"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind directive allows you to write Tailwind utilities inside a standard CSS file?"
+    ],
+    "intermediate": [
+      "Why does the creator of Tailwind explicitly tell developers NOT to use `@apply` if they are using React or Vue?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which directive?",
+      "answer": "`@apply`"
+    },
+    {
+      "question": "Why avoid in React?",
+      "answer": "Because `@apply` fundamentally defeats the purpose of Utility-First CSS. It drags you back into the nightmare of inventing semantic class names (`.btn-outer-wrapper`), worrying about CSS global scope, and bloating the CSS file. JS Components solve duplication much better."
+    }
+  ],
+  "codeExample": "/* main.css */\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n/* Using @apply to create a reusable CSS class (Use sparingly!) */\n@layer components {\n  .btn-primary {\n    @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow;\n    @apply hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;\n    @apply transition duration-150 ease-in-out;\n  }\n}\n\n/* In standard HTML */\n<button class=\"btn-primary\">Submit</button>"
+}

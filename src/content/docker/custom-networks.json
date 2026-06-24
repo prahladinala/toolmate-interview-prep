@@ -1,0 +1,30 @@
+{
+  "id": "custom-networks",
+  "title": "Custom Networks",
+  "difficulty": "Intermediate",
+  "definition": "User-defined bridge networks created via `docker network create`. They provide automatic DNS resolution and superior isolation compared to the default `docker0` bridge.",
+  "simpleExplanation": "Creating your own private Wi-Fi networks. You create 'Database-WiFi' and 'Web-WiFi'. You can put specific containers on specific networks to meticulously control who is allowed to talk to who.",
+  "realWorldExample": "A server runs App A and App B. You create a custom network for App A, and a separate one for App B. If App A gets hacked, the hacker mathematically cannot reach the database for App B because they are physically isolated on different software networks.",
+  "useCases": [
+    "Security isolation",
+    "Microservice architecture"
+  ],
+  "questions": {
+    "basic": [
+      "What CLI command do you type to create a new custom network named 'my-net'?"
+    ],
+    "intermediate": [
+      "If a container is attached to a custom network, how does it find the IP address of another container on that same network?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which command?",
+      "answer": "`docker network create my-net`."
+    },
+    {
+      "question": "How does it find IP?",
+      "answer": "Automatic embedded DNS. It simply pings the other container's name (e.g., `ping database_service`), and Docker's internal DNS server automatically resolves that name to the correct virtual IP address."
+    }
+  ]
+}

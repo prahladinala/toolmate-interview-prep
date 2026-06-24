@@ -1,0 +1,32 @@
+{
+  "id": "custom-animations",
+  "title": "Custom Animations",
+  "difficulty": "Advanced",
+  "definition": "Pre-built CSS `@keyframes` animations provided by Tailwind, and the ability to define your own complex looping animations in the config file.",
+  "simpleExplanation": "Transitions (`transition-all`) only go from Point A to Point B when triggered by a hover. Animations (`animate-spin`) loop continuously by themselves without needing a trigger.",
+  "realWorldExample": "Applying `animate-spin` to a loading circle SVG so it continuously rotates while an API request is fetching.",
+  "useCases": [
+    "Loading spinners",
+    "Pulsing notification dots",
+    "Bouncing arrows"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class makes an element continuously rotate 360 degrees?"
+    ],
+    "intermediate": [
+      "How do you create a custom keyframe animation (e.g., `animate-wiggle`) that isn't included in default Tailwind?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Rotate 360?",
+      "answer": "`animate-spin`"
+    },
+    {
+      "question": "Custom keyframe?",
+      "answer": "You open `tailwind.config.js`, define the `@keyframes` steps inside `theme.extend.keyframes`, and then define the timing inside `theme.extend.animation`."
+    }
+  ],
+  "codeExample": "<!-- The 4 Default Tailwind Animations: -->\n\n<!-- 1. animate-spin: Perfect for loading SVGs -->\n<svg class=\"animate-spin w-5 h-5 text-blue-500\"></svg>\n\n<!-- 2. animate-ping: Great for unread notification dots -->\n<span class=\"w-3 h-3 bg-red-500 rounded-full animate-ping\"></span>\n\n<!-- 3. animate-pulse: Great for Skeleton Loading screens -->\n<div class=\"w-full h-24 bg-gray-300 rounded animate-pulse\"></div>\n\n<!-- 4. animate-bounce: Great for 'Scroll Down' arrows -->\n<svg class=\"animate-bounce w-6 h-6\"></svg>"
+}

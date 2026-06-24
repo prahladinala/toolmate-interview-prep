@@ -1,0 +1,30 @@
+{
+  "id": "zero-shot",
+  "title": "Zero-Shot Prompting",
+  "difficulty": "Beginner",
+  "definition": "Asking an LLM to perform a task without providing any prior examples or demonstrations of the desired output format.",
+  "simpleExplanation": "Just asking the question directly. 'What is the capital of France?'",
+  "realWorldExample": "Typing 'Write a marketing email for a new shoe brand' into ChatGPT and hitting Enter. You didn't show it any previous emails you wrote, you just expect it to know what to do based entirely on its pre-training.",
+  "useCases": [
+    "General knowledge queries",
+    "Quick tasks"
+  ],
+  "questions": {
+    "basic": [
+      "Which requires a more powerful, smarter AI model: Zero-Shot or Few-Shot prompting?"
+    ],
+    "intermediate": [
+      "What is a common failure mode of Zero-Shot prompting when asking for formatted data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which needs a smarter model?",
+      "answer": "Zero-Shot. Older models (like GPT-2) were terrible at Zero-Shot and required examples for everything. Modern models (GPT-4) are so smart they can often succeed Zero-Shot."
+    },
+    {
+      "question": "Failure mode?",
+      "answer": "Format variance. If you ask it for a list, it might give you bullet points, or numbers, or a comma-separated string. Without examples, you cannot guarantee the exact shape of the output."
+    }
+  ]
+}

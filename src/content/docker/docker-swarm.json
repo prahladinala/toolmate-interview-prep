@@ -1,0 +1,30 @@
+{
+  "id": "docker-swarm",
+  "title": "Docker Swarm",
+  "difficulty": "Intermediate",
+  "definition": "Docker's native container orchestration tool. It allows you to cluster multiple Docker hosts together into a single, highly available virtual system, managed with familiar Docker CLI commands.",
+  "simpleExplanation": "Kubernetes' little brother. It does the exact same job (managing containers across many servers), but it is vastly simpler to set up and uses the exact same `docker-compose.yml` files you already know.",
+  "realWorldExample": "A small 5-person startup needs to run an app across 3 servers for redundancy, but they don't have the time to learn the massive complexity of Kubernetes. They run `docker swarm init`, and within 10 minutes, they have a fully load-balanced, multi-server cluster.",
+  "useCases": [
+    "Small to medium architectures",
+    "Rapid clustering"
+  ],
+  "questions": {
+    "basic": [
+      "Is Docker Swarm more or less complex to configure than Kubernetes?"
+    ],
+    "intermediate": [
+      "Why did the tech industry largely abandon Docker Swarm in favor of Kubernetes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More or less complex?",
+      "answer": "Vastly less complex. It is built directly into the Docker Engine."
+    },
+    {
+      "question": "Why abandon it?",
+      "answer": "While Swarm was easy, Kubernetes was backed by Google and offered exponentially more advanced features for massive enterprises (like granular auto-scaling, custom resource definitions, and massive cloud provider integrations). Kubernetes won the 'Orchestration War'."
+    }
+  ]
+}

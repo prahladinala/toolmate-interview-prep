@@ -1,0 +1,32 @@
+{
+  "id": "content-padding-border-margin",
+  "title": "Content, Padding, Border, Margin",
+  "difficulty": "Beginner",
+  "definition": "The CSS Box Model describes the rectangular boxes generated for elements in the document tree. Every single HTML element is essentially a box made up of Content, Padding, Border, and Margin.",
+  "simpleExplanation": "Imagine a fragile glass vase (the Content) being shipped in a cardboard box. The bubble wrap protecting the vase is the Padding. The cardboard box itself is the Border. And the empty space you leave between this box and the next box on the delivery truck is the Margin.",
+  "realWorldExample": "Creating a button. The text 'Click Me' is the content. You add `padding: 10px` so the text isn't touching the edge of the button. You add `border: 1px solid black` to draw the button shape. You add `margin: 20px` to push other buttons away so they don't overlap.",
+  "useCases": [
+    "Layout spacing",
+    "Button sizing",
+    "Preventing elements from crashing into each other"
+  ],
+  "questions": {
+    "basic": [
+      "Which part of the box model is on the OUTSIDE of the border?"
+    ],
+    "intermediate": [
+      "Does background color show underneath the Margin?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Outside of border?",
+      "answer": "Margin."
+    },
+    {
+      "question": "Background color under margin?",
+      "answer": "No! Background colors fill the Content and Padding areas. The Margin is always completely transparent empty space used to push other elements away."
+    }
+  ],
+  "codeExample": "<style>\n  .the-box {\n    /* 1. CONTENT: The actual size of the text/image area */\n    width: 200px;\n    background-color: lightblue;\n    \n    /* 2. PADDING: Space INSIDE the border, around the content */\n    padding: 30px;\n    \n    /* 3. BORDER: The physical line around the padding */\n    border: 5px solid darkblue;\n    \n    /* 4. MARGIN: Invisible space OUTSIDE the border pushing others away */\n    margin: 40px;\n  }\n</style>\n\n<div class=\"the-box\">\n  I am the Content!\n  <br><br>\n  Look at the light blue space around me (Padding).\n  <br><br>\n  Look at the dark blue line (Border).\n  <br><br>\n  Notice how far away I am from the edge of the screen? (Margin).\n</div>"
+}

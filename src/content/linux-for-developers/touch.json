@@ -1,0 +1,30 @@
+{
+  "id": "touch",
+  "title": "touch",
+  "difficulty": "Beginner",
+  "definition": "A command primarily used to create empty files. Its secondary (and original) purpose is to update the access and modification timestamps of an existing file.",
+  "simpleExplanation": "The 'create a blank file' command. It instantly creates a file with zero text inside it.",
+  "realWorldExample": "You want to write a Python script. You type `touch script.py`. An empty file is instantly created, which you can now open in a code editor.",
+  "useCases": [
+    "Creating blank configuration files",
+    "Triggering file watchers by updating timestamps"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you use `touch` on a file that already exists and is full of text? Does it delete the text?"
+    ],
+    "intermediate": [
+      "Why is it called 'touch' instead of 'create'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it delete text?",
+      "answer": "No. The file's contents are perfectly safe. `touch` simply updates the file's 'Last Modified' timestamp to the current clock time."
+    },
+    {
+      "question": "Why called touch?",
+      "answer": "Because its original purpose in Unix was simply to 'touch' a file to update its timestamp. Creating a blank file was just a side-effect if the file didn't already exist, but it became the most popular way to use it."
+    }
+  ]
+}

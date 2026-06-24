@@ -1,0 +1,30 @@
+{
+  "id": "features",
+  "title": "Features",
+  "difficulty": "Beginner",
+  "definition": "The individual, measurable properties or characteristics of a phenomenon being observed that a machine learning model uses to make its predictions.",
+  "simpleExplanation": "The 'clues' the AI uses to solve the puzzle. If you want an AI to predict the price of a house, the 'Features' are the number of bedrooms, the square footage, the zip code, and the age of the house.",
+  "realWorldExample": "In an AI built to predict if an email is spam, the Features might be: 'Contains the word FREE', 'Sent at 3:00 AM', 'Has multiple exclamation points!!!', and 'Sender address matches the recipient'.",
+  "useCases": [
+    "Data engineering",
+    "Feature extraction"
+  ],
+  "questions": {
+    "basic": [
+      "If an AI is predicting the weather, what might be a good 'Feature' to give it?"
+    ],
+    "intermediate": [
+      "What is 'Feature Engineering'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Weather feature?",
+      "answer": "Current temperature, humidity percentage, barometric pressure, or historical cloud cover data."
+    },
+    {
+      "question": "What is Feature Engineering?",
+      "answer": "The process of human data scientists manually selecting, modifying, or creating new features from raw data to make the machine learning algorithm work better (e.g., combining 'latitude' and 'longitude' into a single 'distance_from_city_center' feature)."
+    }
+  ]
+}

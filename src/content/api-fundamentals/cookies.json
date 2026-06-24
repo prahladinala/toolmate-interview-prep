@@ -1,0 +1,32 @@
+{
+  "id": "cookies",
+  "title": "Cookies",
+  "difficulty": "Intermediate",
+  "definition": "Small pieces of data sent by a web server and stored locally in the user's web browser. The browser automatically sends them back to the server with every subsequent request.",
+  "simpleExplanation": "HTTP has 'amnesia' (it is stateless). If you log in, the server forgets who you are one second later. A Cookie is a nametag the server glues to your shirt. Every time you walk up to the server to ask for a new page, the server reads the nametag and says 'Ah, welcome back John.'",
+  "realWorldExample": "Adding items to an Amazon shopping cart without being logged in. Amazon stores your cart ID in a cookie. When you close the tab and return tomorrow, the browser sends the cookie back, and Amazon restores your cart.",
+  "useCases": [
+    "Session management",
+    "Personalization",
+    "Tracking & Analytics"
+  ],
+  "questions": {
+    "basic": [
+      "Does the client (browser) have to manually write code to send a cookie back to the server in a `fetch` request?"
+    ],
+    "intermediate": [
+      "What happens if a user clears their browser cookies?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manually send?",
+      "answer": "No. The greatest feature of cookies is that the browser handles them completely automatically behind the scenes. Once set, the browser attaches them to every HTTP request to that specific domain."
+    },
+    {
+      "question": "Clear cookies?",
+      "answer": "They instantly lose all active sessions (logged out of all websites) and lose all tracking preferences, because their browser throws away all the 'nametags'."
+    }
+  ],
+  "codeExample": "/* The Cookie Lifecycle */\n\n// 1. Client sends a login request (No cookie yet)\nPOST /api/login\n\n// 2. Server verifies password, and forces the browser to save a cookie\nHTTP/1.1 200 OK\nSet-Cookie: session_id=abc123xyz; HttpOnly; Secure; Max-Age=86400\n\n// 3. User clicks on the /dashboard page 10 minutes later\n// The browser AUTOMATICALLY attaches the Cookie header!\nGET /api/dashboard\nCookie: session_id=abc123xyz\n\n// 4. Server reads the cookie, looks up 'abc123xyz' in DB, returns private data."
+}

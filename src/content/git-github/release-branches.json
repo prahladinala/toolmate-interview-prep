@@ -1,0 +1,31 @@
+{
+  "id": "release-branches",
+  "title": "Release Branches",
+  "difficulty": "Advanced",
+  "definition": "A branch created specifically to prepare for a new production release. It allows the `develop` branch to continue receiving new features for the NEXT release, while the release branch is locked down for bug fixes only.",
+  "simpleExplanation": "Imagine you are building iOS 17. It's almost September. You create a branch called `release-ios17`. From this moment on, NO new features are allowed in iOS 17. Only bug fixes. Meanwhile, the main development team immediately starts building iOS 18 features on the main branch.",
+  "realWorldExample": "Used heavily in mobile app development, desktop software, and open-source frameworks where users have to actively download specific 'Versions' (like Next.js v13.4).",
+  "useCases": [
+    "Versioned software",
+    "QA stabilization periods"
+  ],
+  "questions": {
+    "basic": [
+      "Are new features allowed on a Release branch?"
+    ],
+    "intermediate": [
+      "Once the Release branch is deployed, what do you do with it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "New features allowed?",
+      "answer": "No. A release branch is in a 'Feature Freeze'. Only critical bug fixes and documentation updates are allowed."
+    },
+    {
+      "question": "What to do with it?",
+      "answer": "You merge it INTO `main` (so production is updated), and you also merge it BACK into `develop` (so all the bug fixes you made aren't lost in future versions)."
+    }
+  ],
+  "codeExample": "# Create a release branch off of 'develop'\n$ git checkout -b release-v2.0 develop\n\n# QA tests it, finds a bug, you fix the bug.\n$ git commit -m \"Fix critical crash on startup\"\n\n# Release day arrives! Merge to main and tag it.\n$ git checkout main\n$ git merge release-v2.0\n$ git tag v2.0.0\n\n# Don't forget to merge those bug fixes back to develop!\n$ git checkout develop\n$ git merge release-v2.0"
+}

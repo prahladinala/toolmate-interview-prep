@@ -1,0 +1,44 @@
+{
+  "id": "formik",
+  "title": "Formik",
+  "difficulty": "Advanced",
+  "definition": "Formik is one of the most popular legacy libraries for building complex forms in React. It manages form state, validation, and error handling in a highly standardized, declarative way.",
+  "simpleExplanation": "Building forms from scratch means juggling three balls: getting values in/out, validation/error messages, and handling form submission. Formik is an expert juggler you hire to handle all three balls for you, so you can just focus on how the form looks.",
+  "realWorldExample": "Many large enterprise applications built between 2018 and 2021 use Formik heavily alongside the Yup validation library. It provides components like `<Formik>`, `<Form>`, `<Field>`, and `<ErrorMessage>` to rapidly build UI.",
+  "useCases": [
+    "Maintaining older React codebases",
+    "Rapidly scaffolding forms using its built-in Context-based components (`<Field>`)"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three main problems Formik solves?",
+      "What validation library is most commonly paired with Formik?"
+    ],
+    "intermediate": [
+      "What is the difference between Formik and React Hook Form?",
+      "How does the `<Field>` component work?"
+    ],
+    "advanced": [
+      "What performance issues can arise when using Formik on massive forms?",
+      "What is `useFormikContext` used for?"
+    ],
+    "trick": [
+      "Does Formik use uncontrolled or controlled components?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between Formik and React Hook Form?",
+      "answer": "Formik is strictly a Controlled component architecture. Every keystroke updates Formik's state and causes the form to re-render. React Hook Form is Uncontrolled, meaning keystrokes don't cause re-renders, making it significantly faster for large forms."
+    },
+    {
+      "question": "What validation library is paired with it?",
+      "answer": "Yup. Formik has a built-in prop literally called `validationSchema` that is specifically designed to accept a Yup schema object."
+    },
+    {
+      "question": "Does Formik use controlled or uncontrolled components?",
+      "answer": "Controlled. Formik stores the entire form state in a central React state object and forces it down to the inputs via `value` and `onChange`."
+    }
+  ],
+  "codeExample": "/*\n// Conceptual Example - Requires npm install formik\nimport { Formik, Form, Field, ErrorMessage } from \"formik\";\n\nexport default function FormikExample() {\n  return (\n    <Formik\n      initialValues={{ email: \"\", password: \"\" }}\n      validate={values => {\n        const errors = {};\n        if (!values.email) errors.email = \"Required\";\n        return errors;\n      }}\n      onSubmit={(values, { setSubmitting }) => {\n        console.log(values);\n        setSubmitting(false);\n      }}\n    >\n      {/* Formik uses Render Props or Context to provide state to children */}\n      {({ isSubmitting }) => (\n        <Form>\n          {/* <Field> automatically wires up value and onChange! */}\n          <Field type=\"email\" name=\"email\" />\n          <ErrorMessage name=\"email\" component=\"div\" />\n          \n          <Field type=\"password\" name=\"password\" />\n          <button type=\"submit\" disabled={isSubmitting}>\n            Submit\n          </button>\n        </Form>\n      )}\n    </Formik>\n  );\n}\n*/\nconsole.log(\"Formik is powerful, but React Hook Form has largely superseded it in modern apps due to performance.\");"
+}

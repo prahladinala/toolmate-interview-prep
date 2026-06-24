@@ -1,0 +1,30 @@
+{
+  "id": "recall",
+  "title": "Recall",
+  "difficulty": "Intermediate",
+  "definition": "An evaluation metric that answers: 'Out of all the ACTUAL Positives in the real world, how many did the AI successfully find?' It measures the model's ability to not miss anything.",
+  "simpleExplanation": "A fisherman's net. High Recall means the net is so massive it catches every single fish in the ocean (but it might accidentally catch some trash, too). Low Recall means the net is tiny; it only catches a few fish, and misses most of them.",
+  "realWorldExample": "Cancer Detection AI. You want HIGH Recall. It is much better for the AI to accidentally flag a healthy person for a secondary review (a False Positive) than it is for the AI to miss a tumor and let a patient die (a False Negative).",
+  "useCases": [
+    "Medical AI",
+    "Fraud detection"
+  ],
+  "questions": {
+    "basic": [
+      "If Recall is low, what kind of errors is the AI making too often: False Positives or False Negatives?"
+    ],
+    "intermediate": [
+      "Why is there almost always a trade-off between Precision and Recall?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which errors?",
+      "answer": "False Negatives. The wolf was there, but the AI slept through it and didn't sound the alarm."
+    },
+    {
+      "question": "Why trade-off?",
+      "answer": "If you want perfect Recall (find every tumor), you make the AI hyper-sensitive. But being hyper-sensitive means it will flag a lot of healthy people (ruining Precision). If you want perfect Precision (never flag a healthy person), you make the AI super conservative, meaning it will miss subtle tumors (ruining Recall)."
+    }
+  ]
+}

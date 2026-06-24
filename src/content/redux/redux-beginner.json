@@ -1,0 +1,30 @@
+{
+  "id": "redux-beginner",
+  "title": "Beginner Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common introductory questions asked to ensure a candidate understands the basic flow and purpose of Redux.",
+  "simpleExplanation": "The interviewer wants to know if you understand what a Store, Action, and Reducer are, and if you know why Redux exists.",
+  "realWorldExample": "Being asked: 'Explain the Redux Data Flow as if I were 5 years old.'",
+  "useCases": [
+    "Junior Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three core principles of Redux?"
+    ],
+    "intermediate": [
+      "What is the difference between `useSelector` and `useDispatch`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three principles?",
+      "answer": "1. Single source of truth (One Store). 2. State is read-only (Must use Actions). 3. Changes are made with pure functions (Reducers)."
+    },
+    {
+      "question": "Selector vs Dispatch?",
+      "answer": "`useSelector` is used to READ data from the store. `useDispatch` is used to SEND actions to the store to trigger a change."
+    }
+  ],
+  "codeExample": "/*\n  Q: What problem does Redux solve?\n  \n  A: Redux solves the problem of global state management and \n     \"Prop Drilling\". In large React applications, passing data \n     down through dozens of component layers becomes unmaintainable. \n     Redux centralizes the data into a single global store, allowing \n     any component to access the exact data it needs directly, \n     resulting in cleaner code and predictable state updates.\n*/"
+}

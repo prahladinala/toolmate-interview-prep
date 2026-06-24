@@ -1,0 +1,23 @@
+{
+  "id": "from",
+  "title": "FROM",
+  "difficulty": "Beginner",
+  "definition": "The instruction that initializes a new build stage and sets the Base Image for subsequent instructions. It is the mandatory first instruction in a valid Dockerfile.",
+  "simpleExplanation": "Choosing your starting canvas. You can't build something out of nothing. You must tell Docker what operating system to start with.",
+  "realWorldExample": "`FROM ubuntu:22.04` starts with a pure Linux environment. `FROM python:3.9` starts with Linux but saves you time by already having Python pre-installed.",
+  "useCases": [
+    "Defining environments",
+    "Image inheritence"
+  ],
+  "questions": {
+    "basic": [
+      "Can you have a Dockerfile without a `FROM` statement?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "No FROM?",
+      "answer": "No. Every single Dockerfile must begin with a `FROM` statement."
+    }
+  ]
+}

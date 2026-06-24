@@ -1,0 +1,32 @@
+{
+  "id": "what-is-redux",
+  "title": "What is Redux?",
+  "difficulty": "Beginner",
+  "definition": "A predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.",
+  "simpleExplanation": "Imagine a massive spreadsheet that holds all the data for your entire app (user info, shopping cart, theme color). Redux is that spreadsheet. Any component in your app can read from the spreadsheet, but to change the data, they have to submit an official 'request form'.",
+  "realWorldExample": "A banking system. The 'Store' is the vault holding your balance. You (the component) cannot just walk into the vault and change your balance to $1,000,000. You must hand a 'Deposit Slip' (an Action) to the 'Teller' (the Reducer), who follows strict rules to update the vault.",
+  "useCases": [
+    "Large scale applications",
+    "Complex state logic",
+    "Apps with frequent state updates over time"
+  ],
+  "questions": {
+    "basic": [
+      "Is Redux only used with React?"
+    ],
+    "intermediate": [
+      "What does it mean that Redux is 'predictable'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Only React?",
+      "answer": "No. Redux is a standalone JavaScript library. It can be used with plain vanilla JS, Vue, Angular, or React. (However, it is most commonly paired with React via the `react-redux` package)."
+    },
+    {
+      "question": "What is predictable?",
+      "answer": "If you start with State A, and apply Action B, you will ALWAYS get exactly State C. Because reducers are pure functions with no side effects, the state mutations are 100% mathematical and repeatable, making debugging a breeze."
+    }
+  ],
+  "codeExample": "// The absolute simplest concept of Redux in plain JavaScript:\n\nlet state = { count: 0 };\n\n// You don't do this:\n// state.count = 5; (Unpredictable! Anyone can do this anywhere!)\n\n// You do this:\nfunction updateState(currentState, request) {\n  if (request.type === 'ADD') {\n    return { count: currentState.count + 1 };\n  }\n  return currentState;\n}"
+}

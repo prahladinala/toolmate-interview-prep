@@ -1,0 +1,31 @@
+{
+  "id": "dark-mode-setup",
+  "title": "Dark Mode Setup",
+  "difficulty": "Intermediate",
+  "definition": "The configuration required in `tailwind.config.js` to dictate exactly HOW Tailwind decides whether the app is currently in Dark Mode or Light Mode.",
+  "simpleExplanation": "By default, Tailwind looks at the user's Operating System (Windows/macOS settings). If Windows is dark, Tailwind is dark. However, if you want a physical 'Toggle Theme' button on your website, you must change Tailwind's setup to use the 'class' strategy instead.",
+  "realWorldExample": "Adding `darkMode: 'class'` to your config file so you can use JavaScript to slap a `<html class=\"dark\">` tag onto your website when a user clicks the moon icon.",
+  "useCases": [
+    "App theming",
+    "User preference toggles"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default Dark Mode strategy in Tailwind CSS?"
+    ],
+    "intermediate": [
+      "If you use the 'class' strategy, which HTML element should you attach the `dark` class to?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default strategy?",
+      "answer": "The 'media' strategy (It listens to the `@media (prefers-color-scheme: dark)` CSS feature, matching the OS)."
+    },
+    {
+      "question": "Which HTML element?",
+      "answer": "You should attach it to the very root of your document, either the `<html>` or `<body>` tag, so that every component inside the app inherits the dark mode state."
+    }
+  ],
+  "codeExample": "// tailwind.config.js\nmodule.exports = {\n  // OVERRIDE THE DEFAULT! \n  // Now Tailwind will only trigger dark mode if it physically \n  // sees class=\"dark\" on a parent HTML element.\n  darkMode: 'class', \n  \n  content: ['./src/**/*.{html,js}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}"
+}

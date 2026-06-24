@@ -1,0 +1,31 @@
+{
+  "id": "mobile-first",
+  "title": "Mobile First Design",
+  "difficulty": "Intermediate",
+  "definition": "A design strategy where you write the default CSS for mobile screens first, and then use `@media (min-width: ...)` queries to add complexity as the screen gets wider.",
+  "simpleExplanation": "Instead of building a massive desktop site and then struggling to crush it down to fit on a phone (Desktop-First), you start by building a clean, simple phone layout. Then you say: 'Hey, if the screen is big enough (min-width: 1024px), let's add a sidebar'.",
+  "realWorldExample": "Every modern CSS framework (like Tailwind CSS and Bootstrap) uses Mobile-First architecture because mobile devices account for over 60% of all web traffic.",
+  "useCases": [
+    "Performance optimization",
+    "Cleaner CSS code architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Which media query is used for Mobile-First: `min-width` or `max-width`?"
+    ],
+    "intermediate": [
+      "Why is Mobile-First better for performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "min or max?",
+      "answer": "`min-width`."
+    },
+    {
+      "question": "Why better for performance?",
+      "answer": "Phones have slower processors and weaker internet. If you use Desktop-First, the phone has to download all the heavy desktop CSS, process it, hit the `max-width` media query, and then un-do the CSS to make it fit. With Mobile-First, the phone only processes the simple default CSS and ignores the `min-width` desktop queries entirely."
+    }
+  ],
+  "codeExample": "<style>\n  /* ==========================================\n     MOBILE FIRST APPROACH\n     ========================================== */\n\n  /* 1. Default Styles (For tiny phones) */\n  /* We stack things vertically because phones are narrow. */\n  .layout {\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n  }\n  .box { padding: 20px; background: #eee; border: 1px solid #ccc; }\n\n  /* 2. Tablet Query (Only runs if screen is WIDER than 768px) */\n  @media (min-width: 768px) {\n    .layout {\n      flex-direction: row; /* Switch to horizontal row! */\n    }\n  }\n\n  /* 3. Desktop Query (Only runs if screen is WIDER than 1024px) */\n  @media (min-width: 1024px) {\n    .layout {\n      padding: 50px;\n      gap: 30px;\n    }\n    .box { background: #3b82f6; color: white; }\n  }\n</style>\n\n<p>Start with a narrow window, then slowly pull it wider!</p>\n\n<div class=\"layout\">\n  <div class=\"box\">Item 1</div>\n  <div class=\"box\">Item 2</div>\n  <div class=\"box\">Item 3</div>\n</div>"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "connection-pooling",
+  "title": "Connection Pooling",
+  "difficulty": "Advanced",
+  "definition": "A database scaling technique that maintains a cache of database connections so that connections can be reused when future requests to the database are required.",
+  "simpleExplanation": "Opening a new connection to a database is extremely slow (like starting a car). If 1,000 users visit your site, and you start 1,000 cars, your server crashes. A Connection Pool keeps 20 cars running in the parking lot. Users share the running cars.",
+  "realWorldExample": "Using PgBouncer or Prisma Accelerate. When a massive traffic spike hits Vercel, it spins up 500 serverless functions. Instead of crashing the Postgres database, they all talk to the Connection Pooler, which smoothly manages the traffic.",
+  "useCases": [
+    "Serverless architecture",
+    "High-traffic applications",
+    "Database stability"
+  ],
+  "questions": {
+    "basic": [
+      "What happens to a traditional relational database if thousands of Serverless functions attempt to connect to it simultaneously?"
+    ],
+    "intermediate": [
+      "What is the difference between Prisma Accelerate (or PgBouncer) and a standard direct database connection?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens?",
+      "answer": "Connection Exhaustion. The database hits its connection limit, rejects all new requests, and the application goes offline entirely."
+    },
+    {
+      "question": "Difference?",
+      "answer": "A direct connection holds a 1-to-1 link open between the server and the DB. A Pooler acts as a middleman, queuing and multiplexing thousands of incoming serverless requests through a tiny number of actual database connections."
+    }
+  ],
+  "codeExample": "/* \n  How Connection Pooling affects your Environment Variables:\n*/\n\n// ❌ Direct Connection (BAD for Serverless)\n// DATABASE_URL=\"postgresql://user:pass@my-db.amazon.com:5432/mydb\"\n\n// ✅ Pooled Connection via PgBouncer or Prisma Accelerate\n// DATABASE_URL=\"prisma://accelerate.prisma-data.net/?api_key=ey....\"\n// You must use the Pooler URL in your Serverless environment, \n// and use the Direct URL only when running local migrations!"
+}

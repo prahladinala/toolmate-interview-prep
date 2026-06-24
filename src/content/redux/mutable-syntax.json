@@ -1,0 +1,30 @@
+{
+  "id": "mutable-syntax",
+  "title": "Mutable Syntax with Immer",
+  "difficulty": "Beginner",
+  "definition": "The specific JavaScript methods (like `push`, `pop`, `splice`, or direct reassignment) that were historically banned in Redux, but are now safely allowed inside RTK thanks to Immer.",
+  "simpleExplanation": "For years, Redux developers were terrified of using `.push()`. With RTK, `.push()` is your best friend. Immer intercepts these 'dangerous' methods and makes them safe.",
+  "realWorldExample": "Deleting an item from an array. In legacy Redux, you had to use `.filter()`. In RTK, you can just use `.splice()`, which is much easier to read.",
+  "useCases": [
+    "Writing cleaner, faster reducers"
+  ],
+  "questions": {
+    "basic": [
+      "Is it safe to use `state.array.push()` inside a `createSlice` reducer?"
+    ],
+    "intermediate": [
+      "If you mutate the state in RTK, should you ALSO `return` the state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Safe to push?",
+      "answer": "YES! That is the entire point of Redux Toolkit."
+    },
+    {
+      "question": "Mutate AND return?",
+      "answer": "NO. In Immer, you can EITHER mutate the state, OR return a brand new state. You cannot do both. If you `state.push()`, you do not return anything."
+    }
+  ],
+  "codeExample": "// Inside an RTK createSlice reducer:\n\nreducers: {\n  // ✅ SAFE MUTABLE SYNTAX (Immer handles it)\n  addItem: (state, action) => {\n    state.items.push(action.payload);\n  },\n\n  // ✅ RETURNING NEW STATE (Also perfectly fine!)\n  clearItems: (state) => {\n    return { ...state, items: [] };\n  },\n\n  // ❌ FATAL ERROR (Do not mutate AND return)\n  brokenReducer: (state, action) => {\n    state.items.push(action.payload);\n    return state; // Immer will crash!\n  }\n}"
+}

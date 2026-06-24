@@ -1,0 +1,31 @@
+{
+  "id": "code-splitting",
+  "title": "Code Splitting",
+  "difficulty": "Intermediate",
+  "definition": "The automated process where Next.js breaks your massive application into hundreds of tiny JavaScript files, ensuring the user only downloads the code necessary for the exact page they are currently viewing.",
+  "simpleExplanation": "If your application has 50 pages, you don't want the user downloading the code for the 'Settings' page when they are just looking at the 'Homepage'. Next.js automatically 'splits' the code. When you visit `/home`, you only download the `home.js` chunk.",
+  "realWorldExample": "An e-commerce site where the heavy JavaScript required to process a Credit Card payment is isolated strictly to the `/checkout` route, keeping the main catalog fast.",
+  "useCases": [
+    "Reducing Time to Interactive (TTI)",
+    "Scaling massive applications"
+  ],
+  "questions": {
+    "basic": [
+      "Do you have to write special configuration code to enable route-based code splitting in Next.js?"
+    ],
+    "intermediate": [
+      "How do Server Components take Code Splitting to the absolute extreme?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Special config?",
+      "answer": "No! By default, every single file you place in the `app/` router automatically becomes its own isolated, code-split chunk."
+    },
+    {
+      "question": "Server components extreme?",
+      "answer": "Traditional code splitting still forces the user to download the React UI code for the page they are on. Server Components split the code completely OFF the browser. The UI code stays on the server, and 0 bytes are sent to the client, effectively resulting in a zero-size bundle."
+    }
+  ],
+  "codeExample": "/* \n  You do absolutely nothing. Next.js handles this automatically!\n  \n  app/\n  ├── page.tsx          <-- Next.js creates 'chunk-home.js'\n  └── dashboard/\n      └── page.tsx      <-- Next.js creates 'chunk-dashboard.js'\n      \n  When a user visits /, they ONLY download 'chunk-home.js'.\n  When they click a <Link> to go to /dashboard, Next.js quickly \n  fetches 'chunk-dashboard.js' in the background.\n*/"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "tmux",
+  "title": "tmux",
+  "difficulty": "Advanced",
+  "definition": "Terminal Multiplexer. A software application that allows multiple terminal sessions to be accessed simultaneously in a single window, and keeps terminal sessions running in the background even if you disconnect.",
+  "simpleExplanation": "Tabs and windows for your terminal, plus a safety net. If your Wi-Fi drops while you are running a 3-hour script, `tmux` keeps the script running safely on the server. When Wi-Fi comes back, you reconnect and the script is right where you left it.",
+  "realWorldExample": "An engineer opens `tmux`. They split the screen in half. On the left, they run the Node server. On the right, they watch the log files using `tail -f`. They close their laptop, go home, open it back up, SSH in, type `tmux attach`, and both screens are still running perfectly.",
+  "useCases": [
+    "Protecting long-running scripts from network drops",
+    "Managing complex workspaces via SSH"
+  ],
+  "questions": {
+    "basic": [
+      "If you start a command inside `tmux` and then accidentally close your terminal window, does the command die?"
+    ],
+    "intermediate": [
+      "What is the 'Prefix Key' in tmux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does the command die?",
+      "answer": "No! That is the entire point of `tmux`. The session 'detaches' and continues running in the background infinitely on the server until you re-attach to it or manually kill it."
+    },
+    {
+      "question": "What is the Prefix Key?",
+      "answer": "Because `tmux` runs *inside* your terminal, it needs to know when a keyboard shortcut is meant for the app you are running, and when it is meant for `tmux` itself. By default, pressing `Ctrl+B` tells tmux 'The very next key I press is an instruction for you' (like splitting the screen)."
+    }
+  ]
+}

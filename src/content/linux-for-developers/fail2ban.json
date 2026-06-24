@@ -1,0 +1,30 @@
+{
+  "id": "fail2ban",
+  "title": "Fail2Ban",
+  "difficulty": "Advanced",
+  "definition": "An intrusion prevention software framework that protects computer servers from brute-force attacks. It automatically scans log files and bans IP addresses that show malicious signs.",
+  "simpleExplanation": "An automated security guard. If it sees the same IP address type the wrong password 5 times in a row, it instantly tells the firewall to block that IP address entirely for an hour.",
+  "realWorldExample": "A botnet from another country tries to brute-force your SSH port, guessing 'admin/password123'. After the 3rd failed attempt, Fail2Ban reads the failure in `auth.log` and dynamically updates the firewall to drop all packets from that bot's IP address.",
+  "useCases": [
+    "Stopping brute-force attacks",
+    "Protecting SSH and web login forms"
+  ],
+  "questions": {
+    "basic": [
+      "Does Fail2Ban actually drop the network packets itself?"
+    ],
+    "intermediate": [
+      "What happens if you accidentally type your own password wrong 5 times while Fail2Ban is running?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Drop packets itself?",
+      "answer": "No. Fail2Ban is a log-reader. When it finds a bad guy, it writes a new rule into `iptables` or `ufw` (the actual firewall), and the firewall drops the packets."
+    },
+    {
+      "question": "Type password wrong?",
+      "answer": "Fail2Ban will happily ban YOU. Your SSH terminal will freeze, and you won't be able to access your server until the ban time expires (usually 10 to 60 minutes) or you log in from a different IP."
+    }
+  ]
+}

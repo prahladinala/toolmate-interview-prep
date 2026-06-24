@@ -1,0 +1,34 @@
+{
+  "id": "es-modules",
+  "title": "ES Modules (ESM)",
+  "difficulty": "Intermediate",
+  "definition": "The official ECMAScript standard for modules, using `import` and `export`. Native to browsers, it is now fully supported in modern Node.js.",
+  "simpleExplanation": "ES Modules are the modern, standardized way to share code. Instead of the old Node-only `require()`, you use the exact same `import` syntax you use in React or Vanilla frontend code. It unifies backend and frontend JavaScript into one standard.",
+  "realWorldExample": "Writing `import { readFile } from 'fs/promises'` in your Node backend, which looks exactly identical to `import { useState } from 'react'` on the frontend.",
+  "useCases": [
+    "Modern Node.js development",
+    "Writing libraries that run in both Node and Browsers"
+  ],
+  "questions": {
+    "basic": [
+      "How do you tell Node.js to use ES Modules instead of CommonJS?"
+    ],
+    "intermediate": [
+      "Can you use `__dirname` in an ES Module?"
+    ],
+    "advanced": [
+      "What is Top-Level Await?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to enable ES Modules in Node?",
+      "answer": "You must open your `package.json` and add `\"type\": \"module\"`. Alternatively, you can name your specific files with the `.mjs` extension instead of `.js`."
+    },
+    {
+      "question": "Can you use __dirname?",
+      "answer": "No! `__dirname`, `__filename`, and `require` DO NOT exist in ES Modules. You have to reconstruct them using the `import.meta.url` property and the `url` core module."
+    }
+  ],
+  "codeExample": "// IMPORTANT: This code requires \"type\": \"module\" in package.json to run!\n\n// --- file: logger.js ---\n// Named export\nexport const logInfo = (msg) => console.log(`[INFO]: ${msg}`);\n// Default export\nexport default function initLogger() { console.log(\"Logger ready\"); }\n\n// --- file: app.js ---\n// Unlike CommonJS, ES Modules usually require the explicit .js extension in Node!\nimport initLogger, { logInfo } from './logger.js';\nimport fs from 'fs/promises';\n\ninitLogger();\nlogInfo(\"App started using ES Modules\");\n\n// ES Modules support Top-Level Await! No need to wrap in an async function.\n// const data = await fs.readFile('package.json', 'utf-8');\n// console.log(\"File loaded at top level!\");"
+}

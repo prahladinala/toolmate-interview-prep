@@ -1,0 +1,34 @@
+{
+  "id": "microtask-macrotask",
+  "title": "Microtasks vs Macrotasks",
+  "difficulty": "Advanced",
+  "definition": "JavaScript divides asynchronous tasks into two distinct queues. The Macrotask Queue (setTimeout, setInterval, I/O) and the Microtask Queue (Promises, MutationObserver). The Microtask queue always has strictly higher priority.",
+  "simpleExplanation": "Imagine the JS engine is a doctor. Macrotasks are scheduled patient appointments. Microtasks are emergency room patients. When the doctor finishes their current appointment, they check the ER (Microtask queue). They will process EVERY ER patient until the room is empty before they accept the next scheduled appointment (Macrotask).",
+  "realWorldExample": "If you call a `setTimeout(cb, 0)` and a `Promise.resolve().then(cb)` at the exact same time, the Promise callback will ALWAYS execute first because it enters the VIP Microtask queue.",
+  "useCases": [
+    "Predicting exact code execution order",
+    "Preventing UI blocking"
+  ],
+  "questions": {
+    "basic": [
+      "Which queue has higher priority: Microtasks or Macrotasks?"
+    ],
+    "intermediate": [
+      "Give examples of Microtasks and Macrotasks."
+    ],
+    "advanced": [
+      "What happens if a Microtask schedules another Microtask recursively?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Examples?",
+      "answer": "Microtasks: `Promise.then/catch/finally`, `MutationObserver`, `queueMicrotask()`. Macrotasks: `setTimeout`, `setInterval`, `setImmediate` (Node), I/O callbacks, UI rendering events."
+    },
+    {
+      "question": "What happens if a Microtask schedules another Microtask recursively?",
+      "answer": "The Event Loop will be blocked! Because the Event Loop refuses to move on to the next Macrotask (or UI Render) until the Microtask queue is completely empty, an infinite loop of microtasks will freeze the browser."
+    }
+  ],
+  "codeExample": "console.log('1. Script start');\n\nsetTimeout(() => {\n  console.log('4. setTimeout (Macrotask)');\n}, 0);\n\nPromise.resolve().then(() => {\n  console.log('3. Promise (Microtask)');\n});\n\nconsole.log('2. Script end');\n\n// Output order:\n// 1. Script start (Synchronous)\n// 2. Script end (Synchronous)\n// 3. Promise (Microtask queue drained first)\n// 4. setTimeout (Macrotask queue checked last)"
+}

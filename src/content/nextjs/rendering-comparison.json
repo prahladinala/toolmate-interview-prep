@@ -1,0 +1,32 @@
+{
+  "id": "rendering-comparison",
+  "title": "SSR vs CSR vs SSG vs ISR",
+  "difficulty": "Intermediate",
+  "definition": "Understanding the core differences, pros, cons, and appropriate use cases for the four primary rendering strategies in Next.js.",
+  "simpleExplanation": "CSR = Rendered on user's phone (Slow initial load, great interactivity). SSR = Rendered on server on every click (Always fresh, slower server response). SSG = Rendered once when deploying (Absurdly fast, but data can get stale). ISR = Rendered once, but secretly rebuilds itself periodically (The best of both worlds).",
+  "realWorldExample": "Deciding architecture: Use CSR for a heavy drawing app. Use SSR for a stock trading platform. Use SSG for a privacy policy page. Use ISR for an e-commerce catalog.",
+  "useCases": [
+    "System Architecture",
+    "Performance Tuning",
+    "Technical Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Which rendering strategy is the absolute fastest for the end user?"
+    ],
+    "intermediate": [
+      "If you are building an admin dashboard hidden behind a login screen where SEO does not matter, which strategy is often easiest to use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fastest strategy?",
+      "answer": "Static Site Generation (SSG). The HTML is already built and sitting on a CDN right next to the user's city."
+    },
+    {
+      "question": "Admin dashboard?",
+      "answer": "Client-Side Rendering (CSR). You can just fetch data directly in `useEffect` or React Query without worrying about server data passing."
+    }
+  ],
+  "codeExample": "/* \n  Quick Cheat Sheet for Next.js App Router:\n  \n  1. SSG (Default)\n  const res = await fetch('api/data'); \n  \n  2. SSR (Dynamic)\n  const res = await fetch('api/data', { cache: 'no-store' });\n  \n  3. ISR (Revalidating)\n  const res = await fetch('api/data', { next: { revalidate: 60 } });\n  \n  4. CSR (Client)\n  'use client';\n  // use useState / useEffect / SWR / React Query\n*/"
+}

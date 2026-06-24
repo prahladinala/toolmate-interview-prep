@@ -1,0 +1,31 @@
+{
+  "id": "faiss",
+  "title": "FAISS",
+  "difficulty": "Advanced",
+  "definition": "Facebook AI Similarity Search. A highly optimized C++ library developed by Meta for efficient similarity search and clustering of dense vectors, often used under the hood by other vector databases.",
+  "simpleExplanation": "It's not really a database with a nice UI; it's the raw, highly engineered mathematical engine that does the actual speed-searching. It is capable of searching billions of vectors in milliseconds.",
+  "realWorldExample": "A massive tech company with custom architecture doesn't want the bloat of a full database. They just import the raw FAISS library into their C++ or Python code to do lightning-fast vector math on 1 billion images.",
+  "useCases": [
+    "Billion-scale search",
+    "Custom infrastructure",
+    "Machine Learning pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Who originally developed the FAISS library?"
+    ],
+    "intermediate": [
+      "Is FAISS a fully featured Database (with backups, user auth, and REST APIs) or just a Search Library?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who developed it?",
+      "answer": "Meta (Facebook AI Research)."
+    },
+    {
+      "question": "Database or Library?",
+      "answer": "Just a Search Library. It has no built-in web server, no REST API, and no disaster recovery. Developers must build the 'database' features around it themselves."
+    }
+  ]
+}

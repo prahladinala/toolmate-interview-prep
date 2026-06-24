@@ -1,0 +1,31 @@
+{
+  "id": "resources",
+  "title": "Resources & Endpoints",
+  "difficulty": "Beginner",
+  "definition": "In REST, a 'Resource' is any piece of data or object the API exposes (like Users, Posts, Comments). An 'Endpoint' is the specific URL URL where that resource can be accessed.",
+  "simpleExplanation": "Think of a Resource as a noun (a Book). Think of an Endpoint as the physical address of the library bookshelf where that book lives (`api.library.com/books/123`).",
+  "realWorldExample": "In a Twitter clone API, the Resources are `users`, `tweets`, and `likes`. The Endpoints are `api.com/users`, `api.com/tweets`, and `api.com/tweets/5/likes`.",
+  "useCases": [
+    "API Routing",
+    "Database modeling"
+  ],
+  "questions": {
+    "basic": [
+      "In REST API design, should URLs be based on Nouns or Verbs?"
+    ],
+    "intermediate": [
+      "How do you represent a relationship between two resources in an endpoint URL (e.g., the comments belonging to a specific article)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Nouns or Verbs?",
+      "answer": "Nouns! `GET /users` is correct. `GET /getUsers` is a violation of REST principles."
+    },
+    {
+      "question": "Represent relationships?",
+      "answer": "By nesting the resources in the URL path: `/articles/123/comments`."
+    }
+  ],
+  "codeExample": "/* \n  Resource Naming Conventions in REST \n*/\n\n// Rule 1: Use plural nouns\n✅ GET /tickets\n❌ GET /ticket\n\n// Rule 2: Do not use verbs in the URL (The HTTP method IS the verb)\n✅ POST /users\n❌ POST /createUser\n\n// Rule 3: Use nesting to show relationships (Sub-resources)\n// \"Get all reviews for product #55\"\n✅ GET /products/55/reviews\n\n// Rule 4: Don't nest too deeply (Keep it flat if possible)\n❌ GET /users/1/orders/5/items/32/tracking\n✅ GET /items/32/tracking"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "auth-middleware",
+  "title": "Authentication Middleware",
+  "difficulty": "Advanced",
+  "definition": "Using Middleware as a centralized gatekeeper to verify JWTs or session tokens before granting access to protected routes.",
+  "simpleExplanation": "Instead of checking 'Is Logged In' on 50 different pages, you do it once in the Middleware. If the token is fake or missing, they get bounced instantly.",
+  "realWorldExample": "Verifying a JSON Web Token (JWT) at the Edge using the `jose` library (since standard Node.js crypto libraries don't work in the Edge runtime).",
+  "useCases": [
+    "Global route protection",
+    "Enterprise application security"
+  ],
+  "questions": {
+    "basic": [
+      "Why do you sometimes have to use lightweight libraries like `jose` instead of `jsonwebtoken` in Next.js Middleware?"
+    ],
+    "intermediate": [
+      "If Middleware blocks a request, does the `page.tsx` file for that route ever execute?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why jose?",
+      "answer": "Middleware runs on the Edge Runtime, not standard Node.js. It does not have access to heavy Node native modules like `crypto` or `fs`. You must use Edge-compatible libraries."
+    },
+    {
+      "question": "Does page execute?",
+      "answer": "No. Middleware executes BEFORE routing. If it returns a redirect or an error, the request stops immediately, saving server resources."
+    }
+  ],
+  "codeExample": "import { NextResponse } from 'next/server';\nimport { verifyJwtToken } from '@/lib/auth'; // A fictional Edge-compatible function\n\nexport async function middleware(request) {\n  const token = request.cookies.get('token')?.value;\n\n  // Only protect the /dashboard route\n  if (request.nextUrl.pathname.startsWith('/dashboard')) {\n    \n    if (!token) {\n      return NextResponse.redirect(new URL('/login', request.url));\n    }\n\n    try {\n      // Verify the token cryptographically\n      const validPayload = await verifyJwtToken(token);\n      return NextResponse.next();\n    } catch (err) {\n      // Token is fake or expired! Kick them out.\n      const response = NextResponse.redirect(new URL('/login', request.url));\n      // Delete the bad cookie so they don't get stuck in a redirect loop\n      response.cookies.delete('token');\n      return response;\n    }\n  }\n}"
+}

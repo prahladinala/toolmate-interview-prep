@@ -1,0 +1,30 @@
+{
+  "id": "compose-networks",
+  "title": "Compose Networks",
+  "difficulty": "Intermediate",
+  "definition": "The automated networking capability of Docker Compose. By default, Compose automatically creates a single custom bridge network for the entire application and attaches all defined services to it.",
+  "simpleExplanation": "The invisible Wi-Fi that Compose sets up automatically. It ensures that every service in the file can ping every other service using just their service names.",
+  "realWorldExample": "You have a `frontend` service and a `backend` service. Because of Compose's automatic network, the frontend can literally just send an HTTP request to `http://backend`, and the internal DNS resolves it perfectly.",
+  "useCases": [
+    "Service discovery",
+    "Secure inter-app communication"
+  ],
+  "questions": {
+    "basic": [
+      "Do you have to manually configure IP addresses for services to talk to each other in Docker Compose?"
+    ],
+    "intermediate": [
+      "How can you use Compose Networks to isolate the Database from the Public Internet?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manual IP addresses?",
+      "answer": "No. Docker Compose handles all internal DNS automatically based on the Service names."
+    },
+    {
+      "question": "Isolating database?",
+      "answer": "You define two networks in the YAML: `front-tier` and `back-tier`. You attach the Web service to both. You attach the Database strictly to the `back-tier`. The public can hit the Web service, but hackers mathematically cannot route traffic to the Database."
+    }
+  ]
+}

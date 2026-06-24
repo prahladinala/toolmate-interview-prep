@@ -1,0 +1,35 @@
+{
+  "id": "npm-vs-yarn-pnpm",
+  "title": "npm vs Yarn vs pnpm",
+  "difficulty": "Intermediate",
+  "definition": "A comparison of the three major package managers in the Node.js ecosystem used to install and manage dependencies.",
+  "simpleExplanation": "NPM is the default package manager that comes with Node. Yarn was created by Facebook to be faster and more secure than NPM (though NPM caught up). PNPM is the newest and fastest; instead of copying heavy `node_modules` folders into every single project, it saves one copy centrally on your computer and links to it, saving massive amounts of hard drive space.",
+  "realWorldExample": "If you have 10 React projects, NPM and Yarn will download the 300MB `react-scripts` folder 10 times (using 3GB of space). PNPM downloads it once, and creates a fast link to it in all 10 projects.",
+  "useCases": [
+    "Speeding up CI/CD pipelines",
+    "Saving local disk space",
+    "Monorepo management"
+  ],
+  "questions": {
+    "basic": [
+      "Which package manager comes pre-installed with Node.js?"
+    ],
+    "intermediate": [
+      "How does pnpm save so much disk space?"
+    ],
+    "advanced": [
+      "What is a Monorepo workspace?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which comes pre-installed?",
+      "answer": "npm (Node Package Manager)."
+    },
+    {
+      "question": "How does pnpm save space?",
+      "answer": "Using a global content-addressable store and hard links. It stores a single copy of a package globally on your hard drive, and uses OS-level symlinks to trick your project into thinking it has its own copy of `node_modules`."
+    }
+  ],
+  "codeExample": "// --- COMMON COMMAND EQUIVALENTS ---\n\n// 1. Installing a project\n// npm install\n// yarn install\n// pnpm install\n\n// 2. Adding a specific package\n// npm install axios\n// yarn add axios\n// pnpm add axios\n\n// 3. Removing a package\n// npm uninstall axios\n// yarn remove axios\n// pnpm remove axios\n\n// 4. Running a custom script (e.g., 'start' in package.json)\n// npm run start\n// yarn start\n// pnpm start\n\nconsole.log(\"All three accomplish the exact same goal, but pnpm is currently the fastest and most efficient!\");"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "min-max-width",
+  "title": "Min/Max Width",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for setting the minimum and maximum width of an element, creating responsive boundaries for your layouts.",
+  "simpleExplanation": "Max-width is a leash. `w-full` tells the element to stretch across the whole screen. `max-w-md` puts a leash on it, saying 'Stretch as much as you want, but STOP once you hit 28rem (448px)'.",
+  "realWorldExample": "Reading articles. If text stretches across a massive 32-inch monitor, it is physically painful to read. You wrap the article in `max-w-prose` (about 65 characters wide) to make it highly readable.",
+  "useCases": [
+    "Forms",
+    "Articles",
+    "Dialog modals"
+  ],
+  "questions": {
+    "basic": [
+      "Which Tailwind class optimizes text width for comfortable reading?"
+    ],
+    "intermediate": [
+      "If you apply `w-full` and `max-w-sm` to an element, what happens on a mobile phone (300px wide) vs a desktop (1920px wide)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Comfortable reading?",
+      "answer": "`max-w-prose`"
+    },
+    {
+      "question": "Mobile vs Desktop?",
+      "answer": "On mobile, the element will be 300px wide (100% of the screen because `w-full` is active). On desktop, it will stop stretching at 384px (the limit of `max-w-sm`), keeping the element from becoming gigantic."
+    }
+  ],
+  "codeExample": "<!-- A perfect, responsive form wrapper -->\n<!-- It spans 100% on phones, but stops at 24rem (sm) on laptops, and centers itself -->\n<div class=\"w-full max-w-sm mx-auto\">\n  <form>\n    <input type=\"text\" class=\"w-full\" />\n    <button>Submit</button>\n  </form>\n</div>\n\n<!-- The ultimate class for reading text -->\n<article class=\"max-w-prose mx-auto text-gray-800\">\n  <p>This text will never stretch wider than 65 characters, \n     making it incredibly easy to read on large monitors.</p>\n</article>"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "container-lifecycle",
+  "title": "Container Lifecycle",
+  "difficulty": "Intermediate",
+  "definition": "The various states a Docker container goes through from its creation to its destruction: Created, Running, Paused, Stopped (Exited), and Deleted.",
+  "simpleExplanation": "A container is born, it does its job, it goes to sleep, and eventually, you throw it in the trash.",
+  "realWorldExample": "You use `docker run` (Created -> Running). You finish testing your code and type `docker stop` (Running -> Exited). The container is dead, but it still takes up hard drive space. You type `docker rm` to permanently delete it (Deleted).",
+  "useCases": [
+    "Troubleshooting",
+    "Resource management"
+  ],
+  "questions": {
+    "basic": [
+      "Does stopping a container using `docker stop` permanently delete the container and its data?"
+    ],
+    "intermediate": [
+      "What is the difference between a container in the 'Paused' state and one in the 'Stopped' state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Permanently delete?",
+      "answer": "No. A stopped container just goes to 'sleep' (Exited). It still exists on your hard drive, and you can 'wake it up' again with `docker start`."
+    },
+    {
+      "question": "Paused vs Stopped?",
+      "answer": "A 'Paused' container is frozen exactly as it is in RAM, freezing CPU execution immediately. A 'Stopped' container gracefully shuts down its internal processes completely and drops out of RAM, returning to a dormant state on the hard drive."
+    }
+  ]
+}

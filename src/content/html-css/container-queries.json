@@ -1,0 +1,30 @@
+{
+  "id": "container-queries",
+  "title": "Container Queries",
+  "difficulty": "Advanced",
+  "definition": "A revolutionary CSS feature that allows elements to apply styles based on the size of their PARENT container, rather than the size of the overall browser viewport.",
+  "simpleExplanation": "Media Queries ask: 'Is the phone screen small?'. Container Queries ask: 'Is the box I am inside of small?'. If you put a Profile Card in a wide Main area, it can lay out horizontally. If you drag that exact same card into a narrow Sidebar, it magically detects the narrow space and stacks itself vertically.",
+  "realWorldExample": "Building a totally modular 'Product Card' component in React. You can drop it anywhere on your site, and it automatically adjusts its own internal layout to look good in whatever container it was dropped into.",
+  "useCases": [
+    "Component-driven architecture (React/Vue/Angular)"
+  ],
+  "questions": {
+    "basic": [
+      "What CSS property must you apply to the parent to 'unlock' container queries for its children?"
+    ],
+    "intermediate": [
+      "Why are container queries a game-changer for React developers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`container-type: inline-size;`"
+    },
+    {
+      "question": "Why a game changer?",
+      "answer": "React is all about reusable components. But with Media Queries, a component's layout is tied to the screen size. A component might look bad if placed in a narrow sidebar on a Desktop screen. Container Queries make components truly independent and self-aware."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. Define the Container */\n  .sidebar-container {\n    width: 30%;\n    border: 2px dashed gray;\n    padding: 10px;\n    /* UNLOCK CONTAINER QUERIES */\n    container-type: inline-size;\n  }\n\n  .main-container {\n    width: 65%;\n    border: 2px dashed blue;\n    padding: 10px;\n    container-type: inline-size;\n  }\n\n  /* 2. The Component (Defaults to mobile/stacked view) */\n  .user-card {\n    display: flex;\n    flex-direction: column;\n    background: #f1f5f9;\n    border: 1px solid #cbd5e1;\n    padding: 15px;\n  }\n\n  /* 3. The Container Query! */\n  /* If the parent container is wider than 400px, switch to a horizontal row! */\n  @container (min-width: 400px) {\n    .user-card {\n      flex-direction: row;\n      align-items: center;\n      justify-content: space-between;\n      background: #dbeafe;\n      border-color: #3b82f6;\n    }\n  }\n</style>\n\n<div style=\"display: flex; gap: 20px;\">\n  <!-- The exact same HTML component behaves differently based on where it lives! -->\n  \n  <div class=\"sidebar-container\">\n    <p>Narrow Container</p>\n    <div class=\"user-card\">\n      <strong>John Doe</strong>\n      <span>Software Engineer</span>\n    </div>\n  </div>\n\n  <div class=\"main-container\">\n    <p>Wide Container (> 400px)</p>\n    <div class=\"user-card\">\n      <strong>John Doe</strong>\n      <span>Software Engineer</span>\n    </div>\n  </div>\n</div>"
+}

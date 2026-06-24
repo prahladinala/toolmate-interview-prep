@@ -1,0 +1,31 @@
+{
+  "id": "http-request",
+  "title": "HTTP Request Structure",
+  "difficulty": "Intermediate",
+  "definition": "The specific format of a message sent from a client to a server. It consists of a Request Line, Headers, and an optional Body.",
+  "simpleExplanation": "Sending an HTTP request is like mailing a letter. \n1. The Request Line is the address on the envelope (Where is it going?). \n2. The Headers are the stamps and metadata (First-class mail, sent from New York). \n3. The Body is the actual folded letter inside the envelope (The data you are sending).",
+  "realWorldExample": "Submitting a Login Form. The Request Line says 'Send this to /login'. The Headers say 'This is JSON data'. The Body contains `{ \"email\": \"test@test.com\" }`.",
+  "useCases": [
+    "Debugging network traffic",
+    "Building API clients"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three main components of an HTTP Request?"
+    ],
+    "intermediate": [
+      "Does a standard `GET` request (like simply visiting a webpage) usually have a Request Body?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three components?",
+      "answer": "Request Line (Method + URL), Headers (Metadata), and the Body (Data payload)."
+    },
+    {
+      "question": "GET request body?",
+      "answer": "No. GET requests are strictly for 'getting' information, not sending large payloads of data. All necessary data in a GET request is usually appended to the URL as query parameters (e.g., `?search=shoes`)."
+    }
+  ],
+  "codeExample": "/* \n  Anatomy of an HTTP POST Request:\n*/\n\n// 1. REQUEST LINE (Method, Path, Protocol Version)\nPOST /api/users/create HTTP/1.1\n\n// 2. HEADERS (Key-Value pairs providing metadata)\nHost: myapi.com\nContent-Type: application/json\nAuthorization: Bearer my_secret_token_123\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X)\n\n// 3. BLANK LINE (Mandatory to separate headers from body)\n\n// 4. BODY (The actual data being sent to the server)\n{\n  \"username\": \"johndoe\",\n  \"age\": 25\n}"
+}

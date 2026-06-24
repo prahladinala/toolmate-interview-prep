@@ -1,0 +1,30 @@
+{
+  "id": "sql-vs-nosql",
+  "title": "SQL vs NoSQL",
+  "difficulty": "Intermediate",
+  "definition": "The architectural debate between Relational databases (SQL - tables and rows) and Non-Relational databases (NoSQL - documents, key-value, graphs).",
+  "simpleExplanation": "SQL is a highly organized filing cabinet. Everything goes in strict folders (Tables). If a User makes a Purchase, you connect the User folder to the Purchase folder using a string (Foreign Key). NoSQL is a massive digital corkboard. Instead of connecting folders, you just pin the Purchase directly onto the User's document. NoSQL scales horizontally (adding more servers) very easily, while SQL prefers scaling vertically (buying a bigger server).",
+  "realWorldExample": "Financial banking systems strictly use SQL (PostgreSQL/MySQL) because it guarantees ACID transactions (money can't vanish). Real-time chat apps use NoSQL (MongoDB/Cassandra) because they need to store millions of unstructured text messages at lightning speed.",
+  "useCases": [
+    "Choosing the right database for a project"
+  ],
+  "questions": {
+    "basic": [
+      "Which type of database uses rigid Tables and Rows?"
+    ],
+    "intermediate": [
+      "What does ACID compliance mean, and which database excels at it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which uses Tables/Rows?",
+      "answer": "SQL (Relational databases like PostgreSQL, MySQL)."
+    },
+    {
+      "question": "What is ACID?",
+      "answer": "Atomicity, Consistency, Isolation, Durability. It means database transactions are guaranteed to be completely processed or completely failed. If you transfer $100, the system guarantees the $100 isn't lost if the server crashes halfway. SQL is heavily built around strict ACID compliance."
+    }
+  ],
+  "codeExample": "// --- HOW DATA LOOKS IN BOTH ---\n\n// SQL (Rigid Tables connected by IDs)\nconst sqlUsersTable = [{ id: 1, name: \"Alice\" }];\nconst sqlPostsTable = [{ id: 99, user_id: 1, title: \"My Post\" }];\n// To get Alice's posts, you must run a computationally heavy 'JOIN' query.\n\n// NoSQL (Embedded Documents)\nconst noSqlDatabase = [\n  {\n    id: 1,\n    name: \"Alice\",\n    // The posts are stored directly inside the user!\n    // No heavy joins required. Read performance is incredibly fast.\n    posts: [{ id: 99, title: \"My Post\" }]\n  }\n];\n\nconsole.log(\"SQL: Great for complex relationships. NoSQL: Great for fast reads and unstructured data.\");"
+}

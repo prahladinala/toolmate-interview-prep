@@ -1,0 +1,30 @@
+{
+  "id": "planning",
+  "title": "Planning & Reasoning",
+  "difficulty": "Advanced",
+  "definition": "The cognitive framework an AI Agent uses to break a massive, ambiguous goal into a logical sequence of actionable sub-tasks before executing them.",
+  "simpleExplanation": "Before you build a house, you need a blueprint. An Agent uses techniques like ReAct (Reason + Act) to think: 'Step 1: Search the web. Step 2: Read the results. Step 3: Write the report'.",
+  "realWorldExample": "The ReAct framework. The Agent's internal monologue looks like: \nTHOUGHT: I need to find the CEO of Apple. \nACTION: WebSearch('Apple CEO'). \nOBSERVATION: Tim Cook is the CEO. \nTHOUGHT: I have the answer. \nACTION: Reply to user.",
+  "useCases": [
+    "Agentic workflows",
+    "Autonomous goal achievement"
+  ],
+  "questions": {
+    "basic": [
+      "What does the ReAct framework stand for in AI Agents?"
+    ],
+    "intermediate": [
+      "Why is 'Reflection' a critical part of Agent Planning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does ReAct stand for?",
+      "answer": "Reasoning and Acting."
+    },
+    {
+      "question": "Why Reflection?",
+      "answer": "Because Agents frequently make mistakes or use tools incorrectly. Reflection is the process where the Agent looks at an error message, realizes its plan failed, and autonomously writes a NEW plan to try a different approach."
+    }
+  ]
+}

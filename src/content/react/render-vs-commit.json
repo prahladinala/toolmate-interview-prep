@@ -1,0 +1,45 @@
+{
+  "id": "render-vs-commit",
+  "title": "Render Phase vs Commit Phase",
+  "difficulty": "Advanced",
+  "definition": "The React architecture splits work into two distinct phases. The Render Phase is pure, can be paused/aborted, and calculates what changes need to be made. The Commit Phase is synchronous, cannot be interrupted, and applies those changes to the real DOM.",
+  "simpleExplanation": "Render Phase: The general draws up battle plans on a map. They might draw, erase, and redraw several times as new information comes in (Concurrent Mode). Commit Phase: The general gives the final order and the troops execute the plan in reality. Once the order is given, it cannot be stopped.",
+  "realWorldExample": "If you type into an input field very fast, React might calculate the UI changes for the letter \"a\" (Render phase), but before it updates the screen (Commit phase), you type \"b\". In React 18, React can throw away the \"a\" battle plan, calculate \"ab\", and only Commit once to the screen, saving performance.",
+  "useCases": [
+    "Understanding why `useEffect` fires when it does",
+    "Understanding React 18 Concurrent rendering",
+    "Separating pure logic from side effects"
+  ],
+  "questions": {
+    "basic": [
+      "What happens during the Render Phase?",
+      "What happens during the Commit Phase?"
+    ],
+    "intermediate": [
+      "In which phase does `useEffect` run?",
+      "In which phase does `useLayoutEffect` run?"
+    ],
+    "advanced": [
+      "Why is it dangerous to mutate variables during the Render Phase?",
+      "How does React Fiber enable the Render Phase to be interruptible?"
+    ],
+    "trick": [
+      "If a component returns `null`, does the Commit Phase still happen?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens during the Render Phase?",
+      "answer": "React calls your component function, compares the returned JSX (Virtual DOM) with the previous JSX, and builds a list of necessary DOM changes. No actual DOM elements are touched."
+    },
+    {
+      "question": "In which phase does useLayoutEffect run?",
+      "answer": "`useLayoutEffect` runs synchronously immediately AFTER the Commit phase mutates the DOM, but BEFORE the browser is allowed to paint the screen."
+    },
+    {
+      "question": "Why is it dangerous to mutate variables during Render?",
+      "answer": "Because the Render Phase can be invoked multiple times, paused, or completely thrown away by React without ever reaching the Commit Phase. If you mutate external data or fetch APIs here, it will happen unpredictably."
+    }
+  ],
+  "codeExample": "console.log(\"1. Render Phase: Call component() -> return Virtual DOM. (Can be aborted)\");\nconsole.log(\"2. Commit Phase: Apply changes to real DOM. (Cannot be aborted)\");\nconsole.log(\"3. Cleanup Phase: Run useLayoutEffect.\");\nconsole.log(\"4. Browser Paint: User sees the UI on screen.\");\nconsole.log(\"5. Effect Phase: Run useEffect in the background.\");"
+}

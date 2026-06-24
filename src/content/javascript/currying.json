@@ -1,0 +1,45 @@
+{
+  "id": "currying",
+  "title": "Currying & Partial Application",
+  "difficulty": "Advanced",
+  "definition": "Currying is the process of translating a function that takes multiple arguments into a sequence of nested functions, each taking a single argument. Partial application is similar, but it binds a few arguments to a function, producing another function of smaller arity (fewer arguments).",
+  "simpleExplanation": "Imagine you are ordering a pizza. A regular function takes all options at once: `orderPizza('large', 'pepperoni', 'stuffed crust')`. A curried function asks you one question at a time: First it asks for size: `orderSize('large')`. It then gives you back a new worker who ONLY asks for toppings. You tell them `('pepperoni')`. Finally, they give you a crust worker.",
+  "realWorldExample": "If you have a function that calculates discounts, `applyDiscount(discount, price)`, you can curry it to create specific discount functions: `const tenPercentOff = applyDiscount(0.10)`. Then later, just call `tenPercentOff(50)`.",
+  "useCases": [
+    "Creating highly reusable utility functions",
+    "Functional programming pipelines",
+    "Event handlers where you want to pass predefined arguments"
+  ],
+  "questions": {
+    "basic": [
+      "What is currying?",
+      "How is currying different from partial application?"
+    ],
+    "intermediate": [
+      "Why would you use currying in JavaScript?",
+      "How does currying rely on closures?"
+    ],
+    "advanced": [
+      "Write a utility function `curry(fn)` that converts any normal function into a curried one.",
+      "How does arity (function.length) play a role in advanced currying?"
+    ],
+    "trick": [
+      "Can you curry a function that accepts an infinite number of arguments using the rest operator?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How is currying different from partial application?",
+      "answer": "Currying transforms a function of N arguments into N functions of 1 argument. Partial application fixes a certain number of arguments to a function, producing a function of smaller arity (it can take more than 1 argument at a time)."
+    },
+    {
+      "question": "How does currying rely on closures?",
+      "answer": "Each nested function created by currying remembers the arguments passed to the outer functions thanks to closures. When the innermost function finally executes, it has access to all the arguments collected along the way."
+    },
+    {
+      "question": "Can you curry a function with infinite arguments?",
+      "answer": "Traditional currying relies on knowing the exact number of arguments (the function's arity) to know when to finally execute the original function. If arity is infinite or variable, you typically need a specific termination signal (like calling it with no arguments `fn()`) to execute."
+    }
+  ],
+  "codeExample": "// Normal Function\nfunction add(a, b, c) {\n  return a + b + c;\n}\n\n// Curried Version\nfunction curriedAdd(a) {\n  return function(b) {\n    return function(c) {\n      return a + b + c;\n    }\n  }\n}\n\n// Using Arrow Functions for much cleaner syntax\nconst arrowCurryAdd = a => b => c => a + b + c;\n\nconsole.log(curriedAdd(1)(2)(3)); // 6\nconsole.log(arrowCurryAdd(10)(20)(30)); // 60\n\n// Practical Partial Application Example\nconst applyDiscount = discount => price => price - (price * discount);\n\nconst tenPercentOff = applyDiscount(0.10);\nconst twentyPercentOff = applyDiscount(0.20);\n\nconsole.log(tenPercentOff(100)); // 90\nconsole.log(twentyPercentOff(100)); // 80"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tailwind-merge",
+  "title": "tailwind-merge",
+  "difficulty": "Advanced",
+  "definition": "A utility function to elegantly merge Tailwind CSS classes in JS without style conflicts.",
+  "simpleExplanation": "If a Button component has `p-4` as its default class, but you pass `className=\"p-8\"` as a prop, standard string concatenation results in `class=\"p-4 p-8\"`. The browser gets confused about which padding to apply. `tailwind-merge` intelligently analyzes the string, realizes they conflict, and automatically deletes `p-4`.",
+  "realWorldExample": "Building highly reusable React components where the developer consuming the component needs the ability to safely override the default Tailwind styles.",
+  "useCases": [
+    "Component library development",
+    "React prop merging"
+  ],
+  "questions": {
+    "basic": [
+      "If you concatenate the string `\"bg-red-500 bg-blue-500\"`, which color will the browser actually display?"
+    ],
+    "intermediate": [
+      "What is the difference between the `clsx` package and `tailwind-merge`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which color?",
+      "answer": "It depends entirely on the order those classes appear in the generated CSS file, NOT the order they appear in the HTML string. This is why class conflicts are so dangerous and unpredictable without `tailwind-merge`."
+    },
+    {
+      "question": "clsx vs tailwind-merge?",
+      "answer": "`clsx` simply joins strings together with spaces conditionally. It does not understand Tailwind CSS. `tailwind-merge` actively parses the Tailwind utility meanings and removes conflicting classes."
+    }
+  ],
+  "codeExample": "import { twMerge } from 'tailwind-merge';\n\n// ❌ BAD: Simple String Concatenation\n// Result: \"px-4 py-2 bg-blue-500 bg-red-500\"\n// The browser is confused. The button might stay blue!\nfunction BadButton({ className }) {\n  return <button className={`px-4 py-2 bg-blue-500 ${className}`}>Click</button>\n}\n\n// ✅ GOOD: Using tailwind-merge\n// Result: \"px-4 py-2 bg-red-500\" (It intelligently deleted bg-blue-500!)\nfunction GoodButton({ className }) {\n  return <button className={twMerge('px-4 py-2 bg-blue-500', className)}>Click</button>\n}\n\n// Usage:\n<GoodButton className=\"bg-red-500\" />"
+}

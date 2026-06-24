@@ -1,0 +1,31 @@
+{
+  "id": "endpoint-documentation",
+  "title": "Endpoint Documentation",
+  "difficulty": "Beginner",
+  "definition": "The detailed human-readable explanation of a specific API endpoint, detailing its URL, method, required parameters, authentication requirements, and expected response formats.",
+  "simpleExplanation": "The instruction manual for a single API feature. It tells a developer: 'Here is how you use the Search feature. Give it these inputs, and expect this output.'",
+  "realWorldExample": "Stripe's API documentation for creating a Customer. It shows the URL `POST /v1/customers`, lists every possible field (like email, phone), explains what they do, and provides copy-paste code examples in Node, Python, and Ruby.",
+  "useCases": [
+    "Developer onboarding",
+    "Third-party integration guides"
+  ],
+  "questions": {
+    "basic": [
+      "Should API documentation include examples of Error Responses (like 400 Bad Request)?"
+    ],
+    "intermediate": [
+      "Why is providing copy-paste code snippets in multiple languages crucial for good API documentation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Include errors?",
+      "answer": "Yes! Knowing exactly how an API formats its error messages is critical so the frontend developer knows how to extract the error string to show to the user."
+    },
+    {
+      "question": "Why code snippets?",
+      "answer": "Developer Experience (DX). Developers are lazy. If they can copy a block of Python code, paste it into their app, and see it work in 5 seconds, they will love your API. If they have to figure out the HTTP headers manually, they will hate it."
+    }
+  ],
+  "codeExample": "/* \n  Elements of PERFECT Endpoint Documentation:\n  \n  1. Name & Description: \"Create User - Registers a new account\"\n  2. Method & Path: `POST /api/v1/users`\n  3. Auth Required?: Yes (Bearer Token)\n  4. Path/Query Params: None.\n  5. Request Body Schema: { email (string, req), password (string, req) }\n  6. Success Response (201): { id: 1, email: \"a@a.com\" }\n  7. Error Response (400): { error: \"Email already exists\" }\n  8. Code Examples: (cURL, fetch, Axios snippets)\n*/"
+}

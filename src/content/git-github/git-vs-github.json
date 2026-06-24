@@ -1,0 +1,32 @@
+{
+  "id": "git-vs-github",
+  "title": "Git vs GitHub",
+  "difficulty": "Beginner",
+  "definition": "Git is the version control software running locally on your computer. GitHub is a cloud-based hosting service that lets you manage Git repositories online.",
+  "simpleExplanation": "Git is the engine inside your car. GitHub is a public parking garage. You don't need the parking garage to drive your car, but it's really useful if you want to show your car to other people or let them drive it.",
+  "realWorldExample": "You write code on your laptop using Git. When you want to share it with your coworker across the world, you push it to GitHub. Your coworker then downloads it from GitHub.",
+  "useCases": [
+    "Open source hosting",
+    "Team collaboration",
+    "Code portfolios"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need an internet connection to use Git?"
+    ],
+    "intermediate": [
+      "Is GitHub the only cloud service for Git?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need internet for Git?",
+      "answer": "No! Git runs entirely locally on your hard drive. You only need the internet when you want to push your code to a cloud service like GitHub."
+    },
+    {
+      "question": "Is GitHub the only one?",
+      "answer": "No. GitHub is the most popular, but there are major competitors like GitLab and Bitbucket that do the exact same thing."
+    }
+  ],
+  "codeExample": "/*\n  Local Machine (Git)\n  -------------------\n  1. Write code\n  2. `git commit` (Saves code LOCALLY)\n\n          ↓ (Internet Connection Required)\n\n  The Cloud (GitHub/GitLab/Bitbucket)\n  -----------------------------------\n  3. `git push` (Uploads local saves to the internet)\n  4. Other developers can now see and download it!\n*/"
+}

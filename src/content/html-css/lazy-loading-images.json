@@ -1,0 +1,31 @@
+{
+  "id": "lazy-loading-images",
+  "title": "Lazy Loading Images",
+  "difficulty": "Beginner",
+  "definition": "A technique that defers the loading of non-critical resources (like images far down the page) at page load time. Instead, these resources are loaded at the moment of need.",
+  "simpleExplanation": "If you have an article with 50 high-resolution photos, it's a massive waste of bandwidth to download all 50 photos immediately if the user only reads the first paragraph and leaves. Lazy loading tells the browser: 'Only download the photos that the user is currently looking at'.",
+  "realWorldExample": "Scrolling through an infinite feed like Instagram. Images are only fetched over the network right before they scroll into view.",
+  "useCases": [
+    "Saving server bandwidth",
+    "Dramatically speeding up initial page loads"
+  ],
+  "questions": {
+    "basic": [
+      "What HTML attribute is used to natively lazy load an image without JavaScript?"
+    ],
+    "intermediate": [
+      "Should you lazy load the 'Hero Image' at the very top of your website?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "`loading=\"lazy\"`"
+    },
+    {
+      "question": "Lazy load the hero image?",
+      "answer": "NEVER. That image is 'Above the Fold' (immediately visible when the page opens). If you lazy load it, you force the browser to wait, hurting your Largest Contentful Paint (LCP) score. Only lazy load images you have to scroll to see."
+    }
+  ],
+  "codeExample": "<h1>My Photo Gallery</h1>\n\n<!-- 1. THE HERO IMAGE (Eager Loading) -->\n<!-- This is at the top of the page. It MUST load immediately. -->\n<img src=\"header-banner.jpg\" alt=\"Main banner\" loading=\"eager\">\n\n<div style=\"height: 1000px; background: #eee;\">\n  (Imagine lots of text and scrolling here...)\n</div>\n\n<!-- 2. THE FOOTER IMAGE (Lazy Loading) -->\n<!-- The browser will NOT download this image until the user scrolls down to it! -->\n<img src=\"heavy-photo.jpg\" alt=\"A heavy photo\" loading=\"lazy\">\n\n<p>\n  <em>Note: Modern browsers support 'loading=\"lazy\"' natively! You no longer need heavy JavaScript intersection observers to do this.</em>\n</p>"
+}

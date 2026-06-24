@@ -1,0 +1,30 @@
+{
+  "id": "what-is-dockerfile",
+  "title": "What is a Dockerfile?",
+  "difficulty": "Beginner",
+  "definition": "A plain-text file containing a sequential series of commands and instructions that Docker reads from top to bottom to automatically assemble and build a new Docker Image.",
+  "simpleExplanation": "The recipe to bake a cake. It says: 'Start with flour (Linux). Add sugar (Python). Mix in the chocolate chips (Your Code). Bake.' You hand the recipe to Docker, and it bakes the image perfectly every time.",
+  "realWorldExample": "A developer writes a 10-line text file named `Dockerfile`. They commit it to GitHub. Now, any developer on the team can type `docker build .`, and Docker will follow the recipe to construct the exact identical environment.",
+  "useCases": [
+    "Infrastructure as Code",
+    "Automated builds"
+  ],
+  "questions": {
+    "basic": [
+      "Does a Dockerfile have a file extension (like `.txt` or `.exe`)?"
+    ],
+    "intermediate": [
+      "Why does the order of lines in a Dockerfile matter so much for performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "File extension?",
+      "answer": "No. By strict convention, it is simply named `Dockerfile` with a capital D and no file extension."
+    },
+    {
+      "question": "Why does order matter?",
+      "answer": "Because of Layer Caching. Docker caches every step. If you put a line that changes constantly (like copying your source code) at the very top, it busts the cache, forcing Docker to slowly rebuild every single layer beneath it. You should always put files that change frequently at the absolute bottom of the Dockerfile."
+    }
+  ]
+}

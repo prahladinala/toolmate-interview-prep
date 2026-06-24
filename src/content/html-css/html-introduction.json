@@ -1,0 +1,31 @@
+{
+  "id": "html-introduction",
+  "title": "What is HTML?",
+  "difficulty": "Beginner",
+  "definition": "HyperText Markup Language is the standard markup language for documents designed to be displayed in a web browser. It defines the meaning and structure of web content.",
+  "simpleExplanation": "If a webpage is a house, HTML is the bricks and the wooden frame. It doesn't look pretty (that's CSS), and it doesn't have working plumbing (that's JavaScript), but without HTML, there is no house at all.",
+  "realWorldExample": "When you right-click any website and click 'View Page Source', the text you see wrapped in angle brackets `<like this>` is HTML.",
+  "useCases": [
+    "Building the skeleton of a website",
+    "Structuring text, images, and links"
+  ],
+  "questions": {
+    "basic": [
+      "Is HTML a programming language?"
+    ],
+    "intermediate": [
+      "What does 'Markup' mean in HTML?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it a programming language?",
+      "answer": "No. It is a 'Markup Language'. Programming languages (like JavaScript) have logic, loops, and math. HTML simply 'marks up' text to tell the browser what that text is (e.g., 'This is a heading', 'This is a paragraph')."
+    },
+    {
+      "question": "What does Markup mean?",
+      "answer": "Markup refers to the tags `<tag>` used to annotate text. You take raw text and wrap it in markup tags to give it structure and meaning."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My First House</title>\n</head>\n<body>\n  <!-- This is the content of the webpage -->\n  <h1>Welcome to my website</h1>\n  <p>HTML provides the structure.</p>\n  <p>It tells the browser what each piece of text is.</p>\n</body>\n</html>"
+}

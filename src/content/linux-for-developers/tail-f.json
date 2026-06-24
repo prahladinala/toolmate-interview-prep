@@ -1,0 +1,30 @@
+{
+  "id": "tail-f",
+  "title": "tail -f",
+  "difficulty": "Beginner",
+  "definition": "A command combination used to output the last 10 lines of a file, and then crucially, 'follow' the file, dynamically printing any new lines added to the file in real-time.",
+  "simpleExplanation": "Watching a live security camera. As a server writes new errors to the log file, they instantly pop up on your screen.",
+  "realWorldExample": "A developer deploys new code to a live website. They type `tail -f /var/log/nginx/error.log`. As real users start hitting the website, any bugs or errors instantly stream down the developer's screen live.",
+  "useCases": [
+    "Live debugging",
+    "Monitoring application health during deployments"
+  ],
+  "questions": {
+    "basic": [
+      "How do you stop the `tail -f` command and return to the normal terminal prompt?"
+    ],
+    "intermediate": [
+      "If a log rotation script deletes the file you are currently `tail`ing and creates a new empty file with the same name, what happens to your `tail -f` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to stop?",
+      "answer": "Press `Ctrl + C`."
+    },
+    {
+      "question": "What happens on file deletion?",
+      "answer": "Standard `tail -f` tracks the file's 'inode' (physical location on disk), so if the file is deleted and replaced, `tail` will freeze and stop showing new logs. You must use `tail -F` (capital F) to force it to track the file by Name, allowing it to survive file rotations."
+    }
+  ]
+}

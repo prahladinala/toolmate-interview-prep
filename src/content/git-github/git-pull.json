@@ -1,0 +1,30 @@
+{
+  "id": "git-pull",
+  "title": "git pull",
+  "difficulty": "Beginner",
+  "definition": "Fetches changes from a remote repository and immediately merges them into the current branch.",
+  "simpleExplanation": "A shortcut command. `git pull` is literally just `git fetch` followed immediately by `git merge`. It downloads the new code from GitHub and instantly overwrites the files in your VS Code to match.",
+  "realWorldExample": "Every morning when you start work, you run `git pull` on the `main` branch to make sure you have the latest code from your teammates before you start writing new code.",
+  "useCases": [
+    "Syncing local codebase with the cloud quickly"
+  ],
+  "questions": {
+    "basic": [
+      "Can `git pull` cause a merge conflict?"
+    ],
+    "intermediate": [
+      "If `git pull` is a shortcut, what two commands is it combining?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Merge conflict?",
+      "answer": "Yes! Because it automatically attempts a `merge`, if your local code conflicts with the newly downloaded code, the pull will pause and throw a merge conflict error."
+    },
+    {
+      "question": "Which two commands?",
+      "answer": "`git fetch` (download) + `git merge` (integrate)."
+    }
+  ],
+  "codeExample": "# 1. You are on your 'main' branch locally.\n\n# 2. You pull the latest changes from the GitHub server.\n$ git pull origin main\n\n# Under the hood, Git did this:\n# $ git fetch origin main\n# $ git merge origin/main\n\n# If there are no conflicts, your local files instantly update!"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "alpine-images",
+  "title": "Alpine Images",
+  "difficulty": "Intermediate",
+  "definition": "A specific class of ultra-lightweight Docker base images built on Alpine Linux. The base operating system is incredibly tiny (often less than 5 MB), making it the gold standard for creating minimal production images.",
+  "simpleExplanation": "The stripped-down race car. It has no AC, no radio, and no seats, but it goes incredibly fast. Alpine deletes all the bulky tools normally found in Ubuntu or Debian to achieve its tiny 5MB size.",
+  "realWorldExample": "Starting a Dockerfile with `FROM node:18-alpine` instead of `FROM node:18`. The standard Node image is nearly 1 Gigabyte. The Alpine version is ~170 Megabytes.",
+  "useCases": [
+    "Production deployments",
+    "Minimizing attack surfaces"
+  ],
+  "questions": {
+    "basic": [
+      "Approximately how big is the raw Alpine Linux base image?"
+    ],
+    "intermediate": [
+      "Why do some Python developers avoid using Alpine base images, despite the massive size savings?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How big?",
+      "answer": "Roughly 5 Megabytes."
+    },
+    {
+      "question": "Why avoid Alpine in Python?",
+      "answer": "Because Alpine uses `musl` libc instead of the standard `glibc`. Many Python data science libraries (like Pandas/Numpy) are compiled in C using `glibc`. Running them on Alpine requires the Dockerfile to compile them from raw source code, turning a 30-second build into a 30-minute build."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dynamic-imports",
+  "title": "Dynamic Imports",
+  "difficulty": "Advanced",
+  "definition": "A technique to manually force Code Splitting within a SINGLE page, delaying the download of a heavy component until the exact moment it is needed.",
+  "simpleExplanation": "Your homepage has a massive '3D Interactive Map' at the very bottom. If you import it normally, the browser downloads the heavy 3D library immediately, slowing down the initial page load. With a dynamic import, you tell the browser: 'Do NOT download this map code until the user actually scrolls down and sees it.'",
+  "realWorldExample": "Loading a heavy rich-text Markdown Editor component ONLY when the user clicks the 'Reply' button.",
+  "useCases": [
+    "Heavy third-party libraries",
+    "Modals",
+    "Components below the fold"
+  ],
+  "questions": {
+    "basic": [
+      "What Next.js function is used to create a dynamic import?"
+    ],
+    "intermediate": [
+      "Why is it highly recommended to provide a `loading` fallback when using dynamic imports?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which function?",
+      "answer": "The `dynamic()` function from `next/dynamic`."
+    },
+    {
+      "question": "Why a loading fallback?",
+      "answer": "Because the browser literally has to make a network request to download the component's JavaScript file exactly when the user clicks/scrolls. There will be a split-second delay. A loading fallback shows a spinner during that network request."
+    }
+  ],
+  "codeExample": "import dynamic from 'next/dynamic';\nimport { useState } from 'react';\n\n// 1. Manually Code-Split the heavy editor component.\n// It will NOT be included in the initial page load bundle!\nconst HeavyMarkdownEditor = dynamic(() => import('./HeavyEditor'), {\n  loading: () => <p>Loading editor...</p>,\n  ssr: false, // Optional: Force it to only ever run on the client browser\n});\n\nexport default function CommentSection() {\n  const [showEditor, setShowEditor] = useState(false);\n\n  return (\n    <div>\n      <button onClick={() => setShowEditor(true)}>Reply</button>\n      \n      {/* 2. The browser only downloads the Editor's JS code when this turns true! */}\n      {showEditor && <HeavyMarkdownEditor />}\n    </div>\n  );\n}"
+}

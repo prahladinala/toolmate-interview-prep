@@ -1,0 +1,31 @@
+{
+  "id": "tailwind-advanced",
+  "title": "Advanced Interview Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions testing architectural knowledge, complex variant stacking, and JIT engine capabilities.",
+  "simpleExplanation": "Proving that you can build enterprise-grade Design Systems and integrate Tailwind into massive React codebases gracefully.",
+  "realWorldExample": "Explaining the difference between `shadow`, `drop-shadow`, and how to implement custom plugins.",
+  "useCases": [
+    "Senior Developer Interviews",
+    "UI Architect Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the Just-In-Time (JIT) compiler in Tailwind?"
+    ],
+    "intermediate": [
+      "How do you handle dynamic class merging in React to prevent style conflicts (e.g., overriding a default `p-4` with `p-8`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is JIT?",
+      "answer": "An engine that compiles Tailwind CSS on-demand as you author your files, rather than generating all possible CSS upfront. This enables lightning-fast build times, arbitrary values (`w-[100px]`), and infinite variant stacking (`hover:focus:md:text-red-500`)."
+    },
+    {
+      "question": "Class merging in React?",
+      "answer": "By using the `tailwind-merge` library. Standard string concatenation (`class=\"p-4 p-8\"`) leaves it up to the CSS cascade, which is unpredictable. `tailwind-merge` intelligently analyzes the Tailwind classes and strips out the overridden `p-4` class entirely."
+    }
+  ],
+  "codeExample": "/*\n  Q: Explain the difference between `theme.colors` and `theme.extend.colors` in the tailwind.config.js file.\n  \n  A: Placing custom colors directly inside `theme.colors` will completely override and DESTROY Tailwind's entire default color palette (you will lose bg-blue-500, bg-red-500, etc). \n  \n  Placing them inside `theme.extend.colors` will append your custom colors to the existing default palette, allowing you to use both.\n*/"
+}

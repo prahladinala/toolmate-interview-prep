@@ -1,0 +1,30 @@
+{
+  "id": "temperature",
+  "title": "Temperature",
+  "difficulty": "Intermediate",
+  "definition": "A hyperparameter in LLMs that controls the randomness and creativity of the generated output. It scales the probabilities of the next token before sampling.",
+  "simpleExplanation": "The 'Creativity Dial'. Set it to 0, and the AI is a boring robot that always picks the most obvious, predictable word. Set it to 1, and the AI takes creative risks, writing beautiful poetry. Set it to 2, and the AI goes insane and writes gibberish.",
+  "realWorldExample": "If you are using an LLM to write code or extract JSON data, you set Temperature = 0 to guarantee strict consistency. If you are using an LLM to brainstorm marketing slogans, you set Temperature = 0.8 to get wild, varied ideas.",
+  "useCases": [
+    "Prompt engineering",
+    "API configuration"
+  ],
+  "questions": {
+    "basic": [
+      "If you want the AI to give you the exact same answer every time you ask a question, what should you set the Temperature to?"
+    ],
+    "intermediate": [
+      "Mathematically, how does Temperature affect the 'Softmax' layer probabilities?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Set to what?",
+      "answer": "0 (Zero)."
+    },
+    {
+      "question": "How does it affect math?",
+      "answer": "A low temperature artificially inflates the highest probability. If 'Cat' had a 60% chance, Temp 0 pushes it to 99%. A high temperature 'flattens' the distribution. If 'Cat' was 60% and 'Elephant' was 5%, Temp 1.5 pushes them closer together, making 'Elephant' a viable option."
+    }
+  ]
+}

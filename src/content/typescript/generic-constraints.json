@@ -1,0 +1,34 @@
+{
+  "id": "generic-constraints",
+  "title": "Generic Constraints",
+  "difficulty": "Advanced",
+  "definition": "Using the `extends` keyword within a generic type declaration to restrict the kinds of types that can be passed to a generic parameter.",
+  "simpleExplanation": "Generics are great, but sometimes they are TOO flexible. If you build a generic function that prints the `.length` of an item, you want to allow Strings and Arrays, but NOT Numbers (numbers don't have a `.length` property). A Constraint acts as a bouncer, saying: 'I don't care what exact type you are, but you MUST at least have a .length property.'",
+  "realWorldExample": "Writing a generic function that updates a database record. The function takes any object, but it CONSTRAINS the object to ensure it MUST have an `id: string` property so the database knows what to update.",
+  "useCases": [
+    "Restricting overly broad generics",
+    "Ensuring objects have required baseline properties"
+  ],
+  "questions": {
+    "basic": [
+      "What keyword is used to constrain a generic?"
+    ],
+    "intermediate": [
+      "What happens if you don't constrain a generic when accessing properties?"
+    ],
+    "advanced": [
+      "Can you constrain a generic to be a specific primitive, like a string or number?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if you don't constrain?",
+      "answer": "If you do `function logLength<T>(arg: T) { console.log(arg.length) }`, TypeScript will throw an error: 'Property length does not exist on type T'. Because `T` could be literally anything (even a Number), TS protects you. You must constrain it: `<T extends { length: number }>`."
+    },
+    {
+      "question": "Can you constrain to primitives?",
+      "answer": "Yes! `function process<T extends string | number>(val: T)` ensures nobody can pass an object or boolean into the generic function."
+    }
+  ],
+  "codeExample": "// Define the baseline requirement\ninterface HasLength {\n  length: number;\n}\n\n// T can be anything, AS LONG AS it has a 'length' property of type number\nfunction logLength<T extends HasLength>(arg: T): void {\n  console.log(\"Length is:\", arg.length);\n}\n\n// Valid: Strings have .length\nlogLength(\"Hello World\"); \n\n// Valid: Arrays have .length\nlogLength([1, 2, 3]); \n\n// Valid: Objects with a manual length property\nlogLength({ id: 1, length: 10 }); \n\n// ERROR: Argument of type 'number' does not satisfy constraint 'HasLength'.\n// logLength(55);"
+}

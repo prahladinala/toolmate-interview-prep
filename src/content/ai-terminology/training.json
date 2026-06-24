@@ -1,0 +1,30 @@
+{
+  "id": "training",
+  "title": "Training",
+  "difficulty": "Beginner",
+  "definition": "The computationally intensive process where a machine learning algorithm is fed data and iteratively adjusts its internal mathematical parameters (weights and biases) to minimize errors and improve its accuracy.",
+  "simpleExplanation": "Going to the gym for your brain. The AI takes a guess, sees it was wrong, adjusts its math slightly, and takes another guess. It repeats this millions of times until it gets very good at guessing.",
+  "realWorldExample": "Training ChatGPT took months of processing time on thousands of Nvidia GPUs running 24/7. It read text, guessed the next word, checked if it was right, and adjusted its internal brain slightly.",
+  "useCases": [
+    "Model creation",
+    "Compute optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Which requires significantly more computing power: Training a model, or using a model to make a prediction?"
+    ],
+    "intermediate": [
+      "What is 'Overfitting' during the training process?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More compute power?",
+      "answer": "Training! Training requires supercomputers and months of time. Using the model (Inference) can often be done on a standard laptop or smartphone in seconds."
+    },
+    {
+      "question": "What is Overfitting?",
+      "answer": "When a model memorizes the training data too perfectly. It's like a student memorizing the exact answers to a practice test but failing to understand the underlying concepts. When the student takes the real test (unseen data), they fail completely."
+    }
+  ]
+}

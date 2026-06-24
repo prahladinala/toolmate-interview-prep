@@ -1,0 +1,32 @@
+{
+  "id": "mongoose",
+  "title": "Mongoose ODM",
+  "difficulty": "Intermediate",
+  "definition": "An Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and translates between objects in code and the representation of those objects in MongoDB.",
+  "simpleExplanation": "MongoDB's greatest strength (flexibility) is also its greatest weakness. If you make a typo and save `{ naem: \"Alice\" }`, MongoDB will happily save it forever, causing bugs. Mongoose acts as a strict bouncer at the door. You define a 'Schema' saying 'Name MUST be a string, Age MUST be a number'. Mongoose validates the data before it lets it into the database.",
+  "realWorldExample": "Using Mongoose to automatically hash a user's password right before it saves to the database using 'Pre-Save Hooks'.",
+  "useCases": [
+    "Enforcing data integrity in NoSQL",
+    "Building complex query chains",
+    "Adding middleware to database operations"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Mongoose Schema?"
+    ],
+    "intermediate": [
+      "What is the difference between a Schema and a Model?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Schema?",
+      "answer": "A blueprint. It defines the structure, data types, and constraints (like `required: true` or `unique: true`) for a document."
+    },
+    {
+      "question": "Schema vs Model?",
+      "answer": "The Schema is just the architectural blueprint. The Model is the actual house built from the blueprint. The Model is the object you use in your code to execute queries (e.g., `UserModel.find()`)."
+    }
+  ],
+  "codeExample": "/* \n  npm install mongoose \n*/\n// const mongoose = require('mongoose');\n\n// 1. Define the Blueprint (Schema)\n// const userSchema = new mongoose.Schema({\n//   name: { type: String, required: true },\n//   email: { type: String, required: true, unique: true },\n//   age: { type: Number, min: 18 }\n// });\n\n// 2. Compile the Model (Creates the 'users' collection automatically)\n// const User = mongoose.model('User', userSchema);\n\n// 3. Using the Model\n// async function createUser() {\n//   try {\n//     // This will THROW AN ERROR if name is missing or age is < 18!\n//     const newUser = await User.create({ name: \"Bob\", email: \"bob@test.com\", age: 25 });\n//     console.log(\"Saved:\", newUser);\n//   } catch (error) {\n//     console.log(\"Mongoose Bouncer Blocked It:\", error.message);\n//   }\n// }\n\nconsole.log(\"Mongoose adds SQL-like strictness to NoSQL databases.\");"
+}

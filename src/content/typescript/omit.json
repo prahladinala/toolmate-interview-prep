@@ -1,0 +1,31 @@
+{
+  "id": "omit",
+  "title": "Omit<T, Keys>",
+  "difficulty": "Intermediate",
+  "definition": "A utility type that constructs a new type by starting with an existing type (`T`) and removing a specific set of properties (`Keys`).",
+  "simpleExplanation": "The opposite of `Pick`. If a buffet has 50 dishes, `Pick` is naming the 2 dishes you want. `Omit` is telling the chef: 'Give me literally everything on the table EXCEPT the tomatoes and onions.'",
+  "realWorldExample": "Creating a type for a 'Create User' form payload. The database `User` type has an `id` and `createdAt` date. The user cannot submit these; the database generates them. So the payload type is `Omit<User, 'id' | 'createdAt'>`.",
+  "useCases": [
+    "Form payload typing (removing DB-generated fields)",
+    "Removing sensitive data (passwords) from types"
+  ],
+  "questions": {
+    "basic": [
+      "When should you use `Omit` instead of `Pick`?"
+    ],
+    "intermediate": [
+      "Does `Omit` throw an error if you omit a key that doesn't exist?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When to use Omit vs Pick?",
+      "answer": "Use `Pick` when the number of properties you want is small. Use `Omit` when the original type has a massive amount of properties, and you only want to remove one or two."
+    },
+    {
+      "question": "Does it error if the key doesn't exist?",
+      "answer": "Historically, NO! Unlike `Pick`, `Omit` was built using `Exclude`, which meant you could omit `'fakeKey'` silently without TS complaining. However, newer versions of TS have improved this behavior in certain strict environments."
+    }
+  ],
+  "codeExample": "interface UserRecord {\n  id: string;\n  name: string;\n  email: string;\n  passwordHash: string;\n  createdAt: number;\n}\n\n// When returning the user to the frontend, NEVER send the password.\ntype PublicUser = Omit<UserRecord, \"passwordHash\">;\n\nconst safeUser: PublicUser = {\n  id: \"user_123\",\n  name: \"Alice\",\n  email: \"a@a.com\",\n  createdAt: 162000000\n  // passwordHash is completely stripped from the type requirement\n};"
+}

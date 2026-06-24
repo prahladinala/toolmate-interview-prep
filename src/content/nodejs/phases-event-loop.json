@@ -1,0 +1,34 @@
+{
+  "id": "phases-event-loop",
+  "title": "Event Loop Phases",
+  "difficulty": "Advanced",
+  "definition": "The specific sequence of queues the Event Loop cycles through in C++ to process different types of asynchronous callbacks.",
+  "simpleExplanation": "The waiter doesn't just randomly grab food from the kitchen. They follow a strict circular path. First, they check Timers (`setTimeout`), then they check network connections (I/O callbacks), then they check `setImmediate` tasks, and finally they handle close events. The loop spins continuously, executing callbacks in their designated phase.",
+  "realWorldExample": "Understanding phases helps you predict exactly why a `setTimeout(cb, 0)` might run AFTER a `fs.readFile()` callback depending on what phase the loop is currently in.",
+  "useCases": [
+    "Advanced performance debugging",
+    "Technical architectural interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the first phase of the Event Loop?"
+    ],
+    "intermediate": [
+      "Which phase handles network requests and file reads?"
+    ],
+    "advanced": [
+      "What is the difference between the Poll phase and the Check phase?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "First phase?",
+      "answer": "The Timers phase. It executes callbacks scheduled by `setTimeout()` and `setInterval()`."
+    },
+    {
+      "question": "Poll vs Check phase?",
+      "answer": "The **Poll** phase retrieves new I/O events (like database responses or incoming HTTP requests). The **Check** phase strictly runs callbacks registered by `setImmediate()`. The loop always goes from Poll -> Check."
+    }
+  ],
+  "codeExample": "// The 6 Main Phases of the Event Loop:\n// 1. Timers (setTimeout)\n// 2. Pending Callbacks (system level)\n// 3. Idle, Prepare (internal)\n// 4. Poll (I/O, fs, http, db! It waits here if nothing else is queued)\n// 5. Check (setImmediate)\n// 6. Close Callbacks (socket.destroy)\n\nconst fs = require('fs');\n\n// This will go to the CHECK phase\nsetImmediate(() => console.log(\"Check Phase: setImmediate executed\"));\n\n// This goes to the TIMERS phase\nsetTimeout(() => console.log(\"Timers Phase: setTimeout executed\"), 0);\n\n// This goes to the POLL phase\n// fs.readFile(__filename, () => {\n//   console.log(\"Poll Phase: File Read Completed\");\n// });\n\nconsole.log(\"Main Thread: Synchronous code runs before ANY phase begins.\");\n\n// Note: Between ANY of these phases, the 'Microtask Queue' is checked!"
+}

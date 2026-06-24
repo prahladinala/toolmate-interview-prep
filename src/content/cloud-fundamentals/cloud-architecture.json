@@ -1,0 +1,30 @@
+{
+  "id": "cloud-architecture",
+  "title": "Architecture Design Questions",
+  "difficulty": "Advanced",
+  "definition": "The ultimate system design interview. Candidates must draw and explain a complete, highly-available cloud architecture on a whiteboard.",
+  "simpleExplanation": "Designing the blueprint for a massive skyscraper from scratch.",
+  "realWorldExample": "Question: 'Design Netflix on AWS. Explain the DNS, Load Balancers, Web Tier, Database Tier, Caching, and CDN components.'",
+  "useCases": [
+    "Principal Cloud Architect roles",
+    "System Design Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Why do almost all enterprise architectures place their databases in a 'Private Subnet'?"
+    ],
+    "intermediate": [
+      "In a global architecture, how does a CDN (Content Delivery Network) reduce the load on your primary web servers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why Private Subnets for DBs?",
+      "answer": "Security. A private subnet has no direct route to the public internet. This makes it mathematically impossible for a hacker sitting at home to establish a direct connection to the database. They must go through the heavily guarded web servers first."
+    },
+    {
+      "question": "How does CDN reduce load?",
+      "answer": "A CDN caches static files (images, JS, CSS) on servers geographically close to users. When a user requests an image, the CDN serves it instantly. The request never reaches your primary web server, saving massive amounts of CPU power and bandwidth on your end."
+    }
+  ]
+}

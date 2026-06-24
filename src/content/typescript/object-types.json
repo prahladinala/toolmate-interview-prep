@@ -1,0 +1,34 @@
+{
+  "id": "object-types",
+  "title": "Object Types",
+  "difficulty": "Beginner",
+  "definition": "Defining the shape of a JavaScript object by specifying the names and types of its properties.",
+  "simpleExplanation": "An Object Type is a blueprint. If you are building a 'User' object, the blueprint dictates that it MUST have a name that is a string, and an age that is a number. If you try to add 'wingspan', the inspector rejects it.",
+  "realWorldExample": "Typing a React Component's props object or the shape of a JSON response from an API.",
+  "useCases": [
+    "Defining data structures",
+    "Type checking API responses"
+  ],
+  "questions": {
+    "basic": [
+      "How do you define the type of an object directly inline?"
+    ],
+    "intermediate": [
+      "What is excess property checking?"
+    ],
+    "advanced": [
+      "What is the difference between `{}` and `object` and `Object`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is excess property checking?",
+      "answer": "If you define an object literal directly in an assignment (e.g., `const u: User = { name: 'A', age: 10, fake: true }`), TS strictly rejects `fake` because it wasn't in the type. But if you assign it to an intermediate variable first, TS allows the excess property!"
+    },
+    {
+      "question": "Difference between {}, object, and Object?",
+      "answer": "`object` means any non-primitive type (arrays, functions, objects). `{}` means an object with no known properties. `Object` is the global JS object (avoid using this)."
+    }
+  ],
+  "codeExample": "// Inline object typing (Good for small objects)\nfunction printLocation(pt: { x: number; y: number }) {\n  console.log(`The coordinates are X: ${pt.x}, Y: ${pt.y}`);\n}\n\n// Using a Type Alias (Better for reuse)\ntype User = {\n  id: number;\n  name: string;\n};\n\nconst currentUser: User = {\n  id: 1,\n  name: \"Alice\"\n};\n\n// ERROR: Object literal may only specify known properties\n// const badUser: User = { id: 2, name: \"Bob\", admin: true };"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "javascript-runtime",
+  "title": "JavaScript Runtime",
+  "difficulty": "Advanced",
+  "definition": "The complete environment that provides the necessary tools for JavaScript code to be executed. The JS Engine (V8) is just one part of the Runtime.",
+  "simpleExplanation": "The JS Engine (V8) is just a translator that turns JS into machine code. It has no idea what `setTimeout`, `document.getElementById`, or `fs.readFile` are. The Runtime (the Browser or Node.js) is the giant factory that surrounds the translator, providing those Web APIs and managing the Event Loop.",
+  "realWorldExample": "Chrome, Node.js, Deno, and Bun are all different Runtimes. They all use a JS Engine (Chrome/Node/Deno use V8, Safari uses JavaScriptCore), but they provide completely different APIs. Node.js provides `fs` for files, the Browser provides `window` for the UI.",
+  "useCases": [
+    "Understanding cross-environment compatibility (Isomorphic JS)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between V8 and Node.js?"
+    ],
+    "intermediate": [
+      "Why does `window` exist in the browser but throw an error in Node.js?"
+    ],
+    "advanced": [
+      "What library handles the Event Loop and Async I/O in Node.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "V8 vs Node.js?",
+      "answer": "V8 is the engine that compiles JS. Node.js is the C++ Runtime environment that embeds V8, adds the `libuv` library for asynchronous file system and network operations, and provides the Node standard library (`http`, `fs`, `path`)."
+    },
+    {
+      "question": "What library handles Node's Event Loop?",
+      "answer": "The `libuv` library (written in C). It handles the thread pool, the event loop, and all OS-level asynchronous tasks."
+    }
+  ],
+  "codeExample": "// This is pure JavaScript (Handled entirely by V8 Engine)\nconst sum = 1 + 1;\n\n// This is a Runtime API (Handled by the Browser/Node.js)\n// In the browser, it hooks into the C++ DOM API.\n// In Node, this crashes because 'document' does not exist in the Node runtime.\n/* document.getElementById('app'); */"
+}

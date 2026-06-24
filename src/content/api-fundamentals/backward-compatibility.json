@@ -1,0 +1,31 @@
+{
+  "id": "backward-compatibility",
+  "title": "Backward Compatibility",
+  "difficulty": "Intermediate",
+  "definition": "Designing software systems so that newer updates do not break older client applications that have not yet been updated.",
+  "simpleExplanation": "If you buy an Xbox Series X (new), it can still play Xbox 360 games (old). That is backward compatibility. In APIs, it means you can upgrade your backend to be faster and better, but the old iPhone app from 4 years ago can still talk to it without crashing.",
+  "realWorldExample": "You realize `user.age` is a terrible database field because it changes every year. You update the DB to store `user.dateOfBirth`. To maintain backward compatibility, your API still calculates and returns `user.age` in the JSON response so old apps don't break, while also returning the new `dateOfBirth` field for new apps.",
+  "useCases": [
+    "Mobile app lifecycles",
+    "Public API management"
+  ],
+  "questions": {
+    "basic": [
+      "If you add an entirely new API endpoint (like `/api/v1/analytics`), does that break backward compatibility?"
+    ],
+    "intermediate": [
+      "What is an API 'Deprecation' strategy?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Break compatibility?",
+      "answer": "No. Additions are safe. Removing or renaming things is dangerous."
+    },
+    {
+      "question": "What is Deprecation?",
+      "answer": "When you want to turn off V1 of your API, you can't just unplug it. You 'Deprecate' it. You announce to developers: 'V1 is deprecated. It still works, but in 6 months we are turning it off. Please migrate to V2.' You often add a `Warning` HTTP header to V1 responses to alert them."
+    }
+  ],
+  "codeExample": "/* \n  Maintaining Backward Compatibility Without Versioning\n  (The additive approach)\n*/\n\n// Old JSON Response (2022)\n{\n  \"fullName\": \"John Doe\"\n}\n\n// We realize \"fullName\" is bad, we want first and last separated.\n// ❌ BREAKING CHANGE (Crashes old apps!)\n{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\"\n}\n\n// ✅ BACKWARD COMPATIBLE (Old apps read fullName, new apps read firstName)\n{\n  \"fullName\": \"John Doe\", // Keep this alive for old clients!\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\"\n}"
+}

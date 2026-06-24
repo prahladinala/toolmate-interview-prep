@@ -1,0 +1,35 @@
+{
+  "id": "promises",
+  "title": "Promises",
+  "difficulty": "Intermediate",
+  "definition": "An object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It cures Callback Hell by allowing asynchronous methods to be chained.",
+  "simpleExplanation": "A Promise is a restaurant buzzer. You order food, and they give you a physical buzzer object. It sits in your hand in a 'Pending' state. You can keep talking with your friends. Eventually, the buzzer either flashes green ('Resolved' - here is your food) or flashes red ('Rejected' - we ran out of ingredients).",
+  "realWorldExample": "Modern database drivers and the `fetch` API all return Promises. You attach `.then()` to handle success, and `.catch()` to handle errors cleanly in one place.",
+  "useCases": [
+    "Modern asynchronous flow control",
+    "Fetching APIs",
+    "Chaining dependent async tasks"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three states of a Promise?"
+    ],
+    "intermediate": [
+      "How does chaining `.then()` solve Callback Hell?"
+    ],
+    "advanced": [
+      "What does `Promise.all()` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the three states?",
+      "answer": "Pending (waiting), Fulfilled/Resolved (success), and Rejected (failed)."
+    },
+    {
+      "question": "What does Promise.all() do?",
+      "answer": "It takes an array of Promises and runs them concurrently (at the same time). It resolves only when ALL of them succeed. If even one fails, the entire `Promise.all` fails instantly. Great for fetching data from 3 APIs simultaneously."
+    }
+  ],
+  "codeExample": "// Wrapping old callback logic in a shiny new Promise\nfunction getWeather() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      const success = true;\n      if (success) resolve(\"Sunny, 75°F\");\n      else reject(\"Weather API Down\");\n    }, 500);\n  });\n}\n\nconsole.log(\"1. Requesting Weather...\");\n\n// No nesting! Flat, readable chains.\ngetWeather()\n  .then((weather) => {\n    console.log(\"2. Weather is:\", weather);\n    // We can return another promise here to chain it!\n    return \"Have a great day!\"; \n  })\n  .then((greeting) => {\n    console.log(\"3. Greeting:\", greeting);\n  })\n  .catch((error) => {\n    // ONE catch block handles errors for the ENTIRE chain above it!\n    console.error(\"Oh no:\", error);\n  });"
+}

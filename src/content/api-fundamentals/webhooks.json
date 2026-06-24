@@ -1,0 +1,32 @@
+{
+  "id": "webhooks",
+  "title": "Webhooks",
+  "difficulty": "Intermediate",
+  "definition": "A mechanism for an application to provide real-time data to other applications. It is a user-defined HTTP POST callback triggered by a specific event occurring in the source system.",
+  "simpleExplanation": "Standard API: You call the server and ask 'Did the user pay yet?'. You have to ask every 5 minutes (Polling). Webhook: You give the server your phone number (a URL) and say 'Don't make me ask. Just call me the exact second the user pays.'",
+  "realWorldExample": "GitHub Webhooks. You tell GitHub: 'When someone pushes code to the `main` branch, send an HTTP POST request to `https://my-ci-server.com/deploy`'. GitHub automatically hits your API, triggering your build script instantly.",
+  "useCases": [
+    "Payment success notifications",
+    "CI/CD pipelines",
+    "Bot integrations (Slack/Discord)"
+  ],
+  "questions": {
+    "basic": [
+      "In a Webhook architecture, who initiates the HTTP request: Your Server or the Third-Party Service?"
+    ],
+    "intermediate": [
+      "How do you ensure that a Webhook hitting your server actually came from Stripe, and not a hacker trying to fake a payment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who initiates?",
+      "answer": "The Third-Party Service (e.g., Stripe, GitHub). They act as the Client, and YOUR server acts as the API endpoint receiving the data."
+    },
+    {
+      "question": "How to verify?",
+      "answer": "Webhook Signatures. Stripe cryptographically signs the payload using a shared secret and puts the signature in the HTTP Header (e.g., `Stripe-Signature`). Your server calculates the math; if the signatures don't match, you reject it as a hacker."
+    }
+  ],
+  "codeExample": "// Node.js Express Server RECEIVING a Webhook from Stripe\n\napp.post('/api/webhooks/stripe', (req, res) => {\n  const payload = req.body;\n  const sigHeader = req.headers['stripe-signature'];\n\n  try {\n    // 1. Verify the signature mathematically to prevent hackers\n    const event = stripe.webhooks.constructEvent(payload, sigHeader, endpointSecret);\n\n    // 2. React to the event!\n    if (event.type === 'payment_intent.succeeded') {\n      const paymentData = event.data.object;\n      fulfillOrder(paymentData);\n    }\n\n    // 3. You MUST return a 200 OK quickly, or Stripe will think your \n    // server is dead and will keep retrying the webhook over and over.\n    res.status(200).send();\n\n  } catch (err) {\n    res.status(400).send(`Webhook Error: ${err.message}`);\n  }\n});"
+}

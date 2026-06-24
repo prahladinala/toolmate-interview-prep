@@ -1,0 +1,31 @@
+{
+  "id": "repository-permissions",
+  "title": "Repository Permissions",
+  "difficulty": "Intermediate",
+  "definition": "The access levels granted to users or teams on a specific repository, dictating what actions they can perform (Read, Triage, Write, Maintain, Admin).",
+  "simpleExplanation": "You don't want the new intern accidentally deleting the entire company database code. You give the intern 'Read' access (they can clone the code but can't push changes directly). You give the senior devs 'Write' access (they can push code). You give yourself 'Admin' access (you can delete the repository).",
+  "realWorldExample": "In Open Source (like React), 99.9% of the world has 'Read' access. Only the core Facebook employees have 'Write' access.",
+  "useCases": [
+    "Security",
+    "Preventing accidental code destruction"
+  ],
+  "questions": {
+    "basic": [
+      "If you have 'Read' access, how do you propose a code change to the repository?"
+    ],
+    "intermediate": [
+      "What permission level allows someone to forcefully delete a repository?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to propose changes?",
+      "answer": "You must Fork the repository, make changes on your fork, and then submit a Pull Request back to the original repository."
+    },
+    {
+      "question": "Delete repo?",
+      "answer": "Only the 'Admin' (or Owner) level can delete a repository, transfer ownership, or change repository visibility (Public to Private)."
+    }
+  ],
+  "codeExample": "/*\n  Standard GitHub Permission Levels:\n\n  1. Read: Can clone, pull, and open issues. (Interns/Public)\n  2. Triage: Can manage issues and PRs, but cannot push code. (Project Managers)\n  3. Write: Can push code directly to branches. (Standard Developers)\n  4. Maintain: Can manage repository settings and permissions. (Tech Leads)\n  5. Admin: Can do everything, including deleting the repo. (CTO/Founders)\n*/"
+}

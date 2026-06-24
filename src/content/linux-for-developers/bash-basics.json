@@ -1,0 +1,31 @@
+{
+  "id": "bash-basics",
+  "title": "Bash Basics",
+  "difficulty": "Beginner",
+  "definition": "Bash (Bourne Again Shell) is both a command interpreter (the terminal) and a fully-fledged programming language used to write scripts that automate complex OS tasks.",
+  "simpleExplanation": "Instead of typing 20 commands manually every single morning to set up your environment, you write all 20 commands into a text file. You run the text file once, and it does it all for you automatically.",
+  "realWorldExample": "A DevOps engineer creates a file named `setup.sh`. Inside, they write commands to update the OS, install Docker, and download the company repository. They run `bash setup.sh` on a brand new server, fully configuring it in 30 seconds.",
+  "useCases": [
+    "Automation",
+    "CI/CD pipelines",
+    "System administration"
+  ],
+  "questions": {
+    "basic": [
+      "What is the mandatory file extension for a Bash script?"
+    ],
+    "intermediate": [
+      "What is the 'Shebang' (`#!/bin/bash`) at the top of a script, and why is it required?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "File extension?",
+      "answer": "There isn't one! In Linux, extensions don't matter. You usually name it `.sh` just for human readability, but a script named `setup` with no extension runs perfectly fine."
+    },
+    {
+      "question": "What is a Shebang?",
+      "answer": "It tells the Linux Kernel exactly which interpreter program to use to run the file. Without it, the Kernel might try to run your Bash script using Python or Zsh, which would cause syntax errors."
+    }
+  ]
+}

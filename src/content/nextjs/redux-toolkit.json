@@ -1,0 +1,32 @@
+{
+  "id": "redux-toolkit",
+  "title": "Redux Toolkit",
+  "difficulty": "Advanced",
+  "definition": "The official, opinionated, batteries-included toolset for efficient Redux development, used for managing massive, enterprise-scale client state.",
+  "simpleExplanation": "Redux is the heaviest, most strictly organized state management system. Redux Toolkit (RTK) makes standard Redux much easier to write by removing tons of boilerplate. It is generally overkill for modern Next.js apps, but essential to know for legacy codebases or massive enterprise apps.",
+  "realWorldExample": "Managing the state of a complex browser-based video editing application (like Figma or Premiere Pro) where every single user action must be tracked, undo-able, and deeply nested.",
+  "useCases": [
+    "Enterprise applications",
+    "Complex state machines",
+    "Legacy React migration"
+  ],
+  "questions": {
+    "basic": [
+      "Why has Redux usage dropped significantly since the introduction of the Next.js App Router?"
+    ],
+    "intermediate": [
+      "How do you integrate Redux Toolkit into a Next.js App Router project?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why usage dropped?",
+      "answer": "Historically, Redux was used to fetch and cache data from APIs (Server State). Next.js Server Components and the built-in `fetch` cache completely eliminate the need for this. Redux is now only needed for incredibly complex *Client* State (like a drawing app)."
+    },
+    {
+      "question": "How to integrate?",
+      "answer": "You must create a Client Component containing the `<Provider store={store}>`, and then wrap your `children` inside that Provider within your root `layout.tsx`."
+    }
+  ],
+  "codeExample": "/* \n  Redux Toolkit + Next.js App Router Setup \n*/\n\n// 1. providers.tsx (Must be a Client Component!)\n'use client';\nimport { Provider } from 'react-redux';\nimport { store } from './store';\n\nexport function ReduxProvider({ children }) {\n  return <Provider store={store}>{children}</Provider>;\n}\n\n// 2. layout.tsx (Server Component)\nimport { ReduxProvider } from './providers';\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {/* Provide Redux ONLY to the client-side components that need it */}\n        <ReduxProvider>{children}</ReduxProvider>\n      </body>\n    </html>\n  );\n}"
+}

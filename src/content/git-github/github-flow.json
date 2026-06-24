@@ -1,0 +1,31 @@
+{
+  "id": "github-flow",
+  "title": "GitHub Flow",
+  "difficulty": "Intermediate",
+  "definition": "A lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. It centers entirely around Pull Requests.",
+  "simpleExplanation": "The modern standard. There is only ONE permanent branch: `main`. Everything on `main` MUST be deployable right now. To work, you branch off `main`, commit, open a PR, get it approved, merge it, and deploy it immediately.",
+  "realWorldExample": "How almost every modern startup works. The process is so fast that a developer can write code at 10:00 AM, and it is live on the internet serving millions of customers by 11:30 AM.",
+  "useCases": [
+    "Continuous Deployment",
+    "Web Applications"
+  ],
+  "questions": {
+    "basic": [
+      "In GitHub Flow, how many long-running branches are there?"
+    ],
+    "intermediate": [
+      "What is the golden rule of the `main` branch in GitHub flow?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many long-running branches?",
+      "answer": "Exactly one (`main`)."
+    },
+    {
+      "question": "Golden rule?",
+      "answer": "The `main` branch must ALWAYS be in a deployable, working state. Never merge broken code into `main`."
+    }
+  ],
+  "codeExample": "/*\n  The 6 Steps of GitHub Flow:\n  \n  1. Create a branch (from main)\n  2. Add commits\n  3. Open a Pull Request\n  4. Discuss and review the code\n  5. Merge the PR\n  6. Deploy immediately!\n*/"
+}

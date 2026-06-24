@@ -1,0 +1,30 @@
+{
+  "id": "firewall",
+  "title": "Firewall (ufw / iptables / firewalld)",
+  "difficulty": "Intermediate",
+  "definition": "Software that monitors and controls incoming and outgoing network traffic based on predetermined security rules. `ufw` (Uncomplicated Firewall) is the default, user-friendly frontend for Ubuntu.",
+  "simpleExplanation": "The bouncer at the club. By default, he blocks everyone from entering the server. You have to explicitly tell him 'Let people in on Port 80 for the website, and Port 22 for SSH. Block everyone else.'",
+  "realWorldExample": "You deploy a new web server. You type `sudo ufw allow 80` (HTTP) and `sudo ufw allow 443` (HTTPS). Then you type `sudo ufw enable`. The server is now completely invisible to hackers scanning random database ports.",
+  "useCases": [
+    "Securing servers from unauthorized access",
+    "Port blocking"
+  ],
+  "questions": {
+    "basic": [
+      "If you turn on `ufw` without explicitly allowing Port 22 (SSH) first, what will happen??"
+    ],
+    "intermediate": [
+      "What underlying, complex Linux kernel module does `ufw` actually use to do the heavy lifting?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Turn on without SSH?",
+      "answer": "You will instantly lock yourself out of your own server. Your current SSH connection might drop, and you will never be able to remote back in."
+    },
+    {
+      "question": "Underlying module?",
+      "answer": "`iptables` (or the newer `nftables`). `ufw` is just a friendly command-line wrapper that writes complicated `iptables` rules for you."
+    }
+  ]
+}

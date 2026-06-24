@@ -1,0 +1,30 @@
+{
+  "id": "jwt-storage",
+  "title": "JWT Storage",
+  "difficulty": "Advanced",
+  "definition": "The security implications of deciding exactly where to store JSON Web Tokens in a Redux architecture.",
+  "simpleExplanation": "You have three choices for storing a JWT: \n1. Redux State Only (Ultra secure, but logs you out on refresh). \n2. LocalStorage (Survives refresh, but vulnerable to XSS hacking). \n3. HttpOnly Cookies (Survives refresh, immune to XSS, but vulnerable to CSRF).",
+  "realWorldExample": "Enterprise security apps DO NOT use LocalStorage. They use an HttpOnly cookie. Redux never actually sees the Token. Redux just keeps a boolean `isLoggedIn: true`, and the browser automatically sends the cookie with every API call.",
+  "useCases": [
+    "Preventing Cross-Site Scripting (XSS) attacks"
+  ],
+  "questions": {
+    "basic": [
+      "Can a hacker run JavaScript to steal a token stored in `localStorage`?"
+    ],
+    "intermediate": [
+      "What is the most secure way to handle tokens in a Redux app?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Steal from localStorage?",
+      "answer": "Yes. This is called an XSS (Cross-Site Scripting) attack. Any malicious script injected into your page can easily read `localStorage.getItem('token')`."
+    },
+    {
+      "question": "Most secure way?",
+      "answer": "Do not store tokens in Redux or LocalStorage. Have your backend send the Token inside an `HttpOnly` cookie. JavaScript (and hackers) physically cannot read `HttpOnly` cookies, but the browser will still attach them to API requests."
+    }
+  ],
+  "codeExample": "/*\n  SCENARIO: Using HttpOnly Cookies (The Secure Way)\n\n  1. React dispatches loginUser(email, pass).\n  2. Server verifies, and replies with:\n     Set-Cookie: token=eyJhbG...; HttpOnly; Secure\n     Body: { user: { name: 'John' } }\n  3. Redux Thunk catches the response.\n     It saves the User to the state, but it DOES NOT save the Token \n     (because it can't even see the cookie).\n  4. Every future RTK Query API call will automatically include the cookie \n     thanks to the browser.\n*/"
+}

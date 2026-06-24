@@ -1,0 +1,30 @@
+{
+  "id": "squash-commits",
+  "title": "Squash Commits",
+  "difficulty": "Advanced",
+  "definition": "The process of combining multiple sequential commits into a single, cohesive commit to keep the repository history clean and meaningful.",
+  "simpleExplanation": "Nobody wants to look at a history filled with 50 commits named 'wip', 'fixed typo', 'trying again', 'please work'. Squashing takes those 50 tiny, messy commits and crushes them together into a single, beautiful commit named 'Added Shopping Cart Feature'.",
+  "realWorldExample": "GitHub has a massive green button called 'Squash and Merge' on Pull Requests. It automatically crushes your messy feature branch into one clean commit before merging it into `main`.",
+  "useCases": [
+    "Maintaining a clean, readable git log"
+  ],
+  "questions": {
+    "basic": [
+      "What command is manually used to squash commits locally?"
+    ],
+    "intermediate": [
+      "Why do Open Source projects demand that you squash your commits before they accept your code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command?",
+      "answer": "Interactive Rebase (`git rebase -i`)."
+    },
+    {
+      "question": "Why Open Source demands it?",
+      "answer": "Maintainers need to be able to easily read the project history. If a feature breaks 6 months later, they want to revert one single clean commit. They don't want to figure out which of your 40 'wip' commits caused the bug."
+    }
+  ],
+  "codeExample": "// While you can squash locally using 'git rebase -i HEAD~5',\n// the most common way developers squash today is using the GitHub UI.\n\n/*\nWhen completing a Pull Request on GitHub, instead of clicking 'Create Merge Commit',\nclick the dropdown arrow and select 'Squash and merge'.\n\nGitHub will take your 15 messy commits, bundle them into 1 commit, \nand place that 1 commit onto the main branch.\n*/"
+}

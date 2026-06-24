@@ -1,0 +1,31 @@
+{
+  "id": "dark-mode-colors",
+  "title": "Dark Mode Colors",
+  "difficulty": "Intermediate",
+  "definition": "Using the `dark:` variant to specify alternative text and background colors when the user's operating system or app is in Dark Mode.",
+  "simpleExplanation": "It's literally magic. `bg-white dark:bg-gray-900`. If the user's iPhone is in Light Mode, the box is white. If they flip their iPhone to Dark Mode, Tailwind instantly changes the box to dark gray.",
+  "realWorldExample": "Creating a Card component: `<div class=\"bg-white text-black dark:bg-slate-800 dark:text-white\">`.",
+  "useCases": [
+    "Supporting modern OS preferences",
+    "Night-reading modes"
+  ],
+  "questions": {
+    "basic": [
+      "What variant prefix do you put in front of a class to make it apply ONLY in dark mode?"
+    ],
+    "intermediate": [
+      "Do you have to write a separate CSS file or `@media` query to make dark mode work in Tailwind?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`dark:`"
+    },
+    {
+      "question": "Separate CSS file?",
+      "answer": "No! That is the beauty of Tailwind. You write the light and dark styles directly on the HTML element side-by-side. Tailwind generates the complex `@media (prefers-color-scheme: dark)` CSS rules for you under the hood."
+    }
+  ],
+  "codeExample": "<!-- \n  A complete component with Light and Dark mode support! \n  Notice how EVERY color class needs a dark: equivalent.\n-->\n<div class=\"bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl\">\n  <h3 class=\"text-slate-900 dark:text-white text-base font-medium tracking-tight\">\n    Writes Upside-Down\n  </h3>\n  <p class=\"text-slate-500 dark:text-slate-400 mt-2 text-sm\">\n    The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.\n  </p>\n</div>"
+}

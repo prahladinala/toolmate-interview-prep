@@ -1,0 +1,32 @@
+{
+  "id": "cdn",
+  "title": "CDN Usage",
+  "difficulty": "Intermediate",
+  "definition": "Content Delivery Network. A globally distributed network of proxy servers that cache content physically closer to end users, providing high availability and extreme performance.",
+  "simpleExplanation": "If your API server is in New York, a user in Tokyo has to wait 200 milliseconds just for the signal to cross the ocean. A CDN places 100 'mini-servers' around the world. The Tokyo user talks to a mini-server in Tokyo, getting the response in 5 milliseconds.",
+  "realWorldExample": "Cloudflare or AWS CloudFront. You put Cloudflare in front of your API. When users fetch `/api/static-product-list`, Cloudflare caches the JSON. The next 5 million users fetch it directly from Cloudflare, and your real server never even sees the traffic.",
+  "useCases": [
+    "Global scaling",
+    "DDoS protection",
+    "Static asset delivery"
+  ],
+  "questions": {
+    "basic": [
+      "Are CDNs primarily used to cache static data (like images and blog posts) or highly dynamic data (like live bank balances)?"
+    ],
+    "intermediate": [
+      "What does the term 'Edge Computing' mean in the context of CDNs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Static or dynamic?",
+      "answer": "Static data. CDNs are perfect for things that rarely change. You should NEVER cache a live bank balance on a CDN, because users would see outdated numbers."
+    },
+    {
+      "question": "What is Edge Computing?",
+      "answer": "Instead of just caching static files, modern CDNs allow you to run small pieces of JavaScript (Edge Functions) directly on their global servers. This allows you to run backend logic in Tokyo without having an actual backend server in Tokyo."
+    }
+  ],
+  "codeExample": "/* \n  How a CDN intercepts an API request:\n  \n  [ USER IN TOKYO ] ---> [ CLOUDFLARE NODE IN TOKYO ]\n  \n  1. Does Cloudflare have a fresh copy of /api/products? \n     YES -> Return it instantly (5ms delay). Server doesn't know it happened.\n     NO  -> Proceed to Step 2.\n     \n  2. Cloudflare forwards the request across the ocean to the real server.\n  \n  [ CLOUDFLARE ] ---> [ MAIN SERVER IN NEW YORK ]\n  \n  3. Main Server generates the JSON and sends it back to Cloudflare.\n  4. Cloudflare saves a copy in Tokyo for the next user, and sends it to the user.\n*/"
+}

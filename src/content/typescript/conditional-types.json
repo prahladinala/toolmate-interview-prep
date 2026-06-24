@@ -1,0 +1,34 @@
+{
+  "id": "conditional-types",
+  "title": "Conditional Types",
+  "difficulty": "Advanced",
+  "definition": "Types that select one of two possible types based on a condition expressed as a type relationship test (`T extends U ? X : Y`).",
+  "simpleExplanation": "It's literally an `if / else` statement, but for the Type System. It says: 'If the type passed in is a String, output a Boolean type. Otherwise, output a Number type.'",
+  "realWorldExample": "Creating an API fetcher type that checks: 'If the user asked for a `User`, return `UserResponse`. If they asked for a `Post`, return `PostResponse`.'",
+  "useCases": [
+    "Advanced generic APIs",
+    "Extracting/Excluding specific types from Unions"
+  ],
+  "questions": {
+    "basic": [
+      "What operator is used to test the condition?"
+    ],
+    "intermediate": [
+      "What is a Distributive Conditional Type?"
+    ],
+    "advanced": [
+      "How do conditional types power the built-in `Exclude` utility?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Distributive Conditional Type?",
+      "answer": "When you pass a Union type (like `string | number`) into a conditional type, TS automatically distributes the condition over each member. It tests `string`, then tests `number`, and returns a new union of the results."
+    },
+    {
+      "question": "How does Exclude work?",
+      "answer": "`type Exclude<T, U> = T extends U ? never : T;`. If the type T exists in U, it returns `never` (which gets deleted from unions). If not, it returns T. This filters out specific types!"
+    }
+  ],
+  "codeExample": "// A basic conditional type\n// If T is a string, become 'true'. Else, become 'false'.\ntype IsString<T> = T extends string ? true : false;\n\ntype A = IsString<\"Hello\">; // true\ntype B = IsString<123>;     // false\n\n// A real-world Distributive Conditional Type\n// Removes all 'null' or 'undefined' from a union type\ntype NonNullableCustom<T> = T extends null | undefined ? never : T;\n\ntype ValidData = NonNullableCustom<string | null | number>;\n// Distributes to:\n// (string extends null? no -> string)\n// (null extends null? yes -> never)\n// (number extends null? no -> number)\n// Final Result: string | number"
+}

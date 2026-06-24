@@ -1,0 +1,27 @@
+{
+  "id": "required",
+  "title": "Required<T>",
+  "difficulty": "Intermediate",
+  "definition": "A built-in utility type that constructs a new type where all properties of the given Type `T` are set to required, removing any `?` modifiers.",
+  "simpleExplanation": "The exact opposite of `Partial`. It looks at a form where everything is optional, and forcefully stamps 'REQUIRED' over every single field.",
+  "realWorldExample": "When a user provides an optional configuration object `ConfigOptions`, but inside your library's core logic, you merge it with defaults to guarantee every setting exists. Your internal functions will type the merged config as `Required<ConfigOptions>`.",
+  "useCases": [
+    "Default prop merging",
+    "Strict internal function signatures"
+  ],
+  "questions": {
+    "basic": [
+      "What is the opposite of `Partial`?"
+    ],
+    "intermediate": [
+      "How does `Required` handle properties that were originally typed as `string | undefined`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does it handle string | undefined?",
+      "answer": "If a property was optional `age?: number`, `Required` turns it into `age: number`. However, if a property was explicitly typed as `name: string | undefined` (without the `?`), `Required` will NOT remove the `undefined`. It only strips the optional `?` modifier."
+    }
+  ],
+  "codeExample": "interface Props {\n  a?: number;\n  b?: string;\n}\n\nconst obj1: Props = { a: 5 }; // Valid, 'b' is optional\n\n// We enforce that ALL properties must be present\nconst obj2: Required<Props> = { a: 5 }; // ERROR: Property 'b' is missing!\n\nconst obj3: Required<Props> = { a: 5, b: \"hello\" }; // Valid!"
+}

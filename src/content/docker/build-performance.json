@@ -1,0 +1,30 @@
+{
+  "id": "build-performance",
+  "title": "Build Performance",
+  "difficulty": "Intermediate",
+  "definition": "The overarching strategy of reducing the time it takes to execute `docker build`. Crucial in enterprise environments where developers build images dozens of times a day.",
+  "simpleExplanation": "Making the chef cook faster so the developer doesn't sit around staring at a loading screen for 20 minutes every time they change a line of code.",
+  "realWorldExample": "A company's build takes 15 minutes. An engineer implements `.dockerignore` to stop sending massive log files to the daemon, switches to BuildKit for parallel execution, and properly orders the layers to utilize caching. The build time drops to 45 seconds.",
+  "useCases": [
+    "Developer Experience (DX)",
+    "CI/CD Pipeline optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Which file completely prevents useless data from being uploaded to the Docker Daemon, massively speeding up the start of the build?"
+    ],
+    "intermediate": [
+      "What is Docker 'BuildKit' and how does it improve performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which file?",
+      "answer": "The `.dockerignore` file."
+    },
+    {
+      "question": "What is BuildKit?",
+      "answer": "A modern backend builder for Docker. Unlike the legacy builder which executed instructions strictly sequentially, BuildKit analyzes the Dockerfile and executes independent stages in parallel simultaneously, slashing build times."
+    }
+  ]
+}

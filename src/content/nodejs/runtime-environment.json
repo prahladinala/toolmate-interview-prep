@@ -1,0 +1,34 @@
+{
+  "id": "runtime-environment",
+  "title": "Runtime Environment",
+  "difficulty": "Intermediate",
+  "definition": "The architecture that surrounds the V8 engine, consisting of C++ bindings, the libuv library for asynchronous I/O, and the core JavaScript modules.",
+  "simpleExplanation": "If V8 is the car's engine (executing logic), the Runtime Environment is the steering wheel, tires, and chassis. V8 alone doesn't know what a 'File' or a 'Network' is. Node.js (the runtime) uses a C++ library called `libuv` to add these features and hooks them up to V8.",
+  "realWorldExample": "Calling `setTimeout()` or `fs.readFile()`. These are not JavaScript features! They are C++ functions provided by the Node.js runtime environment that are exposed to JavaScript.",
+  "useCases": [
+    "Understanding Node architecture",
+    "Debugging performance bottlenecks"
+  ],
+  "questions": {
+    "basic": [
+      "Does JavaScript naturally know how to read files?"
+    ],
+    "intermediate": [
+      "What is `libuv`?"
+    ],
+    "advanced": [
+      "What are Node.js C++ Bindings?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is libuv?",
+      "answer": "A multi-platform C library focused on asynchronous I/O. It powers Node's Event Loop and its Thread Pool, allowing Node to do non-blocking database queries and file reads."
+    },
+    {
+      "question": "What are C++ Bindings?",
+      "answer": "They are the 'bridge'. You write `fs.readFile()` in JavaScript. That JS function calls a C++ Binding, which translates your request into C++ code, which then talks to the operating system to physically open the file."
+    }
+  ],
+  "codeExample": "// Node.js Runtime Architecture in action:\nconst fs = require('fs');\nconst crypto = require('crypto');\n\nconsole.log(\"1. Executed purely in V8 Engine (Synchronous JS)\");\n\n// 2. Offloaded to libuv's Thread Pool (C++ level!)\ncrypto.pbkdf2('password', 'salt', 100000, 64, 'sha512', () => {\n  console.log(\"3. Crypto hashing completed by libuv thread pool.\");\n});\n\n// 4. Offloaded to the OS via libuv (Non-blocking I/O)\n// fs.readFile('package.json', () => {\n//   console.log(\"5. File read completed by the OS.\");\n// });\n\nconsole.log(\"2. This runs immediately because I/O was handed off to the Runtime.\");"
+}

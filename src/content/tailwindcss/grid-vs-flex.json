@@ -1,0 +1,30 @@
+{
+  "id": "grid-vs-flex",
+  "title": "Grid vs Flexbox",
+  "difficulty": "Intermediate",
+  "definition": "Understanding the architectural differences between CSS Grid and Flexbox, and knowing exactly when to use each.",
+  "simpleExplanation": "Rule of thumb: Use Flexbox for 1-Directional lines (Navbars, button rows, centering an icon). Use Grid for 2-Directional structural layouts (Dashboards, image galleries, complex forms).",
+  "realWorldExample": "A Navbar is a Flexbox. The actual whole webpage (Sidebar on left, Navbar on top, Content in middle) is a Grid.",
+  "useCases": [
+    "Layout architecture choices"
+  ],
+  "questions": {
+    "basic": [
+      "If you are just trying to vertically center a `div` inside another `div`, should you use Grid or Flexbox?"
+    ],
+    "intermediate": [
+      "Can you put a Flexbox inside of a Grid cell?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Grid or Flexbox?",
+      "answer": "Flexbox. (`flex justify-center items-center`). Grid is overkill for simple alignment."
+    },
+    {
+      "question": "Flexbox inside Grid?",
+      "answer": "Yes! This is the most common pattern in web development. Use Grid for the macro-layout of the page, and Flexbox for the micro-layout of the components inside the grid cells."
+    }
+  ],
+  "codeExample": "/* \n  THE PERFECT MARRIAGE OF GRID AND FLEXBOX:\n  \n  1. We use GRID for the macro page layout (Sidebar + Main)\n  2. We use FLEXBOX for the micro component layout (Navbar items)\n*/\n<div class=\"grid grid-cols-12 h-screen\">\n  <!-- Sidebar -->\n  <div class=\"col-span-2 bg-gray-900\">...</div>\n  \n  <!-- Main Content Area -->\n  <div class=\"col-span-10 flex flex-col\">\n    <!-- Navbar (Flexbox inside the Grid!) -->\n    <nav class=\"flex justify-between items-center p-4 bg-white\">\n      <span>Logo</span>\n      <span>Profile</span>\n    </nav>\n    <!-- Rest of page -->\n    <main class=\"flex-1 p-8\">...</main>\n  </div>\n</div>"
+}

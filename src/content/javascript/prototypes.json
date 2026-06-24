@@ -1,0 +1,45 @@
+{
+  "id": "prototypes",
+  "title": "Prototypes & Inheritance",
+  "difficulty": "Advanced",
+  "definition": "Prototypes are the mechanism by which JavaScript objects inherit features from one another. Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain.",
+  "simpleExplanation": "Imagine you have a basic recipe for a 'Cake'. This base recipe is the prototype. If you want to make a 'Chocolate Cake', you don't rewrite the whole recipe; you just say 'use the Cake recipe, but add chocolate'. The Chocolate Cake inherits the basic instructions from the Cake prototype.",
+  "realWorldExample": "When you create an array `let arr = []`, you can immediately use `arr.push()`. You didn't write the `push` function! Your array inherited it from the `Array.prototype` object built into JavaScript.",
+  "useCases": [
+    "Sharing methods across multiple object instances to save memory",
+    "Implementing classical Object-Oriented patterns (Inheritance)",
+    "Extending built-in objects (though generally discouraged)"
+  ],
+  "questions": {
+    "basic": [
+      "What is a prototype in JavaScript?",
+      "How do you access an object's prototype?"
+    ],
+    "intermediate": [
+      "What is the prototype chain?",
+      "What is the difference between __proto__ and prototype?"
+    ],
+    "advanced": [
+      "How does Object.create() work?",
+      "What happens when a method is called that doesn't exist on the object itself?"
+    ],
+    "trick": [
+      "What is the prototype of Object.prototype?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the prototype chain?",
+      "answer": "When you try to access a property on an object, JS first checks the object itself. If it's not there, it checks the object's prototype, then the prototype's prototype, and so on, until it finds the property or reaches null. This chain of links is the prototype chain."
+    },
+    {
+      "question": "What is the difference between __proto__ and prototype?",
+      "answer": "'__proto__' is the actual object that is used in the lookup chain to resolve methods, etc. 'prototype' is the object that is used to build '__proto__' when you create an object with 'new'."
+    },
+    {
+      "question": "What is the prototype of Object.prototype?",
+      "answer": "null. This is the end of the prototype chain."
+    }
+  ],
+  "codeExample": "const animal = {\n  eats: true,\n  walk() {\n    console.log(\"Animal walk\");\n  }\n};\n\n// Create a new object that inherits from 'animal'\nconst rabbit = Object.create(animal);\nrabbit.jumps = true;\n\nconsole.log(rabbit.jumps); // true (from rabbit itself)\nconsole.log(rabbit.eats);  // true (inherited from animal)\n\nrabbit.walk(); // \"Animal walk\" (inherited method)\n\n// Checking prototypes\nconsole.log(Object.getPrototypeOf(rabbit) === animal); // true"
+}

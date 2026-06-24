@@ -1,0 +1,31 @@
+{
+  "id": "data-warehouse",
+  "title": "Data Warehouse",
+  "difficulty": "Advanced",
+  "definition": "Massive, specialized databases designed specifically for complex data analytics, reporting, and Business Intelligence (BI). They aggregate petabytes of historical data from multiple sources.",
+  "simpleExplanation": "A standard database is optimized for 'Write fast' (a user buying a shirt). A Data Warehouse is optimized for 'Read massively' (the CEO running a 5-year trend analysis on every shirt ever sold).",
+  "realWorldExample": "AWS Redshift, Azure Synapse Analytics, GCP BigQuery. Every night, a company exports all the sales data from their transactional database and dumps it into BigQuery. Data scientists then write massive SQL queries against BigQuery to generate machine learning models without slowing down the live website.",
+  "useCases": [
+    "Business Intelligence",
+    "Big Data Analytics",
+    "OLAP (Online Analytical Processing)"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use a Data Warehouse to handle the live login authentication for your website users?"
+    ],
+    "intermediate": [
+      "Why do Data Warehouses use 'Columnar Storage' instead of traditional Row-based storage?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use for live logins?",
+      "answer": "Absolutely not. They are terrible at rapid, single-row transactions. They are designed for scanning millions of rows at once for analytics."
+    },
+    {
+      "question": "Why Columnar Storage?",
+      "answer": "If an analyst writes `SELECT Total_Sales FROM Orders`, a traditional row-database has to read the entire row (Name, Address, Date) just to find the Sales number. A Columnar database stores all the 'Total_Sales' data together on the disk, allowing it to aggregate the sum 100x faster."
+    }
+  ]
+}

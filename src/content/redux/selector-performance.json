@@ -1,0 +1,31 @@
+{
+  "id": "selector-performance",
+  "title": "Selector Performance",
+  "difficulty": "Advanced",
+  "definition": "The study of how poorly written selectors can destroy React performance by forcing components to re-render even when the Redux state hasn't meaningfully changed.",
+  "simpleExplanation": "`useSelector` uses strict equality (`===`) to check if data changed. If your selector returns a literal object `{}` or uses `.filter()`, it creates a NEW memory address every single time it runs. `useSelector` sees a new memory address, thinks the data changed, and forces your component to re-render, creating a devastating performance loop.",
+  "realWorldExample": "A component that uses `useSelector(state => state.items.filter(i => i.active))`. Every time ANY action is dispatched in the entire app, this component will needlessly re-render.",
+  "useCases": [
+    "Fixing sluggish React apps",
+    "Profiling Redux DevTools"
+  ],
+  "questions": {
+    "basic": [
+      "Why is returning an object literal like `useSelector(state => { data: state.data })` a terrible idea?"
+    ],
+    "intermediate": [
+      "How does RTK's `shallowEqual` utility help with selector performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why object literal bad?",
+      "answer": "Because `{}` always creates a brand new object in memory. Redux compares the old object to the new object, sees they have different memory addresses, and forces a re-render."
+    },
+    {
+      "question": "shallowEqual?",
+      "answer": "You can pass `shallowEqual` as a second argument to `useSelector`. It tells Redux to check the contents of the object (`obj.a === obj.a`), rather than just checking the memory address. This prevents the unnecessary re-render."
+    }
+  ],
+  "codeExample": "// ❌ DISASTER: .map() creates a new array every time ANY state changes!\n// The component will re-render constantly, killing performance.\nconst activeIds = useSelector(state => \n  state.todos.filter(t => t.active).map(t => t.id)\n);\n\n// ✅ FIX 1: Use a memoized selector (createSelector)\nconst activeIds = useSelector(selectActiveTodoIds);\n\n// ✅ FIX 2: Use the shallowEqual comparison function\nimport { useSelector, shallowEqual } from 'react-redux';\n\nconst activeIds = useSelector(\n  state => state.todos.filter(t => t.active).map(t => t.id), \n  shallowEqual // Tells Redux: 'Only re-render if the actual items inside the array changed'\n);"
+}

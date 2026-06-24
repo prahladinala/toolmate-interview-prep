@@ -1,0 +1,30 @@
+{
+  "id": "df",
+  "title": "df",
+  "difficulty": "Beginner",
+  "definition": "Disk Free. A command used to display the amount of available and used disk space on file systems.",
+  "simpleExplanation": "The 'How full is my hard drive?' command.",
+  "realWorldExample": "A database crashes. The admin types `df -h`. The output shows `/dev/sda1` is `100%` full. The database crashed because it ran out of hard drive space.",
+  "useCases": [
+    "Disk space monitoring",
+    "Preventing outages"
+  ],
+  "questions": {
+    "basic": [
+      "What does the highly popular `-h` flag do in the command `df -h`?"
+    ],
+    "intermediate": [
+      "Does `df` tell you exactly which specific folder is taking up all the space?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is -h?",
+      "answer": "Human-readable. Instead of printing disk space in millions of confusing bytes, it prints it in Megabytes (M) and Gigabytes (G)."
+    },
+    {
+      "question": "Does it show folders?",
+      "answer": "No. `df` only shows the summary of the entire physical hard drive partition. To find out *which* folder is full, you must use the `du` command."
+    }
+  ]
+}

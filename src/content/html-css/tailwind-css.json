@@ -1,0 +1,31 @@
+{
+  "id": "tailwind-css",
+  "title": "Tailwind CSS",
+  "difficulty": "Advanced",
+  "definition": "A utility-first CSS framework packed with classes like `flex`, `pt-4`, `text-center`, and `rotate-90` that can be composed to build any design, directly in your markup.",
+  "simpleExplanation": "You almost never write custom CSS again. Instead of creating a `.card` class and writing 10 lines of CSS, you just slap 10 pre-made utility classes directly onto the HTML element: `<div class=\"bg-white rounded-lg shadow-md p-6\">`. It looks ugly in the HTML, but it allows you to build UIs 10x faster.",
+  "realWorldExample": "The absolute industry standard for modern React and Next.js development. It removes the need to ever switch back and forth between your HTML file and your CSS file.",
+  "useCases": [
+    "Rapid prototyping",
+    "Massive team environments where naming CSS classes causes arguments"
+  ],
+  "questions": {
+    "basic": [
+      "What does 'utility-first' mean?"
+    ],
+    "intermediate": [
+      "If you put 50 Tailwind classes on an element, doesn't it make the final CSS file massive?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Utility-first?",
+      "answer": "It means the framework doesn't give you pre-built components (like a `<button class=\"btn-primary\">`). It gives you low-level utilities (like `bg-blue-500`, `text-white`, `px-4`) that do exactly one thing, and you combine them to build the component yourself."
+    },
+    {
+      "question": "Massive CSS file?",
+      "answer": "No! Tailwind has a compiler (PurgeCSS). Before deploying to production, it scans your HTML, finds exactly which utility classes you actually used, and deletes the other 95% of the framework. Tailwind production CSS files are often incredibly tiny (under 10kb)."
+    }
+  ],
+  "codeExample": "<!-- \n  This is how you build a card in Tailwind WITHOUT writing a single line of custom CSS. \n  (Note: The sandbox runs Vanilla CSS, so these classes won't render here unless Tailwind is installed, but the structure is what matters!)\n-->\n\n<div class=\"max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl\">\n  <div class=\"md:flex\">\n    <div class=\"md:shrink-0\">\n      <!-- h-48 = height: 12rem, w-full = width: 100%, object-cover = object-fit: cover -->\n      <img class=\"h-48 w-full object-cover md:h-full md:w-48\" src=\"https://placehold.co/200\" alt=\"Building\">\n    </div>\n    <div class=\"p-8\">\n      <!-- uppercase = text-transform, tracking-wide = letter-spacing, text-indigo-500 = color -->\n      <div class=\"uppercase tracking-wide text-sm text-indigo-500 font-semibold\">\n        Company Retreat\n      </div>\n      <p class=\"mt-2 text-slate-500\">\n        Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.\n      </p>\n    </div>\n  </div>\n</div>"
+}

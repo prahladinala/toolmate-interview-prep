@@ -1,0 +1,38 @@
+{
+  "id": "sessions",
+  "title": "Sessions & Cookies",
+  "difficulty": "Intermediate",
+  "definition": "A stateful authentication mechanism where the server stores user data in its memory (or a database/Redis) and gives the client a tiny unique ID (stored in a cookie) to reference that memory.",
+  "simpleExplanation": "JWTs are like passports; all the information is carried by the user. Sessions are like a coat check at a club. The server takes your coat (your user data), puts it in a secure closet, and hands you a tiny numbered ticket (the Session ID Cookie). When you want your data, you hand the server the ticket, and the server looks up your data in its closet.",
+  "realWorldExample": "Using the `express-session` package. The user logs in, and you write `req.session.userId = user._id`. Node automatically generates a random cookie, sends it to the browser, and saves the user data in Redis.",
+  "useCases": [
+    "Traditional monolithic web apps",
+    "Applications requiring strict, instant logout/revocation capabilities"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Cookie?"
+    ],
+    "intermediate": [
+      "What is the primary difference between JWT and Session authentication?"
+    ],
+    "advanced": [
+      "Why is storing Sessions in the default Node.js memory dangerous in production?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Cookie?",
+      "answer": "A small piece of text data that a server sends to a user's web browser. The browser automatically saves it and sends it back to the server with every future request."
+    },
+    {
+      "question": "JWT vs Session?",
+      "answer": "JWT is Stateless (the server remembers nothing, all data is in the token). Sessions are Stateful (the server stores the data, the token is just a random ID pointer)."
+    },
+    {
+      "question": "Why is memory storage dangerous?",
+      "answer": "Two reasons. 1: If the Node server crashes, all memory is wiped, logging every single user out instantly. 2: If you scale horizontally (run 3 Node servers), Server A doesn't share memory with Server B. A user logged into Server A will be 'unauthenticated' if the load balancer routes their next request to Server B. You MUST store sessions in an external database like Redis."
+    }
+  ],
+  "codeExample": "/* \n  npm install express-session\n*/\n\n// 1. Setting up the middleware\n// app.use(session({\n//   secret: 'my_secret_key',\n//   resave: false,\n//   saveUninitialized: false,\n//   cookie: { secure: true, httpOnly: true }\n// }));\n\n// 2. Logging In (Setting session data)\n// app.post('/login', (req, res) => {\n//   if (req.body.password === '123') {\n//     req.session.user = \"Alice\"; // The server stores this in RAM/Redis!\n//     res.send(\"Logged in!\"); // A cookie is automatically sent to the browser.\n//   }\n// });\n\n// 3. Authenticated Route (Reading session data)\n// app.get('/dashboard', (req, res) => {\n//   if (req.session.user) {\n//     res.send(`Welcome to your dashboard, ${req.session.user}`);\n//   } else {\n//     res.status(401).send(\"Please log in.\");\n//   }\n// });\n\nconsole.log(\"Sessions are stateful. The server must look up the Session ID in a database on every single request.\");"
+}

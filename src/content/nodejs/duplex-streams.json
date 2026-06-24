@@ -1,0 +1,31 @@
+{
+  "id": "duplex-streams",
+  "title": "Duplex Streams",
+  "difficulty": "Advanced",
+  "definition": "A stream that implements both Readable and Writable interfaces. It represents a two-way communication channel.",
+  "simpleExplanation": "A Walkie-Talkie or a Telephone. You can speak into it (Writable) AND you can listen to it (Readable) at the exact same time. The data you write is entirely independent of the data you read.",
+  "realWorldExample": "A TCP Network Socket. When a user connects to your multiplayer game, you get a Duplex Stream. You `read` from it to see their joystick movements, and you `write` to it to send them the positions of the other players.",
+  "useCases": [
+    "Network sockets (TCP)",
+    "WebSockets"
+  ],
+  "questions": {
+    "basic": [
+      "What is an example of a Duplex stream?"
+    ],
+    "intermediate": [
+      "Is the readable side connected to the writable side in a Duplex stream?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Example of a Duplex stream?",
+      "answer": "A TCP socket connection (`net.Socket`)."
+    },
+    {
+      "question": "Are they connected?",
+      "answer": "No. In a standard Duplex stream, the read and write channels are independent. If you want a stream where the output depends on the input (like compressing a file), you use a `Transform` stream instead."
+    }
+  ],
+  "codeExample": "const { Duplex } = require('stream');\n\n// Creating a custom Duplex stream from scratch\nconst myDuplex = new Duplex({\n  // The Writable side\n  write(chunk, encoding, callback) {\n    console.log(`[Duplex Received]: ${chunk.toString()}`);\n    callback(); // Signals we are ready for the next chunk\n  },\n  // The Readable side\n  read(size) {\n    this.push(\"Hello from Duplex!\");\n    this.push(null); // Signifies the end of the readable data\n  }\n});\n\n// Using the Readable side\nmyDuplex.on('data', (chunk) => {\n  console.log(`[Duplex Sent]: ${chunk.toString()}`);\n});\n\n// Using the Writable side\nmyDuplex.write(\"I am sending data to the duplex!\");\nmyDuplex.end();"
+}

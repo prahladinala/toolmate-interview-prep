@@ -1,0 +1,32 @@
+{
+  "id": "border",
+  "title": "Borders",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the width, style, and color of an element's borders.",
+  "simpleExplanation": "Drawing a line around a box. You need three things: Width (`border`), Color (`border-blue-500`), and Style (solid is default, but you can use `border-dashed`).",
+  "realWorldExample": "Creating a clean divider line between two sections using `border-t border-gray-200` (border-top, light gray).",
+  "useCases": [
+    "Cards",
+    "Dividers",
+    "Input fields"
+  ],
+  "questions": {
+    "basic": [
+      "If you only type `border-blue-500`, will a border appear?"
+    ],
+    "intermediate": [
+      "How do you apply a border ONLY to the bottom of an element?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Only color?",
+      "answer": "No. You MUST include the `border` class to actually give the border a 1px width. Without a width, the color has nowhere to paint."
+    },
+    {
+      "question": "Only bottom?",
+      "answer": "Use `border-b`."
+    }
+  ],
+  "codeExample": "<!-- Standard 1px Card Border -->\n<div class=\"border border-gray-300 p-4\">\n  Basic Card\n</div>\n\n<!-- A thick, dashed dropzone border -->\n<div class=\"border-4 border-dashed border-blue-400 bg-blue-50 p-10 text-center\">\n  Drag and drop files here\n</div>\n\n<!-- Just a bottom border (great for list items) -->\n<ul>\n  <li class=\"border-b border-gray-200 py-2\">Item 1</li>\n  <li class=\"border-b border-gray-200 py-2\">Item 2</li>\n</ul>"
+}

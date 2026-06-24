@@ -1,0 +1,32 @@
+{
+  "id": "reinforcement-learning",
+  "title": "Reinforcement Learning",
+  "difficulty": "Intermediate",
+  "definition": "A Machine Learning approach where an 'agent' learns to make decisions by performing actions in an environment to maximize a cumulative reward. It learns through trial and error.",
+  "simpleExplanation": "Training a dog. When the computer does something right, you give it a treat (+1 point). When it does something wrong, you scold it (-1 point). Eventually, the computer figures out how to act to get the maximum number of treats.",
+  "realWorldExample": "Teaching an AI to play Super Mario. The AI starts by pressing random buttons. If it dies, it loses points. If it moves right and collects coins, it gains points. After 10,000 attempts, it learns how to beat the level flawlessly.",
+  "useCases": [
+    "Robotics",
+    "Video game AI",
+    "Autonomous driving",
+    "LLM fine-tuning (RLHF)"
+  ],
+  "questions": {
+    "basic": [
+      "In Reinforcement Learning, how does the agent know if it made a good decision?"
+    ],
+    "intermediate": [
+      "What is the 'Exploration vs Exploitation' trade-off in Reinforcement Learning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does it know?",
+      "answer": "By receiving a 'Reward' signal (a numerical score) from the environment."
+    },
+    {
+      "question": "Exploration vs Exploitation?",
+      "answer": "The dilemma the agent faces: Should it stick to the safe actions it already knows will give it a guaranteed reward (Exploitation), or should it try brand new, unknown actions to see if an even bigger reward exists (Exploration)?"
+    }
+  ]
+}

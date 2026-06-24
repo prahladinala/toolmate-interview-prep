@@ -1,0 +1,32 @@
+{
+  "id": "redirects",
+  "title": "Redirects",
+  "difficulty": "Beginner",
+  "definition": "Forcefully navigating a user from one URL to another, either via `next.config.js` (static) or Middleware/Server Actions (dynamic).",
+  "simpleExplanation": "A user types `/old-blog` into their browser. You deleted that page and moved it to `/new-blog`. A redirect instantly pushes them to the new URL so they don't get a 404 Error page.",
+  "realWorldExample": "When a company rebrands and changes their domain structure, they use 301 (Permanent) redirects to ensure all old Google Search links instantly point to the new website.",
+  "useCases": [
+    "SEO preservation",
+    "Authentication gates",
+    "Legacy URL support"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a 301 and a 302 redirect?"
+    ],
+    "intermediate": [
+      "How do you trigger a redirect from within a Next.js Server Action after a successful form submission?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "301 vs 302?",
+      "answer": "301 is Permanent (tells Google 'I moved forever, update your search results'). 302 is Temporary (tells Google 'I moved for today, but keep the old link in your search results')."
+    },
+    {
+      "question": "Server Action redirect?",
+      "answer": "By importing and calling the `redirect('/new-url')` function from `next/navigation`."
+    }
+  ],
+  "codeExample": "// 1. Static Redirects (next.config.js)\nmodule.exports = {\n  async redirects() {\n    return [\n      {\n        source: '/old-about',\n        destination: '/about-us',\n        permanent: true, // Triggers a 301\n      },\n    ]\n  }\n}\n\n// 2. Dynamic Redirect (Middleware)\nexport function middleware(request) {\n  if (!isLoggedIn) {\n    return NextResponse.redirect(new URL('/login', request.url));\n  }\n}"
+}

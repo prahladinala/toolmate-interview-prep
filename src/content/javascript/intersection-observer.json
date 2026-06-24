@@ -1,0 +1,35 @@
+{
+  "id": "intersection-observer",
+  "title": "Intersection Observer",
+  "difficulty": "Advanced",
+  "definition": "A browser API that provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.",
+  "simpleExplanation": "Instead of using a scroll listener that fires 1000 times a second to do complex math to ask 'Is this image on the screen yet?', you hire a security guard (Intersection Observer). You tell the guard, 'Tap me on the shoulder the exact second this image enters the screen.'",
+  "realWorldExample": "Infinite Scrolling. You place an invisible `<div>` at the bottom of your list. When the Intersection Observer sees that `<div>` enter the screen, it fetches the next page of API results.",
+  "useCases": [
+    "Lazy loading images",
+    "Infinite scrolling",
+    "Triggering animations on scroll"
+  ],
+  "questions": {
+    "basic": [
+      "Why is Intersection Observer better than a `scroll` event listener?"
+    ],
+    "intermediate": [
+      "What is the `threshold` option?"
+    ],
+    "advanced": [
+      "How do you stop observing an element once it has loaded?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is it better than a scroll listener?",
+      "answer": "Scroll listeners run synchronously on the main thread, causing severe performance jank. Intersection Observer runs asynchronously off the main thread, vastly improving performance."
+    },
+    {
+      "question": "What is the threshold?",
+      "answer": "It is a number between 0 and 1 indicating how much of the element must be visible before the callback fires. `0` means '1 pixel has entered'. `1.0` means 'The entire element is 100% visible on screen'."
+    }
+  ],
+  "codeExample": "const observer = new IntersectionObserver((entries, observerInstance) => {\n  entries.forEach(entry => {\n    if (entry.isIntersecting) {\n      console.log('Element has entered the viewport!');\n      const img = entry.target;\n      img.src = img.dataset.src; // Lazy load the image\n      \n      // Stop watching it once it's loaded to save memory\n      observerInstance.unobserve(img);\n    }\n  });\n}, { threshold: 0.1 }); // Fire when 10% visible\n\n// Start watching an element\nconst target = document.querySelector('.lazy-image');\nobserver.observe(target);"
+}

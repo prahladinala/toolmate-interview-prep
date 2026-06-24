@@ -1,0 +1,31 @@
+{
+  "id": "5xx",
+  "title": "5xx Server Errors",
+  "difficulty": "Beginner",
+  "definition": "HTTP status codes ranging from 500-599. They indicate that the SERVER failed to fulfill a completely valid request due to an internal crash, bug, or overload.",
+  "simpleExplanation": "The server saying: 'You did everything right, but I broke. My database crashed, my code has a typo, or I am on fire. Please try again later.'",
+  "realWorldExample": "A backend developer writes `console.log(user.name)` but `user` is undefined. The Node.js server crashes entirely and returns a `500 Internal Server Error` to the frontend.",
+  "useCases": [
+    "Server monitoring",
+    "Downtime alerts"
+  ],
+  "questions": {
+    "basic": [
+      "Who is at fault when a 5xx error occurs: The Frontend Developer or the Backend Developer?"
+    ],
+    "intermediate": [
+      "What does a `502 Bad Gateway` mean in a microservices architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who is at fault?",
+      "answer": "The Backend Developer (The Server). The client sent a perfect request, but the server failed to handle it."
+    },
+    {
+      "question": "What is 502 Bad Gateway?",
+      "answer": "It means one server (like an NGINX load balancer) tried to talk to another server (like your Node.js app), but your Node.js app was dead/offline, so the load balancer returned a 502 to the user."
+    }
+  ],
+  "codeExample": "app.get('/api/fragile-endpoint', async (req, res) => {\n  try {\n    // A perfect request from the client!\n    const data = req.body;\n    \n    // BUT... the database server is unplugged from the wall!\n    const result = await db.query('SELECT * FROM users');\n    \n    res.status(200).json(result);\n\n  } catch (error) {\n    // The server catches its own failure, logs it for the backend dev,\n    // and sends a 500 code to the frontend dev.\n    console.error(\"DATABASE IS ON FIRE:\", error);\n    \n    res.status(500).json({\n      error: \"Internal Server Error. Our engineers have been notified.\"\n    });\n  }\n});"
+}

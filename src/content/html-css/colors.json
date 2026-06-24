@@ -1,0 +1,32 @@
+{
+  "id": "colors",
+  "title": "Colors",
+  "difficulty": "Beginner",
+  "definition": "CSS allows you to apply colors to text, backgrounds, and borders using several different formats: Keywords, HEX, RGB/RGBA, and HSL/HSLA.",
+  "simpleExplanation": "There's more than one way to say 'Red'. You can use the word `red`, the Hexadecimal code `#ff0000`, the RGB mix `rgb(255, 0, 0)`, or the Hue-Saturation-Lightness mix `hsl(0, 100%, 50%)`. The 'A' in RGBA and HSLA stands for 'Alpha' (transparency).",
+  "realWorldExample": "Creating a beautiful glassmorphism effect using `rgba(255, 255, 255, 0.5)` to make a white background 50% see-through.",
+  "useCases": [
+    "Theming",
+    "Gradients",
+    "Opacity and transparency"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 4th value in `rgba(0, 0, 0, 0.5)` do?"
+    ],
+    "intermediate": [
+      "Why do designers prefer HSL over HEX codes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does the 4th value do?",
+      "answer": "It controls the Alpha channel (Opacity). 1 is completely solid. 0 is completely invisible. 0.5 is 50% transparent."
+    },
+    {
+      "question": "Why HSL?",
+      "answer": "It is intuitive. If you have a blue button and you want to make it slightly darker when the user hovers over it, with HEX you have to guess random letters and numbers. With HSL, you just lower the 'Lightness' percentage from 50% to 40%."
+    }
+  ],
+  "codeExample": "<style>\n  div {\n    padding: 20px;\n    margin-bottom: 10px;\n    color: white;\n    font-weight: bold;\n    border-radius: 5px;\n  }\n\n  /* 1. Keyword (Simple, but limited to 140 specific colors) */\n  .keyword {\n    background-color: crimson;\n  }\n\n  /* 2. HEX Code (The web standard) */\n  .hex {\n    background-color: #3b82f6;\n  }\n\n  /* 3. RGBA (Allows transparency!) */\n  /* Red: 0, Green: 0, Blue: 0 (Black). Alpha: 0.7 (70% solid) */\n  .rgba {\n    background-color: rgba(0, 0, 0, 0.7);\n  }\n\n  /* 4. HSL (Hue, Saturation, Lightness) */\n  /* Hue 120 is Green. 100% Saturation. 40% Lightness. */\n  .hsl {\n    background-color: hsl(120, 100%, 40%);\n  }\n</style>\n\n<div class=\"keyword\">Keyword: Crimson</div>\n<div class=\"hex\">HEX: #3b82f6 (Blue)</div>\n<div class=\"rgba\">RGBA: 70% Opaque Black</div>\n<div class=\"hsl\">HSL: Green</div>"
+}

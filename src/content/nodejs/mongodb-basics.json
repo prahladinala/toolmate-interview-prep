@@ -1,0 +1,32 @@
+{
+  "id": "mongodb-basics",
+  "title": "MongoDB Basics",
+  "difficulty": "Beginner",
+  "definition": "A popular NoSQL document database used heavily with Node.js. It stores data in flexible, JSON-like documents rather than rigid tables.",
+  "simpleExplanation": "Imagine an Excel spreadsheet where every row must have the exact same columns (SQL). MongoDB throws that out the window. It is a giant folder of JSON files. One user can have `{ name: \"Alice\" }`, and the next user can have `{ name: \"Bob\", favoriteColors: [\"red\"], nestedData: { age: 20 } }`. It's incredibly flexible and perfectly matches how JavaScript writes data.",
+  "realWorldExample": "It is the 'M' in the MERN stack. Developers use MongoDB for catalogs, user profiles, and logs where the data structure frequently changes over time.",
+  "useCases": [
+    "Rapid prototyping",
+    "Storing unstructured data",
+    "High-volume write operations"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Document' in MongoDB?"
+    ],
+    "intermediate": [
+      "What is a 'Collection' in MongoDB?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Document?",
+      "answer": "A single record of data, formatted exactly like a JavaScript Object (JSON/BSON)."
+    },
+    {
+      "question": "What is a Collection?",
+      "answer": "A grouping of MongoDB documents. It is the equivalent of a 'Table' in SQL databases. (e.g., The 'Users' collection holds all the User documents)."
+    }
+  ],
+  "codeExample": "// --- MONGODB CORE CONCEPTS ---\n\n// 1. A Document (A single record)\nconst userDoc = {\n  _id: \"5f9b3b3b3b3b3b3b3b3b3b3b\", // Auto-generated unique ID\n  name: \"Alice\",\n  role: \"Admin\",\n  tags: [\"fast\", \"responsive\"]\n};\n\n// 2. A Collection (A folder of documents)\n// A 'Users' collection might contain millions of userDocs.\n\n// 3. The Database (A grouping of collections)\n// An 'E-Commerce' database contains the 'Users', 'Products', and 'Orders' collections.\n\nconsole.log(\"MongoDB data natively looks exactly like JavaScript objects, which makes it a developer favorite for Node.js!\");"
+}

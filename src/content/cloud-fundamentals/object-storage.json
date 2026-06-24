@@ -1,0 +1,31 @@
+{
+  "id": "object-storage",
+  "title": "Object Storage (S3 / Blob Storage)",
+  "difficulty": "Beginner",
+  "definition": "A highly scalable storage architecture that manages data as distinct units (objects) rather than files in a folder hierarchy or blocks on a disk. Objects contain the data, metadata, and a globally unique identifier.",
+  "simpleExplanation": "The infinite cloud bucket. You throw files (images, videos, backups) into the bucket. You don't format drives or worry about running out of space. You get a URL to access the file.",
+  "realWorldExample": "AWS S3, Azure Blob Storage, GCP Cloud Storage. When you upload a profile picture to Facebook, they don't save it on a physical hard drive in a folder. They upload it to Object Storage, which replicates the picture across multiple data centers instantly.",
+  "useCases": [
+    "Storing images/videos",
+    "Static website hosting",
+    "Data lakes/backups"
+  ],
+  "questions": {
+    "basic": [
+      "Can you install a Windows Operating System on an Object Storage drive (like S3)?"
+    ],
+    "intermediate": [
+      "What is a 'Storage Class' or 'Storage Tier' in Object Storage?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install an OS?",
+      "answer": "No! Object storage is purely for storing static files. It cannot run operating systems or databases. For that, you need Block Storage."
+    },
+    {
+      "question": "What are Storage Tiers?",
+      "answer": "Pricing levels based on how often you access data. 'Standard' is for daily access (expensive storage, cheap retrieval). 'Archive/Glacier' is for data you haven't touched in 5 years (incredibly cheap storage, but costs money and takes hours to retrieve)."
+    }
+  ]
+}

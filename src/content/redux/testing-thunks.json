@@ -1,0 +1,30 @@
+{
+  "id": "testing-thunks",
+  "title": "Testing Async Thunks",
+  "difficulty": "Advanced",
+  "definition": "Writing tests for asynchronous logic, requiring you to mock the Redux store, mock the API responses, and verify that the correct sequence of actions (`pending`, `fulfilled`) were dispatched.",
+  "simpleExplanation": "Testing API calls is hard because you don't want your test suite to ACTUALLY hit your production database. You have to 'Mock' (fake) the `fetch` function so it instantly returns fake data. Then, you track the Thunk to make sure it dispatched the `fulfilled` action with that fake data.",
+  "realWorldExample": "Using the `redux-mock-store` library or standard `configureStore` in a test file to intercept API calls.",
+  "useCases": [
+    "Testing API integration logic"
+  ],
+  "questions": {
+    "basic": [
+      "Should your unit tests make real network requests to your live database?"
+    ],
+    "intermediate": [
+      "What library is highly recommended for mocking network requests in modern Redux tests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Real network requests?",
+      "answer": "NEVER. Unit tests must be fast and deterministic. Network requests are slow and can fail if the wifi drops. You must 'mock' (fake) the responses."
+    },
+    {
+      "question": "Recommended library?",
+      "answer": "Mock Service Worker (MSW). It intercepts requests at the network level, providing incredibly realistic fake responses for your Thunks and RTK Query endpoints."
+    }
+  ],
+  "codeExample": "import configureMockStore from 'redux-mock-store';\nimport thunk from 'redux-thunk';\nimport { fetchUser } from './userActions';\n\nconst mockStore = configureMockStore([thunk]);\n\nit('creates FETCH_SUCCESS when fetching user has been done', async () => {\n  // 1. Fake the global fetch API to return a fake user\n  global.fetch = jest.fn(() =>\n    Promise.resolve({\n      json: () => Promise.resolve({ name: 'John' }),\n    })\n  );\n\n  // 2. Create a fake Redux store\n  const store = mockStore({ users: [] });\n\n  // 3. Dispatch the Thunk\n  await store.dispatch(fetchUser());\n\n  // 4. Verify the exact sequence of actions that were fired!\n  const actions = store.getActions();\n  expect(actions[0].type).toEqual('users/fetch/pending');\n  expect(actions[1].type).toEqual('users/fetch/fulfilled');\n  expect(actions[1].payload).toEqual({ name: 'John' });\n});"
+}

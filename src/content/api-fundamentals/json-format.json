@@ -1,0 +1,32 @@
+{
+  "id": "json-format",
+  "title": "JSON Format",
+  "difficulty": "Beginner",
+  "definition": "JavaScript Object Notation. A lightweight, text-based, language-independent data interchange format that is easy for humans to read and write, and easy for machines to parse and generate.",
+  "simpleExplanation": "Before JSON, servers sent data using XML, which was horribly ugly, bloated, and hard to read. JSON looks exactly like a standard JavaScript object (with a few strict rules). It is now the undisputed universal language of Web APIs.",
+  "realWorldExample": "A Python backend querying a Postgres database, formatting the result as a JSON string, sending it over the internet, and a React frontend parsing that JSON string back into a usable object.",
+  "useCases": [
+    "API payloads",
+    "Configuration files",
+    "Data storage"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main syntax difference between a standard JavaScript Object and valid JSON?"
+    ],
+    "intermediate": [
+      "Can you store a JavaScript `Function` or a `Date` object directly inside JSON?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Syntax difference?",
+      "answer": "In JSON, ALL keys (property names) MUST be wrapped in double quotes (e.g., `\"name\": \"John\"`). Single quotes are forbidden."
+    },
+    {
+      "question": "Store functions or dates?",
+      "answer": "No! JSON is strictly text. It only supports Strings, Numbers, Booleans, Null, Arrays, and nested Objects. To store a Date, you must convert it to an ISO string first (`\"2024-05-23T00:00:00Z\"`). Functions cannot be serialized at all."
+    }
+  ],
+  "codeExample": "/* \n  Valid JSON vs Invalid JSON \n*/\n\n// ❌ INVALID JSON (Keys lack quotes, uses single quotes, trailing comma)\n{\n  name: 'John',\n  age: 30,\n}\n\n// ✅ VALID JSON (Strict double quotes on keys and strings, no trailing commas)\n{\n  \"name\": \"John\",\n  \"age\": 30,\n  \"isAdmin\": false,\n  \"hobbies\": [\"reading\", \"gaming\"],\n  \"address\": {\n    \"city\": \"New York\"\n  },\n  \"spouse\": null\n}\n\n// Translating between JS and JSON\nconst jsObject = { a: 1 };\nconst jsonString = JSON.stringify(jsObject); // Turns into text for the network\nconst backToObject = JSON.parse(jsonString); // Turns back into JS object"
+}

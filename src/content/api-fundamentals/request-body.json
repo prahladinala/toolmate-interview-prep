@@ -1,0 +1,32 @@
+{
+  "id": "request-body",
+  "title": "Request Body",
+  "difficulty": "Beginner",
+  "definition": "The data payload sent by the client to the server in a POST, PUT, or PATCH request.",
+  "simpleExplanation": "If the URL is the envelope address, the Body is the letter inside. You use it to send massive amounts of data (like a 5-page essay, a complex JSON object, or a video file) securely to the server.",
+  "realWorldExample": "A user fills out a 20-field registration form. The frontend grabs all 20 fields, bundles them into a JSON object, and stuffs them into the Request Body of a POST request.",
+  "useCases": [
+    "Form submissions",
+    "File uploads",
+    "Complex data transfer"
+  ],
+  "questions": {
+    "basic": [
+      "Does a GET request normally have a Request Body?"
+    ],
+    "intermediate": [
+      "If you send a JSON Request Body, what HTTP Header MUST you include so the server knows how to read it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "GET request body?",
+      "answer": "No. GET requests should not have a body. If you need to send data with a GET request, use Query Parameters in the URL."
+    },
+    {
+      "question": "Which Header?",
+      "answer": "`Content-Type: application/json`. If you forget this, the server might think you sent plain text and will fail to parse your data."
+    }
+  ],
+  "codeExample": "// Frontend sending a Request Body\nfetch('https://api.com/users', {\n  method: 'POST',\n  // CRITICAL: Tell the server this is JSON!\n  headers: { 'Content-Type': 'application/json' },\n  // The BODY must be converted to a string before sending over the network\n  body: JSON.stringify({\n    username: \"johndoe\",\n    password: \"secret123\",\n    preferences: { theme: \"dark\" }\n  })\n});\n\n// Backend receiving the Request Body (Express.js)\n// Note: You must use app.use(express.json()) middleware for this to work!\napp.post('/users', (req, res) => {\n  const username = req.body.username; // \"johndoe\"\n  const theme = req.body.preferences.theme; // \"dark\"\n});"
+}

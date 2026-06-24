@@ -1,0 +1,38 @@
+{
+  "id": "jwt-refresh-token",
+  "title": "Access Token vs Refresh Token",
+  "difficulty": "Advanced",
+  "definition": "A dual-token authentication architecture designed to maximize security while maintaining a seamless user experience.",
+  "simpleExplanation": "JWTs cannot be easily revoked. If a hacker steals your JWT, they own your account until the token expires. To fix this, we use TWO tokens. \n1. The Access Token: Lives for only 15 minutes. It is used for all API requests. If stolen, the hacker only has 15 minutes.\n2. The Refresh Token: Lives for 30 days, saved securely in an `httpOnly` cookie. It can only do ONE thing: ask the server for a new 15-minute Access Token.",
+  "realWorldExample": "You log into Spotify. You never have to log in again. Spotify gives you a 15-minute access token and a 30-day refresh token. Every 15 minutes in the background, the app silently uses the refresh token to get a new access token without interrupting your music.",
+  "useCases": [
+    "High-security enterprise apps",
+    "Seamless mobile app logins"
+  ],
+  "questions": {
+    "basic": [
+      "Why not just make the Access Token last for 30 days?"
+    ],
+    "intermediate": [
+      "Where is the safest place to store a Refresh Token in a web browser?"
+    ],
+    "advanced": [
+      "What is Refresh Token Rotation?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not make Access Token last 30 days?",
+      "answer": "Security. Because Access Tokens are stateless and cannot easily be revoked, if someone steals it (via XSS), they have full access to the user's account for 30 days."
+    },
+    {
+      "question": "Safest place to store it?",
+      "answer": "An `httpOnly` cookie. This prevents any JavaScript (and therefore any XSS hackers) from ever reading the token. `localStorage` is highly vulnerable to XSS attacks."
+    },
+    {
+      "question": "What is Rotation?",
+      "answer": "A security feature where every time the Refresh Token is used to get a new Access Token, the server ALSO issues a brand new Refresh Token and invalidates the old one. If a hacker steals a refresh token and uses it, the user's token becomes invalid, alerting the system to a breach."
+    }
+  ],
+  "codeExample": "// --- THE FLOW ---\n\nconsole.log(\"1. User logs in.\");\nconsole.log(\"2. Server issues Access Token (15m) and Refresh Token (30d).\");\n\nconsole.log(\"3. User clicks 'View Dashboard'. Client attaches Access Token to header.\");\nconsole.log(\"4. Server verifies Access Token. Grants access.\\n\");\n\nconsole.log(\"--- 16 MINUTES LATER ---\");\nconsole.log(\"5. User clicks 'View Profile'. Client sends Access Token.\");\nconsole.log(\"6. Server rejects! '401 Unauthorized - Token Expired'.\");\n\nconsole.log(\"7. Client silently catches the 401. Sends the Refresh Token to the /refresh-token endpoint.\");\nconsole.log(\"8. Server verifies Refresh Token against the database.\");\nconsole.log(\"9. Server issues a brand new 15-minute Access Token.\");\nconsole.log(\"10. Client retries the 'View Profile' request with the new token. Success!\");"
+}

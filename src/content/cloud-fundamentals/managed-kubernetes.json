@@ -1,0 +1,30 @@
+{
+  "id": "managed-kubernetes",
+  "title": "Managed Kubernetes (EKS / AKS / GKE)",
+  "difficulty": "Advanced",
+  "definition": "Cloud-hosted, fully managed versions of the Kubernetes orchestration system. The cloud provider automatically handles the highly complex 'Control Plane' (the master nodes), leaving the customer to only manage the worker nodes.",
+  "simpleExplanation": "Kubernetes is notoriously difficult to install. Instead of spending a month building a cluster from scratch, you click one button in AWS, and they hand you a perfectly configured, highly-available Kubernetes cluster in 10 minutes.",
+  "realWorldExample": "AWS EKS, Azure AKS, Google GKE. A massive enterprise uses GKE to deploy 500 microservices. Google automatically handles upgrading the Kubernetes API server and backing up the cluster state, saving the company from hiring 5 dedicated administrators.",
+  "useCases": [
+    "Massive enterprise architectures",
+    "Multi-cloud portability"
+  ],
+  "questions": {
+    "basic": [
+      "Does Managed Kubernetes completely eliminate the need for you to understand how Kubernetes works?"
+    ],
+    "intermediate": [
+      "Between EKS (Amazon), AKS (Azure), and GKE (Google), which provider actually invented Kubernetes originally?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Eliminate need to understand?",
+      "answer": "No. It only manages the *installation and control plane*. You still must write complex YAML files, manage Pods, Services, and Deployments exactly as you would normally."
+    },
+    {
+      "question": "Who invented K8s?",
+      "answer": "Google. Kubernetes was born out of Google's internal 'Borg' system. Consequently, Google's GKE is widely considered the most advanced and seamless managed Kubernetes service."
+    }
+  ]
+}

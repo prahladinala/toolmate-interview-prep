@@ -1,0 +1,45 @@
+{
+  "id": "portals",
+  "title": "Portals",
+  "difficulty": "Advanced",
+  "definition": "Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component. They are created using `ReactDOM.createPortal(child, container)`.",
+  "simpleExplanation": "Usually, React components are like nesting dolls. If a parent has `overflow: hidden` or a `z-index`, the child is trapped inside those CSS rules. A Portal is like a magical teleportation ring. You code the component exactly where it belongs in your React logic, but React physically teleports the HTML to a completely different part of the actual webpage (like the bottom of the `<body>` tag).",
+  "realWorldExample": "Modals, Tooltips, and Dropdown menus. If you put a modal inside a deep nested `<div>`, it might get cut off by the parent's boundaries. By teleporting the modal to a `<div id=\"modal-root\">` attached directly to the `<body>`, it breaks free of all CSS restrictions and floats perfectly over the app.",
+  "useCases": [
+    "Modals and Dialog boxes",
+    "Tooltips and Hovercards",
+    "Global Notifications / Toast messages"
+  ],
+  "questions": {
+    "basic": [
+      "What is `ReactDOM.createPortal`?",
+      "Why are Portals primarily used for Modals?"
+    ],
+    "intermediate": [
+      "If you teleport a component using a Portal, does it lose access to the React Context of its parent?",
+      "Does event bubbling work normally through a Portal?"
+    ],
+    "advanced": [
+      "How do you test a component that uses a Portal?",
+      "Can you render a Portal on the Server Side (SSR)?"
+    ],
+    "trick": [
+      "If a child inside a portal throws an error, will an Error Boundary in the parent's React tree catch it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does a Portal lose access to the React Context?",
+      "answer": "No! Even though the HTML is physically teleported in the DOM, the component remains in the exact same spot in the **React Tree**. It still inherits Context, State, and Props normally."
+    },
+    {
+      "question": "Does event bubbling work normally?",
+      "answer": "Yes! This is the magic of Portals. If you click a button inside a Portal, the `onClick` event will bubble up through the **React Tree** to the parent, even though in the physical DOM, they are nowhere near each other."
+    },
+    {
+      "question": "Can you render a Portal on the Server (SSR/Next.js)?",
+      "answer": "No. Portals rely on `document.getElementById()`, which doesn't exist on the server. You must ensure the Portal only renders on the client side (often by waiting for `useEffect` to mount)."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\nimport ReactDOM from 'react-dom';\n\n// 1. The Modal Component using a Portal\nconst Modal = ({ children, onClose }) => {\n  // Teleport this JSX to document.body\n  return ReactDOM.createPortal(\n    <div className=\"modal-overlay\" style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, background: 'rgba(0,0,0,0.5)' }}>\n      <div className=\"modal-content\" style={{ margin: '100px auto', background: 'white', padding: 20, width: 300 }}>\n        {children}\n        <button onClick={onClose}>Close</button>\n      </div>\n    </div>,\n    document.body // The destination node\n  );\n};\n\n// 2. The App Component\nexport default function App() {\n  const [isOpen, setIsOpen] = useState(false);\n\n  return (\n    // This parent has strict CSS, but the modal breaks free!\n    <div style={{ overflow: 'hidden', height: '100px', border: '1px solid black' }}>\n      <h2>My App</h2>\n      <button onClick={() => setIsOpen(true)}>Open Portal Modal</button>\n      \n      {isOpen && (\n        <Modal onClose={() => setIsOpen(false)}>\n          <h3>Teleported!</h3>\n          <p>I am physically attached to the body tag, not the strict parent.</p>\n        </Modal>\n      )}\n    </div>\n  );\n}"
+}

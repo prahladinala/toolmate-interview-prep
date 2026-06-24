@@ -1,0 +1,30 @@
+{
+  "id": "learning-rate",
+  "title": "Learning Rate",
+  "difficulty": "Advanced",
+  "definition": "A critical hyperparameter that determines the step size at each iteration while moving toward a minimum of a loss function. It controls how much the model changes its mind in response to an error.",
+  "simpleExplanation": "You are blindfolded trying to walk to the bottom of a valley. The Learning Rate is your stride length. If you take massive leaps (High Learning Rate), you will walk right past the bottom and start going up the other side. If you take tiny baby steps (Low Learning Rate), it will take you a million years to reach the bottom.",
+  "realWorldExample": "If an AI is told it misclassified a dog as a cat, a High learning rate makes it drastically rewrite its entire brain immediately. A Low learning rate makes it cautiously tweak one tiny synapse.",
+  "useCases": [
+    "Model convergence",
+    "Hyperparameter tuning"
+  ],
+  "questions": {
+    "basic": [
+      "If your AI training process is taking a ridiculously long time to improve, is your Learning Rate likely too high or too low?"
+    ],
+    "intermediate": [
+      "What is a 'Learning Rate Scheduler'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Too high or low?",
+      "answer": "Too low. The AI is taking 'baby steps' and adjusting its internal math so slowly that it takes weeks to see improvements."
+    },
+    {
+      "question": "What is a Scheduler?",
+      "answer": "A technique where the Learning Rate changes dynamically. It starts High (taking massive leaps to quickly get near the bottom of the valley), and slowly drops lower and lower (taking tiny baby steps) to perfectly center on the absolute lowest point without overshooting."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "line-height",
+  "title": "Line Height",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the leading (line height) of an element.",
+  "simpleExplanation": "The vertical breathing room between sentences in a paragraph. Tailwind calls this `leading`. `leading-none` squashes lines together. `leading-loose` spreads them far apart.",
+  "realWorldExample": "Blowing up a header to `text-6xl` often creates an ugly, massive gap between lines. Applying `leading-tight` pulls the header lines beautifully close together.",
+  "useCases": [
+    "Readability optimization",
+    "Heading adjustments"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix does Tailwind use for line-height classes?"
+    ],
+    "intermediate": [
+      "Why do large headers usually require `leading-tight` or `leading-none`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`leading-` (e.g., `leading-loose`). This is an old typography term referring to the strips of lead they used to put between lines of metal type."
+    },
+    {
+      "question": "Why headers need tight leading?",
+      "answer": "Line height scales proportionally with font size. If you have a massive font, the default line height creates an awkwardly huge gap of whitespace between the lines. Tightening it looks much more professional."
+    }
+  ],
+  "codeExample": "<!-- Giant headers look bad with default line height. Pull them tight! -->\n<h1 class=\"text-6xl font-black leading-tight\">\n  Transform Your <br /> \n  Business Today\n</h1>\n\n<!-- Long paragraphs look bad when squished. Let them breathe! -->\n<p class=\"text-base leading-relaxed\">\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n  This text is very easy to track with your eyes because \n  the lines have plenty of vertical breathing room.\n</p>"
+}

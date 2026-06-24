@@ -1,0 +1,45 @@
+{
+  "id": "cors-security",
+  "title": "CORS & Security (XSS/CSRF)",
+  "difficulty": "Expert",
+  "definition": "Web security involves protecting applications from malicious attacks. CORS (Cross-Origin Resource Sharing) is a browser mechanism that allows servers to dictate who can access their resources. XSS (Cross-Site Scripting) and CSRF (Cross-Site Request Forgery) are two of the most common web vulnerabilities.",
+  "simpleExplanation": "CORS is like a bouncer at a club (the server). The browser asks, 'Hey, my frontend is at mywebsite.com, can I come in?' The bouncer checks his list, and if you aren't on it, you get a CORS error. XSS is when a bad guy injects poisonous code into a website's comment section, so when YOU view the comment, the code steals your data. CSRF is when a bad guy tricks your browser into making a purchase on Amazon because you're already logged in there.",
+  "realWorldExample": "If your React frontend is hosted on Vercel (`app.com`), and your Node backend is on Heroku (`api.com`), making a fetch request will fail with a CORS error until the Heroku server explicitly allows `app.com` in its headers.",
+  "useCases": [
+    "Configuring backend APIs to safely communicate with frontend apps",
+    "Sanitizing user input to prevent XSS attacks",
+    "Using Anti-CSRF tokens to protect state-changing requests"
+  ],
+  "questions": {
+    "basic": [
+      "What is CORS?",
+      "Why do we get CORS errors?"
+    ],
+    "intermediate": [
+      "What is an XSS attack and how do you prevent it?",
+      "What is the 'Same-Origin Policy'?"
+    ],
+    "advanced": [
+      "What is a Preflight request (OPTIONS) in CORS?",
+      "What is CSRF and how do you prevent it?"
+    ],
+    "trick": [
+      "If you get a CORS error, should you fix it in your frontend JavaScript code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is an XSS attack and how do you prevent it?",
+      "answer": "XSS (Cross-Site Scripting) is when attackers inject malicious scripts into web pages viewed by other users. Prevent it by never trusting user input: always escape/sanitize data before rendering it to the DOM. React does this automatically for text."
+    },
+    {
+      "question": "What is a Preflight request?",
+      "answer": "For complex requests (like POST with JSON, or sending custom headers), the browser first sends an HTTP OPTIONS request to the server to ask for permission. If the server approves, the browser sends the actual POST request."
+    },
+    {
+      "question": "If you get a CORS error, should you fix it in your frontend?",
+      "answer": "No! CORS is a security policy enforced by the BROWSER, but defined by the SERVER. You must fix CORS errors by configuring the backend server to send the correct 'Access-Control-Allow-Origin' headers."
+    }
+  ],
+  "codeExample": "// --- XSS Prevention Example ---\n// BAD: Vulnerable to XSS (Vanilla JS)\n// const userInput = \"<script>alert('Stealing cookies!')</script>\";\n// document.getElementById('app').innerHTML = userInput;\n\n// GOOD: Safe from XSS\n// document.getElementById('app').textContent = userInput;\n\n\n// --- CORS Example ---\n// This fetch will fail if the API server doesn't have CORS configured\nfetch('https://api.someotherdomain.com/data')\n  .then(res => res.json())\n  .catch(err => console.error(\"CORS Error likely happened here!\", err));\n\nconsole.log(\"Remember: CORS protects the USER, not the server. It stops a malicious website you visited from making secret requests to your bank using your saved cookies.\");"
+}

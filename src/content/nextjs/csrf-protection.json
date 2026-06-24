@@ -1,0 +1,32 @@
+{
+  "id": "csrf-protection",
+  "title": "CSRF Protection",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Site Request Forgery (CSRF): An attack where a malicious site tricks a user's browser into executing an unwanted action on a site where they are currently authenticated.",
+  "simpleExplanation": "You are logged into your Bank. You visit `EvilSite.com`. EvilSite secretly sends a POST request to `Bank.com/transfer-money`. Because your browser automatically attaches your Bank cookies, the Bank thinks YOU made the request.",
+  "realWorldExample": "Preventing CSRF by using `SameSite` cookies, ensuring that the browser ONLY sends cookies if the request actually originates from your own Next.js domain.",
+  "useCases": [
+    "Form security",
+    "API protection",
+    "Cookie management"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute on a browser cookie is the primary defense against CSRF attacks in modern web development?"
+    ],
+    "intermediate": [
+      "Why do Server Actions in Next.js automatically protect you from CSRF attacks?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Cookie attribute?",
+      "answer": "The `SameSite` attribute (usually set to `Lax` or `Strict`)."
+    },
+    {
+      "question": "Server Actions protect?",
+      "answer": "Next.js Server Actions automatically implement 'Origin Matching'. They compare the `Origin` header of the incoming POST request to the server's actual host name. If they don't match, the request is violently rejected."
+    }
+  ],
+  "codeExample": "// Setting a secure, CSRF-resistant cookie in Next.js Middleware\nimport { NextResponse } from 'next/server';\n\nexport function middleware(request) {\n  const response = NextResponse.next();\n  \n  response.cookies.set('session_token', '12345abcde', {\n    httpOnly: true, // Prevents XSS from stealing the cookie\n    secure: true,   // Only sent over HTTPS\n    \n    // 🛡️ THE CSRF DEFENSE 🛡️\n    // 'Strict' means the browser will NEVER send this cookie \n    // if the request comes from an external website.\n    sameSite: 'strict', \n  });\n  \n  return response;\n}"
+}

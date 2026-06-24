@@ -1,0 +1,30 @@
+{
+  "id": "protected-routes",
+  "title": "Protected Routes",
+  "difficulty": "Intermediate",
+  "definition": "React Router components that read the authentication status from the Redux store and decide whether to render the requested page or redirect the user to a login screen.",
+  "simpleExplanation": "A digital bouncer. If a user tries to type `/admin` into the URL bar, the Protected Route component asks Redux: 'Is this person logged in?'. If Redux says false, the Protected Route kicks them back to the `/login` page.",
+  "realWorldExample": "Wrapping your `/dashboard`, `/settings`, and `/billing` components inside a `<RequireAuth>` wrapper component.",
+  "useCases": [
+    "Restricting application access"
+  ],
+  "questions": {
+    "basic": [
+      "What Redux hook is used inside a Protected Route to check if the user is authenticated?"
+    ],
+    "intermediate": [
+      "If a user tries to visit `/dashboard` and is kicked to `/login`, how do you automatically send them back to `/dashboard` after they log in?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which hook?",
+      "answer": "`useSelector(state => state.auth.isLoggedIn)`"
+    },
+    {
+      "question": "How to send them back?",
+      "answer": "You capture the URL they were trying to visit using React Router's `useLocation()`, pass it to the `/login` page via routing state, and when the Redux login action succeeds, you redirect them to that saved URL."
+    }
+  ],
+  "codeExample": "import { Navigate, Outlet } from 'react-router-dom';\nimport { useSelector } from 'react-redux';\n\n// A Wrapper Component for Protected Routes\nconst RequireAuth = () => {\n  // Ask Redux if the user is allowed in\n  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);\n\n  if (!isLoggedIn) {\n    // If not logged in, kick them to the login page.\n    // We use 'replace' to prevent them from hitting the back button.\n    return <Navigate to=\"/login\" replace />;\n  }\n\n  // If logged in, render the child routes (the actual page they wanted)!\n  return <Outlet />;\n};\n\n/*\n  Usage in Router:\n  <Route element={<RequireAuth />}>\n    <Route path=\"/dashboard\" element={<Dashboard />} />\n    <Route path=\"/settings\" element={<Settings />} />\n  </Route>\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "connect-hoc",
+  "title": "connect() HOC",
+  "difficulty": "Intermediate",
+  "definition": "A legacy Higher-Order Component from React-Redux that connects a React component to the Redux store. It was the standard way to use Redux before Hooks (`useSelector`) were invented.",
+  "simpleExplanation": "The old, confusing way to use Redux. You wrote two functions called `mapStateToProps` (reads data) and `mapDispatchToProps` (writes data), and glued them to your component at the very bottom of the file.",
+  "realWorldExample": "You will still see this in millions of lines of enterprise code written before 2019. If you get a job maintaining an older React Class Component application, you MUST know how `connect` works.",
+  "useCases": [
+    "Maintaining legacy codebases",
+    "Class components"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use `connect()` in a brand new React application today?"
+    ],
+    "intermediate": [
+      "What does `mapStateToProps` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use today?",
+      "answer": "NO. The official Redux documentation strongly advises using the `useSelector` and `useDispatch` hooks instead."
+    },
+    {
+      "question": "What is mapStateToProps?",
+      "answer": "A function that takes the Redux store state, picks out the data you need, and passes it into your component as a Prop."
+    }
+  ],
+  "codeExample": "/* ❌ LEGACY REDUX PATTERN (For historical reference) */\nimport { connect } from 'react-redux';\n\nfunction UserProfile({ username, logout }) {\n  return (\n    <div>\n      <h1>{username}</h1>\n      <button onClick={logout}>Log out</button>\n    </div>\n  );\n}\n\n// 1. Map State to Props (The old useSelector)\nconst mapStateToProps = (state) => ({\n  username: state.auth.username\n});\n\n// 2. Map Dispatch to Props (The old useDispatch)\nconst mapDispatchToProps = (dispatch) => ({\n  logout: () => dispatch({ type: 'auth/logout' })\n});\n\n// 3. Connect them all together\nexport default connect(mapStateToProps, mapDispatchToProps)(UserProfile);"
+}

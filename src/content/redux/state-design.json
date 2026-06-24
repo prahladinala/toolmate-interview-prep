@@ -1,0 +1,30 @@
+{
+  "id": "state-design",
+  "title": "State Design Patterns",
+  "difficulty": "Advanced",
+  "definition": "Best practices for architecting the 'shape' of your Redux store to ensure scalability and maintainability.",
+  "simpleExplanation": "Don't just dump variables into Redux randomly. Group them by 'Feature' (e.g., Auth, Cart, Users) or by 'Domain'. Keep your state as flat as possible. Treat your Redux store like a database, not a trash can.",
+  "realWorldExample": "Separating 'UI State' (is the sidebar open?) from 'Data State' (what is the list of users from the server?).",
+  "useCases": [
+    "Architecting enterprise applications"
+  ],
+  "questions": {
+    "basic": [
+      "Should you design your state tree based on your UI components or your underlying data?"
+    ],
+    "intermediate": [
+      "What is the 'Ducks' pattern?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "UI or Data?",
+      "answer": "Underlying Data. The UI will change constantly based on the whims of designers. Data is permanent. Design your Redux store like a database schema."
+    },
+    {
+      "question": "Ducks pattern?",
+      "answer": "An architectural pattern where all Redux logic for a specific feature (Actions, Reducers, Selectors) is kept in a single file (e.g., `userSlice.js`), rather than having 3 separate folders for actions, reducers, and constants."
+    }
+  ],
+  "codeExample": "/*\n  Great State Design Principles:\n  \n  1. Avoid redundant data. (If you have a list of items, don't store \n     'numberOfItems: 5'. Just use items.length in your selector).\n  2. Keep state flat (Normalization).\n  3. Treat Redux as a cache for server data.\n  4. Slices should correspond to domains (e.g., 'auth', 'products'), \n     not UI pages (e.g., 'homePage', 'settingsPage').\n*/"
+}

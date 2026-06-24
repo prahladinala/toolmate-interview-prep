@@ -1,0 +1,30 @@
+{
+  "id": "variables",
+  "title": "Variables",
+  "difficulty": "Beginner",
+  "definition": "Temporary storage locations in a Bash script used to hold data (like strings or numbers) that can be referenced or changed later in the script.",
+  "simpleExplanation": "A labeled box. You put the word 'Alice' into a box labeled 'NAME'. Later in the script, you tell the computer to 'Print NAME', and it prints 'Alice'.",
+  "realWorldExample": "In a script: \n`BACKUP_DIR=\"/var/backups\"`\n`cp database.sql $BACKUP_DIR`\nIf the company changes their backup folder location, the developer only has to change the variable at the top of the script once, rather than hunting through 500 lines of code.",
+  "useCases": [
+    "Making scripts reusable",
+    "Storing dynamic paths"
+  ],
+  "questions": {
+    "basic": [
+      "In Bash, why will `NAME = 'Alice'` (with spaces around the equals sign) cause a massive error?"
+    ],
+    "intermediate": [
+      "What is the difference between single quotes (`'`) and double quotes (`\"`) when using variables?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why error with spaces?",
+      "answer": "Bash is hyper-sensitive to spaces. If you add spaces, Bash assumes `NAME` is a command you are trying to execute, not a variable assignment. It must be strictly `NAME='Alice'`."
+    },
+    {
+      "question": "Single vs Double quotes?",
+      "answer": "Double quotes *evaluate* variables. `echo \"Hello $NAME\"` prints 'Hello Alice'. Single quotes are *literal*. `echo 'Hello $NAME'` strictly prints the literal text 'Hello $NAME'."
+    }
+  ]
+}

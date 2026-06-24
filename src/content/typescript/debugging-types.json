@@ -1,0 +1,34 @@
+{
+  "id": "debugging-types",
+  "title": "Type Debugging Scenarios",
+  "difficulty": "Advanced",
+  "definition": "Interview questions where the candidate is presented with a block of broken TypeScript code containing complex compiler errors, and must debug and fix the type logic.",
+  "simpleExplanation": "The interviewer shares their screen showing a terrifying red underline in VS Code that says: 'Type X is not assignable to type Y. Property Z is missing...'. You have to explain WHY the compiler is angry, and how to appease it.",
+  "realWorldExample": "Fixing the 'Object is of type unknown' error in a `catch(error)` block in modern TypeScript.",
+  "useCases": [
+    "Evaluating real-world TS experience",
+    "Pair programming interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Why does `catch (error)` throw an 'Object is of type unknown' error?"
+    ],
+    "intermediate": [
+      "Why does `Object.keys(user).map(k => user[k])` throw an implicit any error?"
+    ],
+    "advanced": [
+      "How do you debug an 'Excess Property Checking' failure on a passed variable?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why does catch(error) complain?",
+      "answer": "In JS, you can throw anything (a string, a number). Because TS cannot guarantee an Error object was thrown, it types `error` as `unknown`. You MUST do `if (error instanceof Error) { console.log(error.message) }`."
+    },
+    {
+      "question": "Why does Object.keys() fail indexing?",
+      "answer": "`Object.keys(obj)` deliberately returns `string[]`, not `keyof typeof obj`. Therefore, TS thinks you are using a random string to index a specific object, which is unsafe. You must assert the key: `let k = key as keyof User`."
+    }
+  ],
+  "codeExample": "// DEBUGGING SCENARIO: The Object.keys problem\ninterface Config { theme: string; retries: number; }\nconst currentConfig: Config = { theme: 'dark', retries: 3 };\n\nfunction printConfig() {\n  // ERROR: Element implicitly has an 'any' type because expression \n  // of type 'string' can't be used to index type 'Config'.\n  Object.keys(currentConfig).forEach((key) => {\n    // console.log(currentConfig[key]); \n  });\n\n  // FIX 1: Assert the key type\n  Object.keys(currentConfig).forEach((key) => {\n    const typedKey = key as keyof Config;\n    console.log(currentConfig[typedKey]); // Safe!\n  });\n\n  // FIX 2 (Better): Write a strongly typed keys utility\n  function getKeys<T extends object>(obj: T) { \n    return Object.keys(obj) as Array<keyof T>; \n  }\n  \n  getKeys(currentConfig).forEach(key => {\n    console.log(currentConfig[key]); // Safe and clean!\n  });\n}"
+}

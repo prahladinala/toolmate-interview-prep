@@ -1,0 +1,30 @@
+{
+  "id": "llm-interview",
+  "title": "LLM Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions focusing specifically on Large Language Models, Prompt Engineering, and Tokenization mechanics.",
+  "simpleExplanation": "Interviewers want to see if you actually know how the OpenAI API works under the hood, rather than just knowing how to type into ChatGPT.",
+  "realWorldExample": "Being asked: 'Why do LLMs sometimes struggle with math, even though computers are inherently good at math?'",
+  "useCases": [
+    "Prompt Engineer roles",
+    "AI Developer interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Context Window?"
+    ],
+    "intermediate": [
+      "Explain the concept of 'Temperature' in an LLM."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Context Window?",
+      "answer": "The maximum amount of text (tokens) the model can hold in its short-term memory during a single interaction. Exceeding it causes the model to forget the earliest parts of the conversation."
+    },
+    {
+      "question": "What is Temperature?",
+      "answer": "A parameter that controls randomness. A temperature of 0 makes the model highly deterministic and repetitive (good for code). A higher temperature (e.g., 0.8) flattens the probability distribution, making the model take creative risks (good for brainstorming)."
+    }
+  ]
+}

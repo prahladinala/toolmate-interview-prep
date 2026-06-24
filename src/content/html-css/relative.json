@@ -1,0 +1,31 @@
+{
+  "id": "relative",
+  "title": "Relative",
+  "difficulty": "Intermediate",
+  "definition": "Positions an element relative to its normal (static) position in the document flow. Other elements will not adjust to fill the gap left by the element's shifted position.",
+  "simpleExplanation": "Step 1: The browser places the box where it normally goes (Static). Step 2: Because it's Relative, it looks at the `top`/`left` coordinates and nudges the box. The secret: The box leaves behind a 'ghost' of itself in the original spot. All other elements on the page act as if the box never moved.",
+  "realWorldExample": "Nudging an icon slightly to the left so it aligns perfectly with text, without messing up the layout of the entire paragraph.",
+  "useCases": [
+    "Minor tweaks to positioning",
+    "Acting as a 'Parent Container' for Absolute elements (Very important!)"
+  ],
+  "questions": {
+    "basic": [
+      "If you move a relatively positioned box down 50px, do the boxes below it move down too?"
+    ],
+    "intermediate": [
+      "What is the primary architectural use of `position: relative`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do other boxes move?",
+      "answer": "No. They respect the original 'ghost' space of the moved box. The moved box will literally overlap and cover the boxes below it."
+    },
+    {
+      "question": "Primary architectural use?",
+      "answer": "To act as an anchor or container for `position: absolute` children. An absolute child bases its coordinates off the nearest ancestor that has a relative position."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 100px; height: 100px;\n    color: white; padding: 10px;\n  }\n\n  .static-box {\n    background: gray;\n  }\n\n  .relative-box {\n    background: blue;\n    position: relative;\n    \n    /* Nudge it 40px down and 40px right from where it NORMALLY sits */\n    top: 40px;\n    left: 40px;\n    \n    /* Added z-index so it floats above the gray box below it */\n    z-index: 10;\n  }\n</style>\n\n<div class=\"box static-box\">1. Static</div>\n\n<div class=\"box relative-box\">\n  2. Relative\n  <br><br>\n  I moved down, but my ghost is still holding my space!\n</div>\n\n<div class=\"box static-box\">3. Static</div>"
+}

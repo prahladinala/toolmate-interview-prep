@@ -1,0 +1,30 @@
+{
+  "id": "rtk-query-vs-react-query",
+  "title": "RTK Query vs React Query",
+  "difficulty": "Advanced",
+  "definition": "A comparison between the two dominant data-fetching and caching libraries in the React ecosystem.",
+  "simpleExplanation": "They do the exact same thing: fetch data, cache it, and provide loading spinners. If you are ALREADY using Redux for global state, use RTK Query (it's built-in). If you are NOT using Redux, use React Query (TanStack Query) because it is lightweight and standalone.",
+  "realWorldExample": "Migrating a legacy Redux app to RTK, and replacing thousands of lines of `useEffect` fetching logic with RTK Query.",
+  "useCases": [
+    "Choosing a data fetching library"
+  ],
+  "questions": {
+    "basic": [
+      "If your app does not use Redux, should you install RTK Query or React Query?"
+    ],
+    "intermediate": [
+      "Where does RTK Query store its cache, versus where React Query stores its cache?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which to install?",
+      "answer": "React Query (TanStack Query). You should not install the entirety of Redux Toolkit just to use RTK Query."
+    },
+    {
+      "question": "Where is cache stored?",
+      "answer": "RTK Query stores all of its cached data directly inside the Redux Store (you can see it in Redux DevTools). React Query maintains its own separate, invisible cache."
+    }
+  ],
+  "codeExample": "/*\n  RTK Query (Redux Toolkit):\n  const { data } = useGetPostsQuery();\n  - Built on top of Redux.\n  - Cache is visible in Redux DevTools.\n  - Best choice if app already uses Redux.\n\n  React Query (TanStack):\n  const { data } = useQuery({ queryKey: ['posts'], queryFn: fetchPosts });\n  - Completely standalone.\n  - Has its own dedicated DevTools.\n  - Best choice for 90% of new React projects that don't need global client state.\n*/"
+}

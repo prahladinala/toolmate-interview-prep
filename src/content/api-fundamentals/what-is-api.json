@@ -1,0 +1,32 @@
+{
+  "id": "what-is-api",
+  "title": "What is an API?",
+  "difficulty": "Beginner",
+  "definition": "API stands for Application Programming Interface. It is a set of rules and protocols that allows one software application to talk to another software application.",
+  "simpleExplanation": "Imagine you are at a restaurant. You (the client) look at the menu and want a burger. The kitchen (the server) has the burger. You cannot just walk into the kitchen. You need a waiter. The API is the waiter. You tell the waiter your order, the waiter takes it to the kitchen, gets your burger, and brings it back to you.",
+  "realWorldExample": "When you use the Uber app, it needs to show a map. Instead of Uber building their own global satellite mapping system from scratch, they just use the Google Maps API. Uber talks to the Google Maps API, and Google gives them the map data.",
+  "useCases": [
+    "Connecting different systems",
+    "Fetching data from third parties",
+    "Abstracting complex code"
+  ],
+  "questions": {
+    "basic": [
+      "What does the acronym API stand for?"
+    ],
+    "intermediate": [
+      "How does an API protect the internal logic of a system?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Application Programming Interface."
+    },
+    {
+      "question": "How does it protect internal logic?",
+      "answer": "By providing an abstraction layer. A company exposes an API (like `/get-user`), but hides the exact SQL database queries and complex backend code required to fetch that user. The client only sees the final result, not the messy kitchen."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Example:\n  \n  1. The User clicks 'Check Weather'.\n  2. The Frontend App (Client) sends a request to the Weather API:\n     GET https://api.weather.com/v1/current?city=London\n  3. The API (Waiter) receives the request, checks its internal DB.\n  4. The API sends back the response:\n     { \"city\": \"London\", \"temp\": 18, \"condition\": \"Rain\" }\n  5. The Frontend App displays \"18°C\" on the screen.\n*/"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "vercel",
+  "title": "Vercel Deployment",
+  "difficulty": "Beginner",
+  "definition": "Vercel is the company that created Next.js. Their cloud platform is optimized to host Next.js applications seamlessly with zero configuration.",
+  "simpleExplanation": "If you deploy Next.js to AWS manually, you spend weeks configuring Docker, Load Balancers, and CDNs. If you deploy to Vercel, you click 'Import from GitHub', and Vercel automatically configures the global CDN, Serverless Functions, Image Optimization, and SSL certificates instantly.",
+  "realWorldExample": "Pushing code to the `main` branch on GitHub. Vercel automatically detects the push, builds the project, and deploys it live to the internet in 60 seconds without you doing anything.",
+  "useCases": [
+    "Frictionless deployment",
+    "CI/CD automation",
+    "Edge network hosting"
+  ],
+  "questions": {
+    "basic": [
+      "Do you have to write a Dockerfile or deployment script to host a Next.js app on Vercel?"
+    ],
+    "intermediate": [
+      "What is a 'Preview Deployment' in the Vercel ecosystem?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need Dockerfile?",
+      "answer": "No. Vercel provides Zero-Config deployments. It analyzes your codebase, recognizes it is Next.js, and sets up the entire infrastructure automatically."
+    },
+    {
+      "question": "What is Preview Deployment?",
+      "answer": "When you open a Pull Request on GitHub, Vercel automatically creates a secret, unique URL containing just those changes. Your team can click the link, test the new feature live on the internet, and approve it *before* it merges into production."
+    }
+  ],
+  "codeExample": "/* \n  The Vercel Workflow:\n  \n  1. Developer runs: `git push origin feature-branch`\n  2. Vercel intercepts the push.\n  3. Vercel builds the app and provisions a URL: https://my-app-feature-123.vercel.app\n  4. Team reviews the URL.\n  5. Developer merges Pull Request into `main`.\n  6. Vercel automatically deploys the code to Production: https://my-app.com\n*/"
+}

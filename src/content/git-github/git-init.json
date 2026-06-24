@@ -1,0 +1,30 @@
+{
+  "id": "git-init",
+  "title": "git init",
+  "difficulty": "Beginner",
+  "definition": "The command used to create a new, empty Git repository or reinitialize an existing one.",
+  "simpleExplanation": "You have a folder on your computer full of code. Git is currently ignoring it. By typing `git init`, you awaken Git. It creates a secret hidden folder called `.git` that acts as the 'brain' and starts tracking your files.",
+  "realWorldExample": "Starting a brand new web project from scratch on your local computer.",
+  "useCases": [
+    "Starting new local projects"
+  ],
+  "questions": {
+    "basic": [
+      "What does `git init` actually do under the hood?"
+    ],
+    "intermediate": [
+      "If you delete the `.git` folder, what happens to your code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it do?",
+      "answer": "It creates a hidden directory named `.git` inside your project folder. This folder contains all the necessary metadata and object databases for version control."
+    },
+    {
+      "question": "Delete .git folder?",
+      "answer": "Your code (HTML, CSS, JS files) remains perfectly intact! But your entire Git history (all past saves, branches, and commits) is permanently deleted. It just becomes a normal, untracked Windows/Mac folder again."
+    }
+  ],
+  "codeExample": "# Create a new folder for your project\n$ mkdir my-awesome-app\n$ cd my-awesome-app\n\n# Tell Git to start tracking this folder\n$ git init\n# Output: Initialized empty Git repository in /path/to/my-awesome-app/.git/\n\n# If you run 'ls -a' (list all files, including hidden ones),\n# you will see the secret .git folder!\n$ ls -a\n# Output: .  ..  .git"
+}

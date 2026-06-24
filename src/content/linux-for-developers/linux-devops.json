@@ -1,0 +1,30 @@
+{
+  "id": "linux-devops",
+  "title": "DevOps-Oriented Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions focusing on the intersection of Linux, networking, Docker, and automation.",
+  "simpleExplanation": "Proving you understand how Linux powers modern cloud infrastructure.",
+  "realWorldExample": "Interview Question: 'How does Docker actually isolate containers on a Linux host? Explain namespaces and cgroups.'",
+  "useCases": [
+    "Cloud Engineer interviews",
+    "Platform Engineering interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary purpose of SSH Keys in a CI/CD pipeline?"
+    ],
+    "intermediate": [
+      "Explain the purpose of the `/etc/hosts` file and how it relates to DNS."
+    ]
+  },
+  "answers": [
+    {
+      "question": "SSH Keys in CI/CD?",
+      "answer": "They allow automated deployment scripts (like Jenkins or GitHub Actions) to securely log into production servers and deploy code without a human being present to type a password."
+    },
+    {
+      "question": "What is /etc/hosts?",
+      "answer": "It is a local, manual override for DNS. Before a Linux machine asks a DNS server for an IP address, it checks `/etc/hosts`. Developers use it to point a production domain (like `company.com`) to `127.0.0.1` locally for testing."
+    }
+  ]
+}

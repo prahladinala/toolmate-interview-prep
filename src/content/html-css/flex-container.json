@@ -1,0 +1,31 @@
+{
+  "id": "flex-container",
+  "title": "Flex Container",
+  "difficulty": "Intermediate",
+  "definition": "By setting `display: flex` on a parent element, it becomes a flex container. All direct children automatically become flexible items.",
+  "simpleExplanation": "Before Flexbox, aligning 3 boxes side-by-side required terrifying math and float hacks. With Flexbox, you just go to the parent box and say `display: flex`. Instantly, all the children inside line up in a perfect row.",
+  "realWorldExample": "Creating a Navigation Bar. The `<ul>` is the flex container, and the `<li>` links inside it automatically line up horizontally.",
+  "useCases": [
+    "1-Dimensional layouts (Rows OR Columns)",
+    "Aligning items easily"
+  ],
+  "questions": {
+    "basic": [
+      "What CSS property turns a normal `<div>` into a flex container?"
+    ],
+    "intermediate": [
+      "Does `display: flex` affect the grandchildren of the container?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`display: flex;`"
+    },
+    {
+      "question": "Affect grandchildren?",
+      "answer": "No. It ONLY affects the direct children. If you want the grandchildren to also be flexible, the child element must also be set to `display: flex`."
+    }
+  ],
+  "codeExample": "<style>\n  /* The Parent Container */\n  .flex-container {\n    /* MAGIC HAPPENS HERE */\n    display: flex;\n    \n    /* Optional: adds space between the flex items */\n    gap: 10px; \n    \n    background-color: #f1f5f9;\n    padding: 20px;\n    border: 2px solid #94a3b8;\n  }\n\n  /* The Direct Children (Automatically become Flex Items) */\n  .item {\n    background-color: #3b82f6;\n    color: white;\n    padding: 20px;\n    font-weight: bold;\n    text-align: center;\n    /* They don't have widths! They just shrink to fit their content */\n  }\n</style>\n\n<p>By simply adding <code>display: flex</code> to the gray box, the blue boxes instantly sit side-by-side!</p>\n\n<div class=\"flex-container\">\n  <div class=\"item\">Box 1</div>\n  <div class=\"item\">Box 2 has more text</div>\n  <div class=\"item\">Box 3</div>\n</div>"
+}

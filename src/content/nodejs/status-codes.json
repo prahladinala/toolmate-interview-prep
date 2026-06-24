@@ -1,0 +1,31 @@
+{
+  "id": "status-codes",
+  "title": "HTTP Status Codes",
+  "difficulty": "Beginner",
+  "definition": "Standardized 3-digit numbers sent by the server to the client indicating the result of an HTTP request.",
+  "simpleExplanation": "It's the server's mood ring. \n200s = Happy (Success).\n300s = Redirecting (Go over there).\n400s = Client Error (YOU messed up, like asking for a page that doesn't exist - 404).\n500s = Server Error (I messed up, my database crashed - 500).",
+  "realWorldExample": "If you try to log into Netflix with the wrong password, the backend returns a `401 Unauthorized` status code. The frontend React app sees the 401 code and shows a red 'Wrong Password' error box.",
+  "useCases": [
+    "Communicating success/failure to frontends",
+    "SEO optimization (Google bots read 301 redirects)"
+  ],
+  "questions": {
+    "basic": [
+      "What does status code 200 mean?"
+    ],
+    "intermediate": [
+      "What is the difference between 401 and 403?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is 200?",
+      "answer": "OK. The request succeeded."
+    },
+    {
+      "question": "401 vs 403?",
+      "answer": "401 Unauthorized means 'I don't know who you are, please log in'. 403 Forbidden means 'I know exactly who you are, but you are not an Admin, so you cannot see this page'."
+    }
+  ],
+  "codeExample": "// --- COMMON STATUS CODES CHEAT SHEET ---\n\n// 200 OK (Read success)\n// 201 Created (POST success, new item made)\n// 204 No Content (DELETE success, nothing to return)\n\n// 400 Bad Request (Missing email in JSON body)\n// 401 Unauthorized (Invalid JWT token)\n// 403 Forbidden (Valid token, but lacks Admin rights)\n// 404 Not Found (URL doesn't exist)\n// 429 Too Many Requests (Rate limit hit)\n\n// 500 Internal Server Error (Database crash, unhandled exception)\n// 503 Service Unavailable (Server is overloaded or undergoing maintenance)\n\nconsole.log(\"Always send appropriate status codes! A 200 OK containing an error message is a terrible anti-pattern.\");"
+}

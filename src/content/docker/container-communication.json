@@ -1,0 +1,30 @@
+{
+  "id": "container-communication",
+  "title": "Container Communication",
+  "difficulty": "Intermediate",
+  "definition": "The architectural patterns and DNS mechanisms by which multiple isolated containers discover and send data to each other securely.",
+  "simpleExplanation": "How the front-end finds the back-end. Instead of hardcoding messy IP addresses, containers use a built-in phone book to call each other by name.",
+  "realWorldExample": "A React container needs to fetch data from the API container. Instead of writing `fetch('http://192.168.1.5:3000')`, the developer writes `fetch('http://api-service:3000')`. Docker's internal DNS intercepts the request and instantly resolves `api-service` to the correct internal IP.",
+  "useCases": [
+    "Microservices",
+    "Database connections"
+  ],
+  "questions": {
+    "basic": [
+      "Is it a good idea to hardcode Container IP addresses into your application code?"
+    ],
+    "intermediate": [
+      "Why does a web browser on your laptop fail if it tries to hit `http://api-service:3000`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Hardcode IPs?",
+      "answer": "No, it is a terrible idea. Container IP addresses are highly dynamic. If a container reboots, it gets a completely different IP. Always use DNS names."
+    },
+    {
+      "question": "Why does browser fail?",
+      "answer": "Because your laptop's browser is outside the Docker Network. It doesn't have access to Docker's internal DNS phonebook. The name `api-service` only exists inside the virtual bridge network. To hit it from your laptop, you must use `localhost` and a mapped port."
+    }
+  ]
+}

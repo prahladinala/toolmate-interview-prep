@@ -1,0 +1,35 @@
+{
+  "id": "api-response-types",
+  "title": "Typing API Responses",
+  "difficulty": "Intermediate",
+  "definition": "Creating interfaces that mirror the exact JSON structure returned by backend APIs to ensure frontend safety during data fetching.",
+  "simpleExplanation": "When you call `fetch()`, TypeScript has literally no idea what data comes back over the internet. It assumes it is `any`. If you don't explicitly type the response, you lose all the benefits of TypeScript the second your app connects to the real world.",
+  "realWorldExample": "Typing a paginated API response: `{ page: number, total: number, data: User[] }` and casting the `fetch` result to this type.",
+  "useCases": [
+    "Axios integration",
+    "Fetch API",
+    "React Query data typing"
+  ],
+  "questions": {
+    "basic": [
+      "What does `fetch().json()` return by default in TypeScript?"
+    ],
+    "intermediate": [
+      "How do you apply a type to an Axios response?"
+    ],
+    "advanced": [
+      "What is the danger of manually typing API responses?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does fetch.json() return?",
+      "answer": "It returns `Promise<any>`. It is entirely untyped. You must manually assert it: `const data = await res.json() as MyResponse;`."
+    },
+    {
+      "question": "What is the danger?",
+      "answer": "The 'Lying Backend'. You might type the interface perfectly based on the API docs. But if the backend team changes the API to return a string instead of a number, your TS code compiles perfectly, but your app crashes in production. TS cannot check real-time network traffic."
+    }
+  ],
+  "codeExample": "// 1. Define the Expected Shape\ninterface UserData {\n  id: number;\n  name: string;\n  email: string;\n}\n\n// 2. Typing standard Fetch API\nasync function fetchUser(id: number): Promise<UserData> {\n  const response = await fetch(`/api/users/${id}`);\n  \n  if (!response.ok) throw new Error(\"Network error\");\n\n  // You MUST cast the untyped JSON result\n  const data = (await response.json()) as UserData;\n  return data;\n}\n\n// 3. Typing with Axios (Much cleaner!)\n// import axios from 'axios';\n// async function fetchUserAxios(id: number) {\n//   // Axios allows you to pass the Generic directly into the .get method\n//   const response = await axios.get<UserData>(`/api/users/${id}`);\n//   return response.data; // TS knows this is UserData\n// }"
+}

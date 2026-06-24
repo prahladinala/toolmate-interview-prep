@@ -1,0 +1,31 @@
+{
+  "id": "entity-adapter",
+  "title": "createEntityAdapter()",
+  "difficulty": "Advanced",
+  "definition": "An API provided by RTK that automatically generates a set of prebuilt reducers and selectors for performing CRUD operations on normalized state.",
+  "simpleExplanation": "Writing the logic to add, update, and delete items from a normalized `{ ids, entities }` state is tedious. `createEntityAdapter` gives you magic functions like `addOne`, `addMany`, `removeOne`, and `updateOne` out of the box.",
+  "realWorldExample": "You fetch 100 users from an API. You pass the array to `usersAdapter.setAll(state, users)`. It automatically normalizes the array into dictionaries and updates the state.",
+  "useCases": [
+    "Managing lists of relational data",
+    "Standardizing CRUD operations"
+  ],
+  "questions": {
+    "basic": [
+      "What shape does `createEntityAdapter` enforce on your state slice?"
+    ],
+    "intermediate": [
+      "Does `createEntityAdapter` also generate selectors for you?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What shape?",
+      "answer": "`{ ids: [], entities: {} }`"
+    },
+    {
+      "question": "Generate selectors?",
+      "answer": "Yes! It generates `selectAll`, `selectById`, `selectIds`, and `selectTotal`, which are automatically memoized."
+    }
+  ],
+  "codeExample": "import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';\n\n// 1. Create the adapter\nconst usersAdapter = createEntityAdapter({\n  // Sort the IDs alphabetically by name by default\n  sortComparer: (a, b) => a.name.localeCompare(b.name),\n});\n\n// 2. Create the slice\nconst usersSlice = createSlice({\n  name: 'users',\n  // 3. Initialize state with { ids: [], entities: {} }\n  initialState: usersAdapter.getInitialState(),\n  reducers: {\n    // 4. Use the magic prebuilt reducers!\n    userAdded: usersAdapter.addOne,\n    usersReceived: usersAdapter.setAll,\n    userDeleted: usersAdapter.removeOne,\n  },\n});"
+}

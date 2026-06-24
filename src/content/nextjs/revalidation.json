@@ -1,0 +1,32 @@
+{
+  "id": "revalidation",
+  "title": "Revalidation",
+  "difficulty": "Intermediate",
+  "definition": "The process of purging the Next.js Data Cache and re-fetching fresh data.",
+  "simpleExplanation": "Next.js caches your fetch requests to make your site fast. But if you update a blog post, the cache is now wrong. Revalidation is how you tell Next.js: 'Hey, throw away that old cached version and grab the new one.'",
+  "realWorldExample": "Time-based: Revalidating a 'Live Weather' API every 60 seconds. On-demand: Revalidating the 'Products' page the exact millisecond an admin clicks 'Save' in the CMS.",
+  "useCases": [
+    "Keeping cached data fresh",
+    "CMS webhooks",
+    "ISR (Incremental Static Regeneration)"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two main types of revalidation in Next.js?"
+    ],
+    "intermediate": [
+      "If you set `revalidate: 3600`, how often does the data refresh?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two types?",
+      "answer": "1. Time-based (Background revalidation every X seconds). 2. On-demand (Triggered manually via an API route or Server Action)."
+    },
+    {
+      "question": "How often?",
+      "answer": "Every 3,600 seconds (1 hour). Next.js will serve the cached version for an hour, and then rebuild it in the background on the next request."
+    }
+  ],
+  "codeExample": "/* 1. Time-based Revalidation (ISR) */\nexport default async function Weather() {\n  // Fetches fresh data every 60 seconds\n  const res = await fetch('https://api.weather.com', { \n    next: { revalidate: 60 } \n  });\n}\n\n/* 2. On-demand Revalidation Tags */\nexport default async function Articles() {\n  // We tag this fetch request with 'articles'\n  const res = await fetch('https://api.cms.com/articles', { \n    next: { tags: ['articles'] } \n  });\n}\n\n// Later, in an API route or Server Action, when an admin publishes a new article:\n// import { revalidateTag } from 'next/cache';\n// revalidateTag('articles'); // Instantly purges the cache!"
+}

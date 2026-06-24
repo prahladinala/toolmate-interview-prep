@@ -1,0 +1,31 @@
+{
+  "id": "queries",
+  "title": "GraphQL Queries",
+  "difficulty": "Beginner",
+  "definition": "The GraphQL equivalent of a REST `GET` request. Queries are used by the client to request specific data from the server without modifying anything.",
+  "simpleExplanation": "A Query is you asking the GraphQL server a very specific question. 'Please give me User 1. I only want their first name. And get their top 3 friends. I only want the friends' profile pictures.'",
+  "realWorldExample": "A React component fetching data to render a profile card. It writes a Query string, sends it via Apollo Client, and gets exactly the JSON needed for the UI.",
+  "useCases": [
+    "Fetching data",
+    "Deeply nested data retrieval"
+  ],
+  "questions": {
+    "basic": [
+      "What REST method is conceptually identical to a GraphQL Query?"
+    ],
+    "intermediate": [
+      "What is a GraphQL 'Resolver'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which REST method?",
+      "answer": "`GET` (Both are used for reading data without changing server state)."
+    },
+    {
+      "question": "What is a Resolver?",
+      "answer": "While the Client writes the Query, the Server must write a 'Resolver'. A Resolver is just a backend function that connects the GraphQL schema to the actual database (e.g., instructing the server how to actually fetch the User data when requested)."
+    }
+  ],
+  "codeExample": "# A complex GraphQL Query featuring arguments and nesting\n\nquery GetDashboardData($userId: ID!) {\n  # Fetch the specific user\n  user(id: $userId) {\n    name\n    email\n    # Nesting: Fetch their recent orders\n    orders(limit: 5, sort: \"DESC\") {\n      orderId\n      totalAmount\n      # Deep Nesting: Fetch the specific items in the order\n      items {\n        productName\n        price\n      }\n    }\n  }\n}"
+}

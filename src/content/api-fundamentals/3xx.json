@@ -1,0 +1,32 @@
+{
+  "id": "3xx",
+  "title": "3xx Redirection Codes",
+  "difficulty": "Intermediate",
+  "definition": "HTTP status codes ranging from 300-399. They indicate that further action needs to be taken by the user agent (browser) in order to fulfill the request, usually by navigating to a different URL.",
+  "simpleExplanation": "The server saying: 'The thing you are looking for isn't here anymore, but I know where it is. Go look over there instead.'",
+  "realWorldExample": "You try to visit `http://google.com`. The server returns a `301` redirecting you to `https://google.com` (forcing encryption). You try to access a private dashboard without logging in. The server returns a `302` redirecting you to the `/login` page.",
+  "useCases": [
+    "SEO preservation",
+    "Authentication routing",
+    "Domain migrations"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a `301` and a `302` redirect?"
+    ],
+    "intermediate": [
+      "What is a `304 Not Modified` code, and how does it save massive amounts of bandwidth?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "301 vs 302?",
+      "answer": "`301 Moved Permanently` tells Google to update their search engine results because the old URL is dead forever. `302 Found (Temporary)` means 'go to this other URL just for right now', and Google will not update their search index."
+    },
+    {
+      "question": "304 Not Modified?",
+      "answer": "It is a caching miracle. The browser asks the server: 'Give me the logo image, but I already have a copy from Tuesday.' The server checks the DB, sees the logo hasn't changed since Tuesday, and returns `304 Not Modified` with NO image attached. The browser immediately uses its cached copy, saving megabytes of data."
+    }
+  ],
+  "codeExample": "// Node.js Express Redirects\n\n// 1. Permanent Redirect (SEO friendly!)\napp.get('/old-blog-post', (req, res) => {\n  // Sends a 301 status code\n  res.redirect(301, '/new-blog-post');\n});\n\n// 2. Temporary Redirect (Auth checks)\napp.get('/admin-dashboard', (req, res) => {\n  if (!req.user) {\n    // Sends a 302 status code by default in Express\n    res.redirect('/login');\n  }\n});"
+}

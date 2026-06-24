@@ -1,0 +1,34 @@
+{
+  "id": "keyof-operator",
+  "title": "keyof Operator",
+  "difficulty": "Advanced",
+  "definition": "The `keyof` operator takes an object type and produces a string or numeric literal union of its keys.",
+  "simpleExplanation": "Imagine having a massive object with 50 properties. If you want a type that represents 'Any of the keys inside this object', you don't want to type out `'name' | 'age' | 'email' | ...` manually. The `keyof` operator reaches into the object and auto-generates that union for you.",
+  "realWorldExample": "Writing a generic `getProperty(obj, key)` function. You use `keyof` to ensure the developer can only pass a string that ACTUALLY exists as a key on that specific object.",
+  "useCases": [
+    "Dynamic property access",
+    "Creating highly strict utility functions"
+  ],
+  "questions": {
+    "basic": [
+      "What does `keyof User` return if User has `{ id: 1, name: 'A' }`?"
+    ],
+    "intermediate": [
+      "How do you use `keyof` in combination with Generics?"
+    ],
+    "advanced": [
+      "What does `keyof` return for an Array type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it return?",
+      "answer": "It returns a union of string literals: `'id' | 'name'`."
+    },
+    {
+      "question": "What does it return for an Array?",
+      "answer": "Because arrays are objects in JS, `keyof any[]` returns a union of all array method names AND indexes: `'length' | 'push' | 'pop' | 'map' | ... | number`."
+    }
+  ],
+  "codeExample": "interface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\n// This is identical to: type UserKeys = \"id\" | \"name\" | \"email\"\ntype UserKeys = keyof User;\n\n// Powerful Generic use case: T is the object, K is constrained to be a valid key of T\nfunction getProperty<T, K extends keyof T>(obj: T, key: K) {\n  return obj[key];\n}\n\nconst person: User = { id: 1, name: \"Alice\", email: \"a@a.com\" };\n\n// Valid! Returns a string.\nconst val = getProperty(person, \"name\"); \n\n// ERROR: Argument of type '\"age\"' is not assignable to parameter of type 'keyof User'.\n// getProperty(person, \"age\");"
+}

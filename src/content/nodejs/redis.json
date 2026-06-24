@@ -1,0 +1,33 @@
+{
+  "id": "redis",
+  "title": "Redis",
+  "difficulty": "Intermediate",
+  "definition": "Remote Dictionary Server. An open-source, in-memory, key-value data store used as a database, cache, message broker, and queue.",
+  "simpleExplanation": "Standard databases (like MongoDB or PostgreSQL) save data to a Hard Drive. Hard drives are safe, but slow. Redis saves data entirely in RAM (Memory). RAM is volatile (wiped if the server restarts), but it is insanely, blazingly fast. Because it's so fast, developers use Redis as the middleman Cache sitting in front of the main database.",
+  "realWorldExample": "Storing User Sessions or JWT Blacklists. Because every single API request requires checking if the user is authenticated, doing a slow SQL query on every request destroys performance. Storing session data in Redis allows sub-millisecond authentication.",
+  "useCases": [
+    "High-speed caching",
+    "Session management",
+    "Pub/Sub real-time messaging",
+    "Leaderboards"
+  ],
+  "questions": {
+    "basic": [
+      "Does Redis store data on a Hard Drive or in RAM?"
+    ],
+    "intermediate": [
+      "Why not just use a JavaScript Object `const cache = {}` instead of Redis?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where does it store data?",
+      "answer": "In RAM (Memory)."
+    },
+    {
+      "question": "Why not a simple JS Object?",
+      "answer": "If you scale your Node app horizontally across 4 servers, they do not share JS Objects. Server 1's cache is empty even if Server 2 is full. Redis acts as a centralized cache that all 4 servers connect to, sharing the same fast memory."
+    }
+  ],
+  "codeExample": "/* \n  npm install redis\n*/\n// const { createClient } = require('redis');\n\n// const client = createClient();\n// client.on('error', (err) => console.log('Redis Error', err));\n\nasync function runRedisDemo() {\n  // await client.connect();\n  \n  // 1. Setting a Key-Value pair\n  // await client.set('best_framework', 'Express');\n  \n  // 2. Getting a value\n  // const value = await client.get('best_framework');\n  // console.log(\"Value:\", value);\n\n  // 3. The Power of Redis: Expiration (TTL - Time To Live)\n  // This automatically deletes the key after 60 seconds!\n  // Perfect for rate-limiting or expiring cache.\n  // await client.setEx('otp_code', 60, '554433');\n}\n\nconsole.log(\"Redis is practically mandatory for any large-scale, distributed Node.js architecture.\");"
+}

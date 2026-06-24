@@ -1,0 +1,35 @@
+{
+  "id": "typing-refs",
+  "title": "React: forwardRef & Typing Refs",
+  "difficulty": "Advanced",
+  "definition": "Using `React.forwardRef` to pass DOM refs down into custom child components, and properly typing the ref object using Generics.",
+  "simpleExplanation": "Normally, you cannot pass a `ref` prop to a custom React component (like `<MyButton ref={btnRef} />`). React forces you to wrap the component in `forwardRef` to unlock it. However, wrapping it messes up TypeScript's understanding of the component, requiring very specific Generic types to fix.",
+  "realWorldExample": "Creating a reusable `FancyInput` component that needs to allow parent forms to call `.focus()` on the actual HTML input element buried inside it.",
+  "useCases": [
+    "Reusable UI libraries",
+    "Focus management",
+    "Integration with D3/Chart.js"
+  ],
+  "questions": {
+    "basic": [
+      "What two arguments does a `forwardRef` render function take?"
+    ],
+    "intermediate": [
+      "When typing `React.forwardRef<T, P>`, what does `T` represent and what does `P` represent?"
+    ],
+    "advanced": [
+      "How do you expose custom methods to a parent ref using `useImperativeHandle`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two arguments?",
+      "answer": "`props` and `ref`. e.g., `(props, ref) => <input ref={ref} />`"
+    },
+    {
+      "question": "What do T and P represent?",
+      "answer": "This is notoriously confusing in React TS. `T` is the type of the DOM element being referenced (e.g., `HTMLInputElement`). `P` is the type of the Props (e.g., `InputProps`). Notice they are backwards compared to normal functions!"
+    }
+  ],
+  "codeExample": "import React, { forwardRef } from 'react';\n\ntype InputProps = {\n  label: string;\n  placeholder?: string;\n};\n\n// Note the generic order: <RefType, PropsType>\nexport const CustomInput = forwardRef<HTMLInputElement, InputProps>(\n  (props, ref) => {\n    return (\n      <div>\n        <label>{props.label}</label>\n        {/* The ref is successfully forwarded to the real DOM node */}\n        <input ref={ref} placeholder={props.placeholder} />\n      </div>\n    );\n  }\n);\n\n// Usage in Parent Component:\n// function Parent() {\n//   const inputRef = useRef<HTMLInputElement>(null);\n//   return <CustomInput ref={inputRef} label=\"Email\" />;\n// }"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "buildkit",
+  "title": "Docker BuildKit",
+  "difficulty": "Advanced",
+  "definition": "The modern, next-generation build execution engine for Docker. It radically improves performance by analyzing the Dockerfile as a dependency graph and executing non-dependent build stages concurrently.",
+  "simpleExplanation": "The smart chef. The old Docker builder read recipes strictly line-by-line. If Step 1 took 10 minutes, Step 2 waited. BuildKit reads the whole recipe, realizes Step 1 and Step 2 don't actually rely on each other, and does them both at the same time.",
+  "realWorldExample": "You have a Multi-Stage Dockerfile that compiles a React frontend and a Go backend. BuildKit will compile both the frontend and the backend simultaneously on different CPU cores, cutting the total build time in half.",
+  "useCases": [
+    "Optimizing CI/CD speed",
+    "Advanced caching strategies"
+  ],
+  "questions": {
+    "basic": [
+      "Is BuildKit enabled by default in modern versions of Docker Desktop?"
+    ],
+    "intermediate": [
+      "What is a 'Secret Mount' in BuildKit (`--mount=type=secret`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Enabled by default?",
+      "answer": "Yes. Since Docker Engine 23.0, it is the default builder (previously you had to set `DOCKER_BUILDKIT=1`)."
+    },
+    {
+      "question": "Secret Mount?",
+      "answer": "A highly secure BuildKit feature that allows you to temporarily expose a password (like an NPM token) to a `RUN` command during the build process, WITHOUT permanently baking that password into the final image layers."
+    }
+  ]
+}

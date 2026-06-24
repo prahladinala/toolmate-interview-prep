@@ -1,0 +1,35 @@
+{
+  "id": "promise-methods",
+  "title": "Promise.all / race / any / allSettled",
+  "difficulty": "Advanced",
+  "definition": "Static methods on the Promise object that allow you to handle multiple asynchronous operations simultaneously, rather than awaiting them one by one.",
+  "simpleExplanation": "Imagine sending 3 friends out to grab food. `Promise.all`: You wait until ALL friends return before eating. If one gets a flat tire (rejects), dinner is ruined. `Promise.race`: You eat the food of whoever gets back FIRST. `Promise.any`: You eat the first food that arrives safely, ignoring flat tires. `Promise.allSettled`: You wait for everyone to return, whether they brought food or excuses.",
+  "realWorldExample": "Using `Promise.all` to fetch data from three completely independent APIs at the exact same time, cutting a 6-second total loading time down to 2 seconds.",
+  "useCases": [
+    "Parallel execution",
+    "Performance optimization",
+    "Graceful failure handling"
+  ],
+  "questions": {
+    "basic": [
+      "Why is `Promise.all` faster than sequential `await`?"
+    ],
+    "intermediate": [
+      "What happens if one Promise in `Promise.all` rejects?"
+    ],
+    "advanced": [
+      "When would you choose `Promise.allSettled` over `Promise.all`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if one Promise in Promise.all rejects?",
+      "answer": "The ENTIRE `Promise.all` immediately rejects with that single error. The other promises continue running in the background, but their results are completely ignored."
+    },
+    {
+      "question": "When to choose allSettled?",
+      "answer": "If the independent API calls don't strictly rely on each other. If you are fetching a user's 'Recent Posts' and 'Recommended Friends', and the Friends API fails, you still want to show the Posts. `allSettled` guarantees you get an array back showing the `{ status: 'fulfilled' / 'rejected' }` of every request."
+    }
+  ],
+  "codeExample": "const p1 = fetch('/users/1');\nconst p2 = fetch('/posts/1');\n\n// AVOID: Sequential (Slow! Takes p1 time + p2 time)\n// const u = await p1; \n// const p = await p2;\n\n// GOOD: Parallel (Fast! Takes max of p1 or p2 time)\ntry {\n  const [userRes, postRes] = await Promise.all([p1, p2]);\n  console.log(\"Both fetched successfully!\");\n} catch (error) {\n  // If p1 OR p2 fails, it lands here instantly\n  console.error(\"One of them failed!\", error);\n}\n\n// allSettled example:\n// const results = await Promise.allSettled([p1, p2]);\n// results[0].status === 'fulfilled' ? results[0].value : results[0].reason;"
+}

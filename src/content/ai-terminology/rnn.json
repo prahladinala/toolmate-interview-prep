@@ -1,0 +1,31 @@
+{
+  "id": "rnn",
+  "title": "Recurrent Neural Networks (RNN)",
+  "difficulty": "Advanced",
+  "definition": "A specialized neural network designed to process sequential data. Unlike standard networks, RNNs have 'memory' loops that allow information from previous steps to influence the current step.",
+  "simpleExplanation": "Reading a book. If you read the word 'Bank', does it mean money, or a river? You can only know if you remember the sentence you just read. A normal neural network forgets everything instantly. An RNN has a 'memory loop', allowing it to remember the past context.",
+  "realWorldExample": "Before Transformers were invented in 2017, RNNs (specifically LSTMs) powered Google Translate and Apple's Siri, because translating language requires understanding the sequence of words.",
+  "useCases": [
+    "Time-series forecasting",
+    "Legacy language processing",
+    "Speech recognition"
+  ],
+  "questions": {
+    "basic": [
+      "What type of data are RNNs primarily used for?"
+    ],
+    "intermediate": [
+      "Why have Transformers largely replaced RNNs in modern AI like ChatGPT?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Type of data?",
+      "answer": "Sequential data (Text sentences, Audio waves, Stock market prices over time)."
+    },
+    {
+      "question": "Why replaced by Transformers?",
+      "answer": "Because RNNs must process words one-by-one in strict order, which is incredibly slow and prevents GPUs from doing parallel processing. Furthermore, RNNs suffer from 'Short-Term Memory'—they forget the beginning of a long paragraph by the time they reach the end."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "keyboard-navigation",
+  "title": "Keyboard Navigation",
+  "difficulty": "Intermediate",
+  "definition": "Ensuring interactive elements (dropdowns, modals, navbars) built with Tailwind are logically structured in the HTML so the 'Tab' key flows naturally through them.",
+  "simpleExplanation": "Tailwind only provides the visual styling. It is up to you to ensure that the HTML structure makes sense. A common mistake is building a 'Button' using a `<div>` with an `onClick`. A `<div>` cannot be tabbed to. You must use a `<button>` tag.",
+  "realWorldExample": "Creating a 'Skip to Main Content' link hidden at the very top of the page. It remains completely invisible (`sr-only`) until a keyboard user hits Tab, at which point it instantly appears on screen (`focus:not-sr-only`).",
+  "useCases": [
+    "Screen readers",
+    "Power users",
+    "Accessibility compliance"
+  ],
+  "questions": {
+    "basic": [
+      "If you make a `<div>` look exactly like a button using Tailwind, can a user 'Tab' to it with their keyboard?"
+    ],
+    "intermediate": [
+      "What Tailwind class completely hides an element visually, but keeps it fully readable by Screen Reader software for blind users?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Tab to a div?",
+      "answer": "No. Divs do not receive keyboard focus natively. You would have to manually add `tabindex=\"0\"` and keyboard event listeners, which is a massive anti-pattern. Just use the `<button>` HTML tag."
+    },
+    {
+      "question": "Screen Reader only class?",
+      "answer": "`sr-only`"
+    }
+  ],
+  "codeExample": "<!-- \n  The \"Skip to Content\" Accessible Link \n  - sr-only: Completely invisible to sighted users.\n  - focus:not-sr-only: If a keyboard user hits TAB when the page loads, \n    it instantly becomes visible, allowing them to skip the navbar and go \n    straight to the main article!\n-->\n<a href=\"#main-content\" \n   class=\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 \n          bg-blue-600 text-white px-4 py-2 z-50 rounded\">\n  Skip to main content\n</a>\n\n<nav>...Massive Navigation...</nav>\n<main id=\"main-content\">...The Article...</main>"
+}

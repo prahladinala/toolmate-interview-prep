@@ -1,0 +1,31 @@
+{
+  "id": "server-state-vs-client-state",
+  "title": "Server State vs Client State",
+  "difficulty": "Advanced",
+  "definition": "The architectural philosophy of strictly separating data that lives in a database (Server State) from data that lives purely in the user's browser memory (Client State).",
+  "simpleExplanation": "Server State = A list of Products, the user's Account Balance, the content of a Blog Post. Client State = Is the dropdown menu currently open? What text is typed into the search bar right now? Is the Dark Mode toggle checked?",
+  "realWorldExample": "Migrating a legacy React app where developers shoved the entire database of 'Users' into a global Redux store (mixing Server and Client state). In Next.js, Server State stays on the Server, and Client State uses `useState` or `Zustand`.",
+  "useCases": [
+    "Application Architecture",
+    "Deciding which state library to use"
+  ],
+  "questions": {
+    "basic": [
+      "Is the fact that a sidebar is open or closed considered Server State or Client State?"
+    ],
+    "intermediate": [
+      "Why did Next.js Server Components drastically reduce the need for global state management libraries like Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Sidebar open/closed?",
+      "answer": "Client State. It only matters to the specific user actively clicking around on their browser. The database does not care if the sidebar is open."
+    },
+    {
+      "question": "Why reduced Redux?",
+      "answer": "Historically, Redux was primarily used to cache Server State (e.g., storing the list of fetched Products so you don't have to fetch them again when navigating). Next.js Server Components and the native Data Cache handle this completely natively, meaning you no longer need Redux to cache API responses."
+    }
+  ],
+  "codeExample": "/* \n  MODERN NEXT.JS ARCHITECTURE SEPARATION \n*/\n\n// 1. SERVER STATE (Handled natively by Next.js)\n// Fetched directly from the database, cached by Next.js.\nexport default async function Page() {\n  const products = await db.getProducts(); \n  return <ClientInteractiveWrapper products={products} />;\n}\n\n// 2. CLIENT STATE (Handled by useState or Zustand)\n// Manages purely ephemeral UI interactivity.\n'use client';\nexport function ClientInteractiveWrapper({ products }) {\n  // This state resets if the user refreshes the page. \n  // It does not belong in a database or Redux.\n  const [isGalleryOpen, setIsGalleryOpen] = useState(false);\n  \n  return (\n    <div onClick={() => setIsGalleryOpen(true)}>\n      {/* Render products... */}\n    </div>\n  );\n}"
+}

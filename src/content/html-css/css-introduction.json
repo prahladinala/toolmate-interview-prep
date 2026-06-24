@@ -1,0 +1,32 @@
+{
+  "id": "css-introduction",
+  "title": "What is CSS?",
+  "difficulty": "Beginner",
+  "definition": "Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in HTML.",
+  "simpleExplanation": "If HTML is the bricks and structure of a house, CSS is the interior design. CSS tells the browser what color the walls should be, how big the windows are, and where the furniture is placed.",
+  "realWorldExample": "Writing `color: red; font-size: 20px;` to turn boring black HTML text into big red text.",
+  "useCases": [
+    "Styling websites",
+    "Creating responsive layouts",
+    "Adding animations"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'C' in CSS stand for?"
+    ],
+    "intermediate": [
+      "What are the three ways to add CSS to an HTML document?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does C stand for?",
+      "answer": "Cascading. It means styles fall down like a waterfall. If you set the body to be blue, all paragraphs inside the body 'cascade' and become blue as well (unless overridden)."
+    },
+    {
+      "question": "Three ways?",
+      "answer": "1. Inline (inside the HTML tag: `style=\"...\"`). 2. Internal (inside a `<style>` tag in the `<head>`). 3. External (linking to a separate `.css` file)."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <!-- INTERNAL CSS -->\n  <style>\n    body {\n      background-color: #f4f4f9;\n      font-family: Arial, sans-serif;\n      text-align: center;\n      padding: 50px;\n    }\n    \n    .magic-box {\n      background-color: #2b2b2b;\n      color: white;\n      padding: 20px;\n      border-radius: 10px;\n      box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"magic-box\">\n    <h1>Welcome to CSS!</h1>\n    <!-- INLINE CSS -->\n    <p style=\"color: #4ade80;\">HTML built this box, but CSS made it look cool.</p>\n  </div>\n\n</body>\n</html>"
+}

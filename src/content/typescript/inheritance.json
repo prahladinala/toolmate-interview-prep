@@ -1,0 +1,34 @@
+{
+  "id": "inheritance",
+  "title": "Inheritance & Abstract Classes",
+  "difficulty": "Advanced",
+  "definition": "Inheritance (`extends`) allows a class to copy the behavior of another class. Abstract classes are special base classes that cannot be instantiated directly; they exist purely as blueprints for child classes to inherit from.",
+  "simpleExplanation": "An Abstract Class is a concept, like a 'Vehicle'. You cannot go to a dealership and say 'I would like to buy 1 Vehicle please'. You must buy a specific implementation: a Car, or a Truck. The Abstract 'Vehicle' class enforces that ALL child vehicles MUST have an engine, but forces the child to define exactly HOW the engine works.",
+  "realWorldExample": "Creating an abstract `DatabaseAdapter` class that requires a `connect()` method. You then build child classes `MySQLAdapter` and `MongoAdapter` that implement the specific connection logic.",
+  "useCases": [
+    "Polymorphism",
+    "Enforcing strict architectural contracts across multiple classes"
+  ],
+  "questions": {
+    "basic": [
+      "Can you instantiate an abstract class using `new`?"
+    ],
+    "intermediate": [
+      "What is an abstract method?"
+    ],
+    "advanced": [
+      "What is the difference between an Interface and an Abstract Class?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is an abstract method?",
+      "answer": "It is a method defined in an abstract class that has a signature, but NO body (e.g., `abstract getSalary(): number;`). Any class that extends this parent is strictly FORCED to implement the body of that method."
+    },
+    {
+      "question": "Interface vs Abstract Class?",
+      "answer": "An Interface ONLY contains types; it disappears completely at runtime. An Abstract Class can contain full JavaScript logic (like a base `log()` method) alongside abstract requirements, and it remains in the compiled code as a normal JS class."
+    }
+  ],
+  "codeExample": "abstract class Employee {\n  constructor(public name: string) {}\n\n  // Concrete method (Shared by all children)\n  printName() {\n    console.log(\"Employee: \" + this.name);\n  }\n\n  // Abstract method (Children MUST provide the implementation)\n  abstract calculateSalary(): number;\n}\n\n// const e = new Employee(\"Alice\"); // ERROR: Cannot create instance of abstract class.\n\nclass FullTimeEmployee extends Employee {\n  // Required by parent contract!\n  calculateSalary() {\n    return 60000;\n  }\n}\n\nconst bob = new FullTimeEmployee(\"Bob\");\nbob.printName(); // \"Employee: Bob\" (Inherited)\nconsole.log(bob.calculateSalary()); // 60000 (Implemented)"
+}

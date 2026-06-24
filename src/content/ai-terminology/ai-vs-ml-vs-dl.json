@@ -1,0 +1,30 @@
+{
+  "id": "ai-vs-ml-vs-dl",
+  "title": "AI vs ML vs Deep Learning",
+  "difficulty": "Beginner",
+  "definition": "AI is the broadest concept of machine intelligence. Machine Learning (ML) is a subset of AI focusing on algorithms that learn from data. Deep Learning (DL) is a subset of ML using complex, multi-layered artificial neural networks.",
+  "simpleExplanation": "Think of Russian nesting dolls. The biggest doll is Artificial Intelligence (any smart machine). Inside it is Machine Learning (machines that learn from data). Inside that is Deep Learning (machines that learn using massive brain-like networks).",
+  "realWorldExample": "AI: A basic chess robot. ML: A spam filter that learns which emails you mark as junk. DL: Tesla's self-driving vision system processing live video feeds to detect pedestrians.",
+  "useCases": [
+    "Categorizing technologies",
+    "Choosing the right algorithmic approach"
+  ],
+  "questions": {
+    "basic": [
+      "Which is the broadest category: AI, Machine Learning, or Deep Learning?"
+    ],
+    "intermediate": [
+      "Is all Machine Learning considered Deep Learning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Broadest category?",
+      "answer": "Artificial Intelligence (AI)."
+    },
+    {
+      "question": "Is all ML considered DL?",
+      "answer": "No. Deep Learning is a highly specific sub-field of Machine Learning that uses artificial neural networks with many layers. Many ML algorithms (like Linear Regression or Random Forests) do not use neural networks at all."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "git-diff",
+  "title": "git diff",
+  "difficulty": "Intermediate",
+  "definition": "Shows changes between commits, commit and working tree, etc. It highlights exactly what lines of code you have altered since your last save.",
+  "simpleExplanation": "Before you commit, you should check what you actually did. `git diff` shows you the exact lines of code you typed or deleted in your Working Directory since your last commit.",
+  "realWorldExample": "You are about to type `git commit`, but you pause and think: 'Wait, did I accidentally leave a console.log() in there?' You run `git diff` to double check your work.",
+  "useCases": [
+    "Reviewing your own work before staging",
+    "Comparing branches"
+  ],
+  "questions": {
+    "basic": [
+      "Does `git diff` show files that have already been `added` to the staging area?"
+    ],
+    "intermediate": [
+      "How do you see the diff of files that ARE in the staging area?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Show staged files?",
+      "answer": "No! By default, `git diff` ONLY compares the Working Directory to the Staging Area. If a file is staged, it disappears from the default `git diff` output."
+    },
+    {
+      "question": "Diff staged files?",
+      "answer": "You must use the command `git diff --staged` (or `--cached`). This compares the Staging Area to the last Commit."
+    }
+  ],
+  "codeExample": "# 1. You edit index.html.\n# See what you changed (Working Directory vs Staging Area)\n$ git diff\n\n# 2. You run 'git add index.html'. \n# Now 'git diff' outputs nothing! It's staged.\n\n# 3. See what is staged (Staging Area vs Last Commit)\n$ git diff --staged\n\n# Compare two different branches to see how they differ\n$ git diff main feature-branch"
+}

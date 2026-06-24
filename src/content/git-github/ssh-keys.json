@@ -1,0 +1,31 @@
+{
+  "id": "ssh-keys",
+  "title": "SSH Keys",
+  "difficulty": "Intermediate",
+  "definition": "An access credential in the SSH protocol. Its function is similar to that of user names and passwords, but the keys are primarily used for automated processes and secure computer-to-computer connections.",
+  "simpleExplanation": "A digital ID card for your computer. Instead of typing your username and password every time you `git push`, you generate a cryptographic key pair (a public key and a private key). You give GitHub your public key. Now, GitHub recognizes your laptop instantly and securely.",
+  "realWorldExample": "Generating an `id_rsa` key on your Mac, pasting the `.pub` file into your GitHub settings, and never typing a password again.",
+  "useCases": [
+    "Passwordless authentication",
+    "Secure data transfer"
+  ],
+  "questions": {
+    "basic": [
+      "Which key do you upload to GitHub: the public key or the private key?"
+    ],
+    "intermediate": [
+      "Why did GitHub remove password authentication for Git commands in 2021?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Public or Private?",
+      "answer": "The PUBLIC key (`id_rsa.pub`). You NEVER share your private key with anyone, not even GitHub."
+    },
+    {
+      "question": "Why remove passwords?",
+      "answer": "Passwords are easily stolen, guessed, or reused across websites. SSH keys (and Personal Access Tokens) are cryptographically secure and unique to a single machine."
+    }
+  ],
+  "codeExample": "# 1. Generate a new SSH key on your computer\n$ ssh-keygen -t ed25519 -C \"your_email@example.com\"\n\n# 2. View your public key and copy it to your clipboard\n$ cat ~/.ssh/id_ed25519.pub\n\n# 3. Go to GitHub -> Settings -> SSH and GPG keys -> New SSH key. Paste it.\n\n# 4. Test the connection!\n$ ssh -T git@github.com\n# Output: Hi Username! You've successfully authenticated..."
+}

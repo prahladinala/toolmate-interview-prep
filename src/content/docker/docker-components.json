@@ -1,0 +1,30 @@
+{
+  "id": "docker-components",
+  "title": "Docker Components",
+  "difficulty": "Beginner",
+  "definition": "The primary building blocks of the Docker ecosystem: Images (the read-only templates), Containers (the running instances), Registries (where images are stored), and Dockerfiles (the instructions to build images).",
+  "simpleExplanation": "Dockerfile is the Recipe. The Image is the frozen, unbaked Cake. The Container is the hot, running Cake in the oven. The Registry is the grocery store where you buy or share frozen cakes.",
+  "realWorldExample": "You write a `Dockerfile`. You build it into an `Image`. You push that Image to Docker Hub (the `Registry`). Your friend pulls the Image and runs it as a `Container` on their laptop.",
+  "useCases": [
+    "Vocabulary building",
+    "Understanding workflows"
+  ],
+  "questions": {
+    "basic": [
+      "Which component is essentially a 'Read-Only Blueprint': The Image or the Container?"
+    ],
+    "intermediate": [
+      "Can you have multiple Containers running from a single Image?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Read-Only Blueprint?",
+      "answer": "The Image."
+    },
+    {
+      "question": "Multiple containers?",
+      "answer": "Yes! Just like you can build 5 identical houses from 1 blueprint, you can run 5 identical, isolated containers from 1 Image."
+    }
+  ]
+}

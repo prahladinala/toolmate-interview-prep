@@ -1,0 +1,31 @@
+{
+  "id": "content-scanning",
+  "title": "Content Scanning (Purging)",
+  "difficulty": "Intermediate",
+  "definition": "The process where Tailwind's Just-In-Time (JIT) compiler scans your source files to detect class names, ensuring only the CSS you actually use is included in the final bundle.",
+  "simpleExplanation": "Tailwind has over 50,000 possible classes. If it shipped all of them to the browser, the file would be 15 Megabytes. Instead, Tailwind literally reads your `.html` and `.jsx` files like a book. If it sees the word `text-red-500`, it generates the CSS for it. If it doesn't see it, it skips it.",
+  "realWorldExample": "Deploying an app and realizing all your dynamically generated colors (like `bg-${color}-500`) are missing because Tailwind couldn't find the complete class name during the scan.",
+  "useCases": [
+    "Production optimization",
+    "Debugging missing styles"
+  ],
+  "questions": {
+    "basic": [
+      "If you use a Tailwind class in your HTML, but forget to add that HTML file to the `content` array in `tailwind.config.js`, what happens?"
+    ],
+    "intermediate": [
+      "Why does `<div class={`bg-${color}-500`}>` fail to work in Tailwind?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Forget to add to content?",
+      "answer": "The CSS class will not be generated, and your styling will not appear in the browser."
+    },
+    {
+      "question": "Why dynamic classes fail?",
+      "answer": "Tailwind does not execute JavaScript. It just does a raw text search using Regular Expressions. It looks for the exact unbroken string `bg-red-500`. It cannot compute `${color}` at build time, so it ignores it."
+    }
+  ],
+  "codeExample": "/* \n  ❌ BAD: Dynamic class names will be purged! \n  Tailwind scanner doesn't know if 'color' is red, blue, or green.\n*/\nfunction Button({ color }) {\n  return <button className={`bg-${color}-500 p-2`}>Click Me</button>;\n}\n\n/* \n  ✅ GOOD: Complete class names must exist in the source code.\n*/\nfunction Button({ color }) {\n  const colorMap = {\n    red: 'bg-red-500',\n    blue: 'bg-blue-500',\n    green: 'bg-green-500'\n  };\n  return <button className={`${colorMap[color]} p-2`}>Click Me</button>;\n}"
+}

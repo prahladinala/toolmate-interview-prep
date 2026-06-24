@@ -1,0 +1,30 @@
+{
+  "id": "put",
+  "title": "PUT",
+  "difficulty": "Intermediate",
+  "definition": "An HTTP method used to UPDATE an existing resource by completely replacing it with the new data provided in the request payload.",
+  "simpleExplanation": "If you use PUT to update a user's name, you must send their name, their email, their age, and their phone number. PUT takes the entire old record, throws it in the trash, and replaces it with the brand new record you just sent.",
+  "realWorldExample": "Updating a user's entire profile settings page. When they click 'Save', the frontend sends every single setting (even the ones they didn't change) to completely overwrite the database row.",
+  "useCases": [
+    "Full resource replacements"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between PUT and POST?"
+    ],
+    "intermediate": [
+      "Is a PUT request Idempotent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "PUT vs POST?",
+      "answer": "POST is for creating entirely new things. PUT is for updating/replacing existing things."
+    },
+    {
+      "question": "Is it Idempotent?",
+      "answer": "Yes! If you send a PUT request saying 'Set age to 25', doing it 1 time sets the age to 25. Doing it 100 times still just leaves the age at 25. The end state is the same."
+    }
+  ],
+  "codeExample": "// The existing Database Record:\n// { id: 1, name: \"John\", age: 30, role: \"Admin\" }\n\n// ❌ BAD PUT REQUEST (Missing data!)\nfetch('/api/users/1', {\n  method: 'PUT',\n  body: JSON.stringify({ name: \"Johnny\" })\n})\n// Result: { id: 1, name: \"Johnny\", age: null, role: null }\n// It completely replaced the record and wiped out the age and role!\n\n// ✅ GOOD PUT REQUEST (Send everything)\nfetch('/api/users/1', {\n  method: 'PUT',\n  body: JSON.stringify({ name: \"Johnny\", age: 30, role: \"Admin\" })\n})"
+}

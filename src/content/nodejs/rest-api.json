@@ -1,0 +1,31 @@
+{
+  "id": "rest-api",
+  "title": "REST APIs",
+  "difficulty": "Beginner",
+  "definition": "Representational State Transfer. An architectural style for designing networked applications. It relies on standard HTTP methods (GET, POST, PUT, DELETE) and treats data as 'Resources' identified by URLs.",
+  "simpleExplanation": "A REST API is a digital menu for a restaurant. You cannot run into the kitchen and cook the food yourself. You must look at the menu (the API documentation), choose an item (a URL endpoint like `/users`), and tell the waiter exactly what you want using specific verbs (GET = read, POST = create, DELETE = remove). The kitchen (Node.js) then prepares the data and brings it out to you on a plate (JSON).",
+  "realWorldExample": "The Twitter API. You send a `GET` request to `api.twitter.com/tweets/123` to read a tweet. You send a `POST` request to `api.twitter.com/tweets` with a JSON body to create a new tweet.",
+  "useCases": [
+    "Connecting mobile apps to a backend",
+    "Connecting React/Vue frontends to a database"
+  ],
+  "questions": {
+    "basic": [
+      "What format is most commonly used to send and receive data in a REST API?"
+    ],
+    "intermediate": [
+      "What is a 'Stateless' architecture in REST?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format is used?",
+      "answer": "JSON (JavaScript Object Notation)."
+    },
+    {
+      "question": "What is Stateless?",
+      "answer": "It means the server remembers absolutely nothing about you between requests. If you ask for page 1, and then page 2, the server doesn't remember you asked for page 1. Every single request must contain all the information (like an API token) needed to prove who you are."
+    }
+  ],
+  "codeExample": "// Example of typical REST API Routes (Pseudo-code for an Express app):\n\n// 1. GET /users         -> Returns a list of all users\n// 2. POST /users        -> Creates a new user (data in request body)\n// 3. GET /users/123     -> Returns the specific user with ID 123\n// 4. PUT /users/123     -> Updates the specific user with ID 123\n// 5. DELETE /users/123  -> Deletes the specific user with ID 123\n\nconsole.log(\"REST is a design pattern. URL nouns represent the 'Thing' (/users), and HTTP Verbs represent the 'Action' (GET/POST).\");"
+}

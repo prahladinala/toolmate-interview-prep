@@ -1,0 +1,30 @@
+{
+  "id": "docker-stats",
+  "title": "docker stats",
+  "difficulty": "Beginner",
+  "definition": "A CLI command that displays a live, real-time stream of resource usage statistics for running containers, including CPU usage, Memory limits, and Network I/O.",
+  "simpleExplanation": "The 'Activity Monitor' or 'Task Manager' for Docker. It shows you exactly how much RAM and CPU each container is currently eating.",
+  "realWorldExample": "Your server fan is spinning wildly and everything is slow. You type `docker stats`. You immediately see that the `redis` container is currently consuming 99% CPU and 16GB of RAM due to a bug.",
+  "useCases": [
+    "Performance monitoring",
+    "Finding memory leaks"
+  ],
+  "questions": {
+    "basic": [
+      "Does `docker stats` show historical data from yesterday, or live data?"
+    ],
+    "intermediate": [
+      "If a container has no resource limits set, what will the 'MEM LIMIT' column display in `docker stats`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Historical or live?",
+      "answer": "Live, real-time data only."
+    },
+    {
+      "question": "MEM LIMIT display?",
+      "answer": "It will display the total physical RAM of the entire Host machine, indicating that the container is allowed to consume 100% of the server's memory if it wants to."
+    }
+  ]
+}

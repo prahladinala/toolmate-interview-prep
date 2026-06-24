@@ -1,0 +1,30 @@
+{
+  "id": "stemming",
+  "title": "Stemming",
+  "difficulty": "Beginner",
+  "definition": "A crude heuristic process in NLP that chops off the ends of words to reduce them to their base or root form.",
+  "simpleExplanation": "A digital meat cleaver. It looks at the words 'Running', 'Runner', and 'Runs', and blindly chops off the ends, reducing all of them to 'Run'. This helps the computer realize they all mean the same thing.",
+  "realWorldExample": "Old search engines used stemming heavily. If you searched for 'fishing', the search engine chopped it to 'fish' and showed you results for 'fished', 'fisher', and 'fishes'.",
+  "useCases": [
+    "Search indexing",
+    "Spam filtering"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Stemming in text processing?"
+    ],
+    "intermediate": [
+      "What is the major downside of Stemming compared to Lemmatization?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary purpose?",
+      "answer": "To reduce the size of the vocabulary the computer has to memorize by treating all variations of a word as the exact same root word."
+    },
+    {
+      "question": "Downside of stemming?",
+      "answer": "It is dumb. It literally just chops off letters using hardcoded rules (like 'delete -ing'). If you stem the word 'Caring', it becomes 'Car'. This completely destroys the meaning of the sentence."
+    }
+  ]
+}

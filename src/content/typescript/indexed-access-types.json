@@ -1,0 +1,34 @@
+{
+  "id": "indexed-access-types",
+  "title": "Indexed Access Types",
+  "difficulty": "Advanced",
+  "definition": "A mechanism to look up a specific property on another type using bracket notation `Type['property']`, similar to accessing an object property in JavaScript.",
+  "simpleExplanation": "If you have a massive API Response interface, and you only want to write a function that handles the 'Address' part of that response, you don't need to write a whole new Address interface. You just tell TS: 'Go into the API Response interface, look at the Address property, and give me whatever type is sitting there.'",
+  "realWorldExample": "Extracting the type of an array element: `type User = typeof usersArray[number];`",
+  "useCases": [
+    "Extracting nested types from 3rd-party libraries",
+    "Keeping types DRY"
+  ],
+  "questions": {
+    "basic": [
+      "What is the syntax to access a type?"
+    ],
+    "intermediate": [
+      "How do you access the type of an array element?"
+    ],
+    "advanced": [
+      "Can you pass a union of strings into the index to get a union of types back?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you access an array element type?",
+      "answer": "You index the array type with the keyword `number`. If `type List = string[]`, then `type Element = List[number]` evaluates to `string`."
+    },
+    {
+      "question": "Can you pass a union into the index?",
+      "answer": "Yes! If you do `Person['name' | 'age']`, TS goes into the Person interface, grabs the type for 'name', grabs the type for 'age', and returns them as a union (e.g., `string | number`)."
+    }
+  ],
+  "codeExample": "interface ApiResponse {\n  user: {\n    id: number;\n    name: string;\n    address: {\n      street: string;\n      zipCode: string;\n    };\n  };\n  status: string;\n}\n\n// Look ma, no new interfaces! We just drill into the existing one.\ntype AddressType = ApiResponse[\"user\"][\"address\"];\n\n/* Evaluates to:\n  {\n    street: string;\n    zipCode: string;\n  }\n*/\n\nfunction validateZipCode(address: AddressType) {\n  console.log(address.zipCode);\n}\n\n// Array extraction trick:\nconst roles = [\"admin\", \"editor\", \"guest\"] as const;\ntype RoleType = typeof roles[number]; // Evaluates to: \"admin\" | \"editor\" | \"guest\""
+}

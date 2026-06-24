@@ -1,0 +1,45 @@
+{
+  "id": "memoization",
+  "title": "Memoization",
+  "difficulty": "Advanced",
+  "definition": "Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.",
+  "simpleExplanation": "Imagine having to solve 5,432 x 9,876 in your head. It takes you a few minutes, and the answer is 53,646,432. If someone asks you five minutes later what 5,432 x 9,876 is, you don't calculate it again! You just remember (memoize) the answer and say it immediately.",
+  "realWorldExample": "In React, if a complex dashboard component takes 1 second to render given a set of data, you can 'memoize' it. If the user clicks around but the data hasn't changed, React skips rendering and just shows the cached snapshot.",
+  "useCases": [
+    "Optimizing recursive functions (like calculating Fibonacci sequences)",
+    "Preventing unnecessary re-renders in UI frameworks (React.memo, useMemo)",
+    "Caching expensive API calls or heavy math computations"
+  ],
+  "questions": {
+    "basic": [
+      "What is memoization?",
+      "Why wouldn't you memoize every single function in your app?"
+    ],
+    "intermediate": [
+      "How is memoization related to closures?",
+      "What makes a function a 'pure function', and why is it necessary for memoization?"
+    ],
+    "advanced": [
+      "Write a generic memoize utility function.",
+      "How do you handle memoizing functions that take multiple arguments (objects/arrays)?"
+    ],
+    "trick": [
+      "Can you memoize a function that generates a random number or fetches the current time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why wouldn't you memoize every function?",
+      "answer": "Memory consumption. Caching results takes up RAM. If a function is fast, the overhead of creating the cache and checking it might actually be slower than just running the function. Only memoize 'expensive' operations."
+    },
+    {
+      "question": "Why do memoized functions need to be 'pure'?",
+      "answer": "A pure function always returns the exact same output for the same input, and has no side effects. If a function relies on a global variable that changes, the cached answer might become incorrect."
+    },
+    {
+      "question": "Can you memoize a random number generator?",
+      "answer": "No. A random number generator is impure. If you memoized it, calling `getRandom()` would just return the very first random number it generated forever."
+    }
+  ],
+  "codeExample": "// A generic memoize wrapper\nfunction memoize(fn) {\n  const cache = {};\n  \n  return function(...args) {\n    // Create a simple string key from arguments\n    const key = JSON.stringify(args);\n    \n    // Check if we already calculated this\n    if (cache[key]) {\n      console.log('Fetching from cache:', key);\n      return cache[key];\n    }\n    \n    // Otherwise, calculate and store it\n    console.log('Calculating result for:', key);\n    const result = fn.apply(this, args);\n    cache[key] = result;\n    return result;\n  };\n}\n\n// An expensive function\nconst slowSquare = (n) => {\n  // Imagine this takes 2 seconds\n  return n * n;\n};\n\nconst memoizedSquare = memoize(slowSquare);\n\nconsole.log(memoizedSquare(10)); // Calculating result for: [10] -> 100\nconsole.log(memoizedSquare(10)); // Fetching from cache: [10] -> 100\nconsole.log(memoizedSquare(5));  // Calculating result for: [5] -> 25\nconsole.log(memoizedSquare(5));  // Fetching from cache: [5] -> 25"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "responsive-images",
+  "title": "Responsive Images",
+  "difficulty": "Advanced",
+  "definition": "Using the `sizes` attribute or the `fill` prop to handle images whose physical size on the screen changes across different breakpoints (mobile vs desktop).",
+  "simpleExplanation": "If you hardcode `width={500}`, the image is always 500px wide. But what if you want an image that stretches to fill the entire width of the user's screen? You use the `fill` property, and you tell Next.js the `sizes` so it knows exactly what file sizes to generate.",
+  "realWorldExample": "A Hero Banner at the top of a webpage. It needs to be 400px wide on a phone, and 2000px wide on a 4K monitor. The `fill` prop combined with CSS `object-cover` makes this effortless.",
+  "useCases": [
+    "Hero images",
+    "Fluid grids",
+    "Background images"
+  ],
+  "questions": {
+    "basic": [
+      "If you use the `fill` property on an `<Image>`, do you still need to provide `width` and `height` properties?"
+    ],
+    "intermediate": [
+      "If you use `fill`, what CSS position class MUST be applied to the parent `<div>` wrapping the image?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need width/height?",
+      "answer": "No! `fill` replaces the need for width and height. It tells the image to automatically stretch to match the exact dimensions of its parent container."
+    },
+    {
+      "question": "CSS on parent?",
+      "answer": "`position: relative` (or `absolute`/`fixed`). If the parent is not relative, the filled image will escape the container and literally fill the entire browser window."
+    }
+  ],
+  "codeExample": "import Image from 'next/image';\n\nexport default function HeroBanner() {\n  return (\n    // 1. The parent MUST be relative and have a defined height/width!\n    <div className=\"relative w-full h-96\">\n      \n      {/* 2. The Image uses 'fill' to perfectly match the parent box */}\n      <Image\n        src=\"/massive-background.jpg\"\n        alt=\"Hero\"\n        fill\n        // 3. object-cover prevents the image from looking squished/distorted\n        className=\"object-cover\"\n        // 4. 'sizes' tells the server EXACTLY what sizes to generate to save bandwidth\n        sizes=\"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw\"\n      />\n    </div>\n  );\n}"
+}

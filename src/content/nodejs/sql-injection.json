@@ -1,0 +1,30 @@
+{
+  "id": "sql-injection",
+  "title": "SQL Injection",
+  "difficulty": "Intermediate",
+  "definition": "A code injection technique that might destroy your database. It occurs when malicious SQL statements are inserted into entry fields for execution.",
+  "simpleExplanation": "You have a login query: `SELECT * FROM users WHERE email = '` + req.body.email + `'`. A hacker types `' OR '1'='1` into the email field. The final query becomes `SELECT * FROM users WHERE email = '' OR '1'='1'`. Since 1 always equals 1, the database says 'True!' and logs the hacker into the first account in the database (usually the Admin).",
+  "realWorldExample": "The most famous web vulnerability in history. It can be used to bypass logins, steal entire databases, or completely DROP (delete) tables.",
+  "useCases": [
+    "Securing relational databases (PostgreSQL/MySQL)"
+  ],
+  "questions": {
+    "basic": [
+      "What causes SQL Injection?"
+    ],
+    "intermediate": [
+      "How do you completely prevent SQL Injection?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What causes it?",
+      "answer": "String concatenation. Directly gluing user input strings into database command strings."
+    },
+    {
+      "question": "How to prevent it?",
+      "answer": "Prepared Statements (Parameterized Queries). You send the SQL command and the User Data to the database separately. The database compiles the command first, and treats the user data strictly as a harmless string, making injection impossible. All modern ORMs (Prisma, TypeORM) do this automatically."
+    }
+  ],
+  "codeExample": "const userInput = \"admin@test.com' OR '1'='1\";\n\n// --- BAD (VULNERABLE) ---\n// String concatenation allows the input to alter the SQL logic.\nconst badQuery = `SELECT * FROM users WHERE email = '${userInput}'`;\nconsole.log(\"DANGEROUS QUERY:\");\nconsole.log(badQuery);\n\n// --- GOOD (PREPARED STATEMENT) ---\n// The SQL logic is locked. The '?' acts as a placeholder.\nconst goodQuery = `SELECT * FROM users WHERE email = ?`;\nconst values = [userInput];\n\n// The database engine receives the raw string, but knows it's strictly data, not logic.\n// db.execute(goodQuery, values);\nconsole.log(\"\\nSAFE QUERY:\");\nconsole.log(goodQuery, \"<-- Executed safely with data:\", values);"
+}

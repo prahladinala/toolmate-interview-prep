@@ -1,0 +1,32 @@
+{
+  "id": "mocking",
+  "title": "Mocking Dependencies",
+  "difficulty": "Advanced",
+  "definition": "Creating fake versions of external dependencies or functions to isolate the code being tested. It allows you to simulate scenarios that are difficult to trigger in reality.",
+  "simpleExplanation": "Imagine testing a function that charges a user's credit card via Stripe. If you run the test 50 times, you don't want to actually charge your credit card $500! Mocking intercepts the call to Stripe, blocks the real network request, and instantly returns a fake 'Success!' response so your test can continue safely.",
+  "realWorldExample": "Using `jest.mock('axios')` to fake network requests. You tell the mock: 'If the code calls axios.get, immediately return this fake JSON object instead of hitting the internet'.",
+  "useCases": [
+    "Bypassing payment gateways during tests",
+    "Simulating rare database crashes to test error handling",
+    "Keeping unit tests fast"
+  ],
+  "questions": {
+    "basic": [
+      "What does a Mock function do?"
+    ],
+    "intermediate": [
+      "How does mocking help test Error Handlers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does a Mock do?",
+      "answer": "It replaces a real function with a fake spy function. It tracks how many times it was called, what arguments it was passed, and allows you to force it to return specific values."
+    },
+    {
+      "question": "How does it help test Errors?",
+      "answer": "You can instruct a mock to intentionally throw an error (e.g., `mock.mockRejectedValue(new Error('Network Down'))`). This allows you to verify that your app's `catch` block safely handles a crashed API without actually having to unplug your internet."
+    }
+  ],
+  "codeExample": "// --- THE LOGIC (What we want to test) ---\n// const emailService = require('./emailService');\n\n// We want to test this logic without ACTUALLY sending emails to real people.\nfunction registerUser(name, emailServiceMock) {\n  console.log(`Registering ${name} in DB...`);\n  \n  // This triggers an email\n  emailServiceMock.sendWelcomeEmail(name);\n  return true;\n}\n\n// --- THE MOCK (Fake dependency) ---\nconst mockEmailService = {\n  // A spy function that just remembers it was called\n  sendWelcomeEmail: function(name) {\n    this.calledWith = name;\n    this.callCount++;\n  },\n  callCount: 0,\n  calledWith: null\n};\n\n// --- THE TEST ---\nregisterUser(\"Alice\", mockEmailService);\n\n// We ASSERT that the logic properly attempted to send the email\nconsole.log(\"Was email service called?\", mockEmailService.callCount === 1);\nconsole.log(\"Was it called with the correct name?\", mockEmailService.calledWith === \"Alice\");\n// We verified the code works perfectly, and nobody actually received an email!"
+}

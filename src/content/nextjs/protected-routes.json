@@ -1,0 +1,31 @@
+{
+  "id": "protected-routes",
+  "title": "Protected Routes",
+  "difficulty": "Beginner",
+  "definition": "Application URLs that are strictly locked behind an authentication check, preventing anonymous users from accessing them.",
+  "simpleExplanation": "If you are not logged in, you cannot view the `/dashboard`. If you try to go there, the system violently kicks you back to the `/login` page.",
+  "realWorldExample": "Protecting a user's private settings page or billing history.",
+  "useCases": [
+    "Gated content",
+    "User dashboards"
+  ],
+  "questions": {
+    "basic": [
+      "What is the best way to protect 50 different routes at the exact same time in Next.js?"
+    ],
+    "intermediate": [
+      "Why shouldn't you protect routes solely using a `useEffect` hook in a Client Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Best way to protect 50?",
+      "answer": "Using Next.js Middleware. You can protect an entire folder structure (like `/dashboard/*`) with one line of config, rather than adding checks to 50 individual files."
+    },
+    {
+      "question": "Why not useEffect?",
+      "answer": "Security and UX. Client components render HTML immediately. If you use `useEffect` to check auth, the user will see a flash of the protected data for a split second before the JavaScript executes and kicks them out. Protection must happen on the server."
+    }
+  ],
+  "codeExample": "// app/dashboard/page.tsx\nimport { redirect } from 'next/navigation';\nimport { getAuth } from '@/lib/auth';\n\nexport default async function SecureDashboard() {\n  // 1. SERVER-SIDE PROTECTION\n  // This happens on the server. The user never sees a flash of content.\n  const user = await getAuth();\n  \n  if (!user) {\n    // 2. Instantly halt rendering and redirect to login\n    redirect('/login');\n  }\n\n  // 3. Safe to render private data\n  return <h1>Secret Financial Data for {user.name}</h1>;\n}"
+}

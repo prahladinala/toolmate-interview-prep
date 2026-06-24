@@ -1,0 +1,31 @@
+{
+  "id": "curl",
+  "title": "curl",
+  "difficulty": "Intermediate",
+  "definition": "Client URL. A command-line tool for transferring data over various network protocols (HTTP, HTTPS, FTP). It is the industry standard for testing APIs from the terminal.",
+  "simpleExplanation": "A web browser without a screen. You ask for a website, and instead of showing you pictures, it just dumps the raw HTML code onto your terminal.",
+  "realWorldExample": "A developer is writing a REST API. To test it, they type `curl -X POST -d '{\"user\":\"bob\"}' http://localhost:3000/api/users`. The terminal prints out the JSON response from the server.",
+  "useCases": [
+    "Testing APIs",
+    "Downloading files",
+    "Automated web requests"
+  ],
+  "questions": {
+    "basic": [
+      "Does `curl` process JavaScript or render images like Chrome does?"
+    ],
+    "intermediate": [
+      "What does the `-i` flag do in a `curl` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Render JavaScript?",
+      "answer": "No. `curl` only fetches the raw text payload. It has no rendering engine."
+    },
+    {
+      "question": "What is -i?",
+      "answer": "Include Headers. It forces `curl` to print the hidden HTTP headers (like Status Code 200 OK or 404 Not Found) before printing the actual webpage data."
+    }
+  ]
+}

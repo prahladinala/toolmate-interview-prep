@@ -1,0 +1,31 @@
+{
+  "id": "letter-spacing",
+  "title": "Letter Spacing",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the tracking (letter spacing) of an element.",
+  "simpleExplanation": "The horizontal breathing room between individual letters. Tailwind calls this `tracking`. `tracking-tighter` squashes letters. `tracking-widest` spreads them apart.",
+  "realWorldExample": "Creating a premium, cinematic sub-header by using tiny text, all caps, and massive letter spacing: `text-xs uppercase tracking-widest`.",
+  "useCases": [
+    "Cinematic titles",
+    "ALL CAPS text legibility"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix does Tailwind use for letter-spacing classes?"
+    ],
+    "intermediate": [
+      "Why is it a standard design rule to add `tracking-wide` when using `uppercase` text?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`tracking-` (e.g., `tracking-wide`)."
+    },
+    {
+      "question": "Why uppercase needs tracking?",
+      "answer": "Uppercase letters are blocky and don't have natural 'ascenders' or 'descenders' to create visual rhythm. If they are placed too close together, they form a solid, unreadable rectangle. Spacing them out improves legibility immensely."
+    }
+  ],
+  "codeExample": "<!-- \n  The \"Premium Brand\" Subtitle pattern: \n  Tiny size + All Caps + Widest Tracking + Gray Color\n-->\n<h3 class=\"text-xs font-bold uppercase tracking-widest text-gray-400\">\n  E x c l u s i v e   C o l l e c t i o n\n</h3>\n\n<!-- \n  The \"Modern Tech Startup\" Header pattern:\n  Massive size + Heavy weight + Tighter Tracking\n-->\n<h1 class=\"text-6xl font-black tracking-tighter\">\n  Vercel\n</h1>"
+}

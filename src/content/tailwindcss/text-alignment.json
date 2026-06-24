@@ -1,0 +1,32 @@
+{
+  "id": "text-alignment",
+  "title": "Text Alignment",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the alignment of text.",
+  "simpleExplanation": "Controlling whether text sticks to the left, right, or center of its container.",
+  "realWorldExample": "Using `text-center` on a pricing page header, but leaving the actual pricing features as `text-left` so they are easy to read in a list.",
+  "useCases": [
+    "Headers",
+    "RTL (Right-to-Left) languages",
+    "Numerical tables"
+  ],
+  "questions": {
+    "basic": [
+      "What class centers text horizontally?"
+    ],
+    "intermediate": [
+      "If you apply `text-center` to a `<span class=\"inline\">`, why doesn't the text actually center on the page?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Centers text?",
+      "answer": "`text-center`"
+    },
+    {
+      "question": "Why span doesn't center?",
+      "answer": "Because an `inline` element perfectly shrinks to the width of its text. There is no empty space *inside* the span for the text to move around in. Text alignment only works on block-level containers."
+    }
+  ],
+  "codeExample": "<div class=\"w-full bg-gray-100 p-4 space-y-4\">\n  <p class=\"text-left\">I stick to the left (Default for English).</p>\n  \n  <p class=\"text-center\">I am perfectly in the middle.</p>\n  \n  <p class=\"text-right\">I stick to the right (Great for currency amounts!).</p>\n  \n  <p class=\"text-justify\">\n    I will stretch the spaces between my words so that I create \n    a perfectly flush square block of text on both the left AND \n    the right sides, just like a newspaper column.\n  </p>\n</div>"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "sft",
+  "title": "Supervised Fine Tuning (SFT)",
+  "difficulty": "Intermediate",
+  "definition": "The first phase of turning a base LLM into a chatbot, involving training the model on high-quality, human-written examples of correct question/answer pairs.",
+  "simpleExplanation": "Showing the AI exactly what a good conversation looks like by having it read thousands of scripts written by expert humans.",
+  "realWorldExample": "Before RLHF happens, OpenAI writers manually draft thousands of perfect prompts and perfect answers. The model reads these to learn the basic format of a helpful response.",
+  "useCases": [
+    "Creating instruct-models"
+  ],
+  "questions": {
+    "basic": [
+      "Which usually comes first when building a chatbot: SFT or RLHF?"
+    ],
+    "intermediate": [
+      "Why is high-quality human data the absolute bottleneck for SFT?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which comes first?",
+      "answer": "SFT (Supervised Fine Tuning) comes first to establish the format. RLHF comes second to refine the behavior and safety."
+    },
+    {
+      "question": "Why bottleneck?",
+      "answer": "Because the internet is full of garbage. To do SFT properly, you need PhDs and experts to sit down and spend hours writing perfect, flawless, factual answers to thousands of questions. This is incredibly expensive and slow to acquire."
+    }
+  ]
+}

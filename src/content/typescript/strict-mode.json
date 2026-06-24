@@ -1,0 +1,34 @@
+{
+  "id": "strict-mode",
+  "title": "Strict Mode",
+  "difficulty": "Intermediate",
+  "definition": "A configuration flag (`\"strict\": true`) in `tsconfig.json` that simultaneously enables a suite of rigorous type-checking rules, providing the strongest guarantees of program correctness.",
+  "simpleExplanation": "Turning strict mode ON is like playing a video game on 'Hardcore' difficulty. The compiler will catch significantly more bugs, force you to handle every possible `null` value, and refuse to let you use `any` implicitly. It is highly recommended for all new projects.",
+  "realWorldExample": "If `strictNullChecks` (part of Strict mode) is off, TS allows `const x: number = null`. This causes a crash when you do `x.toFixed()`. If Strict mode is ON, TS blocks `null` from being assigned to `number`.",
+  "useCases": [
+    "Enterprise app development",
+    "Eliminating 'Cannot read properties of undefined' errors"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use `strict: true` for new projects?"
+    ],
+    "intermediate": [
+      "What does the `noImplicitAny` rule do?"
+    ],
+    "advanced": [
+      "What is `strictFunctionTypes`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does noImplicitAny do?",
+      "answer": "If you write `function add(a, b)`, TypeScript doesn't know the types, so it secretly infers them as `any`. With `noImplicitAny: true`, TS throws a compile error, forcing you to explicitly type them `(a: number, b: number)`."
+    },
+    {
+      "question": "What is strictFunctionTypes?",
+      "answer": "It ensures that function parameters are checked contravariantly. This prevents you from assigning a function that takes a broad type (like `Animal`) to a variable that expects a specific type (like `Dog`), which could cause runtime crashes if the function tries to access `Dog`-specific properties."
+    }
+  ],
+  "codeExample": "// tsconfig.json\n{\n  \"compilerOptions\": {\n    // Turning this ONE flag to true automatically enables all of the below:\n    \"strict\": true\n    \n    /* What it turns on internally: \n       \"noImplicitAny\": true,\n       \"strictNullChecks\": true,\n       \"strictFunctionTypes\": true,\n       \"strictBindCallApply\": true,\n       \"strictPropertyInitialization\": true,\n       \"noImplicitThis\": true,\n       \"useUnknownInCatchVariables\": true\n    */\n  }\n}"
+}

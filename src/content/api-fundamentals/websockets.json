@@ -1,0 +1,32 @@
+{
+  "id": "websockets",
+  "title": "WebSockets",
+  "difficulty": "Advanced",
+  "definition": "A computer communications protocol providing full-duplex, continuous, two-way communication channels over a single TCP connection.",
+  "simpleExplanation": "Standard HTTP is like sending a letter. You ask, they answer, the connection closes. WebSockets is like a phone call. You call the server, the line stays open permanently. You can talk at any time, and the server can talk back at any time, instantly.",
+  "realWorldExample": "Multiplayer browser games, live chat applications (Discord), and live stock trading charts. The server can push data to the client without the client ever asking for it.",
+  "useCases": [
+    "Live chat",
+    "Real-time gaming",
+    "Collaborative editing (Google Docs)"
+  ],
+  "questions": {
+    "basic": [
+      "In a standard HTTP request, who MUST initiate the conversation: The Client or the Server?"
+    ],
+    "intermediate": [
+      "What is the difference between WebSockets and standard HTTP Polling?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who must initiate?",
+      "answer": "The Client. In standard HTTP, a Server can NEVER send data to a client unless the client explicitly asked for it first."
+    },
+    {
+      "question": "WebSockets vs Polling?",
+      "answer": "Polling is the client asking the server 'Any new messages?' every 2 seconds. It wastes massive amounts of bandwidth. WebSockets keep a silent connection open, and the server instantly pushes the message only when a new message actually arrives."
+    }
+  ],
+  "codeExample": "// Client-Side JavaScript (Connecting to a WebSocket)\n\n// 1. Open the connection (Notice the 'ws://' protocol instead of 'http://')\nconst socket = new WebSocket('ws://localhost:8080');\n\n// 2. Listen for messages pushed from the server\nsocket.addEventListener('message', (event) => {\n  console.log('Server says: ', event.data);\n  // Instantly update the React UI with the new chat message\n});\n\n// 3. Send a message to the server at any time\ndocument.getElementById('sendBtn').onclick = () => {\n  socket.send(JSON.stringify({ text: \"Hello Server!\" }));\n};"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "compression",
+  "title": "Compression",
+  "difficulty": "Intermediate",
+  "definition": "A technique used by servers to mathematically shrink the size of an API response payload (HTML, JSON, or text) before sending it over the network, dramatically improving load times.",
+  "simpleExplanation": "JSON text is very repetitive. It might contain the word `\"firstName\"` 10,000 times. Compression algorithms (like Gzip or Brotli) find those repeating words, replace them with tiny symbols, send the tiny file over the internet, and the browser instantly inflates it back to normal.",
+  "realWorldExample": "A backend tries to send a 2 Megabyte JSON file. The server Gzips it down to 150 Kilobytes. The mobile phone downloads 150 KB instantly on a 3G connection and unzips it.",
+  "useCases": [
+    "Bandwidth saving",
+    "Mobile API optimization"
+  ],
+  "questions": {
+    "basic": [
+      "How does the client tell the server that it is capable of unzipping compressed data?"
+    ],
+    "intermediate": [
+      "Should you use Gzip compression on JPEG images or MP4 videos before sending them from an API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does client tell?",
+      "answer": "By sending the `Accept-Encoding` header (e.g., `Accept-Encoding: gzip, deflate, br`)."
+    },
+    {
+      "question": "Compress media?",
+      "answer": "No. JPEGs and MP4s are ALREADY highly compressed formats. Trying to Gzip them will waste massive amounts of CPU power on the server and won't shrink the file size at all. Only compress text-based formats (HTML, CSS, JS, JSON, XML)."
+    }
+  ],
+  "codeExample": "// Node.js Express Example: Enabling Gzip Compression\n\nconst express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// 1. Simply add the middleware!\n// It intercepts all responses, checks if the client sent 'Accept-Encoding: gzip',\n// and if so, mathematically shrinks the JSON before it leaves the server.\napp.use(compression());\n\napp.get('/api/massive-data', (req, res) => {\n  const hugeArray = new Array(10000).fill({ name: \"Repetitive Data\" });\n  \n  // Normally 500 KB. With compression, it becomes ~5 KB.\n  res.json(hugeArray);\n});"
+}

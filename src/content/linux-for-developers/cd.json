@@ -1,0 +1,29 @@
+{
+  "id": "cd",
+  "title": "cd",
+  "difficulty": "Beginner",
+  "definition": "Change Directory. The command used to navigate and switch between different directories in the filesystem.",
+  "simpleExplanation": "Walking through doors. If you are in the living room and want to go to the kitchen, you type `cd kitchen`.",
+  "realWorldExample": "Typing `cd /var/log` jumps you instantly to the system logs folder. Typing `cd ..` moves you exactly one folder backwards (up) the tree. Typing just `cd` instantly teleports you back to your personal home folder.",
+  "useCases": [
+    "Filesystem navigation"
+  ],
+  "questions": {
+    "basic": [
+      "What does the command `cd ..` do?"
+    ],
+    "intermediate": [
+      "What is the difference between `cd /var` and `cd var`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does cd .. do?",
+      "answer": "It moves you up exactly one level into the parent directory."
+    },
+    {
+      "question": "/var vs var?",
+      "answer": "`cd /var` uses an absolute path and takes you to the system's root `var` folder, no matter where you currently are. `cd var` uses a relative path, attempting to find a folder named 'var' inside the exact room you are currently standing in."
+    }
+  ]
+}

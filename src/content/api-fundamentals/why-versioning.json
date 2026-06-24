@@ -1,0 +1,32 @@
+{
+  "id": "why-versioning",
+  "title": "Why API Versioning?",
+  "difficulty": "Intermediate",
+  "definition": "The practice of managing changes to an API over time without breaking existing client applications that rely on older formats.",
+  "simpleExplanation": "You release your mobile app to the App Store. It expects the API to return `{ \"name\": \"John\" }`. A year later, you decide to change the API to return `{ \"firstName\": \"John\", \"lastName\": \"Doe\" }`. If you change it, the millions of users who haven't updated their app yet will experience a crash. Versioning solves this.",
+  "realWorldExample": "Stripe supports over 100 versions of their API. If you integrated Stripe in 2018, your server requests API 'Version 2018'. Stripe's server detects this, and intentionally sends you the old 2018 data format, even though their modern 2024 format is totally different.",
+  "useCases": [
+    "Backward compatibility",
+    "Mobile app support",
+    "Enterprise SLAs"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Breaking Change' in an API?"
+    ],
+    "intermediate": [
+      "If you just ADD a new field (like `age`) to a JSON response, is that considered a Breaking Change?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Breaking Change?",
+      "answer": "Any change to the API that forces the client code to be rewritten to avoid a crash. (e.g., deleting a field, renaming a field, changing a string to an integer, making an optional parameter required)."
+    },
+    {
+      "question": "Adding a field?",
+      "answer": "Usually, NO. Adding new data is considered a 'Non-Breaking Change' because old clients will simply ignore the new field. You do not need to increment the API version just to add a new field."
+    }
+  ],
+  "codeExample": "/* \n  The Golden Rule of API Design:\n  \n  ONCE AN API IS PUBLIC, YOU CAN NEVER DELETE OR RENAME A FIELD. \n  YOU CAN ONLY ADD NEW FIELDS.\n  \n  If you MUST rename or delete a field, you must create a V2 of the API.\n  V1 must stay alive until every single user has migrated to V2.\n*/"
+}

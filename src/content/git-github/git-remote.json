@@ -1,0 +1,30 @@
+{
+  "id": "git-remote",
+  "title": "git remote",
+  "difficulty": "Beginner",
+  "definition": "A command that lets you create, view, and delete connections to other repositories (like those hosted on GitHub).",
+  "simpleExplanation": "It's your address book. When you want to push your code to the cloud, Git needs to know the exact URL of the server. `git remote add` saves that URL into an address book and gives it a short nickname (usually 'origin').",
+  "realWorldExample": "You start a project locally. You go to GitHub and click 'Create Repository'. GitHub gives you a URL. You run `git remote add origin https://github.com/yourname/repo.git` so your local computer knows where to send the code.",
+  "useCases": [
+    "Connecting local projects to the cloud"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default nickname given to the primary remote repository?"
+    ],
+    "intermediate": [
+      "What command shows you the URLs of your current remotes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default nickname?",
+      "answer": "`origin`."
+    },
+    {
+      "question": "Show URLs?",
+      "answer": "`git remote -v` (The -v stands for verbose)."
+    }
+  ],
+  "codeExample": "# View your current remotes (and their URLs)\n$ git remote -v\n\n# Add a new remote named 'origin'\n$ git remote add origin https://github.com/user/project.git\n\n# Rename a remote from 'origin' to 'destination'\n$ git remote rename origin destination\n\n# Remove a remote connection completely\n$ git remote remove destination"
+}

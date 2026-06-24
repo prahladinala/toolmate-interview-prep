@@ -1,0 +1,31 @@
+{
+  "id": "throttle-implementation",
+  "title": "Implement: Throttle",
+  "difficulty": "Advanced",
+  "definition": "Write a function `throttle(func, limit)` that ensures the given function is called at most once in a specified time period.",
+  "simpleExplanation": "Throttle is a roller coaster. The ride takes exactly 3 minutes. If you try to get on the ride while it's moving, you are ignored. You can only get on once the 3 minutes are up and the ride returns.",
+  "realWorldExample": "Scroll event listeners. If you attach an animation to `window.onscroll`, it will fire 100 times a second, crashing the browser. Throttling it to 50ms ensures the animation only updates 20 times a second, keeping it smooth.",
+  "useCases": [
+    "Scroll events",
+    "Drag and drop",
+    "Mouse move events"
+  ],
+  "questions": {
+    "basic": [
+      "When is Throttle better than Debounce?"
+    ],
+    "intermediate": [
+      "Write a basic Throttle implementation."
+    ],
+    "advanced": [
+      "What is the 'trailing edge' in Throttle implementations?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "When is Throttle better?",
+      "answer": "When you need continuous visual updates DURING the action. Debouncing a scroll listener means the UI won't update until the user completely STOPS scrolling. Throttling means the UI updates smoothly while they are actively scrolling."
+    }
+  ],
+  "codeExample": "function throttle(func, limit) {\n  let inThrottle = false; // Flag to track if ride is moving\n\n  return function(...args) {\n    const context = this;\n\n    // 1. If not currently throttling, execute instantly\n    if (!inThrottle) {\n      func.apply(context, args);\n      inThrottle = true; // Lock the gates\n\n      // 2. Open the gates after the limit expires\n      setTimeout(() => {\n        inThrottle = false;\n      }, limit);\n    }\n  };\n}\n\n// Usage:\nconst logScroll = throttle(() => {\n  console.log('User is scrolling!');\n}, 1000);\n\n// Even if called 1000 times in 1 second, it will only execute ONCE.\n// logScroll(); logScroll(); logScroll(); ..."
+}

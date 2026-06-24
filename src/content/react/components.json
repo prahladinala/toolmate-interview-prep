@@ -1,0 +1,45 @@
+{
+  "id": "components",
+  "title": "Components & Props",
+  "difficulty": "Beginner",
+  "definition": "Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Props are arguments passed into React components.",
+  "simpleExplanation": "Imagine building a house with Lego blocks. A Component is a single Lego block. You can use the exact same type of block in multiple places. 'Props' are like the color or size you specify for that specific block. So you have a 'Button Component', and you pass it a 'color' prop to make one button red and another blue.",
+  "realWorldExample": "A Navigation Bar is a component. Inside it, you might have multiple 'NavLinks'. Each NavLink is the same component, but receives different props like `href='/home'` and `label='Home'`.",
+  "useCases": [
+    "Breaking down complex UIs into small, manageable pieces",
+    "Reusing the same UI elements (like buttons or cards) across an app",
+    "Passing dynamic data from parent elements to children"
+  ],
+  "questions": {
+    "basic": [
+      "What is a React Component?",
+      "What are Props in React?"
+    ],
+    "intermediate": [
+      "What is the difference between a Functional Component and a Class Component?",
+      "Can a child component modify its own props?"
+    ],
+    "advanced": [
+      "What are Pure Components?",
+      "What is 'prop drilling' and how can you avoid it?"
+    ],
+    "trick": [
+      "If you don't pass a value to a boolean prop (e.g., <Button disabled />), what is its default value?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can a child component modify its own props?",
+      "answer": "No. Props are strictly read-only (immutable) from the child's perspective. A component must never modify its own props. If data needs to change, it should be managed as 'state'."
+    },
+    {
+      "question": "What is the difference between Functional and Class components?",
+      "answer": "Functional components are simple JavaScript functions that return JSX. Class components are ES6 classes that extend `React.Component` and have a `render()` method. Before Hooks, only Class components could have state."
+    },
+    {
+      "question": "If you don't pass a value to a boolean prop, what is its value?",
+      "answer": "If you include a prop with no value (like `<Button disabled />`), it evaluates to `true` by default."
+    }
+  ],
+  "codeExample": "import React from 'react';\n\n// A Reusable Child Component\nconst GreetingCard = (props) => {\n  return (\n    <div className=\"card\">\n      <h2>Hello, {props.name}!</h2>\n      <p>Welcome to {props.city}.</p>\n    </div>\n  );\n};\n\n// The Parent Component\nexport default function App() {\n  return (\n    <div>\n      {/* Reusing the component with different props */}\n      <GreetingCard name=\"Alice\" city=\"New York\" />\n      <GreetingCard name=\"Bob\" city=\"London\" />\n    </div>\n  );\n}"
+}

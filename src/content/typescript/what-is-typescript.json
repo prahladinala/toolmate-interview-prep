@@ -1,0 +1,35 @@
+{
+  "id": "what-is-typescript",
+  "title": "What is TypeScript?",
+  "difficulty": "Beginner",
+  "definition": "TypeScript is a strongly typed, object-oriented, compiled programming language built on top of JavaScript.",
+  "simpleExplanation": "Imagine JavaScript is a wild west town where anyone can do anything, which leads to a lot of chaos and crashes. TypeScript is the new sheriff. It enforces strict laws (types) before you even run your code, catching outlaws (bugs) before they reach production.",
+  "realWorldExample": "Writing `function add(a: number, b: number)` instead of `function add(a, b)`. If you accidentally try to pass a string like `add(5, 'hello')`, TypeScript yells at you in your code editor immediately.",
+  "useCases": [
+    "Large-scale enterprise applications",
+    "Teams with multiple developers",
+    "Refactoring complex codebases safely"
+  ],
+  "questions": {
+    "basic": [
+      "Is TypeScript executed in the browser?"
+    ],
+    "intermediate": [
+      "What is a superset?"
+    ],
+    "advanced": [
+      "How does TypeScript's structural typing differ from nominal typing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it executed in the browser?",
+      "answer": "No. Browsers only understand JavaScript. TypeScript is a 'compile-time' tool. You write TS, and a compiler translates it into pure JS before it ever reaches the browser."
+    },
+    {
+      "question": "What is a superset?",
+      "answer": "TypeScript contains every single feature of JavaScript, plus its own features layered on top. This means any valid JavaScript file is technically also a valid TypeScript file (if strict mode is off)."
+    }
+  ],
+  "codeExample": "// JavaScript allows this, but it results in NaN\n// function multiply(a, b) { return a * b; }\n// multiply(5, \"apple\");\n\n// TypeScript catches the error immediately in your IDE\nfunction multiplyTS(a: number, b: number): number {\n  return a * b;\n}\n\n// Error: Argument of type 'string' is not assignable to parameter of type 'number'.\n// multiplyTS(5, \"apple\");"
+}

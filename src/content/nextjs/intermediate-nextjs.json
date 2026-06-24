@@ -1,0 +1,31 @@
+{
+  "id": "intermediate-nextjs",
+  "title": "Intermediate Interview Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to test practical experience with Next.js, focusing on data fetching strategies, the App Router architecture, and caching mechanisms.",
+  "simpleExplanation": "Interviewers want to see that you've actually built things with Next.js and hit roadblocks. They will ask about mixing Client and Server components, handling mutations, and optimizing performance.",
+  "realWorldExample": "Being asked how to handle a complex form submission using Server Actions and cache revalidation.",
+  "useCases": [
+    "Mid-level Engineering Interviews",
+    "Practical architecture validation"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Server Component and a Client Component?"
+    ],
+    "intermediate": [
+      "How do you pass a Server Component as a child into a Client Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Server vs Client?",
+      "answer": "Server Components execute entirely on the server, send 0 Javascript to the browser, and cannot use hooks or interactivity. Client Components are sent to the browser, allow interactivity (`onClick`), and can use React hooks (`useState`)."
+    },
+    {
+      "question": "Pass Server into Client?",
+      "answer": "You cannot import a Server Component directly into a Client Component file. You must use the `children` prop (Composition). The Client Component accepts `children`, and a higher-level Server Component renders them together."
+    }
+  ],
+  "codeExample": "/*\n  Common Intermediate Interview Scenario:\n  \"Explain the difference between SSG, SSR, and ISR.\"\n  \n  Answer:\n  - SSG (Static Site Generation): HTML is built ONCE during deployment. Fastest, but data can get stale. Good for blogs.\n  - SSR (Server Side Rendering): HTML is built fresh on EVERY single user click. Slower, but always accurate. Good for live stock prices.\n  - ISR (Incremental Static Regeneration): HTML is built once, but the server secretly rebuilds it in the background every X seconds. The perfect hybrid. Good for e-commerce.\n*/"
+}

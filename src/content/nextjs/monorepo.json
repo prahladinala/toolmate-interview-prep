@@ -1,0 +1,32 @@
+{
+  "id": "monorepo",
+  "title": "Monorepo Architecture",
+  "difficulty": "Advanced",
+  "definition": "A single Git repository that contains multiple distinct projects (e.g., a Next.js web app, a React Native mobile app, and a shared UI library package) that can share code seamlessly.",
+  "simpleExplanation": "If you have a website and a mobile app that both use the exact same 'Login Button', you don't want to write that code twice. A monorepo lets you put the website, the mobile app, and a 'Shared Code' folder into one massive Git repo. Both apps import the button from the shared folder.",
+  "realWorldExample": "Using Turborepo or Nx. A company has a marketing site (`apps/web`), an admin dashboard (`apps/admin`), and a shared design system (`packages/ui`).",
+  "useCases": [
+    "Large tech companies",
+    "Code sharing across platforms",
+    "Microservices"
+  ],
+  "questions": {
+    "basic": [
+      "What does Monorepo stand for?"
+    ],
+    "intermediate": [
+      "What is the biggest challenge of a Monorepo without using a tool like Turborepo?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stands for?",
+      "answer": "Monolithic Repository."
+    },
+    {
+      "question": "Biggest challenge?",
+      "answer": "Build times. If you change a typo in the marketing site, you don't want the entire admin dashboard and mobile app to be forced to rebuild and redeploy. Tools like Turborepo intelligently cache and only rebuild the exact projects affected by the code change."
+    }
+  ],
+  "codeExample": "/* \n  Turborepo Next.js Structure:\n  \n  my-company-monorepo/\n  ├── package.json\n  ├── turbo.json               # Orchestrates builds\n  │\n  ├── apps/\n  │   ├── web/                 # Next.js Marketing Site\n  │   │   ├── package.json     # Imports \"@company/ui\"\n  │   │   └── app/page.tsx\n  │   │\n  │   └── admin/               # Next.js Internal Dashboard\n  │       ├── package.json     # Imports \"@company/ui\"\n  │       └── app/page.tsx\n  │\n  └── packages/\n      ├── ui/                  # Shared React Components\n      │   ├── package.json     # Name: \"@company/ui\"\n      │   └── index.tsx        # Export Button, Card, etc.\n      │\n      └── config/              # Shared ESLint/TS configs\n          └── eslint-preset.js\n*/"
+}

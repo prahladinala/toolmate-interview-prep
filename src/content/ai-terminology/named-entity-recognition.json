@@ -1,0 +1,31 @@
+{
+  "id": "named-entity-recognition",
+  "title": "Named Entity Recognition (NER)",
+  "difficulty": "Intermediate",
+  "definition": "An NLP subtask that seeks to locate and classify named entities mentioned in unstructured text into pre-defined categories such as person names, organizations, locations, and time expressions.",
+  "simpleExplanation": "A digital highlighter. You feed it a news article. It highlights all the People in blue, all the Companies in green, and all the Cities in yellow.",
+  "realWorldExample": "Customer Support routing. An email arrives: 'My iPhone screen broke in New York'. NER detects 'iPhone' (Product) and 'New York' (Location), and automatically routes the email to the Apple Hardware Team in the US East Coast division.",
+  "useCases": [
+    "Information extraction",
+    "Automated customer support",
+    "Legal document analysis"
+  ],
+  "questions": {
+    "basic": [
+      "What does NER stand for?"
+    ],
+    "intermediate": [
+      "How does NER help in data anonymization (GDPR compliance)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Named Entity Recognition."
+    },
+    {
+      "question": "How does it help anonymization?",
+      "answer": "A hospital can run NER on all doctor's notes to detect Names, Phone Numbers, and Addresses. The system then automatically blacks out those specific entities before sharing the data with researchers."
+    }
+  ]
+}

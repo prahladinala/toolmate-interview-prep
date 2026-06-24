@@ -1,0 +1,31 @@
+{
+  "id": "transformers",
+  "title": "Transformer Architecture",
+  "difficulty": "Advanced",
+  "definition": "A groundbreaking deep learning architecture introduced by Google in 2017 (in the paper 'Attention Is All You Need') that completely revolutionized NLP by processing sequential data in parallel rather than sequentially.",
+  "simpleExplanation": "Before 2017, AI had to read a book word-by-word. By the end of the page, it forgot the beginning. The Transformer architecture allows the AI to look at the ENTIRE page simultaneously. This made AI vastly smarter and vastly faster to train.",
+  "realWorldExample": "The 'T' in ChatGPT stands for Transformer (Generative Pre-trained Transformer). Without the Transformer architecture, modern LLMs would literally not exist.",
+  "useCases": [
+    "LLMs",
+    "Computer Vision (Vision Transformers)",
+    "Audio processing"
+  ],
+  "questions": {
+    "basic": [
+      "What was the name of the famous 2017 Google research paper that introduced Transformers?"
+    ],
+    "intermediate": [
+      "Why are Transformers so much faster to train on GPUs than older architectures like RNNs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which paper?",
+      "answer": "'Attention Is All You Need'."
+    },
+    {
+      "question": "Why faster on GPUs?",
+      "answer": "Because they process data in parallel. Older models had to process word #1 before they could process word #2. Transformers process all 10,000 words in a document simultaneously, fully utilizing the massive parallel computing power of modern GPUs."
+    }
+  ]
+}

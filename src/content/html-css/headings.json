@@ -1,0 +1,31 @@
+{
+  "id": "headings",
+  "title": "Headings",
+  "difficulty": "Beginner",
+  "definition": "HTML elements `<h1>` through `<h6>` used to define the headings of a page, representing a hierarchy of importance.",
+  "simpleExplanation": "Headings are the titles and subtitles of your webpage, exactly like an outline for an essay. `<h1>` is the main title of the page (you should only have one!). `<h2>` are the major sections, and `<h3>` are subsections within those.",
+  "realWorldExample": "A news article. The headline is `<h1>`. The main sections of the article are `<h2>`. If a section has bullet points with titles, those are `<h3>`.",
+  "useCases": [
+    "Structuring document hierarchy",
+    "SEO (Google reads headings to understand the page)"
+  ],
+  "questions": {
+    "basic": [
+      "Which heading tag is the largest and most important?"
+    ],
+    "intermediate": [
+      "Why shouldn't you use an `<h2>` just to make text bold and big?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Largest heading?",
+      "answer": "`<h1>`"
+    },
+    {
+      "question": "Why not use it just for styling?",
+      "answer": "Headings are for STRUCTURE, not style. Blind users use screen readers to jump from heading to heading to navigate the page. If you use an `<h2>` randomly in a paragraph just because it looks big, you destroy the structural map of the page. Use CSS (`font-size`, `font-weight`) to make text big."
+    }
+  ],
+  "codeExample": "<!-- Good Document Hierarchy -->\n\n<h1>The Complete Guide to Coffee</h1>\n<p>Welcome to our ultimate guide about coffee.</p>\n\n  <!-- A major section under the H1 -->\n  <h2>1. Types of Coffee Beans</h2>\n  <p>There are two main types of beans used globally.</p>\n  \n    <!-- Sub-sections under the H2 -->\n    <h3>Arabica</h3>\n    <p>Sweeter, softer taste. Grown at high altitudes.</p>\n    \n    <h3>Robusta</h3>\n    <p>Stronger, harsher taste. Has twice as much caffeine.</p>\n\n  <!-- Another major section under the H1 -->\n  <h2>2. Brewing Methods</h2>\n  <p>How you brew changes everything.</p>\n  \n    <h3>French Press</h3>\n    <p>Steep coffee grounds in boiling water.</p>\n\n<!-- Notice how visually, the browser automatically makes H1 the biggest, and H3 the smallest. -->"
+}

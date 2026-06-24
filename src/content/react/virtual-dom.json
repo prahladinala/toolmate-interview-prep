@@ -1,0 +1,44 @@
+{
+  "id": "virtual-dom",
+  "title": "Virtual DOM & Reconciliation",
+  "difficulty": "Intermediate",
+  "definition": "The Virtual DOM (VDOM) is a programming concept where an ideal, or 'virtual', representation of a UI is kept in memory and synced with the 'real' DOM by a library such as ReactDOM. This process is called reconciliation.",
+  "simpleExplanation": "Imagine you have a big messy room (the Real DOM). You want to organize it. Instead of moving heavy furniture around blindly to see if it looks good, you draw a blueprint of the room on a piece of paper (the Virtual DOM) and erase/redraw the furniture there. Once the blueprint is perfect, you compare it to the real room (Diffing), and then move only the exact pieces of furniture that need to change (Reconciliation).",
+  "realWorldExample": "If you have a list of 100 items and you change the text of the 3rd item, React creates a new Virtual DOM tree, compares it to the old Virtual DOM tree, notices only the 3rd item is different, and updates JUST that single <li> element in the browser, instead of wiping out and redrawing all 100 items.",
+  "useCases": [
+    "Providing high performance by minimizing expensive real DOM manipulations",
+    "Allowing declarative API design (you tell React WHAT the UI should look like, not HOW to update it step-by-step)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the Virtual DOM?",
+      "What is the Diffing Algorithm?"
+    ],
+    "intermediate": [
+      "Why is manipulating the Real DOM considered slow?",
+      "Why does React require a 'key' prop when rendering lists of elements?"
+    ],
+    "advanced": [
+      "What are the two major assumptions React's Diffing algorithm makes for O(n) performance?",
+      "What is React Fiber?"
+    ],
+    "trick": [
+      "Is the Virtual DOM a feature exclusive to React?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why does React require a 'key' prop for lists?",
+      "answer": "Keys help React identify which items have changed, been added, or been removed. Without unique keys, if you insert an item at the TOP of a list, React thinks every single item shifted and will rebuild the entire list from scratch. With keys, it just moves them."
+    },
+    {
+      "question": "What two assumptions does the Diffing algorithm make?",
+      "answer": "1. Two elements of different types (e.g., changing a <div> to a <span>) will produce completely different trees (React will unmount the old and mount the new). 2. The developer can hint at which child elements may be stable across different renders with a `key` prop."
+    },
+    {
+      "question": "What is React Fiber?",
+      "answer": "Fiber is the new reconciliation engine introduced in React 16. Its main goal is to enable incremental rendering of the virtual DOM, meaning it can pause, abort, or reuse work as new updates come in (enabling Concurrent Mode)."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\nexport default function KeyExample() {\n  const [items, setItems] = useState([{ id: 1, text: 'Apple' }, { id: 2, text: 'Banana' }]);\n\n  const addItemToTop = () => {\n    // Adding an item to the top of the array\n    setItems([{ id: Date.now(), text: 'New Fruit' }, ...items]);\n  };\n\n  return (\n    <div>\n      <button onClick={addItemToTop}>Add Fruit to Top</button>\n      <ul>\n        {items.map((item, index) => (\n          // BAD: key={index}. If we add an item to the top, the indexes of Apple and Banana change! \n          // React's diffing algorithm will think Apple became New Fruit, Banana became Apple, etc.\n          // GOOD: key={item.id}. React knows Apple and Banana just moved down, and only inserts 1 new DOM node.\n          <li key={item.id}>{item.text}</li>\n        ))}\n      </ul>\n    </div>\n  );\n}"
+}

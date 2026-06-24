@@ -1,0 +1,30 @@
+{
+  "id": "jenkins-docker",
+  "title": "Jenkins + Docker",
+  "difficulty": "Advanced",
+  "definition": "The integration of Docker with Jenkins, a highly customizable, self-hosted CI/CD automation server. Jenkins can use Docker as build agents (ephemeral testing environments) or simply build/push images as a pipeline step.",
+  "simpleExplanation": "Jenkins is the older, incredibly powerful factory boss. It can spin up 50 different Docker containers, test massive enterprise codebases across all of them simultaneously, and tear them down when finished.",
+  "realWorldExample": "An enterprise bank uses Jenkins. The Jenkinsfile instructs the server to dynamically spin up a Maven Docker container to compile the Java code, then pass the compiled code to a SonarQube container for security scanning, all before building the final image.",
+  "useCases": [
+    "Enterprise CI/CD",
+    "Complex build pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "Which is generally easier to set up for a simple Docker build: Jenkins or GitHub Actions?"
+    ],
+    "intermediate": [
+      "What is a 'Jenkins Docker Agent'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is easier?",
+      "answer": "GitHub Actions. Jenkins requires you to provision, configure, and maintain your own physical server and install plugins. GitHub Actions is fully managed in the cloud."
+    },
+    {
+      "question": "What is a Docker Agent?",
+      "answer": "Instead of installing Java, Python, and Node directly onto the Jenkins server, Jenkins spins up a temporary Docker Container (the Agent) that has those tools installed, runs the pipeline steps inside that container, and then deletes it. This keeps the Jenkins server perfectly clean."
+    }
+  ]
+}

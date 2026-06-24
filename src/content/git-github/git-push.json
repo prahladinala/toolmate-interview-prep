@@ -1,0 +1,32 @@
+{
+  "id": "git-push",
+  "title": "git push",
+  "difficulty": "Beginner",
+  "definition": "Uploads local repository content (commits and branches) to a remote repository.",
+  "simpleExplanation": "The upload button. You finished your feature, you made your commits locally, but your boss can't see them yet. `git push` takes your local timeline and sends it up to GitHub for everyone to see.",
+  "realWorldExample": "You finish your work for the day, commit it, and run `git push origin main` so the server has a backup in case your laptop breaks overnight.",
+  "useCases": [
+    "Sharing code",
+    "Backing up code to the cloud",
+    "Publishing websites"
+  ],
+  "questions": {
+    "basic": [
+      "If you edit a file, can you just run `git push` immediately to save it to GitHub?"
+    ],
+    "intermediate": [
+      "What does the `-u` flag do in `git push -u origin main`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Push immediately?",
+      "answer": "No. `git push` ONLY uploads COMMITS. You must `git add` and `git commit` your changes first. Uncommitted changes are completely ignored by `git push`."
+    },
+    {
+      "question": "What is the -u flag?",
+      "answer": "It stands for 'set-upstream'. It links your local branch to the remote branch permanently. After using `-u` once, you can just type `git push` in the future instead of typing out `git push origin main` every time."
+    }
+  ],
+  "codeExample": "# 1. Save your work locally FIRST\n$ git commit -am \"Finish the homepage\"\n\n# 2. Upload that commit to the 'origin' server, on the 'main' branch\n$ git push origin main\n\n# 3. Create a brand new branch, and push it to the server for the first time\n# (-u sets the upstream link so Git remembers where to push next time)\n$ git checkout -b my-new-feature\n$ git push -u origin my-new-feature\n\n# 4. In the future, you can just type:\n$ git push"
+}

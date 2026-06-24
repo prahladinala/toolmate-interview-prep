@@ -1,0 +1,31 @@
+{
+  "id": "staging-area",
+  "title": "Staging Area",
+  "difficulty": "Intermediate",
+  "definition": "A file, generally contained in your Git directory, that stores information about what will go into your next commit. Its technical name in Git parlance is the 'Index'.",
+  "simpleExplanation": "The waiting room before a photograph is taken. If you changed 10 files, but only want 3 of them to be in the photograph, you put those 3 files on the 'Stage'. When you click the camera (commit), only the files on the Stage are captured.",
+  "realWorldExample": "A shopping cart. You walk around the store picking up items (editing files). Putting them in your cart is 'Staging' them. Checking out at the register is the 'Commit'.",
+  "useCases": [
+    "Grouping related changes",
+    "Keeping commits small and focused"
+  ],
+  "questions": {
+    "basic": [
+      "What command moves files from the Working Directory to the Staging Area?"
+    ],
+    "intermediate": [
+      "If you stage a file, then edit it again before committing, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Command to stage?",
+      "answer": "`git add`"
+    },
+    {
+      "question": "Edit after staging?",
+      "answer": "The file now exists in TWO states. The version you staged is locked in the Staging Area. The new edits exist only in the Working Directory. You must run `git add` again to stage the newest edits."
+    }
+  ],
+  "codeExample": "# You edited two files: index.html and styles.css\n\n# Move ONLY index.html to the Staging Area\n$ git add index.html\n\n# Check the status\n$ git status\n# Output:\n# Changes to be committed (Staging Area):\n#       modified:   index.html\n#\n# Changes not staged for commit (Working Directory):\n#       modified:   styles.css"
+}

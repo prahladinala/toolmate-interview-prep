@@ -1,0 +1,30 @@
+{
+  "id": "cp",
+  "title": "cp",
+  "difficulty": "Beginner",
+  "definition": "Copy. The command used to copy files or directories from a source location to a destination location.",
+  "simpleExplanation": "Copy and Paste. You duplicate a file, leaving the original perfectly intact.",
+  "realWorldExample": "Before editing a dangerous system file, you make a backup by typing `cp config.txt config.txt.backup`. Now you have two identical files.",
+  "useCases": [
+    "Backing up files",
+    "Duplicating templates"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if the destination file you are copying to already exists?"
+    ],
+    "intermediate": [
+      "Why does `cp folder1 folder2` throw an 'omitting directory' error?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Destination exists?",
+      "answer": "By default, `cp` will silently overwrite the destination file, destroying whatever was previously there."
+    },
+    {
+      "question": "Why error on folders?",
+      "answer": "Because `cp` only copies single files by default. To copy an entire directory and all the files inside it, you must use the Recursive flag: `cp -r folder1 folder2`."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "state-splitting",
+  "title": "State Splitting",
+  "difficulty": "Intermediate",
+  "definition": "The architectural practice of breaking a monolithic global state object down into smaller, highly focused slices to improve performance and code organization.",
+  "simpleExplanation": "Don't put `ui` state (like is the modal open) in the same slice as `data` state (like the list of users). If they are in the same slice, updating the modal might accidentally trigger components that are watching the user data.",
+  "realWorldExample": "Creating separate files for `authSlice`, `cartSlice`, `productSlice`, and `themeSlice`.",
+  "useCases": [
+    "Redux architecture",
+    "Preventing UI stuttering"
+  ],
+  "questions": {
+    "basic": [
+      "What RTK function makes State Splitting incredibly easy?"
+    ],
+    "intermediate": [
+      "Why does splitting state improve performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which function?",
+      "answer": "`createSlice()`"
+    },
+    {
+      "question": "Why improve performance?",
+      "answer": "Because components selecting from `state.auth` completely ignore any actions that modify `state.cart`. It naturally isolates re-rendering zones."
+    }
+  ],
+  "codeExample": "/*\n  BAD ARCHITECTURE (Monolithic):\n  state = {\n    app: { \n      theme: 'dark', \n      users: [], \n      cartItems: [], \n      token: '123' \n    }\n  }\n\n  GOOD ARCHITECTURE (Split State):\n  state = {\n    ui: { theme: 'dark' },\n    users: { list: [] },\n    cart: { items: [] },\n    auth: { token: '123' }\n  }\n*/"
+}

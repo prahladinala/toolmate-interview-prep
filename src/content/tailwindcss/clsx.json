@@ -1,0 +1,30 @@
+{
+  "id": "clsx",
+  "title": "clsx",
+  "difficulty": "Intermediate",
+  "definition": "A tiny JavaScript utility for constructing `className` strings conditionally, heavily used alongside Tailwind in React.",
+  "simpleExplanation": "Writing ternary operators inside template literals (`className={\\`btn \\${isError ? 'bg-red' : 'bg-blue'}\\`}`) gets incredibly ugly when you have 5 different boolean states. `clsx` allows you to pass an object where the keys are class names, and the values are booleans.",
+  "realWorldExample": "Creating a notification badge that conditionally adds `animate-pulse` and `bg-red-500` ONLY if the `hasUnreadMessages` state is true.",
+  "useCases": [
+    "Conditional styling in React/Vue"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary purpose of the `clsx` library?"
+    ],
+    "intermediate": [
+      "In the `shadcn/ui` library, developers combine `clsx` and `tailwind-merge` into a single helper function called `cn()`. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary purpose?",
+      "answer": "To conditionally join class names together cleanly based on boolean logic, avoiding messy template literal syntax."
+    },
+    {
+      "question": "Why combine into cn()?",
+      "answer": "`clsx` handles the boolean logic (whether a class should be included). `tailwind-merge` handles resolving the conflicts of the final string. Together, they create the ultimate robust styling function."
+    }
+  ],
+  "codeExample": "import clsx from 'clsx';\n\nfunction Alert({ isError, isLarge }) {\n  // ❌ UGLY NATIVE REACT WAY:\n  // const classes = `p-4 rounded text-white ${isError ? 'bg-red-500' : 'bg-blue-500'} ${isLarge ? 'text-2xl' : 'text-base'}`;\n\n  // ✅ CLEAN CLSX WAY:\n  // It only adds the class to the string if the boolean is true!\n  const classes = clsx(\n    'p-4 rounded text-white',      // Always applied\n    {\n      'bg-red-500': isError,       // Applied if isError is true\n      'bg-blue-500': !isError,     // Applied if isError is false\n      'text-2xl': isLarge,         // Applied if isLarge is true\n      'text-base': !isLarge        // Applied if isLarge is false\n    }\n  );\n\n  return <div className={classes}>Alert Message</div>\n}"
+}

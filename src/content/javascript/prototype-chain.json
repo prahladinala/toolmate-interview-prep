@@ -1,0 +1,34 @@
+{
+  "id": "prototype-chain",
+  "title": "Prototype Chain",
+  "difficulty": "Advanced",
+  "definition": "The mechanism by which objects in JavaScript inherit features from one another. If a property isn't found on the object itself, JS searches its internal `[[Prototype]]` link, forming a chain.",
+  "simpleExplanation": "Imagine asking your dad for $20. He doesn't have it, so he asks your grandpa. Grandpa doesn't have it, so he asks great-grandpa. The Prototype chain is just objects delegating property lookups up the family tree until they hit the ultimate ancestor (`Object.prototype`).",
+  "realWorldExample": "When you call `[].map()`, the array itself doesn't have a `.map` property. JS looks up the prototype chain to `Array.prototype`, finds the function, and executes it.",
+  "useCases": [
+    "Memory optimization (sharing methods across instances)",
+    "Understanding Class inheritance under the hood"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if a property is never found in the prototype chain?"
+    ],
+    "intermediate": [
+      "What is the difference between `__proto__` and `prototype`?"
+    ],
+    "advanced": [
+      "How do you check if a property belongs to the object itself or its prototype?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if it's never found?",
+      "answer": "The chain ends at `Object.prototype`, whose prototype is `null`. If the engine reaches `null` and still hasn't found the property, it returns `undefined`."
+    },
+    {
+      "question": "What is the difference between __proto__ and prototype?",
+      "answer": "`__proto__` is the actual hidden link on an *instance* that points to its creator's prototype. `prototype` is a property exclusively found on *constructor functions*, used as the blueprint to build the `__proto__` of new instances."
+    }
+  ],
+  "codeExample": "const parent = { greet: () => 'Hello' };\nconst child = { name: 'Alice' };\n\n// Manually setting the prototype (Not recommended for performance)\nObject.setPrototypeOf(child, parent);\n\nconsole.log(child.name);  // \"Alice\" (Found on child)\nconsole.log(child.greet()); // \"Hello\" (Not on child, found on parent!)\n\n// Checking ownership\nconsole.log(child.hasOwnProperty('name')); // true\nconsole.log(child.hasOwnProperty('greet')); // false"
+}

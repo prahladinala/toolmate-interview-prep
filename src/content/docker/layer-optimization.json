@@ -1,0 +1,30 @@
+{
+  "id": "layer-optimization",
+  "title": "Layer Optimization",
+  "difficulty": "Advanced",
+  "definition": "The architectural practice of intentionally ordering and combining Dockerfile instructions to maximize the use of the Docker Build Cache and minimize the final number of layers.",
+  "simpleExplanation": "Stacking the blocks efficiently. You put the things that NEVER change (like installing Linux) at the bottom. You put the things that ALWAYS change (like your daily source code) at the absolute top. This stops Docker from doing unnecessary work.",
+  "realWorldExample": "Combining `RUN apt-get update` and `RUN apt-get install nginx` into a single line joined by `&&`. This ensures they form one single cached layer, rather than two. If they are separate, the `update` layer might get permanently cached, causing Docker to install dangerously outdated software months later.",
+  "useCases": [
+    "Speeding up CI/CD pipelines",
+    "Dockerfile best practices"
+  ],
+  "questions": {
+    "basic": [
+      "If you have 5 separate `RUN` commands in a Dockerfile, how many image layers are created on the hard drive?"
+    ],
+    "intermediate": [
+      "Why should you put the `COPY . .` (copy source code) command as close to the bottom of the Dockerfile as possible?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many layers?",
+      "answer": "5 distinct layers."
+    },
+    {
+      "question": "Why COPY at the bottom?",
+      "answer": "Because the source code changes constantly. Any change to a layer instantly destroys the cache for every single layer below it. By putting `COPY` at the bottom, you preserve the cache for all the slow installation steps above it."
+    }
+  ]
+}

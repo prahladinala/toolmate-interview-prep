@@ -1,0 +1,30 @@
+{
+  "id": "ss",
+  "title": "ss",
+  "difficulty": "Intermediate",
+  "definition": "Socket Statistics. The modern, much faster replacement for `netstat`. It dumps socket statistics and displays massive amounts of active network connection data.",
+  "simpleExplanation": "The upgraded version of `netstat`. It does the exact same job but queries the Linux kernel directly, making it exponentially faster on busy servers.",
+  "realWorldExample": "A massive web server handling 100,000 users freezes when an admin tries to run `netstat` because it is too slow. The admin runs `ss -t -a` instead, and it instantly dumps the TCP connection list.",
+  "useCases": [
+    "High-performance network debugging",
+    "Port conflict resolution"
+  ],
+  "questions": {
+    "basic": [
+      "If you want to see exactly which Process ID (PID) is holding a port open, do you need `sudo` privileges for the `ss` command?"
+    ],
+    "intermediate": [
+      "Why is `ss` so much faster than the old `netstat`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need sudo for PID?",
+      "answer": "Yes. A regular user is not allowed to see the internal Process IDs of applications they do not own. You must use `sudo ss -p`."
+    },
+    {
+      "question": "Why faster?",
+      "answer": "`netstat` works by reading massive, slow text files located in the `/proc` directory for every single connection. `ss` communicates directly with the kernel's network module via sockets, bypassing the file system entirely."
+    }
+  ]
+}

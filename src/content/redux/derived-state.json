@@ -1,0 +1,31 @@
+{
+  "id": "derived-state",
+  "title": "Derived State",
+  "difficulty": "Intermediate",
+  "definition": "Data that is computed or calculated on-the-fly from the existing state, rather than being explicitly stored in the Redux store.",
+  "simpleExplanation": "If you have an array of 5 todo items in Redux, and 3 are finished, you DO NOT store `completedCount: 3` in Redux. You just store the list. The selector calculates the `3` dynamically whenever the component asks for it.",
+  "realWorldExample": "A shopping cart has an array of items with prices. You don't store the `totalPrice` in Redux. A selector calculates `items.reduce((total, item) => total + item.price)` dynamically.",
+  "useCases": [
+    "Preventing duplicated/out-of-sync data",
+    "Keeping the Redux store minimal"
+  ],
+  "questions": {
+    "basic": [
+      "Why is it bad to store `filteredList` and `fullList` in Redux at the same time?"
+    ],
+    "intermediate": [
+      "What is the performance risk of calculating derived state directly inside `useSelector`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why bad?",
+      "answer": "Because it creates redundant data. If you delete an item from `fullList`, you have to remember to ALSO delete it from `filteredList`. If you forget, the app crashes. Only store the source of truth, and compute the rest."
+    },
+    {
+      "question": "Performance risk?",
+      "answer": "If the calculation is heavy (like sorting 10,000 items), it will run every single time the component re-renders, severely lagging the application."
+    }
+  ],
+  "codeExample": "// ❌ BAD STATE SHAPE (Redundant data)\nconst state = {\n  todos: [{ id: 1, done: true }, { id: 2, done: false }],\n  completedTodosCount: 1 // NEVER DO THIS!\n}\n\n// ✅ GOOD PATTERN (Derived State via Selector)\n// The state only holds the raw array.\n// The selector computes the count on the fly!\nexport const selectCompletedCount = (state) => {\n  return state.todos.filter(todo => todo.done).length;\n};"
+}

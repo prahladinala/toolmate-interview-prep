@@ -1,0 +1,31 @@
+{
+  "id": "teams",
+  "title": "Teams & Organizations",
+  "difficulty": "Intermediate",
+  "definition": "GitHub Organizations are shared accounts where businesses and open-source projects can collaborate across many projects at once. Teams are groups of members within an organization that reflect your company or group's structure.",
+  "simpleExplanation": "If you are coding alone, you use your personal account. If you start a company called 'TechCorp', you create a GitHub Organization called TechCorp. You then create a Team called 'Frontend' and add 5 developers to it. You can now give the entire 'Frontend' team access to 10 different repositories with one click.",
+  "realWorldExample": "Facebook is an Organization on GitHub. Inside it, they have hundreds of repositories like `react`, `jest`, and `react-native`, managed by different teams.",
+  "useCases": [
+    "Enterprise management",
+    "Scaling permissions"
+  ],
+  "questions": {
+    "basic": [
+      "What symbol is used to 'tag' a team in a PR comment to notify all of them?"
+    ],
+    "intermediate": [
+      "Can a GitHub user be a member of multiple Organizations?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Tag symbol?",
+      "answer": "The `@` symbol. Example: `@TechCorp/frontend-devs please review this PR.`"
+    },
+    {
+      "question": "Multiple orgs?",
+      "answer": "Yes. A single GitHub user account (like `@johndoe`) can belong to your personal projects, your employer's organization, and an open-source organization simultaneously."
+    }
+  ],
+  "codeExample": "// Hierarchy of GitHub Enterprise/Organizations:\n\n/*\n  Organization: TechCorp Inc.\n  │\n  ├── Team: Frontend Developers (@TechCorp/frontend)\n  │   ├── Member: Alice\n  │   └── Member: Bob\n  │\n  ├── Team: Backend Developers (@TechCorp/backend)\n  │   └── Member: Charlie\n  │\n  ├── Repository: techcorp-website (Frontend Team has Write access)\n  └── Repository: techcorp-api (Backend Team has Write access)\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "tailwind-vs-css",
+  "title": "Tailwind vs Traditional CSS",
+  "difficulty": "Beginner",
+  "definition": "A comparison between Semantic CSS (naming classes based on content) and Utility-First CSS (naming classes based on visual function).",
+  "simpleExplanation": "Traditional CSS focuses on 'What is this element?' (`.author-bio`). Tailwind focuses on 'What does this element look like?' (`.font-bold .text-gray-500`). This solves the problem of having 50 different classes across your app that all just apply `display: flex`.",
+  "realWorldExample": "In traditional CSS, if you change `.author-bio` to make the text blue, you might accidentally break the blog layout because someone reused `.author-bio` on the footer. In Tailwind, changes are strictly localized to the specific HTML element you are touching.",
+  "useCases": [
+    "Architectural decisions",
+    "Team onboarding"
+  ],
+  "questions": {
+    "basic": [
+      "Does Tailwind require you to invent class names like `outer-wrapper`?"
+    ],
+    "intermediate": [
+      "What is the 'Global Scope' problem in traditional CSS that Tailwind solves?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Invent class names?",
+      "answer": "No! That is one of its biggest benefits. Naming things is the hardest part of computer science. Tailwind eliminates the need to invent semantic class names entirely."
+    },
+    {
+      "question": "Global Scope problem?",
+      "answer": "In traditional CSS, all styles are global. Adding a new rule might unintentionally override something elsewhere. Tailwind classes are single-purpose and applied locally in the HTML, making unexpected side-effects impossible."
+    }
+  ],
+  "codeExample": "// The Naming Nightmare (Traditional CSS)\n<div class=\"card-wrapper\">\n  <div class=\"card-inner\">\n    <h2 class=\"card-title\">...</h2>\n    // Wait, should this be card-body? card-content? card-text?\n    <p class=\"card-content\">...</p>\n  </div>\n</div>\n\n// The Tailwind Dream (Just describe what it looks like)\n<div class=\"p-4 border rounded-lg\">\n  <div class=\"flex flex-col\">\n    <h2 class=\"text-2xl font-bold\">...</h2>\n    <p class=\"text-gray-600\">...</p>\n  </div>\n</div>"
+}

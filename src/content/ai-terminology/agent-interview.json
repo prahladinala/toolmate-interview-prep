@@ -1,0 +1,30 @@
+{
+  "id": "agent-interview",
+  "title": "AI Agent Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions evaluating your understanding of autonomous AI systems, tool-calling, and reasoning frameworks like ReAct.",
+  "simpleExplanation": "Can you build an AI that actually *does* things instead of just talking?",
+  "realWorldExample": "Being asked: 'Explain how you would build an AI Agent that can browse a competitor's website and extract product prices into a database.'",
+  "useCases": [
+    "Next-Gen AI development",
+    "Staff Engineer roles"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Chatbot and an AI Agent?"
+    ],
+    "intermediate": [
+      "Explain the 'ReAct' framework."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Chatbot vs Agent?",
+      "answer": "A chatbot responds to text with text. An Agent is given a goal, makes a multi-step plan, and autonomously executes 'Tools' (like running code or browsing the web) to achieve that goal."
+    },
+    {
+      "question": "What is ReAct?",
+      "answer": "Reasoning and Acting. A prompting framework where the Agent is forced to output an internal monologue (THOUGHT) to strategize its next move before outputting a command to an external system (ACTION)."
+    }
+  ]
+}

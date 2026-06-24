@@ -1,0 +1,31 @@
+{
+  "id": "xss",
+  "title": "XSS",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Site Scripting. A vulnerability where an attacker injects malicious client-side scripts into web pages viewed by other users.",
+  "simpleExplanation": "If an API allows a user to type their name, and they type `<script>stealCookie()</script>`, and the API saves it. When other users visit the site, the browser sees the `<script>` tag, thinks it's part of the website code, and executes it, stealing their passwords.",
+  "realWorldExample": "A hacker puts a malicious script in a YouTube comment. The API returns the comment to 1,000 users. Their browsers execute the script, which secretly commands their accounts to 'Like' the hacker's video.",
+  "useCases": [
+    "Input sanitization",
+    "Frontend security"
+  ],
+  "questions": {
+    "basic": [
+      "Does the XSS exploit execute on the Backend Server or the Frontend Browser?"
+    ],
+    "intermediate": [
+      "How do modern frontend frameworks like React protect against XSS by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where does it execute?",
+      "answer": "The Frontend Browser. The backend just stores the malicious string; the browser is what actually executes it."
+    },
+    {
+      "question": "How does React protect?",
+      "answer": "React automatically escapes (sanitizes) any variables placed inside curly braces `{}`. It converts `<script>` into plain, harmless text strings before rendering them to the DOM."
+    }
+  ],
+  "codeExample": "// Node.js Backend Example: Sanitizing Input to prevent XSS\n\nconst DOMPurify = require('dompurify');\n\napp.post('/api/comments', (req, res) => {\n  const rawComment = req.body.text;\n  // User sends: \"Hello <script>alert('Hacked!')</script>\"\n  \n  // 1. Sanitize the input before saving to the database!\n  // This strips out all dangerous HTML tags and leaves the safe text.\n  const safeComment = DOMPurify.sanitize(rawComment);\n  // Result: \"Hello \"\n  \n  db.comments.save(safeComment);\n  res.send('Comment saved safely');\n});"
+}

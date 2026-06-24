@@ -1,0 +1,31 @@
+{
+  "id": "cdn",
+  "title": "Content Delivery Network (CloudFront / Cloud CDN)",
+  "difficulty": "Intermediate",
+  "definition": "A globally distributed network of proxy servers. It caches static web content (images, videos, CSS) at 'Edge Locations' physically close to the end-users, massively accelerating loading times.",
+  "simpleExplanation": "A global franchise. If your server is in New York, a user in Tokyo will experience a 2-second delay loading your logo. A CDN copies your logo and places it on a server physically located in Tokyo. The next Tokyo user gets the logo instantly.",
+  "realWorldExample": "AWS CloudFront, Azure CDN. Netflix uses CDNs extensively. When they release a new movie, they don't stream it from their main server. They push a copy of the movie file to every CDN edge location worldwide, so you stream it from a server located in your own city.",
+  "useCases": [
+    "Website acceleration",
+    "Video streaming",
+    "DDoS protection"
+  ],
+  "questions": {
+    "basic": [
+      "Does a CDN usually cache dynamic data (like a live stock market price) or static data (like a JPG image)?"
+    ],
+    "intermediate": [
+      "What is an 'Edge Location' compared to a 'Region'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Dynamic or static?",
+      "answer": "Primarily Static data. Caching highly dynamic, rapidly changing data defeats the purpose and serves stale information."
+    },
+    {
+      "question": "Edge vs Region?",
+      "answer": "Regions are massive, centralized data centers where you build your main application. Edge Locations are thousands of tiny, localized servers scattered in almost every major city in the world, used exclusively by the CDN to cache files close to users."
+    }
+  ]
+}

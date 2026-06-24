@@ -1,0 +1,32 @@
+{
+  "id": "client-fetching",
+  "title": "Client-Side Fetching",
+  "difficulty": "Intermediate",
+  "definition": "Fetching data from the browser AFTER the initial page load, typically responding to user interactions like clicking a button or typing in a search bar.",
+  "simpleExplanation": "Server fetching is for the initial page load. Client fetching is for everything that happens after. If a user types into a 'Search' bar, you can't reload the entire server page. You must fetch the search results from the client browser using React Query or SWR.",
+  "realWorldExample": "An infinite scrolling feed (like Twitter). The server provides the first 10 tweets. As the user scrolls down, the client browser fetches the next 10 tweets and appends them to the list.",
+  "useCases": [
+    "Infinite scrolling",
+    "Search autocomplete",
+    "Pagination without URL changes"
+  ],
+  "questions": {
+    "basic": [
+      "If you need to fetch data when a user clicks a 'Load More' button, should you use Server or Client fetching?"
+    ],
+    "intermediate": [
+      "Why does Next.js strongly recommend using libraries like SWR or React Query for client-side fetching instead of standard `useEffect`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Load more?",
+      "answer": "Client-side fetching. You are responding to a user event after the initial render."
+    },
+    {
+      "question": "Why use libraries?",
+      "answer": "Standard `fetch` inside `useEffect` is incredibly buggy. It doesn't handle caching, deduping, retries on failure, or race conditions. SWR and React Query solve all these complex problems out of the box."
+    }
+  ],
+  "codeExample": "'use client'; // Must be a client component\nimport useSWR from 'swr';\n\nconst fetcher = (url) => fetch(url).then((res) => res.json());\n\nexport default function LiveSearch() {\n  const [query, setQuery] = useState('');\n  \n  // SWR handles the loading state, caching, and background refetching!\n  const { data, error, isLoading } = useSWR(`/api/search?q=${query}`, fetcher);\n\n  return (\n    <div>\n      <input onChange={(e) => setQuery(e.target.value)} />\n      {isLoading && <p>Searching...</p>}\n      {data && data.results.map(item => <p>{item.name}</p>)}\n    </div>\n  );\n}"
+}

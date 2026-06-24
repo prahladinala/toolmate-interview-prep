@@ -1,0 +1,31 @@
+{
+  "id": "rewrites",
+  "title": "Rewrites",
+  "difficulty": "Advanced",
+  "definition": "Masking a destination URL while keeping the user on the original requested URL.",
+  "simpleExplanation": "A Redirect changes the URL in the user's browser bar. A Rewrite secretly fetches data from somewhere else, but keeps the browser URL looking exactly the same. It's a proxy.",
+  "realWorldExample": "Your Next.js app is at `mycompany.com`. You have a totally separate WordPress blog at `blog.wp-hosting.com`. You use a Rewrite so that when a user visits `mycompany.com/blog`, Next.js secretly fetches the WordPress site and shows it, making it look like one seamless website.",
+  "useCases": [
+    "Incremental adoption/migration",
+    "Proxying external APIs to avoid CORS errors"
+  ],
+  "questions": {
+    "basic": [
+      "Does a Rewrite change the URL displayed in the user's browser?"
+    ],
+    "intermediate": [
+      "How can Rewrites solve CORS (Cross-Origin Resource Sharing) errors?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Change URL?",
+      "answer": "No. The user is completely unaware that the content was fetched from a different destination."
+    },
+    {
+      "question": "Solve CORS?",
+      "answer": "CORS only affects browsers trying to talk to external domains. A Next.js Rewrite happens on the Server. The browser talks to your Next.js server (same domain, no CORS), and your server talks to the external API."
+    }
+  ],
+  "codeExample": "// next.config.js\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        // When a user visits exactly this:\n        source: '/blog',\n        // Next.js secretly fetches this and serves it back to them!\n        destination: 'https://my-wordpress-site.com',\n      },\n      {\n        // API Proxying to avoid CORS!\n        source: '/api/v1/:path*',\n        destination: 'https://external-strict-api.com/v1/:path*',\n      }\n    ]\n  }\n}"
+}

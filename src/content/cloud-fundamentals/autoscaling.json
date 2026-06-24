@@ -1,0 +1,31 @@
+{
+  "id": "autoscaling",
+  "title": "Auto Scaling (ASG / VMSS / MIG)",
+  "difficulty": "Intermediate",
+  "definition": "A cloud feature that automatically adds (scales out) or removes (scales in) compute instances based on live user traffic, CPU usage, or predefined schedules.",
+  "simpleExplanation": "The ultimate thermostat for servers. If 10,000 users log in, the system automatically buys 5 more servers. When the users leave, it instantly deletes the 5 servers so you stop paying for them.",
+  "realWorldExample": "AWS Auto Scaling Groups, Azure VM Scale Sets, GCP Managed Instance Groups. On Black Friday, an e-commerce site experiences a 500% traffic spike. The Auto Scaler detects high CPU usage and automatically clones the web server 20 times to prevent the site from crashing.",
+  "useCases": [
+    "Handling traffic spikes",
+    "Cost optimization",
+    "High availability"
+  ],
+  "questions": {
+    "basic": [
+      "What is 'Scaling Out' versus 'Scaling In'?"
+    ],
+    "intermediate": [
+      "What is the difference between Horizontal Scaling and Vertical Scaling?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Out vs In?",
+      "answer": "Scaling Out means adding MORE servers to handle traffic. Scaling In means removing/deleting servers to save money when traffic drops."
+    },
+    {
+      "question": "Horizontal vs Vertical?",
+      "answer": "Horizontal (Scaling Out) means adding more identical servers side-by-side. Vertical (Scaling Up) means turning off the server, throwing away the CPU, and putting a massive, expensive super-CPU in its place."
+    }
+  ]
+}

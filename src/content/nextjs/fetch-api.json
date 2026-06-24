@@ -1,0 +1,31 @@
+{
+  "id": "fetch-api",
+  "title": "Fetch API in Next.js",
+  "difficulty": "Beginner",
+  "definition": "Next.js drastically extends the native Web `fetch()` API, adding caching and revalidation logic directly into the function call.",
+  "simpleExplanation": "In React, `fetch` just grabs data. In Next.js, `fetch` is magical. It remembers the data it fetched. If 1,000 users visit your page, Next.js only runs `fetch` once, caches the result on the server, and instantly serves that cached result to all 1,000 users.",
+  "realWorldExample": "Fetching a list of blog posts from a headless CMS. You want it to be incredibly fast, so you use Next.js `fetch` to cache the response indefinitely.",
+  "useCases": [
+    "Fetching remote data",
+    "Server-side data caching"
+  ],
+  "questions": {
+    "basic": [
+      "Does Next.js cache `fetch` requests by default?"
+    ],
+    "intermediate": [
+      "If you are using a third-party database library (like Prisma or Mongoose) instead of `fetch`, does Next.js automatically cache it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Cached by default?",
+      "answer": "Yes! In the App Router, any standard `fetch` call is automatically cached (acting like Static Site Generation) unless you specifically tell it not to."
+    },
+    {
+      "question": "Does Prisma cache?",
+      "answer": "No. Next.js ONLY patches the native `fetch` function. If you use an ORM like Prisma or a library like Axios, it will NOT be cached automatically by the Next.js Data Cache. You must use the `unstable_cache` function to cache DB queries manually."
+    }
+  ],
+  "codeExample": "export default async function BlogFeed() {\n  // MAGIC FETCH: This is cached automatically!\n  // Next.js runs this ONCE at build time, and never again.\n  const res = await fetch('https://api.mycms.com/posts');\n  const posts = await res.json();\n\n  return (\n    <ul>\n      {posts.map(post => <li key={post.id}>{post.title}</li>)}\n    </ul>\n  );\n}"
+}

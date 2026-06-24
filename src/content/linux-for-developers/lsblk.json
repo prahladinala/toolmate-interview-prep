@@ -1,0 +1,30 @@
+{
+  "id": "lsblk",
+  "title": "lsblk",
+  "difficulty": "Intermediate",
+  "definition": "List Block Devices. A command that prints all available block devices (physical hard drives, SSDs, USBs) in a visual tree format, showing their partitions and mount points.",
+  "simpleExplanation": "Looking at the physical hardware. It shows you the actual physical disks plugged into the computer, regardless of whether they have been mounted into the file system or not.",
+  "realWorldExample": "You buy a new 1TB hard drive and plug it into the server. It doesn't show up in `df` because it isn't mounted. You type `lsblk`. You see `sdb - 1000G` listed. Now you know the OS physically recognizes the new drive.",
+  "useCases": [
+    "Identifying new hardware",
+    "Planning partitions"
+  ],
+  "questions": {
+    "basic": [
+      "Does `lsblk` show you how much free space is left on the drive?"
+    ],
+    "intermediate": [
+      "In the output of `lsblk`, what does `sda1` mean compared to `sda`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Show free space?",
+      "answer": "No. It only shows the absolute total capacity of the physical disk. You must use `df` to see available free space."
+    },
+    {
+      "question": "sda vs sda1?",
+      "answer": "`sda` is the raw, entire physical hard drive. `sda1` is the first logical 'Partition' cut out of that hard drive. A single physical drive can be sliced into multiple partitions (sda1, sda2, sda3)."
+    }
+  ]
+}

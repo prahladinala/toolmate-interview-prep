@@ -1,0 +1,30 @@
+{
+  "id": "gradient-descent",
+  "title": "Gradient Descent",
+  "difficulty": "Advanced",
+  "definition": "The optimization algorithm used alongside backpropagation to minimize the 'Loss Function' (the error) by iteratively moving in the direction of steepest descent.",
+  "simpleExplanation": "Imagine you are blindfolded on a mountain and want to get to the valley floor. You feel the ground with your foot. You find the direction that slopes downward the steepest, and you take a step in that direction. You repeat this until the ground is flat. The 'mountain' is the AI's error. The 'valley floor' is perfect accuracy.",
+  "realWorldExample": "Adam (Adaptive Moment Estimation) is a highly advanced version of Gradient Descent used to train GPT-4. It acts like a ball rolling down a hill—it builds up 'momentum' so it doesn't get stuck in small potholes along the way.",
+  "useCases": [
+    "Model optimization",
+    "Minimizing loss"
+  ],
+  "questions": {
+    "basic": [
+      "In Gradient Descent, what represents the 'size of the step' you take down the mountain?"
+    ],
+    "intermediate": [
+      "What is a 'Local Minimum' trap in Gradient Descent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Step size?",
+      "answer": "The Learning Rate. A massive learning rate takes huge leaps down the mountain; a small learning rate takes tiny steps."
+    },
+    {
+      "question": "Local Minimum trap?",
+      "answer": "When the algorithm rolls down into a small crater on the side of the mountain. The ground feels flat, so the algorithm thinks it found the bottom of the valley, and stops learning. In reality, the true bottom of the valley (the absolute smartest the AI could be) is further down."
+    }
+  ]
+}

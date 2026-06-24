@@ -1,0 +1,32 @@
+{
+  "id": "mock-apis",
+  "title": "Mock APIs",
+  "difficulty": "Intermediate",
+  "definition": "A simulated version of an API that intercepts requests and returns predefined fake responses, used when the real backend API is unavailable or too slow to use for testing.",
+  "simpleExplanation": "A movie set. The houses look real on the outside, but there is nothing inside. A Mock API looks exactly like the real API (it returns the exact same JSON structure), but it has no real database or logic behind it.",
+  "realWorldExample": "The Backend team is taking 3 weeks to build the API. The Frontend team cannot sit around doing nothing. They create a Mock API using JSON Server that returns fake user data, allowing them to build the entire UI immediately. When the real API is done, they just swap the URL.",
+  "useCases": [
+    "Frontend development speed",
+    "Unit testing",
+    "Isolating failures"
+  ],
+  "questions": {
+    "basic": [
+      "What tool intercepts network requests in the browser to return Mock API data? (Hint: MSW)"
+    ],
+    "intermediate": [
+      "Why would you use a Mock API during automated Frontend Unit testing (like Jest) instead of hitting the real backend API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which tool?",
+      "answer": "Mock Service Worker (MSW)."
+    },
+    {
+      "question": "Why mock in tests?",
+      "answer": "Speed and Reliability. Real APIs require network hops and database queries, making tests slow and 'flaky' (if the WiFi drops, the test fails). Mocks run instantly and predictably in memory."
+    }
+  ],
+  "codeExample": "/* \n  Using Mock Service Worker (MSW) to mock an API in a React Test \n*/\nimport { rest } from 'msw';\nimport { setupServer } from 'msw/node';\n\n// 1. Define the fake API behavior\nconst server = setupServer(\n  rest.get('/api/user', (req, res, ctx) => {\n    return res(ctx.json({ firstName: 'Fake John' }));\n  })\n);\n\n// 2. Start the interceptor before tests run\nbeforeAll(() => server.listen());\n\n// 3. Test the Frontend UI. \n// The UI thinks it hit the real API, but MSW intercepted it!\nit('displays the user name', async () => {\n  render(<UserProfile />);\n  expect(await screen.findByText('Fake John')).toBeInTheDocument();\n});"
+}

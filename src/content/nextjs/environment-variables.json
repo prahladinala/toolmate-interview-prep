@@ -1,0 +1,32 @@
+{
+  "id": "environment-variables",
+  "title": "Environment Variables",
+  "difficulty": "Beginner",
+  "definition": "Values that are dynamically injected into the application at runtime or build time, keeping sensitive secrets (like API keys and Database passwords) completely out of the source code.",
+  "simpleExplanation": "You NEVER type your Database Password directly into `db.ts`. If you commit it to GitHub, hackers will find it and delete your database in 5 minutes. Instead, you put it in a `.env` file, which is explicitly ignored by GitHub.",
+  "realWorldExample": "Using a `.env.development` file on your laptop to connect to a local dummy database, and using Vercel's dashboard to set the Production environment variables to connect to the real database.",
+  "useCases": [
+    "Secret management",
+    "Different environments (Dev vs Prod)",
+    "Configuration"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix MUST you add to an environment variable in Next.js if you want it to be exposed to the browser (Client Components)?"
+    ],
+    "intermediate": [
+      "If a variable is named `DATABASE_URL` (without the prefix), can a Client Component read it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What prefix?",
+      "answer": "`NEXT_PUBLIC_` (e.g., `NEXT_PUBLIC_STRIPE_KEY`)."
+    },
+    {
+      "question": "Client read without prefix?",
+      "answer": "No. Next.js heavily protects standard environment variables. If it doesn't have the prefix, it is completely stripped from the client bundle. It will return `undefined` in the browser."
+    }
+  ],
+  "codeExample": "/* \n  .env file contents: \n  DATABASE_PASSWORD=\"super-secret-123\"\n  NEXT_PUBLIC_ANALYTICS_ID=\"UA-98765432-1\"\n*/\n\n// 1. In a Server Component (or API Route):\nexport default async function ServerPage() {\n  // ✅ SAFE: This runs on the Node server. It has full access.\n  const password = process.env.DATABASE_PASSWORD;\n  return <div>Server</div>;\n}\n\n// 2. In a Client Component ('use client'):\n'use client';\nexport default function ClientPage() {\n  // ✅ WORKS: The variable has the NEXT_PUBLIC prefix.\n  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;\n  \n  // ❌ FAILS: Returns 'undefined'. Next.js protects secrets!\n  const password = process.env.DATABASE_PASSWORD; \n  \n  return <div>Client</div>;\n}"
+}

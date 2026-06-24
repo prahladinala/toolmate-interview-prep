@@ -1,0 +1,30 @@
+{
+  "id": "linux-architecture",
+  "title": "Linux Architecture",
+  "difficulty": "Intermediate",
+  "definition": "The layered structure of Linux: Hardware at the bottom, the Kernel above it, the Shell/System Libraries above that, and User Applications at the very top.",
+  "simpleExplanation": "A multi-story building. Applications live in the penthouse. Hardware lives in the basement. Applications are never allowed to go to the basement directly; they must hand requests to the Kernel (the butler) to fetch things from the basement.",
+  "realWorldExample": "A Node.js app (User Layer) wants to read a file. It calls a standard C library function. The library executes a 'System Call'. The Kernel catches the System Call, spins up the physical hard drive (Hardware Layer), reads the file, and hands the data back up the chain.",
+  "useCases": [
+    "Understanding system boundaries",
+    "Security isolation"
+  ],
+  "questions": {
+    "basic": [
+      "Do user applications interact directly with the physical CPU?"
+    ],
+    "intermediate": [
+      "What is 'User Space' vs 'Kernel Space'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Direct hardware access?",
+      "answer": "No. They must go through the Kernel."
+    },
+    {
+      "question": "User vs Kernel space?",
+      "answer": "User Space is the restricted memory area where normal apps (browsers, games) run. If they crash, only the app crashes. Kernel Space is the highly-privileged memory area where the core OS runs. If code crashes here, the entire computer crashes."
+    }
+  ]
+}

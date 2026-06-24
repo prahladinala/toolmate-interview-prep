@@ -1,0 +1,30 @@
+{
+  "id": "mv",
+  "title": "mv",
+  "difficulty": "Beginner",
+  "definition": "Move. The command used to move files or directories from one place to another. It is also the primary command used to rename files.",
+  "simpleExplanation": "Cut and Paste. It takes the file, puts it somewhere else, and deletes the original. If you move a file into the exact same folder but with a new name, it is a 'Rename'.",
+  "realWorldExample": "You misspell a file name. You type `mv imgae.jpg image.jpg`. The file is instantly renamed.",
+  "useCases": [
+    "Organizing files",
+    "Renaming files"
+  ],
+  "questions": {
+    "basic": [
+      "Does Linux have a dedicated `rename` command, or do you mostly use `mv` to rename things?"
+    ],
+    "intermediate": [
+      "If you `mv` a 100GB file from one folder to another folder on the EXACT SAME hard drive, why does it happen instantly (in milliseconds)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Dedicated rename command?",
+      "answer": "While a specific `rename` command exists for bulk-renaming with regex, `mv` is the standard, everyday command used by developers to rename single files."
+    },
+    {
+      "question": "Why is it instant?",
+      "answer": "Because Linux doesn't actually move the 100GB of physical data on the disk. It simply updates the 'address' pointing to that data in the file system tree. It just changes the label."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "kill",
+  "title": "kill",
+  "difficulty": "Beginner",
+  "definition": "A command used to send a signal to a process, usually to terminate it. It requires the precise Process ID (PID).",
+  "simpleExplanation": "The sniper rifle. You give it the exact ID number of a misbehaving app, and it shoots it down.",
+  "realWorldExample": "A Node app crashes and leaves a ghost process holding Port 3000 open. You find the PID is 405. You type `kill 405`. The OS politely asks the process to shut down.",
+  "useCases": [
+    "Terminating frozen applications",
+    "Freeing up locked network ports"
+  ],
+  "questions": {
+    "basic": [
+      "If a process refuses to close when you use the `kill` command, what flag do you add to forcefully murder it?"
+    ],
+    "intermediate": [
+      "Does the `kill` command actually 'kill' things, or does it do something else?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to force kill?",
+      "answer": "Use the `-9` flag (SIGKILL): `kill -9 405`."
+    },
+    {
+      "question": "What does it actually do?",
+      "answer": "It sends a 'Signal' to a process. By default, it sends SIGTERM (Signal 15: please terminate gracefully). You can use it to send other signals, like SIGSTOP (pause the process without killing it)."
+    }
+  ]
+}

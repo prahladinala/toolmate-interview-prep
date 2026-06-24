@@ -1,0 +1,30 @@
+{
+  "id": "linux-distributions",
+  "title": "Linux Distributions (Distros)",
+  "difficulty": "Beginner",
+  "definition": "A complete operating system built on top of the Linux kernel, packaged with specific software, package managers, and graphical interfaces.",
+  "simpleExplanation": "Different flavors of ice cream. They all use the same milk (the Linux Kernel), but they add different flavors (software) to appeal to different users. Ubuntu is user-friendly; Kali is for hackers.",
+  "realWorldExample": "Ubuntu (easy for beginners), CentOS/RHEL (highly stable for enterprise servers), Alpine (tiny, used for Docker containers), and Kali Linux (pre-loaded with cybersecurity penetration testing tools).",
+  "useCases": [
+    "Choosing an OS for a project",
+    "Enterprise infrastructure"
+  ],
+  "questions": {
+    "basic": [
+      "If someone says they use 'Ubuntu', are they using Linux?"
+    ],
+    "intermediate": [
+      "What is the main difference between a 'Desktop' distro and a 'Server' distro?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is Ubuntu Linux?",
+      "answer": "Yes. Ubuntu is simply a specific 'brand' or distribution of the Linux Operating System."
+    },
+    {
+      "question": "Desktop vs Server?",
+      "answer": "A Desktop distro includes a Graphical User Interface (GUI) like windows and a mouse pointer. A Server distro usually has no GUI to save RAM and CPU—you interact with it entirely through text in a terminal."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "what-is-cloud",
+  "title": "What is Cloud Computing?",
+  "difficulty": "Beginner",
+  "definition": "The delivery of computing services (servers, storage, databases, networking, software, and analytics) over the Internet ('the cloud') to offer faster innovation, flexible resources, and economies of scale.",
+  "simpleExplanation": "Renting someone else's computer. Instead of buying a massive server, putting it in your closet, and paying for its electricity, you rent a server from Amazon, Microsoft, or Google, and only pay for the exact minutes you use it.",
+  "realWorldExample": "Netflix uses AWS. Instead of building thousands of their own data centers around the world to stream movies, Netflix rents servers from Amazon. When millions of people log on Friday night, Netflix instantly rents 5,000 more servers. At 3 AM, they give them back.",
+  "useCases": [
+    "Web hosting",
+    "Data backup",
+    "Big Data analytics"
+  ],
+  "questions": {
+    "basic": [
+      "Do you actually own the physical hardware when using Cloud Computing?"
+    ],
+    "intermediate": [
+      "What is 'CapEx' vs 'OpEx' in the context of migrating to the Cloud?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Own hardware?",
+      "answer": "No. The cloud provider owns and maintains the physical servers. You simply lease them over the internet."
+    },
+    {
+      "question": "CapEx vs OpEx?",
+      "answer": "CapEx (Capital Expenditure) is spending $100,000 upfront to buy physical servers. OpEx (Operational Expenditure) is the Cloud model: paying $1,000 a month on a pay-as-you-go basis, treating computing as a utility bill like water or electricity."
+    }
+  ]
+}

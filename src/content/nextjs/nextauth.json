@@ -1,0 +1,32 @@
+{
+  "id": "nextauth",
+  "title": "NextAuth.js / Auth.js",
+  "difficulty": "Intermediate",
+  "definition": "The industry-standard, open-source authentication library specifically built for Next.js, providing built-in support for OAuth providers (Google, GitHub), Magic Links, and Credentials.",
+  "simpleExplanation": "Building a secure login system from scratch takes weeks and is prone to massive security vulnerabilities. NextAuth is a pre-built solution. You give it your Google API keys, and it handles the entire OAuth handshake, cookie management, and session validation in about 10 lines of code.",
+  "realWorldExample": "Adding a 'Sign in with GitHub' button to your developer portfolio site in 5 minutes.",
+  "useCases": [
+    "OAuth integration",
+    "Rapid auth implementation",
+    "Enterprise SSO"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary benefit of using NextAuth over building your own auth system?"
+    ],
+    "intermediate": [
+      "Does NextAuth manage user passwords by default?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary benefit?",
+      "answer": "Security and speed. It handles extremely complex OAuth flows, secure cookie creation, and JWT encryption securely out of the box."
+    },
+    {
+      "question": "Manage passwords?",
+      "answer": "No. NextAuth heavily discourages 'Credentials' (usernames and passwords) due to the immense security risks of storing passwords. It pushes developers towards OAuth (Google/GitHub) or Passwordless Magic Links."
+    }
+  ],
+  "codeExample": "// app/api/auth/[...nextauth]/route.ts\n// This one file generates all the login/logout API routes automatically!\nimport NextAuth from \"next-auth\";\nimport GithubProvider from \"next-auth/providers/github\";\n\nconst handler = NextAuth({\n  providers: [\n    GithubProvider({\n      clientId: process.env.GITHUB_ID,\n      clientSecret: process.env.GITHUB_SECRET,\n    }),\n  ],\n});\n\nexport { handler as GET, handler as POST };\n\n\n// Reading the session in a Server Component\nimport { getServerSession } from \"next-auth/next\";\n\nexport default async function Dashboard() {\n  const session = await getServerSession();\n  if (!session) return <p>Access Denied</p>;\n  return <h1>Welcome {session.user.name}</h1>;\n}"
+}

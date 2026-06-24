@@ -1,0 +1,31 @@
+{
+  "id": "transitions",
+  "title": "CSS Transitions",
+  "difficulty": "Beginner",
+  "definition": "A CSS module that lets you create gradual transitions between the values of specific CSS properties.",
+  "simpleExplanation": "If you hover over a button and it turns from Blue to Red instantly, it feels jarring. A Transition tells the browser: 'When the color changes, don't do it instantly. Take 0.3 seconds to smoothly blend the blue into red.'",
+  "realWorldExample": "Almost every button on the modern web. When you hover your mouse over it, it smoothly lights up or slightly grows in size.",
+  "useCases": [
+    "Hover effects",
+    "Smooth UI feedback"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two most common properties provided to the `transition` shorthand?"
+    ],
+    "intermediate": [
+      "Why is it better to put the `transition` property on the base element rather than the `:hover` state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Common properties?",
+      "answer": "The property to animate (e.g., `background-color` or `all`) and the duration (e.g., `0.3s`)."
+    },
+    {
+      "question": "Why on the base element?",
+      "answer": "If you put `transition` on the `:hover` state, it will smoothly transition WHEN you hover. But when you move your mouse away (un-hover), it instantly snaps back because the transition rule no longer applies. Putting it on the base element ensures it is smooth in BOTH directions."
+    }
+  ],
+  "codeExample": "<style>\n  .btn {\n    background-color: #3b82f6;\n    color: white;\n    padding: 15px 30px;\n    font-size: 18px;\n    border: none;\n    border-radius: 8px;\n    cursor: pointer;\n    \n    /* THE MAGIC: \n       Animate 'all' properties, take 0.3 seconds, use an 'ease' timing curve */\n    transition: all 0.3s ease;\n  }\n\n  /* When the user hovers their mouse over the button... */\n  .btn:hover {\n    /* Change the background */\n    background-color: #1d4ed8;\n    /* Move it up slightly using transform */\n    transform: translateY(-5px);\n    /* Add a shadow */\n    box-shadow: 0 10px 15px rgba(0,0,0,0.2);\n  }\n</style>\n\n<div style=\"padding: 50px;\">\n  <button class=\"btn\">Hover Over Me!</button>\n</div>"
+}

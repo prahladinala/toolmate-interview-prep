@@ -1,0 +1,32 @@
+{
+  "id": "integration-testing",
+  "title": "Integration Testing",
+  "difficulty": "Intermediate",
+  "definition": "The phase of testing where individual units/components are combined and tested as a group to ensure they communicate with each other correctly.",
+  "simpleExplanation": "Unit test: Does the Engine work? Unit test: Do the Wheels work? Integration test: If I connect the Engine to the Wheels, does the car actually move forward?",
+  "realWorldExample": "Testing a Next.js Server Action. You don't just test the UI button, and you don't just test the database function. You test that clicking the React component successfully triggers the Action, which successfully updates the database.",
+  "useCases": [
+    "API routing tests",
+    "Component communication",
+    "Database connectivity tests"
+  ],
+  "questions": {
+    "basic": [
+      "Where does Integration Testing sit in the 'Testing Pyramid'?"
+    ],
+    "intermediate": [
+      "Why are Integration Tests often preferred over pure Unit Tests in modern React development?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where in pyramid?",
+      "answer": "In the middle. Slower and fewer than Unit tests (bottom), but faster and more numerous than E2E tests (top)."
+    },
+    {
+      "question": "Why preferred?",
+      "answer": "Because testing isolated React components often provides false confidence. The component might render perfectly, but if it passes the wrong data payload to the Redux store or the Server Action, the app is broken. Integration tests catch these connection errors."
+    }
+  ],
+  "codeExample": "/* \n  The Testing Pyramid in Next.js:\n  \n  1. E2E (Playwright) - 5% of tests\n     Tests the entire app (Browser -> Network -> Next.js -> DB)\n     \n  2. Integration (Jest + RTL + Test DB) - 25% of tests\n     Tests a Page component interacting with a Server Action.\n     \n  3. Unit (Jest) - 70% of tests\n     Tests a pure math function or a dumb UI component.\n*/"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "grid-container",
+  "title": "Grid Container",
+  "difficulty": "Intermediate",
+  "definition": "A utility class (`grid`) that activates CSS Grid layout on an element, creating a two-dimensional layout system.",
+  "simpleExplanation": "Flexbox is for 1-dimensional layouts (a single Row OR a single Column). CSS Grid is for 2-dimensional layouts (Rows AND Columns at the same time). Think of it like an Excel spreadsheet. You create the columns, and throw items into the cells.",
+  "realWorldExample": "Creating an Instagram-style photo gallery with exactly 3 columns on desktop, but changing it to 1 column on a mobile phone.",
+  "useCases": [
+    "Complex page structures",
+    "Photo galleries",
+    "Dashboards"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class activates CSS Grid on a parent element?"
+    ],
+    "intermediate": [
+      "If you apply `grid` to an element but don't define any columns (`grid-cols-X`), what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Activates Grid?",
+      "answer": "`grid`"
+    },
+    {
+      "question": "No columns defined?",
+      "answer": "It behaves exactly like a block element. Every child will automatically take up the full width and stack vertically into 1 column by default."
+    }
+  ],
+  "codeExample": "<!-- \n  A fully responsive 2D Grid Layout!\n  Mobile: 1 Column\n  Tablet (md): 2 Columns\n  Desktop (lg): 3 Columns\n  Gap-4 adds perfect spacing between all rows AND columns!\n-->\n<div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">\n  <div class=\"bg-red-500\">Card 1</div>\n  <div class=\"bg-blue-500\">Card 2</div>\n  <div class=\"bg-green-500\">Card 3</div>\n  <div class=\"bg-yellow-500\">Card 4 (Wraps to next row beautifully)</div>\n</div>"
+}

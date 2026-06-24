@@ -1,0 +1,34 @@
+{
+  "id": "advanced-react-questions",
+  "title": "Advanced React Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep architectural questions testing your knowledge of React internals, concurrent mode, and enterprise-level patterns.",
+  "simpleExplanation": "These questions test if you are capable of leading a React project, mentoring juniors, and solving incredibly complex performance bottlenecks.",
+  "realWorldExample": "Senior interviews will cover Server Components, custom hook design patterns, and Webpack/Babel internals.",
+  "useCases": [
+    "Senior Developer Interviews",
+    "Tech Lead Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "How does React's Reconciliation algorithm actually work in O(n) time?"
+    ],
+    "intermediate": [
+      "What are React Server Components and how do they differ from SSR?"
+    ],
+    "advanced": [
+      "Explain how `useSyncExternalStore` works and why it was introduced in React 18."
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does Reconciliation work in O(n) time?",
+      "answer": "Comparing two generic trees is O(n^3). React uses two heuristics to make it O(n): 1. Two elements of different types will produce different trees (React tears down the old tree immediately). 2. Developers can hint at which child elements may be stable across different renders with a `key` prop."
+    },
+    {
+      "question": "RSC vs SSR?",
+      "answer": "SSR (Server-Side Rendering) renders your components to an HTML string on the server, sends it to the browser, and then 'hydrates' the page by downloading the JS bundle. React Server Components NEVER download their JS bundle to the browser. They remain exclusively on the server, sending only a serialized JSON UI representation to the client, drastically reducing bundle size."
+    }
+  ],
+  "codeExample": "// Advanced discussion topics usually don't have simple code snippets. \n// Be prepared to whiteboard architecture diagrams!"
+}

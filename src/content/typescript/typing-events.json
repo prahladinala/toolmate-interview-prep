@@ -1,0 +1,35 @@
+{
+  "id": "typing-events",
+  "title": "React: Typing Events",
+  "difficulty": "Intermediate",
+  "definition": "Providing accurate types for Event Objects passed to event handler functions (like `onClick` or `onChange`) in React.",
+  "simpleExplanation": "In vanilla JS, an event is just an `Event`. In React, events are wrapped in a 'SyntheticEvent'. If you have an `onChange` handler for an input, you must type the event so TypeScript knows it is allowed to read `event.target.value`.",
+  "realWorldExample": "An input handler: `const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { setValue(e.target.value); }`.",
+  "useCases": [
+    "Form handling",
+    "Button clicks",
+    "Keyboard navigation"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to type the event if the function is written completely inline?"
+    ],
+    "intermediate": [
+      "What is the event type for an `<input>` onChange handler?"
+    ],
+    "advanced": [
+      "What is the difference between `React.MouseEvent` and `MouseEvent`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do you need to type inline events?",
+      "answer": "No! If you write `<button onClick={(e) => console.log(e)}>`, TS uses Contextual Typing to perfectly infer the event type automatically. You only need explicit event types when defining the handler function outside of the JSX."
+    },
+    {
+      "question": "React.MouseEvent vs MouseEvent?",
+      "answer": "`MouseEvent` is the native DOM event type. `React.MouseEvent` is React's cross-browser wrapper (SyntheticEvent). You must use the React versions when working inside React components."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\nexport function LoginForm() {\n  const [text, setText] = useState(\"\");\n\n  // 1. Typing a Form Input Change Event\n  // Requires specifying WHICH HTML element triggered the change\n  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    setText(e.target.value);\n  };\n\n  // 2. Typing a Form Submit Event\n  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n    console.log(\"Submitted:\", text);\n  };\n\n  // 3. Typing a Mouse Event\n  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {\n    console.log(\"Clicked at X:\", e.clientX);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input type=\"text\" value={text} onChange={handleChange} />\n      <button onClick={handleClick} type=\"submit\">Login</button>\n    </form>\n  );\n}"
+}

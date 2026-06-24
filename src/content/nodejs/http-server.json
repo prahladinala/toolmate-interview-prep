@@ -1,0 +1,32 @@
+{
+  "id": "http-server",
+  "title": "Creating HTTP Servers",
+  "difficulty": "Beginner",
+  "definition": "The process of binding a Node.js application to a network port so it can listen for and respond to incoming HTTP requests from web browsers or API clients.",
+  "simpleExplanation": "An HTTP server is a receptionist sitting at a desk (a Port, like 3000). When a customer (a web browser) walks in and says 'I want the homepage', the receptionist looks at the request, runs to the back room, grabs the homepage HTML, and hands it back.",
+  "realWorldExample": "Creating a backend for a React application. The React app runs on port 3000, and makes `fetch()` requests to your Node API running on port 8080 to get JSON data.",
+  "useCases": [
+    "Building Web APIs",
+    "Serving static HTML websites",
+    "Creating Microservices"
+  ],
+  "questions": {
+    "basic": [
+      "What method is used to bind the server to a port?"
+    ],
+    "intermediate": [
+      "What happens if two servers try to listen on the exact same port?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What method binds the port?",
+      "answer": "`.listen(portNumber, callback)`."
+    },
+    {
+      "question": "Two servers on same port?",
+      "answer": "The second server will instantly crash with an `EADDRINUSE` (Error: Address in use) exception. Ports are exclusive doors; only one app can own a door at a time."
+    }
+  ],
+  "codeExample": "const http = require('http');\n\n// 1. Define the receptionist's behavior\nconst server = http.createServer((request, response) => {\n  console.log(`Received request for: ${request.url}`);\n  \n  // 2. Formulate the response\n  response.writeHead(200, { 'Content-Type': 'application/json' });\n  \n  // 3. Send the data and close the connection\n  response.end(JSON.stringify({\n    message: \"Hello! Your server is running perfectly.\",\n    timestamp: new Date()\n  }));\n});\n\nconst PORT = 3000;\n\n// 4. Sit at the desk and start listening\n// server.listen(PORT, () => {\n//   console.log(`Server listening on http://localhost:${PORT}`);\n// });\n\nconsole.log(\"Uncomment the .listen block to actually start the server!\");"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "cloud-intermediate",
+  "title": "Intermediate Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions evaluating the candidate's understanding of core cloud architecture, networking, storage selection, and database types.",
+  "simpleExplanation": "Proving you know exactly which cloud tool to pull out of the toolbox for a specific problem.",
+  "realWorldExample": "Question: 'You need to store 50,000 PDF invoices. Which AWS storage service do you choose and why?'",
+  "useCases": [
+    "Cloud Engineer interviews",
+    "DevOps roles"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Region and an Availability Zone?"
+    ],
+    "intermediate": [
+      "When would you choose a NoSQL database (like DynamoDB) over a Relational database (like RDS)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Region vs AZ?",
+      "answer": "A Region is a large geographic area (e.g., Northern Virginia). An Availability Zone is one or more discrete, physically separated data centers within that Region."
+    },
+    {
+      "question": "NoSQL vs Relational?",
+      "answer": "Choose Relational (RDS) when data is highly structured and requires complex table joins (like financial transactions). Choose NoSQL (DynamoDB) when the data schema is unpredictable, rapidly changing, or requires massive, millisecond-latency scaling (like live gaming leaderboards)."
+    }
+  ]
+}

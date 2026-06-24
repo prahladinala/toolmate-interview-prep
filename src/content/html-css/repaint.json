@@ -1,0 +1,30 @@
+{
+  "id": "repaint",
+  "title": "Repaint",
+  "difficulty": "Advanced",
+  "definition": "The process where the browser fills in pixels on the screen (drawing colors, shadows, text, and images) after the Reflow layout geometry has been calculated.",
+  "simpleExplanation": "Reflow is the architect drawing the blueprint. Repaint is the painter coloring the walls. If you change the `background-color` of a button, it doesn't change the size of the button, so there is no Reflow math needed. The browser just grabs its digital paintbrush and repaints the pixels.",
+  "realWorldExample": "Hovering over a button and changing its `color` from blue to red.",
+  "useCases": [
+    "Understanding rendering costs"
+  ],
+  "questions": {
+    "basic": [
+      "Which is heavier on CPU performance: a Reflow or a Repaint?"
+    ],
+    "intermediate": [
+      "Does triggering a Reflow automatically trigger a Repaint?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is heavier?",
+      "answer": "A Reflow is vastly heavier because it requires complex layout math across the entire DOM tree."
+    },
+    {
+      "question": "Reflow triggers Repaint?",
+      "answer": "Yes. If you change the width of a box (Reflow), the box is now physically larger, meaning the browser MUST repaint those new pixels to fill the new space."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 200px; height: 100px;\n    background-color: #3b82f6;\n    color: white;\n    text-align: center;\n    line-height: 100px;\n    font-weight: bold;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n  }\n\n  /* This ONLY triggers a Repaint. Extremely fast and cheap! */\n  .box:hover {\n    background-color: #ef4444;\n  }\n\n  /* This triggers a Reflow AND a Repaint. Much more expensive! */\n  .box:active {\n    width: 220px;\n  }\n</style>\n\n<div class=\"box\">\n  Hover (Repaint) / Click (Reflow)\n</div>"
+}

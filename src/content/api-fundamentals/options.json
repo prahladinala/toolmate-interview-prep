@@ -1,0 +1,31 @@
+{
+  "id": "options",
+  "title": "OPTIONS",
+  "difficulty": "Advanced",
+  "definition": "An HTTP method used to describe the communication options (methods, headers) available for the target resource, often used automatically by browsers for CORS preflight requests.",
+  "simpleExplanation": "Before your browser sends a massive POST request with sensitive data to a different website, it gets paranoid. It sends a tiny, invisible OPTIONS request first, asking: 'Hey server, are you allowed to accept POST requests from me?' The server replies 'Yes'. Then the browser sends the real POST request.",
+  "realWorldExample": "Cross-Origin Resource Sharing (CORS). If your frontend is on `localhost:3000` and your backend is on `api.com`, every POST, PUT, and DELETE request will secretly trigger an OPTIONS 'Preflight' request first.",
+  "useCases": [
+    "CORS Preflight",
+    "Discovering API capabilities"
+  ],
+  "questions": {
+    "basic": [
+      "Do developers usually have to write frontend code to send OPTIONS requests manually?"
+    ],
+    "intermediate": [
+      "If a server receives an OPTIONS request, what specific headers must it return to allow CORS?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manual code?",
+      "answer": "No. The web browser (Chrome, Firefox) generates and sends OPTIONS requests completely automatically under the hood when making Cross-Origin requests."
+    },
+    {
+      "question": "Which headers?",
+      "answer": "It must return `Access-Control-Allow-Origin` (who is allowed), `Access-Control-Allow-Methods` (what verbs are allowed), and `Access-Control-Allow-Headers`."
+    }
+  ],
+  "codeExample": "/* \n  The Invisible CORS Handshake (Preflight)\n*/\n\n// 1. Browser secretly sends OPTIONS first:\nOPTIONS /api/data HTTP/1.1\nOrigin: http://localhost:3000\nAccess-Control-Request-Method: PUT\n\n// 2. Server responds:\nHTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: http://localhost:3000\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE\nAccess-Control-Allow-Headers: Content-Type, Authorization\n\n// 3. Browser sees it is allowed, and NOW sends the real PUT request."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "media-queries",
+  "title": "Media Queries",
+  "difficulty": "Intermediate",
+  "definition": "A CSS technique introduced in CSS3 that allows content rendering to adapt to different conditions such as screen resolution, device width, or orientation.",
+  "simpleExplanation": "An 'IF statement' for CSS. You can tell the browser: 'If the screen is smaller than 600px (like an iPhone), change the background to Red and make the font smaller. Otherwise, leave it alone.'",
+  "realWorldExample": "Turning a 3-column desktop layout into a single-column layout on mobile devices so the user doesn't have to horizontally scroll.",
+  "useCases": [
+    "Mobile responsive design",
+    "Dark mode detection",
+    "Print styling (hiding navbars when printing a page)"
+  ],
+  "questions": {
+    "basic": [
+      "What symbol starts a media query?"
+    ],
+    "intermediate": [
+      "What does `@media (max-width: 768px)` mean?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What symbol?",
+      "answer": "The `@` symbol (e.g., `@media`)."
+    },
+    {
+      "question": "What does max-width mean?",
+      "answer": "It means 'Apply these styles ONLY if the screen width is 768 pixels or LESS'. If the screen is 800px wide, the rules inside the query are completely ignored."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. DEFAULT STYLES (Applies to all screens) */\n  .responsive-box {\n    background-color: darkblue;\n    color: white;\n    padding: 30px;\n    font-size: 24px;\n    text-align: center;\n    transition: all 0.3s ease; /* Makes the color change smooth! */\n  }\n\n  /* 2. THE MEDIA QUERY */\n  /* If the screen shrinks below 600px, these rules OVERRIDE the defaults! */\n  @media (max-width: 600px) {\n    .responsive-box {\n      background-color: crimson;\n      font-size: 16px;\n    }\n    \n    /* We use a pseudo-element trick here just to change the text! */\n    .responsive-box::after {\n      content: \" (Mobile Mode Active!)\";\n      font-weight: bold;\n    }\n  }\n</style>\n\n<p><strong>Grab the edge of your browser window and shrink it!</strong></p>\n\n<div class=\"responsive-box\">\n  I am a blue box on Desktop, but I turn red on Mobile!\n</div>"
+}

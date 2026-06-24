@@ -1,0 +1,31 @@
+{
+  "id": "signed-commits",
+  "title": "Signed Commits",
+  "difficulty": "Advanced",
+  "definition": "Using a GPG, SSH, or S/MIME key to cryptographically sign a commit or tag. This proves to GitHub and other developers that the commit actually came from you.",
+  "simpleExplanation": "Git is incredibly easy to trick. I can run `git config user.name \"Elon Musk\"` and push a commit. The commit will literally say Elon Musk wrote it. Signing a commit attaches an unbreakable cryptographic signature, and GitHub adds a green 'Verified' badge to prove you are who you say you are.",
+  "realWorldExample": "Enterprise companies requiring all developers to sign their commits so a hacker can't impersonate a Senior Developer and inject malicious code into the database.",
+  "useCases": [
+    "Security compliance",
+    "Identity verification"
+  ],
+  "questions": {
+    "basic": [
+      "What visual indicator does GitHub use for signed commits?"
+    ],
+    "intermediate": [
+      "Can you use the same SSH key you use for authenticating pushes to also sign your commits?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Visual indicator?",
+      "answer": "A green 'Verified' badge next to the commit hash."
+    },
+    {
+      "question": "Use SSH key?",
+      "answer": "Yes! As of Git 2.34, you can now use your standard SSH key to sign commits, which is significantly easier than setting up complex GPG keys."
+    }
+  ],
+  "codeExample": "# Tell Git to sign your commits using your SSH key\n$ git config --global gpg.format ssh\n$ git config --global user.signingkey ~/.ssh/id_ed25519.pub\n\n# Tell Git to sign EVERY commit automatically\n$ git config --global commit.gpgsign true\n\n# Now, when you run git commit, it signs it!\n$ git commit -m \"Secure, verified commit\""
+}

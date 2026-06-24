@@ -1,0 +1,31 @@
+{
+  "id": "local-vs-global",
+  "title": "Local vs Global State",
+  "difficulty": "Beginner",
+  "definition": "The architectural decision of whether a piece of data belongs in a single React component (Local via `useState`) or in the Redux store (Global).",
+  "simpleExplanation": "Local state is a secret. If you have a dropdown menu, only the dropdown cares if it is currently 'open' or 'closed'. Nobody else in the app cares. Global state is public knowledge, like knowing who is logged in.",
+  "realWorldExample": "You have a form. As the user types their email into the input box, that text is Local State. When they click 'Submit' and the server returns their User Profile, that profile is saved to Global State.",
+  "useCases": [
+    "Optimizing React performance",
+    "Keeping the Redux store clean"
+  ],
+  "questions": {
+    "basic": [
+      "If a boolean `isModalOpen` is only used by one specific page, where should it be stored?"
+    ],
+    "intermediate": [
+      "Why is it a bad idea to put form input typing state (like `e.target.value`) into Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to store isModalOpen?",
+      "answer": "In Local State using React's `useState(false)`. Redux doesn't need to know about it."
+    },
+    {
+      "question": "Why not form inputs in Redux?",
+      "answer": "Because every single keystroke would dispatch an action, travel through the reducers, update the global store, and potentially trigger massive re-renders across the entire app. It's incredibly slow and unnecessary."
+    }
+  ],
+  "codeExample": "import { useState } from 'react';\nimport { useDispatch, useSelector } from 'react-redux';\n\nfunction LoginForm() {\n  // LOCAL STATE: Only this specific form cares about what you are typing right now\n  const [email, setEmail] = useState('');\n  \n  // GLOBAL STATE: The whole app cares if you successfully log in\n  const dispatch = useDispatch();\n  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);\n\n  const handleSubmit = () => {\n    // Once the local action is done, we dispatch to the Global State\n    dispatch(loginUser(email));\n  };\n}"
+}

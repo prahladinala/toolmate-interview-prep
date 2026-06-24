@@ -1,0 +1,31 @@
+{
+  "id": "url-versioning",
+  "title": "URL Versioning",
+  "difficulty": "Beginner",
+  "definition": "The most common and explicit strategy for API versioning, where the version number is embedded directly into the URL path.",
+  "simpleExplanation": "You put `/v1/` in the URL. When you need to make breaking changes, you create a new set of endpoints starting with `/v2/`. Both URLs run on the server at the same time.",
+  "realWorldExample": "Twitter's API. `api.twitter.com/1.1/tweets` uses their old format. `api.twitter.com/2/tweets` uses their completely redesigned modern format.",
+  "useCases": [
+    "Public APIs",
+    "Simplicity and routing ease"
+  ],
+  "questions": {
+    "basic": [
+      "Give an example of a URL-versioned endpoint."
+    ],
+    "intermediate": [
+      "What is the main architectural criticism of URL Versioning among REST purists?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Example?",
+      "answer": "`https://api.mycompany.com/v1/users`"
+    },
+    {
+      "question": "Criticism?",
+      "answer": "REST purists argue that a URL should point to a specific *Resource* (the user). A version is not a resource; it is a representation of the data. Therefore, versioning should theoretically happen in the Headers, not the URL."
+    }
+  ],
+  "codeExample": "// Node.js Express URL Versioning Router Setup\n\n// Mount the V1 API logic\nconst v1Routes = require('./routes/v1');\napp.use('/api/v1', v1Routes);\n// v1 returns: { name: \"John Doe\" }\n\n// Mount the V2 API logic (with breaking changes!)\nconst v2Routes = require('./routes/v2');\napp.use('/api/v2', v2Routes);\n// v2 returns: { firstName: \"John\", lastName: \"Doe\" }"
+}

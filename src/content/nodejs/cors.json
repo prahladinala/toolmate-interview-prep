@@ -1,0 +1,31 @@
+{
+  "id": "cors",
+  "title": "CORS",
+  "difficulty": "Intermediate",
+  "definition": "Cross-Origin Resource Sharing. A browser security mechanism that restricts web pages from making HTTP requests to a different domain than the one that served the web page.",
+  "simpleExplanation": "Imagine you log into your bank at `bank.com`. Then you visit an evil hacker site at `evil.com`. The hacker site runs a hidden script: `fetch('bank.com/transfer-money')`. CORS is the bouncer at the bank's door. The bouncer sees the request is coming from `evil.com`, blocks it, and screams 'CORS ERROR!' in the hacker's browser console.",
+  "realWorldExample": "If you build a React app on `localhost:3000` and try to fetch data from your Node API on `localhost:8080`, your browser will block it with a CORS error. You must tell the Node backend to explicitly allow traffic from `localhost:3000`.",
+  "useCases": [
+    "Securing public APIs",
+    "Connecting separate frontend and backend servers"
+  ],
+  "questions": {
+    "basic": [
+      "Does the Node.js server throw the CORS error, or does the Browser?"
+    ],
+    "intermediate": [
+      "What is an OPTIONS Preflight request?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who throws the error?",
+      "answer": "The BROWSER throws the error! Postman and Curl do not care about CORS. Browsers enforce CORS to protect the user."
+    },
+    {
+      "question": "What is an OPTIONS Preflight?",
+      "answer": "Before the browser sends a dangerous POST or DELETE request, it sends a tiny scout request called an `OPTIONS` ping to the server asking: 'Are you going to allow this?'. If the server replies 'Yes', the browser then sends the real POST request."
+    }
+  ],
+  "codeExample": "// HOW TO FIX CORS IN EXPRESS\n// npm install cors\n\n// const express = require('express');\n// const cors = require('cors');\n// const app = express();\n\n// 1. The quick (but dangerous) way: Allow EVERYTHING\n// app.use(cors()); \n\n// 2. The secure way: Whitelist specific domains\n// const corsOptions = {\n//   origin: ['https://myreactsite.com', 'http://localhost:3000'],\n//   methods: ['GET', 'POST'], // Only allow reading and creating\n//   credentials: true         // Allow cookies to be sent cross-domain\n// };\n// app.use(cors(corsOptions));\n\nconsole.log(\"CORS issues are the #1 headache for junior developers. Always install the 'cors' middleware when building an API!\");"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "module-caching",
+  "title": "Module Caching",
+  "difficulty": "Advanced",
+  "definition": "An internal optimization in Node.js where modules are cached in memory after the first time they are loaded. Subsequent `require()` or `import` calls for the same file return the cached version instead of executing the file again.",
+  "simpleExplanation": "If File A requires 'database.js', Node runs the database script, connects to the DB, and caches the result. If File B later requires 'database.js', Node DOES NOT run the script again. It just hands File B the exact same connection object it gave File A. It's a built-in Singleton!",
+  "realWorldExample": "Creating an `api.js` file that sets up an Axios instance with an Auth Token. Any other file that imports `api.js` gets that exact same, pre-configured Axios instance thanks to caching.",
+  "useCases": [
+    "Sharing state across files without global variables",
+    "Database connection singletons",
+    "Performance optimization"
+  ],
+  "questions": {
+    "basic": [
+      "If you require a file twice, how many times does its code execute?"
+    ],
+    "intermediate": [
+      "How does module caching help create Singletons?"
+    ],
+    "advanced": [
+      "How do you clear or bust the CommonJS module cache?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many times does it execute?",
+      "answer": "Exactly once! The first time it is required, the code runs and the `module.exports` object is stored in memory. The second time, Node just returns the cached object immediately."
+    },
+    {
+      "question": "How do you clear the cache?",
+      "answer": "In CommonJS, you can literally delete the cache key: `delete require.cache[require.resolve('./module.js')]`. The next time it is required, it will execute from scratch. (ES Modules do not currently support cache busting easily)."
+    }
+  ],
+  "codeExample": "// --- file: counter.js ---\nconsole.log(\"This log only prints ONCE, no matter how many times required!\");\nlet count = 0;\n\nmodule.exports = {\n  increment: () => count++,\n  getCount: () => count\n};\n\n// --- file: app.js ---\n// const counter1 = require('./counter'); // Prints the log\n// counter1.increment();\n// counter1.increment();\n\n// const counter2 = require('./counter'); // DOES NOT print the log!\n\n// Because of caching, counter1 and counter2 are literally the exact same object in memory.\n// console.log(counter2.getCount()); // Outputs: 2"
+}

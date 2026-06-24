@@ -1,0 +1,34 @@
+{
+  "id": "mapped-types",
+  "title": "Mapped Types",
+  "difficulty": "Advanced",
+  "definition": "A way to create a new type by iterating (mapping) over the keys of an existing type and applying a transformation.",
+  "simpleExplanation": "A Mapped Type is like a factory assembly line. It takes an existing Interface, puts it on the conveyor belt, loops through every single property, performs an action (like making them all Optional, or turning them all into Booleans), and outputs a brand new Interface.",
+  "realWorldExample": "Creating a type for a form's 'validation errors'. If the original `User` has `{ name: string, age: number }`, the mapped `UserErrors` type automatically generates `{ name?: string, age?: string }` to hold error messages.",
+  "useCases": [
+    "Building generic Utility Types (Partial, Readonly)",
+    "State management validation"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `[K in keyof T]` syntax do?"
+    ],
+    "intermediate": [
+      "How do you use mapped types to make all properties readonly?"
+    ],
+    "advanced": [
+      "What is Key Remapping using the `as` keyword in mapped types?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does [K in keyof T] do?",
+      "answer": "It is a `for...in` loop, but for types! It says: 'For every Key (`K`) inside the list of keys from Type `T`, create a property.'"
+    },
+    {
+      "question": "What is Key Remapping?",
+      "answer": "Introduced in TS 4.1, you can change the name of the keys during the mapping process. For example, turning `name` into `getName` using template literal types: `[K in keyof T as 'get${Capitalize<string & K>}']: () => T[K]`."
+    }
+  ],
+  "codeExample": "interface User {\n  name: string;\n  age: number;\n}\n\n// The Mapped Type Factory:\n// 1. Loops through all keys of T\n// 2. Assigns boolean as the new value for every key\ntype Booleanify<T> = {\n  [K in keyof T]: boolean;\n};\n\n// We pass User into the factory\ntype UserValidationMap = Booleanify<User>;\n\n/* Resulting Type:\n  {\n    name: boolean;\n    age: boolean;\n  }\n*/\n\nconst isValid: UserValidationMap = {\n  name: true,\n  age: false\n};"
+}

@@ -1,0 +1,236 @@
+{
+  "id": "nodejs",
+  "title": "Node.js",
+  "description": "Master Node.js from fundamentals to advanced backend architecture. Learn core modules, asynchronous programming, APIs, databases, security, performance optimization, and scalable backend development.",
+  "icon": "nodejs",
+  "categories": [
+    {
+      "id": "basics",
+      "title": "Node.js Fundamentals",
+      "topics": [
+        { "id": "what-is-nodejs", "title": "What is Node.js?" },
+        { "id": "node-vs-browser", "title": "Node.js vs Browser JavaScript" },
+        { "id": "v8-engine", "title": "V8 Engine" },
+        { "id": "runtime-environment", "title": "Runtime Environment" },
+        { "id": "repl", "title": "REPL" },
+        { "id": "global-objects", "title": "Global Objects" },
+        { "id": "process-object", "title": "process Object" },
+        { "id": "process-env", "title": "process.env" }
+      ]
+    },
+    {
+      "id": "modules",
+      "title": "Modules System",
+      "topics": [
+        { "id": "commonjs", "title": "CommonJS Modules" },
+        { "id": "es-modules", "title": "ES Modules" },
+        { "id": "require-vs-import", "title": "require() vs import" },
+        { "id": "module-caching", "title": "Module Caching" },
+        { "id": "package-json", "title": "package.json" },
+        { "id": "package-lock", "title": "package-lock.json" },
+        { "id": "npm-vs-yarn-pnpm", "title": "npm vs Yarn vs pnpm" }
+      ]
+    },
+    {
+      "id": "core-modules",
+      "title": "Core Modules",
+      "topics": [
+        { "id": "fs-module", "title": "File System (fs)" },
+        { "id": "path-module", "title": "Path Module" },
+        { "id": "os-module", "title": "OS Module" },
+        { "id": "http-module", "title": "HTTP Module" },
+        { "id": "url-module", "title": "URL Module" },
+        { "id": "crypto-module", "title": "Crypto Module" },
+        { "id": "events-module", "title": "Events Module" },
+        { "id": "stream-module", "title": "Streams Module" },
+        { "id": "buffer-module", "title": "Buffers" }
+      ]
+    },
+    {
+      "id": "async-programming",
+      "title": "Asynchronous Programming",
+      "topics": [
+        { "id": "callbacks", "title": "Callbacks" },
+        { "id": "callback-hell", "title": "Callback Hell" },
+        { "id": "promises", "title": "Promises" },
+        { "id": "async-await", "title": "Async / Await" },
+        { "id": "error-first-callbacks", "title": "Error-First Callbacks" }
+      ]
+    },
+    {
+      "id": "event-loop",
+      "title": "Event Loop & Internals",
+      "topics": [
+        { "id": "event-loop", "title": "Node.js Event Loop" },
+        { "id": "phases-event-loop", "title": "Event Loop Phases" },
+        { "id": "microtasks", "title": "Microtasks Queue" },
+        { "id": "macrotasks", "title": "Macrotasks Queue" },
+        { "id": "process-nexttick", "title": "process.nextTick()" },
+        { "id": "setimmediate", "title": "setImmediate()" }
+      ]
+    },
+    {
+      "id": "events",
+      "title": "Events & EventEmitter",
+      "topics": [
+        { "id": "event-emitter", "title": "EventEmitter" },
+        { "id": "custom-events", "title": "Custom Events" },
+        { "id": "event-driven-architecture", "title": "Event Driven Architecture" }
+      ]
+    },
+    {
+      "id": "streams-buffers",
+      "title": "Streams & Buffers",
+      "topics": [
+        { "id": "readable-streams", "title": "Readable Streams" },
+        { "id": "writable-streams", "title": "Writable Streams" },
+        { "id": "duplex-streams", "title": "Duplex Streams" },
+        { "id": "transform-streams", "title": "Transform Streams" },
+        { "id": "pipe-method", "title": "Pipe Method" },
+        { "id": "buffers", "title": "Buffers" }
+      ]
+    },
+    {
+      "id": "http-server",
+      "title": "HTTP & APIs",
+      "topics": [
+        { "id": "http-server", "title": "Creating HTTP Servers" },
+        { "id": "rest-api", "title": "REST APIs" },
+        { "id": "http-methods", "title": "HTTP Methods" },
+        { "id": "status-codes", "title": "HTTP Status Codes" },
+        { "id": "request-response", "title": "Request & Response Lifecycle" },
+        { "id": "cors", "title": "CORS" }
+      ]
+    },
+    {
+      "id": "expressjs",
+      "title": "Express.js",
+      "topics": [
+        { "id": "express-basics", "title": "Express Fundamentals" },
+        { "id": "routing", "title": "Routing" },
+        { "id": "middleware", "title": "Middleware" },
+        { "id": "error-middleware", "title": "Error Handling Middleware" },
+        { "id": "request-response-express", "title": "Request & Response Objects" },
+        { "id": "express-router", "title": "Express Router" }
+      ]
+    },
+    {
+      "id": "databases",
+      "title": "Database Integration",
+      "topics": [
+        { "id": "mongodb-basics", "title": "MongoDB Basics" },
+        { "id": "mongoose", "title": "Mongoose ODM" },
+        { "id": "sql-vs-nosql", "title": "SQL vs NoSQL" },
+        { "id": "database-connections", "title": "Database Connections" },
+        { "id": "crud-operations", "title": "CRUD Operations" }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentication & Authorization",
+      "topics": [
+        { "id": "jwt", "title": "JWT Authentication" },
+        { "id": "jwt-refresh-token", "title": "Access Token vs Refresh Token" },
+        { "id": "sessions", "title": "Sessions & Cookies" },
+        { "id": "bcrypt", "title": "Password Hashing (bcrypt)" },
+        { "id": "oauth", "title": "OAuth" },
+        { "id": "role-based-access", "title": "Role Based Access Control" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Node.js Security",
+      "topics": [
+        { "id": "xss", "title": "XSS Prevention" },
+        { "id": "csrf", "title": "CSRF Protection" },
+        { "id": "sql-injection", "title": "SQL Injection" },
+        { "id": "nosql-injection", "title": "NoSQL Injection" },
+        { "id": "helmet", "title": "Helmet.js" },
+        { "id": "rate-limiting", "title": "Rate Limiting" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Testing",
+      "topics": [
+        { "id": "jest", "title": "Jest" },
+        { "id": "supertest", "title": "Supertest" },
+        { "id": "unit-testing", "title": "Unit Testing" },
+        { "id": "integration-testing", "title": "Integration Testing" },
+        { "id": "mocking", "title": "Mocking Dependencies" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "clustering", "title": "Clustering" },
+        { "id": "worker-threads", "title": "Worker Threads" },
+        { "id": "caching", "title": "Caching Strategies" },
+        { "id": "redis", "title": "Redis" },
+        { "id": "memory-leaks", "title": "Memory Leaks" },
+        { "id": "profiling", "title": "Performance Profiling" }
+      ]
+    },
+    {
+      "id": "real-time",
+      "title": "Real-Time Applications",
+      "topics": [
+        { "id": "websockets", "title": "WebSockets" },
+        { "id": "socketio", "title": "Socket.IO" },
+        { "id": "server-sent-events", "title": "Server Sent Events" }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture & Scalability",
+      "topics": [
+        { "id": "mvc-pattern", "title": "MVC Architecture" },
+        { "id": "repository-pattern", "title": "Repository Pattern" },
+        { "id": "service-layer", "title": "Service Layer Pattern" },
+        { "id": "microservices", "title": "Microservices" },
+        { "id": "message-queues", "title": "Message Queues" },
+        { "id": "api-gateway", "title": "API Gateway" },
+        { "id": "horizontal-scaling", "title": "Horizontal Scaling" },
+        { "id": "load-balancing", "title": "Load Balancing" }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment & DevOps",
+      "topics": [
+        { "id": "environment-variables", "title": "Environment Variables" },
+        { "id": "pm2", "title": "PM2" },
+        { "id": "docker", "title": "Docker Basics" },
+        { "id": "nginx", "title": "Nginx Reverse Proxy" },
+        { "id": "ci-cd", "title": "CI/CD Basics" }
+      ]
+    },
+    {
+      "id": "advanced-nodejs",
+      "title": "Advanced Node.js",
+      "topics": [
+        { "id": "libuv", "title": "libuv" },
+        { "id": "thread-pool", "title": "Thread Pool" },
+        { "id": "child-process", "title": "Child Processes" },
+        { "id": "cluster-module", "title": "Cluster Module" },
+        { "id": "node-internals", "title": "Node.js Internals" },
+        { "id": "garbage-collection", "title": "Garbage Collection" },
+        { "id": "graceful-shutdown", "title": "Graceful Shutdown" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "nodejs-interview-questions", "title": "Beginner Questions" },
+        { "id": "nodejs-scenario-based", "title": "Scenario Based Questions" },
+        { "id": "nodejs-debugging", "title": "Debugging Questions" },
+        { "id": "nodejs-coding-round", "title": "Coding Questions" },
+        { "id": "event-loop-interview", "title": "Event Loop Coding Questions" },
+        { "id": "stream-interview", "title": "Streams Interview Questions" },
+        { "id": "system-design-nodejs", "title": "Node.js System Design" }
+      ]
+    }
+  ]
+}

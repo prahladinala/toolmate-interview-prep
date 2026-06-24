@@ -1,0 +1,34 @@
+{
+  "id": "equality",
+  "title": "== vs ===",
+  "difficulty": "Beginner",
+  "definition": "Double equals `==` (Loose Equality) compares two values after attempting to implicitly coerce them to the same type. Triple equals `===` (Strict Equality) compares both value AND type without doing any conversion.",
+  "simpleExplanation": "Loose equality `==` is like a bartender who accepts a hand-drawn picture of an ID as proof of age. Strict equality `===` checks both the ID and scans it to make sure it's legally valid.",
+  "realWorldExample": "Always using `===` in React and modern JavaScript to prevent bizarre bugs where `0 == false` returns `true`.",
+  "useCases": [
+    "Comparing variables",
+    "Linting rules (ESLint enforces `===`)"
+  ],
+  "questions": {
+    "basic": [
+      "Why should you almost always use `===` instead of `==`?"
+    ],
+    "intermediate": [
+      "Is there ever a good reason to use `==`?"
+    ],
+    "advanced": [
+      "What is `Object.is()` and how does it differ from `===`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is there ever a good reason to use ==?",
+      "answer": "Rarely, but checking `if (val == null)` is a shorthand way to check if a value is EITHER `null` OR `undefined` simultaneously, because `null == undefined` is true."
+    },
+    {
+      "question": "What is Object.is()?",
+      "answer": "`Object.is()` is exactly like `===` except for two edge cases: it considers `NaN === NaN` to be true (unlike strict equality), and distinguishes between `-0` and `+0`."
+    }
+  ],
+  "codeExample": "console.log(5 == '5');  // true (String coerced to Number)\nconsole.log(5 === '5'); // false (Different types)\n\nconsole.log(0 == false); // true\nconsole.log(0 === false); // false\n\n// The one acceptable use of loose equality:\nlet user = undefined;\nif (user == null) {\n  console.log(\"User is missing\");\n}"
+}

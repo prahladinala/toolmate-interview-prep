@@ -1,0 +1,32 @@
+{
+  "id": "gap",
+  "title": "Gap Utilities",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling gutters between grid and flexbox items.",
+  "simpleExplanation": "The greatest invention in CSS history. Instead of applying `margin-right` to every item in a list and then using complex math to remove the margin from the final item, you just apply `gap-4` to the PARENT container. It automatically puts 16px of space *between* every child.",
+  "realWorldExample": "Putting exactly 1rem of space between a row of 5 social media icons.",
+  "useCases": [
+    "Spacing lists",
+    "Creating grids",
+    "Form layouts"
+  ],
+  "questions": {
+    "basic": [
+      "Do you apply the `gap` class to the parent container or the child items?"
+    ],
+    "intermediate": [
+      "Can you apply different gaps for rows and columns simultaneously?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Parent or child?",
+      "answer": "The PARENT container (the one with `flex` or `grid` on it)."
+    },
+    {
+      "question": "Different gaps?",
+      "answer": "Yes! Use `gap-x-4` for horizontal space between columns, and `gap-y-8` for vertical space between rows."
+    }
+  ],
+  "codeExample": "<!-- ❌ The Old Way (Painful Margins) -->\n<div class=\"flex\">\n  <button class=\"mr-4\">1</button>\n  <button class=\"mr-4\">2</button>\n  <button>3</button> <!-- Had to remember NOT to add margin here! -->\n</div>\n\n<!-- ✅ The Tailwind Gap Way (Beautiful) -->\n<!-- gap-4 puts exactly 1rem space ONLY between the buttons -->\n<div class=\"flex gap-4\">\n  <button>1</button>\n  <button>2</button>\n  <button>3</button>\n</div>"
+}

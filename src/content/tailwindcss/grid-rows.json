@@ -1,0 +1,32 @@
+{
+  "id": "grid-rows",
+  "title": "Grid Rows",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for specifying the number of rows in a grid layout.",
+  "simpleExplanation": "Just like columns, but for horizontal slices. Often used when you want a highly specific, static layout like a 'Bento Box' design.",
+  "realWorldExample": "Creating a calendar widget where you explicitly need a 7x5 grid (7 columns for days of the week, 5 rows for the weeks in the month).",
+  "useCases": [
+    "Calendars",
+    "Bento UI layouts",
+    "Game boards"
+  ],
+  "questions": {
+    "basic": [
+      "What class specifies that a grid should have exactly 3 rows?"
+    ],
+    "intermediate": [
+      "Why is `grid-cols-*` used 99% of the time, while `grid-rows-*` is rarely used?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "3 rows?",
+      "answer": "`grid-rows-3`"
+    },
+    {
+      "question": "Why rarely used?",
+      "answer": "Because the web naturally scrolls vertically. It is much easier to define columns and let the rows automatically generate themselves (`auto-rows`) as content is added, rather than hardcoding a rigid vertical height."
+    }
+  ],
+  "codeExample": "<!-- A rigid 3x3 Tic-Tac-Toe Board -->\n<!-- The h-64 forces the container to be a specific height, allowing the rows to exist -->\n<div class=\"grid grid-cols-3 grid-rows-3 gap-2 h-64\">\n  <div class=\"bg-gray-300\">X</div>\n  <div class=\"bg-gray-300\">O</div>\n  <div class=\"bg-gray-300\">X</div>\n  <div class=\"bg-gray-300\">O</div>\n  <!-- etc... -->\n</div>"
+}

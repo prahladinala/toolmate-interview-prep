@@ -1,0 +1,30 @@
+{
+  "id": "custom-breakpoints",
+  "title": "Custom Breakpoints",
+  "difficulty": "Intermediate",
+  "definition": "Modifying or adding to Tailwind's default responsive screen sizes (`sm`, `md`, `lg`, `xl`).",
+  "simpleExplanation": "Maybe your app has a really weird layout bug that ONLY happens exactly at 900px wide. You can add a custom breakpoint called `tablet-lg: '900px'`. Now you can write `<div class=\"tablet-lg:flex-col\">` to fix that specific bug.",
+  "realWorldExample": "Creating an ultra-wide breakpoint for 4K curved monitors (`3xl: '2560px'`).",
+  "useCases": [
+    "Handling specific device quirks (like iPad Pro)"
+  ],
+  "questions": {
+    "basic": [
+      "Which property in `tailwind.config.js` is used to define breakpoints?"
+    ],
+    "intermediate": [
+      "If you extend the `screens` object, do you retain the default `md` and `lg` sizes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which property?",
+      "answer": "`theme.screens` (or `theme.extend.screens`)."
+    },
+    {
+      "question": "Retain defaults?",
+      "answer": "Yes, IF you put it inside `theme.extend.screens`. If you put it directly inside `theme.screens`, you completely wipe out all default breakpoints."
+    }
+  ],
+  "codeExample": "module.exports = {\n  theme: {\n    extend: {\n      screens: {\n        '3xl': '1920px',    // Giant monitors\n        '4xl': '2560px',    // Ultra-wide\n        'portrait': {'raw': '(orientation: portrait)'}, // Target device rotation!\n      }\n    }\n  }\n}\n\n// Usage:\n// <div class=\"w-full 3xl:w-1/2 portrait:hidden\">"
+}

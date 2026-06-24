@@ -1,0 +1,31 @@
+{
+  "id": "garbage-collection",
+  "title": "Garbage Collection",
+  "difficulty": "Advanced",
+  "definition": "The automatic memory management feature in the V8 engine that reclaims memory occupied by objects that are no longer in use by the program.",
+  "simpleExplanation": "Imagine your computer's RAM is a massive hotel. When you create an object `const user = {}`, the hotel gives you a room. If you forget to check out, the hotel eventually runs out of rooms. The Garbage Collector is the hotel maid. Every few seconds, she knocks on doors. If a room is occupied by data that is no longer being used anywhere in your code, she kicks it out and frees up the room.",
+  "realWorldExample": "If you write a function that calculates a large array, and then the function ends, there are no more references pointing to that array. The V8 Garbage Collector realizes it's 'unreachable' and deletes it from memory.",
+  "useCases": [
+    "Memory management",
+    "Performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to manually delete objects from memory in JavaScript using a command like `free(obj)`?"
+    ],
+    "intermediate": [
+      "What algorithm does V8 primarily use for Garbage Collection?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manual deletion?",
+      "answer": "No. Unlike C or C++, JavaScript memory management is completely automated."
+    },
+    {
+      "question": "What algorithm?",
+      "answer": "Mark-and-Sweep. It starts at the global root (the window or process) and traces every single variable that is currently reachable. It 'Marks' them as alive. Then it 'Sweeps' through memory and deletes anything that wasn't marked."
+    }
+  ],
+  "codeExample": "function simulateWork() {\n  // 1. We allocate memory (Get a hotel room)\n  let massiveData = new Array(10000).fill(\"Heavy Data\");\n  \n  console.log(\"Processing data...\");\n  // Do something with massiveData...\n\n  // 2. Function ends.\n  // 'massiveData' is scoped to this function. \n  // Once the function returns, there is NO WAY to access it anymore.\n}\n\nsimulateWork();\n\n// 3. THE GARBAGE COLLECTOR ARRIVES\n// The GC sees that 'massiveData' is completely unreachable from the main script.\n// It safely sweeps it away, freeing up the RAM.\n\nconsole.log(\"Variables scoped inside functions are naturally garbage collected. Global variables are NOT.\");"
+}

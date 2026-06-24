@@ -1,0 +1,30 @@
+{
+  "id": "weaviate",
+  "title": "Weaviate",
+  "difficulty": "Intermediate",
+  "definition": "An open-source, AI-native vector database that specializes in hybrid search, combining traditional keyword search with vector semantic search.",
+  "simpleExplanation": "A powerful vector database you can run on your own servers. Its superpower is that it doesn't just look for 'meaning' (vectors), it also looks for exact 'keywords' (like an old search engine), and blends the results together for maximum accuracy.",
+  "realWorldExample": "An enterprise with strict data privacy laws cannot upload its documents to Pinecone's cloud. They deploy Weaviate locally on their own private servers to build a highly secure RAG system.",
+  "useCases": [
+    "Hybrid Search",
+    "Self-hosted AI infrastructure"
+  ],
+  "questions": {
+    "basic": [
+      "Can Weaviate be hosted locally on a developer's laptop using Docker?"
+    ],
+    "intermediate": [
+      "What is 'Hybrid Search' in Weaviate?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it be hosted locally?",
+      "answer": "Yes. Because it is open-source, anyone can run it anywhere."
+    },
+    {
+      "question": "What is Hybrid Search?",
+      "answer": "An algorithm that runs both a Semantic Vector Search (finding concepts) and a BM25 Keyword Search (finding exact words) simultaneously, merging the scores to find documents that are both conceptually relevant AND contain the exact names/codes the user asked for."
+    }
+  ]
+}

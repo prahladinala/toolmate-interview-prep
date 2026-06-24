@@ -1,0 +1,31 @@
+{
+  "id": "min-max-height",
+  "title": "Min/Max Height",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for setting the minimum and maximum height of an element.",
+  "simpleExplanation": "Min-height guarantees a foundation. `min-h-screen` says: 'Be AT LEAST as tall as the monitor. If there's 10,000 lines of text, stretch downwards to fit it. But if the page is empty, don't collapse—stay as tall as the monitor so the footer stays at the bottom.'",
+  "realWorldExample": "Building a standard web layout where you want the footer pushed to the absolute bottom of the screen, even if the main page has zero content.",
+  "useCases": [
+    "Sticky footers",
+    "Scrollable dropdown menus (`max-h-60`)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `h-screen` and `min-h-screen`?"
+    ],
+    "intermediate": [
+      "How do you create a scrollable dropdown menu using max-height?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "h-screen vs min-h-screen?",
+      "answer": "`h-screen` is rigid; if content exceeds the screen height, it overflows and breaks the layout. `min-h-screen` is flexible; it starts at 100vh, but stretches taller if the content needs more room."
+    },
+    {
+      "question": "Scrollable dropdown?",
+      "answer": "Apply `max-h-64` (or any specific height) and `overflow-y-auto`. If the list is short, it fits naturally. If the list has 100 items, it stops growing at the max-height and adds a scrollbar."
+    }
+  ],
+  "codeExample": "<!-- Sticky Footer Layout (The holy grail) -->\n<!-- The wrapper MUST be at least the height of the screen -->\n<div class=\"min-h-screen flex flex-col\">\n  <header>Navbar</header>\n  \n  <!-- flex-1 forces the main content to push the footer down -->\n  <main class=\"flex-1\">Content</main>\n  \n  <footer>Sticks to the bottom!</footer>\n</div>\n\n<!-- A scrollable select menu -->\n<ul class=\"max-h-48 overflow-y-auto border\">\n  <li>Option 1</li>\n  <li>Option 2</li>\n  <!-- If 50 options are added, a scrollbar appears! -->\n</ul>"
+}

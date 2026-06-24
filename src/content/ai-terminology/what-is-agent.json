@@ -1,0 +1,31 @@
+{
+  "id": "what-is-agent",
+  "title": "AI Agent",
+  "difficulty": "Intermediate",
+  "definition": "An autonomous AI system powered by an LLM that can perceive its environment, make decisions, create plans, and execute actions using external tools to achieve a specific goal.",
+  "simpleExplanation": "ChatGPT is just a brain in a jar—it can only talk. An AI Agent is a brain with hands. You tell it 'Book me a flight to NY'. It autonomously opens the web browser, reads the prices, clicks the buttons, and enters your credit card.",
+  "realWorldExample": "AutoGPT or Devin (the AI software engineer). You give Devin a goal: 'Build a snake game'. Devin writes the code, runs the code, reads the error message, Googles how to fix the error, and fixes the code without you doing anything.",
+  "useCases": [
+    "Workflow automation",
+    "Autonomous research",
+    "Coding assistants"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary difference between a standard Chatbot and an AI Agent?"
+    ],
+    "intermediate": [
+      "What represents the 'Brain' of a modern AI Agent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Chatbot vs Agent?",
+      "answer": "A Chatbot generates text and stops. An Agent creates a plan, uses tools (like web browsers or APIs), observes the result of using the tool, and takes further actions autonomously until a goal is met."
+    },
+    {
+      "question": "What is the Brain?",
+      "answer": "A Large Language Model (like GPT-4). The LLM is responsible for doing all the reasoning, planning, and deciding which tool to use next."
+    }
+  ]
+}

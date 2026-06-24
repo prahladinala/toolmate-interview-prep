@@ -1,0 +1,31 @@
+{
+  "id": "github-pages-deployment",
+  "title": "GitHub Pages Deployment",
+  "difficulty": "Beginner",
+  "definition": "The process of automating the deployment of static files (HTML/CSS/React builds) directly to GitHub Pages using GitHub Actions.",
+  "simpleExplanation": "Instead of manually building your React app locally and pushing the `/build` folder to GitHub, you give GitHub the raw React code. An Action builds the code for you on their servers, and instantly pushes the result to your public GitHub Pages website.",
+  "realWorldExample": "Deploying a Vite or Create React App portfolio. You push your code, and 30 seconds later, `yourname.github.io` is updated.",
+  "useCases": [
+    "Free static hosting",
+    "React/Vue/Svelte app deployment"
+  ],
+  "questions": {
+    "basic": [
+      "Which branch was traditionally used to serve GitHub pages before Actions existed?"
+    ],
+    "intermediate": [
+      "Do you need to commit your `node_modules` for this to work?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Traditional branch?",
+      "answer": "The `gh-pages` branch. Developers used a tool to forcefully push their compiled `/dist` folder to this orphaned branch."
+    },
+    {
+      "question": "Commit node_modules?",
+      "answer": "No! The GitHub Action robot will run `npm install` on its own server to generate the modules before building."
+    }
+  ],
+  "codeExample": "/*\n  Modern GitHub Pages Deployment (No gh-pages branch needed!)\n  \n  1. Go to Repository Settings -> Pages.\n  2. Under 'Build and deployment', change Source to 'GitHub Actions'.\n  3. GitHub will suggest a pre-built workflow (like Static HTML or Node.js).\n  4. Click Configure, and it will generate the deploy.yml file for you.\n  \n  Now, every time you push to main, the Action builds and deploys your site.\n*/"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "bind-mounts",
+  "title": "Bind Mounts",
+  "difficulty": "Intermediate",
+  "definition": "A storage option where a specific, user-defined file or directory on the Host machine is directly mounted into a container. The container accesses the exact same physical files the Host sees.",
+  "simpleExplanation": "A two-way window. You glue a folder on your MacBook directly to a folder inside the container. If you edit a file on your MacBook, the container instantly sees the change. If the container deletes a file, it is deleted from your MacBook.",
+  "realWorldExample": "Live-reloading in local development. You run a React app container and bind mount your laptop's `src` folder using `-v $(pwd)/src:/app/src`. When you hit 'Save' in VS Code on your laptop, the React server inside the container instantly recompiles.",
+  "useCases": [
+    "Local code development",
+    "Sharing configuration files"
+  ],
+  "questions": {
+    "basic": [
+      "Which storage type requires you to specify an exact, absolute file path on your host machine: Volumes or Bind Mounts?"
+    ],
+    "intermediate": [
+      "Why are Bind Mounts considered a security risk in production environments?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which requires a path?",
+      "answer": "Bind Mounts. (e.g., `-v /Users/steve/desktop/app:/app`)."
+    },
+    {
+      "question": "Why a security risk?",
+      "answer": "Because a container has absolute access to whatever you mount. If a developer accidentally mounts the host's root directory (`-v /:/host`), a hacker breaching the container could literally delete the host server's operating system."
+    }
+  ]
+}

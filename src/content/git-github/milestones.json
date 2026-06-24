@@ -1,0 +1,32 @@
+{
+  "id": "milestones",
+  "title": "Milestones",
+  "difficulty": "Intermediate",
+  "definition": "A tool for tracking progress on groups of issues or pull requests in a repository. They represent significant points in a project's development timeline, like an upcoming version release.",
+  "simpleExplanation": "A folder that holds a bunch of Issues together with a Due Date. If you are releasing 'Version 2.0' next month, you create a Milestone called 'v2.0 Launch'. You take all the bugs and features needed for Version 2.0 and attach them to that Milestone. GitHub gives you a beautiful progress bar showing '60% Complete'.",
+  "realWorldExample": "Organizing development work into 2-week 'Sprints' (Agile methodology). You name the milestone 'Sprint 42' and put all the work for the next two weeks into it.",
+  "useCases": [
+    "Release planning",
+    "Agile Sprints",
+    "Tracking progress metrics"
+  ],
+  "questions": {
+    "basic": [
+      "What visual indicator does GitHub provide for a Milestone?"
+    ],
+    "intermediate": [
+      "What happens to the progress bar when you close an issue attached to the Milestone?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Visual indicator?",
+      "answer": "A progress bar (e.g., 5 closed, 5 open = 50% complete)."
+    },
+    {
+      "question": "Progress bar updates?",
+      "answer": "The progress bar automatically fills up! Once all issues attached to the milestone are closed, the milestone hits 100% and can be closed itself."
+    }
+  ],
+  "codeExample": "/*\n  Example Milestone Setup:\n  \n  Milestone Name: MVP Launch (Due: Dec 1st)\n  Progress: [████████░░░░░░░░░] 50%\n  \n  Attached Issues:\n  - [CLOSED] Design the logo\n  - [CLOSED] Setup database schema\n  - [OPEN] Build login page\n  - [OPEN] Deploy to AWS\n  \n  (When you close 'Build login page', the progress bar instantly updates to 75%!)\n*/"
+}

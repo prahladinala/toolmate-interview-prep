@@ -1,0 +1,30 @@
+{
+  "id": "redux-data-flow",
+  "title": "Redux Data Flow",
+  "difficulty": "Beginner",
+  "definition": "The specific unidirectional lifecycle of data in a Redux application: UI triggers an Action, Action is Dispatched to the Store, Reducer calculates new state, UI reads new state and re-renders.",
+  "simpleExplanation": "1. You click 'Deposit $10'. \n2. An Action `{type: 'DEPOSIT', amount: 10}` is created.\n3. The Dispatcher throws that Action into the Reducer.\n4. The Reducer does the math: `Old Balance ($50) + Action ($10) = New Balance ($60)`.\n5. The Store saves $60.\n6. The UI sees the $60 and updates the screen.",
+  "realWorldExample": "Ordering an Uber. You tap 'Request' (Dispatch Action). The Uber server receives your request and assigns a driver (Reducer updates State). Your phone screen updates to show the driver's car on the map (UI Re-renders).",
+  "useCases": [
+    "Debugging where data is failing to update"
+  ],
+  "questions": {
+    "basic": [
+      "What is the only way to trigger a state change in Redux?"
+    ],
+    "intermediate": [
+      "Can a Reducer trigger an API call to fetch data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Only way to change state?",
+      "answer": "By `dispatching` an `Action`."
+    },
+    {
+      "question": "Can reducer fetch data?",
+      "answer": "NO! Reducers must be pure functions. They cannot make API calls, generate random numbers, or cause side effects. API calls must happen BEFORE the action is dispatched (using Middleware like Thunk)."
+    }
+  ],
+  "codeExample": "// The complete lifecycle in 4 steps:\n\n// 1. Initial State\nlet state = { count: 0 };\n\n// 2. User clicks a button in the UI, creating an ACTION\nconst action = { type: 'INCREMENT' };\n\n// 3. The REDUCER receives the current state and the action\nfunction reducer(state, action) {\n  if (action.type === 'INCREMENT') return { count: state.count + 1 };\n  return state;\n}\n\n// 4. The STORE updates the state, and the UI re-renders with { count: 1 }\nstate = reducer(state, action);"
+}

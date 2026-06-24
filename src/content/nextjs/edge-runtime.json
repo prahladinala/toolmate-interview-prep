@@ -1,0 +1,33 @@
+{
+  "id": "edge-runtime",
+  "title": "Edge Runtime",
+  "difficulty": "Advanced",
+  "definition": "A strictly limited, incredibly fast execution environment based on Web APIs (like Service Workers) rather than full Node.js. It runs on CDN nodes globally rather than in a single centralized datacenter.",
+  "simpleExplanation": "Traditional servers (Node.js) are heavy and sit in one location (like New York). Edge computing strips away all the heavy parts of Node, creating a tiny Javascript engine that is so small it can be copied to hundreds of servers around the world. The code runs physically close to the user.",
+  "realWorldExample": "Next.js Middleware. If a user in London tries to access a protected page, you don't want their request traveling to a database in California just to get rejected. The Edge Runtime executes the Middleware code in a London datacenter, bouncing them instantly.",
+  "useCases": [
+    "Middleware",
+    "A/B Testing",
+    "Instant redirects",
+    "Geo-location features"
+  ],
+  "questions": {
+    "basic": [
+      "Does the Next.js Edge Runtime have access to standard Node.js APIs like `fs` (File System) or `crypto`?"
+    ],
+    "intermediate": [
+      "Why does Next.js force Middleware to run exclusively on the Edge Runtime?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Access to fs?",
+      "answer": "No! This is the biggest limitation. The Edge runtime ONLY supports standard Web APIs (like `fetch`, `Request`, `Response`). You cannot read local files or use heavy Node modules."
+    },
+    {
+      "question": "Why exclusively Edge?",
+      "answer": "Because Middleware intercepts *every single request*. If Middleware ran on a slow, centralized Node server, it would add a massive latency bottleneck to the entire application. Edge execution is practically instant."
+    }
+  ],
+  "codeExample": "// api/edge-hello/route.ts\n\n// 1. Opt-in to the Edge runtime for this specific API route\nexport const runtime = 'edge';\n\nexport async function GET(request: Request) {\n  // 2. The Edge runtime has access to geo-location headers!\n  // Vercel automatically injects the user's city based on their IP address.\n  const city = request.headers.get('x-vercel-ip-city') ?? 'World';\n  \n  return new Response(`Hello from the Edge, user in ${city}!`, {\n    status: 200,\n  });\n}"
+}

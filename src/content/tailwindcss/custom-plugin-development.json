@@ -1,0 +1,31 @@
+{
+  "id": "custom-plugin-development",
+  "title": "Custom Plugin Development",
+  "difficulty": "Advanced",
+  "definition": "Writing advanced JavaScript within `tailwind.config.js` to systematically generate hundreds of utility classes dynamically.",
+  "simpleExplanation": "Instead of writing `@layer utilities` in CSS, you write a JavaScript function. If you want to create a `text-shadow` utility, your JS function tells Tailwind to generate `text-shadow-sm`, `text-shadow-md`, and all the responsive and hover variants for them automatically.",
+  "realWorldExample": "A design agency creating a proprietary Tailwind plugin containing all their signature gradient styles and custom animations, which they `npm install` across all their client projects.",
+  "useCases": [
+    "Company-wide design systems",
+    "Open-source Tailwind extensions"
+  ],
+  "questions": {
+    "basic": [
+      "What JavaScript API function from Tailwind do you import to create a plugin?"
+    ],
+    "intermediate": [
+      "If you write a plugin that adds a `.neon-glow` utility, do you have to manually write the CSS for `.hover\\:neon-glow`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which API function?",
+      "answer": "`const plugin = require('tailwindcss/plugin')`"
+    },
+    {
+      "question": "Manually write hover?",
+      "answer": "No! That is the power of the Plugin API. You only provide the base CSS for `.neon-glow`. Tailwind's engine intercepts it and automatically generates every possible variant (`hover:`, `focus:`, `md:`, `dark:`) for you."
+    }
+  ],
+  "codeExample": "// tailwind.config.js\nconst plugin = require('tailwindcss/plugin')\n\nmodule.exports = {\n  plugins: [\n    // Creating a custom plugin\n    plugin(function({ addUtilities }) {\n      // Define your CSS as a JavaScript object\n      const newUtilities = {\n        '.text-shadow-sm': {\n          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',\n        },\n        '.text-shadow-lg': {\n          textShadow: '3px 3px 6px rgba(0,0,0,0.5)',\n        },\n      }\n      // Inject it into Tailwind!\n      addUtilities(newUtilities)\n    })\n  ]\n}\n\n// Now in HTML you can magically use:\n// <h1 class=\"text-shadow-sm hover:text-shadow-lg md:text-shadow-lg\">"
+}

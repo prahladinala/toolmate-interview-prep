@@ -1,0 +1,30 @@
+{
+  "id": "layout-challenges",
+  "title": "Layout Coding Challenges",
+  "difficulty": "Intermediate",
+  "definition": "Practical whiteboard or coding tests where you must construct a specific layout using Tailwind classes without looking at the documentation.",
+  "simpleExplanation": "The interviewer draws a box on a whiteboard. It has a logo on the left, and a menu on the right, perfectly centered vertically. They hand you the marker and say: 'Write the Tailwind classes to build this.'",
+  "realWorldExample": "Building the 'Holy Grail' layout (Header, Footer, Sidebar, Main Content) using CSS Grid classes.",
+  "useCases": [
+    "Technical interviews"
+  ],
+  "questions": {
+    "basic": [
+      "How do you perfectly center a div horizontally and vertically taking up the whole screen?"
+    ],
+    "intermediate": [
+      "Write the classes to create a standard Navbar with Logo on the far left and Links on the far right."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Center perfectly?",
+      "answer": "`h-screen w-full flex justify-center items-center`"
+    },
+    {
+      "question": "Standard Navbar?",
+      "answer": "`flex justify-between items-center w-full px-4 py-2`"
+    }
+  ],
+  "codeExample": "/*\n  CHALLENGE: \n  Create a responsive Card Grid. \n  1 column on mobile, 3 columns on desktop. \n  Gap of 16px between cards.\n  \n  SOLUTION: \n  <div class=\"grid grid-cols-1 md:grid-cols-3 gap-4\">\n*/"
+}

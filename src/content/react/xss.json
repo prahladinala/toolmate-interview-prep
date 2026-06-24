@@ -1,0 +1,37 @@
+{
+  "id": "xss",
+  "title": "XSS Prevention",
+  "difficulty": "Advanced",
+  "definition": "Cross-Site Scripting (XSS) is a vulnerability where attackers inject malicious JavaScript into web pages viewed by other users. React automatically protects against most XSS attacks by escaping string variables in JSX.",
+  "simpleExplanation": "If someone fills out a comment form and types `<script>stealPasswords()</script>`, an unsafe website might literally print that to the screen, causing the browser to execute it. React is smart. If you try to render that comment inside a `<div>{comment}</div>`, React converts the `<` and `>` into safe text characters (`&lt;` and `&gt;`). It displays the code as harmless text, rather than executing it.",
+  "realWorldExample": "A user updates their profile name to `<img src='x' onerror='alert(\"Hacked\")' />`. In React, this safely renders as text on the screen. In raw jQuery or vanilla `innerHTML`, this would pop up an alert box.",
+  "useCases": [
+    "Rendering user-generated content (comments, usernames)",
+    "Protecting the application from malicious input"
+  ],
+  "questions": {
+    "basic": [
+      "How does React prevent XSS attacks automatically?",
+      "What does 'escaping' mean?"
+    ],
+    "intermediate": [
+      "In what scenario is React NOT safe from XSS?",
+      "How do attackers steal data using XSS?"
+    ],
+    "advanced": [
+      "How does Server-Side Rendering (SSR) complicate XSS prevention?",
+      "Can an attacker inject XSS via a JSON API response?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "In what scenario is React NOT safe?",
+      "answer": "1. If you use `dangerouslySetInnerHTML`. 2. If you pass user input into an `href` attribute without checking for `javascript:` protocols (e.g., `<a href={userInput}>Link</a>`). 3. If you pass user input into a `<style>` tag or `style` prop unpredictably."
+    },
+    {
+      "question": "How do attackers steal data?",
+      "answer": "They use injected JavaScript to read `document.cookie` (stealing your session token) or `localStorage`, and then send that data to their own server using `fetch()`. They can then log in as you."
+    }
+  ],
+  "codeExample": "import React from 'react';\n\nexport default function XssDemo() {\n  // An attacker submits this as their 'name'\n  const maliciousInput = '<script>alert(\"You have been hacked!\");</script>';\n  const maliciousUrl = 'javascript:alert(\"Stolen Cookies!\")';\n\n  return (\n    <div className='p-4 border'>\n      <h3>XSS Protection Demo</h3>\n      \n      {/* 1. SAFE: React escapes this. You will just see the text on screen. */}\n      <p>User says: {maliciousInput}</p>\n\n      {/* \n        2. UNSAFE: React does NOT escape URLs in href! \n        If the user clicks this, the script WILL execute. \n        Always sanitize URLs or check if they start with http/https! \n      */}\n      <a href={maliciousUrl} className='text-blue-500 underline'>\n        Visit My Website (DANGEROUS)\n      </a>\n    </div>\n  );\n}"
+}

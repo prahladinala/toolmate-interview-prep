@@ -1,0 +1,32 @@
+{
+  "id": "what-is-branch",
+  "title": "What is a Branch?",
+  "difficulty": "Beginner",
+  "definition": "A branch represents an independent line of development. Branches serve as an abstraction for the edit/stage/commit process.",
+  "simpleExplanation": "Imagine a tree trunk (the `main` codebase). You want to build an experimental new 'Dark Mode' feature, but you don't want to break the trunk if you make a mistake. You grow a 'branch' off the trunk. You can do whatever you want on that branch in an alternate universe. When the feature is perfect, you merge the branch back into the trunk.",
+  "realWorldExample": "In a company, 50 developers can work on 50 different features on the same day by creating 50 separate branches. They don't step on each other's toes.",
+  "useCases": [
+    "Developing features in isolation",
+    "Fixing bugs safely",
+    "Experimentation"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default name of the primary branch in Git?"
+    ],
+    "intermediate": [
+      "Are branches in Git 'heavy' (meaning they duplicate all the files on your hard drive)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default name?",
+      "answer": "Historically `master`, but the modern standard is `main`."
+    },
+    {
+      "question": "Are they heavy?",
+      "answer": "No! Unlike SVN, Git branches are incredibly 'lightweight'. A branch in Git is literally just a tiny text file containing 40 characters (a pointer to a commit hash). Creating a branch takes 0.01 seconds and uses almost zero hard drive space."
+    }
+  ],
+  "codeExample": "// Conceptual Mental Model\n\n/*\n          (Feature Branch)\n         /--- Commit D --- Commit E\n        /\nCommit A --- Commit B --- Commit C\n(main branch)\n\nCommit E has access to everything in A and B. \nBut Commit C does NOT have the experimental code from D or E!\n*/"
+}

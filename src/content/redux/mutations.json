@@ -1,0 +1,32 @@
+{
+  "id": "mutations",
+  "title": "Mutations",
+  "difficulty": "Intermediate",
+  "definition": "Endpoints defined in RTK Query that are used for WRITE operations (changing data on the server). Typically maps to `POST`, `PUT`, `PATCH`, or `DELETE` requests.",
+  "simpleExplanation": "A Mutation is when you alter data. 'Update my profile picture.' Unlike Queries (which just return data automatically), Mutations return a 'trigger' function that you have to manually call when the user clicks a submit button.",
+  "realWorldExample": "Submitting a login form. You define a `login: builder.mutation({...})` endpoint, use the `useLoginMutation()` hook, and call `login(credentials)` when the form submits.",
+  "useCases": [
+    "Submitting forms",
+    "Deleting items",
+    "Updating records"
+  ],
+  "questions": {
+    "basic": [
+      "Are Mutations automatically cached by RTK Query like Queries are?"
+    ],
+    "intermediate": [
+      "What two things does a `use[Name]Mutation` hook return in its array?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Automatically cached?",
+      "answer": "No. Because Mutations change data, they are not cached. In fact, Mutations are usually used to INVALIDATE the cache of previous Queries."
+    },
+    {
+      "question": "What does it return?",
+      "answer": "It returns a tuple (array). The first item is the `trigger` function (used to fire the request). The second item is an object containing `{ isLoading, error, data }`."
+    }
+  ],
+  "codeExample": "// Inside createApi endpoints builder:\nendpoints: (builder) => ({\n  // Defining a Mutation (WRITE operation)\n  addPost: builder.mutation({\n    query: (newPostData) => ({\n      url: '/posts',\n      method: 'POST',\n      body: newPostData,\n    }),\n  }),\n})\n\n// Inside the Component:\nconst [addPost, { isLoading, isError }] = useAddPostMutation();\n\nconst handleSubmit = () => {\n  // Fire the mutation manually!\n  addPost({ title: 'New Blog Post', content: 'Hello World' });\n}"
+}

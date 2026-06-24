@@ -1,0 +1,45 @@
+{
+  "id": "generators",
+  "title": "Generators & Iterators",
+  "difficulty": "Expert",
+  "definition": "Generators are special functions that can be paused and resumed, allowing them to yield multiple values one by one, on demand. They are defined using the `function*` syntax and the `yield` keyword.",
+  "simpleExplanation": "A normal function runs from top to bottom without stopping. A generator is like a function with a pause button. It does some work, spits out a value (yield), and pauses. When you ask it for the next value, it unpauses, does a bit more work, spits out the next value, and pauses again.",
+  "realWorldExample": "If you need to generate a massive list of numbers (like an infinite sequence of IDs), a regular function would crash because it tries to build the infinite array in memory. A generator only calculates one ID at a time exactly when you ask for it.",
+  "useCases": [
+    "Managing infinite data streams without running out of memory",
+    "Implementing custom iterables (objects you can use in a `for...of` loop)",
+    "Managing complex asynchronous flows (used heavily by Redux Saga)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you define a generator function?",
+      "What does calling a generator function return?"
+    ],
+    "intermediate": [
+      "What is the difference between `return` and `yield`?",
+      "How do you get the next value from a generator?"
+    ],
+    "advanced": [
+      "Can you pass data back INTO a paused generator?",
+      "What is `yield*`?"
+    ],
+    "trick": [
+      "What happens if you use `return` inside a generator?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does calling a generator function return?",
+      "answer": "Calling a generator function doesn't execute the code inside it right away. Instead, it returns a special Iterator object. You must call `.next()` on that object to start execution."
+    },
+    {
+      "question": "Can you pass data back INTO a paused generator?",
+      "answer": "Yes. When you call `iterator.next(value)`, the value you pass in is returned by the currently paused `yield` expression inside the generator."
+    },
+    {
+      "question": "What happens if you use `return` inside a generator?",
+      "answer": "It finishes the generator immediately. The returned object will look like `{ value: yourReturnValue, done: true }`. Subsequent calls to `.next()` will yield `{ value: undefined, done: true }`."
+    }
+  ],
+  "codeExample": "function* idMaker() {\n  let index = 1;\n  while (true) {\n    yield index++; // Pauses here and returns the value\n  }\n}\n\nconst gen = idMaker(); // Returns an iterator, doesn't run the code yet\n\nconsole.log(gen.next().value); // 1\nconsole.log(gen.next().value); // 2\nconsole.log(gen.next().value); // 3\n// We can do this forever, and it will never crash memory!\n\n\n// --- Passing data INTO a generator ---\nfunction* conversation() {\n  const name = yield \"What is your name?\";\n  yield `Hello, ${name}!`;\n}\n\nconst chat = conversation();\nconsole.log(chat.next().value); // \"What is your name?\" (Pauses at yield)\nconsole.log(chat.next(\"Alice\").value); // \"Hello, Alice!\" (Passes Alice in, resumes)"
+}

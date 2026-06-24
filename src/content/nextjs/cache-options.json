@@ -1,0 +1,31 @@
+{
+  "id": "cache-options",
+  "title": "Cache Control",
+  "difficulty": "Beginner",
+  "definition": "Configuring the caching behavior of the extended `fetch` API in Next.js using the `cache` property.",
+  "simpleExplanation": "You have three choices for every fetch. \n1. Cache it forever (SSG).\n2. Never cache it; fetch it fresh every time (SSR).\n3. Cache it, but update it every X seconds (ISR).",
+  "realWorldExample": "Using `force-cache` for a list of physical store locations (they rarely change). Using `no-store` for a user's shopping cart (it changes constantly and must always be 100% accurate).",
+  "useCases": [
+    "Performance tuning",
+    "Data accuracy"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default cache behavior of `fetch` in the Next.js App Router?"
+    ],
+    "intermediate": [
+      "What string value do you pass to the `cache` option to force Server-Side Rendering (SSR) for a component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default behavior?",
+      "answer": "`force-cache` (It acts like Static Site Generation by default)."
+    },
+    {
+      "question": "Force SSR?",
+      "answer": "`cache: 'no-store'`. This tells Next.js to skip the cache and hit the actual data source on every single page load."
+    }
+  ],
+  "codeExample": "// Option 1: Static (Default)\n// Fetched once at build time. Cached forever.\nfetch('https://api.com/data', { cache: 'force-cache' });\n\n// Option 2: Dynamic (SSR)\n// Fetched fresh on EVERY single page load.\nfetch('https://api.com/data', { cache: 'no-store' });\n\n// Option 3: ISR\n// Cached, but refreshed every 10 seconds.\nfetch('https://api.com/data', { next: { revalidate: 10 } });"
+}

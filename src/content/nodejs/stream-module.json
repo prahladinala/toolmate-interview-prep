@@ -1,0 +1,35 @@
+{
+  "id": "stream-module",
+  "title": "Streams Module",
+  "difficulty": "Advanced",
+  "definition": "A core module representing a sequence of data made available over time. Streams allow you to read or write massive amounts of data chunk-by-chunk without storing it all in memory.",
+  "simpleExplanation": "Imagine watching a movie on Netflix. You don't download the entire 5GB video file to your hard drive before hitting 'Play'. You download a tiny 10-second 'chunk', watch it, throw it away, and download the next chunk. Streams allow Node to read a 10GB file using only 50MB of RAM by processing it in tiny chunks.",
+  "realWorldExample": "Uploading a 2GB video file to a Node server. If you use standard methods, Node tries to load all 2GB into RAM and crashes. With streams, it reads 64kb, saves it to disk, and repeats, keeping RAM usage near zero.",
+  "useCases": [
+    "Processing large files",
+    "Video/Audio streaming",
+    "Handling massive network requests"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main advantage of using streams?"
+    ],
+    "intermediate": [
+      "What are the four types of streams in Node.js?"
+    ],
+    "advanced": [
+      "What is backpressure in Node streams?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the four types?",
+      "answer": "1. Readable (reading data), 2. Writable (writing data), 3. Duplex (both reading and writing, like a TCP socket), 4. Transform (modifying data as it is read/written, like zipping a file)."
+    },
+    {
+      "question": "What is backpressure?",
+      "answer": "When a Readable stream reads data off the hard drive faster than a Writable stream can process it (e.g., slow internet connection), data builds up in memory. Backpressure is the mechanism where the Writable stream says 'STOP!', pausing the Readable stream until it catches up."
+    }
+  ],
+  "codeExample": "const fs = require('fs');\n\n// Instead of fs.readFile (which loads the whole file into memory),\n// we create a stream that reads the file in tiny chunks.\n\n// Note: This file doesn't actually exist in this sandbox\n// const readStream = fs.createReadStream('./massive-video.mp4');\n// const writeStream = fs.createWriteStream('./copy-video.mp4');\n\nconsole.log(\"Simulating a stream...\");\n\n// Instead of real files, let's look at the standard process streams:\n// process.stdout is a Writable Stream! It streams text to your terminal.\nprocess.stdout.write(\"Hello \");\nprocess.stdout.write(\"World!\\n\");\n\n// How piping works:\n// readStream.pipe(writeStream);\n// This automatically manages backpressure, reading chunk 1 from A,\n// writing chunk 1 to B, and repeating until finished."
+}

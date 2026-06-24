@@ -1,0 +1,31 @@
+{
+  "id": "text-generation",
+  "title": "Text Generation",
+  "difficulty": "Beginner",
+  "definition": "The use of Large Language Models to autonomously write coherent, contextually relevant text based on a user's prompt.",
+  "simpleExplanation": "The AI predicting the next word over and over again until it completes a paragraph.",
+  "realWorldExample": "Using GitHub Copilot to automatically generate an entire Python function based solely on a comment you wrote.",
+  "useCases": [
+    "Copywriting",
+    "Chatbots",
+    "Translation"
+  ],
+  "questions": {
+    "basic": [
+      "What technology powers modern text generation?"
+    ],
+    "intermediate": [
+      "Does an LLM generate text an entire paragraph at a time, or word by word?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What technology?",
+      "answer": "Large Language Models (LLMs) built on the Transformer architecture."
+    },
+    {
+      "question": "Paragraph or word?",
+      "answer": "Word by word (technically, token by token). It calculates the probability of the first word, outputs it, then uses that new word to calculate the probability of the second word. This is called 'Autoregressive' generation."
+    }
+  ]
+}

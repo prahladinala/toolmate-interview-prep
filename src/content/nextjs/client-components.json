@@ -1,0 +1,33 @@
+{
+  "id": "client-components",
+  "title": "Client Components",
+  "difficulty": "Beginner",
+  "definition": "Traditional React components that are sent over the network and executed in the user's browser, allowing for interactivity, state, and browser APIs.",
+  "simpleExplanation": "If you need a button to do something when clicked (`onClick`), if you need to track a value changing (`useState`), or if you need to access the window object (`window.localStorage`), you MUST use a Client Component.",
+  "realWorldExample": "A `<ThemeToggle>` switch. It needs an `onClick` listener to toggle between light/dark mode, and it needs `localStorage` to save the preference. It must be a Client Component.",
+  "useCases": [
+    "Interactivity (buttons, forms)",
+    "State management",
+    "React lifecycle hooks",
+    "Browser API access"
+  ],
+  "questions": {
+    "basic": [
+      "What directive must you add to the top of a file to turn it into a Client Component?"
+    ],
+    "intermediate": [
+      "Is a Client Component ONLY rendered on the client browser in Next.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What directive?",
+      "answer": "`'use client';` (must be the very first line of code in the file)."
+    },
+    {
+      "question": "Only rendered on client?",
+      "answer": "No! This is a common misconception. Client Components are ACTUALLY pre-rendered on the server first (to generate the initial static HTML for SEO), and then they are hydrated on the client to become interactive."
+    }
+  ],
+  "codeExample": "// MUST be the very first line to opt-in to client-side interactivity\n'use client';\n\nimport { useState } from 'react';\n\nexport default function LikeButton() {\n  // We can safely use State here!\n  const [likes, setLikes] = useState(0);\n\n  return (\n    <button \n      onClick={() => setLikes(l => l + 1)} // We can safely use onClick here!\n      className=\"bg-red-500 text-white p-2 rounded\"\n    >\n      ❤️ {likes}\n    </button>\n  );\n}"
+}

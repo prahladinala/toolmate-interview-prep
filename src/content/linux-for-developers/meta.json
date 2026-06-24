@@ -1,0 +1,219 @@
+{
+  "id": "linux-for-developers",
+  "title": "Linux for Developers",
+  "description": "Master Linux from beginner to advanced. Learn terminal commands, file systems, networking, processes, shell scripting, security, Docker, DevOps, cloud deployments, and production troubleshooting.",
+  "icon": "linux",
+  "categories": [
+    {
+      "id": "linux-fundamentals",
+      "title": "Linux Fundamentals",
+      "topics": [
+        { "id": "what-is-linux", "title": "What is Linux?" },
+        { "id": "linux-distributions", "title": "Linux Distributions" },
+        { "id": "kernel", "title": "Linux Kernel" },
+        { "id": "shell", "title": "Shell & Terminal" },
+        { "id": "linux-architecture", "title": "Linux Architecture" },
+        { "id": "filesystem-overview", "title": "Linux File System Overview" }
+      ]
+    },
+    {
+      "id": "terminal-navigation",
+      "title": "Terminal & Navigation",
+      "topics": [
+        { "id": "pwd", "title": "pwd" },
+        { "id": "ls", "title": "ls" },
+        { "id": "cd", "title": "cd" },
+        { "id": "tree", "title": "tree" },
+        { "id": "history", "title": "history" },
+        { "id": "man-pages", "title": "man Pages" }
+      ]
+    },
+    {
+      "id": "file-management",
+      "title": "Files & Directories",
+      "topics": [
+        { "id": "touch", "title": "touch" },
+        { "id": "mkdir", "title": "mkdir" },
+        { "id": "cp", "title": "cp" },
+        { "id": "mv", "title": "mv" },
+        { "id": "rm", "title": "rm" },
+        { "id": "find", "title": "find" },
+        { "id": "locate", "title": "locate" }
+      ]
+    },
+    {
+      "id": "file-content",
+      "title": "Working with File Content",
+      "topics": [
+        { "id": "cat", "title": "cat" },
+        { "id": "less", "title": "less" },
+        { "id": "head-tail", "title": "head & tail" },
+        { "id": "grep", "title": "grep" },
+        { "id": "sed", "title": "sed" },
+        { "id": "awk", "title": "awk" },
+        { "id": "sort-uniq", "title": "sort & uniq" }
+      ]
+    },
+    {
+      "id": "permissions",
+      "title": "Permissions & Ownership",
+      "topics": [
+        { "id": "chmod", "title": "chmod" },
+        { "id": "chown", "title": "chown" },
+        { "id": "chgrp", "title": "chgrp" },
+        { "id": "file-permissions", "title": "Read Write Execute Permissions" },
+        { "id": "octal-permissions", "title": "Octal Permissions" },
+        { "id": "sudo", "title": "sudo" }
+      ]
+    },
+    {
+      "id": "users-groups",
+      "title": "Users & Groups",
+      "topics": [
+        { "id": "useradd", "title": "useradd" },
+        { "id": "usermod", "title": "usermod" },
+        { "id": "passwd", "title": "passwd" },
+        { "id": "groups", "title": "Groups" },
+        { "id": "whoami", "title": "whoami" },
+        { "id": "id-command", "title": "id Command" }
+      ]
+    },
+    {
+      "id": "process-management",
+      "title": "Process Management",
+      "topics": [
+        { "id": "ps", "title": "ps" },
+        { "id": "top", "title": "top" },
+        { "id": "htop", "title": "htop" },
+        { "id": "kill", "title": "kill" },
+        { "id": "killall", "title": "killall" },
+        { "id": "jobs", "title": "jobs" },
+        { "id": "foreground-background", "title": "Foreground & Background Processes" }
+      ]
+    },
+    {
+      "id": "package-management",
+      "title": "Package Management",
+      "topics": [
+        { "id": "apt", "title": "APT" },
+        { "id": "yum", "title": "YUM" },
+        { "id": "dnf", "title": "DNF" },
+        { "id": "snap", "title": "Snap" },
+        { "id": "install-remove-packages", "title": "Install & Remove Packages" }
+      ]
+    },
+    {
+      "id": "networking",
+      "title": "Linux Networking",
+      "topics": [
+        { "id": "ip-command", "title": "ip Command" },
+        { "id": "ping", "title": "ping" },
+        { "id": "curl", "title": "curl" },
+        { "id": "wget", "title": "wget" },
+        { "id": "netstat", "title": "netstat" },
+        { "id": "ss", "title": "ss" },
+        { "id": "dns-tools", "title": "DNS Tools (dig/nslookup)" }
+      ]
+    },
+    {
+      "id": "disk-management",
+      "title": "Disk & Storage",
+      "topics": [
+        { "id": "df", "title": "df" },
+        { "id": "du", "title": "du" },
+        { "id": "mount", "title": "mount" },
+        { "id": "lsblk", "title": "lsblk" },
+        { "id": "disk-partitions", "title": "Disk Partitions" }
+      ]
+    },
+    {
+      "id": "shell-scripting",
+      "title": "Shell Scripting",
+      "topics": [
+        { "id": "bash-basics", "title": "Bash Basics" },
+        { "id": "variables", "title": "Variables" },
+        { "id": "conditions", "title": "If Else Statements" },
+        { "id": "loops", "title": "Loops" },
+        { "id": "functions", "title": "Functions" },
+        { "id": "arguments", "title": "Command Line Arguments" },
+        { "id": "cron-jobs", "title": "Cron Jobs" }
+      ]
+    },
+    {
+      "id": "logs-monitoring",
+      "title": "Logs & Monitoring",
+      "topics": [
+        { "id": "syslog", "title": "System Logs" },
+        { "id": "journalctl", "title": "journalctl" },
+        { "id": "tail-f", "title": "tail -f" },
+        { "id": "log-analysis", "title": "Log Analysis" },
+        { "id": "system-monitoring", "title": "System Monitoring" }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Services & Systemd",
+      "topics": [
+        { "id": "systemctl", "title": "systemctl" },
+        { "id": "service-management", "title": "Service Management" },
+        { "id": "startup-services", "title": "Startup Services" },
+        { "id": "systemd-units", "title": "Systemd Units" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Linux Security",
+      "topics": [
+        { "id": "ssh", "title": "SSH" },
+        { "id": "ssh-keys", "title": "SSH Keys" },
+        { "id": "firewall", "title": "Firewall (ufw/firewalld)" },
+        { "id": "fail2ban", "title": "Fail2Ban" },
+        { "id": "security-best-practices", "title": "Security Best Practices" }
+      ]
+    },
+    {
+      "id": "developer-tools",
+      "title": "Developer Productivity",
+      "topics": [
+        { "id": "vim", "title": "Vim Basics" },
+        { "id": "nano", "title": "Nano" },
+        { "id": "tmux", "title": "tmux" },
+        { "id": "ssh-tunneling", "title": "SSH Tunneling" },
+        { "id": "environment-variables", "title": "Environment Variables" }
+      ]
+    },
+    {
+      "id": "docker-linux",
+      "title": "Linux for Docker & DevOps",
+      "topics": [
+        { "id": "linux-containers", "title": "Linux Containers" },
+        { "id": "cgroups", "title": "cgroups" },
+        { "id": "namespaces", "title": "Namespaces" },
+        { "id": "docker-linux-basics", "title": "Docker & Linux Relationship" }
+      ]
+    },
+    {
+      "id": "advanced-linux",
+      "title": "Advanced Linux",
+      "topics": [
+        { "id": "inode", "title": "Inodes" },
+        { "id": "soft-hard-links", "title": "Soft vs Hard Links" },
+        { "id": "lvm", "title": "Logical Volume Manager (LVM)" },
+        { "id": "kernel-tuning", "title": "Kernel Tuning" },
+        { "id": "performance-analysis", "title": "Performance Analysis" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "linux-beginner", "title": "Beginner Questions" },
+        { "id": "linux-intermediate", "title": "Intermediate Questions" },
+        { "id": "linux-advanced", "title": "Advanced Questions" },
+        { "id": "linux-debugging", "title": "Troubleshooting Questions" },
+        { "id": "linux-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "linux-devops", "title": "DevOps-Oriented Questions" }
+      ]
+    }
+  ]
+}

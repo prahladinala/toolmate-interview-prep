@@ -1,0 +1,31 @@
+{
+  "id": "horizontal-scaling",
+  "title": "Horizontal Scaling",
+  "difficulty": "Advanced",
+  "definition": "Adding more machines or nodes to a distributed system to handle increased load, as opposed to upgrading a single machine's hardware (Vertical Scaling).",
+  "simpleExplanation": "Vertical Scaling is upgrading your Honda Civic into a Ferrari so it can carry heavy loads faster. Horizontal scaling is just buying 10 Honda Civics and splitting the load between them. When traffic drops, you sell 5 Civics. Horizontal scaling gives you infinite power because you can always add another server.",
+  "realWorldExample": "Running a Node.js app in a Docker container. When Black Friday hits, Kubernetes automatically spins up 50 identical copies (pods) of your Node.js container across multiple cloud servers to handle millions of requests.",
+  "useCases": [
+    "Cloud-native applications",
+    "High Availability (Zero downtime if one server crashes)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Horizontal and Vertical scaling?"
+    ],
+    "intermediate": [
+      "What does your app need to be in order to scale horizontally effectively?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Horizontal vs Vertical?",
+      "answer": "Horizontal = More servers (Scale Out). Vertical = Bigger server (Scale Up - more RAM/CPU)."
+    },
+    {
+      "question": "What must the app be?",
+      "answer": "STATELESS. If Server 1 stores user sessions in its local RAM, and the user's next request goes to Server 2, they will be logged out. To scale horizontally, all state (sessions, uploaded files) must be stored in external services (Redis, AWS S3)."
+    }
+  ],
+  "codeExample": "console.log(\"--- THE RULES OF HORIZONTAL SCALING ---\");\nconsole.log(\"1. No local memory caching (Use Redis instead).\");\nconsole.log(\"2. No local file uploads (Use S3/Cloud Storage instead).\");\nconsole.log(\"3. No local cron jobs that can trigger twice (Use a distributed queue).\");\n\nconsole.log(\"\\nIf your Node app follows these rules (Stateless), you can spin up 1,000 copies of it and they will all work perfectly together behind a Load Balancer.\");"
+}

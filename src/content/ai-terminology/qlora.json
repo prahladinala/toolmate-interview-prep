@@ -1,0 +1,30 @@
+{
+  "id": "qlora",
+  "title": "QLoRA",
+  "difficulty": "Advanced",
+  "definition": "Quantized Low-Rank Adaptation. An extension of LoRA that heavily compresses (Quantizes) the base model down to 4-bit precision before applying the LoRA adapters, maximizing memory efficiency.",
+  "simpleExplanation": "Taking the 500-page book from LoRA, shrinking the font size so small that it takes up 75% less space on your desk (Quantization), and THEN putting the sticky-notes on it.",
+  "realWorldExample": "QLoRA allows developers to fine-tune massive enterprise-grade LLMs on a single consumer GPU (like an RTX 3090) or even a high-end MacBook, democratizing AI development.",
+  "useCases": [
+    "Local LLM training",
+    "Hobbyist AI development"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'Q' in QLoRA stand for?"
+    ],
+    "intermediate": [
+      "Does Quantizing a model to 4-bit precision severely damage the intelligence of the model?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does the Q stand for?",
+      "answer": "Quantized (or Quantization)."
+    },
+    {
+      "question": "Does it damage intelligence?",
+      "answer": "Surprisingly, no. Researchers found that LLMs are incredibly resilient. Shrinking the math from 16-bit to 4-bit saves 75% of the memory, but only reduces the 'intelligence' of the model by a tiny fraction of a percent."
+    }
+  ]
+}

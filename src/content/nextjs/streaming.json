@@ -1,0 +1,32 @@
+{
+  "id": "streaming",
+  "title": "Streaming",
+  "difficulty": "Advanced",
+  "definition": "A rendering technique that allows the server to break the HTML down into smaller chunks and progressively send them to the client as they are ready, rather than waiting for the entire page to finish building.",
+  "simpleExplanation": "Imagine a dashboard with a fast Navbar and a very slow Analytics Graph. In standard SSR, the user stares at a white screen for 5 seconds waiting for the graph to calculate. With Streaming, the server instantly sends the Navbar and a 'Loading Spinner' for the graph. 5 seconds later, the graph data streams in and replaces the spinner.",
+  "realWorldExample": "Using Next.js `loading.tsx` file or React `<Suspense>` boundaries to instantly show the shell of an application while heavy database queries run in the background.",
+  "useCases": [
+    "Complex dashboards",
+    "Slow API responses",
+    "Improving First Contentful Paint (FCP)"
+  ],
+  "questions": {
+    "basic": [
+      "What special Next.js file is used to automatically create a streaming loading state for an entire route?"
+    ],
+    "intermediate": [
+      "What React component is the foundation of Streaming in Next.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Special file?",
+      "answer": "`loading.tsx`. If placed next to a `page.tsx`, Next.js will instantly stream the loading UI while the page is generating."
+    },
+    {
+      "question": "Which React component?",
+      "answer": "`<Suspense>`. Next.js uses React Suspense under the hood to handle streaming boundaries."
+    }
+  ],
+  "codeExample": "import { Suspense } from 'react';\nimport { SlowAnalyticsGraph, FastSidebar } from './components';\n\nexport default function Dashboard() {\n  return (\n    <div className=\"flex\">\n      {/* This renders instantly */}\n      <FastSidebar />\n      \n      <main>\n        <h1>Dashboard</h1>\n        {/* \n          STREAMING MAGIC! \n          The server sends the <h1> and the <p>Loading...</p> instantly.\n          It keeps the connection open, and streams the <SlowAnalyticsGraph> \n          HTML down the pipe whenever it finishes calculating!\n        */}\n        <Suspense fallback={<p>Loading heavy graph...</p>}>\n          <SlowAnalyticsGraph />\n        </Suspense>\n      </main>\n    </div>\n  );\n}"
+}

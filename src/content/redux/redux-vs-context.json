@@ -1,0 +1,30 @@
+{
+  "id": "redux-vs-context",
+  "title": "Redux vs Context API",
+  "difficulty": "Beginner",
+  "definition": "Comparing Redux with React's built-in Context API, understanding that they solve different problems (State Management vs Dependency Injection).",
+  "simpleExplanation": "Context API is a teleportation device. It teleports data from a Parent to a deeply nested Child, avoiding Prop Drilling. However, it does NOT MANAGE the data. You still have to use `useState` or `useReducer` to manage the data. Redux does BOTH: it teleports the data AND manages complex updates.",
+  "realWorldExample": "Using Context for a simple UI Theme (Light/Dark). Using Redux for a highly complex interactive Canvas editor with undo/redo capabilities.",
+  "useCases": [
+    "Avoiding unnecessary Redux installations"
+  ],
+  "questions": {
+    "basic": [
+      "If you only need to pass a `user` object down 3 levels, should you install Redux?"
+    ],
+    "intermediate": [
+      "What is the biggest performance issue with using Context API for rapidly changing data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install Redux?",
+      "answer": "No. React Context is perfectly fine for simple Prop Drilling bypasses of static or rarely-changing data."
+    },
+    {
+      "question": "Performance issue?",
+      "answer": "Whenever the value of a Context Provider changes, EVERY component that consumes that context re-renders entirely. There is no `useSelector` equivalent to selectively listen to just one property."
+    }
+  ],
+  "codeExample": "/*\n  Summary:\n\n  Context API:\n  - Built into React (No installation)\n  - Great for passing data down\n  - Bad for high-frequency updates (causes massive re-renders)\n  - Good for: Theme, Auth status, Locale.\n\n  Redux:\n  - External library\n  - Powerful state management + passing data down\n  - Highly optimized for performance (components only render if their specific data changes)\n  - Good for: Enterprise apps, complex logic, real-time data.\n*/"
+}

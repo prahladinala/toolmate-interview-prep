@@ -1,0 +1,30 @@
+{
+  "id": "api-beginner",
+  "title": "Beginner Interview Questions",
+  "difficulty": "Beginner",
+  "definition": "Common questions asked in junior interviews to verify a foundational understanding of how the web works.",
+  "simpleExplanation": "Interviewers want to make sure you know what HTTP is, what a Status Code is, and how a basic GET request works.",
+  "realWorldExample": "Being asked: 'Explain what happens when you type google.com into your browser and press Enter.'",
+  "useCases": [
+    "Junior Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a GET and a POST request?"
+    ],
+    "intermediate": [
+      "What is JSON, and why do we use it instead of XML?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "GET vs POST?",
+      "answer": "GET retrieves data and appends parameters to the URL. POST sends data to create something new, hiding the data safely inside the Request Body."
+    },
+    {
+      "question": "What is JSON?",
+      "answer": "JavaScript Object Notation. It is a lightweight text format used to send data over the internet. It is preferred over XML because it is easier to read, much smaller in file size, and parses natively into JavaScript objects."
+    }
+  ],
+  "codeExample": "/* \n  Common Beginner Question: \n  \"Explain the categories of HTTP Status Codes.\"\n  \n  Answer:\n  200s: Success. The request worked.\n  300s: Redirection. The resource moved.\n  400s: Client Error. The frontend sent bad data or lacks permission.\n  500s: Server Error. The backend code crashed.\n*/"
+}

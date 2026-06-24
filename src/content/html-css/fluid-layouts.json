@@ -1,0 +1,31 @@
+{
+  "id": "fluid-layouts",
+  "title": "Fluid Layouts",
+  "difficulty": "Advanced",
+  "definition": "Layouts built using relative units (like `%`, `vw`, `fr`) instead of fixed units (`px`), allowing elements to smoothly expand and contract with the browser window.",
+  "simpleExplanation": "Instead of saying 'This box is exactly 500px wide' and hoping the user's screen is bigger than 500px, you say 'This box takes up 50% of the screen'. As the user stretches their browser, the box stretches with it like rubber.",
+  "realWorldExample": "Using CSS Grid with `1fr 2fr`. The layout is fluid because the columns are mathematical fractions, not rigid pixels.",
+  "useCases": [
+    "True responsive design",
+    "Handling the infinite variety of Android screen sizes"
+  ],
+  "questions": {
+    "basic": [
+      "Which unit creates a more fluid layout: `px` or `%`?"
+    ],
+    "intermediate": [
+      "How do you prevent a fluid layout from stretching too far on a massive 4K monitor?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "px or %?",
+      "answer": "`%` (Percentages). It recalculates its size constantly based on the parent container."
+    },
+    {
+      "question": "Prevent over-stretching?",
+      "answer": "Use the `max-width` property. E.g., `width: 100%; max-width: 1200px;`. It will be fully fluid on phones and laptops, but stop stretching once it hits 1200px on a giant TV."
+    }
+  ],
+  "codeExample": "<style>\n  /* BAD: Rigid layout */\n  .rigid-layout {\n    width: 600px; /* If screen is 400px, user must scroll horizontally! */\n    background: #fca5a5;\n    padding: 20px;\n    margin-bottom: 20px;\n  }\n\n  /* GOOD: Fluid layout */\n  .fluid-layout {\n    width: 80%; /* Always 80% of the screen, never forces a scrollbar! */\n    max-width: 800px; /* But stops growing on huge screens */\n    margin: 0 auto; /* Centers it perfectly */\n    background: #86efac;\n    padding: 20px;\n  }\n</style>\n\n<div class=\"rigid-layout\">\n  I am a RIGID box (600px). \n  Shrink your browser very small and watch me break your screen!\n</div>\n\n<div class=\"fluid-layout\">\n  I am a FLUID box (80%). \n  I adapt to your screen size instantly. \n  Stretch the screen really wide, and I stop at 800px!\n</div>"
+}

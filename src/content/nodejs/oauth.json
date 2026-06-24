@@ -1,0 +1,31 @@
+{
+  "id": "oauth",
+  "title": "OAuth",
+  "difficulty": "Advanced",
+  "definition": "Open Authorization. An open standard for access delegation, commonly used as a way for internet users to grant websites or applications access to their information on other websites but without giving them the passwords.",
+  "simpleExplanation": "Logging in with the 'Sign in with Google' button. You don't give your app your Google password. Instead, you are redirected to Google. Google asks: 'Do you want to let this app see your email?'. You click Yes. Google redirects you back to the app with a secure temporary token. The app uses that token to prove to Google that you approved the access.",
+  "realWorldExample": "Using `Passport.js` in Node with the `passport-google-oauth20` strategy to allow users to bypass creating a new account and just sign in with their existing Google or GitHub accounts.",
+  "useCases": [
+    "Social logins (Google, GitHub, Facebook)",
+    "Granting 3rd party apps access to APIs (like a budgeting app connecting to your bank)"
+  ],
+  "questions": {
+    "basic": [
+      "Does OAuth share the user's password with the third-party app?"
+    ],
+    "intermediate": [
+      "What is an OAuth Access Token?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it share the password?",
+      "answer": "Never. That is the entire purpose of the OAuth protocol."
+    },
+    {
+      "question": "What is the Access Token?",
+      "answer": "A string granted by the Authorization Server (Google) to the Client (Your App). Your app attaches this token to API requests (like fetching the user's Google Calendar events) to prove it has permission."
+    }
+  ],
+  "codeExample": "// --- THE OAUTH 2.0 FLOW ---\n\nconsole.log(\"1. User clicks 'Login with GitHub' on your app.\");\nconsole.log(\"2. Your server redirects the user to: github.com/login/oauth/authorize?client_id=YOUR_APP_ID\");\n\nconsole.log(\"\\n3. User logs into GitHub directly (Your app doesn't see this).\");\nconsole.log(\"4. User clicks 'Authorize App'.\");\n\nconsole.log(\"\\n5. GitHub redirects the user back to your server: yoursite.com/callback?code=SECRET_CODE\");\nconsole.log(\"6. Your server secretly sends that SECRET_CODE back to GitHub behind the scenes.\");\nconsole.log(\"7. GitHub verifies the code and replies with an Access Token.\");\n\nconsole.log(\"\\n8. Your server uses the Access Token to fetch the user's email from GitHub's API.\");\nconsole.log(\"9. You save the user in your database and log them in!\");"
+}

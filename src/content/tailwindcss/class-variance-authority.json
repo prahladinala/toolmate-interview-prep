@@ -1,0 +1,31 @@
+{
+  "id": "class-variance-authority",
+  "title": "Class Variance Authority (CVA)",
+  "difficulty": "Advanced",
+  "definition": "A popular JavaScript library (`class-variance-authority`) used to construct highly complex, scalable React components with multiple visual variants (e.g., solid, outline, ghost) using Tailwind classes.",
+  "simpleExplanation": "Building a React Button component that takes an `intent` prop (primary/danger) and a `size` prop (small/large). CVA elegantly handles the messy logic of stitching all those different Tailwind classes together based on the props you pass in.",
+  "realWorldExample": "The foundation of the wildly popular `shadcn/ui` component library. It uses CVA to manage all component variants.",
+  "useCases": [
+    "Enterprise component libraries",
+    "Design systems"
+  ],
+  "questions": {
+    "basic": [
+      "What problem does CVA solve when building Tailwind components in React?"
+    ],
+    "intermediate": [
+      "Does CVA conflict with Tailwind, or complement it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What problem?",
+      "answer": "It solves 'Class Name Spaghetti'. Writing massive ternary operators (`className={intent === 'primary' ? 'bg-blue-500' : 'bg-red-500'}`) becomes unreadable. CVA organizes these variants neatly into an object."
+    },
+    {
+      "question": "Conflict or complement?",
+      "answer": "It complements it perfectly. CVA is just a JavaScript string-builder. It generates the final string of Tailwind classes to give to the DOM."
+    }
+  ],
+  "codeExample": "import { cva } from 'class-variance-authority';\n\n// Define the component's variations\nconst buttonVariants = cva(\n  \"font-semibold rounded transition-colors focus:ring-2\", // Base classes always applied\n  {\n    variants: {\n      intent: {\n        primary: \"bg-blue-500 hover:bg-blue-600 text-white\",\n        danger: \"bg-red-500 hover:bg-red-600 text-white\",\n        outline: \"border-2 border-gray-500 text-gray-700 hover:bg-gray-100\",\n      },\n      size: {\n        sm: \"px-2 py-1 text-sm\",\n        md: \"px-4 py-2 text-base\",\n        lg: \"px-6 py-3 text-lg\",\n      }\n    },\n    defaultVariants: { intent: \"primary\", size: \"md\" } // Fallbacks\n  }\n);\n\n// Usage in React:\n// <Button intent=\"danger\" size=\"lg\">Delete</Button>\nfunction Button({ intent, size, className, ...props }) {\n  // CVA merges the variant classes with any extra custom classes passed in\n  return <button className={buttonVariants({ intent, size, className })} {...props} />;\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "cicd",
+  "title": "CI/CD Service",
+  "difficulty": "Advanced",
+  "definition": "Continuous Integration and Continuous Delivery/Deployment. Cloud services that automate the release phases of software, from building the code, to running tests, to securely deploying it to production servers.",
+  "simpleExplanation": "The automated factory assembly line. A developer pushes code to GitHub. The CI/CD service automatically detects the change, grabs the code, runs 500 tests, builds the app, and pushes it to the live website without a human touching a single button.",
+  "realWorldExample": "AWS CodePipeline, Azure DevOps, GCP Cloud Build. A developer commits code on Friday at 4 PM. CodePipeline builds the Docker image, but a unit test fails. CodePipeline instantly halts the deployment, preventing the broken code from reaching production, and emails the developer.",
+  "useCases": [
+    "Automated software releases",
+    "DevOps culture",
+    "Reducing human error"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'CI' stand for in CI/CD?"
+    ],
+    "intermediate": [
+      "What is the exact difference between Continuous Delivery and Continuous Deployment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does CI stand for?",
+      "answer": "Continuous Integration (the practice of merging all developer code changes into a central repository multiple times a day and running automated tests)."
+    },
+    {
+      "question": "Delivery vs Deployment?",
+      "answer": "In Continuous *Delivery*, the code is automatically built and tested, but pauses and waits for a Human Manager to click an 'Approve' button before going live. In Continuous *Deployment*, there is no human intervention—if the tests pass, the code goes live to the public immediately."
+    }
+  ]
+}

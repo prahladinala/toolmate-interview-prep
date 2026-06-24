@@ -1,0 +1,32 @@
+{
+  "id": "docker",
+  "title": "Docker Basics",
+  "difficulty": "Advanced",
+  "definition": "A platform that uses OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries, and configuration files.",
+  "simpleExplanation": "The ultimate solution to 'It works on my machine!'. Instead of just giving your code to another developer, you give them a magical, invisible box (Container). Inside the box is a mini Linux operating system, the exact version of Node.js you need, and your code. It doesn't matter if their computer is a Mac, Windows, or Linux; the box behaves exactly the same way everywhere.",
+  "realWorldExample": "Shipping code to AWS or Google Cloud. You write a `Dockerfile` that packages your Node app. AWS spins up the container in the cloud, guaranteeing 100% environment parity with your local laptop.",
+  "useCases": [
+    "Cloud-native deployments",
+    "Microservices",
+    "Consistent dev environments"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Dockerfile?"
+    ],
+    "intermediate": [
+      "What is the difference between an Image and a Container?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Dockerfile?",
+      "answer": "A text file containing the exact instructions (recipe) on how to build the Docker Image (e.g., 'Download Node 18, copy my code, run npm install')."
+    },
+    {
+      "question": "Image vs Container?",
+      "answer": "An Image is the static blueprint/CD-ROM. A Container is the actual running process spawned from that blueprint. You can spawn 50 identical containers from 1 image."
+    }
+  ],
+  "codeExample": "# --- EXAMPLE DOCKERFILE FOR NODE.JS ---\n\n# 1. Start from a lightweight Linux OS with Node 18 pre-installed\n# FROM node:18-alpine\n\n# 2. Create an app directory inside the container\n# WORKDIR /usr/src/app\n\n# 3. Copy package.json first to utilize Docker layer caching\n# COPY package*.json ./\n\n# 4. Install dependencies\n# RUN npm install --production\n\n# 5. Copy the rest of the application code\n# COPY . .\n\n# 6. Expose the port the app runs on\n# EXPOSE 3000\n\n# 7. Start the app\n# CMD [\"node\", \"server.js\"]\n\nconsole.log(\"Docker ensures absolute consistency between Development, Staging, and Production.\");"
+}

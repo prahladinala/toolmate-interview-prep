@@ -1,0 +1,34 @@
+{
+  "id": "lexical-scope",
+  "title": "Lexical Scope",
+  "difficulty": "Intermediate",
+  "definition": "Lexical scope means that a variable's scope is determined purely by its physical placement in the source code. Inner functions have access to variables declared in their outer scope.",
+  "simpleExplanation": "Lexical scope is like a set of Russian nesting dolls. The smallest doll inside can see all the wood from the larger dolls surrounding it. But the large outside doll cannot look inside the tiny doll.",
+  "realWorldExample": "If a function `child()` is written inside `parent()`, `child()` can use any variables defined in `parent()`. If `parent()` is called somewhere else, `child()` STILL remembers where it was physically written.",
+  "useCases": [
+    "Closures",
+    "Private variables"
+  ],
+  "questions": {
+    "basic": [
+      "What does Lexical mean?"
+    ],
+    "intermediate": [
+      "What is the Scope Chain?"
+    ],
+    "advanced": [
+      "What is the difference between Lexical Scope and Dynamic Scope?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the Scope Chain?",
+      "answer": "When you try to use a variable, the JS engine looks in the current function. If it doesn't find it, it steps 'outward' to the parent function's scope, and so on, until it reaches the Global Scope. If it's not there, it throws a ReferenceError."
+    },
+    {
+      "question": "Lexical vs Dynamic Scope?",
+      "answer": "Lexical scope is determined by WHERE the function is WRITTEN. Dynamic scope is determined by WHERE the function is CALLED. JavaScript uses Lexical scope (with the exception of the `this` keyword, which behaves dynamically)."
+    }
+  ],
+  "codeExample": "const globalVar = \"I am global\";\n\nfunction parent() {\n  const parentVar = \"I am parent\";\n\n  function child() {\n    const childVar = \"I am child\";\n    // Child can see everything above it physically in the file\n    console.log(globalVar, parentVar, childVar);\n  }\n  child();\n}\n\nparent();"
+}

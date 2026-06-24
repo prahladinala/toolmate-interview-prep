@@ -1,0 +1,31 @@
+{
+  "id": "comments",
+  "title": "HTML Comments",
+  "difficulty": "Beginner",
+  "definition": "A piece of text in an HTML document that is completely ignored by the web browser when rendering the page.",
+  "simpleExplanation": "Comments are sticky notes left by developers for other developers. They are invisible to regular users looking at the webpage. You use them to explain complex code, or to temporarily 'hide' a piece of code you don't want to delete just yet.",
+  "realWorldExample": "Commenting out a holiday banner. `<!-- <div class=\"banner\">Merry Christmas!</div> -->`. The code stays in the file for next year, but the browser doesn't show it on the screen.",
+  "useCases": [
+    "Documenting code structure",
+    "Debugging by temporarily hiding elements"
+  ],
+  "questions": {
+    "basic": [
+      "What is the syntax for an HTML comment?"
+    ],
+    "intermediate": [
+      "Can regular users see your HTML comments?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the syntax?",
+      "answer": "`<!-- Your comment goes here -->`"
+    },
+    {
+      "question": "Can users see them?",
+      "answer": "They cannot see them on the actual webpage. However, if a user right-clicks and selects 'View Page Source', they CAN see your comments. Never put passwords or API keys in HTML comments!"
+    }
+  ],
+  "codeExample": "<div>\n  <h2>Welcome to the shop</h2>\n  \n  <!-- This paragraph explains shipping. It is visible. -->\n  <p>We offer free shipping on all orders over $50!</p>\n  \n  <!-- \n    TODO: The boss wants us to add a coupon code feature next week.\n    Make sure to build the backend logic first.\n  -->\n  \n  <!-- The promotional banner below is hidden because it's wrapped in a comment! -->\n  <!-- \n  <div style=\"background: yellow; padding: 10px;\">\n    USE CODE 'SUMMER' FOR 20% OFF!\n  </div> \n  -->\n  \n  <p>Check the code editor to see the hidden comments!</p>\n</div>"
+}

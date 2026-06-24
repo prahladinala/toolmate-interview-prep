@@ -1,0 +1,34 @@
+{
+  "id": "event-loop-flow",
+  "title": "Event Loop Internals",
+  "difficulty": "Advanced",
+  "definition": "The architectural pattern that allows JavaScript, a single-threaded language, to perform non-blocking asynchronous operations by offloading operations to the system kernel or Web APIs.",
+  "simpleExplanation": "The Event Loop is the manager of the restaurant. There is only one Chef (Call Stack). When an order takes too long (fetching data), the manager sends it to the prep kitchen (Web APIs). When prep is done, the order is placed on a serving tray (Queues). The manager constantly watches the Chef; the SECOND the Chef has free hands, the manager grabs an order from the tray and hands it to the Chef.",
+  "realWorldExample": "Understanding why a massive `while (true)` loop freezes the browser, but millions of `setInterval` calls over time do not.",
+  "useCases": [
+    "Architecting performant Node.js servers",
+    "Debugging asynchronous race conditions"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary job of the Event Loop?"
+    ],
+    "intermediate": [
+      "What are Web APIs in the context of the Event Loop?"
+    ],
+    "advanced": [
+      "What is the 'Tick' of an Event Loop?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the primary job?",
+      "answer": "Its only job is to constantly check two things: 1. Is the Call Stack empty? 2. Is there anything waiting in the Task/Microtask queues? If yes to both, it pushes the first task from the queue onto the Call Stack."
+    },
+    {
+      "question": "What are Web APIs?",
+      "answer": "`setTimeout`, `fetch`, and DOM events are NOT part of the JavaScript language (V8 engine). They are external C++ APIs provided by the Browser (or Node.js). JS passes the callback to the Web API, which handles the multithreading in the background and pushes the callback to the queue when finished."
+    }
+  ],
+  "codeExample": "// The Event Loop is an infinite loop inside the JS Engine that conceptually looks like this:\n/*\nwhile (queue.waitForMessage()) {\n  queue.processNextMessage();\n}\n*/\n\n// Synchronous code blocks the loop:\nconst start = Date.now();\nwhile (Date.now() - start < 2000) {\n  // For 2 seconds, the Event Loop is STUCK here.\n  // No clicks can register, no setTimeouts can fire, no promises can resolve.\n}\nconsole.log(\"Unblocked!\");"
+}

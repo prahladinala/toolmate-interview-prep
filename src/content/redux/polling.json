@@ -1,0 +1,32 @@
+{
+  "id": "polling",
+  "title": "Polling & Refetching",
+  "difficulty": "Intermediate",
+  "definition": "Features in RTK Query that allow data to be automatically refetched from the server based on time intervals, window focus events, or network reconnection.",
+  "simpleExplanation": "Some data changes constantly, like a live sports score or a stock ticker. RTK Query can be told: 'Automatically fetch this endpoint every 3 seconds' (Polling), or 'Refetch this data every time the user clicks back to this browser tab' (Refetch on Focus).",
+  "realWorldExample": "A cryptocurrency dashboard. You set `pollingInterval: 5000` on the Bitcoin price query. Without writing a single `setInterval` or `useEffect`, the price updates automatically every 5 seconds.",
+  "useCases": [
+    "Live dashboards",
+    "Keeping stale data fresh",
+    "Mobile-style background fetching"
+  ],
+  "questions": {
+    "basic": [
+      "What option do you pass to a query hook to make it fetch every 10 seconds?"
+    ],
+    "intermediate": [
+      "Why is `refetchOnFocus` useful for web applications?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What option?",
+      "answer": "`{ pollingInterval: 10000 }` (It is measured in milliseconds)."
+    },
+    {
+      "question": "Why refetchOnFocus?",
+      "answer": "If a user leaves your app open in a tab, goes to lunch, and comes back, the data is likely stale. Refetching exactly when they click back to the tab ensures they immediately see fresh data without having to refresh the page manually."
+    }
+  ],
+  "codeExample": "// Inside your React Component:\n\nconst { data, isLoading } = useGetStockPriceQuery('AAPL', {\n  // Automatically fetch fresh data every 3 seconds!\n  pollingInterval: 3000,\n  \n  // If the user clicks away to another tab, skip polling to save battery.\n  // When they click back, fetch immediately!\n  refetchOnFocus: true,\n  \n  // If they lose internet connection, fetch immediately when it comes back!\n  refetchOnReconnect: true\n});"
+}

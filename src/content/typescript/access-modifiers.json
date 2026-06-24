@@ -1,0 +1,34 @@
+{
+  "id": "access-modifiers",
+  "title": "Public, Private, Protected",
+  "difficulty": "Intermediate",
+  "definition": "Keywords that control the visibility and accessibility of class properties and methods from outside the class.",
+  "simpleExplanation": "`public` (the default) means anyone can see and change it. `private` means it is locked inside the class vault; nobody outside can touch it, not even child classes. `protected` means it is locked to outsiders, but 'family members' (classes that inherit from it) get a copy of the key.",
+  "realWorldExample": "Making an API key property `private` so that a junior developer cannot accidentally `console.log(apiService.apiKey)` elsewhere in the application.",
+  "useCases": [
+    "Encapsulation",
+    "Hiding internal implementation details from consumers"
+  ],
+  "questions": {
+    "basic": [
+      "Which access modifier is the default if none is provided?"
+    ],
+    "intermediate": [
+      "What is the difference between `private` and `protected`?"
+    ],
+    "advanced": [
+      "Are TS `private` modifiers actually private at runtime in JavaScript?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Private vs Protected?",
+      "answer": "`private` properties cannot be accessed by classes that `extend` the parent class. `protected` properties CAN be accessed by child classes via the `this` keyword, but still block outside access."
+    },
+    {
+      "question": "Are they private at runtime?",
+      "answer": "NO! TypeScript modifiers are 100% erased during compilation. At runtime, a `private` property is completely public and can be accessed/hacked. If you need true runtime privacy, you must use modern ES6 `#` private fields (e.g., `#apiKey`)."
+    }
+  ],
+  "codeExample": "class BankAccount {\n  public accountHolder: string;\n  private pinCode: number; // TS blocks access from outside\n  protected balance: number; // Accessible by children\n\n  constructor(name: string, pin: number, balance: number) {\n    this.accountHolder = name;\n    this.pinCode = pin;\n    this.balance = balance;\n  }\n}\n\nclass SavingsAccount extends BankAccount {\n  addInterest() {\n    // Valid: 'balance' is protected\n    this.balance += 100; \n    \n    // ERROR: 'pinCode' is private. Not even child can see it.\n    // console.log(this.pinCode); \n  }\n}\n\nconst account = new BankAccount(\"Alice\", 1234, 1000);\nconsole.log(account.accountHolder); // Valid (Public)\n// console.log(account.balance); // ERROR (Protected, outsiders blocked)\n// console.log(account.pinCode); // ERROR (Private, outsiders blocked)"
+}

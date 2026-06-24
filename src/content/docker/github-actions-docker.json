@@ -1,0 +1,30 @@
+{
+  "id": "github-actions-docker",
+  "title": "GitHub Actions + Docker",
+  "difficulty": "Intermediate",
+  "definition": "The use of GitHub's native CI/CD platform to automatically build Docker images from a repository's Dockerfile and push them to a registry whenever code is merged.",
+  "simpleExplanation": "A robot that lives in your GitHub repo. You merge a Pull Request, the robot wakes up, runs `docker build`, and uploads the new version of your app to the cloud automatically.",
+  "realWorldExample": "You write a `.github/workflows/docker.yml` file. It tells GitHub: 'Every time a commit hits the main branch, log into AWS ECR, run docker build, tag it with the commit hash, and push it.'",
+  "useCases": [
+    "Open-source workflows",
+    "Automated releases"
+  ],
+  "questions": {
+    "basic": [
+      "Can GitHub Actions automatically push a Docker Image to Docker Hub for you?"
+    ],
+    "intermediate": [
+      "How do you securely pass your Docker Hub password to a GitHub Actions workflow?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it push to Docker Hub?",
+      "answer": "Yes. GitHub Actions has massive community support and official actions specifically built for logging into and pushing to Docker Hub."
+    },
+    {
+      "question": "Securely pass password?",
+      "answer": "You must never write the password in the YAML file. You store the password in 'GitHub Repository Secrets'. The workflow YAML references the secret securely using syntax like `${{ secrets.DOCKER_PASSWORD }}`."
+    }
+  ]
+}

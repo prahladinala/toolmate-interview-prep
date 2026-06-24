@@ -1,0 +1,38 @@
+{
+  "id": "dangerously-set-html",
+  "title": "dangerouslySetInnerHTML",
+  "difficulty": "Advanced",
+  "definition": "`dangerouslySetInnerHTML` is React's replacement for using `innerHTML` in the browser DOM. It allows you to explicitly insert raw HTML strings into the DOM, bypassing React's XSS protections.",
+  "simpleExplanation": "React puts a giant safety lock on rendering raw HTML to protect you from hackers. By forcing you to type the word `dangerously`, React is making you sign a waiver that says, 'I know what I am doing, and if I get hacked, it is my own fault.' You must provide an object `{ __html: string }` to unlock it.",
+  "realWorldExample": "You are fetching a blog post from a Headless CMS (like WordPress or Contentful). The CMS returns a string of pre-formatted HTML: `<h1>My Trip</h1><p>It was fun.</p>`. To render this exactly as formatted, you must use `dangerouslySetInnerHTML`.",
+  "useCases": [
+    "Rendering Rich Text Editor output",
+    "Rendering data from a trusted CMS",
+    "Integrating with third-party libraries that return raw HTML"
+  ],
+  "questions": {
+    "basic": [
+      "Why does React force you to type 'dangerously'?",
+      "How do you use this prop?"
+    ],
+    "intermediate": [
+      "How do you sanitize HTML before setting it dangerously?",
+      "What library is most commonly used for sanitization?"
+    ],
+    "advanced": [
+      "Can you use `dangerouslySetInnerHTML` and `children` at the same time on the same element?",
+      "How does this affect the Virtual DOM diffing algorithm?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you sanitize HTML?",
+      "answer": "You should NEVER pass user-generated HTML directly into this prop. You must pass it through a sanitizer library like `DOMPurify`. DOMPurify will strip out any `<script>` tags or malicious attributes, leaving only safe formatting like `<b>` and `<i>`."
+    },
+    {
+      "question": "Can you use it with children?",
+      "answer": "No. If you provide `dangerouslySetInnerHTML`, you cannot put anything between the opening and closing tags of that element. React will throw an error."
+    }
+  ],
+  "codeExample": "import React from 'react';\n// import DOMPurify from 'dompurify';\n\nexport default function HtmlRenderer() {\n  const rawHtmlFromDatabase = \"<h3 style='color:red;'>Hello</h3><p>This is <strong>bold</strong>.</p>\";\n  // const cleanHtml = DOMPurify.sanitize(rawHtmlFromDatabase);\n  const cleanHtml = rawHtmlFromDatabase;\n\n  return (\n    <div className='p-4 border'>\n      <h2 className='mt-4'>Dangerous Render:</h2>\n      {/* \n        React executes the HTML. \n        Notice the syntax: an object with __html \n      */}\n      <div \n        className='bg-gray-100 p-2'\n        dangerouslySetInnerHTML={{ __html: cleanHtml }} \n      />\n    </div>\n  );\n}"
+}

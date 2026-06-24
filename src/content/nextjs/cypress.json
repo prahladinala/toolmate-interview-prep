@@ -1,0 +1,32 @@
+{
+  "id": "cypress",
+  "title": "Cypress",
+  "difficulty": "Advanced",
+  "definition": "A widely used End-to-End testing framework (the main competitor to Playwright) known for its incredible developer experience, visual debugging UI, and time-traveling capabilities.",
+  "simpleExplanation": "When you run Cypress, a beautiful window opens on your screen showing your website on the right, and the test commands executing on the left. As it clicks buttons automatically, you can watch it happen live. If a test fails, you can scrub backwards in time to see exactly what the screen looked like when the error occurred.",
+  "realWorldExample": "Debugging a flaky E2E test. You open the Cypress UI, watch the robot run through the app, and visually realize that a popup modal is accidentally covering the 'Submit' button, causing the test to fail.",
+  "useCases": [
+    "End-to-End testing",
+    "Visual debugging",
+    "Component testing"
+  ],
+  "questions": {
+    "basic": [
+      "Which framework provides a more robust visual debugging interface: Playwright or Cypress?"
+    ],
+    "intermediate": [
+      "What is the main architectural limitation of Cypress compared to Playwright regarding cross-browser testing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which visual UI?",
+      "answer": "Cypress. Its interactive 'Time Travel' runner is highly regarded for developer experience."
+    },
+    {
+      "question": "Architectural limitation?",
+      "answer": "Historically, Cypress runs *inside* the browser, making testing multiple tabs or complex cross-origin iframe scenarios very difficult. Playwright runs *outside* the browser, allowing it to easily control multiple tabs, multiple browsers, and native browser dialogs."
+    }
+  ],
+  "codeExample": "// cypress/e2e/login.cy.js\n\ndescribe('Authentication Flow', () => {\n  it('successfully logs the user in', () => {\n    // Cy commands chain beautifully together\n    cy.visit('/login')\n    \n    // Find the input, type into it\n    cy.get('input[name=\"email\"]').type('user@cypress.io')\n    cy.get('input[name=\"password\"]').type('password123')\n    \n    // Click the button\n    cy.get('button[type=\"submit\"]').click()\n    \n    // Assert the URL changed and the dashboard loaded\n    cy.url().should('include', '/dashboard')\n    cy.contains('Welcome back').should('be.visible')\n  })\n})"
+}

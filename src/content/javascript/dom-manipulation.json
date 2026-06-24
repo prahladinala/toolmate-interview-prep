@@ -1,0 +1,34 @@
+{
+  "id": "dom-manipulation",
+  "title": "DOM Manipulation",
+  "difficulty": "Beginner",
+  "definition": "The Document Object Model (DOM) is an API that represents the HTML document as a tree of nodes. DOM Manipulation is using JavaScript to add, remove, or change these nodes.",
+  "simpleExplanation": "The HTML file is the architect's blueprint. The DOM is the actual physical house that was built in the browser. JavaScript is the remodeling crew; it can knock down walls (`remove()`), paint the house (`style.color`), or build an extension (`appendChild()`) while you are still living in it.",
+  "realWorldExample": "Creating a new `<li>` element, adding text to it, and appending it to a `<ul>` when a user clicks 'Add Item'.",
+  "useCases": [
+    "Vanilla JS applications",
+    "Creating dynamic UI elements"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `getElementById` and `querySelector`?"
+    ],
+    "intermediate": [
+      "Why is direct DOM manipulation considered 'expensive' or slow?"
+    ],
+    "advanced": [
+      "What is a DocumentFragment and how does it improve performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is it expensive?",
+      "answer": "Because every time you change the DOM (like altering width or adding an element), you risk triggering a 'Reflow' and 'Repaint'. The browser has to recalculate the exact pixel coordinates of every element on the page, which requires massive CPU power."
+    },
+    {
+      "question": "What is a DocumentFragment?",
+      "answer": "It is an invisible, lightweight container. If you need to add 100 items to a list, adding them one by one triggers 100 DOM re-renders. Instead, you append all 100 to a DocumentFragment in memory, and then append the Fragment to the DOM once. This triggers only 1 re-render."
+    }
+  ],
+  "codeExample": "const ul = document.getElementById('my-list');\n\n// EFFICIENT BULK DOM MANIPULATION\nconst fragment = document.createDocumentFragment();\n\nfor (let i = 0; i < 100; i++) {\n  const li = document.createElement('li');\n  li.textContent = `Item ${i}`;\n  li.classList.add('list-item');\n  fragment.appendChild(li); // Adding to memory, NOT the live screen\n}\n\n// Triggers a single render cycle!\nul.appendChild(fragment);"
+}

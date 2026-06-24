@@ -1,0 +1,201 @@
+{
+  "id": "docker",
+  "title": "Docker",
+  "description": "Master Docker from fundamentals to production deployments. Learn containers, images, networking, volumes, Docker Compose, security, optimization, CI/CD integration, and container orchestration concepts.",
+  "icon": "docker",
+  "categories": [
+    {
+      "id": "container-fundamentals",
+      "title": "Container Fundamentals",
+      "topics": [
+        { "id": "what-is-docker", "title": "What is Docker?" },
+        { "id": "what-is-container", "title": "What is a Container?" },
+        { "id": "docker-vs-vm", "title": "Docker vs Virtual Machines" },
+        { "id": "containerization", "title": "Containerization" },
+        { "id": "docker-architecture", "title": "Docker Architecture" },
+        { "id": "docker-components", "title": "Docker Components" }
+      ]
+    },
+    {
+      "id": "docker-installation",
+      "title": "Docker Setup",
+      "topics": [
+        { "id": "install-docker", "title": "Installing Docker" },
+        { "id": "docker-desktop", "title": "Docker Desktop" },
+        { "id": "docker-engine", "title": "Docker Engine" },
+        { "id": "docker-cli", "title": "Docker CLI" }
+      ]
+    },
+    {
+      "id": "docker-images",
+      "title": "Docker Images",
+      "topics": [
+        { "id": "what-is-image", "title": "What is a Docker Image?" },
+        { "id": "image-layers", "title": "Image Layers" },
+        { "id": "base-images", "title": "Base Images" },
+        { "id": "docker-pull", "title": "docker pull" },
+        { "id": "docker-images-command", "title": "docker images" },
+        { "id": "image-tagging", "title": "Image Tagging" }
+      ]
+    },
+    {
+      "id": "docker-containers",
+      "title": "Docker Containers",
+      "topics": [
+        { "id": "container-lifecycle", "title": "Container Lifecycle" },
+        { "id": "docker-run", "title": "docker run" },
+        { "id": "docker-start-stop", "title": "docker start / stop" },
+        { "id": "docker-restart", "title": "docker restart" },
+        { "id": "docker-rm", "title": "docker rm" },
+        { "id": "docker-ps", "title": "docker ps" }
+      ]
+    },
+    {
+      "id": "dockerfile",
+      "title": "Dockerfile",
+      "topics": [
+        { "id": "what-is-dockerfile", "title": "What is a Dockerfile?" },
+        { "id": "from", "title": "FROM" },
+        { "id": "run", "title": "RUN" },
+        { "id": "copy-add", "title": "COPY vs ADD" },
+        { "id": "workdir", "title": "WORKDIR" },
+        { "id": "cmd-vs-entrypoint", "title": "CMD vs ENTRYPOINT" },
+        { "id": "env", "title": "ENV Variables" },
+        { "id": "expose", "title": "EXPOSE" }
+      ]
+    },
+    {
+      "id": "image-building",
+      "title": "Building Images",
+      "topics": [
+        { "id": "docker-build", "title": "docker build" },
+        { "id": "docker-build-context", "title": "Build Context" },
+        { "id": "dockerignore", "title": ".dockerignore" },
+        { "id": "multi-stage-builds", "title": "Multi-Stage Builds" },
+        { "id": "build-cache", "title": "Build Cache" }
+      ]
+    },
+    {
+      "id": "networking",
+      "title": "Docker Networking",
+      "topics": [
+        { "id": "network-basics", "title": "Docker Networking Basics" },
+        { "id": "bridge-network", "title": "Bridge Network" },
+        { "id": "host-network", "title": "Host Network" },
+        { "id": "overlay-network", "title": "Overlay Network" },
+        { "id": "port-mapping", "title": "Port Mapping" },
+        { "id": "container-communication", "title": "Container Communication" }
+      ]
+    },
+    {
+      "id": "volumes-storage",
+      "title": "Volumes & Storage",
+      "topics": [
+        { "id": "persistent-storage", "title": "Persistent Storage" },
+        { "id": "docker-volumes", "title": "Docker Volumes" },
+        { "id": "bind-mounts", "title": "Bind Mounts" },
+        { "id": "tmpfs-mounts", "title": "tmpfs Mounts" },
+        { "id": "volume-management", "title": "Volume Management" }
+      ]
+    },
+    {
+      "id": "docker-compose",
+      "title": "Docker Compose",
+      "topics": [
+        { "id": "what-is-compose", "title": "What is Docker Compose?" },
+        { "id": "compose-file", "title": "docker-compose.yml" },
+        { "id": "multi-container-apps", "title": "Multi-Container Applications" },
+        { "id": "compose-services", "title": "Services" },
+        { "id": "compose-networks", "title": "Compose Networks" },
+        { "id": "compose-volumes", "title": "Compose Volumes" }
+      ]
+    },
+    {
+      "id": "docker-registry",
+      "title": "Docker Registry",
+      "topics": [
+        { "id": "docker-hub", "title": "Docker Hub" },
+        { "id": "private-registries", "title": "Private Registries" },
+        { "id": "docker-login", "title": "docker login" },
+        { "id": "docker-push", "title": "docker push" },
+        { "id": "docker-pull-registry", "title": "Pulling Images" }
+      ]
+    },
+    {
+      "id": "debugging",
+      "title": "Debugging & Monitoring",
+      "topics": [
+        { "id": "docker-logs", "title": "docker logs" },
+        { "id": "docker-exec", "title": "docker exec" },
+        { "id": "docker-inspect", "title": "docker inspect" },
+        { "id": "docker-stats", "title": "docker stats" },
+        { "id": "health-checks", "title": "Health Checks" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Docker Security",
+      "topics": [
+        { "id": "container-security", "title": "Container Security" },
+        { "id": "image-scanning", "title": "Image Scanning" },
+        { "id": "least-privilege", "title": "Least Privilege Principle" },
+        { "id": "non-root-user", "title": "Running as Non-Root User" },
+        { "id": "secret-management", "title": "Secret Management" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Optimization & Best Practices",
+      "topics": [
+        { "id": "small-images", "title": "Reducing Image Size" },
+        { "id": "alpine-images", "title": "Alpine Images" },
+        { "id": "layer-optimization", "title": "Layer Optimization" },
+        { "id": "build-performance", "title": "Build Performance" },
+        { "id": "resource-limits", "title": "Resource Limits" }
+      ]
+    },
+    {
+      "id": "ci-cd",
+      "title": "Docker in CI/CD",
+      "topics": [
+        { "id": "docker-in-ci", "title": "Docker in CI/CD" },
+        { "id": "github-actions-docker", "title": "GitHub Actions + Docker" },
+        { "id": "jenkins-docker", "title": "Jenkins + Docker" },
+        { "id": "container-deployment", "title": "Container Deployment" }
+      ]
+    },
+    {
+      "id": "kubernetes-prep",
+      "title": "Docker for Kubernetes",
+      "topics": [
+        { "id": "docker-and-k8s", "title": "Docker & Kubernetes Relationship" },
+        { "id": "container-runtime", "title": "Container Runtime" },
+        { "id": "image-deployment", "title": "Deploying Images to Kubernetes" },
+        { "id": "container-orchestration", "title": "Container Orchestration" }
+      ]
+    },
+    {
+      "id": "advanced-docker",
+      "title": "Advanced Docker",
+      "topics": [
+        { "id": "docker-swarm", "title": "Docker Swarm" },
+        { "id": "docker-contexts", "title": "Docker Contexts" },
+        { "id": "buildkit", "title": "Docker BuildKit" },
+        { "id": "rootless-docker", "title": "Rootless Docker" },
+        { "id": "custom-networks", "title": "Custom Networks" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "docker-beginner", "title": "Beginner Questions" },
+        { "id": "docker-intermediate", "title": "Intermediate Questions" },
+        { "id": "docker-advanced", "title": "Advanced Questions" },
+        { "id": "docker-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "docker-debugging", "title": "Troubleshooting Questions" },
+        { "id": "docker-system-design", "title": "System Design Questions" }
+      ]
+    }
+  ]
+}

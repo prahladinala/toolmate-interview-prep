@@ -1,0 +1,30 @@
+{
+  "id": "docker-system-design",
+  "title": "System Design Questions",
+  "difficulty": "Advanced",
+  "definition": "High-level architectural interviews focusing on how to design massive, scalable, highly-available systems using containerization and orchestration.",
+  "simpleExplanation": "Designing the architecture for Netflix or Uber. How do you route traffic across 10,000 containers?",
+  "realWorldExample": "Question: 'Design a highly available microservices architecture for an E-Commerce site. Explain how traffic routes from the user's browser, through the load balancer, to the appropriate Docker containers.'",
+  "useCases": [
+    "Principal Engineer roles",
+    "Software Architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Why do massive architectures use 'Reverse Proxies' (like NGINX or Traefik) in front of their Docker containers?"
+    ],
+    "intermediate": [
+      "Explain the concept of 'State' in System Design and why databases are exponentially harder to containerize than web servers."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why Reverse Proxy?",
+      "answer": "To handle SSL/TLS termination, balance the traffic load across hundreds of identical containers, and route specific URL paths (like `/api`) to the correct backend service container."
+    },
+    {
+      "question": "State and Databases?",
+      "answer": "Web servers are 'Stateless'. If you kill a web server container and start a new one, the user doesn't notice. Databases are 'Stateful' (they hold permanent data). If a database container crashes, you must perfectly reconnect the new container to the exact persistent storage Volume on the disk without corrupting the data, which is highly complex in distributed clusters."
+    }
+  ]
+}

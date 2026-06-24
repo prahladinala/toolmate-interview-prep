@@ -1,0 +1,30 @@
+{
+  "id": "epochs",
+  "title": "Epochs",
+  "difficulty": "Intermediate",
+  "definition": "In machine learning, one Epoch means the learning algorithm has made one complete pass through the entire training dataset.",
+  "simpleExplanation": "Reading the textbook cover-to-cover. If you read the textbook once (1 Epoch), you might fail the test. If you read the textbook 10 times (10 Epochs), you'll probably get an A. But if you read it 1,000 times, you'll just memorize the words without understanding the concepts (Overfitting).",
+  "realWorldExample": "A data scientist sets a neural network to train for 50 Epochs on a dataset of 100,000 images. The AI will look at all 100,000 images, adjust its math, and then do it again 49 more times.",
+  "useCases": [
+    "Training duration tracking",
+    "Preventing overfitting"
+  ],
+  "questions": {
+    "basic": [
+      "If your dataset has 1,000 images, and you train for 5 Epochs, how many total images will the AI process?"
+    ],
+    "intermediate": [
+      "What is 'Early Stopping' in relation to Epochs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many total?",
+      "answer": "5,000. It looks at the entire dataset of 1,000 images 5 separate times."
+    },
+    {
+      "question": "What is Early Stopping?",
+      "answer": "A smart script that monitors the AI. You tell the AI to train for 100 Epochs. By Epoch 40, the script notices the AI has stopped getting smarter and is starting to memorize the data. The script automatically halts the training early to save time and prevent overfitting."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "flex-container",
+  "title": "Flex Container",
+  "difficulty": "Beginner",
+  "definition": "A utility class (`flex`) that turns a normal block-level element into a flexbox container, enabling powerful alignment and distribution of its direct children.",
+  "simpleExplanation": "By default, HTML elements stack vertically on top of each other like blocks. Applying `flex` to the parent instantly forces all of its children to sit horizontally in a row.",
+  "realWorldExample": "Creating a Navbar. You want your Logo on the far left, and your Login Button on the far right. You wrap them both in a `div`, add `flex`, and then tell the flexbox to push them apart.",
+  "useCases": [
+    "Navbars",
+    "Card layouts",
+    "Centering items perfectly"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class activates Flexbox on an element?"
+    ],
+    "intermediate": [
+      "Does adding `flex` to a parent affect the grandchildren (the children of its children)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which class?",
+      "answer": "`flex` (or `inline-flex` if you want the container itself to sit inline with text)."
+    },
+    {
+      "question": "Affect grandchildren?",
+      "answer": "No. Flexbox ONLY affects the direct, immediate children of the flex container."
+    }
+  ],
+  "codeExample": "<!-- Before Flexbox (Items stack vertically) -->\n<div>\n  <div class=\"bg-red-500\">Item 1</div>\n  <div class=\"bg-blue-500\">Item 2</div>\n</div>\n\n<!-- After Flexbox (Items sit side-by-side horizontally) -->\n<div class=\"flex\">\n  <div class=\"bg-red-500\">Item 1</div>\n  <div class=\"bg-blue-500\">Item 2</div>\n</div>"
+}

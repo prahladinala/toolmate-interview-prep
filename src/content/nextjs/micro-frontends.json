@@ -1,0 +1,32 @@
+{
+  "id": "micro-frontends",
+  "title": "Micro Frontends",
+  "difficulty": "Advanced",
+  "definition": "An architectural style where a single large web application is built by combining several smaller, independently developed and deployed frontend applications.",
+  "simpleExplanation": "A massive e-commerce site. Team A builds the 'Search Bar' using React. Team B builds the 'Shopping Cart' using Vue.js. Team C builds the 'Product Page' using Next.js. The user sees one seamless website, but under the hood, it is three separate apps stitched together.",
+  "realWorldExample": "Using Next.js Multi-Zones or Webpack Module Federation to allow different engineering teams to deploy their specific part of a massive website without needing to coordinate with the other teams.",
+  "useCases": [
+    "Massive enterprise teams",
+    "Legacy code migration",
+    "Independent deployments"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary organizational benefit of Micro Frontends for a company with 500 developers?"
+    ],
+    "intermediate": [
+      "How does Next.js handle Micro Frontends natively?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Benefit for 500 devs?",
+      "answer": "Independent deployments. Team A can deploy a bug fix to the Search Bar on a Friday afternoon without risking taking down the Shopping Cart or the entire website."
+    },
+    {
+      "question": "Next.js native solution?",
+      "answer": "Next.js 'Multi-Zones'. You can configure an main Next.js app to automatically proxy specific URLs (like `/blog`) to an entirely different Next.js application hosted on a different server."
+    }
+  ],
+  "codeExample": "// next.config.js (Multi-Zones Example)\n// This is the configuration for the main 'Store' application\n\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        // If a user visits the main site but goes to /blog...\n        source: '/blog',\n        // Secretly proxy the request to Team B's completely separate Next.js app!\n        // The user's browser URL stays at mystore.com/blog\n        destination: 'https://blog-app-team-b.vercel.app/blog',\n      },\n      {\n        source: '/blog/:path*',\n        destination: 'https://blog-app-team-b.vercel.app/blog/:path*',\n      }\n    ]\n  }\n}"
+}

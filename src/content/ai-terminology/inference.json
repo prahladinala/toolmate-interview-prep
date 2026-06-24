@@ -1,0 +1,30 @@
+{
+  "id": "inference",
+  "title": "Inference",
+  "difficulty": "Intermediate",
+  "definition": "The process of using a fully trained machine learning model to make predictions, classifications, or generate output on new, unseen data.",
+  "simpleExplanation": "If 'Training' is going to medical school and studying textbooks, 'Inference' is graduating and actually diagnosing a patient in the hospital. The learning is over; now the AI is just doing its job.",
+  "realWorldExample": "When you unlock your iPhone with FaceID. Apple already 'trained' the model at the factory. When you look at the camera, the phone runs 'Inference' in milliseconds to predict if the face matches you.",
+  "useCases": [
+    "Production AI",
+    "API endpoints"
+  ],
+  "questions": {
+    "basic": [
+      "Does the AI model continue to learn and update its knowledge during Inference?"
+    ],
+    "intermediate": [
+      "Why are tech companies so focused on 'Inference Optimization'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Learn during inference?",
+      "answer": "No. A standard model's 'brain' is frozen after training. During inference, it only applies what it already knows. (To teach it new things, you must re-train or fine-tune it)."
+    },
+    {
+      "question": "Why optimize inference?",
+      "answer": "Because a model might be trained once, but it will perform inference millions of times a day for users. If inference takes 10 seconds, users will quit the app. Optimizing inference makes the AI run faster and uses less server electricity, saving millions of dollars."
+    }
+  ]
+}

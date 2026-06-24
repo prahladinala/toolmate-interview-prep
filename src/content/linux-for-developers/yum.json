@@ -1,0 +1,29 @@
+{
+  "id": "yum",
+  "title": "YUM (Yellowdog Updater, Modified)",
+  "difficulty": "Intermediate",
+  "definition": "The traditional package manager used by older Red Hat-based distributions (like CentOS 7 and RHEL 7). It manages `.rpm` software packages.",
+  "simpleExplanation": "The App Store for older Enterprise servers. It does exactly the same job as `apt`, just on a different brand of Linux.",
+  "realWorldExample": "An administrator logs into a legacy CentOS 7 server and types `sudo yum install httpd` to install the Apache web server.",
+  "useCases": [
+    "Maintaining legacy RHEL/CentOS systems"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use the `yum` command on an Ubuntu server?"
+    ],
+    "intermediate": [
+      "What is an `.rpm` file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Use on Ubuntu?",
+      "answer": "No. Ubuntu uses Debian architecture (`.deb` packages and `apt`). `yum` only works on Red Hat architecture."
+    },
+    {
+      "question": "What is an .rpm file?",
+      "answer": "Red Hat Package Manager file. It is the compressed installation file (similar to a Windows `.msi`) that `yum` downloads and extracts."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "head-tail",
+  "title": "head & tail",
+  "difficulty": "Beginner",
+  "definition": "Commands used to output a specific number of lines from the beginning (`head`) or the end (`tail`) of a file. By default, they print 10 lines.",
+  "simpleExplanation": "Snipping the top or bottom off a document. If you just want to see the most recent error at the very bottom of a log file, you use `tail`.",
+  "realWorldExample": "A server crashes. The developer types `tail -n 20 error.log` to see the very last 20 things that happened before the crash, completely ignoring the thousands of lines above it.",
+  "useCases": [
+    "Checking recent log entries",
+    "Previewing CSV file headers"
+  ],
+  "questions": {
+    "basic": [
+      "If you want to view the first 5 lines of a file, what command do you type?"
+    ],
+    "intermediate": [
+      "What does the highly useful `tail -f` command do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "First 5 lines?",
+      "answer": "`head -n 5 filename.txt`"
+    },
+    {
+      "question": "What is tail -f?",
+      "answer": "The 'follow' flag. It prints the bottom of the file, but keeps the terminal open. As new lines are written to the file (like a live server log), they are instantly printed to your screen in real-time."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "dnf",
+  "title": "DNF (Dandified YUM)",
+  "difficulty": "Intermediate",
+  "definition": "The modern, next-generation replacement for YUM. It is the default package manager for newer Red Hat-based distributions (like Fedora, CentOS 8+, RHEL 8+), offering massively improved performance and memory usage.",
+  "simpleExplanation": "YUM 2.0. It fixes all the speed issues of the old system but uses the exact same command structure so people don't have to re-learn it.",
+  "realWorldExample": "A developer provisions a modern Fedora workstation. They type `sudo dnf install docker`. DNF resolves the dependencies and installs Docker significantly faster than the old `yum` would have.",
+  "useCases": [
+    "Modern enterprise server management"
+  ],
+  "questions": {
+    "basic": [
+      "Is the command syntax for `dnf` completely different from `yum`?"
+    ],
+    "intermediate": [
+      "Why was YUM replaced by DNF?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Different syntax?",
+      "answer": "No, it is nearly identical. You just swap the word `yum` for `dnf` (e.g., `dnf install nginx`)."
+    },
+    {
+      "question": "Why replaced?",
+      "answer": "YUM was written in Python 2, was notoriously slow, and used excessive amounts of RAM to calculate complex dependency trees. DNF uses a modern C-based dependency solver (hawkey), making it drastically faster."
+    }
+  ]
+}

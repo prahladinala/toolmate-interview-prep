@@ -1,0 +1,34 @@
+{
+  "id": "import-export",
+  "title": "Import & Export Syntax",
+  "difficulty": "Beginner",
+  "definition": "The precise syntax used to expose and consume modules in TypeScript, including named exports, default exports, and re-exporting.",
+  "simpleExplanation": "Named exports are like a grocery store aisle: you pick exactly which specific items you want from the shelf using `{ }`. Default exports are like a subscription box: the file hands you one main item, and you can name the box whatever you want when you receive it.",
+  "realWorldExample": "A `utils.ts` file exports 10 different helper functions using named exports. In `app.ts`, you only `import { formatDate }` so you don't load the other 9 into memory.",
+  "useCases": [
+    "Tree-shaking (removing unused code)",
+    "Structuring large applications"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Named and Default exports?"
+    ],
+    "intermediate": [
+      "Can a file have both a default export and named exports?"
+    ],
+    "advanced": [
+      "What is a Barrel File (`export * from`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can a file have both?",
+      "answer": "Yes. A file can have an infinite number of Named exports, and exactly ONE Default export."
+    },
+    {
+      "question": "What is a Barrel File?",
+      "answer": "An `index.ts` file that imports from many files in a folder and immediately re-exports them. It allows consumers to import from the folder directly `import { User, Post } from './models'` instead of `import { User } from './models/user'; import { Post } from './models/post';`."
+    }
+  ],
+  "codeExample": "// file: math.ts\nexport const PI = 3.14;\nexport function add(a: number, b: number) { return a + b; }\nexport default class Calculator { }\n\n// file: index.ts (Barrel File)\nexport * from './math'; // Re-exports everything except defaults\nexport { default as Calc } from './math'; // Re-exporting a default with a new name"
+}

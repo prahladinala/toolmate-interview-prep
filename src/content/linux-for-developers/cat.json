@@ -1,0 +1,30 @@
+{
+  "id": "cat",
+  "title": "cat",
+  "difficulty": "Beginner",
+  "definition": "Concatenate. A command used to read data from a file and output its entire contents directly to the terminal screen.",
+  "simpleExplanation": "The 'Print this file to the screen' command. It dumps all the text out at once.",
+  "realWorldExample": "You want to quickly check the IP address in a config file. You type `cat config.txt`. The text of the file is dumped onto your terminal screen so you can read it.",
+  "useCases": [
+    "Reading small files",
+    "Combining (concatenating) multiple files into one"
+  ],
+  "questions": {
+    "basic": [
+      "Why is it a bad idea to use `cat` on a massive 10GB log file?"
+    ],
+    "intermediate": [
+      "How do you use `cat` to combine `file1.txt` and `file2.txt` into a brand new `file3.txt`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why bad for large files?",
+      "answer": "Because `cat` dumps the entire file at once. It will violently scroll thousands of lines of text across your screen, freezing the terminal, and you won't be able to read any of it."
+    },
+    {
+      "question": "How to combine?",
+      "answer": "Using the redirect operator: `cat file1.txt file2.txt > file3.txt`."
+    }
+  ]
+}

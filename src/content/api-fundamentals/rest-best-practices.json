@@ -1,0 +1,31 @@
+{
+  "id": "rest-best-practices",
+  "title": "REST Best Practices",
+  "difficulty": "Advanced",
+  "definition": "Advanced guidelines for building production-grade REST APIs, including versioning, filtering, sorting, pagination, and HATEOAS.",
+  "simpleExplanation": "A beginner builds `GET /users` which returns 10 million users and crashes the server. An expert builds `GET /users?role=admin&sort=age:desc&page=2&limit=50`.",
+  "realWorldExample": "Building an E-commerce API. Clients need to filter products by price, sort them by rating, and paginate the results 20 at a time. All of this should be handled via URL Query Parameters.",
+  "useCases": [
+    "Scaling APIs",
+    "Performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "How should you handle filtering and sorting in a REST API?"
+    ],
+    "intermediate": [
+      "What is HATEOAS in REST?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Handle filtering/sorting?",
+      "answer": "Using URL Query Parameters (the data after the `?` mark). Never use the URL path or the Request Body for filtering a GET request."
+    },
+    {
+      "question": "What is HATEOAS?",
+      "answer": "Hypermedia as the Engine of Application State. It means an API response doesn't just return data; it returns HYPERLINKS to other actions you can take. (e.g., getting a User returns their data, plus a link to `rel: 'delete', href: '/users/5'` so the client knows how to delete them)."
+    }
+  ],
+  "codeExample": "/* \n  Advanced RESTful Querying via URL Parameters \n*/\n\n// Filtering (Find active admins)\nGET /users?role=admin&status=active\n\n// Sorting (Sort by creation date, descending)\nGET /users?sort=-created_at\n\n// Field Selection (Only return the name and email to save bandwidth)\nGET /users?fields=name,email\n\n// Pagination (Get page 3, 20 items per page)\nGET /users?page=3&limit=20\n\n// Full combined production query:\nGET /products?category=shoes&sort=-price&limit=10&page=1"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "custom-middleware",
+  "title": "Custom Middleware",
+  "difficulty": "Advanced",
+  "definition": "Creating your own middleware function to intercept actions and add custom logic to the Redux pipeline.",
+  "simpleExplanation": "You can write your own 'Bouncer'. To write a custom middleware, you have to write a weird function that returns a function that returns a function (Currying). It gives you ultimate power over everything happening in your app.",
+  "realWorldExample": "Writing a 'Profanity Filter' middleware. It intercepts every `SEND_MESSAGE` action, scans the payload text for bad words, replaces them with asterisks (`***`), and THEN passes the cleaned action to the reducer.",
+  "useCases": [
+    "Custom analytics",
+    "Feature flags",
+    "Data sanitization"
+  ],
+  "questions": {
+    "basic": [
+      "What is the signature structure of a Redux middleware function?"
+    ],
+    "intermediate": [
+      "What must a custom middleware call to pass the action to the next step?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Signature structure?",
+      "answer": "`store => next => action => { ... }` (This pattern is called Currying)."
+    },
+    {
+      "question": "What must it call?",
+      "answer": "It MUST call `next(action)`. If you forget this, your entire app will freeze because the action never reaches the reducer."
+    }
+  ],
+  "codeExample": "// A custom middleware that blocks actions if the user isn't an Admin\n\nconst adminCheckMiddleware = storeAPI => next => action => {\n  // 1. Check if the action requires admin rights\n  if (action.type === 'DELETE_DATABASE') {\n    \n    // 2. Check the current state to see who the user is\n    const state = storeAPI.getState();\n    \n    if (state.user.role !== 'ADMIN') {\n      // 3. BLOCK THE ACTION! (We never call next())\n      console.error('Access Denied!');\n      return; \n    }\n  }\n\n  // 4. Pass the action along normally if everything is okay\n  return next(action);\n};"
+}

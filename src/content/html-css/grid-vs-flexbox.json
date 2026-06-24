@@ -1,0 +1,30 @@
+{
+  "id": "grid-vs-flexbox",
+  "title": "Grid vs Flexbox",
+  "difficulty": "Intermediate",
+  "definition": "Understanding when to use CSS Grid (2-Dimensional) versus Flexbox (1-Dimensional).",
+  "simpleExplanation": "Use Flexbox when you have a row of items (like a navbar) and you just want to space them out evenly without caring about exact widths. Use Grid when you want to explicitly define the entire layout of the page (Sidebar here, Header there) and lock elements into a rigid structure.",
+  "realWorldExample": "They are meant to be used together! You use CSS Grid on the `<body>` to set up the Header, Sidebar, and Main content areas. Inside the Header, you use Flexbox to align the Logo and the Profile Avatar.",
+  "useCases": [
+    "Architecting web applications"
+  ],
+  "questions": {
+    "basic": [
+      "Which one is 1-Dimensional and which is 2-Dimensional?"
+    ],
+    "intermediate": [
+      "If I want a row of tags (`#html`, `#css`) to automatically wrap to the next line when they run out of space, which should I use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "1D vs 2D?",
+      "answer": "Flexbox is 1D (operates in a single row or column). Grid is 2D (operates in rows AND columns simultaneously)."
+    },
+    {
+      "question": "Wrapping tags?",
+      "answer": "Flexbox (`flex-wrap: wrap`). You don't care about a rigid column structure here, you just want them to flow naturally like text. Flexbox is perfect for this."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. GRID for the Macro Layout (The skeleton) */\n  .app-skeleton {\n    display: grid;\n    grid-template-columns: 200px 1fr;\n    height: 150px;\n    border: 3px solid black;\n  }\n\n  .sidebar { background: #333; color: white; padding: 10px; }\n  .main { background: #f4f4f5; display: flex; flex-direction: column; }\n\n  /* 2. FLEXBOX for the Micro Layout (The header inside main) */\n  .navbar {\n    display: flex;\n    justify-content: space-between; /* Pushes items apart */\n    align-items: center;\n    background: white;\n    padding: 10px 20px;\n    border-bottom: 2px solid #ddd;\n  }\n\n  .btn { background: #2563eb; color: white; padding: 5px 15px; border-radius: 4px; }\n</style>\n\n<p>A classic combination: Grid builds the walls, Flexbox arranges the furniture.</p>\n\n<div class=\"app-skeleton\">\n  \n  <div class=\"sidebar\">Sidebar (Grid Col 1)</div>\n  \n  <div class=\"main\">\n    <!-- This navbar is inside Grid Col 2, but uses Flexbox itself! -->\n    <div class=\"navbar\">\n      <strong>Logo</strong>\n      <div class=\"btn\">Login</div>\n    </div>\n    \n    <div style=\"padding: 20px;\">Main content goes here...</div>\n  </div>\n\n</div>"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "token-usage",
+  "title": "Token Usage",
+  "difficulty": "Beginner",
+  "definition": "The primary metric used to track the computational cost of using Cloud AI APIs. It tracks both the number of tokens sent in the prompt and the number of tokens generated in the response.",
+  "simpleExplanation": "The meter on a taxi cab. The more words you type, and the more words the AI types back to you, the higher the meter goes, and the more you pay OpenAI or Google at the end of the month.",
+  "realWorldExample": "A developer writes an app that summarizes 100-page legal documents. Because the input prompts are so massive (thousands of tokens), the token usage skyrockets, and the app costs $5.00 per query to run.",
+  "useCases": [
+    "Cost optimization",
+    "System architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Do API providers charge you for the words you type (Input), the words the AI types (Output), or both?"
+    ],
+    "intermediate": [
+      "Which is usually more expensive: Input Tokens or Output Tokens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are you charged for?",
+      "answer": "Both. You are charged for every token processed by the system."
+    },
+    {
+      "question": "Which is more expensive?",
+      "answer": "Output Tokens are usually 2x to 3x more expensive than Input tokens. Reading text is computationally easier for the AI than generating brand new text."
+    }
+  ]
+}

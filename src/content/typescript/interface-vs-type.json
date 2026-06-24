@@ -1,0 +1,34 @@
+{
+  "id": "interface-vs-type",
+  "title": "Interface vs Type Alias",
+  "difficulty": "Intermediate",
+  "definition": "The two primary ways to name a type in TypeScript. For most use cases they are functionally identical, but they have subtle differences in syntax, merging, and extending.",
+  "simpleExplanation": "They are like two different brands of wrenches. 95% of the time, it doesn't matter which one you use to turn the bolt. The main difference is: Interfaces are open (you can add more to them later), and Types are closed (once defined, they cannot be mutated).",
+  "realWorldExample": "In React, many teams prefer `type Props = {}` for component props because they don't need to be extended later, but prefer `interface User {}` for global data models that might be augmented by third-party libraries.",
+  "useCases": [
+    "Team coding standards",
+    "Library authoring"
+  ],
+  "questions": {
+    "basic": [
+      "What is one thing a `type` can do that an `interface` cannot?"
+    ],
+    "intermediate": [
+      "What is Declaration Merging and which one supports it?"
+    ],
+    "advanced": [
+      "How do error messages differ when using complex Interfaces vs Types?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What can a type do that an interface cannot?",
+      "answer": "A `type` can represent Union types (`type Status = 'open' | 'closed'`) and primitive aliases (`type ID = string`). An `interface` can ONLY represent the shape of an object."
+    },
+    {
+      "question": "Which one supports Declaration Merging?",
+      "answer": "Only `interface`. If you write `interface Window { title: string }` twice, TS merges them. If you write `type Window = ...` twice, TS throws a 'Duplicate identifier' error."
+    }
+  ],
+  "codeExample": "// 1. SYNTAX DIFFERENCE\ninterface UserI {\n  name: string;\n}\ntype UserT = {\n  name: string;\n};\n\n// 2. EXTENDING DIFFERENCE\ninterface AdminI extends UserI { role: string; }\ntype AdminT = UserT & { role: string }; // Uses Intersection (&)\n\n// 3. CAPABILITY DIFFERENCE (Only Types can do Unions)\ntype ID = string | number;\n// interface ID = string | number; // ERROR: Interfaces must be objects\n\n// 4. MERGING DIFFERENCE (Only Interfaces can merge)\ninterface Car { wheels: number; }\ninterface Car { doors: number; }\n// Car now requires both wheels and doors!\n\n// type Bike = { wheels: number };\n// type Bike = { gears: number }; // ERROR: Duplicate identifier"
+}

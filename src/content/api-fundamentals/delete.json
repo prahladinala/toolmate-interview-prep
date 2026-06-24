@@ -1,0 +1,31 @@
+{
+  "id": "delete",
+  "title": "DELETE",
+  "difficulty": "Beginner",
+  "definition": "An HTTP method used to delete the specified resource from the server.",
+  "simpleExplanation": "Exactly what it sounds like. You tell the server an ID, and the server destroys it.",
+  "realWorldExample": "A user clicks the trash can icon next to a comment they wrote. The client sends `DELETE /api/comments/123`. The server removes it from the database.",
+  "useCases": [
+    "Removing database records",
+    "Canceling subscriptions"
+  ],
+  "questions": {
+    "basic": [
+      "Should a DELETE request have a Request Body?"
+    ],
+    "intermediate": [
+      "What HTTP Status code should a server return after successfully deleting a resource?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Have a body?",
+      "answer": "Generally, no. The URL itself should contain all the information needed (e.g., the ID of the item to delete). Sending a body with a DELETE request is highly discouraged."
+    },
+    {
+      "question": "Which status code?",
+      "answer": "`200 OK` (if you want to return a JSON message), or `204 No Content` (if you deleted it and have absolutely nothing else to say to the client)."
+    }
+  ],
+  "codeExample": "// Node.js Express Example for handling a DELETE request\napp.delete('/api/users/:id', async (req, res) => {\n  const userId = req.params.id;\n  \n  // Check if user has permission to delete this!\n  if (req.user.role !== 'Admin') {\n    return res.status(403).send('Forbidden');\n  }\n  \n  // Execute the deletion\n  await db.users.delete({ where: { id: userId } });\n  \n  // 204 means \"Success, but I have no data to send back to you\"\n  res.status(204).send();\n});"
+}

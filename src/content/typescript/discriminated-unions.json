@@ -1,0 +1,35 @@
+{
+  "id": "discriminated-unions",
+  "title": "Discriminated Unions",
+  "difficulty": "Advanced",
+  "definition": "A pattern where you combine Union Types with a common, literal 'discriminant' property. This allows TypeScript to definitively narrow down which object type it is dealing with.",
+  "simpleExplanation": "Imagine a box that either contains a Dog or a Bird. Both are 'Animals'. To figure out what's inside safely, you label the box with a `type: 'dog'` or `type: 'bird'` tag. TypeScript reads this tag (the discriminant), and instantly knows, 'Ah, it's a Bird, so it must have a wingspan property.'",
+  "realWorldExample": "Handling Redux actions! Every action has a `type` string (e.g., 'ADD_TODO'). TS looks at the `type`, and correctly infers what data should be in the `payload`.",
+  "useCases": [
+    "Redux Actions",
+    "Handling diverse API response schemas",
+    "State machines"
+  ],
+  "questions": {
+    "basic": [
+      "What is the 'discriminant' property?"
+    ],
+    "intermediate": [
+      "How do you narrow a discriminated union?"
+    ],
+    "advanced": [
+      "How do you ensure Exhaustiveness Checking using the `never` type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the discriminant?",
+      "answer": "It is a shared property across all objects in the union (usually called `type`, `kind`, or `status`) whose value is a unique String Literal. It acts as the ID tag for that specific shape."
+    },
+    {
+      "question": "How do you narrow it?",
+      "answer": "By using a `switch` or `if` statement on the discriminant property. Inside `case 'dog':`, TS narrows the union and allows access to Dog-specific properties."
+    }
+  ],
+  "codeExample": "interface Circle { kind: \"circle\"; radius: number; }\ninterface Square { kind: \"square\"; sideLength: number; }\ninterface Rectangle { kind: \"rectangle\"; width: number; height: number; }\n\n// The Union\ntype Shape = Circle | Square | Rectangle;\n\nfunction getArea(shape: Shape) {\n  // TypeScript doesn't know what shape it is yet.\n  // console.log(shape.radius); // Error!\n\n  switch (shape.kind) {\n    case \"circle\":\n      // TS knows 100% it's a circle here\n      return Math.PI * shape.radius ** 2;\n    case \"square\":\n      // TS knows 100% it's a square here\n      return shape.sideLength ** 2;\n    case \"rectangle\":\n      return shape.width * shape.height;\n    default:\n      // EXHAUSTIVENESS CHECKING:\n      // If someone adds a 'Triangle' to the Shape union but forgets to \n      // add a case here, TS throws an error because Triangle cannot be assigned to never.\n      const _exhaustiveCheck: never = shape;\n      return _exhaustiveCheck;\n  }\n}"
+}

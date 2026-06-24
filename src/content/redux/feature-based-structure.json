@@ -1,0 +1,31 @@
+{
+  "id": "feature-based-structure",
+  "title": "Feature-Based Structure",
+  "difficulty": "Beginner",
+  "definition": "An organizational pattern where files are grouped by feature (e.g., Auth, Cart, Products) rather than by file type (e.g., Actions, Reducers, Components).",
+  "simpleExplanation": "In the old days, you had an `actions` folder, a `reducers` folder, and a `components` folder. To edit the Shopping Cart, you had to open 3 different folders and jump between 3 files. Feature-based structure puts `CartComponent.js` and `cartSlice.js` together in one `features/cart/` folder.",
+  "realWorldExample": "The official recommendation by the Redux team. If you delete the `cart` folder, the entire cart feature is cleanly removed from the app without leaving orphaned code behind.",
+  "useCases": [
+    "Project organization",
+    "Scaling codebases"
+  ],
+  "questions": {
+    "basic": [
+      "What is the opposite of Feature-Based folder structure?"
+    ],
+    "intermediate": [
+      "What is the 'Ducks' pattern?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Opposite?",
+      "answer": "Type-Based (or File-Type) folder structure (e.g., grouping all reducers in one folder)."
+    },
+    {
+      "question": "Ducks pattern?",
+      "answer": "A sub-pattern of feature-based architecture where all Redux logic (actions, types, and reducers) for a specific feature is bundled into a single file, rather than split across multiple files. RTK `createSlice` inherently enforces the Ducks pattern."
+    }
+  ],
+  "codeExample": "/*\n  ❌ BAD: Type-Based Structure (Hard to maintain)\n  src/\n    actions/\n      authActions.js\n      cartActions.js\n    reducers/\n      authReducer.js\n      cartReducer.js\n    components/\n      Login.jsx\n      Cart.jsx\n\n  ✅ GOOD: Feature-Based Structure (Easy to maintain)\n  src/\n    features/\n      auth/\n        Login.jsx\n        authSlice.js\n      cart/\n        Cart.jsx\n        cartSlice.js\n*/"
+}

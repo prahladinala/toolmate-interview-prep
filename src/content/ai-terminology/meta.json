@@ -1,0 +1,204 @@
+{
+  "id": "ai-terminology",
+  "title": "AI Terminology",
+  "description": "Master Artificial Intelligence concepts from fundamentals to advanced Generative AI, LLMs, AI Agents, RAG, Fine-Tuning, and Production AI Systems. Ideal for developers, AI engineers, and technical interviews.",
+  "icon": "ai",
+  "categories": [
+    {
+      "id": "ai-fundamentals",
+      "title": "AI Fundamentals",
+      "topics": [
+        { "id": "what-is-ai", "title": "What is Artificial Intelligence?" },
+        { "id": "ai-vs-ml-vs-dl", "title": "AI vs ML vs Deep Learning" },
+        { "id": "types-of-ai", "title": "Types of AI" },
+        { "id": "narrow-vs-general-ai", "title": "Narrow AI vs AGI" },
+        { "id": "supervised-learning", "title": "Supervised Learning" },
+        { "id": "unsupervised-learning", "title": "Unsupervised Learning" },
+        { "id": "reinforcement-learning", "title": "Reinforcement Learning" }
+      ]
+    },
+    {
+      "id": "machine-learning",
+      "title": "Machine Learning Basics",
+      "topics": [
+        { "id": "training-data", "title": "Training Data" },
+        { "id": "features", "title": "Features" },
+        { "id": "labels", "title": "Labels" },
+        { "id": "model", "title": "Model" },
+        { "id": "training", "title": "Training" },
+        { "id": "inference", "title": "Inference" },
+        { "id": "hyperparameters", "title": "Hyperparameters" },
+        { "id": "epochs", "title": "Epochs" },
+        { "id": "batch-size", "title": "Batch Size" },
+        { "id": "learning-rate", "title": "Learning Rate" }
+      ]
+    },
+    {
+      "id": "deep-learning",
+      "title": "Deep Learning",
+      "topics": [
+        { "id": "neural-network", "title": "Neural Networks" },
+        { "id": "layers", "title": "Input, Hidden & Output Layers" },
+        { "id": "weights-biases", "title": "Weights & Biases" },
+        { "id": "activation-functions", "title": "Activation Functions" },
+        { "id": "backpropagation", "title": "Backpropagation" },
+        { "id": "gradient-descent", "title": "Gradient Descent" },
+        { "id": "cnn", "title": "Convolutional Neural Networks (CNN)" },
+        { "id": "rnn", "title": "Recurrent Neural Networks (RNN)" }
+      ]
+    },
+    {
+      "id": "nlp",
+      "title": "Natural Language Processing (NLP)",
+      "topics": [
+        { "id": "nlp-basics", "title": "What is NLP?" },
+        { "id": "tokenization", "title": "Tokenization" },
+        { "id": "stemming", "title": "Stemming" },
+        { "id": "lemmatization", "title": "Lemmatization" },
+        { "id": "named-entity-recognition", "title": "Named Entity Recognition (NER)" },
+        { "id": "sentiment-analysis", "title": "Sentiment Analysis" },
+        { "id": "text-classification", "title": "Text Classification" }
+      ]
+    },
+    {
+      "id": "llm-fundamentals",
+      "title": "Large Language Models (LLMs)",
+      "topics": [
+        { "id": "what-is-llm", "title": "What is an LLM?" },
+        { "id": "transformers", "title": "Transformer Architecture" },
+        { "id": "attention-mechanism", "title": "Attention Mechanism" },
+        { "id": "self-attention", "title": "Self Attention" },
+        { "id": "context-window", "title": "Context Window" },
+        { "id": "tokens", "title": "Tokens" },
+        { "id": "embeddings", "title": "Embeddings" },
+        { "id": "vector-representations", "title": "Vector Representations" }
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "topics": [
+        { "id": "prompt", "title": "Prompt" },
+        { "id": "system-prompt", "title": "System Prompt" },
+        { "id": "user-prompt", "title": "User Prompt" },
+        { "id": "few-shot", "title": "Few-Shot Prompting" },
+        { "id": "zero-shot", "title": "Zero-Shot Prompting" },
+        { "id": "chain-of-thought", "title": "Chain of Thought" },
+        { "id": "prompt-chaining", "title": "Prompt Chaining" }
+      ]
+    },
+    {
+      "id": "generative-ai",
+      "title": "Generative AI",
+      "topics": [
+        { "id": "genai", "title": "Generative AI" },
+        { "id": "text-generation", "title": "Text Generation" },
+        { "id": "image-generation", "title": "Image Generation" },
+        { "id": "multimodal-ai", "title": "Multimodal AI" },
+        { "id": "diffusion-models", "title": "Diffusion Models" },
+        { "id": "hallucination", "title": "Hallucinations" },
+        { "id": "temperature", "title": "Temperature" }
+      ]
+    },
+    {
+      "id": "rag",
+      "title": "RAG (Retrieval Augmented Generation)",
+      "topics": [
+        { "id": "what-is-rag", "title": "What is RAG?" },
+        { "id": "retrieval", "title": "Retrieval" },
+        { "id": "vector-database", "title": "Vector Database" },
+        { "id": "similarity-search", "title": "Similarity Search" },
+        { "id": "chunking", "title": "Chunking" },
+        { "id": "embedding-models", "title": "Embedding Models" },
+        { "id": "reranking", "title": "Re-ranking" }
+      ]
+    },
+    {
+      "id": "fine-tuning",
+      "title": "Fine-Tuning & Training",
+      "topics": [
+        { "id": "fine-tuning", "title": "Fine-Tuning" },
+        { "id": "instruction-tuning", "title": "Instruction Tuning" },
+        { "id": "transfer-learning", "title": "Transfer Learning" },
+        { "id": "lora", "title": "LoRA" },
+        { "id": "qlora", "title": "QLoRA" },
+        { "id": "rlhf", "title": "RLHF" },
+        { "id": "sft", "title": "Supervised Fine Tuning (SFT)" }
+      ]
+    },
+    {
+      "id": "ai-agents",
+      "title": "AI Agents",
+      "topics": [
+        { "id": "what-is-agent", "title": "AI Agent" },
+        { "id": "agentic-ai", "title": "Agentic AI" },
+        { "id": "tool-calling", "title": "Tool Calling" },
+        { "id": "function-calling", "title": "Function Calling" },
+        { "id": "agent-memory", "title": "Agent Memory" },
+        { "id": "multi-agent-systems", "title": "Multi-Agent Systems" },
+        { "id": "planning", "title": "Planning & Reasoning" }
+      ]
+    },
+    {
+      "id": "vector-databases",
+      "title": "Vector Databases",
+      "topics": [
+        { "id": "pinecone", "title": "Pinecone" },
+        { "id": "weaviate", "title": "Weaviate" },
+        { "id": "chroma", "title": "ChromaDB" },
+        { "id": "faiss", "title": "FAISS" },
+        { "id": "vector-search", "title": "Vector Search" },
+        { "id": "cosine-similarity", "title": "Cosine Similarity" }
+      ]
+    },
+    {
+      "id": "evaluation",
+      "title": "AI Evaluation",
+      "topics": [
+        { "id": "accuracy", "title": "Accuracy" },
+        { "id": "precision", "title": "Precision" },
+        { "id": "recall", "title": "Recall" },
+        { "id": "f1-score", "title": "F1 Score" },
+        { "id": "benchmarking", "title": "Benchmarking" },
+        { "id": "latency", "title": "Latency" },
+        { "id": "token-usage", "title": "Token Usage" }
+      ]
+    },
+    {
+      "id": "ai-security",
+      "title": "AI Security & Safety",
+      "topics": [
+        { "id": "prompt-injection", "title": "Prompt Injection" },
+        { "id": "jailbreaking", "title": "Jailbreaking" },
+        { "id": "data-leakage", "title": "Data Leakage" },
+        { "id": "bias", "title": "Bias in AI" },
+        { "id": "ai-safety", "title": "AI Safety" },
+        { "id": "guardrails", "title": "Guardrails" }
+      ]
+    },
+    {
+      "id": "ai-production",
+      "title": "Production AI Systems",
+      "topics": [
+        { "id": "llmops", "title": "LLMOps" },
+        { "id": "model-serving", "title": "Model Serving" },
+        { "id": "monitoring", "title": "Monitoring" },
+        { "id": "observability", "title": "Observability" },
+        { "id": "caching-llms", "title": "LLM Caching" },
+        { "id": "cost-optimization", "title": "Cost Optimization" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "ai-beginner", "title": "Beginner Questions" },
+        { "id": "llm-interview", "title": "LLM Questions" },
+        { "id": "rag-interview", "title": "RAG Questions" },
+        { "id": "agent-interview", "title": "AI Agent Questions" },
+        { "id": "genai-interview", "title": "Generative AI Questions" },
+        { "id": "scenario-based-ai", "title": "Scenario-Based Questions" }
+      ]
+    }
+  ]
+}

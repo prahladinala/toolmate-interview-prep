@@ -1,0 +1,30 @@
+{
+  "id": "multi-container-apps",
+  "title": "Multi-Container Applications",
+  "difficulty": "Intermediate",
+  "definition": "The microservices architectural pattern where different components of a single application (e.g., UI, Backend, Cache, Database) are split into separate, distinct containers rather than crammed into one massive container.",
+  "simpleExplanation": "Don't put the kitchen and the bathroom in the same room. By separating the database into its own box and the web server into its own box, you can update or scale the web server without touching the database.",
+  "realWorldExample": "A modern web app architecture running via Docker Compose: Service 1 (Nginx Load Balancer), Service 2 (Node.js API), Service 3 (Redis Cache), Service 4 (MongoDB).",
+  "useCases": [
+    "Microservices",
+    "Scalable architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Why shouldn't you just install React, Node, and MySQL all into a single Dockerfile and run it as one container?"
+    ],
+    "intermediate": [
+      "How does a multi-container architecture make scaling easier?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not one container?",
+      "answer": "It violates the core philosophy of Docker (Separation of Concerns). Cramming everything into one box makes the image massive, incredibly difficult to update, impossible to monitor, and prone to catastrophic crashes."
+    },
+    {
+      "question": "How does it help scaling?",
+      "answer": "If your website gets a huge spike in traffic, the Database might be fine, but the Web Server gets overwhelmed. If they are in separate containers, you can spin up 10 extra Web Server containers to handle the traffic, without needing to duplicate the Database."
+    }
+  ]
+}

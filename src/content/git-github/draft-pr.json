@@ -1,0 +1,31 @@
+{
+  "id": "draft-pr",
+  "title": "Draft Pull Requests",
+  "difficulty": "Beginner",
+  "definition": "A special state for a Pull Request that clearly indicates the code is a work in progress, preventing it from being accidentally merged and suppressing review notifications.",
+  "simpleExplanation": "Sometimes you want to show your code to a coworker to ask a question, but the code is half-broken and not ready to be officially reviewed. You open it as a 'Draft'. The merge button is greyed out and physically locked so nobody can accidentally deploy your broken code.",
+  "realWorldExample": "Opening a Draft PR at the start of the week just to use it as a checklist, and clicking 'Ready for Review' on Friday when you finish the feature.",
+  "useCases": [
+    "Early feedback",
+    "Preventing accidental merges of unfinished code"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Draft PR be merged?"
+    ],
+    "intermediate": [
+      "Does opening a Draft PR trigger notifications to code owners?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it be merged?",
+      "answer": "No. The merge button is completely disabled. You must explicitly click 'Ready for review' to convert it into a normal PR before it can be merged."
+    },
+    {
+      "question": "Trigger notifications?",
+      "answer": "No. That is one of the main benefits. It doesn't spam your senior developers with emails until you officially mark it as ready."
+    }
+  ],
+  "codeExample": "/*\n  How to create a Draft PR:\n  \n  1. Push your branch to GitHub.\n  2. Click 'Compare & pull request'.\n  3. Instead of clicking the big green 'Create pull request' button,\n     click the little dropdown arrow next to it.\n  4. Select 'Create draft pull request'.\n*/"
+}

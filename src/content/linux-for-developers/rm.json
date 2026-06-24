@@ -1,0 +1,30 @@
+{
+  "id": "rm",
+  "title": "rm",
+  "difficulty": "Beginner",
+  "definition": "Remove. The command used to permanently delete files or directories.",
+  "simpleExplanation": "The delete button, but with no recycle bin. Once a file is gone, it is gone forever.",
+  "realWorldExample": "You want to delete an old log file. You type `rm old.log`. The file is permanently destroyed.",
+  "useCases": [
+    "Cleaning up disk space",
+    "Deleting unwanted code"
+  ],
+  "questions": {
+    "basic": [
+      "If you `rm` a file, can you easily recover it from the Trash/Recycle Bin?"
+    ],
+    "intermediate": [
+      "What does the infamous command `rm -rf /` do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Recover from trash?",
+      "answer": "No. The `rm` command bypasses the trash entirely and permanently unlinks the file from the disk."
+    },
+    {
+      "question": "What does rm -rf / do?",
+      "answer": "It is the self-destruct sequence. `-r` means recursively delete all folders. `-f` means force (don't ask for confirmation). `/` is the root of the computer. It literally deletes the entire operating system and all your data."
+    }
+  ]
+}

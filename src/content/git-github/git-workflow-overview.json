@@ -1,0 +1,30 @@
+{
+  "id": "git-workflow-overview",
+  "title": "Git Workflow Overview",
+  "difficulty": "Beginner",
+  "definition": "The conceptual journey a file takes in Git: from the Working Directory, to the Staging Area, and finally into the Git Repository (.git directory).",
+  "simpleExplanation": "1. You write code in your editor (Working Directory). \n2. You pick exactly which files you want to save, and put them in a 'box' (Staging Area). \n3. You tape the box shut, write a label on it, and put it in the storage room (Repository).",
+  "realWorldExample": "Packing for a trip. The Working Directory is your messy bedroom. The Staging Area is the suitcase open on your bed where you are placing clothes. The Commit is when you zip the suitcase shut.",
+  "useCases": [
+    "Understanding the mental model of Git"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three main states that your files can reside in?"
+    ],
+    "intermediate": [
+      "Why does the Staging Area exist?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Three main states?",
+      "answer": "Modified (Working Directory), Staged (Staging Area), and Committed (Repository)."
+    },
+    {
+      "question": "Why a Staging Area?",
+      "answer": "It allows you to group related changes together. If you edited 10 files, but 5 are for a 'Login Bug' and 5 are for a 'Color Change', you don't want to save them all at once. The staging area lets you stage and commit just the 5 login files, and then do a separate commit for the color changes."
+    }
+  ],
+  "codeExample": "/*\n  THE THREE TREES OF GIT:\n  \n  1. Working Directory \n     (You edit files here)\n          ↓\n     `git add`\n          ↓\n  2. Staging Area (Index)\n     (Files ready to be saved)\n          ↓\n     `git commit`\n          ↓\n  3. .git Repository\n     (Files permanently saved in history)\n*/"
+}

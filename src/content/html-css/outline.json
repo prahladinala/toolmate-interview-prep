@@ -1,0 +1,31 @@
+{
+  "id": "outline",
+  "title": "Outline vs Border",
+  "difficulty": "Intermediate",
+  "definition": "An `outline` is a line drawn outside the element's border edge to make the element stand out. Unlike borders, outlines do not take up space in the document flow.",
+  "simpleExplanation": "A Border is part of the physical Box Model. If you add a 10px border to a box, the box becomes 10px wider, pushing other elements away. An Outline is drawn *on top* of the screen, completely ignoring physics. Adding a 10px outline doesn't move any surrounding elements.",
+  "realWorldExample": "When you use the 'Tab' key to navigate a webpage, the browser draws a blue ring around the focused button. That is an `outline`. If it were a `border`, the button would physically grow in size when focused, causing the whole webpage to jiggle.",
+  "useCases": [
+    "Accessibility focus rings",
+    "Debugging layouts (because it doesn't break the layout)"
+  ],
+  "questions": {
+    "basic": [
+      "Does an `outline` affect the width or height of an element?"
+    ],
+    "intermediate": [
+      "Can you apply an outline to just one side of an element (like `border-bottom`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Affect width?",
+      "answer": "No. It is drawn outside the element's dimensions and does not affect the layout or push other elements away."
+    },
+    {
+      "question": "Just one side?",
+      "answer": "No. Unlike borders, outlines must go around the entire element. There is no `outline-top` property."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 100px;\n    height: 100px;\n    background: lightgray;\n    display: inline-block;\n    margin: 20px;\n    text-align: center;\n    line-height: 100px;\n  }\n\n  /* Adding a border INCREASES the physical size of the box */\n  /* Notice how it pushes the box down compared to the others! */\n  .border-box {\n    border: 10px solid blue;\n  }\n\n  /* Adding an outline draws ON TOP of the screen */\n  /* The physical size of the box remains exactly 100x100 */\n  .outline-box {\n    outline: 10px solid red;\n  }\n\n  /* You can offset the outline away from the border! */\n  .offset-box {\n    border: 2px solid black;\n    outline: 4px solid green;\n    outline-offset: 10px;\n  }\n</style>\n\n<div class=\"box\">Normal</div>\n<div class=\"box border-box\">Border</div>\n<div class=\"box outline-box\">Outline</div>\n<br><br>\n<div class=\"box offset-box\">Offset</div>"
+}

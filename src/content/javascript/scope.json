@@ -1,0 +1,45 @@
+{
+  "id": "scope",
+  "title": "Scope",
+  "difficulty": "Beginner",
+  "definition": "Scope determines the accessibility (visibility) of variables, objects, and functions from different parts of the code. JavaScript has Global scope, Function scope, and Block scope.",
+  "simpleExplanation": "Think of scope like rooms in a house with one-way glass doors. If you are in a small inner room (block/function scope), you can see out into the living room (global scope) and use things there. But someone in the living room cannot look into your small inner room and use your things.",
+  "realWorldExample": "If you define a variable `password` inside a `login()` function, the rest of the application (outside the function) has no idea that the `password` variable exists. It's safe inside its room.",
+  "useCases": [
+    "Preventing variable naming collisions",
+    "Keeping internal states private",
+    "Managing memory efficiently by discarding variables when the scope ends"
+  ],
+  "questions": {
+    "basic": [
+      "What is Global Scope?",
+      "What is the difference between Function Scope and Block Scope?"
+    ],
+    "intermediate": [
+      "What is Lexical Scope?",
+      "How do var, let, and const behave differently with respect to scope?"
+    ],
+    "advanced": [
+      "What is the Scope Chain?",
+      "How does scope relate to closures?"
+    ],
+    "trick": [
+      "Can a variable declared with var inside an if-statement be accessed outside of it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between Function and Block Scope?",
+      "answer": "Function scope means a variable is only accessible within the function it was declared in. Block scope (introduced with let and const) means a variable is only accessible within the curly braces {} it was declared in, like inside an if-statement or loop."
+    },
+    {
+      "question": "What is the Scope Chain?",
+      "answer": "When JavaScript needs to find a variable, it looks in the current scope. If it doesn't find it, it goes one level up to the outer scope, and continues up until it reaches the Global scope. This path is the scope chain."
+    },
+    {
+      "question": "Can a var inside an if-statement be accessed outside?",
+      "answer": "Yes. 'var' is function-scoped, not block-scoped. So an if-statement block does not trap a 'var' declaration, allowing it to be accessed outside the block."
+    }
+  ],
+  "codeExample": "const globalVar = 'I am global';\n\nfunction checkScope() {\n  const functionVar = 'I am in a function';\n  \n  if (true) {\n    let blockVar = 'I am in a block';\n    var fakeBlockVar = 'I am var, I escape blocks!';\n    \n    console.log(globalVar); // Accessible\n    console.log(functionVar); // Accessible\n  }\n  \n  // console.log(blockVar); // Error! blockVar is not defined here\n  console.log(fakeBlockVar); // Works! var escapes the if-block\n}\n\ncheckScope();"
+}

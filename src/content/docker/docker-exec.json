@@ -1,0 +1,30 @@
+{
+  "id": "docker-exec",
+  "title": "docker exec",
+  "difficulty": "Intermediate",
+  "definition": "The CLI command that runs a new, secondary command inside an already running container. It is the primary tool used for entering a live container to debug it.",
+  "simpleExplanation": "Opening a magical trapdoor into a running box. You can step inside the container, walk around, look at the files, and run commands, all while the main app continues to run undisturbed.",
+  "realWorldExample": "A database container is running. You want to check the tables. You type `docker exec -it my-db bash`. You are instantly transported into the container's terminal, where you can run SQL commands directly.",
+  "useCases": [
+    "Live debugging",
+    "Manual database backups"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use `docker exec` to enter a container that is currently Stopped?"
+    ],
+    "intermediate": [
+      "What do the `-i` and `-t` flags do in `docker exec -it`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Enter stopped container?",
+      "answer": "No. The container must be actively running for `exec` to work."
+    },
+    {
+      "question": "What are -i and -t?",
+      "answer": "`-i` (Interactive) keeps the input stream open so you can type. `-t` (TTY) allocates a pseudo-terminal so the output looks like a normal, formatted command prompt."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "nano",
+  "title": "Nano",
+  "difficulty": "Beginner",
+  "definition": "A simple, user-friendly, modeless terminal-based text editor. It is designed to be highly intuitive for beginners who find Vim too complex.",
+  "simpleExplanation": "The Notepad of the terminal. You open a file, you start typing immediately, and the instructions on how to save and exit are permanently displayed at the bottom of the screen.",
+  "realWorldExample": "A beginner needs to change an IP address. They type `nano config.txt`. They use the arrow keys to move the cursor, delete the IP, type the new one, and press `Ctrl+O` to save, and `Ctrl+X` to exit.",
+  "useCases": [
+    "Quick, simple file edits",
+    "Beginner-friendly server administration"
+  ],
+  "questions": {
+    "basic": [
+      "In Nano, when the instructions at the bottom say `^X Exit`, what does the `^` symbol mean?"
+    ],
+    "intermediate": [
+      "Why do advanced system administrators usually prefer Vim over Nano?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is ^?",
+      "answer": "It represents the `Ctrl` (Control) key on your keyboard. So `^X` means `Ctrl + X`."
+    },
+    {
+      "question": "Why prefer Vim?",
+      "answer": "Nano is painfully slow for large files or complex edits. Vim has powerful commands for searching, jumping to specific lines, mass-replacing text, and executing macros, making it exponentially faster for advanced users."
+    }
+  ]
+}

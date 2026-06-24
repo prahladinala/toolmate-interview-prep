@@ -1,0 +1,32 @@
+{
+  "id": "what-is-graphql",
+  "title": "What is GraphQL?",
+  "difficulty": "Intermediate",
+  "definition": "A query language for your API, and a server-side runtime for executing queries. Developed by Facebook, it allows clients to request exactly the data they need and nothing more.",
+  "simpleExplanation": "In REST, the server decides what data to give you. If you ask for a User, you get 50 fields of data even if you only wanted their name. In GraphQL, the CLIENT decides. The client sends a query saying 'Give me User 1, but ONLY give me their name'. The server returns exactly that.",
+  "realWorldExample": "Facebook News Feed. To render the feed in REST, the app would have to fetch the posts, then fetch the authors for each post, then fetch the likes for each post (Overfetching and Underfetching). With GraphQL, the app sends one massive, specific query, and gets all the nested data back in one trip.",
+  "useCases": [
+    "Complex UI data requirements",
+    "Mobile bandwidth saving",
+    "Microservice aggregation"
+  ],
+  "questions": {
+    "basic": [
+      "Who originally created the GraphQL specification?"
+    ],
+    "intermediate": [
+      "What problem does GraphQL solve regarding 'Overfetching'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Who created?",
+      "answer": "Facebook (in 2012, open-sourced in 2015)."
+    },
+    {
+      "question": "What is Overfetching?",
+      "answer": "Overfetching is when an API returns way more data than the client actually needs (wasting bandwidth and mobile data). GraphQL completely eliminates this because the client specifies the exact fields it wants."
+    }
+  ],
+  "codeExample": "/* \n  The beauty of GraphQL: The response shape matches the query shape exactly. \n*/\n\n// The Client's Query (Sent via POST body)\nquery {\n  user(id: 123) {\n    name\n    email\n    posts(limit: 2) {\n      title\n    }\n  }\n}\n\n// The Server's Response (No age, no password, no extra junk. Just what was asked for.)\n{\n  \"data\": {\n    \"user\": {\n      \"name\": \"John\",\n      \"email\": \"john@test.com\",\n      \"posts\": [\n        { \"title\": \"Hello World\" },\n        { \"title\": \"GraphQL is cool\" }\n      ]\n    }\n  }\n}"
+}

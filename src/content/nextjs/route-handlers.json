@@ -1,0 +1,32 @@
+{
+  "id": "route-handlers",
+  "title": "Route Handlers",
+  "difficulty": "Intermediate",
+  "definition": "The App Router equivalent of API Routes. They allow you to create custom REST API endpoints directly within your Next.js application.",
+  "simpleExplanation": "You don't need to build a separate Express.js backend. You create a file named `route.ts`. If someone makes an HTTP request to that folder's URL, your `route.ts` file acts as the backend server, returning JSON data instead of HTML.",
+  "realWorldExample": "Building an endpoint at `/api/webhooks/stripe` that listens for payment success messages from Stripe's servers.",
+  "useCases": [
+    "Building public APIs",
+    "Handling Webhooks",
+    "Mobile app backends"
+  ],
+  "questions": {
+    "basic": [
+      "What exact file name must be used to create an API endpoint in the App Router?"
+    ],
+    "intermediate": [
+      "Can you put a `page.tsx` and a `route.ts` in the exact same folder?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "File name?",
+      "answer": "`route.ts` (or `.js`)."
+    },
+    {
+      "question": "In the same folder?",
+      "answer": "No! A folder represents a single URL. A URL cannot simultaneously return an HTML webpage (`page.tsx`) AND raw JSON data (`route.ts`). They will conflict. API routes usually live in an `app/api/...` folder structure."
+    }
+  ],
+  "codeExample": "/* \n  File Path: app/api/hello/route.ts \n  URL: GET http://localhost:3000/api/hello\n*/\n\n// You must explicitly name the exported function after the HTTP method\nexport async function GET(request: Request) {\n  \n  // Do backend stuff (e.g., talk to a database)\n  const data = { message: \"Hello from the Next.js backend!\" };\n  \n  // Return a standard Web Response object\n  return Response.json(data, { status: 200 });\n}"
+}

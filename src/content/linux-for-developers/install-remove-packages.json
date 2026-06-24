@@ -1,0 +1,30 @@
+{
+  "id": "install-remove-packages",
+  "title": "Install & Remove Packages",
+  "difficulty": "Beginner",
+  "definition": "The standard operational commands used to manage the lifecycle of software on a Linux system.",
+  "simpleExplanation": "How to get apps and how to delete apps.",
+  "realWorldExample": "To install Node.js on Ubuntu: `sudo apt install nodejs`. To delete it when you are done: `sudo apt remove nodejs`.",
+  "useCases": [
+    "System administration",
+    "Setting up dev environments"
+  ],
+  "questions": {
+    "basic": [
+      "Do you generally need `sudo` privileges to install software globally on a Linux machine?"
+    ],
+    "intermediate": [
+      "What is the difference between `apt remove` and `apt purge`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need sudo?",
+      "answer": "Yes. Installing software modifies system-wide directories (like `/usr/bin`), which requires superuser privileges."
+    },
+    {
+      "question": "remove vs purge?",
+      "answer": "`remove` deletes the main software but deliberately leaves behind all the configuration and settings files in case you ever reinstall it. `purge` violently deletes the software AND all its configuration files, completely wiping it from existence."
+    }
+  ]
+}

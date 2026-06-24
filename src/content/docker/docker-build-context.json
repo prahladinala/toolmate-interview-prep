@@ -1,0 +1,30 @@
+{
+  "id": "docker-build-context",
+  "title": "Build Context",
+  "difficulty": "Intermediate",
+  "definition": "The set of files and folders located at the specific path or URL passed to the `docker build` command. These are the ONLY files the Docker daemon has access to when executing `COPY` or `ADD` commands.",
+  "simpleExplanation": "The ingredients on the kitchen counter. If you tell the recipe to 'Add Salt', but there is no salt on the counter (in the Build Context), the build fails. Docker cannot magically reach into your other laptop folders to grab files.",
+  "realWorldExample": "If you run `docker build .` inside the `src` folder, the daemon bundles up the entire `src` folder and sends it to the Docker engine. If you try to `COPY ../secrets.txt` (a file outside the `src` folder), Docker throws an error because it is outside the build context.",
+  "useCases": [
+    "Security",
+    "Build isolation"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Dockerfile `COPY` a file from your laptop's 'Downloads' folder if your build context is set to your 'Documents' folder?"
+    ],
+    "intermediate": [
+      "Why does running `docker build .` in the root 'C:\\' drive usually crash your computer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Copy from outside?",
+      "answer": "No. The `COPY` command is strictly limited to files inside the Build Context. It has no access to the rest of your hard drive."
+    },
+    {
+      "question": "Crash the computer?",
+      "answer": "Because the first step of `docker build` is sending the ENTIRE Build Context to the daemon. If you run it on `C:\\`, Docker will attempt to copy your entire 1-Terabyte hard drive into RAM to send to the daemon, instantly freezing the system."
+    }
+  ]
+}

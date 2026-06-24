@@ -1,0 +1,32 @@
+{
+  "id": "jwt",
+  "title": "JWT Authentication",
+  "difficulty": "Intermediate",
+  "definition": "JSON Web Tokens: A compact, URL-safe means of representing claims (user data) between two parties. The data is cryptographically signed by the server, allowing it to be verified without needing to query a database.",
+  "simpleExplanation": "Instead of the server storing your login state in a database, the server gives you a mathematically sealed ID badge with your user ID written on it. You show the badge on every request. The server does math to verify the seal wasn't tampered with, and instantly knows who you are.",
+  "realWorldExample": "Microservices. The 'Auth Server' logs the user in and generates a JWT. The user takes that JWT and talks to the 'Video Server'. The Video Server doesn't need to talk to the Auth Server; it just verifies the JWT's cryptographic signature locally.",
+  "useCases": [
+    "Stateless APIs",
+    "Mobile authentication",
+    "Single Sign-On (SSO)"
+  ],
+  "questions": {
+    "basic": [
+      "Is the data payload inside a standard JWT encrypted and hidden from the user?"
+    ],
+    "intermediate": [
+      "If a JWT is stolen by a hacker, how can the server invalidate it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Encrypted?",
+      "answer": "No! It is just Base64 encoded. Anyone can decode it and read the data (like `userId` or `email`). It is SIGNED, not encrypted. The signature just proves the data hasn't been *altered*."
+    },
+    {
+      "question": "How to invalidate?",
+      "answer": "You generally can't easily. Because JWTs are stateless, the server doesn't keep a list of them. A stolen JWT remains valid until its built-in expiration date (`exp`) passes. This is why JWTs should have very short lifespans (e.g., 15 minutes), paired with a Refresh Token system."
+    }
+  ],
+  "codeExample": "/* \n  Anatomy of a JWT \n  It consists of 3 parts separated by dots: Header.Payload.Signature\n  Example: eyJhbGci.eyJ1c2VySW.SflKxwRJSMeKKF2\n*/\n\n// 1. The Header (Algorithm used)\n{ \"alg\": \"HS256\", \"typ\": \"JWT\" }\n\n// 2. The Payload (The actual data. Do not put passwords here!)\n{\n  \"userId\": 123,\n  \"role\": \"admin\",\n  \"exp\": 1716500000 // Expiration timestamp\n}\n\n// 3. The Signature\n// The server takes the Header + Payload, and hashes them together \n// using a highly secret password (SECRET_KEY) that only the server knows.\n// If a hacker alters the Payload to \"role\": \"admin\", the Signature will \n// mathematically fail verification on the server!"
+}

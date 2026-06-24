@@ -1,0 +1,32 @@
+{
+  "id": "child-process",
+  "title": "Child Processes",
+  "difficulty": "Advanced",
+  "definition": "A core Node.js module that provides the ability to spawn new OS processes, execute shell commands, and communicate with them.",
+  "simpleExplanation": "Sometimes you need Node to do something outside of JavaScript, like running a Python script, executing a bash command (`ls -la`), or starting a separate heavy Node script. The `child_process` module lets Node act like a terminal user, typing commands and reading the output.",
+  "realWorldExample": "You build a web interface that converts videos. When the user clicks 'Convert', your Node server uses `exec()` to run the command-line tool `FFmpeg` in the background, converting the video without freezing the web server.",
+  "useCases": [
+    "Executing system commands",
+    "Running Python/Bash scripts from Node",
+    "Parallel processing"
+  ],
+  "questions": {
+    "basic": [
+      "What module do you require to use child processes?"
+    ],
+    "intermediate": [
+      "What is the difference between `exec` and `spawn`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What module?",
+      "answer": "`require('child_process')`"
+    },
+    {
+      "question": "exec vs spawn?",
+      "answer": "`exec` buffers the entire output and returns it all at once in a callback. It is great for quick commands, but will crash if the output is massive. `spawn` returns a stream, allowing you to process massive amounts of data as it happens."
+    }
+  ],
+  "codeExample": "const { exec, spawn } = require('child_process');\n\n// 1. Using EXEC (Good for simple commands that return text)\n// exec('dir', (error, stdout, stderr) => {   // 'dir' for Windows, 'ls' for Mac/Linux\n//   if (error) return console.error(`Error: ${error.message}`);\n//   console.log(\"--- EXEC OUTPUT ---\");\n//   console.log(stdout);\n// });\n\n// 2. Using SPAWN (Good for heavy commands, returns a Stream)\n// const pythonScript = spawn('python', ['script.py']);\n\n// pythonScript.stdout.on('data', (data) => {\n//   console.log(`Python says: ${data}`);\n// });\n\n// pythonScript.on('close', (code) => {\n//   console.log(`Python script exited with code ${code}`);\n// });\n\nconsole.log(\"Child Processes allow Node to break out of the V8 engine and utilize the entire Operating System.\");"
+}

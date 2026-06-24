@@ -1,0 +1,32 @@
+{
+  "id": "system-design",
+  "title": "System Design for Next.js Apps",
+  "difficulty": "Advanced",
+  "definition": "The high-level process of architecting the infrastructure, databases, caching layers, and deployment strategies for a Next.js application to handle millions of users.",
+  "simpleExplanation": "Drawing the 'blueprint' before building the skyscraper. It's deciding: 'Should we use a relational DB or NoSQL? Should we cache this at the Edge? Should we use Serverless functions or Docker containers? How do we handle millions of images?'",
+  "realWorldExample": "Designing Netflix. You need a CDN (Vercel Edge) to serve the UI instantly globally. You need a fast NoSQL database (DynamoDB) to track watch history. You need powerful servers (AWS EC2) to encode video. Next.js is just the frontend orchestrator tying the systems together.",
+  "useCases": [
+    "Senior Engineering Interviews",
+    "Architecting startups",
+    "Scaling to massive traffic"
+  ],
+  "questions": {
+    "basic": [
+      "What is a CDN (Content Delivery Network) and why is it critical for Next.js scalability?"
+    ],
+    "intermediate": [
+      "Why are standard Serverless Functions (like AWS Lambda) a poor choice for long-running processes like video encoding?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a CDN?",
+      "answer": "A global network of servers. When you deploy Next.js (Static Site Generation), the HTML is copied to 100+ servers worldwide. A user in Tokyo downloads the site from a server in Tokyo, not from your main server in New York, making it instantly fast."
+    },
+    {
+      "question": "Why poor for long tasks?",
+      "answer": "Serverless functions are designed to wake up, execute a task in less than 10 seconds, and die. They often have strict timeout limits (e.g., maximum 5 minutes). Video encoding takes hours. You must use dedicated, long-running servers for background tasks."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual System Design for a Global E-Commerce App:\n  \n  [ USER IN TOKYO ] ---> [ VERCEL EDGE CDN (Tokyo) ]\n                              |\n                              | (Serves cached HTML instantly via SSG/ISR)\n                              |\n                    [ NEXT.JS SERVERLESS FUNCTIONS (US-East) ]\n                              |  (Handles dynamic Checkout / Auth)\n                              v\n                  [ PRISMA CONNECTION POOLER ]\n                              |\n                              v\n                  [ POSTGRESQL DATABASE (Primary in US-East) ]\n*/"
+}

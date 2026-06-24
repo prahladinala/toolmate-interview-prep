@@ -1,0 +1,30 @@
+{
+  "id": "systemd-units",
+  "title": "Systemd Units",
+  "difficulty": "Advanced",
+  "definition": "The plain-text configuration files (usually ending in `.service`, `.target`, or `.timer`) that teach systemd exactly how to manage, start, and stop a specific application.",
+  "simpleExplanation": "The instruction manual for your custom app. If you write a Python app, Linux doesn't know how to run it as a background service until you write a Unit File telling Linux exactly which command to run.",
+  "realWorldExample": "A developer writes a custom Node.js bot. They create a file `/etc/systemd/system/bot.service` containing `ExecStart=/usr/bin/node /opt/bot/app.js`. Now, they can magically use `systemctl start bot` just like any professional software.",
+  "useCases": [
+    "Deploying custom code as a service",
+    "Automatic restart on crash"
+  ],
+  "questions": {
+    "basic": [
+      "What mandatory command must you run after editing or creating a new systemd unit file?"
+    ],
+    "intermediate": [
+      "What does the `Restart=always` line do inside a `.service` file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command after edit?",
+      "answer": "`sudo systemctl daemon-reload`. This forces systemd to read the hard drive and recognize your new file."
+    },
+    {
+      "question": "What is Restart=always?",
+      "answer": "It acts as a babysitter. If your custom application suddenly crashes due to a bug, systemd will automatically reboot the app within milliseconds, keeping it online."
+    }
+  ]
+}

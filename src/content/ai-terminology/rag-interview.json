@@ -1,0 +1,30 @@
+{
+  "id": "rag-interview",
+  "title": "RAG Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions into Retrieval-Augmented Generation architectures, Vector Databases, and Embeddings.",
+  "simpleExplanation": "Every enterprise is building RAG right now. You MUST know how to explain Embeddings, Cosine Similarity, and Chunking.",
+  "realWorldExample": "Being asked: 'Walk me through the entire architecture of a RAG system from the moment a user uploads a PDF to the moment the LLM answers a question.'",
+  "useCases": [
+    "AI Architect roles",
+    "Enterprise software engineering"
+  ],
+  "questions": {
+    "basic": [
+      "Why use RAG instead of just fine-tuning the model on your company data?"
+    ],
+    "intermediate": [
+      "What is the purpose of an Embedding Model in a RAG pipeline?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why RAG over Fine-Tuning?",
+      "answer": "Fine-tuning is terrible for memorizing facts and is prone to hallucination. RAG ensures the model has access to the exact, verifiable, up-to-date document text before it answers, reducing hallucinations to near zero."
+    },
+    {
+      "question": "Purpose of Embedding Model?",
+      "answer": "To translate the human text (documents and user queries) into high-dimensional arrays of numbers (vectors), so the Vector Database can perform mathematical similarity searches."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "jwt-auth",
+  "title": "JWT Authentication",
+  "difficulty": "Advanced",
+  "definition": "JSON Web Tokens: A stateless authentication mechanism where the user's identity data is cryptographically signed and stored directly inside the token itself.",
+  "simpleExplanation": "Instead of the server storing a list of who is logged in, the server gives the user a mathematically sealed 'badge' containing their User ID. Every time the user makes a request, they show the badge. The server checks the math signature. If the signature is valid, the server trusts the badge.",
+  "realWorldExample": "Microservice architectures. An Auth server issues the JWT. The user takes that JWT and uses it to access the Billing server. The Billing server doesn't need to talk to the Auth server; it just mathematically verifies the JWT's signature.",
+  "useCases": [
+    "Stateless APIs",
+    "Mobile app authentication",
+    "Microservices"
+  ],
+  "questions": {
+    "basic": [
+      "What does JWT stand for?"
+    ],
+    "intermediate": [
+      "Why is it dangerous to put sensitive information like a Social Security Number inside a JWT payload?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does JWT stand for?",
+      "answer": "JSON Web Token."
+    },
+    {
+      "question": "Why dangerous?",
+      "answer": "Because standard JWTs are SIGNED, not ENCRYPTED. Anyone who intercepts the token can decode the Base64 payload and read the data perfectly. The signature only prevents them from *altering* the data."
+    }
+  ],
+  "codeExample": "// Decoding a JWT conceptually:\n// A JWT looks like this: eyJhbGci.eyJ1c2VySWQi.xYzSignature\n\n// Part 1: Header (Algorithm used)\n// { \"alg\": \"HS256\", \"typ\": \"JWT\" }\n\n// Part 2: Payload (The actual data. NOT ENCRYPTED! Easily readable!)\n// { \"userId\": 123, \"role\": \"admin\", \"exp\": 1678901234 }\n\n// Part 3: Signature (The security seal)\n// Created by hashing (Header + Payload + SERVER_SECRET_KEY)\n// If a hacker changes 'role' to 'admin', the signature becomes completely invalid!"
+}

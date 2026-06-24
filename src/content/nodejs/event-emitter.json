@@ -1,0 +1,32 @@
+{
+  "id": "event-emitter",
+  "title": "EventEmitter",
+  "difficulty": "Intermediate",
+  "definition": "The core class in Node.js that facilitates event-driven programming. It allows objects to emit named events that cause previously registered 'listener' functions to execute.",
+  "simpleExplanation": "It's a digital megaphone. You hand the megaphone to an object. When something important happens, the object yells into the megaphone (emits an event). Anyone in your code who is 'listening' to that specific yell will immediately run their code.",
+  "realWorldExample": "The `fs.createReadStream()` function returns an EventEmitter. When it reads a chunk of a file, it yells `'data'`. When it finishes reading the entire file, it yells `'end'`. You listen to these events to know when to update your UI.",
+  "useCases": [
+    "Handling asynchronous streams",
+    "Decoupling complex logic",
+    "Building custom publisher/subscriber systems"
+  ],
+  "questions": {
+    "basic": [
+      "What method is used to trigger an event?"
+    ],
+    "intermediate": [
+      "What is the difference between `.on()` and `.once()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What method is used to trigger?",
+      "answer": "`.emit('eventName', payload)`"
+    },
+    {
+      "question": "Difference between .on() and .once()?",
+      "answer": "`.on()` listens forever. If the event fires 100 times, the callback runs 100 times. `.once()` listens only for the VERY FIRST time the event fires, runs its callback, and then automatically unregisters itself so it never runs again."
+    }
+  ],
+  "codeExample": "const EventEmitter = require('events');\n\nconst serverEmitter = new EventEmitter();\n\n// 1. Listen forever\nserverEmitter.on('request', (url) => {\n  console.log(`[LOGGER]: New request to ${url}`);\n});\n\n// 2. Listen only ONCE\nserverEmitter.once('request', () => {\n  console.log(`[METRICS]: Server received its very first request!`);\n});\n\n// 3. Triggering the events\nconsole.log(\"--- First Request ---\");\nserverEmitter.emit('request', '/home'); \n// Logs BOTH the logger and the metric.\n\nconsole.log(\"\\n--- Second Request ---\");\nserverEmitter.emit('request', '/about'); \n// Logs ONLY the logger! The .once() listener is gone."
+}

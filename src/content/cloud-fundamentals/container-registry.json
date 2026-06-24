@@ -1,0 +1,31 @@
+{
+  "id": "container-registry",
+  "title": "Container Registry (ECR / ACR)",
+  "difficulty": "Intermediate",
+  "definition": "A highly available, secure, fully managed cloud repository for storing, managing, and deploying Docker container images.",
+  "simpleExplanation": "A private, corporate version of Docker Hub. It is the locked vault where a company stores their proprietary application code after it has been packaged into a Docker container.",
+  "realWorldExample": "AWS ECR, Azure ACR, GCP Artifact Registry. The CI/CD pipeline finishes testing the Node.js app, builds the Docker image, and uploads it to ECR. The Kubernetes cluster then downloads the image securely from ECR to run it.",
+  "useCases": [
+    "Storing Docker images",
+    "Vulnerability scanning",
+    "CI/CD integration"
+  ],
+  "questions": {
+    "basic": [
+      "If you push an image to AWS ECR, is it available to the public by default?"
+    ],
+    "intermediate": [
+      "Why would a company pay for ECR instead of just using a free, private repository on Docker Hub?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Public by default?",
+      "answer": "No. Repositories are private by default and tightly integrated with the cloud provider's IAM (Identity and Access Management) for extreme security."
+    },
+    {
+      "question": "Why pay for ECR?",
+      "answer": "Network speed and Security. If your servers are in AWS, downloading a 2GB image from ECR takes seconds and never travels over the public internet, whereas downloading from Docker Hub is slower and costs network egress fees. ECR also offers automated enterprise security scanning."
+    }
+  ]
+}

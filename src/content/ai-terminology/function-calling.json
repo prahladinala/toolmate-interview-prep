@@ -1,0 +1,31 @@
+{
+  "id": "function-calling",
+  "title": "Function Calling",
+  "difficulty": "Advanced",
+  "definition": "A specific feature natively built into modern LLM APIs (like OpenAI's) that strictly guarantees the model will output valid JSON arguments matching a predefined programming function signature.",
+  "simpleExplanation": "The official, mathematically stable version of Tool Calling. Instead of crossing your fingers and hoping the AI formats its request correctly, Function Calling forces the AI to output perfect JSON that maps directly to your backend code functions.",
+  "realWorldExample": "You pass a JSON schema to the OpenAI API defining a function `book_hotel(location, dates)`. When the user says 'Get me a room in NY next week', the API halts and returns a perfect JSON object: `{ \"location\": \"New York\", \"dates\": \"2024-10-15\" }`.",
+  "useCases": [
+    "Structured data extraction",
+    "API integrations",
+    "Agentic architecture"
+  ],
+  "questions": {
+    "basic": [
+      "What data format does Function Calling almost always use to pass arguments?"
+    ],
+    "intermediate": [
+      "What is the primary architectural advantage of Function Calling over asking the LLM to 'Just output JSON'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What format?",
+      "answer": "JSON (JavaScript Object Notation)."
+    },
+    {
+      "question": "Advantage over basic JSON?",
+      "answer": "Reliability. Models trained specifically for Function Calling have a near 100% success rate of outputting perfectly valid JSON that exactly matches your required schema, whereas basic prompting often results in broken syntax or hallucinations."
+    }
+  ]
+}

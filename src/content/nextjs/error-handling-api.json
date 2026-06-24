@@ -1,0 +1,31 @@
+{
+  "id": "error-handling-api",
+  "title": "API Error Handling",
+  "difficulty": "Intermediate",
+  "definition": "The practice of catching errors within Route Handlers and returning properly formatted JSON error messages and HTTP status codes, rather than crashing the server.",
+  "simpleExplanation": "If your database goes offline, your API shouldn't just explode and send a terrifying HTML stack trace back to the mobile app consuming it. It should catch the error safely and return a polite `500 Internal Server Error` JSON message.",
+  "realWorldExample": "Using `try/catch` blocks inside a Route Handler. If the user tries to create an account with an email that already exists, the database throws an error. You catch it and return `409 Conflict: Email already in use`.",
+  "useCases": [
+    "Building robust APIs",
+    "Developer experience"
+  ],
+  "questions": {
+    "basic": [
+      "What JavaScript block is essential for catching unexpected database errors in an API route?"
+    ],
+    "intermediate": [
+      "What HTTP status code should you return if a client sends invalid data (like a malformed email address)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which block?",
+      "answer": "The `try/catch` block."
+    },
+    {
+      "question": "Which status code?",
+      "answer": "`400 Bad Request`."
+    }
+  ],
+  "codeExample": "export async function POST(request: Request) {\n  try {\n    // 1. Parsing might fail if they send bad JSON\n    const body = await request.json();\n    \n    // 2. Validation\n    if (!body.email) {\n      return Response.json({ error: 'Email is required' }, { status: 400 });\n    }\n\n    // 3. Database operation\n    const user = await db.user.create({ data: body });\n    \n    // 4. Success\n    return Response.json(user, { status: 201 });\n\n  } catch (error) {\n    // 5. Safe Error Handling\n    console.error('API Error:', error);\n    \n    // Never expose raw database error messages to the client (security risk!)\n    return Response.json(\n      { error: 'Internal Server Error' }, \n      { status: 500 }\n    );\n  }\n}"
+}

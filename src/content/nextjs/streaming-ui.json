@@ -1,0 +1,32 @@
+{
+  "id": "streaming-ui",
+  "title": "Streaming UI",
+  "difficulty": "Advanced",
+  "definition": "The ability to stream React component HTML chunks from the server to the browser progressively, rather than waiting for the entire page's data requirements to resolve.",
+  "simpleExplanation": "Instead of waiting for the slowest part of a page to load before showing anything, Streaming sends the fast parts instantly (Navbar, Text), and sends the slow parts (Database Charts) seconds later, popping them onto the screen when they are ready.",
+  "realWorldExample": "An AI Chatbot (like ChatGPT). It doesn't wait to generate the entire 500-word paragraph before showing it to you. It 'streams' the text down the wire word-by-word, updating the UI in real-time.",
+  "useCases": [
+    "AI interfaces",
+    "Slow data fetching",
+    "Improving Perceived Performance"
+  ],
+  "questions": {
+    "basic": [
+      "What native web protocol does Next.js use under the hood to achieve streaming without websockets?"
+    ],
+    "intermediate": [
+      "How does Streaming fundamentally change the Time To First Byte (TTFB) metric?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which protocol?",
+      "answer": "HTTP Transfer-Encoding: chunked. It keeps a standard HTTP request open and continuously pushes chunks of HTML down the pipe."
+    },
+    {
+      "question": "TTFB change?",
+      "answer": "Without streaming, TTFB is delayed by the slowest database query on the page. With streaming, TTFB is practically instant, because the server immediately responds with the static HTML shell while the database queries run in the background."
+    }
+  ],
+  "codeExample": "import { Suspense } from 'react';\n\n// A component that takes 5 seconds to fetch data\nasync function SlowProductReviews() {\n  const res = await fetch('...', { cache: 'no-store' });\n  return <div>Reviews loaded!</div>;\n}\n\nexport default function Page() {\n  return (\n    <div>\n      {/* ⚡ This renders INSTANTLY */}\n      <h1>Product Page</h1>\n      \n      {/* \n        The server keeps the HTTP connection open. \n        It instantly sends the fallback `<p>Loading...</p>` to the browser.\n        5 seconds later, it streams the completed `<SlowProductReviews />` \n        HTML chunk to the browser, replacing the fallback!\n      */}\n      <Suspense fallback={<p>Loading reviews...</p>}>\n        <SlowProductReviews />\n      </Suspense>\n    </div>\n  );\n}"
+}

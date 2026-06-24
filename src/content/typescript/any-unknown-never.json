@@ -1,0 +1,35 @@
+{
+  "id": "any-unknown-never",
+  "title": "any vs unknown vs never",
+  "difficulty": "Intermediate",
+  "definition": "Special types in TypeScript. `any` turns off type checking. `unknown` is a safer `any` that forces you to check the type before using it. `never` represents a state that should never logically occur.",
+  "simpleExplanation": "`any` is turning off the smoke alarm. `unknown` is a suspicious package; you can hold it, but you aren't allowed to open it until you scan it. `never` is an empty black hole; a function that returns `never` means it crashed or runs infinitely.",
+  "realWorldExample": "Using `unknown` for data coming from a 3rd-party API `const data: unknown = fetch(...)`, forcing you to write `if (typeof data === 'string')` before accessing it.",
+  "useCases": [
+    "Handling dynamic API data (unknown)",
+    "Exhaustiveness checking in switch statements (never)",
+    "Escaping the type system entirely (any - rarely recommended)"
+  ],
+  "questions": {
+    "basic": [
+      "Why is using `any` considered bad practice?"
+    ],
+    "intermediate": [
+      "Why is `unknown` safer than `any`?"
+    ],
+    "advanced": [
+      "How do you use `never` for exhaustive `switch` checks?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is unknown safer?",
+      "answer": "If `val: any`, TS lets you do `val.toFixed()`. If `val` happens to be a string, your app crashes at runtime. If `val: unknown`, TS throws a compile error if you try to do `val.toFixed()`. It forces you to write `if (typeof val === 'number') val.toFixed()` first."
+    },
+    {
+      "question": "How do you use never for switch checks?",
+      "answer": "If you have a union type `type Role = 'Admin' | 'User'`, and your switch statement checks both, the `default` case should be `const exhaustiveCheck: never = role;`. If someone later adds 'Guest' to the union but forgets to update the switch, TS will throw an error because 'Guest' cannot be assigned to `never`."
+    }
+  ],
+  "codeExample": "let danger: any = 5;\ndanger.toUpperCase(); // TS ignores this. App crashes at runtime.\n\nlet mystery: unknown = 5;\n// mystery.toUpperCase(); // TS ERROR: Object is of type 'unknown'.\n\nif (typeof mystery === 'string') {\n  mystery.toUpperCase(); // Safe! TS now knows it is a string.\n}\n\n// never example: Function that throws an error never actually returns a value\nfunction crashApp(msg: string): never {\n  throw new Error(msg);\n}"
+}

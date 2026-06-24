@@ -1,0 +1,31 @@
+{
+  "id": "typed-hooks",
+  "title": "Typed Hooks (TypeScript)",
+  "difficulty": "Intermediate",
+  "definition": "Creating pre-typed versions of `useDispatch` and `useSelector` in TypeScript to avoid having to manually type `(state: RootState)` every time you select data.",
+  "simpleExplanation": "In TypeScript, `useSelector((state) => state.auth)` will throw an error because TS doesn't know what `state` looks like. You create a custom `useAppSelector` hook once, tell it what your state looks like, and use that custom hook everywhere in your app instead.",
+  "realWorldExample": "Creating an `hooks.ts` file in your Redux folder that exports `useAppDispatch` and `useAppSelector`, and mandating that developers use those instead of the default React-Redux hooks.",
+  "useCases": [
+    "TypeScript integration",
+    "Developer experience"
+  ],
+  "questions": {
+    "basic": [
+      "Which two hooks do you usually recreate for TypeScript?"
+    ],
+    "intermediate": [
+      "Why do you need a typed version of `useDispatch`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which two?",
+      "answer": "`useDispatch` and `useSelector`."
+    },
+    {
+      "question": "Why type dispatch?",
+      "answer": "If you are using Redux Thunk (async actions), the default `Dispatch` type doesn't know how to handle Thunks. `AppDispatch` fixes this, enabling autocomplete for your async actions."
+    }
+  ],
+  "codeExample": "// app/hooks.ts\nimport { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';\nimport type { RootState, AppDispatch } from './store';\n\n// Use these EVERYWHERE in your app instead of plain `useDispatch` and `useSelector`\nexport const useAppDispatch: () => AppDispatch = useDispatch;\nexport const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;\n\n// --------------------------------------------------------\n// In your components:\nimport { useAppSelector } from '../app/hooks';\n\nfunction MyComponent() {\n  // Hover over 'state'. TypeScript magically knows exactly what it contains!\n  const user = useAppSelector((state) => state.user);\n}"
+}

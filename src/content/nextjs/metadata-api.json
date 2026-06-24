@@ -1,0 +1,32 @@
+{
+  "id": "metadata-api",
+  "title": "Metadata API",
+  "difficulty": "Beginner",
+  "definition": "The built-in Next.js system for defining `<head>` elements like `<title>`, `<meta name=\"description\">`, and favicons.",
+  "simpleExplanation": "If you don't define a Title, the Google tab just shows the raw URL, which looks terrible. In Next.js, you just export a `metadata` object from your `page.tsx` or `layout.tsx`, and Next.js perfectly injects it into the HTML head for you.",
+  "realWorldExample": "Setting the global website title ('My Cool Startup') in the root `layout.tsx`, and overriding it with a specific title ('Pricing | My Cool Startup') on the pricing page.",
+  "useCases": [
+    "Search Engine Optimization (SEO)",
+    "Browser tab titles",
+    "Favicons"
+  ],
+  "questions": {
+    "basic": [
+      "What object must you export from a `page.tsx` file to set the page title?"
+    ],
+    "intermediate": [
+      "Can you export the `metadata` object from a Client Component (`'use client'`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What object?",
+      "answer": "The `metadata` object."
+    },
+    {
+      "question": "From Client Component?",
+      "answer": "No! Metadata must be generated on the server so it is present in the initial HTML sent to Google's crawlers. It only works in Server Components."
+    }
+  ],
+  "codeExample": "// app/layout.tsx (Global Metadata)\nimport { Metadata } from 'next';\n\nexport const metadata: Metadata = {\n  title: {\n    // A powerful template feature!\n    // If a child page exports 'About', the title becomes 'About | Acme Corp'\n    template: '%s | Acme Corp',\n    default: 'Acme Corp - The best widgets',\n  },\n  description: 'Buy the best widgets in the world.',\n};\n\n// app/pricing/page.tsx (Page-Specific Metadata)\nexport const metadata: Metadata = {\n  title: 'Pricing', // Generates: 'Pricing | Acme Corp'\n  description: 'View our affordable pricing plans.',\n};\n\nexport default function PricingPage() { return <h1>Pricing</h1> }"
+}

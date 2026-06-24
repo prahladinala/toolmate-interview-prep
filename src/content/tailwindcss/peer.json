@@ -1,0 +1,33 @@
+{
+  "id": "peer",
+  "title": "peer & peer-* Variants",
+  "difficulty": "Advanced",
+  "definition": "A complex state variant that allows an element to style itself based on the state (like focus, checked, or invalid) of a SIBLING element that comes immediately BEFORE it in the HTML.",
+  "simpleExplanation": "If you check a secret checkbox, a hidden message appears. You make the Checkbox a `peer`. You tell the Message: 'Hide yourself, but `peer-checked:block` (reveal yourself if the peer is checked)'.",
+  "realWorldExample": "Creating a beautiful floating label on a text input. When the input field is focused (`peer-focus:`), the `<label>` sitting next to it floats up to the top border.",
+  "useCases": [
+    "CSS-only Dropdowns",
+    "Floating labels",
+    "Custom Checkboxes",
+    "Form validation styling"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `peer` class go on the element being watched, or the element reacting to the change?"
+    ],
+    "intermediate": [
+      "If the `peer` element is written in the HTML *after* the element trying to react to it, will it work?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which gets 'peer'?",
+      "answer": "The element being WATCHED gets the `peer` class (usually an `<input>`). The element REACTING gets the `peer-checked:` or `peer-focus:` class."
+    },
+    {
+      "question": "Order in HTML?",
+      "answer": "No! It will completely fail. Due to how CSS engines work, the `peer` MUST appear in the DOM *before* the element reacting to it. (Sibling combinators `~` only look forward, never backward)."
+    }
+  ],
+  "codeExample": "<!-- CSS-Only Toggle Switch & Hidden Content! No JavaScript required! -->\n<div>\n  <!-- 1. The input is marked as the 'peer' (The Watcher) -->\n  <!-- We hide the actual ugly checkbox -->\n  <input type=\"checkbox\" id=\"terms\" class=\"peer sr-only\" />\n  \n  <!-- 2. The Custom Checkbox Box (Reacts when peer is checked) -->\n  <label for=\"terms\" class=\"w-5 h-5 border rounded cursor-pointer \n                            peer-checked:bg-blue-500 peer-checked:border-blue-500 flex items-center justify-center\">\n    <!-- A checkmark SVG that only appears when checked -->\n    <svg class=\"hidden peer-checked:block text-white w-3 h-3\" ...></svg>\n  </label>\n  \n  <!-- 3. Hidden Content (Reacts when peer is checked) -->\n  <p class=\"hidden peer-checked:block text-green-600 mt-2\">\n    Thank you for agreeing to the terms!\n  </p>\n</div>"
+}

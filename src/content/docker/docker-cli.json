@@ -1,0 +1,30 @@
+{
+  "id": "docker-cli",
+  "title": "Docker CLI",
+  "difficulty": "Beginner",
+  "definition": "The Command Line Interface. The primary tool that human users use to interact with Docker by typing commands in the terminal.",
+  "simpleExplanation": "The steering wheel and pedals. The CLI takes your typed text (`docker run ubuntu`) and translates it into an API request that the Docker Engine understands.",
+  "realWorldExample": "Opening Terminal or Command Prompt and typing `docker ps` to see a list of running containers. That text is processed by the Docker CLI.",
+  "useCases": [
+    "Daily developer workflows",
+    "CI/CD scripting"
+  ],
+  "questions": {
+    "basic": [
+      "If you type `docker version`, which component are you directly interacting with?"
+    ],
+    "intermediate": [
+      "Can the Docker CLI on your laptop be configured to control a Docker Engine running on a completely different server?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which component?",
+      "answer": "The Docker CLI."
+    },
+    {
+      "question": "Control remote server?",
+      "answer": "Yes. You can point the CLI to a remote Docker host by setting the `DOCKER_HOST` environment variable, allowing you to manage a remote server as if it were running locally."
+    }
+  ]
+}

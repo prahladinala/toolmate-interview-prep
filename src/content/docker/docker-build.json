@@ -1,0 +1,30 @@
+{
+  "id": "docker-build",
+  "title": "docker build",
+  "difficulty": "Beginner",
+  "definition": "The CLI command used to create a Docker image from a Dockerfile and a 'build context'.",
+  "simpleExplanation": "Telling the chef to start cooking. You point Docker at the recipe file (Dockerfile) and tell it to begin executing the steps.",
+  "realWorldExample": "You open the terminal in your project folder and type `docker build -t my-app:latest .`. Docker reads the `Dockerfile` in the current folder, executes every `RUN` command, and creates the final image named `my-app:latest`.",
+  "useCases": [
+    "Creating images",
+    "CI/CD pipelines"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `-t` flag stand for in the `docker build` command?"
+    ],
+    "intermediate": [
+      "Why do you almost always see a single period `.` at the absolute end of a `docker build` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the -t flag?",
+      "answer": "Tag. It allows you to name the image immediately as it is being built (e.g., `-t website:v1`)."
+    },
+    {
+      "question": "Why the period?",
+      "answer": "The period represents the 'Build Context'. It tells Docker 'The files you need to copy into the image are located right here in my current folder'."
+    }
+  ]
+}

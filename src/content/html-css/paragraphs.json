@@ -1,0 +1,31 @@
+{
+  "id": "paragraphs",
+  "title": "Paragraphs",
+  "difficulty": "Beginner",
+  "definition": "The `<p>` element represents a paragraph of text. Browsers automatically add an empty line (margin) before and after each `<p>` element.",
+  "simpleExplanation": "The bread and butter of text on the web. Any standard block of reading text should be wrapped in a `<p>` tag.",
+  "realWorldExample": "Writing a blog post. Every separate block of text is its own `<p>` tag.",
+  "useCases": [
+    "Displaying standard text",
+    "Separating blocks of reading material"
+  ],
+  "questions": {
+    "basic": [
+      "Is the `<p>` tag a block-level or inline element?"
+    ],
+    "intermediate": [
+      "What happens if you put a bunch of extra spaces and line breaks inside a `<p>` tag in your code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Block or inline?",
+      "answer": "Block-level. It always starts on a new line and takes up the full width."
+    },
+    {
+      "question": "Extra spaces?",
+      "answer": "Browsers ignore them! This is called 'whitespace collapse'. Even if you press 'Enter' 10 times inside a paragraph in your HTML file, the browser will render it as a single space. You must use the `<br>` tag to force a line break."
+    }
+  ],
+  "codeExample": "<p>This is a standard paragraph. It automatically has some space above and below it.</p>\n\n<p>This is a second paragraph. It sits below the first one.</p>\n\n<hr>\n\n<p>\n  If I press enter in my code...\n  The browser totally ignores it! \n  \n  I can put       10 spaces, and it shrinks to one.\n</p>\n\n<p>\n  If you actually want a line break,<br>\n  you must use the Break tag.<br><br>\n  Now I have empty lines!\n</p>"
+}

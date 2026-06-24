@@ -1,0 +1,31 @@
+{
+  "id": "environment-variables",
+  "title": "Environment Variables",
+  "difficulty": "Beginner",
+  "definition": "Dynamic values that affect the way running processes will behave on a computer. They are heavily used to store sensitive information and configuration data outside of the application's source code.",
+  "simpleExplanation": "Imagine building a robot that connects to a database. You don't want to weld the database password permanently into the robot's brain (source code), because if you want to sell the robot to someone else, they can't change the password. Instead, you put a sticky note on the robot's back. When the robot turns on, it reads the sticky note (Environment Variable) to know the password.",
+  "realWorldExample": "Using a `.env` file to store `DATABASE_URL`, `STRIPE_SECRET_KEY`, and `NODE_ENV`. The `.env` file is heavily excluded from Git via `.gitignore` so secrets never leak to GitHub.",
+  "useCases": [
+    "Security",
+    "Configuring dev/staging/prod environments"
+  ],
+  "questions": {
+    "basic": [
+      "What object in Node.js contains the environment variables?"
+    ],
+    "intermediate": [
+      "Why do you need the `dotenv` package?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What object?",
+      "answer": "`process.env`"
+    },
+    {
+      "question": "Why use dotenv?",
+      "answer": "Because standard Node.js doesn't know how to read a `.env` text file automatically. The `dotenv` package parses the file and artificially injects the values into `process.env` for you."
+    }
+  ],
+  "codeExample": "/* \n  npm install dotenv\n  Create a .env file with: PORT=8080\n*/\n// require('dotenv').config();\n\n// We use a fallback OR (||) operator. \n// If the server didn't provide a port in the environment, fallback to 3000.\nconst PORT = process.env.PORT || 3000;\n\nconsole.log(`Connecting to database at: ${process.env.DB_HOST || 'localhost'}`);\nconsole.log(`Server starting on port: ${PORT}`);\n\n// SECURITY CHECK\nif (!process.env.STRIPE_KEY) {\n  console.warn(\"WARNING: Stripe key missing. Payments will fail!\");\n}"
+}

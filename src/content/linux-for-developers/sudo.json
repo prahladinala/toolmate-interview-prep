@@ -1,0 +1,31 @@
+{
+  "id": "sudo",
+  "title": "sudo",
+  "difficulty": "Beginner",
+  "definition": "Superuser Do. A program that allows a permitted user to execute a command as the superuser (root) or another user, temporarily granting them ultimate administrative privileges.",
+  "simpleExplanation": "The 'Simon Says' of Linux. If you try to install software, Linux says 'Permission Denied'. If you type `sudo install software`, Linux says 'Yes, Master' and does it.",
+  "realWorldExample": "You try to open the system password file by typing `cat /etc/shadow`. It fails. You type `sudo cat /etc/shadow`. It prompts for your personal password to verify it's really you, then opens the file.",
+  "useCases": [
+    "Installing software",
+    "Modifying system files",
+    "Managing users"
+  ],
+  "questions": {
+    "basic": [
+      "When you use `sudo`, does it ask for your personal password, or the Root user's password?"
+    ],
+    "intermediate": [
+      "Why is `sudo` considered much safer than just logging in directly as the `root` user?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which password?",
+      "answer": "It asks for your own personal password to verify your identity."
+    },
+    {
+      "question": "Why safer than root?",
+      "answer": "Because `sudo` forces you to be explicit about dangerous commands, has a timeout (usually 15 minutes), and most importantly, it logs every single command you run to an audit file, so the company knows exactly who broke the server."
+    }
+  ]
+}

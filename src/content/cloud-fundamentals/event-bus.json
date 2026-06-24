@@ -1,0 +1,31 @@
+{
+  "id": "event-bus",
+  "title": "Event Bus (EventBridge / Event Grid)",
+  "difficulty": "Advanced",
+  "definition": "A serverless event bus that connects applications together using data from your own apps, SaaS apps, and cloud services. It routes real-time 'events' to various targets based on complex rules.",
+  "simpleExplanation": "The post office sorting facility. A package (an event) arrives. The post office looks at the zip code (the rule), and decides whether to send it to an email address, a Lambda function, or a database.",
+  "realWorldExample": "AWS EventBridge. An HR SaaS application emits an event: 'New Employee Hired'. EventBridge reads the event, triggers a Lambda function to create the employee's email address, and simultaneously sends an SQS message to the payroll system to start their salary.",
+  "useCases": [
+    "Event-driven architectures",
+    "SaaS integration",
+    "Choreography"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary difference between a Message Queue (SQS) and an Event Bus (EventBridge)?"
+    ],
+    "intermediate": [
+      "What is a 'Target' in EventBridge?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Queue vs Event Bus?",
+      "answer": "A Queue is a 1-to-1 pipe designed to hold work until a specific worker is ready. An Event Bus is a 1-to-Many router. It broadcasts 'Something Happened!' and routes that event to multiple different services simultaneously based on rules."
+    },
+    {
+      "question": "What is a Target?",
+      "answer": "A target is the final destination service that the Event Bus sends the event to for processing (e.g., an AWS Lambda function, an SNS topic, or a Step Functions workflow)."
+    }
+  ]
+}

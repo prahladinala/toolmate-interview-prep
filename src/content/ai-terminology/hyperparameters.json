@@ -1,0 +1,30 @@
+{
+  "id": "hyperparameters",
+  "title": "Hyperparameters",
+  "difficulty": "Advanced",
+  "definition": "The overarching, high-level configuration settings for a machine learning algorithm that are set manually by the data scientist BEFORE the training process begins. They control HOW the model learns.",
+  "simpleExplanation": "The dials and knobs on the oven. You don't put the knobs in the cake. You set the temperature and the timer before you start baking. If you set the temperature too high (bad hyperparameter), the cake burns.",
+  "realWorldExample": "Deciding exactly how many 'hidden layers' to put in a neural network, or deciding the 'Learning Rate' (how fast the AI changes its mind when it makes a mistake).",
+  "useCases": [
+    "Model tuning",
+    "AI engineering"
+  ],
+  "questions": {
+    "basic": [
+      "Are hyperparameters learned automatically by the AI during training?"
+    ],
+    "intermediate": [
+      "What is 'Hyperparameter Tuning' (or Grid Search)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Learned automatically?",
+      "answer": "No! Parameters (like internal weights) are learned automatically. HYPERparameters are set manually by humans before the process starts."
+    },
+    {
+      "question": "What is tuning?",
+      "answer": "The incredibly tedious process where a data scientist trains the exact same model 50 different times, slightly tweaking the hyperparameters each time, to figure out which combination produces the smartest AI."
+    }
+  ]
+}

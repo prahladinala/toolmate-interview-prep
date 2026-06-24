@@ -1,0 +1,30 @@
+{
+  "id": "provider",
+  "title": "Provider",
+  "difficulty": "Beginner",
+  "definition": "A React component from the `react-redux` library that magically makes the Redux store available to any nested components that need to access it.",
+  "simpleExplanation": "The adapter plug. React and Redux are two totally different libraries. The `<Provider>` acts as a bridge, injecting the Redux brain into the React application.",
+  "realWorldExample": "Wrapping your `<App />` component inside `<Provider store={store}>` inside your `index.js` file, exactly like you would with a React Context Provider.",
+  "useCases": [
+    "Connecting React to Redux"
+  ],
+  "questions": {
+    "basic": [
+      "Where should the `<Provider>` component be placed in your application?"
+    ],
+    "intermediate": [
+      "How does `<Provider>` actually pass the store down to the components?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to place?",
+      "answer": "At the highest possible level of your application (usually wrapping the root `<App>` component in `index.js` or `main.jsx`)."
+    },
+    {
+      "question": "How does it pass data?",
+      "answer": "Under the hood, `react-redux` utilizes React's built-in Context API to invisibly pass the store reference down the component tree."
+    }
+  ],
+  "codeExample": "// index.js or main.jsx\nimport React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport { Provider } from 'react-redux';\nimport { store } from './app/store';\nimport App from './App';\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\n\n// Wrap the entire app in the Provider, and pass it the Redux store\nroot.render(\n  <Provider store={store}>\n    <App />\n  </Provider>\n);"
+}

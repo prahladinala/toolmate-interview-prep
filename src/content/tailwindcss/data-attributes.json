@@ -1,0 +1,31 @@
+{
+  "id": "data-attributes",
+  "title": "Data Attribute Selectors",
+  "difficulty": "Advanced",
+  "definition": "Using the `data-*` variant to style elements based on custom HTML data attributes.",
+  "simpleExplanation": "A modern alternative to `peer` and `group` classes. In React, you dynamically apply `data-state=\"open\"` to a dropdown menu. You can then use Tailwind's `data-[state=open]:opacity-100` to style it. This creates an incredibly clean separation between JavaScript logic and CSS styling.",
+  "realWorldExample": "The Radix UI library exclusively uses `data-state` attributes to tell the DOM what is happening. Tailwind perfectly intercepts these attributes to apply styles.",
+  "useCases": [
+    "Headless UI styling",
+    "Complex interactive states"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind variant allows you to style an element when it has `data-active=\"true\"` in its HTML?"
+    ],
+    "intermediate": [
+      "Why is styling based on `data-*` attributes often preferred over toggling an `.is-active` CSS class?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which variant?",
+      "answer": "`data-[active=true]:` (e.g., `data-[active=true]:bg-blue-500`)."
+    },
+    {
+      "question": "Why preferred over classes?",
+      "answer": "Because `data-*` attributes can hold string values (`data-state=\"loading\"`, `data-state=\"success\"`), making them much more expressive and readable than having a mess of separate classes like `.is-loading` and `.is-success`."
+    }
+  ],
+  "codeExample": "<!-- \n  A highly advanced, clean architecture pattern.\n  The JavaScript ONLY touches the 'data-status' attribute.\n  Tailwind handles all the visual logic.\n-->\n<div \n  data-status=\"error\" \n  class=\"\n    border-2 p-4 rounded transition-colors\n    data-[status=loading]:border-yellow-500\n    data-[status=success]:border-green-500\n    data-[status=error]:border-red-500 data-[status=error]:bg-red-50\n  \"\n>\n  Dynamic Status Card\n</div>"
+}

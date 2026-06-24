@@ -1,0 +1,44 @@
+{
+  "id": "controlled-uncontrolled",
+  "title": "Controlled vs Uncontrolled",
+  "difficulty": "Intermediate",
+  "definition": "A Controlled component is a form element whose value is entirely driven by React state. An Uncontrolled component is a form element that maintains its own internal HTML state, accessed via a React `ref`.",
+  "simpleExplanation": "Imagine a steering wheel. A 'Controlled' car is a modern self-driving car: React's computer (state) has its hands firmly on the wheel 100% of the time. It knows exactly where the wheel is at every millisecond. An 'Uncontrolled' car is a manual car: the driver (the DOM) holds the wheel. If React wants to know where the wheel is, it has to physically look at the driver (using a `ref`) and ask 'Hey, what's your current value?'.",
+  "realWorldExample": "If you want a login form where the 'Submit' button disables automatically until the password is 8 characters long, you MUST use a Controlled component, because React needs to know the password value at every single keystroke. If you just have a massive survey form and only care about the values when the user finally hits 'Submit', you can use Uncontrolled components for better performance.",
+  "useCases": [
+    "Controlled: Instant form validation, disabling submit buttons, formatting text as the user types (like adding dashes to phone numbers)",
+    "Uncontrolled: Integrating with non-React libraries (like a jQuery datepicker), or massive forms where re-rendering on every keystroke causes lag"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Controlled Component?",
+      "How do you access the value of an Uncontrolled Component?"
+    ],
+    "intermediate": [
+      "Why does a Controlled input need both a `value` prop and an `onChange` handler?",
+      "What happens if you provide a `value` prop to an input without an `onChange` handler?"
+    ],
+    "advanced": [
+      "How does the `defaultValue` prop differ from the `value` prop?",
+      "Can a component switch between being controlled and uncontrolled during its lifecycle?"
+    ],
+    "trick": [
+      "Is it bad practice to use Uncontrolled components?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens if you provide a value without onChange?",
+      "answer": "React will lock the input! Because React state is the 'single source of truth', if the `value` is hardcoded to `'hello'` and there's no `onChange` to update it, the user will be completely unable to type in the box. It becomes read-only."
+    },
+    {
+      "question": "How does defaultValue differ from value?",
+      "answer": "`value` is used for Controlled components to strictly define the current state. `defaultValue` is used for Uncontrolled components to set the initial HTML value on the first render, but lets the DOM handle the value from that point forward."
+    },
+    {
+      "question": "Can a component switch between controlled and uncontrolled?",
+      "answer": "No! If you try to change an input from having a `value` (controlled) to having `value={undefined}` (uncontrolled), React will throw a huge warning in the console. An input must remain controlled or uncontrolled for its entire lifespan."
+    }
+  ],
+  "codeExample": "import React, { useState, useRef } from 'react';\n\nexport default function FormExample() {\n  // For the Controlled Input\n  const [name, setName] = useState('');\n  \n  // For the Uncontrolled Input\n  const ageRef = useRef(null);\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    // Controlled: We already know the value because it's in State!\n    console.log(\"Controlled Name:\", name);\n    // Uncontrolled: We have to manually ask the DOM for the value.\n    console.log(\"Uncontrolled Age:\", ageRef.current.value);\n  };\n\n  return (\n    <form onSubmit={handleSubmit} className=\"flex flex-col gap-4\">\n      <div>\n        <h3>Controlled Input</h3>\n        {/* React is the boss here. The value is locked to State. */}\n        <input \n          type=\"text\" \n          value={name}\n          onChange={(e) => setName(e.target.value)}\n          placeholder=\"Enter name (React tracks every keystroke!)\"\n          className=\"w-full p-2 border\"\n        />\n        <p className=\"text-sm text-gray-500\">Current state: {name}</p>\n      </div>\n\n      <div>\n        <h3>Uncontrolled Input</h3>\n        {/* The DOM is the boss here. We only use defaultValue to start it. */}\n        <input \n          type=\"number\" \n          ref={ageRef}\n          defaultValue=\"18\"\n          placeholder=\"Enter age (React ignores keystrokes)\"\n          className=\"w-full p-2 border\"\n        />\n      </div>\n\n      <button type=\"submit\" className=\"bg-blue-500 text-white p-2 rounded\">\n        Submit Form\n      </button>\n    </form>\n  );\n}"
+}

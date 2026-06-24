@@ -1,0 +1,30 @@
+{
+  "id": "logging-middleware",
+  "title": "Logging Middleware",
+  "difficulty": "Intermediate",
+  "definition": "Middleware used specifically to console.log the state before an action, the action itself, and the state after the action, providing a clear history of state changes.",
+  "simpleExplanation": "A security camera for your app. Every time an action happens, the logger prints a colorful message in your browser console showing exactly what caused the state to change.",
+  "realWorldExample": "The popular `redux-logger` package. It prints a beautiful collapsed group in the Chrome console for every single action dispatched.",
+  "useCases": [
+    "Local development debugging"
+  ],
+  "questions": {
+    "basic": [
+      "Should you leave Logging Middleware enabled in Production?"
+    ],
+    "intermediate": [
+      "Why do you need middleware to log actions? Why not just put `console.log` inside the Reducer?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Enabled in production?",
+      "answer": "NO! It severely slows down the application and exposes internal state architecture to end-users. It should only run in development environments."
+    },
+    {
+      "question": "Why not in reducer?",
+      "answer": "Reducers MUST be pure functions with no side effects. `console.log` is technically a side effect. Furthermore, middleware can log the state BOTH before and after the reducer runs."
+    }
+  ],
+  "codeExample": "// A simple manual logger middleware\nconst loggerMiddleware = store => next => action => {\n  console.group(action.type);\n  console.info('dispatching', action);\n  \n  // Let the action pass to the reducer\n  let result = next(action);\n  \n  // Log the new state after the reducer did its job\n  console.log('next state', store.getState());\n  console.groupEnd();\n  \n  return result;\n};\n\n// To add it in RTK:\nconst store = configureStore({\n  reducer: rootReducer,\n  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),\n});"
+}

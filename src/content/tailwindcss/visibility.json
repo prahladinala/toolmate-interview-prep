@@ -1,0 +1,31 @@
+{
+  "id": "visibility",
+  "title": "Visibility",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the visibility of an element without altering the document layout.",
+  "simpleExplanation": "Harry Potter's Invisibility Cloak. If you use `hidden` (display: none), the element disappears and everything shifts up to take its space. If you use `invisible`, the element disappears, but leaves a massive blank hole where it used to be. It still takes up space.",
+  "realWorldExample": "Hiding an error icon next to an input field until there is an error, preventing the input field from jumping around the screen when the icon appears.",
+  "useCases": [
+    "Maintaining layout stability",
+    "Animations"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `hidden` and `invisible`?"
+    ],
+    "intermediate": [
+      "Can you click on a button that has the `invisible` class?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "hidden vs invisible?",
+      "answer": "`hidden` removes the element from the layout entirely. `invisible` hides the element visually, but it still occupies physical space on the screen."
+    },
+    {
+      "question": "Can you click it?",
+      "answer": "No. Invisible elements do not capture pointer events (clicks or hovers)."
+    }
+  ],
+  "codeExample": "<div class=\"flex space-x-4\">\n  <div class=\"w-24 h-24 bg-red-500\">Box 1</div>\n  \n  <!-- This box is invisible, but still takes up 24x24 space -->\n  <div class=\"w-24 h-24 bg-green-500 invisible\">Box 2</div>\n  \n  <div class=\"w-24 h-24 bg-blue-500\">Box 3</div>\n</div>"
+}

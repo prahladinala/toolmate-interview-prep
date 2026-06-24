@@ -1,0 +1,35 @@
+{
+  "id": "template-literal-types",
+  "title": "Template Literal Types",
+  "difficulty": "Advanced",
+  "definition": "Template literal types build on string literal types, allowing you to use string interpolation syntax (backticks and `${}`) to construct massive combinations of string types.",
+  "simpleExplanation": "Imagine you have a grid with X axis ('top', 'bottom') and Y axis ('left', 'right'). Instead of manually typing all 4 combinations ('top-left', 'top-right'...), Template Literal Types let you mathematically multiply the two unions together to auto-generate all possible string combinations.",
+  "realWorldExample": "Typing CSS utility classes in a framework like Tailwind: `type Margin = 'm-${t|b|l|r}-${1|2|3|4}';`. This auto-generates `'m-t-1'`, `'m-b-3'`, etc.",
+  "useCases": [
+    "Typing string-based APIs",
+    "CSS-in-JS libraries",
+    "Event names (`on${EventName}`)"
+  ],
+  "questions": {
+    "basic": [
+      "What happens when you use `${}` with a Union type inside it?"
+    ],
+    "intermediate": [
+      "What are the built-in intrinsic string manipulation types?"
+    ],
+    "advanced": [
+      "How do you use Template Literals to remap keys in a Mapped Type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens with a Union inside ${}?",
+      "answer": "It performs a cross-product (Cartesian product). If you do `` `${'A'|'B'}-${1|2}` ``, it generates 4 strings: `'A-1' | 'A-2' | 'B-1' | 'B-2'`."
+    },
+    {
+      "question": "What are intrinsic string types?",
+      "answer": "TS provides built-in utilities: `Capitalize<T>`, `Uncapitalize<T>`, `Uppercase<T>`, and `Lowercase<T>`. Example: `Capitalize<'hello'>` outputs the type `'Hello'`."
+    }
+  ],
+  "codeExample": "type Vertical = \"top\" | \"bottom\";\ntype Horizontal = \"left\" | \"right\";\n\n// Generates: \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\"\ntype Position = `${Vertical}-${Horizontal}`;\n\nfunction placeElement(pos: Position) { ... }\nplaceElement(\"top-left\"); // Valid\n// placeElement(\"center\"); // Error!\n\n\n// Advanced: Auto-generating event handler types\ntype Entity = \"User\" | \"Post\";\n// Generates: \"onUserUpdate\" | \"onPostUpdate\"\ntype UpdateEvents = `on${Entity}Update`;"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "content-configuration",
+  "title": "Content Configuration (Safelist)",
+  "difficulty": "Advanced",
+  "definition": "Advanced configuration rules ensuring Tailwind scans all necessary files, and 'Safelisting' specific classes that you force Tailwind to keep even if it can't find them in the code.",
+  "simpleExplanation": "Sometimes you receive data from a database that says `color: 'red'`. You use JavaScript to construct `bg-${color}-500`. Tailwind will delete this class because it didn't see the full word `bg-red-500`. You must 'Safelist' `bg-red-500` in the config to tell Tailwind: 'I swear I need this, do not delete it!'",
+  "realWorldExample": "A CMS where admins can choose button colors from a dashboard. The developer must Safelist all possible button color classes in the frontend codebase.",
+  "useCases": [
+    "Dynamic styling",
+    "CMS integrations"
+  ],
+  "questions": {
+    "basic": [
+      "What array in `tailwind.config.js` is used to prevent specific classes from being deleted by the compiler?"
+    ],
+    "intermediate": [
+      "Can you Safelist an entire pattern using Regular Expressions?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which array?",
+      "answer": "`safelist`"
+    },
+    {
+      "question": "Using RegEx?",
+      "answer": "Yes. You can safelist `{ pattern: /bg-(red|green|blue)-500/ }`. But be careful, Safelisting massive patterns will inflate your production CSS file size."
+    }
+  ],
+  "codeExample": "// tailwind.config.js\nmodule.exports = {\n  content: ['./src/**/*.{html,js}'],\n  \n  // FORCE Tailwind to include these classes in the final production build,\n  // even if it literally cannot find them written in the source code.\n  safelist: [\n    'bg-red-500',\n    'text-3xl',\n    // Safelisting all 500-level background colors (Use carefully!)\n    {\n      pattern: /bg-(.*)-500/,\n      variants: ['hover', 'focus'], // Include hover and focus states too!\n    },\n  ],\n  theme: { extend: {} },\n}"
+}

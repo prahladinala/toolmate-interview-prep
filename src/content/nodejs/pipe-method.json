@@ -1,0 +1,31 @@
+{
+  "id": "pipe-method",
+  "title": "Pipe Method",
+  "difficulty": "Intermediate",
+  "definition": "A method available on all Readable streams that automatically funnels its data into a Writable stream, automatically managing data flow and backpressure.",
+  "simpleExplanation": "Piping is literally plumbing. If you have a hose shooting water (Readable Stream) and an empty pool (Writable Stream), the `.pipe()` method connects them. It automatically makes sure the hose doesn't shoot water faster than the pool can drain. If the pool gets full, `.pipe()` automatically pauses the hose.",
+  "realWorldExample": "A user asks to download a massive video from your server. Instead of loading the video into RAM, you do: `fs.createReadStream('video.mp4').pipe(res)`. The file streams directly from the hard drive straight out to the user's internet connection flawlessly.",
+  "useCases": [
+    "Streaming files to HTTP responses",
+    "Connecting multiple Transform streams (like reading -> zipping -> encrypting -> writing)"
+  ],
+  "questions": {
+    "basic": [
+      "What does `.pipe()` do?"
+    ],
+    "intermediate": [
+      "How does `.pipe()` handle backpressure?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it do?",
+      "answer": "It attaches a Readable stream to a Writable stream, automatically passing data from one to the other."
+    },
+    {
+      "question": "How does it handle backpressure?",
+      "answer": "If the Writable stream is too slow, its internal buffer fills up and it returns `false`. The `.pipe()` mechanism detects this and automatically calls `.pause()` on the Readable stream. Once the Writable stream drains, it emits a `'drain'` event, and `.pipe()` automatically calls `.resume()` on the Readable stream."
+    }
+  ],
+  "codeExample": "const { Readable, Transform } = require('stream');\n\n// 1. The Hose (Readable)\nconst readableHose = Readable.from([\"Node.js \", \"Streams \", \"Are \", \"Awesome!\"]);\n\n// 2. The Filter (Transform)\n// It adds a star to everything\nconst starFilter = new Transform({\n  transform(chunk, enc, cb) {\n    this.push(`⭐ ${chunk.toString()}`);\n    cb();\n  }\n});\n\n// 3. The Pool (Writable - standard output)\nconst writablePool = process.stdout;\n\nconsole.log(\"Connecting the pipes...\\n\");\n\n// PLUMBING!\n// Read -> Filter -> Write\nreadableHose.pipe(starFilter).pipe(writablePool);\n\n// Output:\n// ⭐ Node.js ⭐ Streams ⭐ Are ⭐ Awesome!"
+}

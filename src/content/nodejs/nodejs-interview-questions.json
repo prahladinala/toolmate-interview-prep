@@ -1,0 +1,31 @@
+{
+  "id": "nodejs-interview-questions",
+  "title": "Beginner Questions",
+  "difficulty": "Beginner",
+  "definition": "Common theoretical questions asked in introductory Node.js interviews to verify fundamental understanding.",
+  "simpleExplanation": "Interviewers use these questions to check if you actually know what Node.js is, or if you just memorized how to build an Express app without understanding the underlying mechanics.",
+  "realWorldExample": "Testing knowledge of the V8 engine, non-blocking I/O, and single-threaded execution.",
+  "useCases": [
+    "Entry-level backend developer interviews",
+    "Full-stack developer assessments"
+  ],
+  "questions": {
+    "basic": [
+      "What exactly is Node.js?"
+    ],
+    "intermediate": [
+      "Explain 'Non-blocking I/O' as if I were 5 years old."
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Node.js?",
+      "answer": "It is NOT a framework or a language. It is an open-source, cross-platform JavaScript Runtime Environment built on Chrome's V8 engine that executes JavaScript code outside of a web browser."
+    },
+    {
+      "question": "Explain Non-blocking I/O.",
+      "answer": "It means the waiter doesn't wait in the kitchen. When Node asks the database for data, it doesn't freeze the program waiting for the reply. It moves on to the next line of code instantly, and processes the database reply later using a callback when it's ready."
+    }
+  ],
+  "codeExample": "// Q: What is the difference between Node.js and JavaScript in the browser?\n\nconsole.log(\"BROWSER JS:\");\nconsole.log(\"- Has access to the DOM (document.getElementById).\");\nconsole.log(\"- Has the window object.\");\nconsole.log(\"- Cannot read/write files to the user's hard drive for security.\");\n\nconsole.log(\"\\nNODE.JS:\");\nconsole.log(\"- Has ZERO access to the DOM (document is undefined).\");\nconsole.log(\"- Has the global object (instead of window).\");\nconsole.log(\"- Can read/write files, create network servers, and access the OS kernel.\");"
+}

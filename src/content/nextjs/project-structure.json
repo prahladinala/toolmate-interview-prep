@@ -1,0 +1,31 @@
+{
+  "id": "project-structure",
+  "title": "Project Structure",
+  "difficulty": "Beginner",
+  "definition": "The standard, opinionated directory layout of a modern Next.js (App Router) application.",
+  "simpleExplanation": "Unlike React where you can put files anywhere, Next.js expects specific files in specific places. The `app` folder is the heart of your application. Inside it, `page.tsx` defines UI, `layout.tsx` defines wrappers, and folders define routes.",
+  "realWorldExample": "If you want a route called `/dashboard/settings`, you must create a folder called `dashboard`, inside it a folder called `settings`, and inside that a file exactly named `page.tsx`.",
+  "useCases": [
+    "Organizing codebases",
+    "Team collaboration standards"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most important top-level directory in a modern Next.js 13+ project?"
+    ],
+    "intermediate": [
+      "What is the difference between `page.tsx` and `layout.tsx`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most important directory?",
+      "answer": "The `app` directory (for the App Router architecture)."
+    },
+    {
+      "question": "page vs layout?",
+      "answer": "`page.tsx` is the unique content for that specific route. `layout.tsx` is UI that is shared across multiple routes (like a Navbar or Sidebar) and preserves state during navigation."
+    }
+  ],
+  "codeExample": "/* \n  A standard Next.js App Router Structure:\n  \n  my-app/\n  ├── next.config.js       # Global configuration\n  ├── package.json         # Dependencies\n  ├── public/              # Static assets (images, fonts)\n  │   └── logo.svg         # Accessed via /logo.svg\n  └── app/                 # The core application\n      ├── layout.tsx       # Global layout (HTML, Body tags)\n      ├── page.tsx         # The Home page (/)\n      ├── globals.css      # Global CSS/Tailwind imports\n      └── dashboard/\n          ├── layout.tsx   # Dashboard-specific layout (Sidebar)\n          └── page.tsx     # Dashboard home page (/dashboard)\n*/"
+}

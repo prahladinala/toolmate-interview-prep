@@ -1,0 +1,32 @@
+{
+  "id": "secure-cookies",
+  "title": "Secure Cookies",
+  "difficulty": "Beginner",
+  "definition": "The practice of configuring HTTP cookies with specific flags (`HttpOnly`, `Secure`, `SameSite`) to drastically reduce the attack surface of an application.",
+  "simpleExplanation": "A cookie is just a text file. If you just give it to the browser, JavaScript can read it, hackers can steal it, and other websites can use it. You must add 'Armor' to the cookie.",
+  "realWorldExample": "Storing a JWT authentication token in an `HttpOnly` cookie. This makes it literally impossible for an XSS attack (rogue JavaScript) to read the token.",
+  "useCases": [
+    "Authentication",
+    "Session management",
+    "GDPR compliance"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `HttpOnly` flag do to a cookie?"
+    ],
+    "intermediate": [
+      "What does the `Secure` flag do to a cookie?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "HttpOnly flag?",
+      "answer": "It completely hides the cookie from client-side JavaScript. `document.cookie` will not see it. It is ONLY sent in HTTP requests to the server."
+    },
+    {
+      "question": "Secure flag?",
+      "answer": "It ensures the browser will ONLY send the cookie over encrypted HTTPS connections, never over plain HTTP (preventing network interception/packet sniffing)."
+    }
+  ],
+  "codeExample": "// A perfect, enterprise-grade secure cookie configuration in Next.js\nimport { cookies } from 'next/headers';\n\nexport async function login(token) {\n  // 'cookies()' is available inside Server Actions and Route Handlers\n  cookies().set('auth_token', token, {\n    maxAge: 60 * 60 * 24 * 7, // 1 Week\n    \n    // SECURITY FLAGS:\n    httpOnly: true, // No JS access\n    secure: process.env.NODE_ENV === 'production', // HTTPS only in Prod\n    sameSite: 'lax', // CSRF protection\n    path: '/', // Available across the whole site\n  });\n}"
+}

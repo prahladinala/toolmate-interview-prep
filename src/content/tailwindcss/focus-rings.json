@@ -1,0 +1,31 @@
+{
+  "id": "focus-rings",
+  "title": "Focus Rings",
+  "difficulty": "Intermediate",
+  "definition": "Using Tailwind's `ring` utilities combined with the `focus-visible:` state to ensure your application can be navigated flawlessly by users relying on a keyboard instead of a mouse.",
+  "simpleExplanation": "If you hit the 'Tab' key on your keyboard, you jump from button to button. If there is no visual indicator telling you WHICH button you are currently on, the site is completely broken for disabled users. Focus rings highlight the active element.",
+  "realWorldExample": "Removing the ugly default browser outline from a button, and replacing it with a beautiful branded Tailwind ring that ONLY shows up when Tabbed to, keeping mouse users happy too.",
+  "useCases": [
+    "ADA Compliance",
+    "Keyboard navigation"
+  ],
+  "questions": {
+    "basic": [
+      "Why shouldn't you just use `focus:outline-none` and leave it at that?"
+    ],
+    "intermediate": [
+      "What is the crucial difference between `focus:ring` and `focus-visible:ring`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not just remove it?",
+      "answer": "Because removing the focus outline without replacing it with a custom `ring` makes the website completely unusable for keyboard navigators and violates accessibility laws."
+    },
+    {
+      "question": "focus vs focus-visible?",
+      "answer": "`focus` shows the ring when clicked WITH A MOUSE or tabbed. `focus-visible` is incredibly smart: it ONLY shows the ring if the user navigated to it via a KEYBOARD. This is the ultimate best practice."
+    }
+  ],
+  "codeExample": "<!-- \n  ❌ THE ACCESSIBILITY NIGHTMARE \n  Removes the default outline, but adds nothing back. Keyboard users are blind.\n-->\n<button class=\"bg-blue-500 text-white focus:outline-none\">Bad Button</button>\n\n<!-- \n  ✅ THE ACCESSIBILITY MASTERCLASS \n  1. focus:outline-none removes the ugly browser default.\n  2. focus-visible:ring-2 adds a custom Tailwind ring.\n  3. It only triggers for Keyboard users! Mouse users see no ring!\n-->\n<button class=\"bg-blue-500 text-white \n               focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2\">\n  Perfect Button\n</button>"
+}

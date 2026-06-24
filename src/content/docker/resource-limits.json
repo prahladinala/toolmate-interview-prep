@@ -1,0 +1,30 @@
+{
+  "id": "resource-limits",
+  "title": "Resource Limits",
+  "difficulty": "Intermediate",
+  "definition": "Configurations applied at runtime to strictly bound the maximum amount of CPU and Memory a specific container is allowed to consume on the host system.",
+  "simpleExplanation": "Putting a leash on a greedy app. By default, a container will eat all the RAM it can find. If you have 5 containers, and one goes crazy, it will eat 100% of the RAM and crash the other 4. Resource limits ensure it can never use more than its fair share.",
+  "realWorldExample": "Running `docker run --memory=\"512m\" --cpus=\"1.5\" my-app`. This guarantees the application can never consume more than 512 MB of RAM or 1.5 CPU cores, protecting the rest of the server.",
+  "useCases": [
+    "Production stability",
+    "Preventing noisy-neighbor problems"
+  ],
+  "questions": {
+    "basic": [
+      "By default, does Docker limit how much RAM a container can use?"
+    ],
+    "intermediate": [
+      "What happens when a container tries to use more RAM than its defined `--memory` limit?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default limits?",
+      "answer": "No. By default, a container has no resource constraints and can use as much of the Host's resources as the Host's kernel allows."
+    },
+    {
+      "question": "Exceed memory limit?",
+      "answer": "The Host kernel's Out-Of-Memory (OOM) killer will intervene and instantly forcefully kill the container process to protect the system."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "libuv",
+  "title": "libuv",
+  "difficulty": "Advanced",
+  "definition": "A multi-platform support library written in C that focuses on asynchronous I/O. It is the engine that powers the Node.js Event Loop and its thread pool.",
+  "simpleExplanation": "If V8 is the brain of Node.js (understanding JavaScript logic), `libuv` is the muscle. When you ask Node to read a file, V8 doesn't know how to talk to a hard drive. V8 hands the task to `libuv`. `libuv` is written in C, talks directly to the Operating System, executes the file read in the background, and then taps V8 on the shoulder when the data is ready.",
+  "realWorldExample": "Handling 10,000 concurrent network connections. `libuv` leverages advanced OS features (like `epoll` on Linux) to monitor thousands of sockets simultaneously with virtually zero CPU overhead.",
+  "useCases": [
+    "Understanding the core architecture of Node.js",
+    "System-level performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "What two main components make up the core architecture of Node.js?"
+    ],
+    "intermediate": [
+      "Is the Event Loop part of V8 or libuv?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two components?",
+      "answer": "V8 (The JavaScript Engine from Google) and libuv (The Asynchronous I/O library)."
+    },
+    {
+      "question": "Where is the Event Loop?",
+      "answer": "The Event Loop is entirely implemented within `libuv` in C/C++."
+    }
+  ],
+  "codeExample": "console.log(\"--- THE NODE.JS ARCHITECTURE ---\");\nconsole.log(\"\\n1. YOUR CODE (app.js)\");\nconsole.log(\"   | Calls fs.readFile()\");\nconsole.log(\"   v\");\nconsole.log(\"2. NODE STANDARD LIBRARY (fs module)\");\nconsole.log(\"   | Bridges JS to C++\");\nconsole.log(\"   v\");\nconsole.log(\"3. NODE.JS BINDINGS (C++)\");\nconsole.log(\"   | Translates the request for the muscle\");\nconsole.log(\"   v\");\nconsole.log(\"4. LIBUV (The Muscle)\");\nconsole.log(\"   | -> Event Loop (Network/Timers)\");\nconsole.log(\"   | -> Thread Pool (Files/Crypto)\");\nconsole.log(\"   v\");\nconsole.log(\"5. OPERATING SYSTEM (Linux/Windows)\");"
+}

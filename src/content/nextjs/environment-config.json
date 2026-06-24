@@ -1,0 +1,32 @@
+{
+  "id": "environment-config",
+  "title": "Environment Configuration",
+  "difficulty": "Intermediate",
+  "definition": "Managing different configurations (API URLs, database connections, secret keys) across multiple deployment environments like Development, Staging, and Production.",
+  "simpleExplanation": "When you hit 'Checkout' on your laptop, it should charge a fake test Credit Card. When a user hits 'Checkout' on the live website, it must charge a real Credit Card. Environment config allows the exact same code to behave differently depending on where it is hosted.",
+  "realWorldExample": "Using a `.env.local` file to hold your personal developer keys, and setting the Production Vercel dashboard to hold the real enterprise keys.",
+  "useCases": [
+    "Security",
+    "Staging environments",
+    "API routing"
+  ],
+  "questions": {
+    "basic": [
+      "Should you ever commit your `.env.local` file to GitHub?"
+    ],
+    "intermediate": [
+      "What is a 'Staging' environment in the CI/CD lifecycle?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Commit to GitHub?",
+      "answer": "Never! It contains highly sensitive passwords and API keys. It must be listed in your `.gitignore` file."
+    },
+    {
+      "question": "What is Staging?",
+      "answer": "An exact replica of the Production environment (same databases, same servers) but hidden from the public. It is used as a final 'dress rehearsal' to test the app safely before pushing the code to the real Production users."
+    }
+  ],
+  "codeExample": "/* \n  Next.js Environment File Hierarchy (Which file wins?)\n  Next.js looks for files in this exact order. The first one it finds wins.\n  \n  1. process.env (Actual OS/Vercel variables)\n  2. .env.$(NODE_ENV).local (.env.production.local or .env.development.local)\n  3. .env.local (Uncommitted local overrides)\n  4. .env.$(NODE_ENV) (.env.production or .env.development)\n  5. .env (The default base file, usually committed to Git with fake/safe values)\n*/"
+}

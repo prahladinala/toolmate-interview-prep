@@ -1,0 +1,31 @@
+{
+  "id": "multi-agent-systems",
+  "title": "Multi-Agent Systems",
+  "difficulty": "Advanced",
+  "definition": "An architecture where multiple distinct AI agents, often with different specialized roles and system prompts, interact and collaborate with each other to solve highly complex tasks.",
+  "simpleExplanation": "A digital company. Instead of one AI trying to do everything, you create a 'Coder AI', a 'Tester AI', and a 'Manager AI'. The Manager breaks down the task, hands it to the Coder. The Coder writes the script and hands it to the Tester. The Tester finds bugs and yells at the Coder to fix them.",
+  "realWorldExample": "Frameworks like Microsoft AutoGen or CrewAI. You can set up an entire virtual newsroom where an 'AI Researcher' browses the web, an 'AI Writer' drafts the article, and an 'AI Editor' reviews it for bias, completely autonomously.",
+  "useCases": [
+    "Complex software development",
+    "Simulations",
+    "Enterprise automation"
+  ],
+  "questions": {
+    "basic": [
+      "In a Multi-Agent system, do all the agents use the exact same System Prompt?"
+    ],
+    "intermediate": [
+      "What is a 'Hierarchical' multi-agent architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Same prompt?",
+      "answer": "No. The power of the system comes from giving each agent a highly specialized persona and specific tools (e.g., One agent is strictly a Database Expert, another is strictly a UI Designer)."
+    },
+    {
+      "question": "Hierarchical architecture?",
+      "answer": "An organizational structure where a 'Boss' Agent communicates with the human user, creates a master plan, and delegates sub-tasks to 'Worker' Agents. The Workers report back to the Boss, who aggregates the final result."
+    }
+  ]
+}

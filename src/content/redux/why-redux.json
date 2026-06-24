@@ -1,0 +1,32 @@
+{
+  "id": "why-redux",
+  "title": "Why Use Redux?",
+  "difficulty": "Beginner",
+  "definition": "Redux solves the problem of 'Prop Drilling' and state synchronization across deeply nested component trees in large applications.",
+  "simpleExplanation": "In React, data flows down. If a component at the very top has the `user` data, and a component 50 levels deep needs it, you have to pass it down 50 times (Prop Drilling). Redux creates a 'cloud server' for your state. The component 50 levels deep can just reach up to the cloud and grab the `user` data directly.",
+  "realWorldExample": "An e-commerce app. The Navbar needs to show the cart count. The Checkout page needs to show the cart total. The Product page needs a button to add to the cart. Without Redux, syncing this data across totally different pages is a nightmare.",
+  "useCases": [
+    "Prop drilling prevention",
+    "Global state synchronization",
+    "Time-travel debugging"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use Redux for every single project?"
+    ],
+    "intermediate": [
+      "What is 'Prop Drilling'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Every project?",
+      "answer": "No! Redux adds a lot of boilerplate code. Dan Abramov (the creator of Redux) famously wrote an article titled 'You Might Not Need Redux'. Use it only when local component state becomes too hard to manage."
+    },
+    {
+      "question": "Prop Drilling?",
+      "answer": "The painful process of passing data from a parent component down through multiple layers of intermediate children components just to reach a deeply nested child that actually needs the data."
+    }
+  ],
+  "codeExample": "/* \n  WITHOUT REDUX (Prop Drilling):\n  <App user={user}>\n    <Layout user={user}>\n      <Sidebar user={user}>\n        <UserProfile user={user} /> // ONLY THIS COMPONENT ACTUALLY CARES!\n      </Sidebar>\n    </Layout>\n  </App>\n\n  WITH REDUX:\n  <App>\n    <Layout>\n      <Sidebar>\n        <UserProfile /> // This component just pulls 'user' directly from the Redux Store!\n      </Sidebar>\n    </Layout>\n  </App>\n*/"
+}

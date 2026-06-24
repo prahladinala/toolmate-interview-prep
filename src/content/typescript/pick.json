@@ -1,0 +1,31 @@
+{
+  "id": "pick",
+  "title": "Pick<T, Keys>",
+  "difficulty": "Intermediate",
+  "definition": "A utility type that constructs a new type by selecting a specific set of properties (`Keys`) from an existing type (`T`).",
+  "simpleExplanation": "Imagine a massive buffet table with 50 dishes (Type T). `Pick` is your plate. You specifically name the 3 dishes you want (`Keys`), and TS creates a customized plate with ONLY those 3 dishes.",
+  "realWorldExample": "You have a massive `User` interface with 30 fields (passwords, timestamps, role). You are building a 'UserPreview' UI component that only needs the `name` and `avatar`. `type UserPreview = Pick<User, 'name' | 'avatar'>`.",
+  "useCases": [
+    "Extracting UI component props from massive API interfaces",
+    "Keeping types DRY"
+  ],
+  "questions": {
+    "basic": [
+      "How do you pick multiple keys at once?"
+    ],
+    "intermediate": [
+      "What happens if you try to `Pick` a key that doesn't exist in the original type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you pick multiple keys?",
+      "answer": "Use a String Union: `Pick<User, 'id' | 'name' | 'email'>`."
+    },
+    {
+      "question": "What if you pick a non-existent key?",
+      "answer": "TypeScript will throw a compiler error! The second argument in `Pick` is strictly constrained by `<K extends keyof T>`. You cannot pick what does not exist."
+    }
+  ],
+  "codeExample": "interface FullArticle {\n  id: number;\n  title: string;\n  body: string;\n  authorId: number;\n  publishedAt: Date;\n  isDraft: boolean;\n}\n\n// We only want the title and body for the preview card\ntype ArticlePreview = Pick<FullArticle, \"title\" | \"body\">;\n\nconst preview: ArticlePreview = {\n  title: \"TypeScript is Awesome\",\n  body: \"Here is why...\"\n  // TS will error if we try to add 'id' or 'authorId' here!\n};"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "response-body",
+  "title": "Response Body",
+  "difficulty": "Beginner",
+  "definition": "The data payload sent back from the server to the client after processing an HTTP request.",
+  "simpleExplanation": "You asked the server a question. The Response Body is the server's answer. It could be an HTML webpage, a JPEG image, or a JSON object containing database records.",
+  "realWorldExample": "When a frontend app fetches `/api/weather`, the Response Body contains the actual JSON string: `{\"temp\": 72, \"status\": \"Sunny\"}`. The frontend parses it and puts '72' on the screen.",
+  "useCases": [
+    "Delivering requested data",
+    "Providing error details"
+  ],
+  "questions": {
+    "basic": [
+      "What JavaScript method is used on the frontend `fetch` API to extract a JSON Response Body from the network response?"
+    ],
+    "intermediate": [
+      "Does a `204 No Content` response code include a Response Body?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which method?",
+      "answer": "`.json()` (e.g., `const data = await response.json();`)."
+    },
+    {
+      "question": "204 have a body?",
+      "answer": "No! By definition, a 204 response must not have a body. If you try to call `.json()` on a 204 response on the frontend, your JavaScript will crash."
+    }
+  ],
+  "codeExample": "// Frontend reading a Response Body\nasync function getWeather() {\n  // 1. Make the request\n  const response = await fetch('https://api.com/weather');\n  \n  // 2. We have the network response, but we need to extract the Body.\n  // This reads the raw stream of text and parses it into a JS Object.\n  const data = await response.json();\n  \n  console.log(data.temp); // 72\n}\n\n// Backend sending a Response Body (Express.js)\napp.get('/weather', (req, res) => {\n  const myData = { temp: 72, status: \"Sunny\" };\n  \n  // res.json() automatically converts the JS object to a string\n  // and automatically sets the 'Content-Type: application/json' header!\n  res.status(200).json(myData);\n});"
+}

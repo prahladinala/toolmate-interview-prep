@@ -1,0 +1,30 @@
+{
+  "id": "shell",
+  "title": "Shell & Terminal",
+  "difficulty": "Beginner",
+  "definition": "The Terminal is the visual window where you type. The Shell is the underlying program (like Bash or Zsh) that reads what you typed, interprets it, and tells the OS to execute it.",
+  "simpleExplanation": "The Terminal is the physical steering wheel. The Shell is the mechanical steering column that connects the wheel to the car's engine.",
+  "realWorldExample": "You open the Terminal app. You type `ls`. The Bash Shell reads the text 'ls', figures out that it means 'list files', and asks the Kernel to fetch the file names and print them back to the screen.",
+  "useCases": [
+    "Executing commands",
+    "Scripting automation"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most common default Shell used in almost all Linux systems?"
+    ],
+    "intermediate": [
+      "If you change your Shell from Bash to Zsh, do you have to get a new Terminal application?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most common Shell?",
+      "answer": "Bash (Bourne Again SHell)."
+    },
+    {
+      "question": "New Terminal for Zsh?",
+      "answer": "No. The Terminal is just a text window. It can run any Shell inside it. You can switch the engine (Shell) without changing the steering wheel (Terminal)."
+    }
+  ]
+}

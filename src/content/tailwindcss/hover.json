@@ -1,0 +1,32 @@
+{
+  "id": "hover",
+  "title": "Hover State",
+  "difficulty": "Beginner",
+  "definition": "A state variant (`hover:`) that applies a utility class ONLY when the user's mouse cursor is resting over the element.",
+  "simpleExplanation": "When a user mouses over a blue button, you want it to turn dark blue to signal that it is clickable. You simply add `hover:bg-blue-700`.",
+  "realWorldExample": "Applying `hover:underline` to a blue text link so it underlines exactly like a classic 1990s webpage when the user puts their mouse over it.",
+  "useCases": [
+    "Buttons",
+    "Links",
+    "Interactive cards"
+  ],
+  "questions": {
+    "basic": [
+      "What prefix do you use to change the text color to red when the mouse is over an element?"
+    ],
+    "intermediate": [
+      "Does the `hover:` state work on mobile touch screens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Prefix?",
+      "answer": "`hover:text-red-500`"
+    },
+    {
+      "question": "On mobile?",
+      "answer": "Mobile phones do not have a mouse cursor. 'Hovering' technically happens for a split second when the user taps the screen with their finger, but it is generally terrible UX to rely on hover states for critical information on mobile devices."
+    }
+  ],
+  "codeExample": "<!-- A standard interactive button with a smooth color transition -->\n<button class=\"bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors\">\n  Submit\n</button>\n\n<!-- A Card that 'floats' up when you mouse over it! -->\n<div class=\"bg-white p-6 rounded shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300\">\n  <h3 class=\"font-bold\">Interactive Card</h3>\n  <p>Mouse over me to see me lift off the page.</p>\n</div>"
+}

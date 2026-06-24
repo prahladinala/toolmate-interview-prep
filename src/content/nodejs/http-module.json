@@ -1,0 +1,35 @@
+{
+  "id": "http-module",
+  "title": "HTTP Module",
+  "difficulty": "Intermediate",
+  "definition": "The foundational core module that allows Node.js to transfer data over the Hyper Text Transfer Protocol (HTTP). It enables Node to act as either an HTTP Server (listening for requests) or an HTTP Client (making requests).",
+  "simpleExplanation": "This is the beating heart of Node web servers. It is the raw machinery that listens to port 3000, receives incoming network requests from browsers, and sends HTML or JSON back. However, it is very low-level and bare-bones, which is why almost everyone uses the `Express.js` framework to wrap it and make it easier to use.",
+  "realWorldExample": "Creating a lightning-fast microservice with zero external dependencies to just return a JSON response.",
+  "useCases": [
+    "Building web servers from scratch",
+    "Creating reverse proxies",
+    "Low-level network interception"
+  ],
+  "questions": {
+    "basic": [
+      "What method is used to create a new server?"
+    ],
+    "intermediate": [
+      "What two objects are passed into the `createServer` callback function?"
+    ],
+    "advanced": [
+      "Why do people use Express instead of the built-in HTTP module?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two objects are passed?",
+      "answer": "`request` (req) and `response` (res). The Request contains info about the incoming user (URL, headers, body data). The Response is the object you use to send data back to the user."
+    },
+    {
+      "question": "Why use Express instead?",
+      "answer": "The raw HTTP module doesn't understand Routing (`/users` vs `/posts`), doesn't easily parse JSON bodies, and has no Middleware. Express adds all these features on top of the HTTP module automatically."
+    }
+  ],
+  "codeExample": "const http = require('http');\n\n// Create the server\nconst server = http.createServer((req, res) => {\n  // req.url tells us what page the user is asking for\n  \n  if (req.url === '/') {\n    res.writeHead(200, { 'Content-Type': 'text/plain' });\n    res.end('Welcome to the raw Node.js HTTP Server!');\n  } \n  else if (req.url === '/api/user') {\n    // Sending JSON requires setting the correct headers\n    res.writeHead(200, { 'Content-Type': 'application/json' });\n    const user = { name: \"Alice\", role: \"Admin\" };\n    res.end(JSON.stringify(user));\n  }\n  else {\n    // Handle 404 Not Found\n    res.writeHead(404, { 'Content-Type': 'text/plain' });\n    res.end('404: Page not found');\n  }\n});\n\n// Tell the server to start listening for traffic on port 3000\n// server.listen(3000, () => {\n//   console.log('Server is running on http://localhost:3000');\n// });"
+}

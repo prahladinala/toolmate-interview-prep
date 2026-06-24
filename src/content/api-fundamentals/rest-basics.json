@@ -1,0 +1,31 @@
+{
+  "id": "rest-basics",
+  "title": "What is REST?",
+  "difficulty": "Beginner",
+  "definition": "REST (Representational State Transfer) is an architectural style for designing networked applications, relying on a stateless, client-server, cacheable communications protocol (almost always HTTP).",
+  "simpleExplanation": "REST is a set of rules for how to build Web APIs so they are clean, predictable, and logical. Before REST, developers just made up random URLs like `myapi.com/delete_user_now_please_5`. REST says: 'No, be organized. Use standard HTTP methods on noun-based URLs, like `DELETE /users/5`.'",
+  "realWorldExample": "If you know an API is RESTful, and you want to fetch a list of articles, you immediately guess the URL is `GET /articles`. You don't even have to read the documentation to guess it, because REST is a universal standard.",
+  "useCases": [
+    "Building Web APIs",
+    "Microservices communication"
+  ],
+  "questions": {
+    "basic": [
+      "Does REST dictate what programming language or database you must use?"
+    ],
+    "intermediate": [
+      "What does the 'Stateless' constraint in REST actually mean?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Dictate language?",
+      "answer": "No. REST is purely an architectural *concept*. You can build a REST API using Node.js, Python, Java, or C++, backed by Postgres, MongoDB, or flat text files."
+    },
+    {
+      "question": "What is Stateless?",
+      "answer": "It means the server does not remember anything about previous requests. Every single HTTP request from the client must contain ALL the information necessary for the server to fulfill it (like attaching the Auth Token to every single request)."
+    }
+  ],
+  "codeExample": "/* \n  Comparing a Non-REST API to a RESTful API \n*/\n\n// ❌ MESSY, NON-RESTful API (Verb-based URLs, random methods)\nPOST /getUsers\nGET /createNewUser?name=John\nPOST /updateUser123\nGET /delete-user-by-id/123\n\n// ✅ CLEAN RESTful API (Noun-based URLs, strict HTTP Methods)\nGET    /users         // Read all users\nPOST   /users         // Create a new user\nGET    /users/123     // Read user #123\nPUT    /users/123     // Update user #123\nDELETE /users/123     // Delete user #123"
+}

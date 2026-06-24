@@ -1,0 +1,32 @@
+{
+  "id": "message-queues",
+  "title": "Message Queues",
+  "difficulty": "Advanced",
+  "definition": "A form of asynchronous service-to-service communication used in serverless and microservices architectures. Messages are stored on the queue until they are processed and deleted.",
+  "simpleExplanation": "A To-Do List for your servers. Imagine an e-commerce site on Black Friday. 10,000 people buy a TV in one second. If the server tries to process 10,000 payments and send 10,000 emails instantly, it will explode. Instead, the server instantly writes 10,000 sticky notes ('Charge Bob', 'Charge Alice') and puts them in a basket (The Message Queue). A background worker grabs a sticky note, does the work, throws the note away, and grabs the next one. The system stays perfectly stable.",
+  "realWorldExample": "RabbitMQ, Apache Kafka, or AWS SQS. Used for background jobs like processing uploaded videos. The user uploads an MP4, the server puts a message in the queue 'Process Video #123', and returns 'Video uploading' to the user instantly.",
+  "useCases": [
+    "Asynchronous background processing",
+    "Decoupling microservices",
+    "Buffering massive traffic spikes"
+  ],
+  "questions": {
+    "basic": [
+      "Does the user have to wait for the Message Queue to finish processing the message?"
+    ],
+    "intermediate": [
+      "What happens if the background worker crashes while processing a message from the queue?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does the user wait?",
+      "answer": "No! That is the point. The API instantly replies 'Request Received' as soon as the message hits the queue. The actual processing happens asynchronously in the background."
+    },
+    {
+      "question": "What if the worker crashes?",
+      "answer": "Most queue systems require an 'Acknowledgment' (ACK). If the worker crashes before sending the ACK, the Message Queue realizes it failed and puts the sticky note back into the basket so another worker can try again. No data is lost!"
+    }
+  ],
+  "codeExample": "// Simulated Message Queue Workflow\n\nconst Queue = [];\n\n// 1. PRODUCER (The Express API)\nfunction handleUserUpload() {\n  console.log(\"[API]: User uploaded a 4K Video.\");\n  // Put it in the queue instead of processing it right now!\n  Queue.push({ task: \"compress_video\", videoId: 99 });\n  console.log(\"[API]: Sent 200 OK to User instantly.\\n\");\n}\n\n// 2. CONSUMER (The Background Worker process)\nfunction startBackgroundWorker() {\n  setInterval(() => {\n    if (Queue.length > 0) {\n      const job = Queue.shift(); // Take the sticky note\n      console.log(`[Worker]: Heavy CPU processing for ${job.task} ${job.videoId}...`);\n    }\n  }, 2000);\n}\n\nstartBackgroundWorker();\nhandleUserUpload();"
+}

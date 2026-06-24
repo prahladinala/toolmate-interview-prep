@@ -1,0 +1,45 @@
+{
+  "id": "objects-basics",
+  "title": "Object Fundamentals",
+  "difficulty": "Beginner",
+  "definition": "An object in JavaScript is a collection of related data and/or functionality. These usually consist of several variables and functions, which are called properties and methods when they are inside objects.",
+  "simpleExplanation": "Think of an object like a real-life object, say a Car. A car has properties like color, weight, and model. It also has methods (things it can do) like start, drive, and brake. An object binds these characteristics and actions into one neat package.",
+  "realWorldExample": "In an e-commerce app, a 'Product' is an object. Its properties are title, price, and image. Its methods might include 'addToCart' or 'applyDiscount'.",
+  "useCases": [
+    "Structuring complex data (like a User profile)",
+    "Grouping related functions and variables together",
+    "Sending data via JSON to APIs"
+  ],
+  "questions": {
+    "basic": [
+      "How do you create an object in JavaScript?",
+      "How do you access properties of an object?"
+    ],
+    "intermediate": [
+      "What is the difference between dot notation and bracket notation?",
+      "How can you loop through all properties of an object?"
+    ],
+    "advanced": [
+      "What is Object.freeze() vs Object.seal()?",
+      "How does object destructuring work?"
+    ],
+    "trick": [
+      "Are objects copied by value or by reference?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between dot notation and bracket notation?",
+      "answer": "Dot notation (obj.name) is cleaner but requires the property name to be a valid identifier. Bracket notation (obj['name']) allows you to use variables or strings with spaces to access properties."
+    },
+    {
+      "question": "Are objects copied by value or by reference?",
+      "answer": "Objects are copied by reference. If you assign an object to a new variable and modify the new variable, the original object is also modified because they both point to the same memory location."
+    },
+    {
+      "question": "What is Object.freeze() vs Object.seal()?",
+      "answer": "Object.freeze() completely locks the object (no adding, removing, or changing properties). Object.seal() prevents adding or removing properties, but existing properties can still be modified."
+    }
+  ],
+  "codeExample": "const car = {\n  brand: 'Toyota',\n  model: 'Corolla',\n  year: 2022,\n  start: function() {\n    console.log(`${this.brand} is starting! Vroom!`);\n  }\n};\n\n// Accessing properties\nconsole.log(car.brand); // Dot notation\nconsole.log(car['model']); // Bracket notation\n\n// Calling a method\ncar.start();\n\n// Objects are references!\nconst anotherCar = car;\nanotherCar.brand = 'Honda';\nconsole.log(car.brand); // Honda! It changed the original.\n\n// Looping through an object\nfor (let key in car) {\n  if (typeof car[key] !== 'function') {\n    console.log(`${key}: ${car[key]}`);\n  }\n}"
+}

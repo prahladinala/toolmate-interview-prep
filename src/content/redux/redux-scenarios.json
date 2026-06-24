@@ -1,0 +1,30 @@
+{
+  "id": "redux-scenarios",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Questions presenting a broken application or a complex business requirement, testing how you apply Redux to solve it.",
+  "simpleExplanation": "The interviewer gives you a real-world problem: 'Our app is dispatching 100 actions a second and the browser is crashing. Fix it.'",
+  "realWorldExample": "Explaining action batching or debouncing strategies.",
+  "useCases": [
+    "Practical problem solving"
+  ],
+  "questions": {
+    "basic": [
+      "You need to clear the entire Redux state when the user logs out. Where do you write this logic?"
+    ],
+    "intermediate": [
+      "A component uses `useSelector(state => state.app)`. Every time the user types in a completely unrelated form, this component re-renders. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to clear state?",
+      "answer": "In a Root Reducer wrapper. You intercept the `USER_LOGOUT` action at the very top level, and pass `undefined` into the `combineReducers` function, which forces every slice to reset to its initial state."
+    },
+    {
+      "question": "Why re-render?",
+      "answer": "Because `state.app` is an object. `useSelector` checks for reference equality (`===`). Every time the store updates (even from the typing form), the `app` object is technically a new object in memory. You must select primitive values (`state.app.status`), or use `shallowEqual`."
+    }
+  ],
+  "codeExample": "/*\n  Q: We are migrating a massive legacy Redux app to RTK. \n     We cannot rewrite the whole app at once. How do you approach this?\n     \n  A: RTK is 100% backwards compatible with legacy Redux! \n  \n  1. I would start by replacing `createStore` with `configureStore`. \n     This instantly adds Thunk and DevTools without breaking existing reducers.\n  2. For any NEW features, I will use `createSlice`.\n  3. I will slowly refactor old reducers into Slices one by one, \n     as they can coexist perfectly in the same Root Reducer.\n*/"
+}

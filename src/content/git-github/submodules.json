@@ -1,0 +1,31 @@
+{
+  "id": "submodules",
+  "title": "Git Submodules",
+  "difficulty": "Advanced",
+  "definition": "A feature that allows you to keep a Git repository as a subdirectory of another Git repository. This lets you clone another repository into your project and keep your commits separate.",
+  "simpleExplanation": "A repo inside a repo. You are building an App. You want to use a specific Open Source Library, but you also want to be able to edit that library's code. You add the library as a Submodule. The App repo just saves a 'link' to the Library repo.",
+  "realWorldExample": "Using a shared 'UI Component Library' repository inside 5 different company projects. Instead of copying and pasting the CSS into all 5 projects, you add the UI repo as a submodule to all 5 projects.",
+  "useCases": [
+    "Shared dependencies",
+    "Microservices architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Does cloning a parent repository automatically download the contents of its submodules?"
+    ],
+    "intermediate": [
+      "What happens if you run `git status` in the parent repo after changing a file inside the submodule?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Automatically download?",
+      "answer": "No! A standard `git clone` leaves the submodule folders completely empty. You must explicitly run `git clone --recurse-submodules`."
+    },
+    {
+      "question": "Status in parent?",
+      "answer": "The parent repo doesn't track the files inside the submodule. It only tracks the COMMIT HASH that the submodule is pointing to. `git status` will just say 'Submodule modified'."
+    }
+  ],
+  "codeExample": "# Add another repository as a folder inside your current project\n$ git submodule add https://github.com/user/shared-ui-library.git\n\n# This creates a special file called .gitmodules that tracks the link\n\n# When your coworker clones the project, the folder will be empty! \n# They MUST run this to download the submodule code:\n$ git submodule update --init --recursive"
+}

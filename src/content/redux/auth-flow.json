@@ -1,0 +1,31 @@
+{
+  "id": "auth-flow",
+  "title": "Authentication Flow",
+  "difficulty": "Intermediate",
+  "definition": "The standard pattern for handling user login, storing the session token, and maintaining the authenticated state across page reloads using Redux.",
+  "simpleExplanation": "1. User submits Login Form. \n2. Redux Thunk sends email/pass to server. \n3. Server returns a JWT (Token). \n4. Redux stores the Token in the state AND saves it to LocalStorage. \n5. The UI reads `state.isLoggedIn = true` and redirects to the Dashboard.",
+  "realWorldExample": "Whenever the user refreshes the page, the Redux state resets. A `useEffect` in your core `App.js` must check `localStorage.getItem('token')` and dispatch an action to log the user back in before the page finishes loading.",
+  "useCases": [
+    "Securing web applications",
+    "JWT management"
+  ],
+  "questions": {
+    "basic": [
+      "If you store a user token in Redux, what happens when the user hits 'Refresh' in their browser?"
+    ],
+    "intermediate": [
+      "Why is it important to store the authentication status globally?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens on refresh?",
+      "answer": "The Redux state is completely wiped out and reset to initial state. You MUST sync the token to `localStorage` or read it from an `HttpOnly Cookie` on boot to keep the user logged in."
+    },
+    {
+      "question": "Why globally?",
+      "answer": "Because almost every part of an app relies on it. The Navbar needs to show a 'Logout' button, the Router needs to block protected pages, and API calls need to attach the Token to their headers."
+    }
+  ],
+  "codeExample": "const authSlice = createSlice({\n  name: 'auth',\n  initialState: {\n    // On boot, immediately check localStorage!\n    token: localStorage.getItem('token') || null,\n    user: null,\n    isLoggedIn: !!localStorage.getItem('token'),\n  },\n  reducers: {\n    setCredentials: (state, action) => {\n      state.user = action.payload.user;\n      state.token = action.payload.token;\n      state.isLoggedIn = true;\n      // Save to localStorage so they survive a page refresh\n      localStorage.setItem('token', action.payload.token);\n    },\n    logout: (state) => {\n      state.user = null;\n      state.token = null;\n      state.isLoggedIn = false;\n      localStorage.removeItem('token');\n    }\n  }\n});"
+}

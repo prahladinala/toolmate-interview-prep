@@ -1,0 +1,30 @@
+{
+  "id": "inode",
+  "title": "Inodes",
+  "difficulty": "Advanced",
+  "definition": "Index Node. A data structure on a Linux file system that stores all the metadata about a file (permissions, owner, size, physical location on the disk), except for the file's actual name and data.",
+  "simpleExplanation": "The library index card. The file's name is just a pointer to the index card. The index card (inode) tells the computer exactly which physical magnetic sectors on the hard drive contain the data.",
+  "realWorldExample": "You run `df -i`. It shows 100% Inode usage, even though `df -h` shows the hard drive is only 10% full. A bug created millions of tiny 1-byte files. You ran out of 'index cards' before you ran out of hard drive space. The server crashes.",
+  "useCases": [
+    "Advanced file system debugging",
+    "Understanding hard links"
+  ],
+  "questions": {
+    "basic": [
+      "Does an inode contain the name of the file?"
+    ],
+    "intermediate": [
+      "When you `mv` (rename) a file in Linux, does its inode number change?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Contains the name?",
+      "answer": "No. The filename is stored in the Directory file. The Directory simply maps the human-readable name to the hidden inode number."
+    },
+    {
+      "question": "Does inode change on rename?",
+      "answer": "No. The inode remains exactly the same. Linux simply updates the Directory file to point a new name at the same inode, which is why renaming a 100GB file is instant."
+    }
+  ]
+}

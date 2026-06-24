@@ -1,0 +1,30 @@
+{
+  "id": "chmod",
+  "title": "chmod",
+  "difficulty": "Intermediate",
+  "definition": "Change Mode. The command used to change the read, write, and execute permissions of a file or directory.",
+  "simpleExplanation": "Giving or taking away the keys to a file. You can say 'Only I am allowed to edit this file, but anyone can read it'.",
+  "realWorldExample": "You write a Bash script `deploy.sh`. By default, Linux won't let you run it. You type `chmod +x deploy.sh` to add 'execute' permission, allowing the script to run.",
+  "useCases": [
+    "Making scripts executable",
+    "Securing sensitive files"
+  ],
+  "questions": {
+    "basic": [
+      "What does `chmod +x` do to a file?"
+    ],
+    "intermediate": [
+      "What is the difference between `chmod u+x` and `chmod a+x`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does +x do?",
+      "answer": "It adds 'Execute' permission, allowing the file to be run as a program."
+    },
+    {
+      "question": "u+x vs a+x?",
+      "answer": "`u+x` gives execute permission ONLY to the User (owner) of the file. `a+x` gives execute permission to All users on the system."
+    }
+  ]
+}

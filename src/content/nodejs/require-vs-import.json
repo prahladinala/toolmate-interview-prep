@@ -1,0 +1,34 @@
+{
+  "id": "require-vs-import",
+  "title": "require() vs import",
+  "difficulty": "Intermediate",
+  "definition": "A technical comparison between CommonJS (`require`) and ES Modules (`import`) focusing on how they parse, execute, and handle dynamic module loading.",
+  "simpleExplanation": "`require` reads a file right on the spot, blocking the code execution until it finishes. `import` is smarter; Node scans the entire file first, finds all the `imports`, links everything together in memory, and *then* executes the code. This is why `import` is strictly placed at the top of a file.",
+  "realWorldExample": "If you try to put an `import` statement inside an `if (userIsAdmin)` block, the app will crash. Imports must be static. But you CAN put `require()` inside an if block to save memory! (Though ES Modules introduced `await import()` for dynamic loading).",
+  "useCases": [
+    "Refactoring legacy code to modern ESM",
+    "Optimizing module loading"
+  ],
+  "questions": {
+    "basic": [
+      "Can you mix `require` and `import` in the same file?"
+    ],
+    "intermediate": [
+      "What does 'Static Analysis' mean in relation to `import`?"
+    ],
+    "advanced": [
+      "How do you dynamically load an ES Module based on a condition?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you mix them?",
+      "answer": "Generally, no. If a file is an ES Module (uses `import`), `require` is disabled. If a file is CommonJS, `import` is disabled. However, an ES Module can dynamically import a CommonJS file."
+    },
+    {
+      "question": "How do you dynamically load ESM?",
+      "answer": "Using the dynamic import function, which returns a Promise: `const module = await import('./heavy-module.js');`. This works inside `if` statements!"
+    }
+  ],
+  "codeExample": "// --- DIFFERENCE 1: Location ---\n// IMPORT must be at the absolute top level of the file.\nimport os from 'os';\n\nconst isAdmin = true;\n\nif (isAdmin) {\n  // REQUIRE can be dynamic and hidden anywhere in the code.\n  // This saves memory if the module is rarely used.\n  // const adminUtils = require('./admin-utils'); // (Fails if file is ESM)\n  \n  // To do this dynamically in ESM, we use Dynamic Imports:\n  // import('./admin-utils.js').then(utils => utils.cleanDB());\n}\n\n// --- DIFFERENCE 2: Synchronous vs Asynchronous ---\n// require() pauses execution until the file is fully loaded.\n// import/export allows Node to build a \"Module Graph\" asynchronously before running."
+}

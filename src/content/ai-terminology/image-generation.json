@@ -1,0 +1,31 @@
+{
+  "id": "image-generation",
+  "title": "Image Generation",
+  "difficulty": "Intermediate",
+  "definition": "The use of deep learning models (primarily Diffusion models) to generate novel visual imagery based on natural language text descriptions.",
+  "simpleExplanation": "You type 'A cat riding a skateboard on Mars'. The AI starts with a screen of pure TV static, and slowly removes the static pixel-by-pixel until a perfect photorealistic image of a cat on Mars appears.",
+  "realWorldExample": "Midjourney, DALL-E 3, and Stable Diffusion.",
+  "useCases": [
+    "Graphic design",
+    "Concept art",
+    "Advertising"
+  ],
+  "questions": {
+    "basic": [
+      "Can an Image Generation AI create a picture of something that has never existed in the real world?"
+    ],
+    "intermediate": [
+      "What happens if two users type the exact same prompt into Midjourney? Will they get the exact same image?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Create new things?",
+      "answer": "Yes. It does not 'copy and paste' from Google Images. It understands the mathematical concepts of 'Cat', 'Skateboard', and 'Mars', and chemically blends them together to synthesize a brand new arrangement of pixels."
+    },
+    {
+      "question": "Same image?",
+      "answer": "No. The generation process starts with random mathematical noise (a random 'Seed'). Because the starting noise is different every time, the final resulting image will always be unique."
+    }
+  ]
+}

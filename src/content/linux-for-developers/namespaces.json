@@ -1,0 +1,30 @@
+{
+  "id": "namespaces",
+  "title": "Namespaces",
+  "difficulty": "Advanced",
+  "definition": "A Linux kernel feature that isolates and virtualizes system resources. A process inside a namespace only sees the resources (files, processes, networks) associated with that specific namespace.",
+  "simpleExplanation": "The Matrix. It puts an application inside a virtual reality simulation. The application looks around and thinks it is the only program running on the entire computer, completely blind to the host system.",
+  "realWorldExample": "When Docker runs a container, it creates a PID (Process ID) Namespace. The app inside the container thinks it is Process #1. But if you look from the host server, you see the app is actually Process #4592. The namespace tricked the app.",
+  "useCases": [
+    "Container isolation",
+    "Security sandboxing"
+  ],
+  "questions": {
+    "basic": [
+      "If cgroups limit 'How much' a container can use, what do namespaces limit?"
+    ],
+    "intermediate": [
+      "What does a Network Namespace do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What do namespaces limit?",
+      "answer": "They limit 'What' a container can see. They provide the actual isolation."
+    },
+    {
+      "question": "Network Namespace?",
+      "answer": "It provides a completely isolated network stack. A container gets its own private IP address, its own routing table, and its own firewall rules, totally separate from the host's network."
+    }
+  ]
+}

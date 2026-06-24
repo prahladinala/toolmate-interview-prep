@@ -1,0 +1,30 @@
+{
+  "id": "vector-representations",
+  "title": "Vector Representations",
+  "difficulty": "Intermediate",
+  "definition": "The array of numbers resulting from the embedding process. It allows semantic relationships to be calculated using basic linear algebra.",
+  "simpleExplanation": "The actual list of numbers that represents a word. For example, the vector for 'Cat' might be `[0.42, -0.88, 0.12, 0.99]`. You can add and subtract these lists of numbers to do word-math.",
+  "realWorldExample": "The famous Word2Vec math equation: `Vector('King') - Vector('Man') + Vector('Woman') = Vector('Queen')`. By adding and subtracting the GPS coordinates of the concepts, the AI perfectly calculates the gender-flipped royal title.",
+  "useCases": [
+    "Vector Databases",
+    "Cosine Similarity calculations"
+  ],
+  "questions": {
+    "basic": [
+      "In AI, what is a Vector?"
+    ],
+    "intermediate": [
+      "How does a computer figure out if two sentences mean the exact same thing, even if they use completely different words?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is a Vector?",
+      "answer": "Simply an array (list) of numbers."
+    },
+    {
+      "question": "How to check sentence meaning?",
+      "answer": "It converts both sentences into Vectors. It then measures the mathematical distance between those two vectors. If the distance is very small, the computer knows the sentences are semantically identical."
+    }
+  ]
+}

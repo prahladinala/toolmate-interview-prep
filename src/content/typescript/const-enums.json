@@ -1,0 +1,34 @@
+{
+  "id": "const-enums",
+  "title": "Const Enums",
+  "difficulty": "Intermediate",
+  "definition": "A special type of enum that is completely removed during compilation. Its values are inlined directly into the generated JavaScript, resulting in zero runtime footprint.",
+  "simpleExplanation": "A normal Enum creates a real JavaScript object to hold its values, which takes up a tiny bit of space. A Const Enum is a ghost. TypeScript reads it, replaces every usage in your code with the raw string/number, and then deletes the Enum completely before the code reaches the browser.",
+  "realWorldExample": "Using `const enum` in a library to ensure the consumer gets the type safety of an enum without paying any bundle-size penalty.",
+  "useCases": [
+    "Optimizing bundle sizes",
+    "Performance-critical applications"
+  ],
+  "questions": {
+    "basic": [
+      "How do you declare a const enum?"
+    ],
+    "intermediate": [
+      "What happens to a const enum in the compiled JavaScript?"
+    ],
+    "advanced": [
+      "What is the `preserveConstEnums` compiler option?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens in the compiled JS?",
+      "answer": "The enum declaration entirely vanishes. Any place you typed `Direction.Up`, the compiler literally deletes that text and hardcodes the number `0` in its place."
+    },
+    {
+      "question": "What is preserveConstEnums?",
+      "answer": "If true in `tsconfig.json`, TypeScript will still inline the values everywhere, but it will ALSO generate the actual Enum object. This is useful if you are building a library and need external non-TS JS files to be able to access the Enum object."
+    }
+  ],
+  "codeExample": "// The 'const' keyword makes it a ghost!\nconst enum Status {\n  Active = 1,\n  Inactive = 0\n}\n\n// TypeScript Code:\nconst userStatus = Status.Active;\n\n/* \n  COMPILED JAVASCRIPT OUTPUT:\n  // Notice the Enum object completely disappeared!\n  const userStatus = 1 /* Status.Active * /;\n*/"
+}

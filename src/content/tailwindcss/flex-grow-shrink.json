@@ -1,0 +1,32 @@
+{
+  "id": "flex-grow-shrink",
+  "title": "Flex Grow & Shrink",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how flex items grow and shrink relative to each other inside a flex container.",
+  "simpleExplanation": "Imagine 3 people sharing a pie. \n- `flex-none`: I will eat exactly 1 slice, no more, no less.\n- `flex-1`: I will stretch to eat whatever pie is left over.\n- `shrink-0`: If we run out of pie, do NOT reduce the size of my slice. Steal from the others.",
+  "realWorldExample": "An input field next to a Search button. You give the Search button `flex-none` so it stays its normal size, and you give the input field `flex-1` so it stretches out to fill the entire rest of the search bar.",
+  "useCases": [
+    "Search bars",
+    "Sidebar layouts",
+    "Preventing images from squishing"
+  ],
+  "questions": {
+    "basic": [
+      "What class forces an element to fill all available remaining space in a flex container?"
+    ],
+    "intermediate": [
+      "Why would you apply `shrink-0` to a profile picture in a flex row?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Fill remaining space?",
+      "answer": "`flex-1` (or `grow`)."
+    },
+    {
+      "question": "Why shrink-0?",
+      "answer": "If there is a lot of text next to the picture, the text will try to take up space and automatically squash/distort the profile picture into an oval. `shrink-0` prevents the picture from ever being squished."
+    }
+  ],
+  "codeExample": "<!-- Perfect Search Bar Layout -->\n<div class=\"flex w-full border rounded\">\n  <!-- flex-1: The input takes over all remaining space -->\n  <input type=\"text\" class=\"flex-1 p-2\" placeholder=\"Search...\" />\n  \n  <!-- flex-none: The button strictly stays its natural size -->\n  <button class=\"flex-none bg-blue-500 text-white px-4\">\n    Search\n  </button>\n</div>\n\n<!-- Fixing Squished Images -->\n<div class=\"flex\">\n  <!-- shrink-0 guarantees this will remain exactly 16x16 (4rem) -->\n  <img src=\"avatar.png\" class=\"w-16 h-16 shrink-0\" />\n  <p>A massive amount of text that will try to squish the image...</p>\n</div>"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "overflow",
+  "title": "Overflow",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how an element handles content that is too large to fit inside its designated height or width.",
+  "simpleExplanation": "If you put 100 lines of text into a tiny box, what happens? \n- `overflow-visible`: The text spills out of the box.\n- `overflow-hidden`: The text gets chopped off and disappears.\n- `overflow-scroll`: The box gets a scrollbar so you can scroll through the text.",
+  "realWorldExample": "Applying `overflow-hidden` to a card component so that the large image inside it gets its corners nicely rounded to match the card's border radius.",
+  "useCases": [
+    "Scrollable sidebars",
+    "Clipping images",
+    "Hiding scrollbars"
+  ],
+  "questions": {
+    "basic": [
+      "Which Tailwind class adds a scrollbar ONLY if the content is actually overflowing?"
+    ],
+    "intermediate": [
+      "How do you apply overflow scrolling strictly to the Y-axis (vertical)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Scrollbar only if needed?",
+      "answer": "`overflow-auto`. (`overflow-scroll` forces a scrollbar to appear even if the content fits perfectly)."
+    },
+    {
+      "question": "Y-axis only?",
+      "answer": "`overflow-y-auto`"
+    }
+  ],
+  "codeExample": "<!-- Fixing sharp image corners on a rounded card -->\n<!-- Without overflow-hidden, the image corners will stick out past the rounded border -->\n<div class=\"rounded-xl border overflow-hidden\">\n  <img src=\"banner.jpg\" class=\"w-full h-32 object-cover\" />\n  <div class=\"p-4\">Card Content</div>\n</div>\n\n<!-- Creating a scrollable list inside a fixed-height box -->\n<ul class=\"h-64 overflow-y-auto\">\n  <li>Item 1</li>\n  <!-- ... 50 more items ... -->\n</ul>"
+}

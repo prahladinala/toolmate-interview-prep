@@ -1,0 +1,34 @@
+{
+  "id": "memory-leaks",
+  "title": "Memory Leaks",
+  "difficulty": "Advanced",
+  "definition": "A memory leak occurs when a computer program incorrectly manages memory allocations in such a way that memory which is no longer needed is not released (garbage collected).",
+  "simpleExplanation": "Imagine filling up a trash can, but instead of the garbage truck emptying it every week, you just buy a new trash can. Eventually, your entire house fills with trash. In JS, if you keep adding objects to memory but never let the Garbage Collector delete them, the browser tab will eventually crash.",
+  "realWorldExample": "Creating a `setInterval` that updates a variable, but forgetting to call `clearInterval` when the user navigates away from the page. The interval runs forever in the background, consuming memory.",
+  "useCases": [
+    "App performance optimization",
+    "Preventing browser tab crashes in Single Page Apps (SPAs)"
+  ],
+  "questions": {
+    "basic": [
+      "How does JavaScript clear memory?"
+    ],
+    "intermediate": [
+      "What are the 3 most common causes of memory leaks in JavaScript?"
+    ],
+    "advanced": [
+      "How do you find a memory leak using Chrome DevTools?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the 3 most common causes?",
+      "answer": "1. Accidental global variables (attaching huge data to `window`). 2. Uncleared timers and intervals (forgetting `clearInterval`). 3. Uncleared event listeners attached to DOM elements that have been removed from the screen."
+    },
+    {
+      "question": "How do you find a memory leak?",
+      "answer": "Open Chrome DevTools -> Memory tab -> Take Heap Snapshot. Do an action in your app (like opening and closing a modal). Take a second Snapshot. Compare the two to see which objects were not deleted and trace their 'Retainers'."
+    }
+  ],
+  "codeExample": "// CAUSING A LEAK:\nlet hugeArray = [];\nfunction leakMemory() {\n  // Every click adds 1MB of data that is NEVER deleted\n  hugeArray.push(new Array(100000).fill('garbage')); \n}\ndocument.getElementById('btn').addEventListener('click', leakMemory);\n\n\n// PREVENTING A LEAK (In React/Modern JS):\n/*\nuseEffect(() => {\n  const handleScroll = () => console.log('scrolling');\n  window.addEventListener('scroll', handleScroll);\n\n  // CLEANUP FUNCTION: \n  // Removes the listener when component unmounts, allowing memory to be freed\n  return () => window.removeEventListener('scroll', handleScroll);\n}, []);\n*/"
+}

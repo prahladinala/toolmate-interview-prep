@@ -1,0 +1,35 @@
+{
+  "id": "property-descriptors",
+  "title": "Property Descriptors",
+  "difficulty": "Advanced",
+  "definition": "Hidden configuration objects attached to every property in a JavaScript object that define its behavior (whether it is writable, enumerable, or configurable).",
+  "simpleExplanation": "When you add a property to an object (`obj.name = 'Alice'`), JS secretly creates a control panel for that property. Property Descriptors are how you open that control panel and flip switches, like making a property completely un-deletable or invisible to `for...in` loops.",
+  "realWorldExample": "Defining a hidden 'id' property on an object that cannot be altered (`writable: false`) and doesn't show up when looping over the object (`enumerable: false`).",
+  "useCases": [
+    "Library authoring",
+    "Protecting sensitive object data",
+    "Getters and Setters"
+  ],
+  "questions": {
+    "basic": [
+      "How do you define a property with descriptors?"
+    ],
+    "intermediate": [
+      "What does `enumerable: false` do?"
+    ],
+    "advanced": [
+      "What is the difference between `writable: false` and `configurable: false`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does enumerable do?",
+      "answer": "If `enumerable: false`, the property will not show up in `for...in` loops, `Object.keys()`, or JSON.stringify(). It is practically invisible during iteration, though it can still be accessed directly via `obj.prop`."
+    },
+    {
+      "question": "Writable vs Configurable?",
+      "answer": "If `writable: false`, the value cannot be changed. If `configurable: false`, the property cannot be deleted (`delete obj.prop` fails), AND its descriptors cannot be redefined ever again."
+    }
+  ],
+  "codeExample": "const user = {};\n\nObject.defineProperty(user, 'id', {\n  value: 999,\n  writable: false,    // Cannot be changed\n  enumerable: false,  // Hidden from loops\n  configurable: false // Cannot be deleted\n});\n\nuser.id = 1000; // Fails silently (or throws in strict mode)\nconsole.log(user.id); // 999\n\nconsole.log(Object.keys(user)); // [] (Invisible!)"
+}

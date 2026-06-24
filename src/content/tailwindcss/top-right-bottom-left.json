@@ -1,0 +1,31 @@
+{
+  "id": "top-right-bottom-left",
+  "title": "Inset Utilities",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the placement of positioned elements (mapping to `top`, `right`, `bottom`, and `left`).",
+  "simpleExplanation": "Once you make an element `absolute` or `fixed`, you have to tell it exactly where to go. You use coordinates like `top-0` (0px from the top) or `left-4` (1rem from the left).",
+  "realWorldExample": "Pinning a 'Chat with Support' floating action button to the bottom right of the screen using `fixed bottom-4 right-4`.",
+  "useCases": [
+    "Pinning elements",
+    "Centering absolute elements"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class applies `top: 0; right: 0; bottom: 0; left: 0;` all at once?"
+    ],
+    "intermediate": [
+      "If you apply `top-4` to an element with a `static` position, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "All at once?",
+      "answer": "`inset-0`"
+    },
+    {
+      "question": "top-4 on static?",
+      "answer": "Absolutely nothing. Inset utilities (`top`, `right`, `bottom`, `left`) ONLY work if the element has a `relative`, `absolute`, `fixed`, or `sticky` position."
+    }
+  ],
+  "codeExample": "<!-- A Full-Screen Modal Overlay using inset-0 -->\n<div class=\"fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center\">\n  <div class=\"bg-white p-6 rounded-lg\">\n    Modal Content\n  </div>\n</div>\n\n<!-- Negative values are available! (Pull the image up by 1rem) -->\n<div class=\"relative mt-10\">\n  <img src=\"avatar.png\" class=\"absolute -top-4 left-4 rounded-full\" />\n</div>"
+}

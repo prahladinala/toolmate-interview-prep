@@ -1,0 +1,31 @@
+{
+  "id": "daisyui",
+  "title": "DaisyUI",
+  "difficulty": "Intermediate",
+  "definition": "The most popular component library plugin for Tailwind CSS, adding semantic class names (like `btn`, `card`, `modal`) back into Tailwind.",
+  "simpleExplanation": "If you love Tailwind's engine, but you are exhausted writing `bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded` every time you want a button, DaisyUI is for you. It combines them all into a single `btn btn-primary` class, exactly like Bootstrap, but powered by Tailwind.",
+  "realWorldExample": "Prototyping a hackathon project in 1 hour using DaisyUI's pre-built semantic classes instead of manually styling every element with utility classes.",
+  "useCases": [
+    "Rapid prototyping",
+    "Developers migrating from Bootstrap"
+  ],
+  "questions": {
+    "basic": [
+      "How is DaisyUI different from writing raw Tailwind CSS?"
+    ],
+    "intermediate": [
+      "If you use DaisyUI's `btn` class, can you still use Tailwind utility classes to override it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How is it different?",
+      "answer": "Raw Tailwind is 'Utility-First' (you compose many tiny classes). DaisyUI is 'Component-First' (it provides semantic classes like `btn` and `navbar`)."
+    },
+    {
+      "question": "Can you override?",
+      "answer": "Yes! That is the beauty of it. You can write `<button class=\"btn btn-primary mt-10 rounded-full\">`. DaisyUI provides the base styles, and raw Tailwind utilities customize it further."
+    }
+  ],
+  "codeExample": "<!-- ❌ Raw Tailwind (Very verbose for a simple button) -->\n<button class=\"inline-flex items-center justify-center px-4 py-2 bg-indigo-600 \n               text-white rounded-md hover:bg-indigo-700 focus:ring focus:ring-indigo-300\">\n  Save\n</button>\n\n<!-- ✅ Daisy UI (Bootstrap style, powered by Tailwind) -->\n<!-- You just install the DaisyUI plugin in tailwind.config.js -->\n<button class=\"btn btn-primary\">\n  Save\n</button>\n\n<!-- A full DaisyUI Card -->\n<div class=\"card w-96 bg-base-100 shadow-xl\">\n  <div class=\"card-body\">\n    <h2 class=\"card-title\">Shoes!</h2>\n    <p>If a dog chews shoes whose shoes does he choose?</p>\n  </div>\n</div>"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "error-handling",
+  "title": "Error Handling",
+  "difficulty": "Intermediate",
+  "definition": "Error handling refers to the anticipation, detection, and resolution of programming, application, and communications errors. In JavaScript, this is primarily done using try...catch...finally blocks and throwing Error objects.",
+  "simpleExplanation": "Imagine building a Lego tower. If a piece doesn't fit, the whole tower might crash (app crashes). A `try...catch` block is like a safety net. You 'try' to build the tower, but if something goes wrong, the net 'catches' the falling pieces so you can fix the problem gracefully without the whole room falling apart.",
+  "realWorldExample": "If your app relies on a weather API, but the internet goes down, you don't want the app to turn white and crash. You 'catch' the network error and show the user a friendly 'You are offline' message instead.",
+  "useCases": [
+    "Handling network request failures gracefully",
+    "Validating user input and throwing custom errors",
+    "Ensuring cleanup code runs (like closing a database connection) using the 'finally' block"
+  ],
+  "questions": {
+    "basic": [
+      "What is the syntax for a try-catch block?",
+      "What is the purpose of the 'throw' statement?"
+    ],
+    "intermediate": [
+      "What does the 'finally' block do?",
+      "Can a try-catch block catch asynchronous errors (like inside a setTimeout)?"
+    ],
+    "advanced": [
+      "How do you create a custom Error class?",
+      "How does window.onerror work?"
+    ],
+    "trick": [
+      "If you return a value inside a 'try' block, and also return a value inside a 'finally' block, which one is returned?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does the 'finally' block do?",
+      "answer": "The 'finally' block contains code that will execute regardless of whether an error occurred in the 'try' block or was caught in the 'catch' block. It's used for cleanup operations."
+    },
+    {
+      "question": "Can try-catch catch asynchronous errors (e.g., in setTimeout)?",
+      "answer": "No. By the time the asynchronous callback runs and throws an error, the try-catch block has already finished executing. You must put the try-catch INSIDE the asynchronous callback (or use Promise .catch / async-await try-catch)."
+    },
+    {
+      "question": "If you return in 'try' and return in 'finally', which is returned?",
+      "answer": "The 'finally' block always executes last and takes precedence. The value returned from 'finally' will override the return value from 'try'."
+    }
+  ],
+  "codeExample": "function divideNumbers(a, b) {\n  try {\n    if (typeof a !== 'number' || typeof b !== 'number') {\n      // Creating and throwing a custom error\n      throw new TypeError(\"Both arguments must be numbers!\");\n    }\n    if (b === 0) {\n      throw new Error(\"Cannot divide by zero!\");\n    }\n    \n    console.log(`Result: ${a / b}`);\n    return true;\n    \n  } catch (error) {\n    // This block only runs if an error was thrown\n    console.error(\"Uh oh! Something went wrong.\");\n    console.error(`Error Type: ${error.name}`);\n    console.error(`Message: ${error.message}`);\n    return false;\n    \n  } finally {\n    // This block ALWAYS runs, error or no error\n    console.log(\"Cleanup: Division operation finished.\\n\");\n  }\n}\n\ndivideNumbers(10, 2);  // Succeeds\ndivideNumbers(10, 0);  // Throws Error\ndivideNumbers(\"10\", 2); // Throws TypeError"
+}

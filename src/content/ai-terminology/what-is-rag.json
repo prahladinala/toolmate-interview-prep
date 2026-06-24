@@ -1,0 +1,31 @@
+{
+  "id": "what-is-rag",
+  "title": "What is RAG?",
+  "difficulty": "Intermediate",
+  "definition": "Retrieval-Augmented Generation. An AI architecture that enhances a Large Language Model by querying an external database to retrieve factual, up-to-date information, and injecting it into the prompt before generating an answer.",
+  "simpleExplanation": "An open-book test. Instead of forcing the AI to answer from memory (which causes hallucinations), RAG allows the AI to search a private library, read the correct document, and summarize the answer for you.",
+  "realWorldExample": "Building an AI chatbot for your company. ChatGPT doesn't know your company's HR policies. RAG searches your private PDF of the Employee Handbook, finds the section on 'Vacation Days', and feeds that exact paragraph to ChatGPT to generate a perfect answer.",
+  "useCases": [
+    "Enterprise search",
+    "Customer support bots",
+    "Fact-checking"
+  ],
+  "questions": {
+    "basic": [
+      "What does RAG stand for?"
+    ],
+    "intermediate": [
+      "Why is RAG almost always a better choice than 'Fine-Tuning' for teaching an AI new facts?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Retrieval-Augmented Generation."
+    },
+    {
+      "question": "Why better than Fine-Tuning?",
+      "answer": "Fine-tuning is extremely expensive, slow, and terrible at memorizing specific facts. RAG is cheap, instant, completely stops hallucinations, and allows you to easily update/delete documents in real-time without re-training the model."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "virtual-network",
+  "title": "Virtual Network (VPC / VNet)",
+  "difficulty": "Intermediate",
+  "definition": "A logically isolated section of the cloud where you can launch resources in a virtual network that you define. It grants absolute control over IP addressing, subnets, and security firewalls.",
+  "simpleExplanation": "Building a private fence around your cloud servers. The internet cannot see anything inside the fence unless you specifically open a gate.",
+  "realWorldExample": "AWS VPC, Azure VNet, GCP VPC. A company puts their Web Server in a 'Public Subnet' (it has a gate to the internet). They put their Database in a 'Private Subnet' (no gate). The public can hit the web server, but hackers mathematically cannot route traffic to the database.",
+  "useCases": [
+    "Security isolation",
+    "Corporate network bridges (VPNs)",
+    "Architectural foundations"
+  ],
+  "questions": {
+    "basic": [
+      "What does VPC stand for?"
+    ],
+    "intermediate": [
+      "What is the difference between a Public Subnet and a Private Subnet?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does VPC stand for?",
+      "answer": "Virtual Private Cloud."
+    },
+    {
+      "question": "Public vs Private subnet?",
+      "answer": "A Public Subnet has a route to an Internet Gateway, meaning servers inside it can talk to the public internet. A Private Subnet has no direct internet route, making it highly secure and invisible to the outside world."
+    }
+  ]
+}

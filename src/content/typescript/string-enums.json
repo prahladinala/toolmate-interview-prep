@@ -1,0 +1,34 @@
+{
+  "id": "string-enums",
+  "title": "String Enums",
+  "difficulty": "Beginner",
+  "definition": "Enums where each member must be explicitly initialized with a string literal, providing better readability at runtime than numeric enums.",
+  "simpleExplanation": "If a numeric enum is a secret code (Admin = 1), a String Enum is a name tag (Admin = 'ADMIN'). When you look at the raw data in your database or logs, you don't see a random '1', you actually see the word 'ADMIN', which makes debugging much easier.",
+  "realWorldExample": "Defining strict API routes: `enum Routes { Login = '/auth/login', Dashboard = '/app/dashboard' }`.",
+  "useCases": [
+    "Debugging-friendly logs",
+    "Database storage where exact strings are preferred over IDs"
+  ],
+  "questions": {
+    "basic": [
+      "Do string enums auto-increment like numeric enums?"
+    ],
+    "intermediate": [
+      "Why are string enums easier to debug than numeric enums?"
+    ],
+    "advanced": [
+      "Do string enums support reverse mapping?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do they auto-increment?",
+      "answer": "No. Because they are strings, TypeScript cannot automatically 'add 1' to the previous value. You must explicitly set the string value for every single member."
+    },
+    {
+      "question": "Do they support reverse mapping?",
+      "answer": "No. Only numeric enums support reverse mapping (`Enum[1]`). String enums only go one way."
+    }
+  ],
+  "codeExample": "enum Theme {\n  Dark = \"DARK_MODE\",\n  Light = \"LIGHT_MODE\",\n  System = \"SYSTEM_DEFAULT\"\n}\n\n// In compiled JS, this looks like:\n// var Theme;\n// (function (Theme) {\n//     Theme[\"Dark\"] = \"DARK_MODE\";\n// })(Theme || (Theme = {}));\n\nconst userPreference = Theme.Dark;\nconsole.log(userPreference); // Output: \"DARK_MODE\" (Very readable!)"
+}

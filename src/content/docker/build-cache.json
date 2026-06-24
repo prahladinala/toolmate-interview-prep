@@ -1,0 +1,30 @@
+{
+  "id": "build-cache",
+  "title": "Build Cache",
+  "difficulty": "Intermediate",
+  "definition": "Docker's mechanism for dramatically speeding up the image building process by saving the result of every individual Dockerfile instruction as a reusable layer on the hard drive.",
+  "simpleExplanation": "Docker takes notes. If step 2 is 'Install Python', Docker does it once and saves it. If you build the image again tomorrow, Docker says 'I already did step 2 yesterday', instantly skips it, and moves to step 3.",
+  "realWorldExample": "A developer changes one line of CSS in their app. Because they structured their Dockerfile correctly, Docker instantly uses the cached layers for installing Ubuntu, Node, and Webpack, and ONLY spends 2 seconds rebuilding the final CSS layer.",
+  "useCases": [
+    "Rapid prototyping",
+    "CI/CD optimization"
+  ],
+  "questions": {
+    "basic": [
+      "If you change a command on line 3 of your Dockerfile, will Docker still use the cached layer for line 4?"
+    ],
+    "intermediate": [
+      "Why do developers always run `COPY package.json` BEFORE they run `COPY . .` in Node.js Dockerfiles?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Will line 4 use cache?",
+      "answer": "NO. The moment a single cache layer is 'busted' (changed), every single layer underneath it is instantly invalidated and forced to rebuild from scratch."
+    },
+    {
+      "question": "Why copy package.json first?",
+      "answer": "To protect the cache! `npm install` takes forever. If you `COPY . .` first, any tiny change to a CSS file will bust the cache, forcing `npm install` to run again. By copying ONLY the `package.json` first, `npm install` remains safely cached unless you actually change a dependency."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "drag-drop",
+  "title": "Drag & Drop API",
+  "difficulty": "Advanced",
+  "definition": "HTML5 Drag and Drop (DnD) allows users to click and hold an object, drag it to another location, and drop it.",
+  "simpleExplanation": "It's the native browser system for moving elements around. You make an element draggable by setting `draggable=\"true\"`. Then you use JavaScript events to track when it's picked up, when it hovers over a 'drop zone', and when it's finally dropped.",
+  "realWorldExample": "Trello boards. You click a task card, drag it across the screen, and drop it into a new column.",
+  "useCases": [
+    "Kanban boards",
+    "File upload zones (Drag files here)",
+    "Reordering lists"
+  ],
+  "questions": {
+    "basic": [
+      "What HTML attribute makes an element draggable?"
+    ],
+    "intermediate": [
+      "Why do you need to call `event.preventDefault()` in the `ondragover` event?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "`draggable=\"true\"`"
+    },
+    {
+      "question": "Why prevent default?",
+      "answer": "By default, browsers do not allow elements to be dropped inside other elements. If you don't call `preventDefault()` when dragging over a drop zone, the drop action will be cancelled."
+    }
+  ],
+  "codeExample": "<style>\n  .drop-zone {\n    width: 150px; height: 150px;\n    border: 3px dashed #666;\n    padding: 10px; margin: 10px;\n    display: inline-block;\n    vertical-align: top;\n  }\n  .draggable-item {\n    width: 100px; height: 100px;\n    background-color: coral; \n    color: white;\n    text-align: center;\n    line-height: 100px;\n    cursor: grab;\n  }\n</style>\n\n<p>Drag the orange box into the empty dashed box!</p>\n\n<!-- The source container -->\n<div class=\"drop-zone\" id=\"zone1\" ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\">\n  <!-- The item itself -->\n  <!-- 1. Make it draggable, and handle the dragstart event -->\n  <div class=\"draggable-item\" draggable=\"true\" ondragstart=\"drag(event)\" id=\"drag1\">\n    Drag Me\n  </div>\n</div>\n\n<!-- The target container -->\n<!-- 2. Handle ondragover and ondrop -->\n<div class=\"drop-zone\" id=\"zone2\" ondrop=\"drop(event)\" ondragover=\"allowDrop(event)\"></div>\n\n<script>\n  // Triggered when you first pick up the box\n  function drag(ev) {\n    // Save the ID of the element we are dragging\n    ev.dataTransfer.setData(\"text\", ev.target.id);\n  }\n\n  // Triggered when hovering over a drop zone\n  function allowDrop(ev) {\n    // REQUIRED: Browsers block dropping by default\n    ev.preventDefault();\n  }\n\n  // Triggered when you let go of the mouse\n  function drop(ev) {\n    ev.preventDefault();\n    // Get the ID of the dragged element\n    var data = ev.dataTransfer.getData(\"text\");\n    // Physically move the element in the DOM to the new container\n    ev.target.appendChild(document.getElementById(data));\n  }\n</script>"
+}

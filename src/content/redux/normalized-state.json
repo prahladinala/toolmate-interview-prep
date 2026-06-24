@@ -1,0 +1,31 @@
+{
+  "id": "normalized-state",
+  "title": "Normalized State",
+  "difficulty": "Advanced",
+  "definition": "A database-like state structure where each item is stored uniquely under its ID in a dictionary object, and arrays of IDs are used to indicate ordering.",
+  "simpleExplanation": "Deeply nested arrays are a nightmare to update in Redux. If you want to update Comment 4 on Post 3 by User 2, writing the immutable spread operators is horrific. Normalization flattens everything. You just do `state.comments['comment4'].text = 'New Text'`.",
+  "realWorldExample": "Using `createEntityAdapter` to automatically normalize incoming array data from an API into a dictionary of `{ ids: [], entities: {} }`.",
+  "useCases": [
+    "Managing relational data",
+    "Instant O(1) item lookups"
+  ],
+  "questions": {
+    "basic": [
+      "What two keys are typically present in a normalized state slice?"
+    ],
+    "intermediate": [
+      "Why does normalizing data improve React rendering performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two keys?",
+      "answer": "`ids` (An array of strings for sorting) and `entities` (A dictionary object holding the actual data)."
+    },
+    {
+      "question": "Improve rendering?",
+      "answer": "If a child component only needs one specific item, it can connect directly to Redux via `useSelector(state => state.items.entities[id])`. When other items in the list change, this specific child component does NOT re-render because its specific item didn't change."
+    }
+  ],
+  "codeExample": "// Normalization transforms this:\nconst arrayResponse = [{ id: '1', name: 'A' }, { id: '2', name: 'B' }];\n\n// Into this:\nconst normalizedState = {\n  ids: ['1', '2'],\n  entities: {\n    '1': { id: '1', name: 'A' },\n    '2': { id: '2', name: 'B' }\n  }\n};\n\n// Updating is now O(1) instant, instead of O(N) array searching!\nfunction updateName(state, id, newName) {\n  state.entities[id].name = newName;\n}"
+}

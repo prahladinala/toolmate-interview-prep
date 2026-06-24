@@ -1,0 +1,32 @@
+{
+  "id": "canvas",
+  "title": "Canvas",
+  "difficulty": "Advanced",
+  "definition": "The `<canvas>` element is used to draw graphics on a web page via JavaScript. It is a resolution-dependent bitmap canvas.",
+  "simpleExplanation": "HTML creates a blank box. JavaScript grabs a digital paintbrush and actually draws lines, circles, text, or entire video games inside that box pixel by pixel.",
+  "realWorldExample": "Browser-based video games (like Flappy Bird clones), interactive charts (Chart.js), or signature pads where users draw their signature with a mouse.",
+  "useCases": [
+    "Game development",
+    "Data visualization",
+    "Photo editing in the browser"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `<canvas>` tag draw graphics by itself?"
+    ],
+    "intermediate": [
+      "What is the difference between Canvas and SVG?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Draw by itself?",
+      "answer": "No. The `<canvas>` tag is just an empty container. You MUST use JavaScript to draw anything on it."
+    },
+    {
+      "question": "Canvas vs SVG?",
+      "answer": "Canvas is pixel-based (bitmap). If you zoom in, it gets blurry. It's great for games with thousands of moving objects. SVG is math-based (vector). It never loses quality when zoomed, and each shape is a real DOM element you can target with CSS."
+    }
+  ],
+  "codeExample": "<!-- The Canvas is just an empty box! -->\n<canvas id=\"myCanvas\" width=\"200\" height=\"100\" style=\"border:1px solid #000000;\"></canvas>\n\n<!-- We MUST use JavaScript to draw on it -->\n<script>\n  // Wait a tiny bit to ensure the canvas is rendered in the Sandbox\n  setTimeout(() => {\n    var c = document.getElementById(\"myCanvas\");\n    var ctx = c.getContext(\"2d\");\n    \n    // Draw a red rectangle\n    ctx.fillStyle = \"red\";\n    ctx.fillRect(10, 10, 50, 50);\n    \n    // Draw a blue circle\n    ctx.beginPath();\n    ctx.arc(120, 50, 30, 0, 2 * Math.PI);\n    ctx.fillStyle = \"blue\";\n    ctx.fill();\n    ctx.stroke();\n  }, 500);\n</script>\n\n<p>The shapes above were drawn using JavaScript, not HTML/CSS!</p>"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "middleware-basics",
+  "title": "Middleware Fundamentals",
+  "difficulty": "Beginner",
+  "definition": "Code that executes BEFORE a request is completed. It allows you to intercept incoming HTTP requests, run logic, and modify the response.",
+  "simpleExplanation": "Imagine a bouncer at a club. Before you get inside the building (the App router), the bouncer (Middleware) stops you, checks your ID, and decides whether to let you in, kick you out, or redirect you to a different door.",
+  "realWorldExample": "Checking if a user is logged in. If they aren't, the Middleware intercepts their request for `/dashboard` and forcefully redirects them to `/login`.",
+  "useCases": [
+    "Authentication",
+    "A/B Testing",
+    "Internationalization (i18n) routing",
+    "Bot protection"
+  ],
+  "questions": {
+    "basic": [
+      "Does Middleware run on the Server or the Client browser?"
+    ],
+    "intermediate": [
+      "If you have 10,000 pages on your site, does the Middleware run 10,000 times?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Server or Client?",
+      "answer": "The Server. (Specifically, it runs on the Edge Runtime, a lightweight V8 Javascript environment optimized for absolute speed)."
+    },
+    {
+      "question": "Runs 10,000 times?",
+      "answer": "No, it runs exactly ONCE per incoming HTTP request. However, if not configured correctly, it will run for every single image and CSS file requested by the browser, which destroys performance."
+    }
+  ],
+  "codeExample": "import { NextResponse } from 'next/server';\nimport type { NextRequest } from 'next/server';\n\nexport function middleware(request: NextRequest) {\n  // 1. Intercept the request\n  console.log(`Someone is trying to visit: ${request.nextUrl.pathname}`);\n  \n  // 2. Perform logic\n  if (request.nextUrl.pathname === '/secret') {\n    // 3. Modify the response (Redirect them away!)\n    return NextResponse.redirect(new URL('/', request.url));\n  }\n  \n  // 4. Let them through normally\n  return NextResponse.next();\n}"
+}

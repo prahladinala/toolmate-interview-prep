@@ -1,0 +1,30 @@
+{
+  "id": "linux-intermediate",
+  "title": "Intermediate Linux Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions testing system administration skills, permissions, package management, and basic shell scripting.",
+  "simpleExplanation": "Proving you can securely configure a server and automate simple tasks.",
+  "realWorldExample": "Interview Question: 'Explain the permission 755. Who can do what?'",
+  "useCases": [
+    "Mid-level Developer interviews",
+    "Junior SysAdmin interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `chmod` and `chown`?"
+    ],
+    "intermediate": [
+      "How do you redirect the output of a command to a file, completely overwriting the file, versus appending to it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "chmod vs chown?",
+      "answer": "`chmod` changes what permissions (Read/Write/Execute) are allowed. `chown` changes WHO owns the file."
+    },
+    {
+      "question": "Overwrite vs Append?",
+      "answer": "`>` overwrites the file (`echo \"hi\" > file.txt`). `>>` appends to the bottom of the file (`echo \"hi\" >> file.txt`)."
+    }
+  ]
+}

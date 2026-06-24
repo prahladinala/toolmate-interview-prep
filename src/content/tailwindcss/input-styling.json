@@ -1,0 +1,32 @@
+{
+  "id": "input-styling",
+  "title": "Input Styling",
+  "difficulty": "Beginner",
+  "definition": "The practice of using standard Tailwind border, padding, color, and ring utilities to completely custom-style HTML `<input>`, `<select>`, and `<textarea>` elements.",
+  "simpleExplanation": "By default, every browser (Chrome, Safari, Firefox) draws input fields differently. Safari inputs look round and glossy; Chrome inputs look square. You must use Tailwind to strip away the browser defaults and draw your own borders so they look identical everywhere.",
+  "realWorldExample": "Creating a sleek, modern login form field with a subtle gray border that transitions to a bright brand-colored shadow-ring when clicked.",
+  "useCases": [
+    "Authentication forms",
+    "Search bars",
+    "Contact forms"
+  ],
+  "questions": {
+    "basic": [
+      "Why do you almost always need to add `focus:outline-none` when styling an input field in Tailwind?"
+    ],
+    "intermediate": [
+      "What is the difference between styling the `placeholder` text and the actual typed text?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why focus:outline-none?",
+      "answer": "Because browsers force an ugly, un-styleable black/blue rectangle around inputs when you click them. You must remove it so you can draw your own beautiful `focus:ring`."
+    },
+    {
+      "question": "Placeholder vs actual text?",
+      "answer": "Standard `text-gray-900` styles the actual text the user types. You must use the `placeholder:` variant (e.g., `placeholder:text-gray-400`) to style the faint hint text that appears before they type."
+    }
+  ],
+  "codeExample": "<!-- A Beautiful, Fully Custom Input Field -->\n<input \n  type=\"email\" \n  placeholder=\"you@company.com\"\n  class=\"\n    w-full px-4 py-2 border rounded-lg          /* Base Layout */\n    bg-gray-50 border-gray-300 text-gray-900    /* Colors */\n    placeholder:text-gray-400                   /* Placeholder Styling */\n    focus:outline-none                          /* Remove Browser Garbage */\n    focus:ring-2 focus:ring-blue-500            /* Custom Glow */\n    focus:border-transparent                    /* Hide border when glowing */\n    transition-all duration-200                 /* Smooth morphing */\n  \"\n/>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "what-is-docker",
+  "title": "What is Docker?",
+  "difficulty": "Beginner",
+  "definition": "An open-source platform that automates the deployment, scaling, and management of applications by packaging them into lightweight, portable, and self-sufficient executable units called containers.",
+  "simpleExplanation": "The 'It works on my machine' solver. Docker allows a developer to package their code, along with every single library, setting, and dependency it needs, into a single box. You can hand that box to any other computer in the world, and it will run exactly the same way.",
+  "realWorldExample": "A Node.js developer builds an app on a Mac using Node v14. The production server uses Linux and Node v18. Normally, the app would crash. With Docker, the developer puts the app AND a miniature version of Linux AND Node v14 inside a box. The production server runs the box perfectly without changing its own settings.",
+  "useCases": [
+    "Consistent development environments",
+    "Microservices architecture",
+    "Simplified cloud deployment"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary problem that Docker was created to solve?"
+    ],
+    "intermediate": [
+      "Is Docker an operating system?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What problem does it solve?",
+      "answer": "The 'It works on my machine' problem. It eliminates environment discrepancies between developers' laptops, testing servers, and production servers."
+    },
+    {
+      "question": "Is it an OS?",
+      "answer": "No. Docker is a platform that runs on top of your existing Host Operating System (like Linux, Windows, or macOS) to run containers."
+    }
+  ]
+}

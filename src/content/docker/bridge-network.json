@@ -1,0 +1,30 @@
+{
+  "id": "bridge-network",
+  "title": "Bridge Network",
+  "difficulty": "Intermediate",
+  "definition": "The default network driver for Docker. It acts as a virtual software switch, allowing containers connected to the same bridge network to communicate, while providing isolation from containers not connected to it.",
+  "simpleExplanation": "A private local router (like your home Wi-Fi) created solely for containers on a single computer. Devices on the Wi-Fi can talk to each other, but the outside world can't directly see them.",
+  "realWorldExample": "You run `docker network create my-net`. You attach a React frontend and a Node backend to `my-net`. The React app can now make API calls directly to `http://backend:3000` because the Bridge Network handles the internal DNS resolution.",
+  "useCases": [
+    "Standalone containers",
+    "Local development"
+  ],
+  "questions": {
+    "basic": [
+      "Is the Bridge network used to connect containers running on different physical servers?"
+    ],
+    "intermediate": [
+      "What is the main advantage of a 'User-Defined' bridge over the default `docker0` bridge?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Connect different servers?",
+      "answer": "No. The Bridge network ONLY works for containers running on the exact same physical Host machine."
+    },
+    {
+      "question": "Advantage of User-Defined?",
+      "answer": "Automatic DNS resolution. On a custom user-defined bridge, containers can ping each other using their container names (e.g., `ping database_container`). The default bridge requires you to use raw, unpredictable IP addresses."
+    }
+  ]
+}

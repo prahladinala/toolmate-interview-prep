@@ -1,0 +1,31 @@
+{
+  "id": "robots",
+  "title": "robots.txt",
+  "difficulty": "Beginner",
+  "definition": "A text file (`robots.txt`) at the root of a website that explicitly tells search engine crawlers which parts of the site they are allowed to scan, and which they must ignore.",
+  "simpleExplanation": "You don't want Google showing your private `/admin` dashboard or your `/checkout` page in public search results. `robots.txt` is a sign on the door that says 'Google Bot: Do Not Enter this specific room'.",
+  "realWorldExample": "Preventing AI web scrapers from stealing the data on your proprietary `/api` routes by blocking them in `robots.txt`.",
+  "useCases": [
+    "SEO management",
+    "Crawler control"
+  ],
+  "questions": {
+    "basic": [
+      "Does `robots.txt` physically stop a malicious hacker from accessing a URL?"
+    ],
+    "intermediate": [
+      "How do you programmatically generate a `robots.txt` file in Next.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stop hackers?",
+      "answer": "Absolutely not. It relies entirely on the 'honor system'. Good bots (like Google) obey it. Malicious bots completely ignore it. Never use it for security."
+    },
+    {
+      "question": "How to generate?",
+      "answer": "By creating a `robots.ts` file in the `app` directory that exports a function returning the rules."
+    }
+  ],
+  "codeExample": "// app/robots.ts\nimport { MetadataRoute } from 'next';\n\n// Generates /robots.txt automatically\nexport default function robots(): MetadataRoute.Robots {\n  return {\n    rules: {\n      userAgent: '*', // Applies to ALL bots (Google, Bing, etc)\n      allow: '/',     // They can crawl the main site\n      disallow: ['/admin/', '/private/', '/api/'], // DO NOT crawl these!\n    },\n    // Crucial: Tell bots where to find your map!\n    sitemap: 'https://mywebsite.com/sitemap.xml',\n  };\n}"
+}

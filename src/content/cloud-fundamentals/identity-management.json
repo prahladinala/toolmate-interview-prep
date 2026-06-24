@@ -1,0 +1,31 @@
+{
+  "id": "identity-management",
+  "title": "Identity & Access Management (IAM)",
+  "difficulty": "Intermediate",
+  "definition": "The security discipline and cloud service that enables the right individuals to access the right resources at the right times for the right reasons. It manages authentication (who you are) and authorization (what you can do).",
+  "simpleExplanation": "The bouncer at the club. IAM checks your ID at the door, and then gives you a VIP wristband that tells the bartenders whether you are allowed to enter the VIP room, order drinks, or kick other people out.",
+  "realWorldExample": "AWS IAM, Microsoft Entra ID, GCP Cloud IAM. A new developer joins the team. You create an IAM User for them, and attach an IAM Policy that strictly says: 'You are allowed to view the S3 bucket, but you are absolutely forbidden from deleting the database.'",
+  "useCases": [
+    "Security control",
+    "User onboarding",
+    "Cross-account access"
+  ],
+  "questions": {
+    "basic": [
+      "What does IAM stand for?"
+    ],
+    "intermediate": [
+      "What is an IAM 'Role' and how does it differ from an IAM 'User'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does IAM stand for?",
+      "answer": "Identity and Access Management."
+    },
+    {
+      "question": "Role vs User?",
+      "answer": "An IAM User represents a permanent human (with a password). An IAM Role is a temporary set of permissions that any entity (like an EC2 virtual machine) can 'put on like a hat' to perform a task securely without needing a hardcoded password."
+    }
+  ]
+}

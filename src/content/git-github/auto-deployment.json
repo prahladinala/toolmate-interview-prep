@@ -1,0 +1,31 @@
+{
+  "id": "auto-deployment",
+  "title": "Automated Deployments",
+  "difficulty": "Advanced",
+  "definition": "The final stage of CI/CD where code that has passed all automated tests is programmatically pushed to production environments without human intervention.",
+  "simpleExplanation": "Writing a GitHub Action that logs into your DigitalOcean server via SSH, pulls the latest code, restarts the Docker containers, and updates the database, all automatically when code is merged to `main`.",
+  "realWorldExample": "A DevOps engineer setting up a pipeline that builds a Docker image, pushes it to AWS Elastic Container Registry, and updates the Kubernetes cluster.",
+  "useCases": [
+    "Enterprise deployment pipelines",
+    "Containerized applications (Docker)"
+  ],
+  "questions": {
+    "basic": [
+      "Why do we use GitHub Secrets for Automated Deployments?"
+    ],
+    "intermediate": [
+      "What happens if the automated deployment script fails halfway through?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use secrets?",
+      "answer": "Because the GitHub Action runner needs passwords, SSH keys, or API tokens to log into your production servers (like AWS or Azure). You can't hardcode these in the YAML file."
+    },
+    {
+      "question": "Fails halfway?",
+      "answer": "A good CD pipeline uses 'Blue/Green deployments' or 'Rollbacks'. If the deployment fails, the load balancer keeps pointing users to the old, working version of the server, and alerts the engineering team."
+    }
+  ],
+  "codeExample": "# .github/workflows/deploy-vps.yml\n\nname: Deploy to Production Server\non:\n  push:\n    branches: [ main ]\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: SSH and Deploy\n        uses: appleboy/ssh-action@master\n        with:\n          host: ${{ secrets.SERVER_IP }}\n          username: root\n          key: ${{ secrets.SERVER_SSH_KEY }}\n          script: |\n            cd /var/www/my-app\n            git pull origin main\n            npm install\n            npm run build\n            pm2 restart my-app"
+}

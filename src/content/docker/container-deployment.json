@@ -1,0 +1,30 @@
+{
+  "id": "container-deployment",
+  "title": "Container Deployment",
+  "difficulty": "Intermediate",
+  "definition": "The final stage of the CI/CD pipeline where the newly built Docker Image is pulled from a registry and actually executed as a live Container on a production server.",
+  "simpleExplanation": "Taking the finished, boxed product off the assembly line and putting it on the store shelf for customers to use.",
+  "realWorldExample": "A pipeline finishes building `api:v2` and pushes it to Docker Hub. The final step of the pipeline SSH's into the production AWS EC2 instance, runs `docker pull api:v2`, stops the old `api:v1` container, and starts the new one.",
+  "useCases": [
+    "Continuous Deployment",
+    "Rolling updates"
+  ],
+  "questions": {
+    "basic": [
+      "In a standard CI/CD pipeline, does the CI server usually run the production containers itself?"
+    ],
+    "intermediate": [
+      "What is a 'Rolling Update' strategy in container deployment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does CI run production?",
+      "answer": "No. The CI server builds and tests the Image, pushes it to a Registry, and then tells a separate, dedicated Production Server to pull and run it."
+    },
+    {
+      "question": "What is a Rolling Update?",
+      "answer": "A zero-downtime deployment strategy. If you have 3 old containers running, you don't kill them all at once (which drops traffic). You start 1 new container, verify it works, kill 1 old container, and repeat until all 3 are replaced."
+    }
+  ]
+}

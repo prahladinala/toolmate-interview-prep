@@ -1,0 +1,34 @@
+{
+  "id": "macrotasks",
+  "title": "Macrotasks Queue",
+  "difficulty": "Advanced",
+  "definition": "Also simply known as the Task Queue. This represents the standard asynchronous callbacks handled by the Event Loop phases (like `setTimeout`, `setImmediate`, and I/O callbacks).",
+  "simpleExplanation": "Macrotasks are the 'normal' asynchronous tasks. When you read a file, or wait for an API request, or set a timer, you are creating a Macrotask. The Event Loop processes these one by one during their respective phases.",
+  "realWorldExample": "Using `setTimeout(cb, 0)` is a classic way to push a heavy calculation to the Macrotask queue, allowing the server to handle a quick HTTP request first before locking up the CPU with the calculation.",
+  "useCases": [
+    "Deferring heavy execution",
+    "Understanding performance flow"
+  ],
+  "questions": {
+    "basic": [
+      "Are `setTimeout` callbacks Microtasks or Macrotasks?"
+    ],
+    "intermediate": [
+      "Which executes first: A Microtask or a Macrotask?"
+    ],
+    "advanced": [
+      "Why is `setTimeout(cb, 0)` not actually 0 milliseconds in Node?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Microtask or Macrotask?",
+      "answer": "Microtasks ALWAYS execute first. The engine drains the entire VIP Microtask queue (Promises) completely dry before it processes even a single Macrotask (Timers/IO)."
+    },
+    {
+      "question": "Why is 0ms not 0ms?",
+      "answer": "Because of system constraints and the time it takes the Event Loop to spin. `setTimeout(cb, 0)` usually takes at least 1-2 milliseconds to actually execute."
+    }
+  ],
+  "codeExample": "console.log(\"A: Main script running\");\n\n// Macrotask 1 (Scheduled for Timers phase)\nsetTimeout(() => console.log(\"E: Macrotask (Timeout)\"), 0);\n\n// Macrotask 2 (Scheduled for Check phase)\nsetImmediate(() => console.log(\"F: Macrotask (Immediate)\"));\n\n// Microtask 1\nPromise.resolve().then(() => console.log(\"C: Microtask 1 (Promise)\"));\n\n// Microtask 2\nqueueMicrotask(() => console.log(\"D: Microtask 2 (Queue)\"));\n\nconsole.log(\"B: Main script ending\");\n\n/* \nPREDICT THE ORDER!\n\n1. A (Main thread)\n2. B (Main thread)\n--- Main script ends. Engine checks Microtasks! ---\n3. C (VIP queue)\n4. D (VIP queue)\n--- Microtasks empty. Event loop begins! ---\n5. E (Timers Phase)\n6. F (Check Phase)\n*/"
+}

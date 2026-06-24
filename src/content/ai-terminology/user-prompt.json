@@ -1,0 +1,29 @@
+{
+  "id": "user-prompt",
+  "title": "User Prompt",
+  "difficulty": "Beginner",
+  "definition": "The direct query, instruction, or conversational input provided by the end-user in an AI application.",
+  "simpleExplanation": "The message you actually type into the chat box.",
+  "realWorldExample": "In an AI coding assistant, the user prompt is: 'Find the bug in this Python function.'",
+  "useCases": [
+    "Conversational AI interface"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main difference between a System Prompt and a User Prompt?"
+    ],
+    "intermediate": [
+      "Why should developers never fully trust a User Prompt?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference?",
+      "answer": "The System Prompt is written by the Developer to set the rules. The User Prompt is written by the Customer to ask a question."
+    },
+    {
+      "question": "Why not trust?",
+      "answer": "Because malicious users will intentionally craft User Prompts designed to 'trick' the AI into breaking its rules, generating hate speech, or leaking confidential data (Prompt Injection)."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "batching",
+  "title": "Request Batching",
+  "difficulty": "Advanced",
+  "definition": "An optimization technique where multiple separate API requests are combined into a single, comprehensive request to reduce network latency and overhead.",
+  "simpleExplanation": "If you need milk, eggs, and bread, you don't drive to the store 3 separate times. You write a grocery list, drive once, and buy all 3. Batching allows an app to ask the API for Users, Posts, and Comments in one single HTTP request.",
+  "realWorldExample": "GraphQL natively supports batching. If 5 different React components on a screen all try to fetch data at the exact same millisecond, Apollo Client intercepts all 5, combines them into one massive GraphQL query, and sends only 1 network request.",
+  "useCases": [
+    "Reducing HTTP overhead",
+    "Mobile battery optimization",
+    "GraphQL ecosystems"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary performance bottleneck that Request Batching aims to solve?"
+    ],
+    "intermediate": [
+      "How does the 'N+1 Problem' in REST architectures relate to Request Batching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary bottleneck?",
+      "answer": "Network Latency. Establishing a new HTTP/TCP connection takes time. Making 50 small requests takes significantly longer than making 1 large request, simply because of the travel time of the signals."
+    },
+    {
+      "question": "N+1 Problem?",
+      "answer": "In REST, to show a list of 10 authors and their books, you might make 1 request to get the authors, and then 10 separate requests to get the books for each author (1 + 10 = 11 requests). Batching allows the client or an intermediate layer (like Facebook's DataLoader) to combine those 10 requests into a single query."
+    }
+  ],
+  "codeExample": "/* \n  Client-Side Request Batching Concept\n*/\n\n// ❌ Inefficient: Making 3 separate HTTP requests\nfetch('/api/users/1');\nfetch('/api/users/2');\nfetch('/api/users/3');\n\n// ✅ Batching: Combining them into 1 request\nfetch('/api/users/batch', {\n  method: 'POST',\n  body: JSON.stringify({\n    ids: [1, 2, 3]\n  })\n});\n// Server returns: [{id:1}, {id:2}, {id:3}]"
+}

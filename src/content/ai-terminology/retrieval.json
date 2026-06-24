@@ -1,0 +1,30 @@
+{
+  "id": "retrieval",
+  "title": "Retrieval",
+  "difficulty": "Intermediate",
+  "definition": "The 'R' in RAG. The computational process of taking a user's query and rapidly searching through a vast corpus of external documents to find the top 'K' most semantically relevant pieces of text.",
+  "simpleExplanation": "The search engine part of the AI. Before the AI is allowed to speak, the Retrieval system digs through thousands of company files and pulls out the 3 files that are most likely to contain the answer.",
+  "realWorldExample": "User asks: 'How do I reset my router?' The Retrieval system searches the documentation database and retrieves paragraphs 14, 52, and 88, passing them to the LLM.",
+  "useCases": [
+    "Search indexing",
+    "Context gathering"
+  ],
+  "questions": {
+    "basic": [
+      "If the Retrieval step fails to find the right document, can the LLM still generate the correct answer in a strict RAG system?"
+    ],
+    "intermediate": [
+      "What is the difference between Keyword Search (BM25) and Semantic Search in Retrieval?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it answer if retrieval fails?",
+      "answer": "No. If the Retrieval system grabs the wrong document, the LLM will confidently summarize the wrong document. The success of a RAG system depends 90% on the quality of the Retrieval."
+    },
+    {
+      "question": "Keyword vs Semantic?",
+      "answer": "Keyword search (like old Google) only finds exact word matches. Semantic Search uses Embeddings to find concepts that mean the same thing, even if they use completely different words (e.g., matching 'Canines' with 'Dogs')."
+    }
+  ]
+}

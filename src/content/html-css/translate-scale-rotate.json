@@ -1,0 +1,31 @@
+{
+  "id": "translate-scale-rotate",
+  "title": "Translate, Scale, Rotate",
+  "difficulty": "Advanced",
+  "definition": "While historically these were functions passed into the `transform` property, modern CSS allows you to declare `translate`, `scale`, and `rotate` as independent CSS properties.",
+  "simpleExplanation": "The old way was annoying: if you wanted to rotate a box that was ALREADY scaled, you had to write `transform: scale(1.5) rotate(45deg)`. If you forgot the `scale`, it would shrink back down. The new way lets you animate them completely independently: `scale: 1.5;` and `rotate: 45deg;`.",
+  "realWorldExample": "Writing much cleaner hover and keyframe animations without having to copy/paste massive `transform` strings.",
+  "useCases": [
+    "Cleaner CSS code",
+    "Independent animation control"
+  ],
+  "questions": {
+    "basic": [
+      "What does `scale: 0.5;` do to an element?"
+    ],
+    "intermediate": [
+      "Why are independent transform properties better than the single `transform` property?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does scale do?",
+      "answer": "It visually shrinks the element to 50% of its normal size."
+    },
+    {
+      "question": "Why better?",
+      "answer": "It solves the 'overwriting' problem. If you use the single `transform` property to rotate an element on `:hover`, it will accidentally delete any `translate` positioning you applied to the base element. Independent properties don't interfere with each other."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 100px; height: 100px;\n    background: #f43f5e;\n    margin: 50px auto;\n    transition: all 0.5s ease;\n    \n    /* MODERN INDEPENDENT PROPERTIES */\n    /* We set the base state here */\n    scale: 1;\n    rotate: 0deg;\n    translate: 0px 0px;\n  }\n\n  .box:hover {\n    /* We can change just ONE property without affecting the others! */\n    rotate: 180deg;\n    scale: 1.5;\n  }\n  \n  /* Imagine a separate script just wanted to move it: */\n  .box.moved {\n    /* This doesn't break the rotation or scale! */\n    translate: 100px 0;\n  }\n</style>\n\n<div class=\"box\">Hover me!</div>\n<p style=\"text-align: center;\">Independent properties make animations much easier to combine.</p>"
+}

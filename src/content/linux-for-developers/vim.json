@@ -1,0 +1,30 @@
+{
+  "id": "vim",
+  "title": "Vim Basics",
+  "difficulty": "Intermediate",
+  "definition": "Vi Improved. A highly configurable, incredibly powerful terminal-based text editor built to enable efficient text editing. It is infamous for its steep learning curve and its modal nature.",
+  "simpleExplanation": "A keyboard-only code editor. You don't use a mouse. You have to press 'i' just to start typing. It is very hard to learn, but once you do, you can edit text faster than anyone with a mouse.",
+  "realWorldExample": "An engineer SSHs into a remote server with no graphical interface. They need to fix a typo in a config file. They type `vim config.txt`, press `i` for Insert Mode, fix the typo, press `Esc`, and type `:wq` to save and quit.",
+  "useCases": [
+    "Editing files on headless servers",
+    "High-speed coding"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most famous question in computer science regarding Vim?"
+    ],
+    "intermediate": [
+      "What is the difference between 'Normal Mode' and 'Insert Mode' in Vim?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most famous question?",
+      "answer": "'How do I exit Vim?' (Answer: Press `Esc`, type `:q!`, and press `Enter`)."
+    },
+    {
+      "question": "Normal vs Insert?",
+      "answer": "In Insert Mode (pressed `i`), typing on the keyboard actually writes text into the document. In Normal Mode (pressed `Esc`), typing letters executes commands (e.g., pressing `dd` deletes an entire line instantly)."
+    }
+  ]
+}

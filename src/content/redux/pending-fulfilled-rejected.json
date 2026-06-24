@@ -1,0 +1,31 @@
+{
+  "id": "pending-fulfilled-rejected",
+  "title": "Pending/Fulfilled/Rejected States",
+  "difficulty": "Intermediate",
+  "definition": "The three standard lifecycle states of a Promise, which `createAsyncThunk` maps directly into Redux action types to manage UI loading spinners and error messages.",
+  "simpleExplanation": "Every API call goes through 3 phases: \n1. Pending: The request is flying through the internet. Show a loading spinner.\n2. Fulfilled: The data arrived safely! Show the data.\n3. Rejected: The server crashed. Show a red error message.",
+  "realWorldExample": "When you click 'Login', the state changes to `pending` and the button greys out. If your password is wrong, it changes to `rejected` and displays 'Invalid Password'.",
+  "useCases": [
+    "Managing UI loading states",
+    "Handling API errors gracefully"
+  ],
+  "questions": {
+    "basic": [
+      "What action type does `createAsyncThunk` dispatch the exact moment the API call starts?"
+    ],
+    "intermediate": [
+      "If a Promise inside the thunk throws an error, which action is dispatched?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Starts?",
+      "answer": "The `pending` action."
+    },
+    {
+      "question": "Throws error?",
+      "answer": "The `rejected` action."
+    }
+  ],
+  "codeExample": "/*\n  When you dispatch fetchUsers(), RTK executes this timeline automatically:\n\n  Time 0ms: \n  Dispatch: { type: 'users/fetchUsers/pending' }\n  UI Update: Spinner appears.\n\n  Time 500ms (Internet doing work...)\n\n  Time 1000ms: Promise Resolves!\n  Dispatch: { type: 'users/fetchUsers/fulfilled', payload: [user1, user2] }\n  UI Update: Spinner hides, Users appear on screen.\n\n  OR Time 1000ms: Server Crashes!\n  Dispatch: { type: 'users/fetchUsers/rejected', error: { message: '500' } }\n  UI Update: Spinner hides, Error Toast pops up.\n*/"
+}

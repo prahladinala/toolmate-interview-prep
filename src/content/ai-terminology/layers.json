@@ -1,0 +1,29 @@
+{
+  "id": "layers",
+  "title": "Input, Hidden & Output Layers",
+  "difficulty": "Beginner",
+  "definition": "The architectural structure of a neural network. Data enters the Input layer, is processed by one or more Hidden layers, and the final prediction is produced by the Output layer.",
+  "simpleExplanation": "Imagine a factory assembly line. \nInput Layer: The loading dock where raw materials (data) arrive. \nHidden Layers: The factory floor where the workers (neurons) actually build the product. \nOutput Layer: The shipping dock where the final product (the AI's guess) leaves the building.",
+  "realWorldExample": "An AI predicting house prices. The Input layer has 3 nodes (Bedrooms, Bathrooms, Zip Code). The Hidden layers do complex math to figure out how those relate. The Output layer has exactly 1 node (The predicted Dollar Price).",
+  "useCases": [
+    "Network architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Which layer is responsible for doing all the complex 'thinking' and pattern recognition in the network?"
+    ],
+    "intermediate": [
+      "If an AI is classifying images of animals into 10 different species (Dog, Cat, Bird, etc.), how many neurons will the Output Layer have?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which layer?",
+      "answer": "The Hidden Layers."
+    },
+    {
+      "question": "How many output neurons?",
+      "answer": "Exactly 10. Each neuron in the output layer represents the probability (percentage) of one specific category. Whichever neuron outputs the highest percentage is the AI's final guess."
+    }
+  ]
+}

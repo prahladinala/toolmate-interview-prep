@@ -1,0 +1,30 @@
+{
+  "id": "twitter-cards",
+  "title": "Twitter Cards",
+  "difficulty": "Beginner",
+  "definition": "A proprietary subset of metadata tags used specifically by X (formerly Twitter) to generate rich media previews.",
+  "simpleExplanation": "Very similar to Open Graph, but specifically for Twitter. If you don't include them, Twitter will try to fall back to Open Graph tags, but explicitly defining them ensures your links look perfect on the platform.",
+  "realWorldExample": "Using the `summary_large_image` Twitter card type so your blog post takes up the entire vertical height of a user's Twitter feed.",
+  "useCases": [
+    "Social media optimization (SMO)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a `summary` card and a `summary_large_image` card on Twitter?"
+    ],
+    "intermediate": [
+      "Inside the Next.js `metadata` object, what key holds the Twitter configuration?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Difference?",
+      "answer": "A `summary` card puts a tiny square thumbnail next to the text. `summary_large_image` puts a massive, full-width billboard image above the text."
+    },
+    {
+      "question": "Which key?",
+      "answer": "The `twitter` object."
+    }
+  ],
+  "codeExample": "export const metadata: Metadata = {\n  // Standard SEO\n  title: 'Next.js 14 Released',\n  \n  // X / Twitter specific SEO\n  twitter: {\n    card: 'summary_large_image', // Creates the massive billboard preview\n    title: 'Next.js 14 is finally here!',\n    description: 'Read about the new compiler and server actions.',\n    siteId: '1467726470533754880',\n    creator: '@vercel',\n    images: ['https://nextjs.org/twitter-card.png'], // The image shown\n  },\n};"
+}

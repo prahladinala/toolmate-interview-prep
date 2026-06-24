@@ -1,0 +1,45 @@
+{
+  "id": "strict-mode",
+  "title": "React Strict Mode",
+  "difficulty": "Intermediate",
+  "definition": "`<React.StrictMode>` is a development-only wrapper component that helps you find potential bugs by enabling extra checks and warnings, and intentionally double-invoking certain functions.",
+  "simpleExplanation": "Imagine an inspector visiting a restaurant. To ensure the chef is following safety protocols, the inspector forces the chef to cook a meal, immediately throws it in the trash, and forces them to cook it a second time. If the recipe was good, both meals should taste exactly the same. Strict Mode intentionally runs your React components twice in development to ensure you aren't writing bad code.",
+  "realWorldExample": "If you write `count += 1` inside your component body instead of using state, Strict Mode will run your component twice, and your screen will show `2` instead of `1`. This instantly exposes your bug so you can fix it.",
+  "useCases": [
+    "Identifying components with unsafe lifecycles",
+    "Detecting unexpected side effects during the render phase",
+    "Ensuring cleanup functions in `useEffect` work properly"
+  ],
+  "questions": {
+    "basic": [
+      "Does Strict Mode run in production builds?",
+      "Why does my `useEffect` run twice when the page loads?"
+    ],
+    "intermediate": [
+      "What specific functions does Strict Mode double-invoke?",
+      "How do you enable Strict Mode?"
+    ],
+    "advanced": [
+      "Why is Strict Mode crucial for preparing apps for React 18 Concurrent Mode?",
+      "How does the double-mounting feature help catch memory leaks?"
+    ],
+    "trick": [
+      "Can Strict Mode visually alter the DOM on the screen?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does Strict Mode run in production?",
+      "answer": "No. All Strict Mode checks, warnings, and double-invocations are completely stripped out in production. It has zero impact on performance for end users."
+    },
+    {
+      "question": "Why does useEffect run twice?",
+      "answer": "In React 18, Strict Mode deliberately mounts your component, instantly unmounts it (running your cleanup function), and remounts it again. This simulates what happens when a user navigates away and immediately back, ensuring your cleanup logic prevents memory leaks."
+    },
+    {
+      "question": "What specific functions does it double invoke?",
+      "answer": "It double-invokes function component bodies (the render phase), `useState` updater functions, and `useMemo`/`useReducer` callbacks. It ensures these functions are mathematically pure."
+    }
+  ],
+  "codeExample": "// Standard Next.js / Create React App entry point\nimport React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst root = createRoot(document.getElementById(\"root\"));\n\nroot.render(\n  // Wrapping the app in Strict Mode enables all development checks\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n\nconsole.log(\"If you see double console.logs in development, don't panic! It's Strict Mode protecting you.\");"
+}

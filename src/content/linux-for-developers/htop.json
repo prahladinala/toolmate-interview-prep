@@ -1,0 +1,30 @@
+{
+  "id": "htop",
+  "title": "htop",
+  "difficulty": "Intermediate",
+  "definition": "An interactive, visually enhanced process viewer. It is a more modern, user-friendly alternative to `top`, featuring color-coded graphs and the ability to scroll horizontally and vertically.",
+  "simpleExplanation": "Task Manager with a beautiful UI. It draws colorful bars to show CPU usage, lets you use the mouse to click on things, and lets you kill processes without typing their numbers.",
+  "realWorldExample": "Instead of using `ps` to find an ID and then typing `kill`, a developer opens `htop`, uses the arrow keys to highlight the frozen database process, and hits the `F9` key to instantly kill it.",
+  "useCases": [
+    "Interactive process management",
+    "Visual performance monitoring"
+  ],
+  "questions": {
+    "basic": [
+      "Is `htop` installed by default on all Linux servers?"
+    ],
+    "intermediate": [
+      "How does `htop` display processes that have multiple threads?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Installed by default?",
+      "answer": "No. It is a third-party package you almost always have to install manually (`sudo apt install htop`)."
+    },
+    {
+      "question": "How are threads displayed?",
+      "answer": "By default, `htop` displays them as a nested tree structure, clearly showing which child threads belong to which parent process."
+    }
+  ]
+}

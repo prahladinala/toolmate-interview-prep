@@ -1,0 +1,30 @@
+{
+  "id": "install-git",
+  "title": "Installing Git",
+  "difficulty": "Beginner",
+  "definition": "The process of downloading and setting up the Git executable on your local operating system (Windows, Mac, or Linux).",
+  "simpleExplanation": "Before you can use Git commands in your terminal, you have to download the program. Mac usually comes with it installed, but Windows users need to download 'Git for Windows' (which also includes a really nice terminal called Git Bash).",
+  "realWorldExample": "Opening your terminal and typing `git --version` to see if it is installed, and what version you are running.",
+  "useCases": [
+    "Setting up a new developer machine"
+  ],
+  "questions": {
+    "basic": [
+      "What command checks if Git is installed?"
+    ],
+    "intermediate": [
+      "What is Git Bash?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Command to check?",
+      "answer": "`git --version`"
+    },
+    {
+      "question": "What is Git Bash?",
+      "answer": "It's an application for Windows environments that provides an emulation layer for a Git command line experience. It allows Windows users to use standard Linux/Unix commands like `ls`, `cd`, and `rm`."
+    }
+  ],
+  "codeExample": "# Check if git is installed\n$ git --version\n# Expected output: git version 2.40.1\n\n# If you are on Mac and it says 'command not found',\n# you can install it using Homebrew:\n$ brew install git\n\n# On Ubuntu/Debian Linux:\n$ sudo apt-get install git"
+}

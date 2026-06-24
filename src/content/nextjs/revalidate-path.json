@@ -1,0 +1,31 @@
+{
+  "id": "revalidate-path",
+  "title": "revalidatePath()",
+  "difficulty": "Intermediate",
+  "definition": "A utility function that allows you to purge the cached data for a specific URL path on-demand.",
+  "simpleExplanation": "You cached your `/blog` page so it loads instantly. You just published a new post. You call `revalidatePath('/blog')`. Next.js throws away the cached HTML for that specific URL. The next person to visit `/blog` triggers a fresh build.",
+  "realWorldExample": "Used at the very end of a Server Action. E.g., `updateUserProfile(data) -> revalidatePath('/profile')`.",
+  "useCases": [
+    "Cache invalidation",
+    "Reflecting mutations in UI"
+  ],
+  "questions": {
+    "basic": [
+      "If you call `revalidatePath('/shop')`, does it also purge the cache for `/shop/shoes`?"
+    ],
+    "intermediate": [
+      "Can you use `revalidatePath()` inside a Client Component?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Purge nested paths?",
+      "answer": "No, by default it only purges the exact path `/shop`. If you want to purge all nested routes under it, you must pass a second argument: `revalidatePath('/shop', 'layout')`."
+    },
+    {
+      "question": "Inside Client Component?",
+      "answer": "No. `revalidatePath` is a server-side only function. It must be called from within a Server Action or a Route Handler (API route)."
+    }
+  ],
+  "codeExample": "import { revalidatePath } from 'next/cache';\n\nexport async function updateSettings(formData: FormData) {\n  'use server';\n  \n  await db.settings.update(formData);\n  \n  // Purges the cache for just the settings page\n  revalidatePath('/dashboard/settings');\n  \n  // Purges the cache for the ENTIRE dashboard and all sub-folders!\n  revalidatePath('/dashboard', 'layout'); \n}"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "docker-pull",
+  "title": "docker pull",
+  "difficulty": "Beginner",
+  "definition": "The CLI command used to download a Docker image or a repository from a public or private registry (like Docker Hub) to your local machine.",
+  "simpleExplanation": "Downloading a blueprint from the internet to your laptop so you can use it later.",
+  "realWorldExample": "Typing `docker pull nginx` into the terminal. Docker connects to the internet, finds the official NGINX web server image, and downloads its layers to your hard drive.",
+  "useCases": [
+    "Fetching dependencies",
+    "Updating images"
+  ],
+  "questions": {
+    "basic": [
+      "If you try to run an image you don't have locally, will Docker automatically pull it for you?"
+    ],
+    "intermediate": [
+      "What happens if you run `docker pull ubuntu` five times in a row without deleting the image?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Automatically pull?",
+      "answer": "Yes. If you type `docker run redis`, Docker checks your laptop first. If it's missing, Docker automatically performs a `docker pull redis` before running it."
+    },
+    {
+      "question": "Run five times?",
+      "answer": "The first time it downloads the layers. The next four times, Docker checks the internet, sees the image hasn't changed, and instantly says 'Image is up to date' without downloading anything again."
+    }
+  ]
+}

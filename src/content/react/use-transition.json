@@ -1,0 +1,45 @@
+{
+  "id": "use-transition",
+  "title": "Transitions & Deferred Values",
+  "difficulty": "Expert",
+  "definition": "`useTransition` is a React Hook that lets you update the state without blocking the UI. `useDeferredValue` lets you defer updating a part of the UI. They are the core APIs of React 18's Concurrent Rendering.",
+  "simpleExplanation": "Imagine you are typing in a search bar that filters 100,000 items. Normally, every time you press a letter, React freezes the screen to calculate the 100,000 items. `useTransition` tells React: 'Hey, typing the letter is Urgent (show the letter immediately). Filtering the 100,000 items is Low Priority (a transition). Do the heavy filtering in the background, and don't freeze my typing!'",
+  "realWorldExample": "A heavy Search Page. You want the `<input>` to feel lightning-fast so the user doesn't get frustrated, even if the `<SearchResults>` take a second to filter and render below it.",
+  "useCases": [
+    "Keeping UI responsive during heavy state calculations",
+    "Filtering large lists of data while typing",
+    "Navigating between complex tabs without freezing the screen"
+  ],
+  "questions": {
+    "basic": [
+      "What problem does `useTransition` solve?",
+      "What is the `isPending` boolean returned by `useTransition`?"
+    ],
+    "intermediate": [
+      "What is the difference between an Urgent update and a Transition update?",
+      "What is the difference between `useTransition` and `useDeferredValue`?"
+    ],
+    "advanced": [
+      "Can a Transition update be interrupted?",
+      "Why can't you wrap controlled input state (like an `<input value={text} />`) inside `startTransition`?"
+    ],
+    "trick": [
+      "Is `useTransition` just doing the exact same thing as a `setTimeout` or `debounce`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between useTransition and useDeferredValue?",
+      "answer": "`useTransition` wraps the STATE UPDATER FUNCTION (e.g., you wrap `setSearchQuery()` in it). `useDeferredValue` wraps a VALUE (e.g., a prop passed down to a child component). You use `useTransition` when you have access to the set function, and `useDeferredValue` when you only receive the data as a prop."
+    },
+    {
+      "question": "Can a Transition update be interrupted?",
+      "answer": "Yes! This is the magic of Concurrent React. If React is busy rendering the heavy transition, and the user types another letter, React will immediately THROW AWAY the old transition work and start over, ensuring the UI never locks up."
+    },
+    {
+      "question": "Is useTransition just doing the same thing as a debounce?",
+      "answer": "No. A debounce waits for a fixed amount of time (e.g., 300ms) doing absolutely nothing. `useTransition` starts working immediately in the background without any delay, and it yields to the main thread whenever urgent interactions happen."
+    }
+  ],
+  "codeExample": "import React, { useState, useTransition } from 'react';\n\nexport default function SearchPage() {\n  const [query, setQuery] = useState('');\n  const [results, setResults] = useState([]);\n  \n  // isPending tells us if the background work is still happening\n  const [isPending, startTransition] = useTransition();\n\n  const handleChange = (e) => {\n    // 1. URGENT UPDATE: We update the input box immediately\n    setQuery(e.target.value);\n\n    // 2. TRANSITION (Low Priority): We tell React this heavy work can be done in the background\n    startTransition(() => {\n      const newResults = heavyFilteringFunction(e.target.value);\n      setResults(newResults);\n    });\n  };\n\n  return (\n    <div>\n      {/* This input will NEVER freeze, no matter how heavy the filtering is! */}\n      <input value={query} onChange={handleChange} placeholder=\"Search 100,000 items...\" />\n      \n      {/* We can show a small spinner while the background work happens */}\n      {isPending && <span> Filtering...</span>}\n      \n      <ul>\n        {results.map(item => <li key={item.id}>{item.name}</li>)}\n      </ul>\n    </div>\n  );\n}"
+}

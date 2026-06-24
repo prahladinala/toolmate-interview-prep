@@ -1,0 +1,30 @@
+{
+  "id": "ls",
+  "title": "ls",
+  "difficulty": "Beginner",
+  "definition": "List. A command used to list the files and subdirectories contained within the current directory or a specifically named directory.",
+  "simpleExplanation": "Turning on the lights to see what is in the room. It prints out all the file names.",
+  "realWorldExample": "Typing `ls -la` is the most common usage. It lists every single file, including hidden ones (the `-a`), and formats them in a long list (the `-l`) showing file sizes, dates, and permissions.",
+  "useCases": [
+    "Viewing directory contents",
+    "Checking file permissions"
+  ],
+  "questions": {
+    "basic": [
+      "How do you show 'Hidden' files using the `ls` command?"
+    ],
+    "intermediate": [
+      "In the output of `ls -l`, what does it mean if a line starts with a `d` (e.g., `drwxr-xr-x`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Show hidden files?",
+      "answer": "Use the `-a` (all) flag: `ls -a`."
+    },
+    {
+      "question": "What does 'd' mean?",
+      "answer": "It means the item is a 'Directory' (folder), not a regular file."
+    }
+  ]
+}

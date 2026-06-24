@@ -1,0 +1,30 @@
+{
+  "id": "dom-cssom",
+  "title": "DOM & CSSOM",
+  "difficulty": "Advanced",
+  "definition": "The Document Object Model (DOM) and CSS Object Model (CSSOM) are the two internal tree structures the browser builds to understand the HTML and CSS before it can paint the screen.",
+  "simpleExplanation": "When a browser downloads your `index.html` file, it doesn't see a website. It sees a giant string of text. It parses that text into a family tree of objects (The DOM). Then it downloads your `styles.css` and builds a matching family tree of styles (The CSSOM). Only when BOTH trees are fully built can the browser figure out what the website is supposed to look like.",
+  "realWorldExample": "When you write `document.getElementById('btn')` in JavaScript, you are not searching the HTML file. You are searching the DOM tree that the browser built in its memory.",
+  "useCases": [
+    "Understanding browser performance bottlenecks"
+  ],
+  "questions": {
+    "basic": [
+      "What does DOM stand for?"
+    ],
+    "intermediate": [
+      "Can the browser paint the screen if the DOM is finished but the CSSOM is still building?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "DOM?",
+      "answer": "Document Object Model."
+    },
+    {
+      "question": "Paint without CSSOM?",
+      "answer": "No. The CSSOM is 'render-blocking'. The browser will intentionally hold a blank white screen until the CSSOM is completely finished to prevent the user from seeing a chaotic, unstyled webpage."
+    }
+  ],
+  "codeExample": "// --- CONCEPTUAL UNDERSTANDING ---\n\n// 1. The Browser downloads this HTML string:\n// \"<html><body><p>Hello</p></body></html>\"\n\n// 2. The Browser converts it into the DOM Tree in C++ memory:\n/*\n   Document\n      |\n     HTML\n      |\n     Body\n      |\n    Paragraph\n      |\n   \"Hello\" (TextNode)\n*/\n\n// 3. The Browser downloads this CSS string:\n// \"p { color: red; }\"\n\n// 4. The Browser converts it into the CSSOM Tree:\n/*\n   Paragraph Node -> Rule: color: red;\n*/\n\nconsole.log(\"JavaScript can manipulate BOTH trees. It manipulates the DOM via document.createElement(), and the CSSOM via element.style.color = 'red'.\");"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "partial",
+  "title": "Partial<T>",
+  "difficulty": "Intermediate",
+  "definition": "A built-in utility type that constructs a new type where all properties of the given Type `T` are set to optional.",
+  "simpleExplanation": "Imagine an application form with 20 required fields. `Partial` takes a photocopy of that form, crosses out the word 'Required' next to every single field, and writes 'Optional'.",
+  "realWorldExample": "Updating a user profile via a PATCH request. You don't want to send the entire `User` object (with ID, email, password) just to update their username. You type the payload as `Partial<User>`.",
+  "useCases": [
+    "API PATCH requests",
+    "React `setState` (merging partial state)",
+    "Mocking data in Unit Tests"
+  ],
+  "questions": {
+    "basic": [
+      "What does `Partial` do to required properties?"
+    ],
+    "intermediate": [
+      "Does `Partial` make deeply nested properties optional?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it make deeply nested properties optional?",
+      "answer": "No! `Partial` is shallow. It only makes the top-level keys optional. If your object has `{ config: { theme: string } }`, `config` becomes optional, but if you DO provide `config`, you MUST provide `theme`. Deep partials require a custom recursive mapped type."
+    }
+  ],
+  "codeExample": "interface Todo {\n  title: string;\n  description: string;\n  completed: boolean;\n}\n\n// We want a function to update just ONE piece of the Todo\n// Using Partial<Todo> means the object can have 1, 2, or all 3 properties\nfunction updateTodo(todoToUpdate: Todo, fieldsToUpdate: Partial<Todo>) {\n  return { ...todoToUpdate, ...fieldsToUpdate };\n}\n\nconst todo1: Todo = { title: \"Clean room\", description: \"Before noon\", completed: false };\n\n// We only provide 'completed', which is perfectly valid for Partial<Todo>\nconst updatedTodo = updateTodo(todo1, {\n  completed: true\n});"
+}

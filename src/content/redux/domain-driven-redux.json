@@ -1,0 +1,30 @@
+{
+  "id": "domain-driven-redux",
+  "title": "Domain Driven Design",
+  "difficulty": "Advanced",
+  "definition": "Structuring Redux state slices based on the business domain (the real-world entities the app is tracking) rather than the UI layout (the pages on the screen).",
+  "simpleExplanation": "Don't create a `homePageSlice` and a `settingsPageSlice`. A 'User' exists on both pages. If you update the User on the Settings page, the Home page won't update because it's looking at its own slice. Create a `userSlice` (the Domain). Both pages look at the exact same Domain slice.",
+  "realWorldExample": "An HR application. The domains are `Employees`, `Payroll`, and `Benefits`. These are the slices. The UI pages (`Dashboard`, `Reports`) simply read from these domain slices.",
+  "useCases": [
+    "Data consistency across multiple views"
+  ],
+  "questions": {
+    "basic": [
+      "If you have a 'Checkout Page', should you create a `checkoutPageSlice`?"
+    ],
+    "intermediate": [
+      "What happens if two different UI pages need to display the exact same Domain data, but sorted differently?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Create checkoutPageSlice?",
+      "answer": "No. You should have a `cartSlice` and an `authSlice`. The Checkout Page reads from both domains. The only time a 'Page Slice' is acceptable is for purely UI-specific state (like which tab is currently active on that specific page)."
+    },
+    {
+      "question": "Sorted differently?",
+      "answer": "The Redux Domain slice stores ONE raw, unsorted list. You create two different Memoized Selectors (`selectUsersSortedByName`, `selectUsersSortedByDate`). Each page imports the specific selector it needs."
+    }
+  ],
+  "codeExample": "/*\n  ❌ BAD: UI-Driven State Design\n  {\n    dashboard: { latestUsers: [], theme: 'dark' },\n    profilePage: { currentUser: {} },\n    adminPage: { allUsers: [] }\n  }\n  (Problem: If a user's name changes, you have to update it in 3 different places!)\n\n  ✅ GOOD: Domain-Driven State Design\n  {\n    users: { byId: { 1: {}, 2: {} } }, // The Domain\n    ui: { theme: 'dark', activeAdminTab: 2 } // The UI\n  }\n  (Solution: A name change only happens once in the 'users' domain. All pages update instantly.)\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "repository-pattern",
+  "title": "Repository Pattern",
+  "difficulty": "Advanced",
+  "definition": "A design pattern that mediates between the domain (business logic) and data mapping layers using a collection-like interface for accessing domain objects.",
+  "simpleExplanation": "It's an adapter for your database. Instead of writing `Mongoose.find()` or `SQL.execute()` directly inside your Controllers, you create a 'Repository' file. The Controller says 'Hey Repository, get me User 5'. The Controller has NO IDEA if the database is MongoDB, PostgreSQL, or a text file. The Repository handles the specific database code. If you switch from MongoDB to SQL tomorrow, you only change the Repository file. You don't have to rewrite 50 Controllers.",
+  "realWorldExample": "Enterprise applications where the underlying database technology might change, or where you want to easily create a 'Mock Repository' to run fast Unit Tests without a real database.",
+  "useCases": [
+    "Decoupling business logic from database logic",
+    "Enterprise architectures"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main benefit of the Repository Pattern?"
+    ],
+    "intermediate": [
+      "Does the Controller know what type of database is being used?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Main benefit?",
+      "answer": "Abstraction and Decoupling. It isolates your core application logic from the specifics of your database technology (like Mongoose or Sequelize)."
+    },
+    {
+      "question": "Does the Controller know?",
+      "answer": "No. The Controller is completely agnostic. It just calls `userRepository.findById(123)`. It doesn't know or care if that data comes from SQL, Mongo, or an external API."
+    }
+  ],
+  "codeExample": "// --- THE REPOSITORY (The DB Adapter) ---\nclass UserRepository {\n  // If we change to SQL tomorrow, we ONLY change this file!\n  static async findById(id) {\n    // return await MongooseUser.findById(id);\n    // return await SQL.query('SELECT * FROM users...');\n    return { id, name: \"Abstracted User\" }; // Simulated return\n  }\n}\n\n// --- THE CONTROLLER (Business Logic) ---\n// Notice there is absolutely NO Mongoose or SQL code here.\nconst getUser = async (req, res) => {\n  const userId = req.params.id;\n  \n  // The Controller just asks the Repository!\n  const user = await UserRepository.findById(userId);\n  \n  if (!user) return res.status(404).send();\n  res.json(user);\n};\n\nconsole.log(\"The Repository Pattern protects your app from being 'vendor-locked' into a specific ORM or Database.\");"
+}

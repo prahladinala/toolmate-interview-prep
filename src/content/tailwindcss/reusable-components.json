@@ -1,0 +1,31 @@
+{
+  "id": "reusable-components",
+  "title": "Reusable Components",
+  "difficulty": "Intermediate",
+  "definition": "The architectural philosophy of avoiding repetitive Tailwind classes by encapsulating them inside JavaScript framework components (React, Vue, Svelte) rather than CSS classes.",
+  "simpleExplanation": "If you have 15 classes on a Button (`bg-blue-500 text-white p-4...`), and you need 10 buttons on a page, copy-pasting those 15 classes 10 times is a nightmare. Instead of fixing this in CSS, you create a `<Button>` React component. You write the classes ONCE inside the component, and reuse the component 10 times.",
+  "realWorldExample": "Building a `<Card>` and `<Button>` component library in Next.js.",
+  "useCases": [
+    "DRY code (Don't Repeat Yourself)",
+    "React/Vue architecture"
+  ],
+  "questions": {
+    "basic": [
+      "In a modern Tailwind workflow, where should you extract repetitive classes: into a CSS file using `@apply`, or into a React/Vue Component?"
+    ],
+    "intermediate": [
+      "Why is copy-pasting Tailwind classes considered 'okay' for one-off elements, but bad for buttons?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "CSS or Component?",
+      "answer": "Into a React/Vue Component. Tailwind strongly recommends using JS frameworks to solve duplication, keeping CSS as purely raw utilities."
+    },
+    {
+      "question": "Why bad for buttons?",
+      "answer": "If an element is truly unique (like a specific layout wrapper), copy-pasting isn't needed. But Buttons are used 500 times across an app. If you decide to change the button color from Blue to Purple, you'd have to find and replace 500 instances if you didn't componentize it."
+    }
+  ],
+  "codeExample": "/* ❌ BAD: Copy pasting classes everywhere */\n<button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">\n  Login\n</button>\n<button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">\n  Sign Up\n</button>\n\n/* ✅ GOOD: Componentize it in React/Vue */\nfunction Button({ children, onClick }) {\n  return (\n    <button \n      onClick={onClick}\n      className=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\"\n    >\n      {children}\n    </button>\n  );\n}\n\n// Now use it cleanly 500 times!\n<Button>Login</Button>\n<Button>Sign Up</Button>"
+}

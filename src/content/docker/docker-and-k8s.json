@@ -1,0 +1,30 @@
+{
+  "id": "docker-and-k8s",
+  "title": "Docker & Kubernetes Relationship",
+  "difficulty": "Beginner",
+  "definition": "Docker provides the low-level technology to package and run individual containers. Kubernetes is the high-level orchestration platform that manages thousands of those containers across hundreds of servers.",
+  "simpleExplanation": "Docker is the individual musician playing an instrument. Kubernetes is the orchestra conductor. The conductor doesn't play the instruments; they just coordinate the 100 musicians so they sound good together.",
+  "realWorldExample": "A startup uses Docker Compose to run 3 containers on a single server. They grow massive and need 500 servers. Docker Compose cannot manage 500 servers. They keep using Docker to build the images, but they switch to Kubernetes to deploy and manage them.",
+  "useCases": [
+    "Enterprise scale",
+    "Cloud architecture"
+  ],
+  "questions": {
+    "basic": [
+      "Does Kubernetes replace the need to write Dockerfiles and build Images?"
+    ],
+    "intermediate": [
+      "Is Kubernetes a direct competitor to Docker Desktop?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does K8s replace Dockerfiles?",
+      "answer": "No! They work together. You still write Dockerfiles to build the Images. Kubernetes is just the system that runs those images in production."
+    },
+    {
+      "question": "Is it a competitor?",
+      "answer": "No. Kubernetes is a direct competitor to 'Docker Swarm' (both are orchestrators). Docker Desktop is a local development tool."
+    }
+  ]
+}

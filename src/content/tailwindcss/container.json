@@ -1,0 +1,31 @@
+{
+  "id": "container",
+  "title": "Container",
+  "difficulty": "Beginner",
+  "definition": "A utility class that sets the `max-width` of an element to match the `min-width` of the current breakpoint.",
+  "simpleExplanation": "The easiest way to center your website and stop it from stretching infinitely on giant ultra-wide monitors. It automatically adjusts its width depending on if you are on a phone, tablet, or desktop.",
+  "realWorldExample": "Wrapping your entire page content in `<div class=\"container mx-auto\">` to keep everything perfectly centered with nice margins on the sides.",
+  "useCases": [
+    "Main page layouts",
+    "Preventing infinite stretching"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `container` class automatically center itself on the screen?"
+    ],
+    "intermediate": [
+      "How does Tailwind's `.container` differ from Bootstrap's `.container`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auto center?",
+      "answer": "No. By default, it just sets a `max-width`. You MUST add `mx-auto` (margin-x: auto) to actually center it."
+    },
+    {
+      "question": "Tailwind vs Bootstrap?",
+      "answer": "Bootstrap's container comes pre-centered with padding. Tailwind's container does not include centering or padding by default (though you can configure it to do so in `tailwind.config.js`)."
+    }
+  ],
+  "codeExample": "<!-- \n  Standard Page Wrapper: \n  - container: Limits max width\n  - mx-auto: Centers it horizontally\n  - px-4: Adds 1rem padding on mobile so text doesn't touch the screen edge\n-->\n<div class=\"container mx-auto px-4\">\n  <header>My Website</header>\n  <main>Main Content</main>\n</div>\n\n/* \n  Pro Tip: You can make the container center and add padding by default \n  in your tailwind.config.js so you don't have to type mx-auto everywhere: \n*/\n// theme: { container: { center: true, padding: '1rem' } }"
+}

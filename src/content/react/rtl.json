@@ -1,0 +1,38 @@
+{
+  "id": "rtl",
+  "title": "React Testing Library (RTL)",
+  "difficulty": "Intermediate",
+  "definition": "RTL is a testing utility built on top of DOM Testing Library. Its primary guiding principle is: 'The more your tests resemble the way your software is used, the more confidence they can give you.'",
+  "simpleExplanation": "Older testing tools (like Enzyme) let you test the internal gears of a component, like 'Is this.state.count equal to 1?'. RTL forces you to act like a real human user. A human doesn't know what 'state' is. A human looks for a button that says 'Increment' and clicks it, then looks for the text 'Count: 1'. RTL enforces this behavior.",
+  "realWorldExample": "Instead of finding a button by its class name `.submit-btn`, you find it by its accessibility role and text: `screen.getByRole('button', { name: /submit/i })`.",
+  "useCases": [
+    "Testing component rendering and user interactions",
+    "Ensuring components are accessible (ARIA compliant)",
+    "Integration testing component trees"
+  ],
+  "questions": {
+    "basic": [
+      "Why did RTL replace Enzyme?",
+      "What is `screen` in RTL?"
+    ],
+    "intermediate": [
+      "What is the difference between `getBy`, `queryBy`, and `findBy`?",
+      "How do you simulate a user typing into an input?"
+    ],
+    "advanced": [
+      "What is `userEvent` and how is it different from `fireEvent`?",
+      "How do you test a component that uses `useContext` or Redux?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between getBy, queryBy, and findBy?",
+      "answer": "`getBy` returns the element or throws an error instantly (use to assert element exists). `queryBy` returns the element or `null` (use to assert an element does NOT exist). `findBy` returns a Promise that waits for the element to appear (use for async rendering)."
+    },
+    {
+      "question": "userEvent vs fireEvent?",
+      "answer": "`fireEvent` just dispatches a raw DOM event. `userEvent` simulates a real human: if you `userEvent.type()`, it actually clicks the input, focuses it, fires keydown, keypress, keyup, and input events for every single letter. It is much more realistic."
+    }
+  ],
+  "codeExample": "import { render, screen } from '@testing-library/react';\nimport userEvent from '@testing-library/user-event';\nimport Counter from './Counter';\n\ntest('allows users to increment the counter', async () => {\n  // 1. Render the component to the fake DOM\n  render(<Counter />);\n\n  // 2. Find elements like a user would (by text/role)\n  const button = screen.getByRole('button', { name: /increment/i });\n  const message = screen.getByText(/count: 0/i);\n\n  // 3. Interact like a user\n  await userEvent.click(button);\n\n  // 4. Assert the visible output changed\n  expect(screen.getByText(/count: 1/i)).toBeInTheDocument();\n});"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "queries",
+  "title": "Queries",
+  "difficulty": "Beginner",
+  "definition": "Endpoints defined in RTK Query that are used strictly for READ operations (fetching data from the server). Typically maps to a `GET` request.",
+  "simpleExplanation": "A Query is when you ask the server for information without changing anything. 'Give me the user profile.' RTK Query aggressively caches Queries to save bandwidth.",
+  "realWorldExample": "Fetching a list of blog posts to display on the homepage. You define a `getPosts: builder.query({...})` endpoint.",
+  "useCases": [
+    "Fetching data",
+    "GET requests"
+  ],
+  "questions": {
+    "basic": [
+      "What type of HTTP request is used by default for a Query?"
+    ],
+    "intermediate": [
+      "What happens if a component unmounts while a Query is still fetching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "HTTP request?",
+      "answer": "A `GET` request."
+    },
+    {
+      "question": "Unmounts while fetching?",
+      "answer": "RTK Query will automatically abort the fetch request to save bandwidth and prevent memory leaks."
+    }
+  ],
+  "codeExample": "// Inside createApi endpoints builder:\n\nendpoints: (builder) => ({\n  // Defining a basic Query (READ operation)\n  getUser: builder.query({\n    query: (userId) => `/users/${userId}`,\n  }),\n  \n  // Defining a Query with query parameters (?sort=asc)\n  getPosts: builder.query({\n    query: (sortBy) => ({\n      url: '/posts',\n      params: { sort: sortBy }\n    }),\n  }),\n})"
+}

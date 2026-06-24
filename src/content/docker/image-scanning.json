@@ -1,0 +1,30 @@
+{
+  "id": "image-scanning",
+  "title": "Image Scanning",
+  "difficulty": "Intermediate",
+  "definition": "The automated process of analyzing the contents of a Docker image to detect known Common Vulnerabilities and Exposures (CVEs), outdated libraries, or leaked passwords before the image is allowed to run in production.",
+  "simpleExplanation": "An X-ray machine at the airport. Before the image is allowed onto the production server, the scanner checks its luggage for bombs (vulnerabilities). If it finds an outdated, easily-hackable version of Java, it blocks the image.",
+  "realWorldExample": "A company uses Trivy (an open-source scanner) in their CI/CD pipeline. A developer accidentally commits a Dockerfile using an incredibly old version of Ubuntu. When the code is pushed, Trivy scans the image, finds 40 'Critical' vulnerabilities, and automatically fails the build.",
+  "useCases": [
+    "CI/CD pipelines",
+    "Vulnerability management"
+  ],
+  "questions": {
+    "basic": [
+      "Should Image Scanning happen manually once a month, or automatically on every single code push?"
+    ],
+    "intermediate": [
+      "If an Image Scanner detects a 'CVE' in your image, what exactly did it find?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Manual or automatic?",
+      "answer": "Automatically on every code push (DevSecOps). Security should be shifted as far 'left' in the development process as possible."
+    },
+    {
+      "question": "What is a CVE?",
+      "answer": "Common Vulnerabilities and Exposures. It is a publicly documented, known security flaw in a specific piece of software. Hackers read CVE databases to figure out how to break into systems."
+    }
+  ]
+}

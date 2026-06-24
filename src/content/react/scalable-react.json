@@ -1,0 +1,38 @@
+{
+  "id": "scalable-react",
+  "title": "Scalable React Apps",
+  "difficulty": "Advanced",
+  "definition": "Best practices for organizing, structuring, and optimizing a React application so that it remains maintainable, performant, and bug-free as it grows to hundreds of components and developers.",
+  "simpleExplanation": "Building a dog house is easy; you just nail some wood together. Building a skyscraper requires blueprints, strict safety standards, and specialized teams. A Scalable React App uses strict rules (ESLint, TypeScript), modular architecture (Feature-based folders), and standardized data fetching (React Query) so the skyscraper doesn't collapse.",
+  "realWorldExample": "Transitioning a messy 2019 CRA app with massive Redux boilerplate and giant `utils.js` files into a Next.js App Router project using Feature-Sliced Design, strict type checking, and isolated testing.",
+  "useCases": [
+    "Enterprise applications",
+    "Teams with 10+ frontend developers",
+    "Apps with long lifespans (5+ years)"
+  ],
+  "questions": {
+    "basic": [
+      "Why is it bad to put all components in one `/components` folder?",
+      "Why use TypeScript for scalability?"
+    ],
+    "intermediate": [
+      "What is 'Feature-Based Architecture'?",
+      "How do absolute imports (`@/components/Button`) improve scalability?"
+    ],
+    "advanced": [
+      "How do you enforce architectural boundaries?",
+      "What is a Monorepo and when should a React team use one?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use TypeScript?",
+      "answer": "In a large codebase, you cannot memorize what props every component takes. TypeScript acts as a compiler that strictly defines the shape of data, preventing entire categories of bugs (like passing a string to a component expecting an object) and enabling safe, massive refactors."
+    },
+    {
+      "question": "What is Feature-Based Architecture?",
+      "answer": "Instead of grouping files by TYPE (`/components`, `/hooks`, `/api`), you group files by FEATURE (`/features/cart`, `/features/auth`). Inside `/features/cart`, you place the cart components, cart hooks, and cart API calls. This keeps related code co-located, making it much easier to maintain and delete."
+    }
+  ],
+  "codeExample": "// Conceptual Folder Structure for a Scalable App\n// src/\n//   |-- assets/\n//   |-- components/        # ONLY Global, dumb UI components (Buttons, Modals)\n//   |-- config/            # Environment vars, constants\n//   |-- features/          # The core of the app!\n//       |-- auth/\n//           |-- api/       # Login/Logout fetch calls\n//           |-- components/# LoginForm, ProtectedRoute\n//           |-- hooks/     # useAuth\n//           |-- index.ts   # ONLY export what the rest of the app needs\n//       |-- cart/\n//   |-- lib/               # Third-party library wrappers (axios setup)\n//   |-- types/             # Global TS interfaces\n//   |-- App.tsx\nconsole.log('Scalability is about making the code easy to delete or replace.');"
+}

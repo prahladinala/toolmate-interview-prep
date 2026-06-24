@@ -1,0 +1,30 @@
+{
+  "id": "caching-llms",
+  "title": "LLM Caching",
+  "difficulty": "Intermediate",
+  "definition": "Storing the exact AI-generated response to a specific prompt in a database. If another user asks the exact same prompt, the system instantly returns the saved response instead of paying the LLM API to generate it again.",
+  "simpleExplanation": "If 1,000 users ask 'What is the capital of France?', you don't pay OpenAI 1,000 times to do the math. You pay OpenAI once, write the answer down, and hand the free copy to the other 999 users.",
+  "realWorldExample": "Using Redis Semantic Cache. If User 1 asks 'How do I reset my password?', it costs $0.05. If User 2 asks 'How can I change my password?', the Semantic Cache realizes the sentence means the exact same thing, and instantly returns User 1's saved answer for $0.00.",
+  "useCases": [
+    "Cost optimization",
+    "Latency reduction"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two massive benefits of caching LLM responses? (Hint: Time and Money)"
+    ],
+    "intermediate": [
+      "What is the difference between Exact Caching and Semantic Caching?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Two benefits?",
+      "answer": "1. It reduces API costs to zero for repeat queries. \n2. It reduces Latency to zero (an instant response instead of waiting 5 seconds for generation)."
+    },
+    {
+      "question": "Exact vs Semantic?",
+      "answer": "Exact caching only works if the user types the identical string letter-for-letter. Semantic caching converts the user's prompt into an Embedding vector. If the vector is extremely close to a past query (meaning it has the same intent, just different words), it returns the cache."
+    }
+  ]
+}

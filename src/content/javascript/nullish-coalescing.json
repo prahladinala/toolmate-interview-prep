@@ -1,0 +1,34 @@
+{
+  "id": "nullish-coalescing",
+  "title": "Nullish Coalescing",
+  "difficulty": "Intermediate",
+  "definition": "The `??` operator is a logical operator that returns its right-hand operand when its left-hand operand is null or undefined, and otherwise returns its left-hand operand.",
+  "simpleExplanation": "It's a stricter version of the `||` operator. The `||` operator falls back on ANY falsy value (like `0` or `\"\"`). The `??` operator only falls back if the value is specifically `null` or `undefined`.",
+  "realWorldExample": "Setting a game score. If you use `score || 100`, a player with a genuine score of `0` will be accidentally given `100` because `0` is falsy. Using `score ?? 100` correctly preserves the `0`.",
+  "useCases": [
+    "Providing default values",
+    "Working alongside Optional Chaining"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `||` and `??`?"
+    ],
+    "intermediate": [
+      "What does the word 'Nullish' mean?"
+    ],
+    "advanced": [
+      "Can you chain `??` and `||` together in the same expression?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does Nullish mean?",
+      "answer": "Nullish refers specifically and exclusively to the values `null` and `undefined`. Unlike 'Falsy', it does not include `0`, `false`, `NaN`, or empty strings."
+    },
+    {
+      "question": "Can you chain ?? and || together?",
+      "answer": "Yes, but you MUST use parentheses to explicitly indicate precedence, e.g., `(a ?? b) || c`. If you try `a ?? b || c` without parentheses, it throws a SyntaxError."
+    }
+  ],
+  "codeExample": "const count = 0;\nconst message = \"\";\n\n// Logical OR (||) treats 0 and \"\" as falsy\nconsole.log(count || 100);    // 100 (Oops, lost the 0)\nconsole.log(message || \"Hi\"); // \"Hi\" (Oops, lost the empty string)\n\n// Nullish Coalescing (??) only replaces null/undefined\nconsole.log(count ?? 100);    // 0 (Correct!)\nconsole.log(message ?? \"Hi\"); // \"\" (Correct!)\n\nlet missingData = null;\nconsole.log(missingData ?? \"Fallback data\"); // \"Fallback data\""
+}

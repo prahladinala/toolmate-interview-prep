@@ -1,0 +1,30 @@
+{
+  "id": "f1-score",
+  "title": "F1 Score",
+  "difficulty": "Advanced",
+  "definition": "The harmonic mean of Precision and Recall. It provides a single, balanced metric to evaluate a model when you need to balance both False Positives and False Negatives, particularly on uneven datasets.",
+  "simpleExplanation": "The ultimate combined grade. Since Precision and Recall are a see-saw (if one goes up, the other usually goes down), the F1 Score punishes extreme imbalances. To get a high F1 score, the AI must be both highly Precise AND have high Recall.",
+  "realWorldExample": "A data scientist trains 5 different ML models to detect credit card fraud. Since most transactions are legit, 'Accuracy' is a useless metric. The scientist compares the models using their F1 Scores to find the best all-around performer.",
+  "useCases": [
+    "Imbalanced datasets",
+    "Model benchmarking"
+  ],
+  "questions": {
+    "basic": [
+      "If a model has 100% Recall but 10% Precision, will its F1 Score be high or low?"
+    ],
+    "intermediate": [
+      "Why does the F1 score use a 'Harmonic Mean' instead of a simple average?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "High or low?",
+      "answer": "Low. The F1 Score severely penalizes models that sacrifice one metric entirely for the other."
+    },
+    {
+      "question": "Why harmonic mean?",
+      "answer": "A simple average of (1.0 and 0.0) is 0.5. But an AI with 0 Precision is completely useless. The Harmonic Mean equation ensures that if either Precision OR Recall drops to 0, the final F1 score drops all the way to 0, accurately reflecting the model's failure."
+    }
+  ]
+}

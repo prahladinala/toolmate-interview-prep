@@ -1,0 +1,34 @@
+{
+  "id": "typeof-operator",
+  "title": "typeof Operator (in Types)",
+  "difficulty": "Advanced",
+  "definition": "In the type context, `typeof` takes a JavaScript variable or object and generates a TypeScript Type based on its shape.",
+  "simpleExplanation": "Usually, you write the Type first (the blueprint), and then build the Object (the house). But sometimes, you already have the Object, and you want to auto-generate the blueprint from it. `typeof` points a scanner at a JS variable and extracts its shape into a TS Type.",
+  "realWorldExample": "You have a massive, deeply nested configuration object `const config = { theme: 'dark', api: { url: '...' } }`. Instead of writing out a 50-line interface manually, you just do `type ConfigType = typeof config;`.",
+  "useCases": [
+    "Extracting types from JSON objects",
+    "Extracting the signature of an existing function"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between JS `typeof` and TS `typeof`?"
+    ],
+    "intermediate": [
+      "Can you use TS `typeof` on a function to get its signature?"
+    ],
+    "advanced": [
+      "How do you combine `typeof` and `keyof`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "JS vs TS typeof?",
+      "answer": "JS `typeof` runs at runtime and returns a basic string (like `'object'` or `'function'`). TS `typeof` is used exclusively in type annotations (e.g., `type MyType = typeof obj`) and completely vanishes after compilation."
+    },
+    {
+      "question": "How do you combine them?",
+      "answer": "`type Keys = keyof typeof myObject;`. This extracts the blueprint of the object, and then instantly extracts a union of its keys. Incredibly useful for creating enums from plain JS objects."
+    }
+  ],
+  "codeExample": "// A plain JavaScript object (No interface exists!)\nconst defaultSettings = {\n  volume: 80,\n  graphics: \"high\",\n  fullscreen: true\n};\n\n// Auto-magically extract the blueprint into a TypeScript Type\ntype SettingsType = typeof defaultSettings;\n\n/* SettingsType is equivalent to:\n  {\n    volume: number;\n    graphics: string;\n    fullscreen: boolean;\n  }\n*/\n\n// Ensure a new variable matches the shape of the default settings\nconst userSettings: SettingsType = {\n  volume: 50,\n  graphics: \"low\",\n  fullscreen: false\n};"
+}

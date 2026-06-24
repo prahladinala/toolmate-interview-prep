@@ -1,0 +1,32 @@
+{
+  "id": "ci-cd",
+  "title": "CI/CD Basics",
+  "difficulty": "Intermediate",
+  "definition": "Continuous Integration and Continuous Deployment. The automated process of testing, building, and deploying code to production every time a developer commits changes to a code repository.",
+  "simpleExplanation": "In the old days, deploying a website meant freezing development on Friday, manually running tests, FTPing files to a server, and praying nothing broke. CI/CD automates this entirely. When you `git push` to GitHub, an automated robot (like GitHub Actions) wakes up. It runs your Jest tests (CI). If they pass, it automatically logs into your AWS server, downloads the new code, and restarts PM2 (CD). You can deploy 50 times a day safely.",
+  "realWorldExample": "Setting up a `.github/workflows/deploy.yml` file. Every time a Pull Request is merged into the `main` branch, the code is automatically pushed live to production within 2 minutes.",
+  "useCases": [
+    "Automated testing",
+    "Agile development",
+    "Preventing human error during deployments"
+  ],
+  "questions": {
+    "basic": [
+      "What does the 'CI' stand for, and what is its main goal?"
+    ],
+    "intermediate": [
+      "What happens if a Unit Test fails during the CI pipeline?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is CI?",
+      "answer": "Continuous Integration. Its main goal is to automatically verify that new code integrates perfectly with the existing codebase by running automated tests."
+    },
+    {
+      "question": "What if a test fails?",
+      "answer": "The pipeline immediately aborts. The CD (Deployment) phase is blocked, preventing the buggy code from ever reaching the production server."
+    }
+  ],
+  "codeExample": "# --- EXAMPLE GITHUB ACTIONS YAML ---\n\n# name: Node.js CI/CD\n# \n# on:\n#   push:\n#     branches: [ main ]\n# \n# jobs:\n#   build-and-test:\n#     runs-on: ubuntu-latest\n#     steps:\n#     - uses: actions/checkout@v3\n#     - name: Use Node.js\n#       uses: actions/setup-node@v3\n#       with:\n#         node-version: '18.x'\n#     - name: Install dependencies\n#       run: npm ci\n#     - name: Run Tests (CI Phase)\n#       run: npm test\n# \n#   deploy:\n#     needs: build-and-test  # ONLY runs if tests pass!\n#     runs-on: ubuntu-latest\n#     steps:\n#     - name: Deploy to Server (CD Phase)\n#       run: echo \"Running SSH commands to pull code and restart PM2...\"\n\nconsole.log(\"CI/CD turns deployment from a terrifying Friday-night ordeal into a boring, automated button click.\");"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "multi-stage-builds",
+  "title": "Multi-Stage Builds",
+  "difficulty": "Advanced",
+  "definition": "A method of defining multiple `FROM` statements in a single Dockerfile. It allows you to use one environment to compile the code (with all the heavy build tools), and a completely different, pristine environment to run the final code, discarding the heavy tools.",
+  "simpleExplanation": "Using a massive, messy kitchen to bake the cake, but then moving ONLY the finished cake into a pristine, tiny glass display case to sell it. You don't sell the dirty pots and pans.",
+  "realWorldExample": "A Golang app requires 1GB of compilers to build. In Stage 1 (`FROM golang`), you compile the code into a 10MB binary file. In Stage 2 (`FROM alpine`), you copy *only* the 10MB binary from Stage 1. The final image size is 15MB instead of 1GB.",
+  "useCases": [
+    "Massively reducing image size",
+    "Removing vulnerabilities"
+  ],
+  "questions": {
+    "basic": [
+      "In a Multi-Stage build with three `FROM` statements, how many final Images are produced?"
+    ],
+    "intermediate": [
+      "What is the primary security benefit of using a Multi-Stage Build?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many final images?",
+      "answer": "Exactly one. Only the final stage is saved as the actual Image. The previous stages are used as temporary 'builder' environments and then discarded."
+    },
+    {
+      "question": "Security benefit?",
+      "answer": "It significantly reduces the 'Attack Surface'. By discarding the compiler, debuggers, and source code in Stage 1, hackers have far fewer tools available to exploit if they manage to breach the final Stage 2 container."
+    }
+  ]
+}

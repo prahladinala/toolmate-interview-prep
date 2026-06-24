@@ -1,0 +1,30 @@
+{
+  "id": "testing-reducers",
+  "title": "Testing Reducers",
+  "difficulty": "Beginner",
+  "definition": "A sub-topic of testing slices, focusing entirely on verifying that pure functions return the correct mathematically predictable state.",
+  "simpleExplanation": "If you write an action called `withdrawMoney(50)`, your test proves that if the state starts at `$100`, it ends exactly at `$50`.",
+  "realWorldExample": "Ensuring that an immutable update didn't accidentally delete other properties in the state object.",
+  "useCases": [
+    "Automated quality assurance"
+  ],
+  "questions": {
+    "basic": [
+      "Why are Reducers considered the easiest part of a React app to test?"
+    ],
+    "intermediate": [
+      "What happens if your Reducer relies on `Math.random()` or `Date.now()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Easiest to test?",
+      "answer": "Because they have no dependencies. They don't touch the DOM, they don't make API calls, and they don't rely on React hooks. They are pure math."
+    },
+    {
+      "question": "Math.random()?",
+      "answer": "Your tests will become 'flaky' and fail randomly because the output becomes unpredictable. This is exactly why Reducers MUST be pure functions."
+    }
+  ],
+  "codeExample": "it('should handle toggling a todo', () => {\n  const startingState = [\n    { id: 1, text: 'Run tests', completed: false }\n  ];\n  \n  const action = toggleTodo(1);\n  const nextState = todoReducer(startingState, action);\n  \n  expect(nextState[0].completed).toBe(true);\n});"
+}

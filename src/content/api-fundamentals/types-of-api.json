@@ -1,0 +1,31 @@
+{
+  "id": "types-of-api",
+  "title": "Types of APIs",
+  "difficulty": "Intermediate",
+  "definition": "Categorizing APIs based on their access permissions (Public, Private, Partner) and their architectural styles (REST, GraphQL, SOAP, gRPC).",
+  "simpleExplanation": "Not all APIs are meant for everyone. A 'Private' API is only used by your own company's apps. A 'Public' API is open for anyone in the world to use (like the Pokemon API). A 'Partner' API is only for specific companies you sign contracts with.",
+  "realWorldExample": "Twitter has a Private API (used by the official Twitter iPhone app), a Partner API (used by Apple to integrate tweets into iOS), and a Public API (used by random college students building sentiment analysis bots).",
+  "useCases": [
+    "System Architecture",
+    "Security scoping"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Public API (also known as an Open API)?"
+    ],
+    "intermediate": [
+      "What is the difference between a Web API and a Library/OS API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Public API?",
+      "answer": "An API that is publicly available for external software developers to access, usually with minimal restrictions (though they often require an API key to track usage)."
+    },
+    {
+      "question": "Web vs OS API?",
+      "answer": "A Web API works over the internet using HTTP (like fetching weather data from a remote server). An OS API works locally on a device (like your Javascript code asking the iPhone's iOS API for permission to use the local camera)."
+    }
+  ],
+  "codeExample": "// 1. Web API (Over the Internet via HTTP)\nfetch('https://api.github.com/users/octocat');\n\n// 2. Browser API (Built into Google Chrome)\nnavigator.geolocation.getCurrentPosition((pos) => console.log(pos));\n\n// 3. Library API (Using a third-party code library locally)\n// The 'format' function IS the API of the date-fns library!\nimport { format } from 'date-fns';\nformat(new Date(), 'yyyy-MM-dd');"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "rate-limiting",
+  "title": "Rate Limiting",
+  "difficulty": "Intermediate",
+  "definition": "A technique used to control the rate of traffic sent or received by a network interface. It is used to prevent DoS attacks, brute-force login attempts, and excessive API usage.",
+  "simpleExplanation": "The bouncer at a club. If you ask to get in once, he says yes. If you ask to get in 1,000 times in 10 seconds, he assumes you are a robot (or an attacker) and blocks you for 15 minutes.",
+  "realWorldExample": "Limiting the `/login` API endpoint to 5 requests per minute per IP address. If a hacker tries to guess passwords rapidly, they will quickly be locked out, receiving a `429 Too Many Requests` status code.",
+  "useCases": [
+    "API monetization",
+    "Security against brute-force",
+    "Preventing server crashes"
+  ],
+  "questions": {
+    "basic": [
+      "What HTTP Status code should a server return when a user hits a rate limit?"
+    ],
+    "intermediate": [
+      "If a malicious user uses 50,000 different IP addresses (a botnet) to bypass an IP-based rate limiter, how do you stop them?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which status code?",
+      "answer": "`429 Too Many Requests`."
+    },
+    {
+      "question": "How to stop botnets?",
+      "answer": "You must rate-limit based on the specific User Account or API Key, not just the IP address. Alternatively, you put a massive Cloudflare WAF (Web Application Firewall) in front of your API to analyze the bot traffic patterns."
+    }
+  ],
+  "codeExample": "// Node.js Express Example using 'express-rate-limit'\n\nconst rateLimit = require('express-rate-limit');\n\n// 1. Create a limiter instance\nconst loginLimiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 5, // Limit each IP to 5 login requests per window\n  message: \"Too many login attempts from this IP, please try again after 15 minutes\",\n  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers\n});\n\n// 2. Apply it ONLY to the sensitive routes, not the whole API\napp.post('/api/login', loginLimiter, (req, res) => {\n  // Handle login\n});"
+}

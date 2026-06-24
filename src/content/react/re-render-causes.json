@@ -1,0 +1,44 @@
+{
+  "id": "re-render-causes",
+  "title": "What Causes Re-renders?",
+  "difficulty": "Intermediate",
+  "definition": "In React, there are only a few specific triggers that cause a component to re-render (re-evaluate its function body). Understanding these is critical for performance optimization.",
+  "simpleExplanation": "A React component is like a very paranoid guard. They only check ID (re-render) if one of three alarms go off: 1. Their own internal state changes. 2. Their boss (parent component) tells them to check ID because the boss is checking IDs. 3. The building intercom (Context API) makes an announcement.",
+  "realWorldExample": "If a `<Clock>` component updates its internal `time` state every second, it re-renders every second. If that clock is inside a `<Dashboard>`, the Dashboard does NOT re-render. But if the Dashboard updates its state, the `<Clock>` is forced to re-render too, just because it's a child.",
+  "useCases": [
+    "Debugging why a component is running too many times",
+    "Using `React.memo` effectively"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most common cause of a re-render?",
+      "Does changing a `useRef` current value cause a re-render?"
+    ],
+    "intermediate": [
+      "If a parent component re-renders, what happens to its children?",
+      "Do props changing cause a re-render?"
+    ],
+    "advanced": [
+      "If a component consumes a Context, and a completely unrelated part of that Context value changes, does the component re-render?",
+      "What is the \"Bailout\" mechanism in React?"
+    ],
+    "trick": [
+      "If a parent re-renders, but it passes the EXACT same props to a child, does the child re-render?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "If a parent re-renders, what happens to children?",
+      "answer": "They ALL re-render by default. A component re-rendering forces every single component inside of it to re-render all the way down the tree, regardless of whether their props changed or not."
+    },
+    {
+      "question": "If a parent passes the exact same props, does the child re-render?",
+      "answer": "YES! Props do not cause re-renders; parent re-renders cause child re-renders. The only way to stop a child from re-rendering when the parent does is to wrap the child in `React.memo()`."
+    },
+    {
+      "question": "Does changing useRef cause a re-render?",
+      "answer": "No. Updating `ref.current` is completely silent and never triggers a re-render. That is its primary design purpose."
+    }
+  ],
+  "codeExample": "import React, { useState } from \"react\";\n\nfunction ChildComponent() {\n  console.log(\"Child re-rendered!\");\n  return <div className=\"p-2 border mt-2\">I am the child. Watch the console!</div>;\n}\n\nexport default function ParentComponent() {\n  const [count, setCount] = useState(0);\n  console.log(\"Parent re-rendered!\");\n\n  return (\n    <div className=\"p-4 border border-blue-500\">\n      <h2>Parent State Trigger</h2>\n      <button onClick={() => setCount(c => c + 1)}>Update Parent ({count})</button>\n      \n      {/* \n        Even though we pass NO props to the child, \n        it will re-render every time we click the button \n        just because the parent re-rendered! \n      */}\n      <ChildComponent />\n    </div>\n  );\n}"
+}

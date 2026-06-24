@@ -1,0 +1,31 @@
+{
+  "id": "route-groups",
+  "title": "Route Groups",
+  "difficulty": "Intermediate",
+  "definition": "A way to organize files into logical groups using parenthesis `(folderName)` WITHOUT affecting the actual URL structure of the application.",
+  "simpleExplanation": "If you create a folder called `marketing`, the URL becomes `/marketing/about`. But what if you just want to organize your files, and you want the URL to stay `/about`? You wrap the folder in parentheses: `(marketing)`. Next.js will completely ignore the folder name when building URLs.",
+  "realWorldExample": "Separating your app into two massive chunks: `(marketing)` and `(auth)`. Inside `(auth)` you put `login` and `register`. The URLs remain `/login` and `/register`, but your codebase is beautifully organized.",
+  "useCases": [
+    "Code organization",
+    "Creating multiple root layouts"
+  ],
+  "questions": {
+    "basic": [
+      "What syntax tells Next.js to ignore a folder when generating URLs?"
+    ],
+    "intermediate": [
+      "Besides organization, what is the major architectural reason to use Route Groups?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Syntax?",
+      "answer": "Parentheses around the folder name: `(folderName)`."
+    },
+    {
+      "question": "Major reason?",
+      "answer": "Creating different Root Layouts. You can put one `layout.tsx` inside `(marketing)` with a fancy footer, and a totally different `layout.tsx` inside `(app)` with a sidebar. Even though they share the same URL domain, they get completely different HTML structures."
+    }
+  ],
+  "codeExample": "/* \n  Route Groups Example:\n  \n  app/\n  ├── (marketing)/           <-- URL ignores this folder!\n  │   ├── layout.tsx         <-- Only applies to marketing pages\n  │   ├── page.tsx           (URL: /)\n  │   └── about/page.tsx     (URL: /about)\n  │\n  └── (dashboard)/           <-- URL ignores this folder!\n      ├── layout.tsx         <-- Only applies to dashboard pages\n      ├── settings/page.tsx  (URL: /settings)\n      └── billing/page.tsx   (URL: /billing)\n*/"
+}

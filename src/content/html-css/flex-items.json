@@ -1,0 +1,31 @@
+{
+  "id": "flex-items",
+  "title": "Flex Items",
+  "difficulty": "Intermediate",
+  "definition": "The direct children of a flex container. They have specific CSS properties applied to them that control how they grow, shrink, or reorder themselves within the container.",
+  "simpleExplanation": "Once the parent is a Flex Container, the children gain superpowers. You can tell one child 'Take up twice as much space as your brothers', or you can tell the 3rd child 'Visually move yourself to the front of the line'.",
+  "realWorldExample": "A classic sidebar layout. The main article is told to `flex-grow: 1` (take up all remaining space), while the sidebar is given a fixed width.",
+  "useCases": [
+    "Dynamic width columns",
+    "Reordering elements for mobile devices without changing HTML"
+  ],
+  "questions": {
+    "basic": [
+      "What property allows a flex item to grow and fill empty space?"
+    ],
+    "intermediate": [
+      "How can you make the 3rd div in the HTML appear first on the screen?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Grow property?",
+      "answer": "`flex-grow`"
+    },
+    {
+      "question": "Change visual order?",
+      "answer": "Use the `order` property. By default, all items have `order: 0`. If you give the 3rd div `order: -1`, it will jump to the front of the line."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    display: flex;\n    gap: 10px;\n    background: #eee;\n    padding: 10px;\n  }\n\n  .item {\n    background: coral;\n    padding: 20px;\n    color: white;\n    font-weight: bold;\n  }\n\n  /* Item Superpowers */\n  .grow-me {\n    /* I will greedily consume ALL leftover empty space in the container! */\n    flex-grow: 1;\n    background: red;\n  }\n\n  .move-me {\n    /* Even though I am last in the HTML, I will visually jump to the front! */\n    order: -1;\n    background: green;\n  }\n</style>\n\n<div class=\"container\">\n  <div class=\"item\">Normal (1)</div>\n  <div class=\"item grow-me\">I have flex-grow: 1 (2)</div>\n  <div class=\"item move-me\">I have order: -1 (3)</div>\n</div>"
+}

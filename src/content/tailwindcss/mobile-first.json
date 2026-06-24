@@ -1,0 +1,31 @@
+{
+  "id": "mobile-first",
+  "title": "Mobile First Design",
+  "difficulty": "Intermediate",
+  "definition": "The architectural philosophy baked into Tailwind where unprefixed classes apply to mobile devices by default, and prefixed classes (`md:`) apply to larger screens.",
+  "simpleExplanation": "Do not design the desktop site first! Design the tiny, stacked, one-column mobile layout using standard classes (`w-full`, `text-sm`). Then, add `md:` prefixes to expand the layout for laptops (`md:w-1/2`, `md:text-xl`).",
+  "realWorldExample": "Writing `<div class=\"text-center md:text-left\">`. On a tiny phone, the text is centered for symmetry. Once the screen gets wide enough (`md:`), the text snaps to the left edge.",
+  "useCases": [
+    "Modern web architecture",
+    "Tailwind best practices"
+  ],
+  "questions": {
+    "basic": [
+      "If you write `<div class=\"lg:w-1/2\">`, what is the width of the div on a mobile phone?"
+    ],
+    "intermediate": [
+      "Why is Mobile-First considered better for performance than Desktop-First?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Width on mobile?",
+      "answer": "100% (or whatever block-level default it has). The `lg:` prefix only kicks in on large screens. Because you didn't provide a base width (like `w-full`), it acts like a normal, unstyled `div` on mobile."
+    },
+    {
+      "question": "Why better performance?",
+      "answer": "Because mobile phones have weaker processors and slower internet. Mobile-first CSS means the browser doesn't have to download massive desktop layouts and then spend processing power overriding them to squash them into a phone screen."
+    }
+  ],
+  "codeExample": "<!-- \n  ❌ BAD: Desktop-First Thinking \n  (Trying to undo desktop styles for mobile)\n  <div class=\"flex-row sm:flex-col w-1/2 sm:w-full\">\n-->\n\n<!-- \n  ✅ GOOD: Mobile-First Thinking \n  (Start with the mobile styles (unprefixed), then upgrade for desktop)\n-->\n<div class=\"flex flex-col md:flex-row\">\n  <!-- Full width on phone, 1/3 on laptop -->\n  <div class=\"w-full md:w-1/3 bg-blue-500\">\n    Sidebar\n  </div>\n  \n  <!-- Full width on phone, 2/3 on laptop -->\n  <div class=\"w-full md:w-2/3 bg-green-500\">\n    Main Content\n  </div>\n</div>"
+}

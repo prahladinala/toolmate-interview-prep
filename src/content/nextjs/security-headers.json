@@ -1,0 +1,32 @@
+{
+  "id": "security-headers",
+  "title": "Security Headers",
+  "difficulty": "Advanced",
+  "definition": "HTTP response headers that instruct the user's browser to enforce strict security rules, mitigating attacks like Clickjacking, XSS, and MIME-sniffing.",
+  "simpleExplanation": "When your server sends a webpage to a browser, it attaches invisible instructions. One instruction says: 'Never allow another website to embed my site in an `<iframe>`'. This prevents hackers from overlaying an invisible button over your 'Transfer Money' button (Clickjacking).",
+  "realWorldExample": "Configuring a Content Security Policy (CSP) header that tells the browser: 'ONLY execute JavaScript that comes exactly from my domain. Refuse to run any scripts from third-party URLs'.",
+  "useCases": [
+    "Enterprise security compliance",
+    "Preventing Clickjacking",
+    "Preventing XSS"
+  ],
+  "questions": {
+    "basic": [
+      "What file in a Next.js project is the best place to configure global HTTP Security Headers?"
+    ],
+    "intermediate": [
+      "What does the `Strict-Transport-Security` (HSTS) header do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which file?",
+      "answer": "`next.config.js` using the `async headers()` function."
+    },
+    {
+      "question": "HSTS header?",
+      "answer": "It tells the browser to NEVER, under any circumstances, load the website using insecure HTTP. It forces the browser to automatically upgrade all requests to encrypted HTTPS."
+    }
+  ],
+  "codeExample": "// next.config.js\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        // Apply these headers to ALL routes in the application\n        source: '/(.*)',\n        headers: [\n          {\n            // Prevents Clickjacking (embedding your site in an iframe)\n            key: 'X-Frame-Options',\n            value: 'DENY',\n          },\n          {\n            // Prevents the browser from guessing file types maliciously\n            key: 'X-Content-Type-Options',\n            value: 'nosniff',\n          },\n          {\n            // Forces HTTPS connections strictly\n            key: 'Strict-Transport-Security',\n            value: 'max-age=63072000; includeSubDomains; preload',\n          }\n        ],\n      },\n    ]\n  }\n}"
+}

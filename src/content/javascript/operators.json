@@ -1,0 +1,35 @@
+{
+  "id": "operators",
+  "title": "Operators & Comparisons",
+  "difficulty": "Beginner",
+  "definition": "Symbols or keywords that tell the JavaScript engine to perform mathematical, relational, or logical operations.",
+  "simpleExplanation": "Operators are the verbs of programming. If variables are the nouns (like '5' or '10'), the operators are the actions (like '+', '-', '>').",
+  "realWorldExample": "Using the logical AND `&&` operator to conditionally render a button: `isLoggedIn && <button>Logout</button>`.",
+  "useCases": [
+    "Math calculations",
+    "Conditional logic",
+    "Assigning values"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `+` and `-` when used with strings?"
+    ],
+    "intermediate": [
+      "What does the typeof operator return for `null`?"
+    ],
+    "advanced": [
+      "How does the bitwise NOT operator `~` work and what is `~~` used for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between + and - with strings?",
+      "answer": "The `+` operator is heavily overloaded. If either operand is a string, it concatenates them (`'5' + 1 = '51'`). However, the `-` operator only works for math. If it sees a string, it tries to convert it to a number first (`'5' - 1 = 4`)."
+    },
+    {
+      "question": "What does typeof null return?",
+      "answer": "It returns `'object'`. This is a famous, unfixable bug in JavaScript dating back to its creation. `null` is a primitive type, not an object, but fixing it now would break millions of legacy websites."
+    }
+  ],
+  "codeExample": "console.log('5' + 3);  // '53'\nconsole.log('5' - 3);  // 2\nconsole.log(typeof null); // 'object'\n\n// Double tilde ~~ is a fast shorthand for Math.floor() on positive numbers\nconsole.log(~~4.9); // 4"
+}

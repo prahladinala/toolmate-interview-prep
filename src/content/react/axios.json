@@ -1,0 +1,45 @@
+{
+  "id": "axios",
+  "title": "Axios",
+  "difficulty": "Intermediate",
+  "definition": "Axios is a popular third-party HTTP client library for the browser and Node.js. It acts as a wrapper around `XMLHttpRequest` (or standard HTTP in Node) to simplify requests.",
+  "simpleExplanation": "If `fetch` is a standard manual transmission car, `axios` is an automatic luxury car. It does exactly the same job (gets you from point A to point B), but Axios automatically shifts gears for you—like automatically parsing JSON, automatically throwing errors on 404s, and letting you set default headers easily.",
+  "realWorldExample": "An enterprise app sets up an `axios.create()` instance with a `baseURL` of `api.company.com` and an interceptor that automatically attaches a JWT Auth token to every single request made by the app.",
+  "useCases": [
+    "Complex enterprise applications requiring request interceptors",
+    "Apps making hundreds of API calls where reducing boilerplate (like `.json()`) is helpful",
+    "Upload progress tracking"
+  ],
+  "questions": {
+    "basic": [
+      "Why would someone use Axios instead of native Fetch?",
+      "Do you need to call `.json()` when using Axios?"
+    ],
+    "intermediate": [
+      "What is an Axios Interceptor?",
+      "How does Axios handle 404 and 500 status codes compared to Fetch?"
+    ],
+    "advanced": [
+      "How do you cancel an Axios request?",
+      "How can you handle global authentication token refresh using Axios interceptors?"
+    ],
+    "trick": [
+      "Is Axios faster than Fetch?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why use Axios instead of Fetch?",
+      "answer": "1. It automatically parses JSON responses. 2. It automatically rejects Promises on HTTP error statuses (4xx/5xx). 3. It supports request/response interceptors. 4. It supports upload progress out-of-the-box. 5. It automatically sets XSRF protection headers."
+    },
+    {
+      "question": "What is an Interceptor?",
+      "answer": "Interceptors allow you to run code or modify requests/responses BEFORE they are sent or given to your `then/catch` block. For example, automatically adding an `Authorization: Bearer <token>` header to every outgoing request."
+    },
+    {
+      "question": "Is Axios faster than Fetch?",
+      "answer": "No. Both send standard HTTP requests over the network. The performance difference is practically zero. The benefit is entirely Developer Experience (DX)."
+    }
+  ],
+  "codeExample": "/* \n// Conceptual Example - Requires npm install axios\nimport React, { useState, useEffect } from \"react\";\nimport axios from \"axios\";\n\n// 1. Create a custom instance with defaults\nconst api = axios.create({\n  baseURL: \"https://jsonplaceholder.typicode.com\",\n  timeout: 5000\n});\n\n// 2. Add an Interceptor (runs before every request)\napi.interceptors.request.use(config => {\n  console.log(\"Automatically adding auth headers!\");\n  config.headers.Authorization = `Bearer fake-token-123`;\n  return config;\n});\n\nexport default function AxiosDemo() {\n  const [user, setUser] = useState(null);\n\n  useEffect(() => {\n    // 3. Make the request. Notice how much cleaner this is than fetch!\n    api.get(\"/users/1\")\n      .then(response => {\n        // Axios automatically parses the JSON and puts it in `response.data`\n        setUser(response.data);\n      })\n      .catch(error => {\n        // Axios automatically throws errors for 404 or 500 status codes!\n        console.error(\"Request failed:\", error.message);\n      });\n  }, []);\n\n  return <div>{user ? user.name : \"Loading...\"}</div>;\n}\n*/\nconsole.log(\"Axios is an industry standard library, but fetch is catching up.\");"
+}

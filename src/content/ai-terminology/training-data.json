@@ -1,0 +1,30 @@
+{
+  "id": "training-data",
+  "title": "Training Data",
+  "difficulty": "Beginner",
+  "definition": "The massive dataset used to teach a Machine Learning model how to make predictions, find patterns, or generate content.",
+  "simpleExplanation": "The textbooks a student reads before taking an exam. If the textbooks are filled with wrong information, the student will fail the test. In AI, 'Garbage In = Garbage Out'. The quality of the training data determines the quality of the AI.",
+  "realWorldExample": "To train an AI to recognize human faces, the training data would be a collection of 5 million distinct photographs of human faces gathered from the internet.",
+  "useCases": [
+    "Model building",
+    "Bias prevention"
+  ],
+  "questions": {
+    "basic": [
+      "Why do large AI models like ChatGPT require so much training data?"
+    ],
+    "intermediate": [
+      "What happens if the training data for a hiring AI mostly consists of resumes from men?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why so much data?",
+      "answer": "Because to understand complex human language and facts across every subject, the model needs to be exposed to practically every word ever written on the internet to accurately map the relationships between those concepts."
+    },
+    {
+      "question": "Mostly male resumes?",
+      "answer": "The AI will become biased. It will mathematically learn the pattern that 'being male' correlates with 'getting hired', and it will automatically start rejecting female candidates. This is a massive issue known as Algorithmic Bias."
+    }
+  ]
+}

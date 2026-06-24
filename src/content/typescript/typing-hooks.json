@@ -1,0 +1,35 @@
+{
+  "id": "typing-hooks",
+  "title": "React: Typing Hooks (Context, Refs, Memo)",
+  "difficulty": "Intermediate",
+  "definition": "Applying TypeScript to advanced React Hooks, specifically `useContext`, `useRef`, `useMemo`, and `useCallback`.",
+  "simpleExplanation": "Hooks are just functions. Because they are functions, you can pass Generics `<T>` into them to guarantee they behave exactly how you expect.",
+  "realWorldExample": "Typing a Context API Provider. You create `const ThemeContext = createContext<ThemeType | null>(null)`. Now, whenever any component calls `useContext(ThemeContext)`, TS knows exactly what properties are available on the theme object.",
+  "useCases": [
+    "Global state management (Context)",
+    "DOM manipulation (Refs)",
+    "Performance optimization (Memo)"
+  ],
+  "questions": {
+    "basic": [
+      "How does TS infer types in `useMemo`?"
+    ],
+    "intermediate": [
+      "Why do we often type Context starting value as `Type | null`?"
+    ],
+    "advanced": [
+      "How do you properly type a `useRef` that targets an HTML DOM element vs a mutable value?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does TS infer useMemo?",
+      "answer": "TS infers the return type of `useMemo` directly from the return statement of the callback function you provide. You rarely need to explicitly type it."
+    },
+    {
+      "question": "How to type DOM refs vs Mutable refs?",
+      "answer": "If targeting the DOM: `useRef<HTMLInputElement>(null)`. Note the `null`. TS makes the `.current` property read-only because React handles attaching the element. If using it as a mutable instance variable (like an interval ID): `useRef<number | null>(null)`. Now `.current` is mutable."
+    }
+  ],
+  "codeExample": "import { useRef, createContext, useContext } from 'react';\n\n// --- Typing Context ---\ninterface Theme { mode: \"light\" | \"dark\"; }\n// Initial value is null because the Provider might not wrap the component yet\nconst ThemeContext = createContext<Theme | null>(null);\n\nfunction useTheme() {\n  const context = useContext(ThemeContext);\n  if (!context) throw new Error(\"Must be inside ThemeProvider\");\n  return context; // TS now narrows this to perfectly be 'Theme', not null!\n}\n\n// --- Typing Refs ---\nfunction TextInput() {\n  // Pass the specific HTML element interface to the Generic\n  const inputRef = useRef<HTMLInputElement>(null);\n\n  const focusInput = () => {\n    // Optional chaining required because .current starts as null!\n    inputRef.current?.focus();\n  };\n\n  return <input ref={inputRef} />;\n}"
+}

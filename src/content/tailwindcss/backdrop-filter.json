@@ -1,0 +1,32 @@
+{
+  "id": "backdrop-filter",
+  "title": "Backdrop Blur",
+  "difficulty": "Advanced",
+  "definition": "Utilities for applying filters (like blur) to the area exactly BEHIND an element. Often called 'Glassmorphism'.",
+  "simpleExplanation": "Frosted glass. You create a semi-transparent white box (`bg-white/30`) and apply `backdrop-blur-md`. Anything on the webpage that scrolls underneath this box will become beautifully blurred.",
+  "realWorldExample": "Apple's iOS design language. Sticky navbars at the top of an iPhone app are usually frosted glass, blurring the text as it scrolls underneath.",
+  "useCases": [
+    "Navbars",
+    "Modals",
+    "Modern 'Glass' UI"
+  ],
+  "questions": {
+    "basic": [
+      "If you apply `backdrop-blur` to a solid black `bg-black` div, will you see the effect?"
+    ],
+    "intermediate": [
+      "What two classes must be combined to achieve the 'Frosted Glass' effect?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Solid black div?",
+      "answer": "No! You can only blur the things BEHIND the element if you can actually see through the element. The element must have some transparency (e.g., `bg-black/50`)."
+    },
+    {
+      "question": "Two classes?",
+      "answer": "A transparent background color (`bg-white/30`) AND the blur utility (`backdrop-blur-md`)."
+    }
+  ],
+  "codeExample": "<!-- \n  The \"Apple iOS\" Sticky Frosted Glass Navbar \n  - sticky top-0: Keeps it at the top of the screen\n  - bg-white/70: 70% opaque white, 30% see-through\n  - backdrop-blur-lg: Massively blurs anything that goes behind it\n-->\n<nav class=\"sticky top-0 bg-white/70 backdrop-blur-lg border-b z-50 p-4\">\n  <h1 class=\"text-xl font-bold\">My App</h1>\n</nav>\n\n<!-- Scrollable content that will get blurred when it goes under the nav! -->\n<main class=\"h-[200vh] bg-gradient-to-br from-red-500 to-blue-500\">\n  Scroll down...\n</main>"
+}

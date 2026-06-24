@@ -1,0 +1,31 @@
+{
+  "id": "node-internals",
+  "title": "Node.js Internals",
+  "difficulty": "Advanced",
+  "definition": "The deep architectural layers connecting the JavaScript API you write to the C++ bindings, the V8 engine, and libuv.",
+  "simpleExplanation": "Node.js is not written in JavaScript. It is primarily written in C++. When you write `fs.readFile()`, you are writing JavaScript. But that JS function is just a thin wrapper. It immediately calls into a C++ 'Binding', which translates your JS into C++ code, which then calls `libuv` to talk to the hard drive.",
+  "realWorldExample": "When a stack trace crashes, you will often see internal files mentioned like `internal/fs/utils.js` or even C++ bindings. Understanding internals helps you trace these terrifying errors.",
+  "useCases": [
+    "Advanced debugging",
+    "Contributing to the Node.js open-source core"
+  ],
+  "questions": {
+    "basic": [
+      "What language is the V8 engine written in?"
+    ],
+    "intermediate": [
+      "What is a 'Binding' in Node.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What language?",
+      "answer": "C++."
+    },
+    {
+      "question": "What is a Binding?",
+      "answer": "A bridge. JavaScript cannot talk to C++ directly. Bindings (specifically the `process.binding()` system in older Node, or N-API in modern Node) act as translators, converting JS objects and variables into C++ structures."
+    }
+  ],
+  "codeExample": "// --- THE ILLUSION OF JAVASCRIPT ---\n\nconst fs = require('fs');\n\n// 1. You call this JavaScript function:\nfs.readFile('./test.txt', () => {});\n\n// 2. Behind the scenes (in Node's source code), it does something like this:\n/*\n  function readFile(path, cb) {\n    const binding = process.binding('fs'); // Grabs the C++ bridge\n    const req = new FSReqCallback();\n    req.oncomplete = cb;\n    \n    // Calls the literal C++ function\n    binding.open(path, flags, mode, req);\n  }\n*/\n\nconsole.log(\"Node.js is essentially a massive C++ program that exposes a JavaScript remote control.\");"
+}

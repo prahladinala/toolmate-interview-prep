@@ -1,0 +1,31 @@
+{
+  "id": "container-orchestration",
+  "title": "Container Orchestration",
+  "difficulty": "Intermediate",
+  "definition": "The automated management, scaling, networking, and deployment of thousands of containers across clusters of physical or virtual machines.",
+  "simpleExplanation": "The ultimate robot manager. If a server catches on fire, the Orchestrator instantly notices 10 containers died, and automatically restarts them on a healthy server before the customers even notice.",
+  "realWorldExample": "Spotify uses Container Orchestration. When millions of users log in on Friday night, the orchestrator detects the heavy load and automatically spins up 1,000 extra API containers. At 3 AM, it deletes them to save money.",
+  "useCases": [
+    "High Availability (HA)",
+    "Auto-scaling",
+    "Enterprise infrastructure"
+  ],
+  "questions": {
+    "basic": [
+      "What is the most popular, industry-standard Container Orchestration platform in the world today?"
+    ],
+    "intermediate": [
+      "What is the 'Desired State' pattern in container orchestration?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Most popular platform?",
+      "answer": "Kubernetes (K8s)."
+    },
+    {
+      "question": "Desired State?",
+      "answer": "You write a YAML file declaring what you want (e.g., 'I desire 4 web servers'). You hand it to the Orchestrator. The Orchestrator continuously checks reality against your desire. If reality changes (a server crashes and you only have 3), it takes action to return reality to the Desired State (it boots 1 more)."
+    }
+  ]
+}

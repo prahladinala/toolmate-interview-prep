@@ -1,0 +1,32 @@
+{
+  "id": "nested-routes",
+  "title": "Nested Routes",
+  "difficulty": "Beginner",
+  "definition": "Creating hierarchical routes by nesting folders inside each other, allowing for complex URL structures and shared layouts.",
+  "simpleExplanation": "Just like folders on your computer. A `/blog/2024/tech` route is just a folder inside a folder inside a folder. The superpower is that you can put a `layout.tsx` at the `/blog` level, and it will wrap around ALL the nested folders automatically.",
+  "realWorldExample": "A Dashboard application where `/dashboard`, `/dashboard/settings`, and `/dashboard/billing` all share the exact same Sidebar component without writing it 3 times.",
+  "useCases": [
+    "Dashboards",
+    "Multi-step wizards",
+    "Hierarchical data (Categories/Subcategories)"
+  ],
+  "questions": {
+    "basic": [
+      "How do you create a nested route representing `/dashboard/analytics`?"
+    ],
+    "intermediate": [
+      "If you put a `layout.tsx` in the `app/dashboard` folder, does it affect the homepage (`app/page.tsx`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to create?",
+      "answer": "Create a `dashboard` folder inside `app`. Create an `analytics` folder inside `dashboard`. Create a `page.tsx` inside `analytics`."
+    },
+    {
+      "question": "Affect homepage?",
+      "answer": "No. Layouts ONLY affect the folder they are in, and all the nested children folders beneath them. The homepage is above `dashboard` in the hierarchy."
+    }
+  ],
+  "codeExample": "/* \n  Visualizing Nested Layouts:\n  \n  app/\n  ├── layout.tsx         <-- Root Layout (Navbar & Footer applied to everything)\n  ├── page.tsx\n  └── dashboard/\n      ├── layout.tsx     <-- Dashboard Layout (Adds a Sidebar just for dashboard routes)\n      ├── page.tsx\n      └── settings/\n          └── page.tsx   <-- This page gets BOTH the Root Navbar AND the Dashboard Sidebar!\n*/"
+}

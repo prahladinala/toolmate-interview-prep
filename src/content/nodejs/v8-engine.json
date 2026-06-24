@@ -1,0 +1,34 @@
+{
+  "id": "v8-engine",
+  "title": "V8 Engine",
+  "difficulty": "Intermediate",
+  "definition": "Google's open-source high-performance JavaScript and WebAssembly engine, written in C++. It compiles JavaScript directly to native machine code before executing it.",
+  "simpleExplanation": "Computers only understand 1s and 0s (machine code). JavaScript is human-readable text. The V8 Engine is the hyper-fast translator. Node.js wraps this translator in C++ bindings so that V8 can talk to your operating system.",
+  "realWorldExample": "When a new ECMAScript feature is released (like Optional Chaining `user?.name`), Node.js cannot support it until the V8 Engine updates to support it. Node's JS capabilities are 100% tied to the version of V8 it uses.",
+  "useCases": [
+    "Understanding Node.js release cycles",
+    "Performance optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Is V8 written in JavaScript?"
+    ],
+    "intermediate": [
+      "What is JIT (Just-In-Time) compilation?"
+    ],
+    "advanced": [
+      "What are Ignition and TurboFan in the V8 engine?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is JIT compilation?",
+      "answer": "Instead of interpreting JS line-by-line (which is slow), or compiling the whole program before running (like C++), V8 compiles JavaScript into machine code right as it is about to execute, giving it massive performance boosts."
+    },
+    {
+      "question": "What are Ignition and TurboFan?",
+      "answer": "Ignition is V8's fast interpreter that generates bytecode. If a function runs thousands of times (a 'hot' function), TurboFan kicks in—it's an optimizing compiler that turns that bytecode into highly optimized native machine code for maximum speed."
+    }
+  ],
+  "codeExample": "// The V8 engine allows us to query memory usage directly in Node\nconst v8 = require('v8');\n\n// Getting heap statistics directly from the V8 Engine\nconst stats = v8.getHeapStatistics();\n\nconsole.log(`Total Heap Size: ${Math.round(stats.total_heap_size / 1024 / 1024)} MB`);\nconsole.log(`Heap Size Limit: ${Math.round(stats.heap_size_limit / 1024 / 1024)} MB`);\n\n// If your app exceeds the Heap Size Limit (usually ~1.5GB by default),\n// the V8 engine will crash with an 'Out of Memory' error."
+}

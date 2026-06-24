@@ -1,0 +1,31 @@
+{
+  "id": "multimodal-ai",
+  "title": "Multimodal AI",
+  "difficulty": "Intermediate",
+  "definition": "An AI system capable of understanding, processing, and generating multiple different 'modes' of data simultaneously, such as text, images, audio, and video within the same model.",
+  "simpleExplanation": "Older AI was blind and deaf (it only read text). Multimodal AI has eyes and ears. You can upload a photo of your refrigerator, speak into the microphone 'What can I cook?', and it will reply with a text recipe.",
+  "realWorldExample": "GPT-4o or Gemini 1.5. You can point your phone camera at a broken bicycle, stream the live video to the AI, and the AI will talk to you in real-time, highlighting exactly which screw you need to tighten.",
+  "useCases": [
+    "Visual search",
+    "Accessibility tools",
+    "Advanced robotics"
+  ],
+  "questions": {
+    "basic": [
+      "If an AI can only process Text, is it Multimodal?"
+    ],
+    "intermediate": [
+      "Why are native multimodal models vastly superior to 'stitched together' models?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Only text?",
+      "answer": "No. That is a unimodal model."
+    },
+    {
+      "question": "Native vs Stitched?",
+      "answer": "Older systems 'stitched' models together (e.g., Model A transcribes audio to text, Model B reads the text). Nuance like tone of voice was lost in translation. A 'native' multimodal model processes the raw audio wave directly, allowing it to understand sarcasm, pauses, and emotion."
+    }
+  ]
+}

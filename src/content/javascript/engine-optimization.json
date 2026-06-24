@@ -1,0 +1,35 @@
+{
+  "id": "engine-optimization",
+  "title": "V8 Engine Optimizations",
+  "difficulty": "Advanced",
+  "definition": "Techniques used by the Google V8 Engine (used in Chrome and Node.js) to compile JavaScript to highly optimized machine code at runtime (JIT Compilation).",
+  "simpleExplanation": "JavaScript is extremely chaotic. An array can hold numbers, strings, and objects. The V8 engine watches your code run. If it notices you only ever put numbers in an array, it secretly compiles a super-fast C++ version of your code. But if you later put a string in that array, V8 screams, throws away the fast code, and goes back to slow mode (De-optimization).",
+  "realWorldExample": "Writing 'Monomorphic' functions (functions that always receive the exact same shape of object) to ensure V8 keeps your code in the fast lane.",
+  "useCases": [
+    "High-frequency trading apps",
+    "Game engines in WebGL",
+    "Massive data processing algorithms"
+  ],
+  "questions": {
+    "basic": [
+      "Is JavaScript Interpreted or Compiled?"
+    ],
+    "intermediate": [
+      "What are Hidden Classes in V8?"
+    ],
+    "advanced": [
+      "What causes V8 to De-optimize a function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Interpreted or Compiled?",
+      "answer": "It is Just-In-Time (JIT) Compiled. Historically, it was interpreted line-by-line (slow). Now, engines interpret it initially, but simultaneously compile hot paths into optimized machine code in the background."
+    },
+    {
+      "question": "What are Hidden Classes?",
+      "answer": "Because JS objects don't have strict classes, V8 creates 'Hidden Classes' (Shapes) in C++ to track property offsets. If two objects have the exact same properties added in the exact same order, they share a Hidden Class, making property access incredibly fast. If you add a property dynamically later, V8 has to create a new Hidden Class."
+    }
+  ],
+  "codeExample": "// Example of Monomorphic (Fast) vs Polymorphic (Slow)\n\nfunction getX(obj) {\n  return obj.x; // V8 optimizes this if 'obj' always has the same shape\n}\n\n// Fast: Same Shape (Hidden Class)\ngetX({ x: 1, y: 2 });\ngetX({ x: 5, y: 10 });\n\n// Slow: Different Shape causes De-optimization!\ngetX({ y: 2, x: 1 }); // Order matters in V8!\ngetX({ x: 1, z: 5 });"
+}

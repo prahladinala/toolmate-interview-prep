@@ -1,0 +1,30 @@
+{
+  "id": "render-tree",
+  "title": "Render Tree",
+  "difficulty": "Advanced",
+  "definition": "The Render Tree is a combination of the DOM and CSSOM. It represents exactly what will be drawn to the screen. It only includes nodes that are visible.",
+  "simpleExplanation": "The DOM knows every HTML tag that exists. The CSSOM knows every style rule. The Render Tree is the final boss. It combines them both. If the DOM has a `<div>`, but the CSSOM says `display: none`, that `<div>` is completely excluded from the Render Tree because the screen doesn't need to paint it.",
+  "realWorldExample": "This is why `display: none` is good for performance when hiding huge chunks of a webpage. The browser literally ignores them when calculating the Render Tree.",
+  "useCases": [
+    "Browser architecture knowledge"
+  ],
+  "questions": {
+    "basic": [
+      "What two trees combine to form the Render Tree?"
+    ],
+    "intermediate": [
+      "If an element has `visibility: hidden;`, is it included in the Render Tree?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two trees?",
+      "answer": "The DOM and the CSSOM."
+    },
+    {
+      "question": "visibility: hidden included?",
+      "answer": "YES! `visibility: hidden` makes an element invisible, but it still physically takes up empty space on the screen. Therefore, the browser must include it in the Render Tree to calculate the layout. Only `display: none` completely removes it."
+    }
+  ],
+  "codeExample": "<style>\n  .hidden-display {\n    display: none;\n  }\n  \n  .hidden-visibility {\n    visibility: hidden;\n  }\n</style>\n\n<!-- This paragraph is in the DOM, but EXCLUDED from the Render Tree! -->\n<p class=\"hidden-display\">You cannot see me, and I take up zero space.</p>\n\n<!-- This paragraph is in the DOM, AND INCLUDED in the Render Tree! -->\n<p class=\"hidden-visibility\">You cannot see me, but I am still holding my empty space!</p>\n\n<p>The Render Tree only cares about geometry. If it takes up space, it's in the tree.</p>"
+}

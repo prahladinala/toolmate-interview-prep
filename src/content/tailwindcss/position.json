@@ -1,0 +1,33 @@
+{
+  "id": "position",
+  "title": "Position Utilities",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how an element is positioned in the DOM, mapping to `static`, `fixed`, `absolute`, `relative`, and `sticky`.",
+  "simpleExplanation": "How elements stick to the screen. \n- `relative`: Normal, but acts as a prison for `absolute` children.\n- `absolute`: Breaks free of normal flow, positions itself relative to the nearest `relative` parent.\n- `fixed`: Breaks free completely, sticks to the screen even when you scroll.\n- `sticky`: Acts normal until you scroll past it, then it sticks to the top.",
+  "realWorldExample": "Creating a sticky Navbar that stays at the top of the screen as you scroll down the page.",
+  "useCases": [
+    "Navbars",
+    "Modals",
+    "Tooltips",
+    "Floating Action Buttons"
+  ],
+  "questions": {
+    "basic": [
+      "What position class is required on a parent element if you want to place an `absolute` child exactly in its top-right corner?"
+    ],
+    "intermediate": [
+      "What is the difference between `fixed` and `absolute`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Parent class?",
+      "answer": "`relative`. If the parent isn't relative, the absolute child will escape and position itself relative to the entire webpage."
+    },
+    {
+      "question": "Fixed vs Absolute?",
+      "answer": "`absolute` positions itself relative to its nearest positioned ancestor. `fixed` positions itself relative to the browser window/viewport (it ignores all parents)."
+    }
+  ],
+  "codeExample": "<!-- Sticky Navbar -->\n<nav class=\"sticky top-0 bg-white shadow-md z-50\">\n  My Logo\n</nav>\n\n<!-- Absolute positioning for a Notification Badge -->\n<button class=\"relative p-4 bg-gray-200 rounded\">\n  Inbox\n  <!-- This red dot positions itself exactly in the top right of the button -->\n  <span class=\"absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full\"></span>\n</button>"
+}

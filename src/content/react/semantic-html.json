@@ -1,0 +1,30 @@
+{
+  "id": "semantic-html",
+  "title": "Semantic HTML",
+  "difficulty": "Beginner",
+  "definition": "The use of HTML markup to reinforce the semantics, or meaning, of the information in webpages rather than merely to define its presentation.",
+  "simpleExplanation": "Instead of building a webpage out of 100 `<div>` tags, Semantic HTML uses tags that actually describe what the content is: `<header>`, `<nav>`, `<main>`, `<article>`, and `<footer>`. This helps Google understand your site and helps Screen Readers navigate it.",
+  "realWorldExample": "Replacing `<div className='heading'>Title</div>` with `<h1>Title</h1>`.",
+  "useCases": [
+    "SEO Optimization",
+    "Accessibility"
+  ],
+  "questions": {
+    "basic": [
+      "Why is a `<button>` better than a `<div onClick={...}>`?"
+    ],
+    "intermediate": [
+      "Why shouldn't you have multiple `<h1>` tags on a page?"
+    ],
+    "advanced": [
+      "How do Semantic HTML elements interact with the Accessibility Tree?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is button better than div?",
+      "answer": "A `<button>` automatically receives keyboard focus when tabbing, and automatically triggers its `onClick` when the user presses the 'Enter' or 'Space' key. A `<div>` does none of this unless you write hundreds of lines of custom code to recreate it."
+    }
+  ],
+  "codeExample": "// BAD\n<div className='nav'>\n  <div className='link'>Home</div>\n</div>\n\n// GOOD\n<nav>\n  <a href='/'>Home</a>\n</nav>"
+}

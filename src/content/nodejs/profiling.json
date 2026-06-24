@@ -1,0 +1,31 @@
+{
+  "id": "profiling",
+  "title": "Performance Profiling",
+  "difficulty": "Advanced",
+  "definition": "The process of analyzing a software program's execution to determine its time complexity, memory usage, and the frequency/duration of function calls.",
+  "simpleExplanation": "Using an X-Ray machine on your code. If your API takes 5 seconds to load, you don't guess what's wrong. You run a Profiler. It outputs a chart showing: 'Database Query took 0.1s. Math calculation took 4.8s. Formatting JSON took 0.1s.' You immediately know exactly which line of code to fix.",
+  "realWorldExample": "Taking a 'Heap Snapshot' using Chrome DevTools. You take a snapshot at 1:00 PM (100MB RAM used). You take another at 2:00 PM (300MB RAM used). You compare the snapshots, and the profiler highlights exactly which JavaScript Objects are accumulating and causing the memory leak.",
+  "useCases": [
+    "Diagnosing memory leaks",
+    "Identifying Event Loop blocking code"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use Google Chrome to inspect a Node.js server backend?"
+    ],
+    "intermediate": [
+      "What is a 'Flame Graph'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can Chrome inspect Node?",
+      "answer": "Yes! By running node with the `--inspect` flag (`node --inspect index.js`), you can open Chrome, go to `chrome://inspect`, and use the DevTools Profiler directly on your backend Node code."
+    },
+    {
+      "question": "What is a Flame Graph?",
+      "answer": "A visual representation of the Call Stack over time. The wider the block on the graph, the longer that specific function took to execute. It easily highlights bottlenecks."
+    }
+  ],
+  "codeExample": "// --- HOW TO PROFILE --- //\n\n/*\n  1. Start your app with the inspect flag:\n     node --inspect server.js\n\n  2. Open Google Chrome browser.\n  3. Navigate to: chrome://inspect\n  4. Click \"Open dedicated DevTools for Node\"\n  5. Go to the \"Memory\" tab and click \"Take Heap Snapshot\"\n  6. Send 10,000 fake requests to your server using a tool like Artillery or JMeter.\n  7. Take a second \"Heap Snapshot\".\n  8. Compare the two snapshots. The DevTools will show you EXACTLY which variables \n     grew in size and didn't get Garbage Collected.\n*/\n\nconsole.log(\"Profiling is the difference between blindly guessing performance issues and scientifically proving them.\");"
+}

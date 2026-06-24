@@ -1,0 +1,30 @@
+{
+  "id": "backpropagation",
+  "title": "Backpropagation",
+  "difficulty": "Advanced",
+  "definition": "The core algorithm behind training neural networks. It calculates the gradient (error) at the output layer and propagates that error backward through the network to adjust the weights.",
+  "simpleExplanation": "The AI takes a guess and gets it wrong. Backpropagation is the 'Blame Game'. The output layer looks at the layer behind it and says 'This is your fault, adjust your math.' That layer looks at the layer behind IT and says 'No, you gave me bad data, adjust YOUR math.' The error signal travels backward through the entire brain, tweaking the dials slightly.",
+  "realWorldExample": "Without Backpropagation, we would have to guess the trillions of parameters randomly, which would take longer than the lifespan of the universe. Backpropagation provides a mathematical shortcut to know exactly which direction to turn the dials.",
+  "useCases": [
+    "Training deep learning models",
+    "Calculus in AI"
+  ],
+  "questions": {
+    "basic": [
+      "Does Backpropagation happen when an AI is 'Guessing' (Inference) or when it is 'Learning' (Training)?"
+    ],
+    "intermediate": [
+      "What specific field of mathematics makes Backpropagation possible?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Inference or Training?",
+      "answer": "Training. Once the AI is fully trained, backpropagation is turned off completely. Inference only goes forward."
+    },
+    {
+      "question": "Which math?",
+      "answer": "Calculus. Specifically, the Chain Rule of derivatives, which allows the computer to calculate exactly how much a tiny change in a weight deep inside the network will impact the final output error."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "transitions",
+  "title": "Transitions",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling which CSS properties transition smoothly when they change state (like on hover).",
+  "simpleExplanation": "If a button is blue, and `hover:bg-red-500` makes it red, the change happens instantly in 0 milliseconds. It looks harsh and glitchy. Adding `transition-colors` tells the browser: 'Slow down. Morph the blue into red smoothly over a fraction of a second.'",
+  "realWorldExample": "Making a 'Subscribe' button smoothly fade its background color and slightly lift up (`hover:-translate-y-1`) when the mouse passes over it.",
+  "useCases": [
+    "Hover states",
+    "Focus rings",
+    "Expandable accordions"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class must you add to enable smooth fading between a normal background color and a `hover:` background color?"
+    ],
+    "intermediate": [
+      "Why is `transition-all` generally discouraged in favor of `transition-colors` or `transition-transform`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which class?",
+      "answer": "`transition` (which defaults to colors, opacity, and box-shadow) or `transition-colors`."
+    },
+    {
+      "question": "Why transition-all discouraged?",
+      "answer": "Performance. `transition-all` tells the browser's rendering engine to constantly watch every single CSS property for changes. Watching just `colors` or `transform` is vastly cheaper for the CPU."
+    }
+  ],
+  "codeExample": "<!-- ❌ Harsh, instant color change -->\n<button class=\"bg-blue-500 hover:bg-blue-600 text-white p-2\">\n  Glitchy Hover\n</button>\n\n<!-- ✅ Beautiful, buttery smooth color change -->\n<!-- 'transition' automatically targets bg-color, border-color, text-color, and shadow! -->\n<button class=\"bg-blue-500 hover:bg-blue-600 text-white p-2 transition\">\n  Smooth Hover\n</button>"
+}

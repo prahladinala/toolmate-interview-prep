@@ -1,0 +1,31 @@
+{
+  "id": "local-vs-remote",
+  "title": "Local vs Remote Repository",
+  "difficulty": "Beginner",
+  "definition": "A Local repository resides on your computer. A Remote repository is a version of your project that is hosted on the internet or network somewhere.",
+  "simpleExplanation": "Local = Your laptop's hard drive. Remote = A server in the cloud (like GitHub). You do all your dirty work Locally. When the work is perfect and ready to be shared, you push it to the Remote.",
+  "realWorldExample": "Writing an essay on your laptop offline (Local), and then uploading it to Google Drive (Remote) so your teacher can read it.",
+  "useCases": [
+    "Team Collaboration",
+    "Cloud Backups"
+  ],
+  "questions": {
+    "basic": [
+      "Can a Local repository exist without a Remote repository?"
+    ],
+    "intermediate": [
+      "Can a Local repository be connected to MULTIPLE Remote repositories?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Exist without remote?",
+      "answer": "Yes! You can run `git init` and use Git entirely on your own laptop forever, without ever touching the internet."
+    },
+    {
+      "question": "Multiple remotes?",
+      "answer": "Yes! You can have one remote pointing to GitHub (named 'origin') and another pointing to Heroku for deployments (named 'heroku')."
+    }
+  ],
+  "codeExample": "// Conceptual Mental Model\n\nconst localRepo = {\n  location: 'Your Laptop',\n  purpose: 'Where you write, test, and save code privately.',\n  isInternetRequired: false\n};\n\nconst remoteRepo = {\n  location: 'GitHub Servers in the cloud',\n  purpose: 'Where you share code, backup code, and collaborate with teams.',\n  isInternetRequired: true\n};"
+}

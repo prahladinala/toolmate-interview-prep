@@ -1,0 +1,30 @@
+{
+  "id": "security-best-practices",
+  "title": "Linux Security Best Practices",
+  "difficulty": "Beginner",
+  "definition": "The standard set of procedures and configurations used by system administrators to harden a Linux server against attacks.",
+  "simpleExplanation": "Locking the doors, hiding the keys, and changing the default locks before you put a server on the public internet.",
+  "realWorldExample": "A standard server setup checklist: 1) Disable root SSH login. 2) Force SSH Keys instead of passwords. 3) Enable `ufw` firewall. 4) Install `fail2ban`. 5) Apply automated security updates.",
+  "useCases": [
+    "Hardening production servers",
+    "Compliance (SOC2/HIPAA)"
+  ],
+  "questions": {
+    "basic": [
+      "Why should you immediately edit `/etc/ssh/sshd_config` to change `PermitRootLogin` to `no`?"
+    ],
+    "intermediate": [
+      "What is 'Principle of Least Privilege' (PoLP)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why disable Root Login?",
+      "answer": "Because every Linux system has a user named `root`. If hackers know the username is `root`, they only have to guess the password. Forcing attackers to guess BOTH the username and the password exponentially increases security."
+    },
+    {
+      "question": "What is PoLP?",
+      "answer": "A security philosophy. It means a user, program, or service should only be given the bare minimum permissions necessary to perform its job, and absolutely nothing more. (e.g., A web server shouldn't have root access)."
+    }
+  ]
+}

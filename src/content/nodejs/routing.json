@@ -1,0 +1,31 @@
+{
+  "id": "routing",
+  "title": "Routing",
+  "difficulty": "Beginner",
+  "definition": "Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method.",
+  "simpleExplanation": "Routing is the hallway of doors in an office building. If a user walks in and wants to see their profile, the router directs them to the `/profile` door. If they want to delete an item, the router directs their `DELETE` request to the `/cart/delete` door.",
+  "realWorldExample": "Creating dynamic URL segments. When you visit `twitter.com/elonmusk`, 'elonmusk' isn't hardcoded into the server. The route is set up as `/users/:username`, and Express automatically extracts 'elonmusk' as a variable for you to look up in the database.",
+  "useCases": [
+    "API endpoint architecture",
+    "Handling URL parameters and query strings"
+  ],
+  "questions": {
+    "basic": [
+      "How do you capture dynamic variables in a URL like `/users/123`?"
+    ],
+    "intermediate": [
+      "What is the difference between `req.params` and `req.query`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to capture variables?",
+      "answer": "Using a colon `:` in the route definition. E.g., `app.get('/users/:id')`. The value is then available inside `req.params.id`."
+    },
+    {
+      "question": "req.params vs req.query?",
+      "answer": "`req.params` grabs variables embedded directly in the path (e.g., `/users/:id`). `req.query` grabs optional variables appended to the end of the URL after a question mark (e.g., `/users?sort=desc`)."
+    }
+  ],
+  "codeExample": "// Fake Express setup for demonstration\nconst req = { params: { id: '99' }, query: { lang: 'en' } };\n\n// --- ROUTING EXAMPLES ---\n\n// 1. Static Route\n// app.get('/about', (req, res) => res.send('About Us'));\n\n// 2. Dynamic Parameters (:id)\n// Example Request: GET /users/99\n// app.get('/users/:id', (req, res) => {\n//   const userId = req.params.id; // '99'\n//   res.json({ targetUser: userId });\n// });\n\n// 3. Query Strings (?lang=en)\n// Example Request: GET /search?lang=en&term=shoes\n// app.get('/search', (req, res) => {\n//   const language = req.query.lang; // 'en'\n//   const searchTerm = req.query.term; // 'shoes'\n//   res.json({ searching: searchTerm, lang: language });\n// });\n\nconsole.log(\"Dynamic parameters are required for looking up specific database documents!\");"
+}

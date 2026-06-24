@@ -1,0 +1,34 @@
+{
+  "id": "call-apply-bind",
+  "title": "call(), apply(), bind()",
+  "difficulty": "Intermediate",
+  "definition": "Three methods available on all JavaScript functions that allow you to explicitly dictate what the `this` keyword refers to when the function executes.",
+  "simpleExplanation": "`call` is like calling an Uber and instantly telling the driver (the function) to go to a specific address (`this`). `apply` is the exact same, but you hand the driver an array of directions. `bind` doesn't call the Uber; it gives you a coupon for an Uber permanently locked to a specific address to use later.",
+  "realWorldExample": "Borrowing a method: using `Array.prototype.slice.call(nodeList)` to convert a DOM NodeList into a real JavaScript array.",
+  "useCases": [
+    "Borrowing methods from other objects",
+    "Hard-binding `this` in class methods (React class components)"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `call` and `apply`?"
+    ],
+    "intermediate": [
+      "What does `bind` return?"
+    ],
+    "advanced": [
+      "Can you re-bind a function that has already been bound using `bind()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Call vs Apply?",
+      "answer": "They execute the function immediately. `call` takes comma-separated arguments: `func.call(thisArg, a, b)`. `apply` takes an array of arguments: `func.apply(thisArg, [a, b])`."
+    },
+    {
+      "question": "Can you re-bind a bound function?",
+      "answer": "No. Once a function is bound using `.bind()`, its `this` context is permanently locked. Calling `.bind()` again on the returned function will have no effect."
+    }
+  ],
+  "codeExample": "const person1 = { name: 'Alice' };\nconst person2 = { name: 'Bob' };\n\nfunction greet(greeting, punctuation) {\n  console.log(`${greeting}, ${this.name}${punctuation}`);\n}\n\n// call: pass arguments by comma\ngreet.call(person1, 'Hello', '!'); // \"Hello, Alice!\"\n\n// apply: pass arguments as an array\ngreet.apply(person2, ['Hi', '.']); // \"Hi, Bob.\"\n\n// bind: returns a NEW function to be called later\nconst greetAlice = greet.bind(person1);\ngreetAlice('Welcome', '!!!'); // \"Welcome, Alice!!!\""
+}

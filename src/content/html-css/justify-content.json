@@ -1,0 +1,31 @@
+{
+  "id": "justify-content",
+  "title": "justify-content",
+  "difficulty": "Intermediate",
+  "definition": "A flexbox container property that defines how space is distributed between and around content items along the main-axis (horizontal by default).",
+  "simpleExplanation": "If you have 3 buttons in a row, and a bunch of empty space at the end, what do you do with the space? `justify-content` answers that. You can pack the buttons to the left (`flex-start`), pack them to the right (`flex-end`), center them (`center`), or put equal space between them (`space-between`).",
+  "realWorldExample": "A Header. You have a Logo on the far left, and a Login button on the far right. You put them in a flex container and use `justify-content: space-between`. They instantly push to opposite sides of the screen.",
+  "useCases": [
+    "Centering elements horizontally",
+    "Pushing elements to opposite sides of a container"
+  ],
+  "questions": {
+    "basic": [
+      "What value pushes items to the far right of the container?"
+    ],
+    "intermediate": [
+      "What is the difference between `space-between` and `space-around`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Push to right?",
+      "answer": "`flex-end`"
+    },
+    {
+      "question": "space-between vs space-around?",
+      "answer": "`space-between` pushes the first item flush against the left wall, the last item flush against the right wall, and spaces the rest evenly. `space-around` leaves a gap between the walls and the first/last items."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    display: flex;\n    background: #333;\n    padding: 10px;\n    margin-bottom: 20px;\n  }\n  .item { background: #4ade80; padding: 10px 20px; border-radius: 5px; font-weight: bold; }\n\n  /* The Magic Properties */\n  .center { justify-content: center; }\n  .end { justify-content: flex-end; }\n  .between { justify-content: space-between; }\n</style>\n\n<h3>justify-content: center</h3>\n<div class=\"container center\">\n  <div class=\"item\">1</div> <div class=\"item\">2</div> <div class=\"item\">3</div>\n</div>\n\n<h3>justify-content: flex-end</h3>\n<div class=\"container end\">\n  <div class=\"item\">1</div> <div class=\"item\">2</div> <div class=\"item\">3</div>\n</div>\n\n<h3>justify-content: space-between (The Header Layout)</h3>\n<div class=\"container between\">\n  <div class=\"item\">Logo</div> <div class=\"item\">Links</div> <div class=\"item\">Login</div>\n</div>"
+}

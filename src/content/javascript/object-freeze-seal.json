@@ -1,0 +1,34 @@
+{
+  "id": "object-freeze-seal",
+  "title": "Object.freeze vs seal",
+  "difficulty": "Intermediate",
+  "definition": "Methods to lock down JavaScript objects. `freeze` makes an object completely immutable. `seal` prevents adding or deleting properties, but allows modifying existing ones.",
+  "simpleExplanation": "`Object.freeze()` is putting the object in a block of ice. You can look at it, but you can't touch anything. `Object.seal()` is putting it in a tupperware container. You can't put new food in or take food out, but you can stir the food that is already inside.",
+  "realWorldExample": "Freezing a configuration object or Enum (`const COLORS = Object.freeze({ RED: '#F00' })`) so that other developers cannot accidentally alter global constants.",
+  "useCases": [
+    "State immutability",
+    "Creating Enums in JavaScript"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you try to mutate a frozen object?"
+    ],
+    "intermediate": [
+      "Does `Object.freeze()` freeze nested objects?"
+    ],
+    "advanced": [
+      "What does `Object.preventExtensions()` do compared to `seal`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it freeze nested objects?",
+      "answer": "No! `Object.freeze()` is Shallow. If you have an object inside a frozen object, the inner object can still be mutated. You must write a recursive 'Deep Freeze' function to lock the entire tree."
+    },
+    {
+      "question": "What is preventExtensions?",
+      "answer": "`preventExtensions` is the weakest lock. You cannot add new properties, but you CAN modify existing ones AND you CAN delete existing ones. `seal` takes it a step further by preventing deletion."
+    }
+  ],
+  "codeExample": "const config = {\n  db: 'mysql',\n  port: 8080\n};\n\nObject.seal(config);\nconfig.port = 9000; // ALLOWED! (Can modify existing)\ndelete config.db;   // BLOCKED! (Cannot delete)\nconfig.host = 'AWS';// BLOCKED! (Cannot add)\n\nconst constants = Object.freeze({ PI: 3.14 });\nconstants.PI = 5;   // BLOCKED! (Cannot modify existing)\nconsole.log(constants.PI); // 3.14"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "intercepting-routes",
+  "title": "Intercepting Routes",
+  "difficulty": "Advanced",
+  "definition": "A routing mechanism that allows you to load a route within the current layout while keeping the context of the current page, usually used for modals.",
+  "simpleExplanation": "You are scrolling an Instagram feed (`/feed`). You click a photo. Instead of navigating away to a new page (`/photo/123`), the photo pops up in a Modal OVER the feed. But the URL *does* change to `/photo/123`. If you refresh the page, you go to the standalone photo page.",
+  "realWorldExample": "Photo lightboxes (Instagram), expandable task cards (Trello), or shopping cart quick-views. Clicking the item intercepts the navigation and shows a modal instead.",
+  "useCases": [
+    "Modals",
+    "Lightboxes",
+    "Context-preserving UI"
+  ],
+  "questions": {
+    "basic": [
+      "What syntax is used to create an intercepting route matching the same level?"
+    ],
+    "intermediate": [
+      "Why are intercepting routes better than just using a standard React `<Modal>` component with `useState`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Syntax?",
+      "answer": "`(.)folderName` (similar to relative path syntax)."
+    },
+    {
+      "question": "Why better than state?",
+      "answer": "Because the URL actually changes! This means the user can copy the URL and send it to a friend, or hit the browser's 'Back' button to close the modal. Standard React state modals break the browser's back button and cannot be shared."
+    }
+  ],
+  "codeExample": "/*\n  File Structure for a Photo Modal Intercept:\n  \n  app/\n  ├── feed/\n  │   ├── page.tsx            <-- The main feed\n  │   └── (.)photo/           <-- INTERCEPTOR: Catches clicks to /photo\n  │       └── [id]/page.tsx   <-- Returns a MODAL overlaid on the feed\n  └── photo/\n      └── [id]/page.tsx       <-- STANDALONE: Triggers if user refreshes the page directly\n*/"
+}

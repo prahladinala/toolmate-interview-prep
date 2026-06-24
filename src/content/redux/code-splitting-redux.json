@@ -1,0 +1,31 @@
+{
+  "id": "code-splitting-redux",
+  "title": "Redux Code Splitting",
+  "difficulty": "Advanced",
+  "definition": "Applying Webpack/Vite code-splitting techniques to Redux logic, ensuring that action creators, selectors, and reducers are only downloaded by the user's browser when they are actually needed.",
+  "simpleExplanation": "Instead of forcing the user to download a 5MB `bundle.js` file before they can see your homepage, you break the app into 100kb chunks. The Redux logic for the Admin Panel is kept in a separate file and only downloaded if an Admin logs in.",
+  "realWorldExample": "Using RTK Query's `injectEndpoints`. You define an empty `apiSlice` on boot. As the user navigates the app, different pages inject their specific endpoints into the core API slice.",
+  "useCases": [
+    "Improving Time-To-Interactive (TTI) metrics",
+    "Performance optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Is Redux Code Splitting necessary for small applications?"
+    ],
+    "intermediate": [
+      "How does RTK Query support code splitting?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Necessary for small apps?",
+      "answer": "No. The complexity of managing dynamically injected reducers vastly outweighs the benefits unless your JavaScript bundle size is massive."
+    },
+    {
+      "question": "RTK Query support?",
+      "answer": "Using the `.injectEndpoints()` method. It allows you to add new API calls to an existing API slice from a completely different file."
+    }
+  ],
+  "codeExample": "// 1. Core API file (Loaded on boot)\nexport const api = createApi({\n  reducerPath: 'api',\n  baseQuery: fetchBaseQuery({ baseUrl: '/' }),\n  endpoints: () => ({}), // Empty!\n});\n\n// 2. Feature file (Loaded later via React.lazy)\n// We inject the new endpoints into the existing API slice\nexport const extendedApi = api.injectEndpoints({\n  endpoints: (builder) => ({\n    getSecretAdminData: builder.query({\n      query: () => 'admin/secret',\n    }),\n  }),\n});\n\nexport const { useGetSecretAdminDataQuery } = extendedApi;"
+}

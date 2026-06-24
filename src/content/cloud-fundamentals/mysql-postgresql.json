@@ -1,0 +1,31 @@
+{
+  "id": "mysql-postgresql",
+  "title": "MySQL / PostgreSQL",
+  "difficulty": "Beginner",
+  "definition": "The two most dominant open-source relational database engines in the world, natively supported and fully managed by every major cloud provider.",
+  "simpleExplanation": "The classic, highly-structured tables of rows and columns. Almost every traditional website on the internet stores user data using one of these two databases.",
+  "realWorldExample": "A company migrates their on-premise PostgreSQL database to AWS RDS PostgreSQL. Because the cloud provider uses the exact same open-source engine, the app doesn't require any code changes to connect to the new cloud database.",
+  "useCases": [
+    "E-commerce platforms",
+    "User authentication tables",
+    "Structured relational data"
+  ],
+  "questions": {
+    "basic": [
+      "Are MySQL and PostgreSQL considered Relational (SQL) or Non-Relational (NoSQL) databases?"
+    ],
+    "intermediate": [
+      "What is 'Amazon Aurora' and how does it relate to MySQL/PostgreSQL?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "SQL or NoSQL?",
+      "answer": "Relational (SQL)."
+    },
+    {
+      "question": "What is Aurora?",
+      "answer": "Amazon's proprietary, cloud-native database engine. It is designed to be 100% compatible with MySQL and PostgreSQL code, but it runs on specialized AWS storage hardware that makes it 5x faster than standard MySQL."
+    }
+  ]
+}

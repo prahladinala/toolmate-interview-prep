@@ -1,0 +1,34 @@
+{
+  "id": "abort-controller",
+  "title": "AbortController (JS)",
+  "difficulty": "Advanced",
+  "definition": "A DOM API that allows you to abort one or more Web requests (like `fetch`) or event listeners as and when desired.",
+  "simpleExplanation": "When you call a function that takes a long time, sometimes you change your mind and want to cancel it. AbortController gives you a 'Kill Switch' remote control. You pass the remote's receiver (`signal`) to the fetch request, and press the big red button (`abort()`) when you want to stop it.",
+  "realWorldExample": "A user clicks 'Generate Heavy Report' but then immediately clicks 'Cancel'. You use AbortController to kill the fetch request so the browser doesn't waste bandwidth downloading a 50MB file the user no longer wants.",
+  "useCases": [
+    "Canceling fetch requests",
+    "Removing multiple event listeners at once"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two parts of the AbortController?"
+    ],
+    "intermediate": [
+      "What happens to the Promise returned by `fetch` when it is aborted?"
+    ],
+    "advanced": [
+      "Can you use AbortController to cancel a standard `setTimeout`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the two parts?",
+      "answer": "The `controller` itself (which holds the `abort()` method), and the `controller.signal` (which is passed into the fetch options to link them together)."
+    },
+    {
+      "question": "Can you cancel a setTimeout?",
+      "answer": "Not natively, but you can build a wrapper. However, Node.js recently added `AbortSignal` support to its native timers (`setTimeout(cb, 1000, { signal })`). In the browser, you must listen for the `signal.addEventListener('abort', ...)` and call `clearTimeout` manually."
+    }
+  ],
+  "codeExample": "const controller = new AbortController();\nconst signal = controller.signal;\n\n// 1. Pass the signal to fetch\nfetch('https://slow-api.com/data', { signal })\n  .then(res => res.json())\n  .then(data => console.log(\"Success!\", data))\n  .catch(err => {\n    if (err.name === 'AbortError') {\n      console.log('Fetch successfully aborted!');\n    } else {\n      console.error('Real error:', err);\n    }\n  });\n\n// 2. Abort the request after 2 seconds if it hasn't finished\nsetTimeout(() => {\n  controller.abort(); \n}, 2000);"
+}

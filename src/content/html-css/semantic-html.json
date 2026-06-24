@@ -1,0 +1,31 @@
+{
+  "id": "semantic-html",
+  "title": "Semantic HTML",
+  "difficulty": "Intermediate",
+  "definition": "The use of HTML markup to reinforce the semantics, or meaning, of the information in webpages rather than merely defining its presentation or look.",
+  "simpleExplanation": "You can build an entire website using only `<div>` tags. Visually, it might look perfect. But a blind person using a screen reader won't know where the navigation bar is, and Google's search engine won't know what part of the page is the main article. Semantic HTML uses specific tags like `<nav>`, `<article>`, and `<footer>` so machines understand your website.",
+  "realWorldExample": "Replacing a `<div class=\"navigation\">` with a `<nav>` tag. They look exactly the same to a sighted user, but the `<nav>` tag drastically improves SEO and Accessibility.",
+  "useCases": [
+    "Improving SEO rankings",
+    "Making websites accessible for visually impaired users"
+  ],
+  "questions": {
+    "basic": [
+      "Name three semantic HTML5 tags."
+    ],
+    "intermediate": [
+      "Why is it bad practice to use a `<div>` for a button?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Name three tags.",
+      "answer": "`<header>`, `<footer>`, `<article>`, `<section>`, `<nav>`, `<aside>`, `<main>`."
+    },
+    {
+      "question": "Why not use a div for a button?",
+      "answer": "A `<div>` is semantically meaningless. If you style a `<div>` to look like a button, users navigating via keyboard (pressing 'Tab') cannot focus on it, and hitting 'Enter' won't click it. A `<button>` tag has all of this built-in natively."
+    }
+  ],
+  "codeExample": "<!-- BAD (Non-Semantic) -->\n<div class=\"header\">\n  <div class=\"logo\">My Site</div>\n  <div class=\"nav\">Home | About</div>\n</div>\n\n<div class=\"main-content\">\n  <div class=\"post\">This is my blog post.</div>\n</div>\n\n<div class=\"footer\">&copy; 2024</div>\n\n<hr style=\"margin: 40px 0;\" />\n\n<!-- GOOD (Semantic HTML5) -->\n<header>\n  <h1>My Site</h1>\n  <nav>Home | About</nav>\n</header>\n\n<main>\n  <article>\n    <p>This is my blog post.</p>\n  </article>\n</main>\n\n<footer>\n  <p>&copy; 2024</p>\n</footer>"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "use-state",
+  "title": "State (useState)",
+  "difficulty": "Beginner",
+  "definition": "The `useState` hook allows you to add state to functional components. State is data that changes over time, and when state changes, React automatically re-renders the component to reflect the new data on the screen.",
+  "simpleExplanation": "Imagine a digital scoreboard at a basketball game. The 'score' is the State. When a team scores, you update the state. React acts as the scoreboard operator—the moment you tell React the new score, it instantly updates the giant screen so the audience can see it. Without State, variables might change in the background, but the screen would never update.",
+  "realWorldExample": "A simple 'Like' button. When the user clicks it, you update `likes + 1`. React notices the change and re-draws the button with the new number.",
+  "useCases": [
+    "Tracking user input in text fields",
+    "Toggling UI states (e.g., isModalOpen)",
+    "Storing fetched data from an API to display on screen"
+  ],
+  "questions": {
+    "basic": [
+      "What does `useState` return?",
+      "Why can't you just use a regular let variable instead of useState?"
+    ],
+    "intermediate": [
+      "Is `setState` synchronous or asynchronous?",
+      "Why should you use the functional update form (prev => prev + 1) when updating state based on the previous state?"
+    ],
+    "advanced": [
+      "What happens if you initialize useState with a heavy computation function: `useState(heavyComputation())` vs `useState(() => heavyComputation())`?",
+      "How does React know which useState call belongs to which variable across re-renders?"
+    ],
+    "trick": [
+      "If you call `setState(5)` three times in a row, how many times does the component re-render?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why can't you use a regular variable instead of useState?",
+      "answer": "If you update a regular variable (`let count = 0; count++`), React doesn't know it changed, so it won't re-render the UI. Furthermore, regular variables are reset back to their initial value every time the component does re-render. State is preserved."
+    },
+    {
+      "question": "Why use the functional update form (prev => prev + 1)?",
+      "answer": "State updates are batched and asynchronous. If you read the current state variable and update it rapidly, you might be reading a stale value. Passing a function ensures you are always working with the absolute latest state value."
+    },
+    {
+      "question": "If you call setState(5) three times in a row, how many re-renders happen?",
+      "answer": "Only once! React batches state updates for performance. If you update the same state synchronously multiple times, it only triggers a single re-render at the end of the event loop."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\nexport default function Counter() {\n  // count is the current state\n  // setCount is the function to update it\n  // 0 is the initial value\n  const [count, setCount] = useState(0);\n\n  const handleIncrement = () => {\n    // BAD: Might use stale state if called rapidly\n    // setCount(count + 1); \n    \n    // GOOD: Using functional update to guarantee latest state\n    setCount(prevCount => prevCount + 1);\n  };\n\n  return (\n    <div className=\"counter-box\">\n      <h2>Current Count: {count}</h2>\n      <button onClick={handleIncrement}>\n        Increment\n      </button>\n      <button onClick={() => setCount(0)}>\n        Reset\n      </button>\n    </div>\n  );\n}"
+}

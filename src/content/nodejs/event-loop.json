@@ -1,0 +1,34 @@
+{
+  "id": "event-loop",
+  "title": "Node.js Event Loop",
+  "difficulty": "Advanced",
+  "definition": "The secret mechanism that allows Node.js to perform non-blocking I/O operations despite being single-threaded. It offloads operations to the system kernel whenever possible.",
+  "simpleExplanation": "Imagine Node is a single waiter in a busy restaurant (Single Thread). The waiter takes an order (a network request) and passes it to the kitchen (the OS / libuv Thread Pool). Instead of waiting 15 minutes at the kitchen door for the food to finish (Blocking), the waiter instantly goes to the next table to take another order. When the kitchen finishes the food, they ring a bell (Event Loop), and the waiter brings it to the customer. This is how ONE waiter handles 1,000 customers.",
+  "realWorldExample": "If Node.js did not have an Event Loop, a single user uploading a large video file would completely freeze the entire server, preventing any other users from logging in or viewing pages.",
+  "useCases": [
+    "Highly concurrent web servers",
+    "Understanding backend scaling"
+  ],
+  "questions": {
+    "basic": [
+      "Is Node.js multi-threaded?"
+    ],
+    "intermediate": [
+      "If Node is single-threaded, how does it read 5 files at the exact same time?"
+    ],
+    "advanced": [
+      "What C++ library powers the Event Loop?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is Node multi-threaded?",
+      "answer": "The Javascript execution in V8 is Single-Threaded. However, the background I/O operations (like reading files or network requests) are actually Multi-Threaded, handled by the C++ `libuv` library."
+    },
+    {
+      "question": "What library powers it?",
+      "answer": "`libuv`. It provides the Event Loop mechanism and a default pool of 4 background threads specifically to handle heavy tasks like cryptography and file system operations without blocking the main JavaScript thread."
+    }
+  ],
+  "codeExample": "const fs = require('fs');\nconst crypto = require('crypto');\n\nconsole.log(\"1. Main Thread Starts (Waiter takes order)\");\n\n// We ask the Event Loop to do heavy math.\n// It offloads this to the libuv C++ Thread Pool.\ncrypto.pbkdf2('password', 'salt', 100000, 64, 'sha512', () => {\n  console.log(\"4. Heavy Math Finished! (Kitchen rings bell)\");\n});\n\n// We set a timer.\nsetTimeout(() => {\n  console.log(\"3. Timer Finished! (Kitchen rings bell)\");\n}, 100);\n\nconsole.log(\"2. Main Thread continues working instantly! (Waiter goes to next table)\");\n\n// OUTPUT ORDER:\n// 1. Main Thread Starts\n// 2. Main Thread continues working\n// 3. Timer Finished!\n// 4. Heavy Math Finished!"
+}

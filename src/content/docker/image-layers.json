@@ -1,0 +1,30 @@
+{
+  "id": "image-layers",
+  "title": "Image Layers",
+  "difficulty": "Advanced",
+  "definition": "The structural design of a Docker Image. Images are not single massive files; they are composed of a series of read-only layers stacked on top of each other. Each layer represents a single instruction from the Dockerfile.",
+  "simpleExplanation": "Like a Photoshop file with layers. Layer 1: Install Linux. Layer 2: Install Python. Layer 3: Copy your code. If you change your code, Docker doesn't rebuild Linux and Python. It reuses those layers instantly, and only replaces Layer 3.",
+  "realWorldExample": "You pull a 1GB Node.js image. Later, you pull a different app that also relies on the exact same Node.js image. Docker realizes you already downloaded the 'Node.js Layer', so it only downloads the 2MB of new code layers, saving massive amounts of bandwidth.",
+  "useCases": [
+    "Optimizing build speed",
+    "Saving disk space"
+  ],
+  "questions": {
+    "basic": [
+      "Does every command in a Dockerfile create a new Image Layer?"
+    ],
+    "intermediate": [
+      "How does the 'Union File System' help Docker manage image layers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Create new layer?",
+      "answer": "Specific commands do (like `RUN`, `COPY`, `ADD`), while others (like `ENV`, `EXPOSE`) simply add metadata without creating a physical file layer."
+    },
+    {
+      "question": "Union File System?",
+      "answer": "It is the magic technology that takes 10 separate read-only layers stacked on your hard drive and visually merges them together so that, to the running container, it just looks like one single, normal C: drive."
+    }
+  ]
+}

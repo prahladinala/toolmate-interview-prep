@@ -1,0 +1,30 @@
+{
+  "id": "docker-hub",
+  "title": "Docker Hub",
+  "difficulty": "Beginner",
+  "definition": "The default, official public cloud registry maintained by Docker, Inc. It hosts millions of pre-built Docker images that can be pulled and used by anyone.",
+  "simpleExplanation": "The App Store for Docker. If you need a database, you don't build it from scratch. You go to Docker Hub, search for 'PostgreSQL', and download the official pre-built image.",
+  "realWorldExample": "When you run `docker run ubuntu`, your computer connects to Docker Hub automatically, searches for the 'ubuntu' repository, and downloads the image layers to your machine.",
+  "useCases": [
+    "Finding Base Images",
+    "Sharing open-source software"
+  ],
+  "questions": {
+    "basic": [
+      "Do you have to pay money to pull official images from Docker Hub?"
+    ],
+    "intermediate": [
+      "What is an 'Official Image' on Docker Hub?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pay money to pull?",
+      "answer": "No. Pulling public open-source images is entirely free (though Docker does enforce rate limits on anonymous downloads)."
+    },
+    {
+      "question": "What is an Official Image?",
+      "answer": "Images curated, sponsored, and strictly security-reviewed by Docker Inc (like `node`, `python`, `alpine`). Non-official images (like `joesmith/my-python`) are built by random users and may contain malware."
+    }
+  ]
+}

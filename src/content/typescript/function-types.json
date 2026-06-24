@@ -1,0 +1,35 @@
+{
+  "id": "function-types",
+  "title": "Function Types",
+  "difficulty": "Beginner",
+  "definition": "Defining the specific types of arguments a function accepts, as well as the exact type of data it returns.",
+  "simpleExplanation": "A function is a factory machine. A Function Type is the label on the machine that says: 'Insert exactly 2 Blocks of Wood (Arguments) here. Out of the other side will come exactly 1 Wooden Chair (Return Type). Do not insert Metal.'",
+  "realWorldExample": "Typing a callback function passed as a React prop: `onDelete: (id: string) => void`.",
+  "useCases": [
+    "Ensuring correct parameters are passed",
+    "Defining React component props",
+    "Higher-order functions"
+  ],
+  "questions": {
+    "basic": [
+      "How do you type a function that doesn't return anything?"
+    ],
+    "intermediate": [
+      "What is the difference between `(a: number) => void` and `Function`?"
+    ],
+    "advanced": [
+      "What is the difference between `void` and `never` as a return type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you type a function that returns nothing?",
+      "answer": "Use the `void` type. Example: `function logData(): void { ... }`."
+    },
+    {
+      "question": "Difference between specific signature and 'Function'?",
+      "answer": "Using the uppercase `Function` type is bad practice. It means 'any function whatsoever', offering no parameter or return checking. You should always define the exact signature `(arg: type) => returnType`."
+    }
+  ],
+  "codeExample": "// 1. Typing the function declaration directly\nfunction calculateArea(width: number, height: number): number {\n  return width * height;\n}\n\n// 2. Typing an arrow function\nconst greet = (name: string): string => {\n  return `Hello ${name}`;\n};\n\n// 3. Defining a standalone Function Type Signature (Useful for props!)\ntype MathOperation = (a: number, b: number) => number;\n\nconst add: MathOperation = (x, y) => x + y;\nconst subtract: MathOperation = (x, y) => x - y;\n\n// ERROR: Type 'string' is not assignable to type 'number'\n// const badMath: MathOperation = (x, y) => \"hello\";"
+}

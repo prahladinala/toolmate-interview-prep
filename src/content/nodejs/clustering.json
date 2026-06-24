@@ -1,0 +1,32 @@
+{
+  "id": "clustering",
+  "title": "Clustering",
+  "difficulty": "Advanced",
+  "definition": "A technique used to scale a Node.js application by spawning a pool of identical worker processes that share the same server port.",
+  "simpleExplanation": "Node.js runs on a single core. If you buy a massive server with 32 CPU cores, Node will only use 1, leaving 31 cores doing absolutely nothing while your app crashes from too much traffic. Clustering tells Node to clone itself 32 times. One 'Master' clone acts as the boss, taking incoming network traffic and distributing it evenly to the 32 'Worker' clones. Now you are using 100% of your server's power.",
+  "realWorldExample": "Using the built-in `cluster` module or `PM2` to automatically scale an Express API across all available CPU cores on an AWS EC2 instance.",
+  "useCases": [
+    "Vertical scaling",
+    "Maximizing CPU utilization",
+    "Zero-downtime restarts"
+  ],
+  "questions": {
+    "basic": [
+      "How many CPU cores does standard Node.js utilize by default?"
+    ],
+    "intermediate": [
+      "Do clustered worker processes share the same memory (RAM)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many cores by default?",
+      "answer": "Only 1. The V8 JavaScript engine is strictly single-threaded."
+    },
+    {
+      "question": "Do they share memory?",
+      "answer": "No. Each worker is a completely separate Node process with its own V8 instance, Event Loop, and Memory space. If Worker 1 saves a user to `global.users = []`, Worker 2 will NOT see that user. This is why you must use external databases like Redis for shared state."
+    }
+  ],
+  "codeExample": "const cluster = require('cluster');\nconst os = require('os');\n\n// 1. The Master Process runs first\nif (cluster.isMaster) {\n  const numCPUs = os.cpus().length;\n  console.log(`Master process ${process.pid} is running.`);\n  console.log(`Forking ${numCPUs} workers...\\n`);\n\n  // Create a worker for every CPU core\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  // If a worker crashes, immediately spawn a replacement!\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died. Respawning...`);\n    cluster.fork();\n  });\n\n} else {\n  // 2. The Worker Processes run this code\n  // This code executes 8 times (if you have an 8-core CPU)\n  const express = require('express');\n  const app = express();\n\n  app.get('/', (req, res) => {\n    res.send(`Hello from Worker ${process.pid}`);\n  });\n\n  // All workers share port 3000 perfectly!\n  // app.listen(3000, () => console.log(`Worker ${process.pid} listening`));\n}\n\nconsole.log(\"In production, developers almost never write this manually. They use PM2 (pm2 start app.js -i max) to do it automatically.\");"
+}

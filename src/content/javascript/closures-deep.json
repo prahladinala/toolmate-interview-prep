@@ -1,0 +1,36 @@
+{
+  "id": "closures-deep",
+  "title": "Closures Deep Dive",
+  "difficulty": "Advanced",
+  "definition": "A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). A closure gives you access to an outer function's scope from an inner function, even after the outer function has finished executing.",
+  "simpleExplanation": "Imagine a function is a tourist taking a photo. When the tourist (inner function) takes the photo (gets created), they capture the scenery around them (outer variables) in the picture. Years later, even if the tourist leaves the country (the outer function finishes and is removed from the Call Stack), they can still look at the photo and see the scenery EXACTLY as it was.",
+  "realWorldExample": "Creating private variables in factory functions, memoization, and React Hooks. `useState` relies heavily on closures to remember state between renders.",
+  "useCases": [
+    "Currying",
+    "Memoization",
+    "Private variables",
+    "Event handlers in loops"
+  ],
+  "questions": {
+    "basic": [
+      "Can you write a basic example of a closure?"
+    ],
+    "intermediate": [
+      "Why did using `var` inside a `for` loop with a `setTimeout` cause bugs in older JavaScript?"
+    ],
+    "advanced": [
+      "What is a 'Stale Closure' in the context of React Hooks?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why did `var` in a loop cause bugs?",
+      "answer": "`var` is function-scoped, not block-scoped. In a `for` loop creating 3 timeouts, all 3 closures shared the exact same `i` variable in memory. By the time the timeouts executed, the loop had finished and `i` was 3, so all timeouts printed 3. Using `let` fixes this because `let` creates a new block scope for every iteration."
+    },
+    {
+      "question": "What is a Stale Closure?",
+      "answer": "When an inner function captures variables, it captures them as they were at that specific moment in time. In a React `useEffect` with an empty dependency array, if you define a `setInterval` that uses a state variable `count`, the interval will FOREVER see `count` as `0`, because it closed over the very first render."
+    }
+  ],
+  "codeExample": "// Classic Closure for Data Privacy\nfunction createBankCounter(initialBalance) {\n  // This variable is completely inaccessible from the outside world!\n  let balance = initialBalance; \n\n  return {\n    deposit: function(amount) {\n      balance += amount;\n      return balance;\n    }\n  };\n}\n\n// The outer function finishes executing here\nconst myAccount = createBankCounter(100);\n\n// But the inner function 'deposit' still remembers 'balance'!\nconsole.log(myAccount.deposit(50)); // 150"
+}

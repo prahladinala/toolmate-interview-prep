@@ -1,0 +1,31 @@
+{
+  "id": "sort-uniq",
+  "title": "sort & uniq",
+  "difficulty": "Intermediate",
+  "definition": "Two utilities almost always used together. `sort` organizes lines of text alphabetically or numerically. `uniq` removes duplicate adjacent lines.",
+  "simpleExplanation": "You have a list of 1,000 email addresses, but some are duplicates. You `sort` them so the duplicates are touching each other, then you use `uniq` to delete the duplicates.",
+  "realWorldExample": "You want to find out how many *unique* IP addresses visited your website today from an Apache access log. You run: `cat access.log | awk '{print $1}' | sort | uniq -c`. It outputs a neat list of every IP address and exactly how many times they visited.",
+  "useCases": [
+    "Data analysis",
+    "Finding duplicates",
+    "Counting occurrences"
+  ],
+  "questions": {
+    "basic": [
+      "Why must you almost always run `sort` BEFORE you run `uniq`?"
+    ],
+    "intermediate": [
+      "What does the `-c` flag do in the `uniq -c` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why sort first?",
+      "answer": "Because `uniq` is 'dumb'—it only deletes duplicates if they are exactly adjacent (touching) each other line-by-line. `sort` forces all identical lines to group together so `uniq` can see them."
+    },
+    {
+      "question": "What is -c?",
+      "answer": "Count. Instead of just deleting the duplicates, it prepends a number to the line telling you exactly how many times that duplicate occurred in the file."
+    }
+  ]
+}

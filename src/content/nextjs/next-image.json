@@ -1,0 +1,32 @@
+{
+  "id": "next-image",
+  "title": "Image Component",
+  "difficulty": "Beginner",
+  "definition": "The `<Image>` component (`next/image`) is a massive upgrade over the standard HTML `<img>` tag, automatically preventing layout shifts and optimizing file sizes.",
+  "simpleExplanation": "If you use a standard `<img>` tag for a 5MB 4K photo, the user's phone downloads 5MB and lags. If you use Next.js `<Image>`, the Next.js server automatically intercepts the photo, shrinks it to the exact size of the user's phone screen, converts it to WebP format, and sends a 30kb file instead.",
+  "realWorldExample": "Replacing all `<img>` tags on an e-commerce site with `<Image>` tags and instantly increasing the Google Lighthouse performance score by 30 points.",
+  "useCases": [
+    "Core Web Vitals optimization",
+    "Responsive design",
+    "Bandwidth saving"
+  ],
+  "questions": {
+    "basic": [
+      "Why does Next.js force you to provide `width` and `height` properties when using the `<Image>` component?"
+    ],
+    "intermediate": [
+      "What happens if you try to load an image from an external website (like `https://unsplash.com/photo.jpg`) using `<Image>` without configuring it first?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why width and height?",
+      "answer": "To prevent Cumulative Layout Shift (CLS). By knowing the dimensions beforehand, the browser can reserve the exact physical space on the screen *before* the image loads, preventing the page from violently 'jumping' downwards when the image finally appears."
+    },
+    {
+      "question": "External domains?",
+      "answer": "It will throw an error. For security reasons (and to prevent your server from being used to maliciously optimize infinite random images), you must explicitly 'whitelist' external domains in your `next.config.js` file."
+    }
+  ],
+  "codeExample": "import Image from 'next/image';\nimport profilePic from '@/public/me.png'; // Local image import\n\nexport default function Page() {\n  return (\n    <div>\n      {/* 1. Local Image (Next.js automatically reads the width/height from the file!) */}\n      <Image \n        src={profilePic} \n        alt=\"My Profile\" \n        placeholder=\"blur\" // Shows a blurry tiny preview while loading\n      />\n\n      {/* 2. Remote Image (You MUST provide width/height manually) */}\n      <Image\n        src=\"https://s3.amazonaws.com/my-bucket/hero.jpg\"\n        alt=\"Hero Graphic\"\n        width={1200}\n        height={600}\n      />\n    </div>\n  );\n}"
+}

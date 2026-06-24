@@ -1,0 +1,31 @@
+{
+  "id": "cache-management",
+  "title": "Cache Management",
+  "difficulty": "Advanced",
+  "definition": "The system by which RTK Query temporarily stores the results of API requests in the Redux store to prevent redundant network requests and provide instant UI rendering.",
+  "simpleExplanation": "If you visit the Homepage, it fetches 10 posts and saves them. If you click on an About page, and then click back to the Homepage, RTK Query says 'Wait! I already have those 10 posts!' It renders them instantly from memory instead of hitting the database again.",
+  "realWorldExample": "By default, RTK Query caches data for 60 seconds after the last component using that data unmounts. If you go back to the page within 60 seconds, it's instant.",
+  "useCases": [
+    "Reducing server load",
+    "Instant UI navigation"
+  ],
+  "questions": {
+    "basic": [
+      "By default, how many seconds does RTK Query keep unused data in the cache before deleting it?"
+    ],
+    "intermediate": [
+      "How does RTK Query know if two components are asking for the exact same data?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many seconds?",
+      "answer": "60 seconds. (This can be configured using `keepUnusedDataFor`)."
+    },
+    {
+      "question": "How does it know?",
+      "answer": "It serializes the endpoint name and the arguments passed to it. `useGetPostQuery(5)` in Component A is mathematically identical to `useGetPostQuery(5)` in Component B, so they share the exact same cache entry."
+    }
+  ],
+  "codeExample": "/*\n  How the Cache Lifecycle Works:\n\n  1. Component A mounts and calls useGetUsersQuery().\n  2. RTK Query sees no cache. Makes network request. Returns Data.\n  3. Component B mounts and calls useGetUsersQuery().\n  4. RTK Query sees the cache! Instantly provides Data to B (No network request).\n  5. Component A and B unmount. Nobody is using the Data anymore.\n  6. A 60-second timer starts.\n  7. If 60 seconds pass, RTK Query deletes the Data from Redux to free up memory (Garbage Collection).\n*/"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "shadcn-ui",
+  "title": "shadcn/ui",
+  "difficulty": "Advanced",
+  "definition": "An incredibly popular collection of beautifully designed, accessible components built using Tailwind CSS and Radix UI.",
+  "simpleExplanation": "It's not a component library that you install via npm (like Material UI). It is a website where you literally copy-paste the raw React + Tailwind code for a 'DatePicker' directly into your own project, giving you 100% control to edit the Tailwind classes.",
+  "realWorldExample": "Running `npx shadcn-ui@latest add button` in your terminal. It downloads a `Button.tsx` file into your project containing a fully accessible button pre-styled with Tailwind and CVA.",
+  "useCases": [
+    "Rapid MVP development",
+    "Enterprise Design Systems"
+  ],
+  "questions": {
+    "basic": [
+      "Do you install shadcn/ui as an `npm` dependency?"
+    ],
+    "intermediate": [
+      "Why is shadcn/ui called a 'copy-paste' library, and why is this an advantage?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install via npm?",
+      "answer": "No. You do not `npm install shadcn`. You use a CLI to copy the raw component files directly into your codebase."
+    },
+    {
+      "question": "Why copy-paste?",
+      "answer": "With traditional libraries (like Bootstrap), the CSS is hidden inside `node_modules`. If you want to change the padding, you have to fight the library with complex overrides. With shadcn, you own the raw file. If you want more padding, you just open `Button.tsx` and change `p-2` to `p-4`. Ultimate control."
+    }
+  ],
+  "codeExample": "/* \n  The philosophy of shadcn/ui:\n  You own the code. It belongs in YOUR components folder.\n  \n  components/ui/button.tsx\n*/\nimport { cva } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\n// Look! It's just raw Tailwind classes that you can edit anytime!\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground shadow hover:bg-primary/90\",\n        destructive: \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\n        outline: \"border border-input bg-transparent hover:bg-accent\",\n      },\n      size: {\n        default: \"h-9 px-4 py-2\",\n        sm: \"h-8 rounded-md px-3\",\n        lg: \"h-10 rounded-md px-8\",\n      },\n    },\n    defaultVariants: { variant: \"default\", size: \"default\" },\n  }\n)\n\nexport function Button({ className, variant, size, ...props }) {\n  return <button className={cn(buttonVariants({ variant, size, className }))} {...props} />\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "cron-jobs",
+  "title": "Cron Jobs",
+  "difficulty": "Intermediate",
+  "definition": "A time-based job scheduling daemon in Linux. It allows users to automatically execute scripts, commands, or software at highly specific times and dates in the background.",
+  "simpleExplanation": "The ultimate alarm clock. You tell the computer 'Every Tuesday at 3:00 AM, run the backup script while I am sleeping'.",
+  "realWorldExample": "An administrator opens the crontab file using `crontab -e` and writes `0 0 * * * /scripts/daily_cleanup.sh`. Every single night at exactly Midnight, the server automatically deletes temporary garbage files.",
+  "useCases": [
+    "Database backups",
+    "Log rotation",
+    "Automated system maintenance"
+  ],
+  "questions": {
+    "basic": [
+      "What command do you type to edit your personal list of scheduled cron jobs?"
+    ],
+    "intermediate": [
+      "Explain the cron syntax `* * * * *`. How often does that run?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Edit command?",
+      "answer": "`crontab -e`"
+    },
+    {
+      "question": "How often?",
+      "answer": "Every single minute of every single day. The 5 stars represent: Minute, Hour, Day of Month, Month, Day of Week. A star means 'Every'."
+    }
+  ]
+}

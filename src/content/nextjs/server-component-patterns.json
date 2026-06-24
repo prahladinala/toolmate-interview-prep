@@ -1,0 +1,32 @@
+{
+  "id": "server-component-patterns",
+  "title": "Server Component Patterns",
+  "difficulty": "Advanced",
+  "definition": "Advanced architectural techniques for mixing Server and Client components safely, effectively managing state, and avoiding common pitfalls like 'Poisoning' the client bundle.",
+  "simpleExplanation": "Mastering Next.js is knowing exactly where to draw the line between Server and Client. Bad patterns result in passing 50 props between files or accidentally leaking secure database code to the browser. Good patterns use composition, context, and strict boundaries.",
+  "realWorldExample": "Using the `server-only` package. If you have a helper function `verifyPassword()`, you import `'server-only'` at the top of the file. If a developer accidentally imports that function into a Client Component, the build will violently crash, preventing a massive security leak.",
+  "useCases": [
+    "Codebase security",
+    "Architecture design",
+    "Performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you pass a complex JavaScript Class (like a `Date` object) as a prop from a Server Component to a Client Component?"
+    ],
+    "intermediate": [
+      "What is the 'server-only' package used for?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pass complex Class?",
+      "answer": "It will throw an error. Server Components must serialize props into a network string (JSON) to send them over the wire to the Client Component. You cannot serialize functions, classes, or Maps. You can only pass plain strings, numbers, booleans, and plain arrays/objects."
+    },
+    {
+      "question": "What is server-only?",
+      "answer": "It is an intentional 'poison pill'. Placing `import 'server-only'` inside a file ensures that if any Client Component ever tries to import that file, the build process will fail. It protects secure server logic from accidentally leaking to the browser."
+    }
+  ],
+  "codeExample": "// lib/db-helpers.ts\n// 1. This prevents this file from ever entering the browser bundle!\nimport 'server-only'; \n\nexport async function getSecureAdminData() {\n  return db.query('SELECT * FROM admin_secrets');\n}\n\n// -----------------------------------------------------\n\n// app/page.tsx (Server Component)\nimport ClientInteractiveChart from './ClientChart';\n\nexport default async function Page() {\n  const data = await getSecureAdminData();\n  \n  // 2. Data serialization rule:\n  // You CANNOT pass the raw DB response if it contains complex Objects (like Dates).\n  // You must map it down to pure serializable JSON strings/numbers first!\n  const safeData = data.map(row => ({\n    id: row.id,\n    dateStr: row.createdAt.toISOString() // Convert Date object to String!\n  }));\n\n  return <ClientInteractiveChart data={safeData} />;\n}"
+}

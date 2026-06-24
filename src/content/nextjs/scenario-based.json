@@ -1,0 +1,31 @@
+{
+  "id": "scenario-based",
+  "title": "Scenario-Based Questions",
+  "difficulty": "Advanced",
+  "definition": "Interview questions that present a complex, real-world business problem and ask you to design the Next.js architecture to solve it.",
+  "simpleExplanation": "There is no 'right' answer. The interviewer wants to hear your thought process. They want to see if you can balance performance, development speed, and cost.",
+  "realWorldExample": "Scenario: 'We are building a massive e-commerce site with 1 million products. Prices change every 5 minutes. SEO is critical. How do you architect this in Next.js?'",
+  "useCases": [
+    "Whiteboarding sessions",
+    "Architecture interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Scenario: You need a dashboard that polls a live server for stock data every 2 seconds. How do you fetch this data?"
+    ],
+    "intermediate": [
+      "Scenario: You are migrating a 500-page legacy React SPA to Next.js. Do you migrate everything at once?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stock data dashboard?",
+      "answer": "Since it polls every 2 seconds and SEO doesn't matter for a private dashboard, I would completely avoid Next.js Server Components for this piece. I would use a Client Component with a library like TanStack Query (React Query) to handle the aggressive client-side polling and caching."
+    },
+    {
+      "question": "Migrating legacy SPA?",
+      "answer": "No. I would use the Incremental Adoption strategy. I would set up Next.js `rewrites` in `next.config.js`. I would build the new Homepage in Next.js, and configure the router to proxy all other traffic back to the old legacy server. Then, I migrate one page at a time."
+    }
+  ],
+  "codeExample": "/*\n  Scenario:\n  \"Our marketing team frequently updates the 'About Us' page in our Headless CMS. They complain that when they hit 'Publish', the website doesn't update unless a developer manually triggers a rebuild. Fix it.\"\n  \n  Solution:\n  1. I will tag the CMS fetch request in the Next.js code with `next: { tags: ['about-page'] }`.\n  2. I will create a Next.js Route Handler at `/api/webhooks/cms`.\n  3. I will configure the Headless CMS to send a POST webhook to that URL whenever 'Publish' is clicked.\n  4. The Route Handler will verify a secret token, and then call `revalidateTag('about-page')`.\n  5. The marketing team now instantly sees their changes without needing a developer to rebuild the site.\n*/"
+}

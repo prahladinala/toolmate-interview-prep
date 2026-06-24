@@ -1,0 +1,45 @@
+{
+  "id": "context-api",
+  "title": "Context API",
+  "difficulty": "Intermediate",
+  "definition": "The Context API provides a way to pass data through the component tree without having to pass props down manually at every level (avoiding 'prop drilling').",
+  "simpleExplanation": "Imagine a 5-story office building. The CEO on the top floor wants to give a memo to a worker on the 1st floor. Normally, the CEO hands it to the VP on floor 4, who hands it to a Manager on floor 3, who hands it to a Supervisor on floor 2, who finally gives it to the worker (Prop Drilling). Context is like a PA system. The CEO speaks into the microphone, and anyone in the building who cares can just listen to the speaker on their floor, skipping all the middlemen.",
+  "realWorldExample": "Managing Dark Mode/Light Mode. Almost every component in your app needs to know what theme is active to style itself correctly. Passing `theme=\"dark\"` through 50 layers of components is miserable. Context makes it globally available.",
+  "useCases": [
+    "Theming (Dark/Light mode)",
+    "Current authenticated user data",
+    "Language/Localization settings"
+  ],
+  "questions": {
+    "basic": [
+      "What is 'Prop Drilling'?",
+      "How do you consume a Context in a functional component?"
+    ],
+    "intermediate": [
+      "What are the three main steps to using Context?",
+      "What is the `<Context.Provider>` used for?"
+    ],
+    "advanced": [
+      "Why can the Context API cause performance issues in large apps?",
+      "How can you prevent unnecessary re-renders when a Context value changes?"
+    ],
+    "trick": [
+      "Can a component consume multiple different Contexts at the same time?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the three main steps to using Context?",
+      "answer": "1. Create the Context (`createContext()`). 2. Provide the Context at a high level in the tree (`<Context.Provider value={data}>`). 3. Consume the Context deeply nested in the tree (`useContext(Context)`)."
+    },
+    {
+      "question": "Why can Context cause performance issues?",
+      "answer": "Whenever the `value` prop of a Context.Provider changes, EVERY single component that consumes that context via `useContext` will be forced to re-render, even if they only needed a tiny piece of the data."
+    },
+    {
+      "question": "Can a component consume multiple Contexts?",
+      "answer": "Yes! You can call `useContext(ThemeContext)` and `useContext(UserContext)` right next to each other inside the same component."
+    }
+  ],
+  "codeExample": "import React, { createContext, useContext, useState } from 'react';\n\n// 1. Create the Context\nconst ThemeContext = createContext('light');\n\nexport default function App() {\n  const [theme, setTheme] = useState('light');\n\n  return (\n    // 2. Provide the Context to all children\n    <ThemeContext.Provider value={theme}>\n      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>\n        Toggle Theme\n      </button>\n      <MiddlemanComponent />\n    </ThemeContext.Provider>\n  );\n}\n\n// Notice this component doesn't take any props!\nfunction MiddlemanComponent() {\n  return (\n    <div>\n      <h2>I am the middleman. I don't care about the theme.</h2>\n      <DeepChildComponent />\n    </div>\n  );\n}\n\nfunction DeepChildComponent() {\n  // 3. Consume the Context directly where it's needed\n  const theme = useContext(ThemeContext);\n  \n  return (\n    <div style={{ \n      padding: '20px', \n      background: theme === 'dark' ? '#333' : '#FFF',\n      color: theme === 'dark' ? '#FFF' : '#000'\n    }}>\n      Current Theme is: {theme}\n    </div>\n  );\n}"
+}

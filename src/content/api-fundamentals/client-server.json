@@ -1,0 +1,31 @@
+{
+  "id": "client-server",
+  "title": "Client-Server Architecture",
+  "difficulty": "Beginner",
+  "definition": "A computing model that acts as a distributed application structure, partitioning tasks between the providers of a resource/service (the Server) and service requesters (the Client).",
+  "simpleExplanation": "The Client is the customer (your iPhone, a web browser, a smart fridge). The Server is the store manager sitting in an Amazon data center. The Client asks for things, and the Server decides if the Client is allowed to have them.",
+  "realWorldExample": "Playing a multiplayer video game. Your Xbox (the Client) tells the Server 'I shot my gun'. The Server does the math to see if you hit someone, and then tells all the other Xbox Clients 'Player 1 got a hit'.",
+  "useCases": [
+    "Fundamental web knowledge",
+    "System decoupling"
+  ],
+  "questions": {
+    "basic": [
+      "In a typical web application, which machine is considered the 'Client'?"
+    ],
+    "intermediate": [
+      "Why don't we just put the database directly on the Client's machine and skip the server?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is the Client?",
+      "answer": "The user's device (their web browser, their mobile app, their smart TV)."
+    },
+    {
+      "question": "Why not database on client?",
+      "answer": "Security and Synchronization. If the database is on the user's phone, they could hack it to give themselves a billion dollars. A centralized Server acts as the 'Source of Truth' that cannot be tampered with by clients."
+    }
+  ],
+  "codeExample": "/*\n  The Client-Server Loop:\n  \n  [ CLIENT ]  (React App in Chrome)\n      | \n      | 1. Request: \"Can I see my profile?\" (Sends Auth Cookie)\n      v\n  [ INTERNET ]\n      | \n      v\n  [ SERVER ]  (Node.js / Express / Next.js backend)\n      | \n      | 2. Checks Database.\n      | 3. Yes, cookie is valid. User is Admin.\n      |\n  [ SERVER ] \n      | \n      | 4. Response: { \"name\": \"Admin\", \"role\": \"SuperUser\" }\n      v\n  [ INTERNET ]\n      | \n      v\n  [ CLIENT ]  (Renders UI based on the response)\n*/"
+}

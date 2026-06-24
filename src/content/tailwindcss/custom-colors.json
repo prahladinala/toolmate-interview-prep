@@ -1,0 +1,31 @@
+{
+  "id": "custom-colors",
+  "title": "Custom Colors",
+  "difficulty": "Beginner",
+  "definition": "Defining brand-specific color palettes within Tailwind's configuration file.",
+  "simpleExplanation": "Giving names to HEX codes. Instead of remembering `#FF5733`, you name it `primary`. Tailwind then does the magic of creating all the background, text, border, and ring classes for it.",
+  "realWorldExample": "Creating semantic color names like `success`, `warning`, and `danger` instead of using `green`, `yellow`, and `red`.",
+  "useCases": [
+    "Theming",
+    "Semantic design"
+  ],
+  "questions": {
+    "basic": [
+      "If you add a color called `primary: '#123456'` to your config, what class do you use to make text that color?"
+    ],
+    "intermediate": [
+      "How do you define CSS Variables (like `var(--color-primary)`) inside `tailwind.config.js`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What class?",
+      "answer": "`text-primary`"
+    },
+    {
+      "question": "CSS Variables?",
+      "answer": "You just write the CSS variable exactly as a string: `primary: 'var(--color-primary)'`. This is incredibly powerful for letting users change themes dynamically at runtime."
+    }
+  ],
+  "codeExample": "// Setting up a robust, scalable color system\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        // Grouping colors under a namespace\n        admin: {\n          sidebar: '#1f2937',\n          header: '#f3f4f6',\n          accent: '#3b82f6'\n        },\n        // Semantic naming\n        danger: '#ef4444',\n        // Dynamic runtime theming using CSS variables!\n        userTheme: 'var(--user-selected-color)' \n      }\n    }\n  }\n}\n\n// Usage in HTML:\n// <div class=\"bg-admin-sidebar text-white border-admin-accent\">\n// <button class=\"bg-danger hover:bg-red-600\">Delete</button>"
+}

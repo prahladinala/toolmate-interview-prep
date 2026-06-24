@@ -1,0 +1,33 @@
+{
+  "id": "z-index",
+  "title": "z-index",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the stack order (depth) of positioned elements.",
+  "simpleExplanation": "The 3D depth of your website. If a Modal pops up, it needs to be 'closer' to the user's face than the background. Higher numbers are closer. `z-50` will cover `z-10`.",
+  "realWorldExample": "Ensuring a dropdown menu (`z-10`) drops down OVER the text below it, rather than slipping underneath the text.",
+  "useCases": [
+    "Modals",
+    "Dropdowns",
+    "Sticky Headers",
+    "Tooltips"
+  ],
+  "questions": {
+    "basic": [
+      "What is the highest default `z-index` class provided by Tailwind?"
+    ],
+    "intermediate": [
+      "If Element A is `z-50`, but its parent is `z-0`, can Element A cover Element B which is `z-10`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Highest default?",
+      "answer": "`z-50`"
+    },
+    {
+      "question": "Can it cover?",
+      "answer": "No. This is called 'Stacking Context'. If a parent is trapped at `z-0`, all of its children are trapped in that layer. A child `z-50` only means it is the highest element *within that parent's layer*."
+    }
+  ],
+  "codeExample": "<!-- \n  Standard z-index scale in Tailwind:\n  z-0, z-10, z-20, z-30, z-40, z-50, z-auto\n-->\n\n<header class=\"sticky top-0 z-40\">\n  Navbar (Stays on top of normal content)\n</header>\n\n<main class=\"z-0\">\n  Normal Content\n</main>\n\n<div class=\"fixed inset-0 z-50\">\n  Modal (Stays on top of EVERYTHING, even the Navbar)\n</div>"
+}

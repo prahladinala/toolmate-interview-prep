@@ -1,0 +1,30 @@
+{
+  "id": "ssh-tunneling",
+  "title": "SSH Tunneling (Port Forwarding)",
+  "difficulty": "Advanced",
+  "definition": "A method of transporting arbitrary networking data over an encrypted SSH connection. It can be used to bypass firewalls or securely access local services running on remote machines.",
+  "simpleExplanation": "Creating a secret, encrypted underground tunnel from your laptop directly into a locked server, allowing you to access a private database as if it were running on your own computer.",
+  "realWorldExample": "A production database on a server only listens to `localhost:5432` for security. You cannot connect DBeaver from your laptop. You create an SSH tunnel (`ssh -L 5432:localhost:5432 admin@server`). Now, your laptop's local port 5432 is secretly wired to the server's database, and you connect securely.",
+  "useCases": [
+    "Securely accessing private databases",
+    "Bypassing corporate firewalls"
+  ],
+  "questions": {
+    "basic": [
+      "Is the data sent through an SSH Tunnel encrypted?"
+    ],
+    "intermediate": [
+      "What is the difference between Local Port Forwarding (`-L`) and Dynamic Port Forwarding (`-D`)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it encrypted?",
+      "answer": "Yes. Every single byte is heavily encrypted by the SSH protocol, protecting it from network sniffers and man-in-the-middle attacks."
+    },
+    {
+      "question": "Local vs Dynamic?",
+      "answer": "Local (`-L`) forwards one specific port to one specific destination (e.g., tunneling just the database). Dynamic (`-D`) turns your SSH connection into a full SOCKS proxy server, allowing you to route your entire web browser's traffic through the remote server to bypass firewalls."
+    }
+  ]
+}

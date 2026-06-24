@@ -1,0 +1,32 @@
+{
+  "id": "accessible-forms",
+  "title": "Accessible Forms",
+  "difficulty": "Intermediate",
+  "definition": "Forms designed so that users with screen readers or cognitive disabilities can clearly understand what data is required, how to fix errors, and what each input does.",
+  "simpleExplanation": "If you just put `<input placeholder=\"Email\">`, a sighted user knows what to do. But a screen reader might skip placeholders, and when the user types, the placeholder disappears, leaving users with memory issues confused about what they are typing. Accessible forms use explicit labels, error messages connected via ARIA, and clear visual cues.",
+  "realWorldExample": "When a form submission fails because the password is too short, an accessible form uses `aria-describedby` to link the specific input field to the red error message text below it.",
+  "useCases": [
+    "Checkout flows",
+    "Sign up pages",
+    "Government websites"
+  ],
+  "questions": {
+    "basic": [
+      "Why shouldn't you rely solely on color (like turning a border red) to indicate a form error?"
+    ],
+    "intermediate": [
+      "What does the `aria-describedby` attribute do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not just color?",
+      "answer": "Colorblind users cannot see the red border, and blind users using screen readers don't know the border changed color. You must always provide text-based errors and an ARIA state (like `aria-invalid=\"true\"`)."
+    },
+    {
+      "question": "What does aria-describedby do?",
+      "answer": "It links an input to a separate block of text. When the user focuses the input, the screen reader reads the label, and THEN reads the text from the `aria-describedby` element (perfect for 'Password must be 8 chars' hints)."
+    }
+  ],
+  "codeExample": "<!-- HIGHLY ACCESSIBLE FORM FIELD -->\n\n<div>\n  <!-- 1. Explicit Label connected via 'for' -->\n  <label for=\"new-password\" style=\"font-weight: bold;\">\n    Choose a Password\n  </label>\n  \n  <br>\n  \n  <!-- 2. The Input -->\n  <!-- aria-describedby points to the ID of the hint text below -->\n  <!-- aria-invalid tells the screen reader the current data is wrong -->\n  <!-- aria-required mirrors the HTML required attribute for older screen readers -->\n  <input \n    type=\"password\" \n    id=\"new-password\"\n    aria-describedby=\"pwd-hint pwd-error\"\n    aria-invalid=\"true\"\n    aria-required=\"true\"\n    required\n    style=\"border: 2px solid red; margin-top: 5px;\"\n  >\n  \n  <!-- 3. Helper Text (Read by screen reader when input is focused) -->\n  <p id=\"pwd-hint\" style=\"font-size: 12px; color: #666;\">\n    Must be at least 8 characters long.\n  </p>\n  \n  <!-- 4. Explicit Error Message (Not just a red border!) -->\n  <p id=\"pwd-error\" style=\"color: red; font-weight: bold; margin-top: -5px;\">\n    Error: The password you entered is too short.\n  </p>\n</div>"
+}

@@ -1,0 +1,189 @@
+{
+  "id": "typescript",
+  "title": "TypeScript",
+  "description": "Master TypeScript from fundamentals to advanced type-level programming. Learn static typing, generics, utility types, and large-scale application development.",
+  "icon": "typescript",
+  "categories": [
+    {
+      "id": "basics",
+      "title": "TypeScript Fundamentals",
+      "topics": [
+        { "id": "what-is-typescript", "title": "What is TypeScript?" },
+        { "id": "typescript-vs-javascript", "title": "TypeScript vs JavaScript" },
+        { "id": "basic-types", "title": "Basic Types" },
+        { "id": "type-inference", "title": "Type Inference" },
+        { "id": "type-annotations", "title": "Type Annotations" },
+        { "id": "any-unknown-never", "title": "any vs unknown vs never" },
+        { "id": "null-undefined", "title": "null & undefined" },
+        { "id": "type-assertions", "title": "Type Assertions" }
+      ]
+    },
+    {
+      "id": "objects-arrays",
+      "title": "Objects & Arrays",
+      "topics": [
+        { "id": "object-types", "title": "Object Types" },
+        { "id": "array-types", "title": "Array Types" },
+        { "id": "readonly-properties", "title": "Readonly Properties" },
+        { "id": "optional-properties", "title": "Optional Properties" },
+        { "id": "index-signatures", "title": "Index Signatures" }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "topics": [
+        { "id": "function-types", "title": "Function Types" },
+        { "id": "optional-default-params", "title": "Optional & Default Parameters" },
+        { "id": "rest-parameters", "title": "Rest Parameters" },
+        { "id": "function-overloading", "title": "Function Overloading" },
+        { "id": "this-in-functions", "title": "this in TypeScript" }
+      ]
+    },
+    {
+      "id": "interfaces",
+      "title": "Interfaces",
+      "topics": [
+        { "id": "interface-basics", "title": "Interface Basics" },
+        { "id": "extending-interfaces", "title": "Extending Interfaces" },
+        { "id": "interface-vs-type", "title": "Interface vs Type Alias" },
+        { "id": "declaration-merging", "title": "Declaration Merging" }
+      ]
+    },
+    {
+      "id": "type-aliases",
+      "title": "Type Aliases & Unions",
+      "topics": [
+        { "id": "type-aliases", "title": "Type Aliases" },
+        { "id": "union-types", "title": "Union Types" },
+        { "id": "intersection-types", "title": "Intersection Types" },
+        { "id": "literal-types", "title": "Literal Types" },
+        { "id": "discriminated-unions", "title": "Discriminated Unions" }
+      ]
+    },
+    {
+      "id": "enums",
+      "title": "Enums",
+      "topics": [
+        { "id": "numeric-enums", "title": "Numeric Enums" },
+        { "id": "string-enums", "title": "String Enums" },
+        { "id": "const-enums", "title": "Const Enums" },
+        { "id": "enum-vs-union", "title": "Enums vs Union Types" }
+      ]
+    },
+    {
+      "id": "generics",
+      "title": "Generics",
+      "topics": [
+        { "id": "generic-functions", "title": "Generic Functions" },
+        { "id": "generic-interfaces", "title": "Generic Interfaces" },
+        { "id": "generic-classes", "title": "Generic Classes" },
+        { "id": "generic-constraints", "title": "Generic Constraints" },
+        { "id": "keyof-operator", "title": "keyof Operator" },
+        { "id": "typeof-operator", "title": "typeof Operator" }
+      ]
+    },
+    {
+      "id": "classes-oop",
+      "title": "Classes & OOP",
+      "topics": [
+        { "id": "classes", "title": "Classes" },
+        { "id": "access-modifiers", "title": "Public / Private / Protected" },
+        { "id": "readonly", "title": "Readonly Properties" },
+        { "id": "inheritance", "title": "Inheritance" },
+        { "id": "abstract-classes", "title": "Abstract Classes" },
+        { "id": "implements", "title": "Implementing Interfaces" }
+      ]
+    },
+    {
+      "id": "advanced-types",
+      "title": "Advanced Types",
+      "topics": [
+        { "id": "mapped-types", "title": "Mapped Types" },
+        { "id": "conditional-types", "title": "Conditional Types" },
+        { "id": "template-literal-types", "title": "Template Literal Types" },
+        { "id": "indexed-access-types", "title": "Indexed Access Types" },
+        { "id": "infer-keyword", "title": "infer Keyword" },
+        { "id": "recursive-types", "title": "Recursive Types" }
+      ]
+    },
+    {
+      "id": "utility-types",
+      "title": "Utility Types",
+      "topics": [
+        { "id": "partial", "title": "Partial<T>" },
+        { "id": "required", "title": "Required<T>" },
+        { "id": "readonly-utility", "title": "Readonly<T>" },
+        { "id": "pick", "title": "Pick<T>" },
+        { "id": "omit", "title": "Omit<T>" },
+        { "id": "record", "title": "Record<K, T>" },
+        { "id": "exclude", "title": "Exclude<T>" },
+        { "id": "extract", "title": "Extract<T>" },
+        { "id": "return-type", "title": "ReturnType<T>" }
+      ]
+    },
+    {
+      "id": "modules",
+      "title": "Modules & Namespaces",
+      "topics": [
+        { "id": "es-modules", "title": "ES Modules" },
+        { "id": "import-export", "title": "Import & Export" },
+        { "id": "module-resolution", "title": "Module Resolution" },
+        { "id": "namespaces", "title": "Namespaces" }
+      ]
+    },
+    {
+      "id": "configuration",
+      "title": "TypeScript Configuration",
+      "topics": [
+        { "id": "tsconfig", "title": "tsconfig.json" },
+        { "id": "strict-mode", "title": "Strict Mode" },
+        { "id": "compiler-options", "title": "Compiler Options" },
+        { "id": "path-aliases", "title": "Path Aliases" }
+      ]
+    },
+    {
+      "id": "react-typescript",
+      "title": "React with TypeScript",
+      "topics": [
+        { "id": "typing-props", "title": "Typing Props" },
+        { "id": "typing-state", "title": "Typing State" },
+        { "id": "typing-hooks", "title": "Typing Hooks" },
+        { "id": "typing-events", "title": "Typing Events" },
+        { "id": "typing-refs", "title": "Typing Refs" },
+        { "id": "generic-components", "title": "Generic Components" }
+      ]
+    },
+    {
+      "id": "api-types",
+      "title": "API & Backend Types",
+      "topics": [
+        { "id": "api-response-types", "title": "API Response Types" },
+        { "id": "dto-patterns", "title": "DTO Patterns" },
+        { "id": "request-response-models", "title": "Request & Response Models" },
+        { "id": "zod-validation", "title": "Zod & Runtime Validation" }
+      ]
+    },
+    {
+      "id": "design-patterns",
+      "title": "TypeScript Design Patterns",
+      "topics": [
+        { "id": "singleton", "title": "Singleton Pattern" },
+        { "id": "factory", "title": "Factory Pattern" },
+        { "id": "repository-pattern", "title": "Repository Pattern" },
+        { "id": "dependency-injection", "title": "Dependency Injection" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "typescript-coding", "title": "Coding Questions" },
+        { "id": "typescript-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "advanced-generics", "title": "Advanced Generics Questions" },
+        { "id": "utility-type-questions", "title": "Utility Type Questions" },
+        { "id": "debugging-types", "title": "Type Debugging Questions" }
+      ]
+    }
+  ]
+}

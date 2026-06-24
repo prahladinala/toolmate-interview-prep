@@ -1,0 +1,34 @@
+{
+  "id": "primitive-reference",
+  "title": "Primitive vs Reference Types",
+  "difficulty": "Intermediate",
+  "definition": "Primitive types (string, number, boolean, null, undefined, symbol) are stored directly in memory. Reference types (objects, arrays, functions) are stored as a pointer (reference) to a location in memory.",
+  "simpleExplanation": "Primitives are like giving your friend a photocopy of a recipe. If they spill coffee on their copy, your original is safe. Reference types are like giving your friend the keys to your house. If they break a window, YOUR house is broken.",
+  "realWorldExample": "If you pass an object into a function `updateUser(user)`, and modify `user.name` inside the function, the original object outside the function is permanently altered because they share the same memory reference.",
+  "useCases": [
+    "Understanding immutability in React",
+    "Preventing accidental data mutation"
+  ],
+  "questions": {
+    "basic": [
+      "Are arrays copied by value or by reference?"
+    ],
+    "intermediate": [
+      "How do you copy an object without mutating the original?"
+    ],
+    "advanced": [
+      "Is JavaScript pass-by-value or pass-by-reference?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Are arrays copied by value or reference?",
+      "answer": "Reference. `const a = [1]; const b = a; b.push(2);` will result in `a` also becoming `[1, 2]`."
+    },
+    {
+      "question": "Is JS pass-by-value or pass-by-reference?",
+      "answer": "JavaScript is ALWAYS pass-by-value. However, when you pass an object into a function, the 'value' being passed is the memory address reference. This is known as 'Call-by-sharing'."
+    }
+  ],
+  "codeExample": "let x = 10;\nlet y = x; // Copied by value\ny = 20;\nconsole.log(x); // 10 (Safe!)\n\nlet obj1 = { name: 'Alice' };\nlet obj2 = obj1; // Copied by reference (address)\nobj2.name = 'Bob';\nconsole.log(obj1.name); // 'Bob' (Mutated!)"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "environment-variables",
+  "title": "Environment Variables",
+  "difficulty": "Intermediate",
+  "definition": "Dynamic-named values that can affect the way running processes will behave on a computer. They are part of the environment in which a process runs.",
+  "simpleExplanation": "Sticky notes stuck to your computer that programs can read. For example, a sticky note named `USER` says 'bob'. When a program needs to know who is using it, it reads the note.",
+  "realWorldExample": "A Node.js application needs to connect to a database. Instead of hardcoding the password into the code (a major security risk), the code looks for an environment variable named `DB_PASSWORD`. The server admin sets `export DB_PASSWORD='supersecret'`, and the app securely connects.",
+  "useCases": [
+    "Passing secrets to applications",
+    "Configuring system paths"
+  ],
+  "questions": {
+    "basic": [
+      "What extremely important environment variable tells Linux exactly which folders to search when you type a command like `ls` or `python`?"
+    ],
+    "intermediate": [
+      "What is the difference between setting a variable with `MY_VAR=\"hello\"` versus `export MY_VAR=\"hello\"`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which variable?",
+      "answer": "The `$PATH` variable."
+    },
+    {
+      "question": "With or without export?",
+      "answer": "Without `export`, the variable is 'local' and only exists in your current terminal session. If you start a script or a child process, it won't see the variable. `export` promotes it to an Environment Variable, meaning any child process or script you run will inherit it and be able to read it."
+    }
+  ]
+}

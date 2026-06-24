@@ -1,0 +1,31 @@
+{
+  "id": "dependabot",
+  "title": "Dependabot",
+  "difficulty": "Intermediate",
+  "definition": "An automated bot integrated into GitHub that scans your repository for outdated or insecure dependencies (packages) and automatically opens Pull Requests to update them.",
+  "simpleExplanation": "A free security guard for your project. If you are using React 17, and a massive security flaw is discovered in it, Dependabot will email you, open a Pull Request, update your `package.json` to React 18, and wait for you to click Merge.",
+  "realWorldExample": "Waking up to 5 automated Pull Requests from Dependabot keeping all your tiny Node.js libraries perfectly up to date so you don't have to check them manually.",
+  "useCases": [
+    "Automated security patching",
+    "Package maintenance"
+  ],
+  "questions": {
+    "basic": [
+      "Is Dependabot a human or a robot?"
+    ],
+    "intermediate": [
+      "If Dependabot opens a PR to update a library, should you just blindly merge it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Human or robot?",
+      "answer": "A robot owned and operated by GitHub."
+    },
+    {
+      "question": "Blindly merge?",
+      "answer": "No! Library updates can contain 'Breaking Changes' that destroy your app. You should rely on your Automated Tests (CI) to ensure the app still works before merging the Dependabot PR."
+    }
+  ],
+  "codeExample": "/* \n  You can configure Dependabot by creating a file at:\n  .github/dependabot.yml\n*/\n\nversion: 2\nupdates:\n  # Scan npm packages (package.json)\n  - package-ecosystem: \"npm\"\n    # Look in the root directory\n    directory: \"/\"\n    # Check for updates once a week\n    schedule:\n      interval: \"weekly\""
+}

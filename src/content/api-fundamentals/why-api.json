@@ -1,0 +1,32 @@
+{
+  "id": "why-api",
+  "title": "Why APIs are Important",
+  "difficulty": "Beginner",
+  "definition": "APIs are the foundational building blocks of modern software architecture, enabling reusability, integration, and the separation of concerns.",
+  "simpleExplanation": "Without APIs, every app would have to do everything itself. Instagram would have to build its own camera hardware drivers, its own map system, and its own payment processor. APIs allow apps to specialize in one thing, and 'rent' all the other features from specialized companies via APIs.",
+  "realWorldExample": "An E-commerce site. They don't process credit cards themselves (which is incredibly illegal/hard to secure). They use the Stripe API. They don't send SMS alerts themselves. They use the Twilio API.",
+  "useCases": [
+    "Rapid software development",
+    "Microservices architecture",
+    "Third-party integrations"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'third-party' API?"
+    ],
+    "intermediate": [
+      "What does the phrase 'Separation of Concerns' mean in the context of building a frontend API and a backend database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Third-party API?",
+      "answer": "An API built and maintained by a completely separate company (like Google, Stripe, or Twitter) that you can connect to your own application."
+    },
+    {
+      "question": "Separation of Concerns?",
+      "answer": "It means the Frontend only worries about making things look pretty (UI), and the Backend only worries about databases and business logic. They are completely separate. The API is the bridge connecting them. If you want to rebuild the UI, you don't have to touch the database."
+    }
+  ],
+  "codeExample": "/*\n  Why APIs are crucial for business speed:\n  \n  App Requirements:\n  1. Take payments  --> Connect to Stripe API (Takes 1 hour)\n  2. Send emails    --> Connect to SendGrid API (Takes 30 mins)\n  3. Get location   --> Connect to Google Maps API (Takes 30 mins)\n  \n  Without APIs, building those 3 features from scratch would take \n  a team of 50 engineers 3 years.\n*/"
+}

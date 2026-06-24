@@ -1,0 +1,32 @@
+{
+  "id": "form-basics",
+  "title": "HTML Forms",
+  "difficulty": "Beginner",
+  "definition": "The `<form>` element is used to collect user input. It acts as a container for interactive controls (like text fields, checkboxes, and buttons) to submit data to a web server.",
+  "simpleExplanation": "A form is a digital envelope. You put inputs (fields) inside the envelope. The user fills them out. When they click the Submit button, the browser seals the envelope and sends it to the URL specified in the `action` attribute.",
+  "realWorldExample": "The Login screen of every website. It is a `<form>` containing an email input, a password input, and a submit button.",
+  "useCases": [
+    "User registration/login",
+    "Checkout processes",
+    "Search bars"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `action` attribute do on a `<form>` tag?"
+    ],
+    "intermediate": [
+      "What is the difference between `method=\"GET\"` and `method=\"POST\"`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does action do?",
+      "answer": "It defines the URL where the form data will be sent when the user clicks submit."
+    },
+    {
+      "question": "GET vs POST?",
+      "answer": "`GET` takes the form data and appends it to the URL (e.g., `google.com/search?q=cats`). It is used for searching. `POST` hides the data in the HTTP request body. It is used for sensitive data (like sending a password) or creating new data in a database."
+    }
+  ],
+  "codeExample": "<!-- This form sends a GET request to a fake URL when submitted -->\n<form action=\"/search\" method=\"GET\">\n  \n  <!-- Input field -->\n  <label for=\"query\">Search for:</label>\n  <input type=\"text\" id=\"query\" name=\"q\" placeholder=\"Type here...\">\n  \n  <!-- Submit button -->\n  <button type=\"submit\">Search</button>\n\n</form>\n\n<hr>\n\n<!-- A typical POST form for sensitive data -->\n<form action=\"/login\" method=\"POST\">\n  \n  <label for=\"email\">Email:</label><br>\n  <input type=\"email\" id=\"email\" name=\"user_email\"><br><br>\n  \n  <label for=\"pass\">Password:</label><br>\n  <input type=\"password\" id=\"pass\" name=\"user_password\"><br><br>\n  \n  <button type=\"submit\">Log In</button>\n\n</form>"
+}

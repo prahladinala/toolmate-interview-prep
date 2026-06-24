@@ -1,0 +1,30 @@
+{
+  "id": "agentic-ai",
+  "title": "Agentic AI",
+  "difficulty": "Advanced",
+  "definition": "The paradigm shift in artificial intelligence from passive, conversational systems (answering questions) to active, goal-oriented systems capable of acting autonomously in the real world.",
+  "simpleExplanation": "The era of AI doing things FOR you, instead of just talking TO you.",
+  "realWorldExample": "Instead of asking ChatGPT 'How do I optimize my database?', an Agentic AI will ask for your database credentials, log in, analyze the queries, write the SQL indexes, and push the code to your GitHub.",
+  "useCases": [
+    "Enterprise automation",
+    "Next-gen software architectures"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Generative AI and Agentic AI?"
+    ],
+    "intermediate": [
+      "Why are AI safety researchers particularly concerned about Agentic AI?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Generative vs Agentic?",
+      "answer": "Generative AI creates content (text, images). Agentic AI takes actions (clicking buttons, running code, sending emails)."
+    },
+    {
+      "question": "Why concerned?",
+      "answer": "Because Agents have autonomy and access to external tools. If a Generative AI malfunctions, it writes a bad poem. If an Agentic AI malfunctions, it might autonomously delete a production database or send thousands of spam emails."
+    }
+  ]
+}

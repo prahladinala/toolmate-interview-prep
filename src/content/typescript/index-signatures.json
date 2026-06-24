@@ -1,0 +1,35 @@
+{
+  "id": "index-signatures",
+  "title": "Index Signatures",
+  "difficulty": "Intermediate",
+  "definition": "A way to type an object when you don't know the exact names of the object's properties ahead of time, but you do know the shape of the values.",
+  "simpleExplanation": "Imagine an English dictionary. You don't know exactly what words are going to be in the book, but you know that every single word (the Key) will be a String, and every definition (the Value) will also be a String. An Index Signature is how you tell TypeScript this rule.",
+  "realWorldExample": "Typing a translation JSON file where the keys are dynamic language codes ('en', 'es', 'fr') and the values are the translation strings.",
+  "useCases": [
+    "Dictionaries / Hash Maps",
+    "Dynamic CSS modules",
+    "Environment variables"
+  ],
+  "questions": {
+    "basic": [
+      "What is the syntax for an Index Signature?"
+    ],
+    "intermediate": [
+      "Can you mix known properties with an index signature?"
+    ],
+    "advanced": [
+      "Can the key of an index signature be a boolean?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you mix known properties?",
+      "answer": "Yes, but with a strict rule: The known properties MUST be of the same type as the index signature's value. If your signature is `[key: string]: number`, you cannot have a known property `name: string`."
+    },
+    {
+      "question": "Can the key be a boolean?",
+      "answer": "No. The key type in an index signature MUST be `string`, `number`, `symbol`, or a template literal type. Booleans are not valid object keys in JavaScript."
+    }
+  ],
+  "codeExample": "// We don't know the keys, but we know all values are numbers\ninterface SalaryDictionary {\n  [employeeName: string]: number;\n}\n\nconst salaries: SalaryDictionary = {\n  alice: 100000,\n  bob: 95000,\n  charlie: 105000\n};\n\n// ERROR: Type 'string' is not assignable to type 'number'.\n// salaries.dave = \"High\";\n\n// Mixing known properties (They must match the index type)\ninterface FlexibleDict {\n  id: string;\n  [key: string]: string; // Because of this, 'id' MUST be a string\n}"
+}

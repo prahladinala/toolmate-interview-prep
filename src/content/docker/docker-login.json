@@ -1,0 +1,30 @@
+{
+  "id": "docker-login",
+  "title": "docker login",
+  "difficulty": "Beginner",
+  "definition": "The CLI command used to authenticate your Docker client to a Docker registry (public or private), allowing you to push images or pull access-restricted images.",
+  "simpleExplanation": "Logging into the App Store. Once logged in, Docker saves your credentials so you can push your code to the cloud.",
+  "realWorldExample": "You run `docker login`. It prompts for your Docker Hub username and password. After a successful login, it saves a secure token in your `~/.docker/config.json` file.",
+  "useCases": [
+    "Authenticating for deployments",
+    "Bypassing rate limits"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to run `docker login` to pull a free, public image like `ubuntu`?"
+    ],
+    "intermediate": [
+      "Why is it dangerous to type `docker login -u user -p mySecretPassword` directly into the terminal?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Need to login for public?",
+      "answer": "No. Anonymous users can pull public images (though they are subject to strict rate limits)."
+    },
+    {
+      "question": "Why dangerous?",
+      "answer": "Because the terminal saves your command history. Anyone who opens your laptop and presses the 'Up' arrow can instantly see your plaintext password. You should let the interactive prompt ask for the password securely."
+    }
+  ]
+}

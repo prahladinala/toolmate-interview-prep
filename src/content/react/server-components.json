@@ -1,0 +1,45 @@
+{
+  "id": "server-components",
+  "title": "React Server Components (RSC)",
+  "difficulty": "Expert",
+  "definition": "React Server Components (RSCs) allow you to render components strictly on the server. They never ship JavaScript to the client. This reduces bundle sizes, improves SEO, and allows components to directly access backend resources like databases.",
+  "simpleExplanation": "Normally, you send a recipe (JavaScript) to the user's browser, and their browser has to bake the cake (render the component). With Server Components, you bake the cake on your own server, and just ship the finished slice of cake (HTML/UI) to the user. Their browser does zero work.",
+  "realWorldExample": "In Next.js 13+ App Router, components are Server Components by default. If you need a `BlogPost` component, you can literally write `const data = await db.query('SELECT...')` directly inside the component! No APIs, no `useEffect`, no `useState`.",
+  "useCases": [
+    "Accessing backend infrastructure (Databases, File Systems) securely",
+    "Keeping heavy NPM packages off the client bundle (e.g., Markdown parsers)",
+    "Improving Initial Page Load speeds and SEO"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between a Server Component and a Client Component?",
+      "How do you tell React that a component should be a Client Component?"
+    ],
+    "intermediate": [
+      "Can you use `useState` or `useEffect` in a Server Component?",
+      "What is the difference between Server-Side Rendering (SSR) and React Server Components (RSC)?"
+    ],
+    "advanced": [
+      "Can you import a Server Component inside a Client Component?",
+      "How are Server Components streamed to the browser?"
+    ],
+    "trick": [
+      "If an `onClick` event is inside a Server Component, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can you use useState or useEffect in a Server Component?",
+      "answer": "NO! Server Components run once on the server and are dead. They have no interactivity, no state, and no lifecycle. If you need state or effects, you MUST use a Client Component."
+    },
+    {
+      "question": "What is the difference between SSR and RSC?",
+      "answer": "SSR generates HTML on the server, but still sends the full JavaScript component to the browser to 'hydrate' (attach event listeners). RSCs NEVER send their JavaScript to the browser. They are purely server-rendered UI."
+    },
+    {
+      "question": "Can you import a Server Component inside a Client Component?",
+      "answer": "No. You cannot import a Server Component directly into a Client Component. However, you CAN pass a Server Component as `children` or a prop to a Client Component."
+    }
+  ],
+  "codeExample": "// --- Server Component (Runs ONLY on the server) ---\n// Notice it is an 'async' function! We can await directly.\nimport db from '@/lib/db';\n\nexport default async function UserProfile({ userId }) {\n  // Direct database access! No fetch(), no APIs needed.\n  const user = await db.user.findUnique({ where: { id: userId } });\n\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>Email: {user.email}</p>\n      {/* We pass data to an interactive Client component */}\n      <LikeButton userId={user.id} />\n    </div>\n  );\n}\n\n// --- Client Component (Runs in the browser) ---\n// Must have this directive at the very top!\n'use client'; \n\nimport { useState } from 'react';\n\nexport default function LikeButton({ userId }) {\n  // Client components can use State and interact with the user\n  const [likes, setLikes] = useState(0);\n  \n  return <button onClick={() => setLikes(l => l + 1)}>Like {likes}</button>;\n}"
+}

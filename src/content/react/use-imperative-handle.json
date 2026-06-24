@@ -1,0 +1,45 @@
+{
+  "id": "use-imperative-handle",
+  "title": "useImperativeHandle",
+  "difficulty": "Advanced",
+  "definition": "`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. It allows a child component to explicitly define which properties or methods a parent component can call on it.",
+  "simpleExplanation": "Normally in React, a parent controls a child using Props (Declarative). But sometimes a parent needs a remote control to force the child to do something specific (Imperative). `useImperativeHandle` is the child building that remote control, putting specific buttons on it (like 'focusInput' or 'resetForm'), and handing the remote up to the parent.",
+  "realWorldExample": "You build a `<CustomVideoPlayer />` component. The parent component wants a button to play or pause the video. You use `forwardRef` and `useImperativeHandle` inside the CustomVideoPlayer to expose a `.play()` and `.pause()` method to the parent.",
+  "useCases": [
+    "Exposing specific DOM methods (like focus(), scrollIntoView()) to parents",
+    "Triggering complex animations or state resets inside a child from a parent",
+    "Integrating React with imperative libraries (like D3 or jQuery)"
+  ],
+  "questions": {
+    "basic": [
+      "What React utility MUST wrap a component before it can use `useImperativeHandle`?",
+      "Why is imperative programming discouraged in React?"
+    ],
+    "intermediate": [
+      "How does `useImperativeHandle` relate to `forwardRef`?",
+      "What arguments does `useImperativeHandle` take?"
+    ],
+    "advanced": [
+      "Can you expose internal state variables of a child component to a parent using this hook?",
+      "What is the third (optional) argument of `useImperativeHandle`?"
+    ],
+    "trick": [
+      "If a parent calls an imperative method on a child, does the child automatically re-render?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What utility must wrap the component?",
+      "answer": "The component MUST be wrapped in `React.forwardRef()`. This allows the child component to receive the `ref` passed down from the parent."
+    },
+    {
+      "question": "Why is imperative programming discouraged?",
+      "answer": "React is designed to be Declarative (UI is a direct function of State). Imperative code (telling the code EXACTLY what to do step-by-step) breaks this paradigm, making code harder to track, test, and debug. It should only be used as an escape hatch."
+    },
+    {
+      "question": "Does calling an imperative method automatically trigger a re-render?",
+      "answer": "No. Unless the imperative method explicitly calls a `setState` function inside the child, simply calling the method does not cause a re-render."
+    }
+  ],
+  "codeExample": "import React, { useRef, useImperativeHandle, forwardRef } from 'react';\n\n// 1. The Child Component (MUST be wrapped in forwardRef)\nconst CustomInput = forwardRef((props, ref) => {\n  const inputRef = useRef(null);\n\n  // 2. Define the exact 'remote control' we hand to the parent\n  useImperativeHandle(ref, () => ({\n    // Expose a custom focus method\n    focusAndClear: () => {\n      inputRef.current.value = '';\n      inputRef.current.focus();\n    },\n    // Expose a custom shake method\n    shake: () => {\n      console.log(\"Shaking the input via CSS animation!\");\n    }\n  }));\n\n  return <input ref={inputRef} type=\"text\" placeholder=\"Type here...\" />;\n});\n\n// 3. The Parent Component\nexport default function App() {\n  const childRef = useRef(null);\n\n  return (\n    <div>\n      <CustomInput ref={childRef} />\n      <button onClick={() => childRef.current.focusAndClear()}>\n        Clear & Focus Input\n      </button>\n      <button onClick={() => childRef.current.shake()}>\n        Shake Input\n      </button>\n    </div>\n  );\n}"
+}

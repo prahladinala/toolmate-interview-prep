@@ -1,0 +1,30 @@
+{
+  "id": "compositing",
+  "title": "Compositing",
+  "difficulty": "Advanced",
+  "definition": "The final step in the rendering pipeline. The browser separates parts of the page into distinct 'layers' (like Photoshop layers), paints them independently, and then uses the GPU to smash them together onto the screen.",
+  "simpleExplanation": "If you animate a box moving across the screen using `transform: translateX()`, the browser gets smart. It promotes that box to its own independent 'Photoshop layer'. Because it's on its own layer, moving it doesn't affect the background layer at all. There is NO Reflow. There is NO Repaint. The GPU just slides the layer across the screen.",
+  "realWorldExample": "This is the absolute secret to 60 FPS animations. You should ONLY ever animate `transform` and `opacity`, because these are the only two properties that trigger GPU Compositing without triggering Reflow or Repaint.",
+  "useCases": [
+    "60 FPS silky smooth animations"
+  ],
+  "questions": {
+    "basic": [
+      "What piece of computer hardware handles Compositing?"
+    ],
+    "intermediate": [
+      "What two CSS properties are safe to animate because they only trigger Compositing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What hardware?",
+      "answer": "The GPU (Graphics Processing Unit)."
+    },
+    {
+      "question": "Two safe properties?",
+      "answer": "`transform` (scale, rotate, translate) and `opacity`."
+    }
+  ],
+  "codeExample": "<style>\n  .gpu-box {\n    width: 100px; height: 100px;\n    background: linear-gradient(45deg, #f43f5e, #8b5cf6);\n    border-radius: 12px;\n    \n    /* The 'will-change' property is a hint to the browser! */\n    /* It says: 'I am going to animate this soon, please promote me to my own GPU layer NOW so I am ready'. */\n    will-change: transform;\n    \n    /* Animating transform triggers ZERO reflows and ZERO repaints! */\n    animation: slideSmoothly 2s ease-in-out infinite alternate;\n  }\n\n  @keyframes slideSmoothly {\n    from { transform: translateX(0); }\n    to { transform: translateX(200px); }\n  }\n</style>\n\n<div class=\"gpu-box\"></div>\n<p style=\"margin-top: 20px;\">This animation is running entirely on your computer's Graphics Card!</p>"
+}

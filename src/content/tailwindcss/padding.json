@@ -1,0 +1,32 @@
+{
+  "id": "padding",
+  "title": "Padding",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the padding (inner spacing) of an element.",
+  "simpleExplanation": "Stuffing. Padding pushes your OWN content away from your OWN borders. If a button has no padding, the text touches the border. Adding `p-4` gives the text room to breathe inside the button.",
+  "realWorldExample": "Creating a beautiful pill-shaped button using `px-6 py-2` (more padding on the sides than the top).",
+  "useCases": [
+    "Buttons",
+    "Cards",
+    "Expanding click targets"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Margin and Padding?"
+    ],
+    "intermediate": [
+      "If you apply a background color to an element, does the background color cover the Margin area or the Padding area?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Margin vs Padding?",
+      "answer": "Margin is OUTSIDE the border (pushes other elements away). Padding is INSIDE the border (pushes inner text/content away from the edge)."
+    },
+    {
+      "question": "Background color?",
+      "answer": "It covers the Padding area. The Margin area is always transparent."
+    }
+  ],
+  "codeExample": "<!-- \n  p-4: Padding all sides (16px)\n  pt-4: Padding top\n  pr-4: Padding right\n  pb-4: Padding bottom\n  pl-4: Padding left\n  px-4: Padding left & right (X axis)\n  py-4: Padding top & bottom (Y axis)\n-->\n\n<!-- A perfectly proportioned button -->\n<button class=\"bg-blue-500 text-white px-6 py-2 rounded-full\">\n  Click Me\n</button>\n\n<!-- A spacious card -->\n<div class=\"border rounded shadow p-8\">\n  Text has plenty of breathing room from the border!\n</div>"
+}

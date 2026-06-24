@@ -1,0 +1,29 @@
+{
+  "id": "docker-beginner",
+  "title": "Beginner Questions",
+  "difficulty": "Beginner",
+  "definition": "Introductory interview questions designed to verify a candidate understands the fundamental concepts of Containerization, Images vs Containers, and the basic CLI commands.",
+  "simpleExplanation": "Proving you understand what Docker actually is, rather than just knowing how to copy-paste commands from StackOverflow.",
+  "realWorldExample": "Question: 'Explain the difference between a Docker Image and a Docker Container. Use an analogy.'",
+  "useCases": [
+    "Junior Developer Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `docker stop` and `docker rm`?"
+    ],
+    "intermediate": [
+      "Explain the fundamental difference between Docker and a Virtual Machine (VM)."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stop vs RM?",
+      "answer": "`stop` gracefully halts the running process but leaves the container and its data intact on the hard drive. `rm` permanently deletes the container entirely."
+    },
+    {
+      "question": "Docker vs VM?",
+      "answer": "A VM virtualizes the hardware and runs a full, heavy, independent Guest Operating System. Docker virtualizes the OS, sharing the Host machine's Kernel, making containers exponentially lighter, faster, and less resource-intensive."
+    }
+  ]
+}

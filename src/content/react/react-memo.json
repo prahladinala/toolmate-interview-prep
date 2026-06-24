@@ -1,0 +1,44 @@
+{
+  "id": "react-memo",
+  "title": "React.memo",
+  "difficulty": "Intermediate",
+  "definition": "`React.memo` is a higher-order component that prevents a component from re-rendering if its props have not changed. It is purely a performance optimization tool.",
+  "simpleExplanation": "In React, if a parent component updates, ALL of its children automatically update too, just to be safe. `React.memo` is like giving a child component a bouncer. The bouncer looks at the incoming props and says, 'Wait, these are the exact same props as last time! Don't bother rebuilding the component, just use the screenshot we took 5 minutes ago.'",
+  "realWorldExample": "You have a `Dashboard` with a clock that updates every second, and a massive `DataChart` child component. Every time the clock ticks, the Dashboard re-renders, forcing the huge DataChart to re-render too! Wrapping `DataChart` in `React.memo` stops this, keeping the chart frozen unless its specific data changes.",
+  "useCases": [
+    "Preventing heavy child components from re-rendering due to unrelated parent state changes",
+    "Optimizing long lists or tables of items"
+  ],
+  "questions": {
+    "basic": [
+      "What is `React.memo` used for?",
+      "Does `React.memo` prevent re-renders when a component's internal state changes?"
+    ],
+    "intermediate": [
+      "How does `React.memo` compare props by default?",
+      "Why must you use `useCallback` when passing functions to a memoized component?"
+    ],
+    "advanced": [
+      "How can you provide a custom comparison function to `React.memo`?",
+      "What is the difference between `React.memo` and `useMemo`?"
+    ],
+    "trick": [
+      "If you wrap a component in `React.memo` but it consumes a Context, will it re-render when the Context changes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between React.memo and useMemo?",
+      "answer": "`React.memo` is a Higher-Order Component used to wrap an ENTIRE component to prevent it from re-rendering. `useMemo` is a hook used INSIDE a component to cache a specific calculated value."
+    },
+    {
+      "question": "Why must you use useCallback with React.memo?",
+      "answer": "By default, React.memo does a shallow comparison of props. If a parent passes an inline function (e.g., `onClick={() => doSomething()}`), a brand new function is created in memory on every render. The shallow comparison fails, and React.memo breaks."
+    },
+    {
+      "question": "Will a memoized component re-render if its Context changes?",
+      "answer": "Yes! `React.memo` only checks PROPS. If the component uses `useContext` and the Context provider's value changes, the component will always re-render."
+    }
+  ],
+  "codeExample": "import React, { useState, useCallback } from 'react';\n\n// 1. The Child Component, wrapped in React.memo\n// It will ONLY re-render if 'title' or 'onHover' changes.\nconst HeavyChart = React.memo(({ title, onHover }) => {\n  console.log(\"HeavyChart re-rendered!\");\n  return (\n    <div onMouseEnter={onHover}>\n      <h3>{title}</h3>\n      <p>Imagine 10,000 SVG points here...</p>\n    </div>\n  );\n});\n\n// 2. The Parent Component\nexport default function Dashboard() {\n  const [clicks, setClicks] = useState(0);\n\n  // We MUST use useCallback here! \n  // If we didn't, 'handleHover' would be a new function every render, \n  // breaking the React.memo optimization on HeavyChart.\n  const handleHover = useCallback(() => {\n    console.log(\"Chart hovered!\");\n  }, []);\n\n  return (\n    <div>\n      <h2>Parent Clicks: {clicks}</h2>\n      {/* Clicking this button updates Parent state, but HeavyChart will NOT re-render! */}\n      <button onClick={() => setClicks(c => c + 1)}>Update Parent State</button>\n      \n      <hr />\n      <HeavyChart title=\"Sales Data\" onHover={handleHover} />\n    </div>\n  );\n}"
+}

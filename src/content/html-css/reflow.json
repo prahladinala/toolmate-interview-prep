@@ -1,0 +1,30 @@
+{
+  "id": "reflow",
+  "title": "Reflow",
+  "difficulty": "Advanced",
+  "definition": "Also known as Layout. It is the process where the browser calculates the exact position and size of every object in the Render Tree based on the CSS Box Model and viewport size.",
+  "simpleExplanation": "Math time. The browser has the Render Tree. Now it has to figure out exactly how many pixels wide every single box is. If you use JavaScript to change the width of the main container from 500px to 600px, the browser has to recalculate the width of every single child inside it. This massive recalculation is called a Reflow.",
+  "realWorldExample": "Animating a sidebar opening by changing its `width` from `0` to `300px` using JavaScript. Every single frame of that animation forces the browser to recalculate the entire page layout. This destroys your framerate and makes the site laggy.",
+  "useCases": [
+    "Performance tuning JS animations"
+  ],
+  "questions": {
+    "basic": [
+      "Does resizing your browser window trigger a Reflow?"
+    ],
+    "intermediate": [
+      "Why is animating the `width` property bad for performance?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Resizing triggers it?",
+      "answer": "Yes. Every time the viewport changes, the browser has to recalculate the fluid layout (like `%` and `vw` units) for the entire page."
+    },
+    {
+      "question": "Why is width bad?",
+      "answer": "Because changing the physical dimensions of one box pushes the boxes next to it, which pushes the boxes next to them. A single width change cascades through the entire DOM tree, causing an expensive Reflow."
+    }
+  ],
+  "codeExample": "// --- JAVASCRIPT EXAMPLES THAT TRIGGER EXPENSIVE REFLOWS ---\n\n// const element = document.getElementById('myBox');\n\n// 1. Changing physical dimensions\n// element.style.width = '200px';\n// element.style.height = '100px';\n\n// 2. Changing margins or padding\n// element.style.padding = '20px';\n\n// 3. Changing font sizes (pushes text around)\n// element.style.fontSize = '2rem';\n\n// 4. Asking the browser for coordinates forces it to calculate them!\n// const topPosition = element.offsetTop;\n// const height = element.clientHeight;\n\nconsole.log(\"Avoid triggering Reflows inside rapid loops (like scroll event listeners) at all costs.\");"
+}

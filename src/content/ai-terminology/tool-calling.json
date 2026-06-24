@@ -1,0 +1,31 @@
+{
+  "id": "tool-calling",
+  "title": "Tool Calling",
+  "difficulty": "Intermediate",
+  "definition": "The mechanism that allows an LLM to interact with external software. The developer provides a list of available tools, and the LLM outputs a structured command to execute one of those tools when needed.",
+  "simpleExplanation": "Giving the AI an API. You tell the AI: 'You have a tool called getWeather(city)'. The user asks 'Is it raining in London?'. The AI realizes it can't know this from memory, so it pauses and says 'Run getWeather(London)'. The system runs it, gives the data back to the AI, and the AI answers the user.",
+  "realWorldExample": "ChatGPT Plugins. When you ask ChatGPT to do complex math, it uses Tool Calling to write a Python script, send it to a hidden Python interpreter tool, execute the math, and read the result.",
+  "useCases": [
+    "Live data access",
+    "Mathematical computation",
+    "Executing actions"
+  ],
+  "questions": {
+    "basic": [
+      "Does the LLM actually run the Tool's code itself?"
+    ],
+    "intermediate": [
+      "How does the LLM know which tool to use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does LLM run the code?",
+      "answer": "No. The LLM simply generates a JSON string (e.g., `{\"tool\": \"calculator\", \"args\": \"5+5\"}`). Your backend server intercepts this JSON, actually runs the calculator script, and feeds the answer back to the LLM."
+    },
+    {
+      "question": "How does it know?",
+      "answer": "The developer writes a 'Tool Description' in the System Prompt (e.g., 'Use this tool when the user asks about the weather'). The LLM's attention mechanism reads the user's prompt, reads the descriptions, and logically deduces which tool matches the intent."
+    }
+  ]
+}

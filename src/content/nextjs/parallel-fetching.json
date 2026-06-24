@@ -1,0 +1,31 @@
+{
+  "id": "parallel-fetching",
+  "title": "Parallel Data Fetching",
+  "difficulty": "Intermediate",
+  "definition": "Initiating multiple asynchronous data requests at the exact same time, rather than waiting for one to finish before starting the next.",
+  "simpleExplanation": "If you need to fetch 'User Profile' (takes 2 seconds) and 'Recent Posts' (takes 2 seconds). If you fetch them sequentially, the page takes 4 seconds to load. If you fetch them in parallel, the page takes 2 seconds to load.",
+  "realWorldExample": "A dashboard that shows 4 different charts. You fire off all 4 database queries simultaneously so the user doesn't have to wait for them to load one-by-one.",
+  "useCases": [
+    "Complex dashboards",
+    "Aggregating multiple data sources"
+  ],
+  "questions": {
+    "basic": [
+      "What standard JavaScript method is used to await multiple promises at the same time?"
+    ],
+    "intermediate": [
+      "In parallel fetching, what happens if one of the three promises fails/rejects?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which method?",
+      "answer": "`Promise.all()`"
+    },
+    {
+      "question": "If one fails?",
+      "answer": "If using `Promise.all()`, the entire request fails immediately. If you want the successful ones to continue even if one fails, you should use `Promise.allSettled()`."
+    }
+  ],
+  "codeExample": "export default async function Dashboard() {\n  // ❌ BAD: Sequential Fetching (Waterfalls)\n  // Takes 4 seconds total!\n  // const user = await fetchUser(); \n  // const posts = await fetchPosts();\n\n  // ✅ GOOD: Parallel Fetching\n  // 1. Initiate the requests simultaneously (Do NOT use 'await' here)\n  const userPromise = fetchUser();\n  const postsPromise = fetchPosts();\n\n  // 2. Await them all at once! Takes only 2 seconds total!\n  const [user, posts] = await Promise.all([userPromise, postsPromise]);\n\n  return (\n    <div>\n      <h1>{user.name}</h1>\n      <p>Total Posts: {posts.length}</p>\n    </div>\n  );\n}"
+}

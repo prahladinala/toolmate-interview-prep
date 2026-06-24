@@ -1,0 +1,30 @@
+{
+  "id": "image-deployment",
+  "title": "Deploying Images to Kubernetes",
+  "difficulty": "Intermediate",
+  "definition": "The process of translating Docker constructs (like `docker run` commands) into Kubernetes YAML manifests (like Deployments and Pods) so the images can be orchestrated.",
+  "simpleExplanation": "Instead of typing terminal commands to start containers, you write a massive YAML document describing your entire architecture, hand it to Kubernetes, and Kubernetes automatically figures out how to make it happen.",
+  "realWorldExample": "You have a Docker image `my-api:v1`. You write a Kubernetes `Deployment.yaml` file that says 'I want exactly 5 replicas of my-api:v1 running at all times'. Kubernetes pulls the image and spreads 5 copies across your servers.",
+  "useCases": [
+    "DevOps engineering",
+    "Cluster management"
+  ],
+  "questions": {
+    "basic": [
+      "In Kubernetes, what is the smallest deployable unit that wraps around a Docker container?"
+    ],
+    "intermediate": [
+      "If a container crashes inside a Kubernetes Pod, do you have to manually SSH into the server to type `docker restart`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Smallest unit?",
+      "answer": "A Pod. Kubernetes does not run raw containers directly; it wraps them in a Pod."
+    },
+    {
+      "question": "Manually restart?",
+      "answer": "No. The entire point of Kubernetes is automation. It constantly monitors the state. If it sees a container crashed, the Kubernetes 'Kubelet' will automatically restart the container without any human intervention."
+    }
+  ]
+}

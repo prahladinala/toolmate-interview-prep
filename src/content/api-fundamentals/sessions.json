@@ -1,0 +1,32 @@
+{
+  "id": "sessions",
+  "title": "Sessions",
+  "difficulty": "Intermediate",
+  "definition": "A server-side data store that temporarily holds information about a specific user's interaction with the application, linked to the user via a Session ID stored in a client-side cookie.",
+  "simpleExplanation": "Cookies hold very little data (4KB limit) and can be tampered with. So, the server creates a 'Folder' on its own hard drive for you, puts all your data in it (Shopping Cart, Auth Status), and gives the folder a random serial number. It hands you a Cookie containing ONLY that serial number. This is a Session.",
+  "realWorldExample": "Logging into a bank. The bank server creates a Session in its memory. If the bank detects suspicious activity, they simply delete the Session from their memory. Your cookie still exists, but the serial number now points to a deleted folder, instantly locking you out.",
+  "useCases": [
+    "Authentication",
+    "Shopping carts",
+    "Multi-step wizards"
+  ],
+  "questions": {
+    "basic": [
+      "Where is the actual user data (like their email or cart items) stored in Session-based architecture?"
+    ],
+    "intermediate": [
+      "Why are Sessions considered 'Stateful' architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where is data stored?",
+      "answer": "On the Server (in memory, in a database, or in a fast cache like Redis). Only the meaningless Session ID is stored on the client's browser."
+    },
+    {
+      "question": "Why Stateful?",
+      "answer": "Because the Server has to maintain a 'state' (a memory) of who is logged in. If the server crashes and loses its memory, every single user is instantly logged out. (This is why JWTs, which are stateless, were invented)."
+    }
+  ],
+  "codeExample": "// Conceptual Node.js / Express Session Example\n\n// 1. User logs in\napp.post('/login', (req, res) => {\n  const user = checkPassword(req.body);\n  \n  // Server creates a session in memory, and AUTOMATICALLY sends a cookie \n  // to the browser containing a random ID (e.g. session_id=98765)\n  req.session.userId = user.id;\n  req.session.role = 'Admin';\n  \n  res.send('Logged in!');\n});\n\n// 2. User requests private data later\napp.get('/dashboard', (req, res) => {\n  // Server reads the cookie, looks up the session in its memory\n  if (req.session.userId) {\n    res.send(`Welcome Admin ${req.session.userId}`);\n  } else {\n    res.status(401).send('Who are you?');\n  }\n});"
+}

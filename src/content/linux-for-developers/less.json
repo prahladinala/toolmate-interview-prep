@@ -1,0 +1,30 @@
+{
+  "id": "less",
+  "title": "less",
+  "difficulty": "Beginner",
+  "definition": "A terminal pager program used to view the contents of a text file one screen at a time. It is the safe alternative to `cat` for reading large files.",
+  "simpleExplanation": "Reading a book one page at a time. Instead of dumping all the text, it fills your screen, pauses, and lets you use the arrow keys to scroll down at your own pace.",
+  "realWorldExample": "You need to read a massive server log. You type `less server.log`. You can easily scroll up and down, and even type `/error` to search the document for specific words.",
+  "useCases": [
+    "Reading large logs",
+    "Searching inside text files safely"
+  ],
+  "questions": {
+    "basic": [
+      "How do you exit the `less` program when you are done reading?"
+    ],
+    "intermediate": [
+      "Why does `less` load massive files so much faster than text editors like Vim or Nano?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to exit?",
+      "answer": "Press the `q` key (for quit)."
+    },
+    {
+      "question": "Why faster?",
+      "answer": "Because `less` does not read the entire file into RAM before starting. It only reads the tiny chunk of text needed to fill your current screen, making it open 100GB files instantly."
+    }
+  ]
+}

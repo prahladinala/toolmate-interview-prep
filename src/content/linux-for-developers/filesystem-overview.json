@@ -1,0 +1,30 @@
+{
+  "id": "filesystem-overview",
+  "title": "Linux File System Overview",
+  "difficulty": "Beginner",
+  "definition": "The hierarchical structure used by Linux to organize files and directories. Everything starts from the single 'root' directory (`/`), unlike Windows which uses drive letters (`C:\\`, `D:\\`). In Linux, 'Everything is a file'.",
+  "simpleExplanation": "An upside-down tree. At the very top is the Root (`/`). From there, branches go out to `/home` (your files), `/etc` (settings), and `/bin` (programs).",
+  "realWorldExample": "If you plug in a USB drive on Windows, it becomes `E:\\`. On Linux, there is no `E:\\`. The USB drive is mounted as a folder directly into the main tree, usually at `/media/usb`.",
+  "useCases": [
+    "Finding configuration files",
+    "System navigation"
+  ],
+  "questions": {
+    "basic": [
+      "What does the forward slash `/` represent by itself in Linux?"
+    ],
+    "intermediate": [
+      "What is typically stored in the `/etc` directory?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is / ?",
+      "answer": "The Root directory. The absolute top-level folder of the entire computer."
+    },
+    {
+      "question": "What is in /etc?",
+      "answer": "System-wide configuration files (like network settings, passwords, and service configs). It is the control room of the OS."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "meta-tags",
+  "title": "Meta Tags",
+  "difficulty": "Intermediate",
+  "definition": "Tags placed within the `<head>` of an HTML document that provide metadata (data about data) about the HTML document. Metadata is not displayed on the page, but is machine parsable.",
+  "simpleExplanation": "Meta tags are the ID card of your website. When Google or Facebook visits your site, they don't read your paragraphs. They read your meta tags to instantly figure out the title of your site, the description for Google search results, and what image to display when someone shares your link on Twitter.",
+  "realWorldExample": "The viewport meta tag `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">`. Without this single line of code, your website will look like a zoomed-out desktop site on mobile phones.",
+  "useCases": [
+    "SEO optimization",
+    "Mobile responsiveness",
+    "Social media link previews"
+  ],
+  "questions": {
+    "basic": [
+      "Where do `<meta>` tags go in an HTML document?"
+    ],
+    "intermediate": [
+      "What does the `charset=\"UTF-8\"` meta tag do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where do they go?",
+      "answer": "Inside the `<head>` tag."
+    },
+    {
+      "question": "What does charset UTF-8 do?",
+      "answer": "It tells the browser what character encoding to use. UTF-8 supports almost all characters and symbols in the world, including emojis. Without it, special characters might render as weird question marks or boxes."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<html>\n<head>\n  <!-- 1. The most important tag for rendering characters (like emojis) correctly -->\n  <meta charset=\"UTF-8\">\n  \n  <!-- 2. The most important tag for Mobile Responsive Design -->\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  \n  <!-- 3. SEO Description (Shows up under your link in Google Search) -->\n  <meta name=\"description\" content=\"Learn HTML and CSS with interactive examples.\">\n  \n  <!-- 4. Open Graph tag (Shows a preview image when shared on Facebook/Twitter) -->\n  <meta property=\"og:image\" content=\"https://example.com/preview.jpg\">\n  \n  <title>Meta Tags Example</title>\n</head>\n<body>\n  <h1>Look at the code!</h1>\n  <p>Meta tags are invisible to the user, but crucial for the browser and search engines.</p>\n</body>\n</html>"
+}

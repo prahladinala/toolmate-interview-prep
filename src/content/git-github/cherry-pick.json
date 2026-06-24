@@ -1,0 +1,31 @@
+{
+  "id": "cherry-pick",
+  "title": "git cherry-pick",
+  "difficulty": "Advanced",
+  "definition": "A powerful command that enables arbitrary Git commits to be picked by reference and appended to the current working HEAD.",
+  "simpleExplanation": "Imagine you have two branches. You don't want to merge the ENTIRE branch, you just want to steal ONE specific commit from it. `git cherry-pick <hash>` copies that exact commit and glues it onto your current branch.",
+  "realWorldExample": "There is a critical security fix committed on the `experimental-v2` branch. You need that fix on the `production` branch IMMEDIATELY, but you can't merge the whole experimental branch. You cherry-pick the security fix commit over to production.",
+  "useCases": [
+    "Backporting bug fixes to older release branches",
+    "Stealing specific code without merging"
+  ],
+  "questions": {
+    "basic": [
+      "What do you need to know in order to cherry-pick a commit?"
+    ],
+    "intermediate": [
+      "Can `git cherry-pick` cause merge conflicts?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What do you need?",
+      "answer": "The Commit Hash (e.g., `a1b2c3d`)."
+    },
+    {
+      "question": "Merge conflicts?",
+      "answer": "Yes! If the commit you are stealing modifies lines of code that have also been heavily modified on your current branch, Git won't know how to glue it in cleanly, resulting in a conflict."
+    }
+  ],
+  "codeExample": "# Step 1: Find the hash of the commit you want to steal\n$ git log branch-with-the-fix\n# (You copy the hash: 9f8e7d6)\n\n# Step 2: Ensure you are on the branch that needs the fix\n$ git checkout production\n\n# Step 3: Steal the commit!\n$ git cherry-pick 9f8e7d6\n\n# That specific commit has now been perfectly duplicated onto the production branch."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "http-methods",
+  "title": "HTTP Methods",
+  "difficulty": "Beginner",
+  "definition": "Standardized action verbs used in HTTP requests to indicate the desired operation to be performed on the target resource.",
+  "simpleExplanation": "If the URL `/articles` is the noun, the HTTP Method is the verb. \nGET = Read.\nPOST = Create.\nPUT = Completely Replace.\nPATCH = Partially Update.\nDELETE = Destroy.",
+  "realWorldExample": "When you type `google.com` into your browser and press enter, your browser ALWAYS sends a `GET` request. When you fill out a 'Sign Up' form and click submit, your browser usually sends a `POST` request containing your password hidden inside the request body.",
+  "useCases": [
+    "Building semantic RESTful APIs"
+  ],
+  "questions": {
+    "basic": [
+      "Which HTTP method is used to create new data?"
+    ],
+    "intermediate": [
+      "What is the difference between PUT and PATCH?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which method to create?",
+      "answer": "POST."
+    },
+    {
+      "question": "PUT vs PATCH?",
+      "answer": "PUT is a full replacement. If a user has {name, email, age} and you send a PUT with just {age: 30}, the name and email are wiped out. PATCH is a partial update. If you send a PATCH with {age: 30}, it ONLY updates the age and leaves the name and email intact."
+    }
+  ],
+  "codeExample": "const http = require('http');\n\nconst server = http.createServer((req, res) => {\n  // We check BOTH the URL and the METHOD to determine the action\n  \n  if (req.url === '/users') {\n    if (req.method === 'GET') {\n      res.end(\"Reading all users\");\n    }\n    else if (req.method === 'POST') {\n      res.end(\"Creating a new user\");\n    }\n    else if (req.method === 'DELETE') {\n      // Dangerous! Deleting the entire collection.\n      res.end(\"Deleting all users\");\n    }\n    else {\n      res.writeHead(405); // Method Not Allowed\n      res.end(`Cannot ${req.method} /users`);\n    }\n  }\n});\n\nconsole.log(\"In modern Express apps, this routing is simplified to app.get(), app.post(), etc.\");"
+}

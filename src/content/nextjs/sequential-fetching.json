@@ -1,0 +1,31 @@
+{
+  "id": "sequential-fetching",
+  "title": "Sequential Data Fetching",
+  "difficulty": "Beginner",
+  "definition": "Fetching data in a strict order, where Request B cannot begin until Request A has fully completed.",
+  "simpleExplanation": "Sometimes waterfalls are unavoidable. You can't fetch a user's 'Recent Orders' until you first fetch the user's 'ID'. Request 2 depends entirely on the result of Request 1.",
+  "realWorldExample": "Authenticating a user token to get their `companyId`, and then making a second query using that `companyId` to fetch the company's billing data.",
+  "useCases": [
+    "Dependent data queries",
+    "Authentication chains"
+  ],
+  "questions": {
+    "basic": [
+      "Why is sequential fetching generally discouraged unless absolutely necessary?"
+    ],
+    "intermediate": [
+      "How can you mitigate the bad UX of a long sequential fetch waterfall?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why discouraged?",
+      "answer": "It creates 'Network Waterfalls'. The total load time is the sum of every request combined (2s + 3s + 1s = 6s total wait time)."
+    },
+    {
+      "question": "How to mitigate?",
+      "answer": "Use Streaming (`loading.tsx` or `<Suspense>`). Show the UI as soon as Request 1 finishes, and show a spinner for the section waiting on Request 2."
+    }
+  ],
+  "codeExample": "export default async function BillingDashboard({ token }) {\n  // Request 1: Must happen first\n  const session = await fetchSession(token);\n  \n  // Request 2: Blocked until Request 1 finishes. Needs the ID!\n  const billing = await fetchBilling(session.companyId);\n\n  return <div>Billing amount: {billing.amount}</div>;\n}"
+}

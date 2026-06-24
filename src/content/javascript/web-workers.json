@@ -1,0 +1,45 @@
+{
+  "id": "web-workers",
+  "title": "Web Workers",
+  "difficulty": "Expert",
+  "definition": "Web Workers provide a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface, bringing true multi-threading to JavaScript.",
+  "simpleExplanation": "Normally, JavaScript is a solo chef in a kitchen (single-threaded). If the chef tries to do a huge math problem, they stop cooking, and the kitchen freezes (the website freezes). A Web Worker is like hiring an assistant chef in a separate room. You give the assistant the heavy math problem, they work on it in the background, and the main chef keeps cooking. When the assistant is done, they pass a note under the door with the answer.",
+  "realWorldExample": "If your web app needs to compress a video, analyze a massive block of text, or calculate millions of data points for a chart, running it on the main thread will make the page unresponsive (you can't scroll or click buttons). A Web Worker does it silently in the background.",
+  "useCases": [
+    "Heavy mathematical calculations (cryptography, physics engines)",
+    "Image or video processing in the browser",
+    "Parsing massive JSON datasets"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Web Worker?",
+      "How does the main thread communicate with a Web Worker?"
+    ],
+    "intermediate": [
+      "Does a Web Worker have access to the DOM?",
+      "What is the difference between a Web Worker and a Service Worker?"
+    ],
+    "advanced": [
+      "How are objects passed between the main thread and the worker? Are they passed by reference?",
+      "What are Shared Workers?"
+    ],
+    "trick": [
+      "Can a Web Worker use XMLHttpRequest or the Fetch API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does the main thread communicate with a Web Worker?",
+      "answer": "Using a message-passing system. The main thread uses `worker.postMessage()`, and listens for replies using `worker.onmessage = function(event) { ... }`."
+    },
+    {
+      "question": "Does a Web Worker have access to the DOM?",
+      "answer": "No. Workers run in a separate context from the main window. They cannot access the `window`, `document`, or any DOM elements. They exist strictly for computation."
+    },
+    {
+      "question": "Are objects passed by reference to a worker?",
+      "answer": "No. Data is passed by value using a 'Structured Clone' algorithm. The object is serialized and copied, so modifying the object in the worker does not change the original object in the main thread."
+    }
+  ],
+  "codeExample": "// --- main.js (Main Thread) ---\n// const worker = new Worker('worker.js');\n\n// Send data to the worker\n// worker.postMessage([1000000000, 2]); \n\n// Listen for the result from the worker\n// worker.onmessage = function(e) {\n//   console.log('Worker said: ', e.data);\n// };\n\n\n// --- worker.js (The Background Thread) ---\n// onmessage = function(e) {\n//   console.log('Worker received data: ', e.data);\n//   const result = heavyCalculation(e.data[0], e.data[1]);\n//   \n//   // Send the result back to the main thread\n//   postMessage(result);\n// }\n\nconsole.log(\"Web Workers bring true parallel processing to JavaScript!\");"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "compose-services",
+  "title": "Services",
+  "difficulty": "Beginner",
+  "definition": "The top-level concept in a Docker Compose file. A 'service' defines a computing component of an application, prescribing which image to use, how many container instances to run, and its configuration.",
+  "simpleExplanation": "The individual 'Apps' inside the compose file. A database is one service. The API is another service.",
+  "realWorldExample": "In the command `docker-compose restart api`, the word 'api' refers to the specific Service block defined in the YAML file. Compose will only restart the containers associated with that specific service.",
+  "useCases": [
+    "Application architecture",
+    "Targeted commands"
+  ],
+  "questions": {
+    "basic": [
+      "Can one Compose 'Service' actually spin up multiple identical containers simultaneously?"
+    ],
+    "intermediate": [
+      "What happens if you run `docker-compose up --scale api=3`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Multiple containers?",
+      "answer": "Yes. A Service is just the definition. You can tell Compose to scale that service to run 5 identical container replicas simultaneously."
+    },
+    {
+      "question": "Scale command?",
+      "answer": "Docker Compose will read the `api` service blueprint, and instantly spin up 3 identical API containers to handle load balancing."
+    }
+  ]
+}

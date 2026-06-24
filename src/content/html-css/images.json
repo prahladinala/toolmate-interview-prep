@@ -1,0 +1,30 @@
+{
+  "id": "images",
+  "title": "Images",
+  "difficulty": "Beginner",
+  "definition": "The `<img>` tag is used to embed an image in an HTML page. It is a 'void' element, meaning it does not have a closing tag.",
+  "simpleExplanation": "The `<img>` tag doesn't actually insert an image; it creates a holding space. The `src` attribute tells the browser to go download the image from a URL and display it in that space.",
+  "realWorldExample": "Adding a profile picture to a dashboard or displaying products on an e-commerce site.",
+  "useCases": [
+    "Displaying JPEGs, PNGs, GIFs, and SVGs"
+  ],
+  "questions": {
+    "basic": [
+      "What are the two absolutely required attributes for every `<img>` tag?"
+    ],
+    "intermediate": [
+      "Why is the `alt` attribute so important?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Required attributes?",
+      "answer": "`src` (where the image is) and `alt` (what the image is)."
+    },
+    {
+      "question": "Why is 'alt' important?",
+      "answer": "Three reasons: 1. Screen readers read this text out loud to blind users. 2. If the image link breaks, the browser displays this text instead. 3. Search engines (Google Images) read it to figure out what the picture is."
+    }
+  ],
+  "codeExample": "<!-- A standard image -->\n<!-- Notice it is self-closing, there is no </img> tag! -->\n<img \n  src=\"https://placehold.co/300x150\" \n  alt=\"A generic placeholder image\"\n>\n\n<br><br>\n\n<!-- What happens when an image breaks? -->\n<!-- Because the src URL is fake, it fails to load, and displays the ALT text instead! -->\n<img \n  src=\"https://fake-website-url.com/broken.jpg\" \n  alt=\"Oh no! The image failed to load.\"\n>\n\n<br><br>\n\n<!-- You can force width and height directly in HTML (though CSS is usually preferred) -->\n<img \n  src=\"https://placehold.co/100x100\" \n  alt=\"A tiny placeholder\"\n  width=\"50\"\n  height=\"50\"\n>"
+}

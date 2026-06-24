@@ -1,0 +1,31 @@
+{
+  "id": "generic-interfaces",
+  "title": "Generic Interfaces",
+  "difficulty": "Intermediate",
+  "definition": "Interfaces that use generic type variables to allow their structure to be reusable across different data types.",
+  "simpleExplanation": "Imagine a standardized 'Shipping Box' interface. The box has a tracking number, a weight, and 'contents'. But the 'contents' could be literally anything. A Generic Interface lets you define the box structure once, and later specify exactly what is inside: `ShippingBox<Books>` or `ShippingBox<Shoes>`.",
+  "realWorldExample": "Typing a standardized API response. `interface ApiResponse<DataShape> { status: number; data: DataShape; error?: string; }`",
+  "useCases": [
+    "Standardizing API responses",
+    "Paginated data structures",
+    "Reusable UI component props"
+  ],
+  "questions": {
+    "basic": [
+      "How do you pass a type into a Generic Interface?"
+    ],
+    "intermediate": [
+      "Can a Generic Interface have a default type?"
+    ],
+    "advanced": [
+      "How do you use a Generic Interface with an Array type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it have a default type?",
+      "answer": "Yes! Just like default function parameters, you can do `interface Box<T = string>`. If you use `Box` without specifying a type, it defaults to a box containing a string."
+    }
+  ],
+  "codeExample": "// The core wrapper is always the same, only 'data' changes\ninterface ApiResponse<T> {\n  status: number;\n  success: boolean;\n  data: T; // The type passed in goes here\n}\n\ninterface User { name: string; }\ninterface Post { title: string; }\n\n// Creating a specific response for Users\nconst userRes: ApiResponse<User> = {\n  status: 200,\n  success: true,\n  data: { name: \"Alice\" }\n};\n\n// Creating a specific response for an Array of Posts\nconst postRes: ApiResponse<Post[]> = {\n  status: 200,\n  success: true,\n  data: [{ title: \"TS is great\" }, { title: \"I love Generics\" }]\n};"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "path-aliases",
+  "title": "Path Aliases",
+  "difficulty": "Intermediate",
+  "definition": "A feature configured in `tsconfig.json` that allows you to define custom module resolution paths. It replaces long, messy relative paths (`../../../components/Button`) with clean, absolute aliases (`@/components/Button`).",
+  "simpleExplanation": "Imagine you are deep in a basement room of a giant house. To get to the attic, you have to go up stairs, up stairs, up stairs (`../../../`). Path Aliases are a magical teleporter. You just say `@/attic`, and you instantly import the file, no matter how deep in the basement you are.",
+  "realWorldExample": "Standardizing imports in a Next.js application so that every component import starts cleanly with `@/components/...`.",
+  "useCases": [
+    "Large codebases",
+    "Refactoring (moving a file doesn't break its relative imports)"
+  ],
+  "questions": {
+    "basic": [
+      "What two properties in `tsconfig` are required to setup path aliases?"
+    ],
+    "intermediate": [
+      "Does TypeScript actually change the paths in the compiled JavaScript output?"
+    ],
+    "advanced": [
+      "Why do path aliases often fail at runtime in Node.js apps?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What two properties are required?",
+      "answer": "You MUST set `\"baseUrl\"` (usually to `\".\"` or `\"./src\"`), and then configure the `\"paths\"` mapping object."
+    },
+    {
+      "question": "Why do they fail at runtime in Node.js?",
+      "answer": "TypeScript ONLY uses Path Aliases to resolve Types during compilation. It DOES NOT rewrite the paths in the generated `.js` files! Node.js will crash saying 'Cannot find module @/components'. You must use a tool like `tsc-alias`, `tsconfig-paths`, or a bundler (Webpack/Vite) to physically rewrite the paths for runtime."
+    }
+  ],
+  "codeExample": "// tsconfig.json\n{\n  \"compilerOptions\": {\n    \"baseUrl\": \".\",\n    \"paths\": {\n      \"@/components/*\": [\"src/components/*\"],\n      \"@/utils/*\": [\"src/utils/*\"]\n    }\n  }\n}\n\n// IN YOUR CODE:\n\n// BAD: Fragile relative imports\n// import { Button } from \"../../../../components/Button\";\n\n// GOOD: Clean, unbreakable path alias\n// import { Button } from \"@/components/Button\";"
+}

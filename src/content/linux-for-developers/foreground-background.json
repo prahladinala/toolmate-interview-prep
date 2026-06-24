@@ -1,0 +1,30 @@
+{
+  "id": "foreground-background",
+  "title": "Foreground & Background Processes",
+  "difficulty": "Intermediate",
+  "definition": "The concept of process control. A foreground process locks the terminal until it finishes. A background process runs invisibly, returning control of the terminal to the user immediately.",
+  "simpleExplanation": "Foreground is cooking on the stove (you have to stand there and stir). Background is putting food in the slow cooker (you walk away and do other chores while it cooks).",
+  "realWorldExample": "If you type `sleep 100`, your terminal freezes for 100 seconds (Foreground). If you append an ampersand and type `sleep 100 &`, the computer immediately gives you a new prompt while the timer ticks away invisibly (Background).",
+  "useCases": [
+    "Running web servers from the terminal",
+    "Non-blocking automation"
+  ],
+  "questions": {
+    "basic": [
+      "What keyboard shortcut will instantly pause a Foreground process so you can move it to the background?"
+    ],
+    "intermediate": [
+      "If you start a long-running script in the background (`./script.sh &`) and then close your terminal window, does the script keep running?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pause shortcut?",
+      "answer": "`Ctrl + Z`."
+    },
+    {
+      "question": "Close terminal?",
+      "answer": "No! By default, closing the terminal sends a 'Hangup' (SIGHUP) signal to all background jobs, killing them immediately. You must use a tool like `nohup` or `tmux` to keep them running after you close the window."
+    }
+  ]
+}

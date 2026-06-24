@@ -1,0 +1,32 @@
+{
+  "id": "subscriptions",
+  "title": "GraphQL Subscriptions",
+  "difficulty": "Advanced",
+  "definition": "A GraphQL feature that allows the server to push real-time updates to the client. It maintains a persistent connection (usually WebSockets) rather than a typical request-response cycle.",
+  "simpleExplanation": "A Query is asking 'Did I get any new messages?' (You have to keep asking). A Subscription is giving the server your phone number and saying 'Call me instantly the second a new message arrives.'",
+  "realWorldExample": "A live sports score app. Instead of the phone refreshing every 5 seconds, the app creates a Subscription for `matchScore(id: 123)`. Whenever the backend updates the score in the database, it instantly pushes the new score down the WebSocket to the phone.",
+  "useCases": [
+    "Real-time chat apps",
+    "Live dashboards",
+    "Notifications"
+  ],
+  "questions": {
+    "basic": [
+      "What underlying network protocol do GraphQL Subscriptions typically use to maintain a live connection?"
+    ],
+    "intermediate": [
+      "How does a Subscription differ from a standard Query?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which protocol?",
+      "answer": "WebSockets."
+    },
+    {
+      "question": "Difference?",
+      "answer": "A Query is a one-time HTTP request. The server answers and hangs up. A Subscription opens a permanent connection, and the server can send multiple answers over time whenever a specific event occurs."
+    }
+  ],
+  "codeExample": "/* \n  GraphQL Subscription Example \n*/\n\nsubscription OnNewMessageReceived($roomId: ID!) {\n  # This block will execute and push data to the client \n  # EVERY TIME a new message is added to this room!\n  messageAdded(roomId: $roomId) {\n    id\n    text\n    sender {\n      username\n    }\n    timestamp\n  }\n}\n\n// In a React app using Apollo Client, this would automatically \n// trigger a UI re-render the millisecond someone types a message."
+}

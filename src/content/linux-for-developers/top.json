@@ -1,0 +1,30 @@
+{
+  "id": "top",
+  "title": "top",
+  "difficulty": "Beginner",
+  "definition": "A command-line utility that displays a dynamic, real-time, continually updating view of running processes and system resource usage (CPU, RAM).",
+  "simpleExplanation": "The live Windows Task Manager for Linux. The screen constantly refreshes every 3 seconds to show you exactly which app is eating all your CPU.",
+  "realWorldExample": "Your web server is incredibly slow. You type `top`. The list constantly updates, and you see that a rogue Python script is stuck in an infinite loop, consuming 99.9% of the CPU.",
+  "useCases": [
+    "Performance monitoring",
+    "Identifying resource hogs"
+  ],
+  "questions": {
+    "basic": [
+      "How do you exit the `top` interface?"
+    ],
+    "intermediate": [
+      "In `top`, what is 'Load Average' (e.g., 1.50, 0.80, 0.75)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to exit?",
+      "answer": "Press the `q` key."
+    },
+    {
+      "question": "What is Load Average?",
+      "answer": "It shows the system load over the last 1, 5, and 15 minutes. A load of 1.0 on a single-core CPU means the CPU is exactly 100% utilized. A load of 2.0 means it is overwhelmed and tasks are waiting in line."
+    }
+  ]
+}

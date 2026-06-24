@@ -1,0 +1,30 @@
+{
+  "id": "graphql-vs-rest",
+  "title": "GraphQL vs REST",
+  "difficulty": "Intermediate",
+  "definition": "Comparing the two dominant Web API architectures. REST relies on multiple endpoints returning fixed data structures. GraphQL relies on a single endpoint returning dynamic, client-defined data structures.",
+  "simpleExplanation": "REST is a set menu at a restaurant. You order the 'Burger Meal' (Endpoint), and you get a burger, fries, and a drink, whether you want them or not. GraphQL is a buffet. You walk up to one counter (Single Endpoint) and put exactly 3 fries and half a burger on your plate.",
+  "realWorldExample": "To show a blog dashboard, a REST app makes 3 requests: `/user`, `/posts`, and `/followers`. A GraphQL app makes 1 request to `/graphql` asking for the user, their posts, and their followers all at once.",
+  "useCases": [
+    "Architecture decisions"
+  ],
+  "questions": {
+    "basic": [
+      "How many Endpoints (URLs) does a standard GraphQL API usually expose?"
+    ],
+    "intermediate": [
+      "Why is HTTP Caching inherently harder in GraphQL compared to REST?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How many endpoints?",
+      "answer": "Usually just ONE (e.g., `POST /graphql`). All queries and mutations are sent to this single URL."
+    },
+    {
+      "question": "Why is caching harder?",
+      "answer": "REST relies on unique URLs. Browsers and CDNs know how to easily cache `GET /users/5`. Because GraphQL sends almost every request as a `POST` to the exact same `/graphql` URL with a complex body, standard network caching breaks down. You have to use complex client-side caching libraries like Apollo."
+    }
+  ],
+  "codeExample": "/* \n  Comparing Network Traffic: \n*/\n\n// Scenario: Get an author's name and their book titles.\n\n// --- REST API (2 Network Requests + Wasted Data) ---\n// 1. GET /authors/1\n// Returns: { id: 1, name: \"King\", bio: \"...\", age: 70, address: \"...\" }\n// 2. GET /authors/1/books\n// Returns: [{ id: 9, title: \"It\", pages: 1000 }, { id: 10, title: \"Shining\", pages: 500 }]\n\n\n// --- GraphQL API (1 Network Request + Exact Data) ---\n// POST /graphql \n// Body: query { author(id: 1) { name, books { title } } }\n// Returns: { data: { author: { name: \"King\", books: [{ title: \"It\" }, { title: \"Shining\" }] } } }"
+}

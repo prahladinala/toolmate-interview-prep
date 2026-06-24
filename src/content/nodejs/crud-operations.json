@@ -1,0 +1,31 @@
+{
+  "id": "crud-operations",
+  "title": "CRUD Operations",
+  "difficulty": "Beginner",
+  "definition": "Create, Read, Update, and Delete. The four basic functions of persistent storage.",
+  "simpleExplanation": "No matter how complex an application is, it always boils down to CRUD. Facebook? Create a post. Read your feed. Update your profile. Delete a photo. In Node APIs, these directly map to HTTP methods: POST (Create), GET (Read), PUT/PATCH (Update), DELETE (Delete).",
+  "realWorldExample": "Writing the four core Mongoose queries: `Model.create()`, `Model.find()`, `Model.findByIdAndUpdate()`, and `Model.findByIdAndDelete()`.",
+  "useCases": [
+    "Building standard REST APIs",
+    "Database management"
+  ],
+  "questions": {
+    "basic": [
+      "What does CRUD stand for?"
+    ],
+    "intermediate": [
+      "Which HTTP method maps to the 'U' in CRUD?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Create, Read, Update, Delete."
+    },
+    {
+      "question": "Which method maps to Update?",
+      "answer": "PUT or PATCH."
+    }
+  ],
+  "codeExample": "// Simulated Mongoose Model for CRUD\nconst User = {\n  create: async (data) => console.log(`[CREATE]: Inserted ${data.name} into DB`),\n  find: async () => console.log(`[READ]: Retrieved all users from DB`),\n  findByIdAndUpdate: async (id, data) => console.log(`[UPDATE]: Changed user ${id} name to ${data.name}`),\n  findByIdAndDelete: async (id) => console.log(`[DELETE]: User ${id} removed from DB`)\n};\n\nasync function runCrud() {\n  // 1. Create (POST)\n  await User.create({ name: \"Alice\" });\n  \n  // 2. Read (GET)\n  await User.find();\n  \n  // 3. Update (PUT/PATCH)\n  await User.findByIdAndUpdate(1, { name: \"Alicia\" });\n  \n  // 4. Delete (DELETE)\n  await User.findByIdAndDelete(1);\n}\n\nrunCrud();"
+}

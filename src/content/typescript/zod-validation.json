@@ -1,0 +1,35 @@
+{
+  "id": "zod-validation",
+  "title": "Zod & Runtime Validation",
+  "difficulty": "Advanced",
+  "definition": "Zod is a TypeScript-first schema declaration and validation library. It solves the critical flaw of TypeScript: TS types disappear at runtime. Zod validates data at runtime AND automatically generates TS types for you.",
+  "simpleExplanation": "TypeScript is an imaginary security guard. It promises your code is safe, but disappears the second the app compiles. If a hacker sends bad JSON to your API, the TS guard isn't there to stop it. Zod is a real, physical security guard. It checks the data while the app is actually running, and rejects it if it doesn't match the rules.",
+  "realWorldExample": "Validating user input from a form or validating the response payload from a 3rd party API before letting it touch your application logic.",
+  "useCases": [
+    "Form validation (React Hook Form)",
+    "API payload validation in Node.js",
+    "Environment variable checking"
+  ],
+  "questions": {
+    "basic": [
+      "What is the main limitation of TypeScript that Zod solves?"
+    ],
+    "intermediate": [
+      "How do you extract a TypeScript type from a Zod schema?"
+    ],
+    "advanced": [
+      "What does `schema.parse()` do vs `schema.safeParse()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What limitation does it solve?",
+      "answer": "TypeScript does not exist at runtime. You cannot write `if (data instanceof MyInterface)`. Zod runs real JavaScript code to validate the data shape dynamically in the browser or Node server."
+    },
+    {
+      "question": "parse vs safeParse?",
+      "answer": "`.parse()` throws a fatal error and crashes the execution if the validation fails. `.safeParse()` never crashes; it returns an object `{ success: true, data: ... }` or `{ success: false, error: ... }` allowing you to handle the error gracefully."
+    }
+  ],
+  "codeExample": "import { z } from 'zod';\n\n// 1. Create the Zod Schema (The Runtime Guard)\nconst UserSchema = z.object({\n  username: z.string().min(3, \"Must be at least 3 chars\"),\n  age: z.number().positive(),\n  email: z.string().email().optional()\n});\n\n// 2. EXTRACT THE TS TYPE (The magic trick! No duplicate typing needed)\ntype User = z.infer<typeof UserSchema>;\n\n// 3. Validate runtime data (e.g., from an API or Form)\nconst incomingApiData = {\n  username: \"Al\",\n  age: -5\n};\n\n// safeParse protects the app from crashing\nconst result = UserSchema.safeParse(incomingApiData);\n\nif (!result.success) {\n  console.error(\"Validation failed!\", result.error.issues);\n} else {\n  // Inside here, TS knows result.data perfectly matches the 'User' type!\n  console.log(\"Valid user:\", result.data.username);\n}"
+}

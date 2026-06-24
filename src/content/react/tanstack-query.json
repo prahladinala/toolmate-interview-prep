@@ -1,0 +1,45 @@
+{
+  "id": "tanstack-query",
+  "title": "TanStack Query (React Query)",
+  "difficulty": "Advanced",
+  "definition": "TanStack Query is a powerful asynchronous state management library for React. It replaces `useEffect` and `useState` for data fetching by handling caching, background updates, loading states, and error handling out-of-the-box.",
+  "simpleExplanation": "Writing your own `useEffect` fetch logic is like building your own refrigerator to keep food cold. You have to handle power outages, temperature control, and mold. TanStack Query is a smart, enterprise-grade refrigerator you just buy. You tell it \"Get me the milk from the store\" (fetch), and it automatically fetches it, caches it, keeps it fresh in the background, and gives it to anyone in the house who asks for it instantly.",
+  "realWorldExample": "Instead of using `useEffect` to fetch a user profile, you use `const { data, isLoading } = useQuery({ queryKey: [\"user\"], queryFn: fetchUser })`. If 5 different components on the screen all call this hook, TanStack Query is smart enough to only make 1 single network request and share the result with all 5.",
+  "useCases": [
+    "Eliminating almost all `useEffect` hooks in a codebase",
+    "Implementing infinite scrolling or pagination",
+    "Sharing server data globally without Redux or Context"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Server State and Client State?",
+      "Why does React Query make Redux almost obsolete for many apps?"
+    ],
+    "intermediate": [
+      "What is a `queryKey` and why is it important?",
+      "What is the difference between `staleTime` and `gcTime` (cacheTime)?"
+    ],
+    "advanced": [
+      "How does React Query handle window focus events?",
+      "What is query invalidation?"
+    ],
+    "trick": [
+      "Does TanStack Query actually make HTTP requests?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does TanStack Query actually make HTTP requests?",
+      "answer": "No! It is completely agnostic to how you fetch data. You still have to write the actual `fetch()` or `axios` call inside the `queryFn`. TanStack Query just manages the state, caching, and timing of that function."
+    },
+    {
+      "question": "What is a queryKey?",
+      "answer": "It is a unique array (like `[\"posts\", 5]`) that TanStack Query uses to identify data in its cache. If the key is the same, it returns the cached data. If the key changes, it automatically triggers a new fetch. It is basically the dependency array for the fetch."
+    },
+    {
+      "question": "Why does it make Redux obsolete?",
+      "answer": "Historically, developers put server data (like lists of products) into Redux so it could be accessed globally without fetching it again. React Query does this natively and better (with auto-refreshing). This leaves Redux to manage only pure Client State (like \"is Sidebar open?\"), which is often small enough to just use `useState`."
+    }
+  ],
+  "codeExample": "/* \n// Conceptual Example - Requires npm install @tanstack/react-query\nimport { useQuery } from \"@tanstack/react-query\";\n\n// The actual fetching logic (can be fetch, axios, graphql, etc)\nconst fetchWeather = async () => {\n  const res = await fetch(\"/api/weather\");\n  return res.json();\n};\n\nexport default function WeatherWidget() {\n  // React Query handles all the complex state!\n  const { data, isLoading, isError, error } = useQuery({\n    queryKey: [\"weather\", \"NewYork\"], // The unique ID for this data\n    queryFn: fetchWeather,\n    staleTime: 1000 * 60 * 5, // Data is fresh for 5 minutes. Don't refetch if asked again.\n    refetchOnWindowFocus: true // Automatically update when user comes back to the tab\n  });\n\n  if (isLoading) return <div>Loading weather...</div>;\n  if (isError) return <div>Error: {error.message}</div>;\n\n  return (\n    <div>\n      <h3>New York Weather</h3>\n      <p>{data.temp}°F - {data.condition}</p>\n    </div>\n  );\n}\n*/\nconsole.log(\"TanStack Query is widely considered the missing data-fetching library for React.\");"
+}

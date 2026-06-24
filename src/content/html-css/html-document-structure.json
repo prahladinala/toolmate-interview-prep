@@ -1,0 +1,31 @@
+{
+  "id": "html-document-structure",
+  "title": "HTML Document Structure",
+  "difficulty": "Beginner",
+  "definition": "The standard boilerplate required for every HTML document to be correctly interpreted by a web browser.",
+  "simpleExplanation": "An HTML document is like a human body. It has a `<!DOCTYPE>` (birth certificate), an `<html>` tag (the skin), a `<head>` (the brain, holding hidden info like title and SEO), and a `<body>` (the physical body you actually see on the screen).",
+  "realWorldExample": "If you forget the `<!DOCTYPE html>` at the top of your file, browsers will enter 'Quirks Mode' and try to render your site like it's 1999, breaking your modern CSS layouts.",
+  "useCases": [
+    "Creating new web pages",
+    "Ensuring cross-browser compatibility"
+  ],
+  "questions": {
+    "basic": [
+      "What goes inside the `<head>` tag?"
+    ],
+    "intermediate": [
+      "What is the purpose of the `<!DOCTYPE html>` declaration?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What goes inside the head?",
+      "answer": "Metadata. This includes the page `<title>`, links to CSS stylesheets, and SEO information. Nothing inside the `<head>` is directly visible on the actual webpage."
+    },
+    {
+      "question": "Purpose of DOCTYPE?",
+      "answer": "It tells the web browser exactly which version of HTML the page is written in. `<!DOCTYPE html>` specifically tells the browser to use the modern HTML5 standard."
+    }
+  ],
+  "codeExample": "<!DOCTYPE html>\n<!-- The root element that wraps the entire document -->\n<html lang=\"en\">\n  \n<!-- The Head (Hidden Metadata) -->\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <!-- The title shows up in the browser tab -->\n  <title>Document Structure</title>\n</head>\n\n<!-- The Body (Visible Content) -->\n<body>\n  <h1>Hello World</h1>\n  <p>Everything inside the body tag is visible to the user.</p>\n</body>\n\n</html>"
+}

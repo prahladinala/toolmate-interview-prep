@@ -1,0 +1,45 @@
+{
+  "id": "use-sync-external-store",
+  "title": "useSyncExternalStore",
+  "difficulty": "Expert",
+  "definition": "`useSyncExternalStore` is a React Hook that lets you subscribe to an external store in a way that is compatible with concurrent rendering features.",
+  "simpleExplanation": "React normally likes to be the boss of all the data (State). But sometimes, data lives completely outside of React (like the browser's `navigator.onLine` status, or a 3rd-party library like Redux). If React tries to read this outside data while doing its new fast 'Concurrent' rendering, it can get confused and show different data on the screen at the same time (tearing). `useSyncExternalStore` is a special bridge that guarantees React safely reads outside data without visual glitches.",
+  "realWorldExample": "Zustand and Redux both use `useSyncExternalStore` heavily under the hood in React 18 to ensure their global stores sync perfectly with React components.",
+  "useCases": [
+    "Subscribing to browser APIs (like window.innerWidth, online/offline status)",
+    "Building Global State Management libraries (Redux, Zustand, MobX)",
+    "Preventing 'Tearing' in UI during Concurrent Rendering"
+  ],
+  "questions": {
+    "basic": [
+      "What is an 'external store' in the context of React?",
+      "Why was `useSyncExternalStore` introduced in React 18?"
+    ],
+    "intermediate": [
+      "What are the two required arguments for `useSyncExternalStore`?",
+      "What is 'Tearing' in UI rendering?"
+    ],
+    "advanced": [
+      "Why is `useEffect` + `useState` not recommended for subscribing to external stores anymore?",
+      "What does the third (optional) `getServerSnapshot` argument do?"
+    ],
+    "trick": [
+      "Is `useSyncExternalStore` intended to replace `useState` for normal component logic?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is 'Tearing' in UI rendering?",
+      "answer": "Tearing happens when a user's screen shows two different values for the same state at the same time. In React 18 Concurrent Mode, rendering can be paused. If an external store updates while React is paused, the top half of the screen might render with the old data, and the bottom half with the new data."
+    },
+    {
+      "question": "Why not just use useEffect + useState to subscribe to stores?",
+      "answer": "`useEffect` runs AFTER the component has already rendered. This means the component might render with old data, and then immediately re-render with new data, causing a visible flicker or tearing. `useSyncExternalStore` ensures the data is read synchronously."
+    },
+    {
+      "question": "What does getServerSnapshot do?",
+      "answer": "It provides a static snapshot of the external store specifically for Server-Side Rendering (SSR). Since servers can't 'subscribe' to live events, it ensures the HTML generated on the server matches the HTML hydrated on the client."
+    }
+  ],
+  "codeExample": "import { useSyncExternalStore } from 'react';\n\n// 1. We create a subscription function for a browser API (External Store)\nfunction subscribe(callback) {\n  window.addEventListener('online', callback);\n  window.addEventListener('offline', callback);\n  \n  // Cleanup function\n  return () => {\n    window.removeEventListener('online', callback);\n    window.removeEventListener('offline', callback);\n  };\n}\n\n// 2. We create a function to get the current snapshot of the data\nfunction getSnapshot() {\n  return navigator.onLine;\n}\n\nexport default function NetworkStatus() {\n  // 3. We use the hook!\n  // React will automatically re-render this component if the snapshot changes.\n  const isOnline = useSyncExternalStore(subscribe, getSnapshot);\n\n  return (\n    <div>\n      <h2>System Status</h2>\n      <p>You are currently: <b>{isOnline ? '🟢 Online' : '🔴 Offline'}</b></p>\n    </div>\n  );\n}"
+}

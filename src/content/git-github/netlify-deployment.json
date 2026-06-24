@@ -1,0 +1,31 @@
+{
+  "id": "netlify-deployment",
+  "title": "Netlify Integration",
+  "difficulty": "Intermediate",
+  "definition": "A popular alternative to Vercel, providing continuous deployment services for static sites, Jamstack architectures, and serverless functions directly from GitHub.",
+  "simpleExplanation": "Very similar to Vercel. You link your GitHub repo, and Netlify automatically builds and hosts your website. Netlify is famous for its 'Deploy Previews' and forms integration.",
+  "realWorldExample": "Building a blog with Gatsby or Hugo and deploying it to Netlify, using Netlify CMS to allow non-technical users to edit content.",
+  "useCases": [
+    "Jamstack applications",
+    "Static site generation"
+  ],
+  "questions": {
+    "basic": [
+      "What configuration file is often placed in the root of a repo to tell Netlify how to build the site?"
+    ],
+    "intermediate": [
+      "What is a Netlify Build Plugin?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Configuration file?",
+      "answer": "`netlify.toml`. It defines the build command (`npm run build`) and the publish directory (`/build`)."
+    },
+    {
+      "question": "Build Plugin?",
+      "answer": "Add-ons you can install via the Netlify UI that run during the deployment process, such as optimizing images, running Lighthouse audits, or caching Node modules."
+    }
+  ],
+  "codeExample": "# Example netlify.toml file\n\n[build]\n  # The command Netlify should run to build the site\n  command = \"npm run build\"\n  \n  # The folder Netlify should serve to the public\n  publish = \"dist/\"\n\n# Advanced: Setting up a redirect for a Single Page App (React)\n# This routes all traffic to index.html so React Router handles the URLs\n[[redirects]]\n  from = \"/*\"\n  to = \"/index.html\"\n  status = 200"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "docker-architecture",
+  "title": "Docker Architecture",
+  "difficulty": "Intermediate",
+  "definition": "Docker uses a client-server architecture. The Docker Client talks to the Docker Daemon, which does the heavy lifting of building, running, and distributing your Docker containers.",
+  "simpleExplanation": "Like a restaurant. You are the Client (the customer). You tell the waiter what you want (`docker run`). The waiter takes the ticket to the Kitchen (the Docker Daemon). The Kitchen actually cooks the food (builds and runs the container).",
+  "realWorldExample": "When you type a command in your terminal, the Client translates it and sends an API request to the hidden background Daemon process. You can even configure a Client on your laptop to send commands to a Daemon running on a server 1,000 miles away.",
+  "useCases": [
+    "Troubleshooting",
+    "Remote server management"
+  ],
+  "questions": {
+    "basic": [
+      "When you type `docker run` in your terminal, are you interacting directly with the containers, or with the Docker Client?"
+    ],
+    "intermediate": [
+      "What happens if the Docker Daemon process crashes or stops?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Interacting with?",
+      "answer": "The Docker Client (the CLI)."
+    },
+    {
+      "question": "Daemon crashes?",
+      "answer": "Your Docker Client commands will immediately start failing with 'Cannot connect to the Docker daemon', and all currently running containers will generally stop (unless configured for live-restore)."
+    }
+  ]
+}

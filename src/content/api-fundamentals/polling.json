@@ -1,0 +1,31 @@
+{
+  "id": "polling",
+  "title": "Polling",
+  "difficulty": "Beginner",
+  "definition": "A technique where a client repeatedly makes standard HTTP requests to a server at fixed intervals to check for new data.",
+  "simpleExplanation": "A kid in the backseat on a road trip repeatedly asking 'Are we there yet? Are we there yet? Are we there yet?' every 5 seconds. The server answers 'No, No, No' until finally answering 'Yes'.",
+  "realWorldExample": "An order tracking page. The frontend runs a `setInterval` that does a `fetch('/api/order/status')` every 10 seconds to see if the pizza has been delivered yet.",
+  "useCases": [
+    "Simple status checks",
+    "Legacy systems without WebSockets"
+  ],
+  "questions": {
+    "basic": [
+      "Why is Short Polling considered highly inefficient?"
+    ],
+    "intermediate": [
+      "If you need real-time data but cannot use WebSockets, what is the best alternative to standard Polling?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why inefficient?",
+      "answer": "It wastes massive amounts of resources. If 1,000 users check their inbox every 5 seconds, that's 200 requests per second hitting the server, and 99% of those requests will return 'No new messages', wasting bandwidth and database CPU."
+    },
+    {
+      "question": "Best alternative?",
+      "answer": "Long Polling or Server-Sent Events (SSE)."
+    }
+  ],
+  "codeExample": "// Frontend React Example: Standard Short Polling\n\nimport { useEffect, useState } from 'react';\n\nexport default function OrderTracker() {\n  const [status, setStatus] = useState('Cooking');\n\n  useEffect(() => {\n    // Ask the server every 5000 milliseconds (5 seconds)\n    const intervalId = setInterval(async () => {\n      const res = await fetch('/api/order/123');\n      const data = await res.json();\n      \n      setStatus(data.status);\n      \n      // If delivered, stop asking!\n      if (data.status === 'Delivered') {\n        clearInterval(intervalId);\n      }\n    }, 5000);\n\n    return () => clearInterval(intervalId);\n  }, []);\n\n  return <div>Status: {status}</div>;\n}"
+}

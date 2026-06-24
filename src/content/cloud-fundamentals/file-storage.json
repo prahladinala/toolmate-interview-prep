@@ -1,0 +1,31 @@
+{
+  "id": "file-storage",
+  "title": "File Storage (EFS / Azure Files)",
+  "difficulty": "Intermediate",
+  "definition": "A cloud storage service that mimics traditional network-attached storage (NAS). It allows multiple cloud servers to mount the exact same file system simultaneously over the network.",
+  "simpleExplanation": "A shared network drive for your cloud servers. Server A writes a log file into the drive, and Server B can instantly open and read that exact same file like it was on its own hard drive.",
+  "realWorldExample": "AWS EFS, Azure Files, GCP Filestore. A legacy CMS application requires multiple web servers to share a single 'uploads' directory for user files. They mount an EFS drive to all the web servers simultaneously.",
+  "useCases": [
+    "Legacy application migrations",
+    "Shared configuration files",
+    "Content management systems"
+  ],
+  "questions": {
+    "basic": [
+      "Can multiple virtual machines connect to a File Storage drive at the exact same time?"
+    ],
+    "intermediate": [
+      "How does File Storage (EFS) differ from Block Storage (EBS) regarding multi-instance mounting?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Multiple VMs at once?",
+      "answer": "Yes. This is the primary feature of File Storage (using protocols like NFS or SMB)."
+    },
+    {
+      "question": "EFS vs EBS mounting?",
+      "answer": "By default, Block Storage (EBS) can only be attached to ONE single Virtual Machine at a time. File Storage (EFS) can be simultaneously mounted to thousands of VMs across multiple Availability Zones."
+    }
+  ]
+}

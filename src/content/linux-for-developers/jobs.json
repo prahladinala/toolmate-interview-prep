@@ -1,0 +1,30 @@
+{
+  "id": "jobs",
+  "title": "jobs",
+  "difficulty": "Intermediate",
+  "definition": "A command that lists the active jobs (background processes) that have been started by, and are attached to, your current terminal session.",
+  "simpleExplanation": "Checking what tasks are running invisibly behind the scenes in your current window.",
+  "realWorldExample": "You start a massive database backup. It takes 30 minutes. You pause it with `Ctrl+Z`, then type `bg` to send it to the background so you can keep typing. You type `jobs` to see a numbered list verifying the backup is still running invisibly.",
+  "useCases": [
+    "Managing long-running terminal tasks",
+    "Multitasking in a single window"
+  ],
+  "questions": {
+    "basic": [
+      "Will the `jobs` command show a background process started by another user on the server?"
+    ],
+    "intermediate": [
+      "How do you bring a background job (like job number 2) back to the foreground so you can interact with it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Show other users' jobs?",
+      "answer": "No. `jobs` ONLY shows processes tied specifically to your exact current terminal window."
+    },
+    {
+      "question": "Bring to foreground?",
+      "answer": "Use the `fg` (foreground) command followed by the job number: `fg %2`."
+    }
+  ]
+}

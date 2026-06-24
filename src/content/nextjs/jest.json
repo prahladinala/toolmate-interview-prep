@@ -1,0 +1,31 @@
+{
+  "id": "jest",
+  "title": "Jest",
+  "difficulty": "Intermediate",
+  "definition": "A popular JavaScript Testing Framework that provides the test runner, assertion library, and mocking capabilities needed to write Unit Tests.",
+  "simpleExplanation": "You wrote a function `calculateTax(amount)`. You don't want to manually type numbers into your app to see if it works. Jest runs a script that automatically feeds 50 different numbers into your function and asserts that the math comes out perfectly every time.",
+  "realWorldExample": "Testing utility functions, API route handlers, or complex Redux/Zustand state logic independently from the React UI.",
+  "useCases": [
+    "Unit testing",
+    "TDD (Test-Driven Development)"
+  ],
+  "questions": {
+    "basic": [
+      "Is Jest primarily used for Unit Testing or End-to-End (E2E) testing?"
+    ],
+    "intermediate": [
+      "What is 'Mocking' in Jest, and why is it necessary?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which testing?",
+      "answer": "Unit Testing. (Testing isolated functions or individual components without running a real browser)."
+    },
+    {
+      "question": "What is Mocking?",
+      "answer": "Mocking is replacing a real function (like a database call) with a fake one. In a unit test, you don't want to actually hit your production database. You 'mock' the DB function to just instantly return fake data so you can test your logic."
+    }
+  ],
+  "codeExample": "// utils/math.ts\nexport const calculateTax = (amount) => amount * 0.10;\n\n// __tests__/math.test.ts\nimport { calculateTax } from '../utils/math';\n\n// 1. Describe the test suite\ndescribe('Math Utilities', () => {\n  \n  // 2. Define an individual test\n  it('should correctly calculate a 10% tax', () => {\n    \n    // 3. Execution & Assertion\n    const result = calculateTax(100);\n    expect(result).toBe(10);\n  });\n\n  it('should return 0 when amount is 0', () => {\n    expect(calculateTax(0)).toBe(0);\n  });\n});"
+}

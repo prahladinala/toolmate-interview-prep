@@ -1,0 +1,28 @@
+{
+  "id": "return-type",
+  "title": "ReturnType<T>",
+  "difficulty": "Advanced",
+  "definition": "A utility type that extracts the exact return type of a function type `T` using the `infer` keyword internally.",
+  "simpleExplanation": "If you are using a 3rd-party library function that returns a massive, complex object, but the library author forgot to export the Type for that object, `ReturnType` rescues you. You wrap the function in it, and TS extracts the return object's blueprint for you to use.",
+  "realWorldExample": "Typing Redux actions. Redux involves writing many action creator functions. Instead of manually writing interfaces for what every action returns, you just use `ReturnType<typeof myActionCreator>`.",
+  "useCases": [
+    "Extracting types from 3rd party functions",
+    "Redux/Zustand state typing",
+    "Keeping code DRY"
+  ],
+  "questions": {
+    "basic": [
+      "How do you use `ReturnType` on an actual JavaScript function?"
+    ],
+    "intermediate": [
+      "What happens if you use `ReturnType` on a generic function?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you use it on an actual function?",
+      "answer": "You MUST combine it with `typeof`. `ReturnType` expects a TYPE as an argument, not a value. So you write `type Data = ReturnType<typeof fetchUserData>;`."
+    }
+  ],
+  "codeExample": "// A complex function (Imagine this comes from an external library)\nfunction createComplexUser(name: string, age: number) {\n  return {\n    id: Math.random(),\n    profile: { name, age },\n    isActive: true,\n    roles: [\"user\"]\n  };\n}\n\n// We want to type a variable to hold the result of that function,\n// but we don't want to manually type out that massive object interface.\n// SOLUTION:\ntype UserData = ReturnType<typeof createComplexUser>;\n\nconst user: UserData = {\n  id: 123,\n  profile: { name: \"Alice\", age: 30 },\n  isActive: false,\n  roles: [\"admin\"]\n};"
+}

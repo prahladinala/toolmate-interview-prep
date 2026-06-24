@@ -1,0 +1,34 @@
+{
+  "id": "default-parameters",
+  "title": "Default Parameters",
+  "difficulty": "Beginner",
+  "definition": "Allows named parameters to be initialized with default values if no value or `undefined` is passed to the function.",
+  "simpleExplanation": "It's a fallback safety net. If you ask a user for their preferred theme, and they don't answer, you automatically set it to 'light' instead of breaking the app with 'undefined'.",
+  "realWorldExample": "Setting a default configuration object: `function initialize(config = { retries: 3 }) { ... }`",
+  "useCases": [
+    "Simplifying function signatures",
+    "Avoiding `||` short-circuit hacks inside functions"
+  ],
+  "questions": {
+    "basic": [
+      "How do you assign a default parameter?"
+    ],
+    "intermediate": [
+      "If you pass `null` as an argument, does the default parameter trigger?"
+    ],
+    "advanced": [
+      "Can a default parameter reference a previous parameter?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does passing null trigger the default?",
+      "answer": "NO! Default parameters ONLY trigger if the argument is strictly `undefined` (or omitted entirely). If you pass `null`, `false`, `0`, or `\"\"`, the default parameter will NOT trigger."
+    },
+    {
+      "question": "Can a default parameter reference a previous one?",
+      "answer": "Yes! Parameters evaluate from left to right. You can do `function calc(price, tax = price * 0.1)`. The `tax` default evaluates using the `price` passed in."
+    }
+  ],
+  "codeExample": "function greet(name = \"Guest\") {\n  console.log(`Hello, ${name}!`);\n}\n\ngreet(\"Alice\"); // \"Hello, Alice!\"\ngreet();        // \"Hello, Guest!\"\ngreet(undefined); // \"Hello, Guest!\"\ngreet(null);    // \"Hello, null!\" (Default did NOT trigger)"
+}

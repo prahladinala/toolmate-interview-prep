@@ -1,0 +1,30 @@
+{
+  "id": "dns-tools",
+  "title": "DNS Tools (dig / nslookup)",
+  "difficulty": "Intermediate",
+  "definition": "Command-line tools used for querying Domain Name System (DNS) servers to resolve hostnames to IP addresses, or vice-versa.",
+  "simpleExplanation": "Asking the internet phonebook a direct question. You ask 'Where does google.com point?', and it tells you the exact IP address and how it found it.",
+  "realWorldExample": "A company changes their website's server. Customers complain they still see the old website. The admin types `dig mycompany.com`. The output proves that the global DNS records have not updated yet.",
+  "useCases": [
+    "Verifying domain migrations",
+    "Troubleshooting DNS caching"
+  ],
+  "questions": {
+    "basic": [
+      "Which command is older and generally considered deprecated: `dig` or `nslookup`?"
+    ],
+    "intermediate": [
+      "What does it mean to query a specific DNS server using `dig @8.8.8.8 example.com`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is older?",
+      "answer": "`nslookup` is the older, legacy tool. `dig` is the modern, much more verbose standard."
+    },
+    {
+      "question": "What does @ do?",
+      "answer": "It tells `dig` to ignore your computer's local internet provider settings, and instead ask Google's public DNS server (8.8.8.8) directly what it thinks the IP address is."
+    }
+  ]
+}

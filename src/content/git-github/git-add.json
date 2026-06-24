@@ -1,0 +1,31 @@
+{
+  "id": "git-add",
+  "title": "git add",
+  "difficulty": "Beginner",
+  "definition": "Adds a change in the working directory to the staging area. It tells Git that you want to include updates to a particular file in the next commit.",
+  "simpleExplanation": "This command places files into the 'waiting room' (Staging Area). You can add files one by one, or add everything in the folder all at once.",
+  "realWorldExample": "You fixed a bug in `app.js`. You type `git add app.js` to prepare it to be saved.",
+  "useCases": [
+    "Selecting specific files to commit",
+    "Tracking new files"
+  ],
+  "questions": {
+    "basic": [
+      "How do you stage EVERY modified and untracked file in your current directory at once?"
+    ],
+    "intermediate": [
+      "What is `git add -p`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Stage everything?",
+      "answer": "`git add .` (The period means 'current directory and everything inside it')."
+    },
+    {
+      "question": "git add -p?",
+      "answer": "The `-p` stands for 'patch'. It is a powerful feature that allows you to review your changes block by block, and stage specific lines of code within a file, rather than staging the entire file."
+    }
+  ],
+  "codeExample": "# Add a single specific file\n$ git add index.html\n\n# Add two specific files\n$ git add style.css script.js\n\n# Add an entire folder\n$ git add src/\n\n# THE NUCLEAR OPTION: Add EVERYTHING in the current directory and below\n$ git add .\n\n# Add all files across the entire repository, regardless of current directory\n$ git add -A"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "systemctl",
+  "title": "systemctl",
+  "difficulty": "Intermediate",
+  "definition": "The central management tool for systemd, which is the init system and service manager for most modern Linux distributions. It allows you to start, stop, enable, and view the status of services.",
+  "simpleExplanation": "The master control switchboard for background applications. You use it to turn services (like a web server or database) on and off.",
+  "realWorldExample": "You install Nginx. It doesn't run automatically. You type `sudo systemctl start nginx`. To check if it's running, you type `systemctl status nginx`. It prints 'Active: active (running)'.",
+  "useCases": [
+    "Managing server software",
+    "Checking service health"
+  ],
+  "questions": {
+    "basic": [
+      "What older command did `systemctl` replace for managing services?"
+    ],
+    "intermediate": [
+      "What is the difference between `systemctl start` and `systemctl restart`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Older command?",
+      "answer": "The `service` command (e.g., `service nginx start`)."
+    },
+    {
+      "question": "start vs restart?",
+      "answer": "`start` turns a stopped service on. If the service is already running, it does nothing. `restart` forcefully kills the currently running service and boots it back up fresh, which is required after changing configuration files."
+    }
+  ]
+}

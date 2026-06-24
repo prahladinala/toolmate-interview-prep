@@ -1,0 +1,30 @@
+{
+  "id": "whoami",
+  "title": "whoami",
+  "difficulty": "Beginner",
+  "definition": "A command that prints the effective username of the currently logged-in user.",
+  "simpleExplanation": "Looking at your own nametag. It tells you exactly who the computer thinks you are right now.",
+  "realWorldExample": "You SSH into a massive corporate server. You aren't sure if you logged in as yourself or as the admin. You type `whoami` and it prints `root`. You immediately become very careful.",
+  "useCases": [
+    "Verifying active user",
+    "Scripting conditions (e.g., abort if not root)"
+  ],
+  "questions": {
+    "basic": [
+      "What will `whoami` output if you run it like this: `sudo whoami`?"
+    ],
+    "intermediate": [
+      "What is the difference between the `whoami` command and the `who` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Output of sudo whoami?",
+      "answer": "It will output `root`, because `sudo` temporarily changes your effective user ID to the superuser."
+    },
+    {
+      "question": "whoami vs who?",
+      "answer": "`whoami` only prints your own username. `who` prints a list of EVERY user currently logged into the entire server, including where they logged in from."
+    }
+  ]
+}

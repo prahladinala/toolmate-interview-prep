@@ -1,0 +1,37 @@
+{
+  "id": "integration-testing",
+  "title": "Integration Testing",
+  "difficulty": "Advanced",
+  "definition": "Integration testing verifies that multiple units of code (components, hooks, context) work correctly together when combined.",
+  "simpleExplanation": "If unit testing is testing the car engine on a workbench, integration testing is putting the engine in the car, connecting it to the steering wheel, and making sure the car actually drives when you press the gas pedal.",
+  "realWorldExample": "Testing an entire `<CheckoutFlow>` component. You render the component, mock the API payment gateway, fill out the shipping form, click 'Next', fill out the credit card form, click 'Pay', and assert that the 'Success' screen appears.",
+  "useCases": [
+    "Testing complex page interactions",
+    "Verifying Context Providers work with Consumers",
+    "Ensuring form submissions correctly update global state"
+  ],
+  "questions": {
+    "basic": [
+      "Why do we need Integration Tests if we have Unit Tests?",
+      "What makes Integration Testing harder than Unit Testing?"
+    ],
+    "intermediate": [
+      "What is the 'Testing Trophy' and why does Kent C. Dodds recommend more Integration tests than Unit tests?",
+      "How do you handle API calls in an Integration test?"
+    ],
+    "advanced": [
+      "How do you configure a test to include React Router or Redux Providers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why do we need Integration tests?",
+      "answer": "Two components might work perfectly in isolation, but fail when connected. For example, the `<Form>` might successfully emit a user object, but the `<Header>` might crash because it expected the user object to have an `id` field."
+    },
+    {
+      "question": "Why recommend MORE integration tests than unit tests?",
+      "answer": "Because integration tests provide the highest return on investment. They test the application the exact same way a user uses it. Unit tests only prove that the code works; integration tests prove that the APP works."
+    }
+  ],
+  "codeExample": "import { render, screen } from '@testing-library/react';\nimport userEvent from '@testing-library/user-event';\nimport App from './App'; // We render the ENTIRE app!\nimport { server, rest } from './mocks/server';\n\ntest('full login flow integration', async () => {\n  // Render the whole app with all providers\n  render(<App />);\n  \n  // Interact with the deeply nested login form\n  await userEvent.type(screen.getByLabelText(/username/i), 'admin');\n  await userEvent.type(screen.getByLabelText(/password/i), 'password123');\n  await userEvent.click(screen.getByRole('button', { name: /login/i }));\n  \n  // Assert that the router redirected and the dashboard loaded data from the mock API\n  expect(await screen.findByText(/welcome, admin/i)).toBeInTheDocument();\n});"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "commonjs",
+  "title": "CommonJS Modules",
+  "difficulty": "Beginner",
+  "definition": "The original, default module system in Node.js. It uses `require()` to import modules and `module.exports` to export them.",
+  "simpleExplanation": "Imagine every JS file is a locked room. CommonJS is the system for passing notes under the door. You use `module.exports` to shove a note under the door out to the world, and you use `require()` to grab notes from other rooms and pull them inside.",
+  "realWorldExample": "Importing a utility function: `const formatData = require('./utils')`. This is how 90% of legacy Node.js applications and NPM packages are wired together.",
+  "useCases": [
+    "Legacy Node.js projects",
+    "Dynamic importing (requiring files inside an `if` statement)"
+  ],
+  "questions": {
+    "basic": [
+      "What keywords are used for importing and exporting in CommonJS?"
+    ],
+    "intermediate": [
+      "Is `require()` synchronous or asynchronous?"
+    ],
+    "advanced": [
+      "What is the difference between `module.exports` and `exports`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is require() sync or async?",
+      "answer": "It is completely Synchronous! It blocks the thread while it reads the file from the hard drive, compiles it, and caches it. This is why you should only `require()` at the very top of your files, never inside a loop or active request route."
+    },
+    {
+      "question": "Difference between module.exports and exports?",
+      "answer": "`exports` is just a shortcut reference to `module.exports`. If you assign properties to it (`exports.run = () => {}`), it works. But if you try to overwrite it completely (`exports = myFunction`), the reference breaks, and you export nothing. Always use `module.exports = ...` to be safe."
+    }
+  ],
+  "codeExample": "// --- file: mathUtils.js ---\nconst add = (a, b) => a + b;\nconst subtract = (a, b) => a - b;\n\n// Exporting a single object containing multiple functions\nmodule.exports = {\n  add,\n  subtract\n};\n\n// --- file: app.js ---\n// Importing the module\nconst math = require('./mathUtils.js'); // .js extension is optional in CommonJS\n\nconsole.log(\"Add:\", math.add(5, 10));\nconsole.log(\"Subtract:\", math.subtract(20, 5));\n\n// You can also use destructuring:\n// const { add } = require('./mathUtils');"
+}

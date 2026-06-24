@@ -1,0 +1,31 @@
+{
+  "id": "sentiment-analysis",
+  "title": "Sentiment Analysis",
+  "difficulty": "Beginner",
+  "definition": "The use of NLP to systematically identify, extract, and quantify the affective states and subjective information (emotions) from text.",
+  "simpleExplanation": "Teaching a computer to read a tweet and decide if the person who wrote it is Happy (Positive), Angry (Negative), or Neutral.",
+  "realWorldExample": "Brand monitoring. Coca-Cola runs Sentiment Analysis on every single tweet mentioning their name. If the AI detects a massive spike in 'Negative' sentiment at 2:00 PM, the PR team is instantly alerted that a scandal might be breaking.",
+  "useCases": [
+    "Social media monitoring",
+    "Product review analysis",
+    "Customer satisfaction tracking"
+  ],
+  "questions": {
+    "basic": [
+      "If a user writes 'This phone is okay, not great but gets the job done', what sentiment category would an AI likely assign to it?"
+    ],
+    "intermediate": [
+      "Why is sarcasm notoriously difficult for Sentiment Analysis algorithms to handle?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which category?",
+      "answer": "Neutral."
+    },
+    {
+      "question": "Why is sarcasm hard?",
+      "answer": "Because sarcastic text uses highly positive words to express extreme negativity (e.g., 'Oh great, another flat tire. Just fantastic!'). Basic AI sees the words 'great' and 'fantastic' and completely fails, marking the text as Positive."
+    }
+  ]
+}

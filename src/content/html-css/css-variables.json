@@ -1,0 +1,31 @@
+{
+  "id": "css-variables",
+  "title": "CSS Variables",
+  "difficulty": "Intermediate",
+  "definition": "Custom properties (`--name`) defined by CSS authors that contain specific values to be reused throughout a document.",
+  "simpleExplanation": "Imagine you use a specific shade of blue (`#3b82f6`) 50 times in your CSS file for buttons, borders, and text. Then the boss says 'Change the blue to green'. You have to find and replace all 50 lines manually. With CSS Variables, you define `--primary-color: #3b82f6` at the top of the file, and use `var(--primary-color)` 50 times. To change the theme, you only edit one line of code!",
+  "realWorldExample": "Implementing Dark Mode! You swap out the `--bg-color` variable from 'white' to 'black' using a tiny bit of JavaScript, and the entire website instantly updates.",
+  "useCases": [
+    "Theming / Dark Mode",
+    "Maintaining large CSS codebases"
+  ],
+  "questions": {
+    "basic": [
+      "Where do you usually define global CSS variables so they can be accessed anywhere?"
+    ],
+    "intermediate": [
+      "What function is used to apply a variable to a property?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to define?",
+      "answer": "In the `:root` pseudo-class (which represents the `<html>` element). Example: `:root { --main-color: red; }`."
+    },
+    {
+      "question": "What function?",
+      "answer": "The `var()` function. Example: `color: var(--main-color);`."
+    }
+  ],
+  "codeExample": "<style>\n  /* 1. Define variables globally in the :root */\n  :root {\n    --primary-color: #8b5cf6;\n    --text-color: #333;\n    --spacing: 20px;\n    --border-radius: 8px;\n  }\n\n  .card {\n    /* 2. Use the variables! */\n    background-color: white;\n    padding: var(--spacing);\n    border: 2px solid var(--primary-color);\n    border-radius: var(--border-radius);\n    color: var(--text-color);\n    max-width: 300px;\n  }\n\n  .btn {\n    background-color: var(--primary-color);\n    color: white;\n    padding: 10px var(--spacing);\n    border: none;\n    border-radius: var(--border-radius);\n    cursor: pointer;\n  }\n</style>\n\n<div class=\"card\">\n  <h3>CSS Variables</h3>\n  <p>If you change '--primary-color' in the :root, the border AND the button will update instantly!</p>\n  <button class=\"btn\">Click Me</button>\n</div>"
+}

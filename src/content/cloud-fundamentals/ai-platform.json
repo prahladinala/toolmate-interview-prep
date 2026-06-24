@@ -1,0 +1,31 @@
+{
+  "id": "ai-platform",
+  "title": "AI Platform (SageMaker / Vertex AI)",
+  "difficulty": "Advanced",
+  "definition": "A fully managed cloud environment designed specifically for Data Scientists to build, train, and deploy Machine Learning models at massive scale without managing infrastructure.",
+  "simpleExplanation": "A supercomputer laboratory for AI researchers. They don't have to build the lab; they just log in, use hundreds of graphics cards (GPUs) to train their AI to recognize cats, and then click a button to turn their AI into a live API.",
+  "realWorldExample": "AWS SageMaker, Azure AI Foundry, GCP Vertex AI. A bank's data scientist uses SageMaker to analyze 10 years of credit card transactions. They train a Fraud Detection model. SageMaker deploys the model behind an API, so the bank's live mobile app can check if a swipe is fraudulent in milliseconds.",
+  "useCases": [
+    "Custom ML model training",
+    "Data science workflows",
+    "MLOps"
+  ],
+  "questions": {
+    "basic": [
+      "What hardware component is most heavily used in AI Platforms to train Machine Learning models?"
+    ],
+    "intermediate": [
+      "What is the difference between Model 'Training' and Model 'Inference' in cloud AI?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which hardware?",
+      "answer": "GPUs (Graphics Processing Units). They are exponentially faster at the matrix mathematics required for AI than standard CPUs."
+    },
+    {
+      "question": "Training vs Inference?",
+      "answer": "Training is the incredibly expensive, slow process of feeding millions of pictures to the AI so it learns what a cat is. Inference is the cheap, instantaneous process of using the *finished* model to look at a new picture and predict 'Yes, that is a cat.'"
+    }
+  ]
+}

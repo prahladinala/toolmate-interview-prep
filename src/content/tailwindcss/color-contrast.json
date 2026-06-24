@@ -1,0 +1,31 @@
+{
+  "id": "color-contrast",
+  "title": "Color Contrast",
+  "difficulty": "Beginner",
+  "definition": "The practice of selecting text and background color combinations in Tailwind that meet the WCAG contrast ratio requirements for visual legibility.",
+  "simpleExplanation": "Putting light gray text on a white background might look 'aesthetic' and minimalist, but someone with visual impairments physically cannot read it. You must ensure sufficient contrast.",
+  "realWorldExample": "Checking if `text-gray-400` on a `bg-white` card passes accessibility tests. (Spoiler: It fails terribly. You must use at least `text-gray-500` or `text-gray-600`).",
+  "useCases": [
+    "WCAG Compliance",
+    "UI Design"
+  ],
+  "questions": {
+    "basic": [
+      "Is `text-gray-300` on a `bg-white` background considered accessible?"
+    ],
+    "intermediate": [
+      "If you put `text-white` inside a `bg-yellow-400` warning banner, why might users complain?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Gray-300 on White?",
+      "answer": "Absolutely not. The contrast is far too low. It is nearly invisible to many users."
+    },
+    {
+      "question": "White text on Yellow?",
+      "answer": "Yellow is a very bright, light color. Putting white text on a bright yellow background has terrible contrast. You should use `text-yellow-900` (very dark brown/yellow) for the text instead."
+    }
+  ],
+  "codeExample": "<!-- ❌ ACCESSIBILITY FAIL (Unreadable) -->\n<div class=\"bg-white p-4\">\n  <h2 class=\"text-gray-300\">Minimalist Title</h2>\n  <button class=\"bg-yellow-400 text-white p-2\">Warning</button>\n</div>\n\n<!-- ✅ ACCESSIBILITY PASS (High Contrast) -->\n<div class=\"bg-white p-4\">\n  <!-- Bumping up to gray-600 makes it readable -->\n  <h2 class=\"text-gray-600 font-medium\">Minimalist Title</h2>\n  <!-- Using dark text on a light background -->\n  <button class=\"bg-yellow-400 text-yellow-900 font-bold p-2\">Warning</button>\n</div>"
+}

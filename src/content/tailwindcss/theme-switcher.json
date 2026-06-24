@@ -1,0 +1,31 @@
+{
+  "id": "theme-switcher",
+  "title": "Theme Switcher",
+  "difficulty": "Advanced",
+  "definition": "The architectural pattern of combining the 'Class' strategy with the 'System' strategy, creating a 3-way toggle: Light, Dark, and System (Auto).",
+  "simpleExplanation": "The holy grail of theming. You give the user a dropdown. If they pick 'Light', it forces Light. If they pick 'Dark', it forces Dark. If they pick 'System', it removes the forced class and goes back to secretly watching their macOS/Windows settings.",
+  "realWorldExample": "GitHub's exact appearance settings page. It gives you 3 options: 'Sync with system', 'Single theme: Light', and 'Single theme: Dark'.",
+  "useCases": [
+    "Professional SaaS applications",
+    "User settings panels"
+  ],
+  "questions": {
+    "basic": [
+      "In a 3-way theme switcher, how do you reset the site back to 'System' mode after a user has manually forced 'Dark' mode?"
+    ],
+    "intermediate": [
+      "Why do you need to be careful about 'Flash of Unstyled Content' (FOUC) when building a React theme switcher?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to reset to system?",
+      "answer": "You remove the `theme` key from `localStorage` entirely, and remove the `dark` class from the `<html>` tag. The CSS media queries will naturally take over again."
+    },
+    {
+      "question": "Why careful about FOUC?",
+      "answer": "If React renders the Light page first, and then `useEffect` runs 100ms later to check `localStorage` and swap to Dark mode, the user will see a blinding white flash before it turns dark. The initial check must run synchronously in the `<head>` of the HTML."
+    }
+  ],
+  "codeExample": "<!-- \n  To prevent the Blinding White Flash (FOUC) in Next.js/React, \n  you MUST put this tiny blocking script in the <head> of your document, \n  before React even loads!\n-->\n<script>\n  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {\n    document.documentElement.classList.add('dark')\n  } else {\n    document.documentElement.classList.remove('dark')\n  }\n</script>\n\n<!-- Your React App renders down here -->\n<body>\n  <div id=\"root\"></div>\n</body>"
+}

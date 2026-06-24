@@ -1,0 +1,31 @@
+{
+  "id": "logging",
+  "title": "Centralized Logging",
+  "difficulty": "Intermediate",
+  "definition": "The aggregation and storage of all application, system, and audit logs from hundreds of different cloud servers into one single, searchable, highly durable location.",
+  "simpleExplanation": "Instead of checking the security camera tapes in 50 different buildings, you wire all the cameras to stream to one massive TV in a central security room so you can search them all at once.",
+  "realWorldExample": "AWS CloudWatch Logs, Azure Log Analytics. Your app runs on 10 different servers. A user complains they got an error. Instead of logging into all 10 servers manually to read text files, you search for the user's ID in CloudWatch Logs, and it instantly finds the exact server and the exact error line.",
+  "useCases": [
+    "Debugging distributed systems",
+    "Security auditing",
+    "Compliance"
+  ],
+  "questions": {
+    "basic": [
+      "Why is it a bad idea to leave your log files sitting locally on the EC2 Virtual Machine that generated them?"
+    ],
+    "intermediate": [
+      "What is 'AWS CloudTrail' and how does it differ from standard CloudWatch Logs?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why not leave logs local?",
+      "answer": "Because in the cloud, servers are ephemeral. If an Auto Scaler terminates the server to save money, or the server crashes, those local log files are deleted forever. Logs must be streamed off the server instantly."
+    },
+    {
+      "question": "CloudTrail vs CloudWatch Logs?",
+      "answer": "CloudWatch Logs stores the text output of your Application (e.g., 'User logged in', 'Database error'). CloudTrail is an Audit log of the AWS Account itself (e.g., 'Admin Bob deleted a database at 3:00 PM via the AWS API')."
+    }
+  ]
+}

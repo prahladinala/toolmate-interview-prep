@@ -1,0 +1,30 @@
+{
+  "id": "precision",
+  "title": "Precision",
+  "difficulty": "Intermediate",
+  "definition": "An evaluation metric that answers: 'Out of all the times the AI predicted Positive, how many were ACTUALLY Positive?' It measures the quality of a positive prediction.",
+  "simpleExplanation": "The boy who cried wolf. If the AI sounds the alarm that there is a wolf, how much can you trust it? High Precision means when it sounds the alarm, there is almost certainly a wolf. Low Precision means it sounds the alarm constantly for no reason (False Positives).",
+  "realWorldExample": "YouTube's Copyright Strike AI. If it has Low Precision, millions of innocent creators get their videos taken down falsely. To avoid angry creators, the AI must be tuned for High Precision (only striking when it is 100% sure).",
+  "useCases": [
+    "Spam filtering",
+    "Criminal conviction AI"
+  ],
+  "questions": {
+    "basic": [
+      "If Precision is low, what kind of errors is the AI making too often: False Positives or False Negatives?"
+    ],
+    "intermediate": [
+      "What is the mathematical formula for Precision?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which errors?",
+      "answer": "False Positives. It is crying wolf when there is no wolf."
+    },
+    {
+      "question": "Mathematical formula?",
+      "answer": "True Positives / (True Positives + False Positives)."
+    }
+  ]
+}

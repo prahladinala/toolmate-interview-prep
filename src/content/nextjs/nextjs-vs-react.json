@@ -1,0 +1,30 @@
+{
+  "id": "nextjs-vs-react",
+  "title": "Next.js vs React",
+  "difficulty": "Beginner",
+  "definition": "A comparison between the React library (focused purely on UI) and the Next.js framework (focused on full-stack application architecture).",
+  "simpleExplanation": "React is unopinionated. It just renders HTML. You have to decide which router to install, how to fetch data, and how to handle SEO. Next.js is highly opinionated. It makes those decisions for you, providing a standard, optimized way to do everything.",
+  "realWorldExample": "React is buying raw ingredients from the grocery store. Next.js is buying a meal kit where the ingredients are pre-measured, the recipe is provided, and the oven is already pre-heated.",
+  "useCases": [
+    "Architectural decision making"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use Next.js without knowing React?"
+    ],
+    "intermediate": [
+      "What is the difference in how React and Next.js handle Routing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Without React?",
+      "answer": "No. Next.js is built entirely on top of React. Every component you write in Next.js is a React component."
+    },
+    {
+      "question": "Routing differences?",
+      "answer": "In React, you must install a third-party library like `react-router-dom` and write complex routing logic in your JavaScript. In Next.js, routing is File-Based. Simply dropping a file named `page.js` into a folder automatically creates the route."
+    }
+  ],
+  "codeExample": "/* ❌ REACT (Using react-router-dom) */\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}\n\n/* ✅ NEXT.JS (Zero code required for routing) */\n// Just create these files:\n// app/page.tsx  ---> maps to '/'\n// app/about/page.tsx ---> maps to '/about'"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "post",
+  "title": "POST",
+  "difficulty": "Beginner",
+  "definition": "An HTTP method used to send data to a server to CREATE a new resource.",
+  "simpleExplanation": "If GET is reading a book, POST is writing a completely new book. The client bundles up a package of data (like a filled-out signup form) and hands it to the server. The server takes that data and creates something new in its database.",
+  "realWorldExample": "Creating a new Twitter account. Submitting a new comment on a YouTube video. Uploading a photo to Instagram.",
+  "useCases": [
+    "Creating database records",
+    "Uploading files",
+    "Submitting secure forms"
+  ],
+  "questions": {
+    "basic": [
+      "Where is the data placed in a POST request?"
+    ],
+    "intermediate": [
+      "Is a POST request Idempotent?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where is data placed?",
+      "answer": "In the HTTP Request Body. Unlike GET requests, POST data is hidden inside the body payload, not exposed in the URL."
+    },
+    {
+      "question": "Is it Idempotent?",
+      "answer": "NO! Calling POST 1 time creates 1 user. Calling POST 10 times creates 10 duplicate users. It is not idempotent because the server state changes every single time."
+    }
+  ],
+  "codeExample": "// Node.js Express Example for handling a POST request\napp.post('/api/users', async (req, res) => {\n  // 1. Extract the data from the Request Body\n  const { username, email } = req.body;\n  \n  // 2. Validate the data\n  if (!email) return res.status(400).send(\"Email is required\");\n  \n  // 3. Create the new resource in the database\n  const newUser = await db.users.create({ username, email });\n  \n  // 4. Return a 201 (Created) status with the new object\n  res.status(201).json(newUser);\n});"
+}

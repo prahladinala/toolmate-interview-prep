@@ -1,0 +1,31 @@
+{
+  "id": "git-reset",
+  "title": "git reset",
+  "difficulty": "Intermediate",
+  "definition": "A powerful command used to undo local changes to the state of a Git repo. It moves the `HEAD` pointer backward in time to a previous commit.",
+  "simpleExplanation": "The ultimate Undo button. If you made 3 terrible commits, `git reset` allows you to rip those commits out of history, moving the timeline backward as if they never happened.",
+  "realWorldExample": "You committed a file containing your secret database password by accident. You MUST use `git reset` to completely erase that commit from local history before you push it to the internet.",
+  "useCases": [
+    "Erasing accidental local commits",
+    "Unstaging files"
+  ],
+  "questions": {
+    "basic": [
+      "Should you use `git reset` on commits that you have already pushed to GitHub?"
+    ],
+    "intermediate": [
+      "How do you unstage a file that you accidentally ran `git add` on?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Reset pushed commits?",
+      "answer": "NEVER. `git reset` rewrites history. If you delete history that your coworkers have already downloaded, you will break their repositories. Only use `reset` on LOCAL commits that haven't been pushed."
+    },
+    {
+      "question": "Unstage a file?",
+      "answer": "`git reset <filename>` (or `git restore --staged <filename>` in newer Git versions). It pulls the file off the Stage, but leaves the edits in your Working Directory perfectly safe."
+    }
+  ],
+  "codeExample": "# Scenario 1: Unstaging a file\n$ git add .\n# Oops, I didn't mean to stage secret.txt!\n$ git reset secret.txt\n\n# Scenario 2: Erasing the last commit, but KEEPING the code in VS Code\n$ git reset HEAD~1\n\n# Scenario 3: DANGER! Erasing the last commit, and DELETING the code permanently\n$ git reset --hard HEAD~1"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "react-testing-library",
+  "title": "React Testing Library",
+  "difficulty": "Intermediate",
+  "definition": "A testing utility that allows you to render React components in a virtual DOM and interact with them exactly as a real user would (clicking, typing).",
+  "simpleExplanation": "Jest tests math. React Testing Library (RTL) tests HTML. Instead of looking at the underlying React state, RTL says: 'Render the component. Can I find a button with the text 'Submit'? If I click it, does a success message appear on the screen?'",
+  "realWorldExample": "Writing a test for a `<LoginForm>` component that types an email into the input, clicks the submit button, and asserts that a red error message appears.",
+  "useCases": [
+    "Component testing",
+    "Accessibility testing",
+    "Interaction testing"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary philosophy of React Testing Library regarding how tests should be written?"
+    ],
+    "intermediate": [
+      "What function from RTL is used to simulate a user clicking a button?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Primary philosophy?",
+      "answer": "'The more your tests resemble the way your software is used, the more confidence they can give you.' RTL forces you to find elements by their accessibility roles or visible text, rather than by class names or component state."
+    },
+    {
+      "question": "Which function?",
+      "answer": "`fireEvent.click()` or the more modern `@testing-library/user-event` package using `userEvent.click()`."
+    }
+  ],
+  "codeExample": "import { render, screen, fireEvent } from '@testing-library/react';\nimport ToggleButton from '../components/ToggleButton';\n\ndescribe('ToggleButton Component', () => {\n  it('should toggle text from OFF to ON when clicked', () => {\n    \n    // 1. Render the component in the virtual DOM\n    render(<ToggleButton />);\n    \n    // 2. Find the button the way a user would (by reading its text!)\n    const button = screen.getByRole('button', { name: /off/i });\n    expect(button).toBeInTheDocument();\n\n    // 3. Simulate a real user clicking the button\n    fireEvent.click(button);\n\n    // 4. Assert the UI updated correctly\n    expect(screen.getByRole('button', { name: /on/i })).toBeInTheDocument();\n  });\n});"
+}

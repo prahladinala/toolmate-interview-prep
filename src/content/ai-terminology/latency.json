@@ -1,0 +1,30 @@
+{
+  "id": "latency",
+  "title": "Latency",
+  "difficulty": "Beginner",
+  "definition": "The measure of delay or time taken for an AI system to process an input and return a response to the user. Usually measured in 'Time to First Token' (TTFT) and 'Tokens per Second'.",
+  "simpleExplanation": "How fast the AI talks back. If you ask a question and have to wait 10 seconds for the first word to appear, the AI has terrible latency.",
+  "realWorldExample": "A Voice Assistant (like Siri). If the latency is 3 seconds, the conversation feels incredibly unnatural and frustrating. The latency must be under 500 milliseconds for a voice AI to feel like a real human conversation.",
+  "useCases": [
+    "User experience optimization",
+    "Real-time AI architectures"
+  ],
+  "questions": {
+    "basic": [
+      "What does TTFT stand for in AI performance metrics?"
+    ],
+    "intermediate": [
+      "Why does generating a 500-word essay take longer for an LLM than classifying an email as Spam/Not Spam?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is TTFT?",
+      "answer": "Time To First Token. It measures how long the user stares at a blank loading screen before the AI starts typing the very first word."
+    },
+    {
+      "question": "Why does long text take longer?",
+      "answer": "Because LLMs generate text Autoregressively (one word at a time). To write 500 words, the neural network must run its entire mathematical calculation 500 separate times sequentially."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "arrow-functions",
+  "title": "Arrow Functions",
+  "difficulty": "Beginner",
+  "definition": "Arrow functions were introduced in ES6 as a shorter syntax for writing function expressions. They do not have their own bindings to 'this', 'arguments', or 'super', and should not be used as methods inside objects.",
+  "simpleExplanation": "Arrow functions are a quicker, cleaner way to write functions. Instead of typing the word `function` and using curly braces, you use a little arrow `=>`. They are incredibly useful for short, one-line operations.",
+  "realWorldExample": "When you have a list of numbers and want to double them all using `.map()`. Writing a full function is verbose, but an arrow function makes it read like a simple math equation: `numbers.map(n => n * 2)`.",
+  "useCases": [
+    "Array methods like map, filter, and reduce",
+    "Callbacks where you want to preserve the outer 'this' context",
+    "Writing concise, single-line utility functions"
+  ],
+  "questions": {
+    "basic": [
+      "What is the syntax of an arrow function?",
+      "When can you omit the curly braces in an arrow function?"
+    ],
+    "intermediate": [
+      "How do arrow functions handle the 'this' keyword?",
+      "Do arrow functions have access to the 'arguments' object?"
+    ],
+    "advanced": [
+      "Can an arrow function be used as a constructor (with the 'new' keyword)?",
+      "How do you implicitly return an object literal from an arrow function?"
+    ],
+    "trick": [
+      "Why shouldn't you use an arrow function for an object method?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do arrow functions handle the 'this' keyword?",
+      "answer": "Unlike regular functions, arrow functions don't create their own 'this' context. They inherit 'this' from the enclosing (lexical) scope where they were defined."
+    },
+    {
+      "question": "Can an arrow function be used as a constructor?",
+      "answer": "No. Because they don't have their own 'this' context or a 'prototype' property, using the 'new' keyword on an arrow function will throw an error."
+    },
+    {
+      "question": "How do you implicitly return an object literal from an arrow function?",
+      "answer": "You must wrap the object literal in parentheses so the engine doesn't confuse the object's curly braces with the function's block body. Example: `const getObj = () => ({ key: 'value' });`"
+    }
+  ],
+  "codeExample": "// Traditional Function Expression\nconst addOld = function(a, b) {\n  return a + b;\n};\n\n// Arrow Function\nconst add = (a, b) => {\n  return a + b;\n};\n\n// Implicit Return (no braces, no 'return' keyword needed)\nconst multiply = (a, b) => a * b;\n\n// Single parameter doesn't even need parentheses\nconst square = x => x * x;\n\nconsole.log(multiply(5, 5)); // 25\nconsole.log(square(4)); // 16\n\n// Great for array methods\nconst nums = [1, 2, 3, 4];\nconst evens = nums.filter(n => n % 2 === 0);\nconsole.log(evens); // [2, 4]"
+}

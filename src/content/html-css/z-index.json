@@ -1,0 +1,32 @@
+{
+  "id": "z-index",
+  "title": "z-index & Stacking Context",
+  "difficulty": "Advanced",
+  "definition": "The `z-index` property specifies the stack order of an element. An element with greater stack order is always in front of an element with a lower stack order.",
+  "simpleExplanation": "If the X-axis is Left/Right, and the Y-axis is Up/Down, the Z-axis is towards the user's face. If two boxes overlap, the browser needs to know which one goes on top. The one with the higher `z-index` number wins.",
+  "realWorldExample": "A dropdown menu. If you click a dropdown, it must have a high `z-index` so it overlaps the text and images below it, instead of sliding underneath them.",
+  "useCases": [
+    "Modals",
+    "Dropdowns",
+    "Sticky Headers"
+  ],
+  "questions": {
+    "basic": [
+      "Can you apply a `z-index` to a `position: static` element?"
+    ],
+    "intermediate": [
+      "You have a Modal with `z-index: 9999`, but a button with `z-index: 1` is somehow rendering ON TOP of it. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Apply to static?",
+      "answer": "No. `z-index` ONLY works on positioned elements (`relative`, `absolute`, `fixed`, or `sticky`)."
+    },
+    {
+      "question": "Z-index 1 beating 9999?",
+      "answer": "This is a 'Stacking Context' issue. Z-indexes only compete against siblings in the same parent. If your Modal is inside a parent div that has a `z-index: 0`, the Modal's 9999 is trapped inside that parent. The button (which might be outside that parent) easily overlaps the parent, trapping the modal underneath."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 100px; height: 100px;\n    position: absolute; /* REQUIRED for z-index to work! */\n    color: white; padding: 10px;\n    border: 2px solid black;\n  }\n\n  .box-1 {\n    background: red;\n    top: 20px; left: 20px;\n    z-index: 1;\n  }\n\n  .box-2 {\n    background: blue;\n    top: 50px; left: 50px;\n    z-index: 3; /* Blue is on top! */\n  }\n\n  .box-3 {\n    background: green;\n    top: 80px; left: 80px;\n    z-index: 2; /* Green slides BETWEEN Red and Blue! */\n  }\n</style>\n\n<div style=\"position: relative; height: 250px;\">\n  <div class=\"box box-1\">Red (z: 1)</div>\n  <div class=\"box box-2\">Blue (z: 3)</div>\n  <div class=\"box box-3\">Green (z: 2)</div>\n</div>"
+}

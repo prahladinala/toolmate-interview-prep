@@ -1,0 +1,28 @@
+{
+  "id": "callbacks",
+  "title": "Callbacks",
+  "difficulty": "Beginner",
+  "definition": "A function passed as an argument to another function, which is executed later once an asynchronous operation completes.",
+  "simpleExplanation": "Ordering a pizza. You don't stand at the door waiting for 30 minutes (blocking). You give the pizza shop your phone number (the callback function). You go watch TV. When the pizza is ready, they ring your phone (execute the callback).",
+  "realWorldExample": "Using `setTimeout(callback, 1000)` or querying a database `db.findUser(id, function(result) { ... })`.",
+  "useCases": [
+    "Handling network requests",
+    "File system I/O",
+    "Timers"
+  ],
+  "questions": {
+    "basic": [
+      "Are all callbacks asynchronous?"
+    ],
+    "intermediate": [
+      "Why do callbacks often lead to poorly structured code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Are all callbacks async?",
+      "answer": "No! Functions like Array `.map()` or `.forEach()` accept callbacks, but execute them immediately and Synchronously. Only callbacks passed to Node APIs like `fs.readFile` or `setTimeout` are executed Asynchronously via the Event Loop."
+    }
+  ],
+  "codeExample": "// 1. Synchronous Callback (Blocking)\nconsole.log(\"Start\");\n[1, 2, 3].forEach((num) => {\n  console.log(\"Processing:\", num); // Executes immediately\n});\nconsole.log(\"End of Sync\");\n\nconsole.log(\"\\n---\\n\");\n\n// 2. Asynchronous Callback (Non-Blocking)\nconsole.log(\"1. Request User from DB\");\n\n// setTimeout simulates a 1-second database query\nsetTimeout(() => {\n  // This arrow function is the Callback.\n  // It is pushed to the side, and runs LATER.\n  console.log(\"3. DB returned user: Alice\");\n}, 1000);\n\nconsole.log(\"2. Continue doing other work while waiting...\");"
+}

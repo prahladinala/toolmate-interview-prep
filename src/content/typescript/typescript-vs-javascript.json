@@ -1,0 +1,33 @@
+{
+  "id": "typescript-vs-javascript",
+  "title": "TypeScript vs JavaScript",
+  "difficulty": "Beginner",
+  "definition": "JavaScript is a dynamically typed, interpreted language. TypeScript is a statically typed, compiled superset of JavaScript.",
+  "simpleExplanation": "JavaScript waits until you run the car into a wall to tell you the brakes don't work (Runtime errors). TypeScript forces a mechanic to inspect the car before you are even allowed to turn the key (Compile-time errors).",
+  "realWorldExample": "Migrating a legacy React JS app to TS. Suddenly, hundreds of hidden bugs are exposed because components were secretly passing strings to props that expected arrays.",
+  "useCases": [
+    "Choosing the right tool for a new project"
+  ],
+  "questions": {
+    "basic": [
+      "Does TypeScript make my website run faster?"
+    ],
+    "intermediate": [
+      "What is the main drawback of using TypeScript?"
+    ],
+    "advanced": [
+      "Does TypeScript guarantee zero runtime errors?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it make my website run faster?",
+      "answer": "No. Because TS is compiled away into plain JS before running, the browser executes the exact same logic. TS strictly improves DEVELOPER speed and reliability, not application runtime speed."
+    },
+    {
+      "question": "Does it guarantee zero runtime errors?",
+      "answer": "No! If you fetch data from an API, TS trusts whatever shape you *tell* it the data is. If the backend actually returns something different, your app will still crash at runtime. (This is why libraries like Zod exist)."
+    }
+  ],
+  "codeExample": "// JavaScript: Dynamic typing (Types can change at runtime)\nlet data = 10;\ndata = \"Hello\"; // Perfectly fine in JS\n\n// TypeScript: Static typing (Types are locked in)\nlet tsData: number = 10;\n// tsData = \"Hello\"; // Error: Type 'string' is not assignable to type 'number'"
+}

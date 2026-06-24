@@ -1,0 +1,30 @@
+{
+  "id": "tailwind-forms-plugin",
+  "title": "@tailwindcss/forms",
+  "difficulty": "Beginner",
+  "definition": "An official plugin provided by Tailwind Labs that completely resets default browser form styles, making them incredibly easy to style with utility classes.",
+  "simpleExplanation": "Without this plugin, styling a `<select>` dropdown or a `<checkbox>` is a nightmare because every browser renders them differently. You install this plugin, and suddenly you can just type `class=\"text-red-500\"` on a checkbox and it instantly becomes a beautiful red checkbox.",
+  "realWorldExample": "Using the plugin to ensure that a dropdown menu looks exactly the same on an iPhone (Safari) as it does on a Windows PC (Chrome).",
+  "useCases": [
+    "Bootstrapping projects with forms"
+  ],
+  "questions": {
+    "basic": [
+      "Do you install the forms plugin via `npm`?"
+    ],
+    "intermediate": [
+      "Where do you register the plugin once it is installed?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install via npm?",
+      "answer": "Yes. `npm install -D @tailwindcss/forms`."
+    },
+    {
+      "question": "Where to register?",
+      "answer": "Inside the `plugins` array in your `tailwind.config.js` file."
+    }
+  ],
+  "codeExample": "// 1. Installation\n// npm install -D @tailwindcss/forms\n\n// 2. tailwind.config.js\nmodule.exports = {\n  theme: {\n    // ...\n  },\n  plugins: [\n    require('@tailwindcss/forms'), // That's it! Forms are now reset and beautiful.\n  ],\n}\n\n// 3. In your HTML\n// Because of the plugin, styling this checkbox is now this easy:\n<input type=\"checkbox\" class=\"rounded text-pink-500 focus:ring-pink-500\" />"
+}

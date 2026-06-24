@@ -1,0 +1,32 @@
+{
+  "id": "oauth2",
+  "title": "OAuth 2.0",
+  "difficulty": "Advanced",
+  "definition": "The industry-standard protocol for authorization. It allows a user to grant a third-party application limited access to their resources on another site, without giving the third-party application their password.",
+  "simpleExplanation": "You download a new mobile game. It asks to 'Find your friends on Facebook'. You DO NOT give the game your Facebook password. Instead, the game redirects you to Facebook. You log into Facebook, click 'Allow', and Facebook gives the game a temporary 'Key' (Access Token) that only allows it to read your friends list, nothing else.",
+  "realWorldExample": "'Log in with Google', 'Log in with GitHub', or giving a calendar app permission to read your Google Calendar.",
+  "useCases": [
+    "Third-party integrations",
+    "Single Sign-On (SSO)",
+    "Delegated access"
+  ],
+  "questions": {
+    "basic": [
+      "Is OAuth 2.0 primarily designed for Authentication (Who you are) or Authorization (What you can do)?"
+    ],
+    "intermediate": [
+      "In the OAuth flow, what is the difference between an Access Token and a Refresh Token?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auth vs Auth?",
+      "answer": "Authorization. It was originally designed strictly to grant permissions (e.g., let this app read my photos). However, it is heavily used *for* authentication nowadays via OpenID Connect."
+    },
+    {
+      "question": "Access vs Refresh?",
+      "answer": "The Access Token is the actual key used to fetch the data, but it expires very quickly for security (e.g., 1 hour). The Refresh Token is a long-lived key stored securely by the server, used only to silently request a new Access Token from the provider without making the user log in again."
+    }
+  ],
+  "codeExample": "/* \n  The OAuth 2.0 Authorization Code Flow:\n  \n  1. The User clicks 'Import Google Contacts' in your App.\n  2. Your App redirects the user to `accounts.google.com/oauth?client_id=123&scope=contacts.read`\n  3. User logs into Google and clicks \"Approve\".\n  4. Google redirects the user back to your App with a short-lived \"Authorization Code\" in the URL.\n  5. Your Backend Server secretly sends that Code + your App's Secret Password to Google.\n  6. Google verifies them and sends your Backend an \"Access Token\".\n  7. Your Backend uses that Access Token to fetch the contacts from the Google API.\n*/"
+}

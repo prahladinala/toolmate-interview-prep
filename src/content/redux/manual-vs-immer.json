@@ -1,0 +1,31 @@
+{
+  "id": "manual-vs-immer",
+  "title": "Manual Updates vs Immer",
+  "difficulty": "Intermediate",
+  "definition": "Comparing the legacy way of writing immutable spread operations against the modern Immer mutating syntax to understand why RTK is the standard.",
+  "simpleExplanation": "A side-by-side comparison. Writing manual immutable updates for nested data feels like doing advanced algebra. Immer feels like writing plain, simple JavaScript.",
+  "realWorldExample": "Updating a user's address. `return { ...state, user: { ...state.user, address: { ...state.user.address, city: 'NY' } } }` vs `state.user.address.city = 'NY'`.",
+  "useCases": [
+    "Migrating old code",
+    "Interview discussions"
+  ],
+  "questions": {
+    "basic": [
+      "Which approach takes more lines of code: Manual or Immer?"
+    ],
+    "intermediate": [
+      "Is there any performance penalty for using Immer instead of manual spread operators?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which takes more?",
+      "answer": "Manual updates take vastly more lines of code and are highly prone to syntax errors (missing brackets)."
+    },
+    {
+      "question": "Performance penalty?",
+      "answer": "Technically, yes. Immer uses Proxies which take a few milliseconds of processing time. However, in 99.9% of web apps, this difference is completely unnoticeable, and the developer experience gained is absolutely worth it."
+    }
+  ],
+  "codeExample": "// Scenario: Toggling a specific todo's 'completed' status\n\n// ❌ THE MANUAL WAY (Legacy Redux)\nfunction toggleTodo(state, action) {\n  return state.map(todo => {\n    if (todo.id !== action.payload) {\n      return todo;\n    }\n    return {\n      ...todo,\n      completed: !todo.completed\n    };\n  });\n}\n\n// ✅ THE IMMER WAY (RTK createSlice)\nconst toggleTodoRTK = (state, action) => {\n  const todo = state.find(t => t.id === action.payload);\n  if (todo) {\n    todo.completed = !todo.completed;\n  }\n};"
+}

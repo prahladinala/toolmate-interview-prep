@@ -1,0 +1,31 @@
+{
+  "id": "font-weight",
+  "title": "Font Weight",
+  "difficulty": "Beginner",
+  "definition": "Utilities for controlling the font weight (thickness) of an element.",
+  "simpleExplanation": "How bold the text is. `font-thin` looks like a spiderweb. `font-normal` is standard. `font-bold` is thick. `font-black` is incredibly massive and heavy.",
+  "realWorldExample": "Making a user's name `font-bold` in a comment section so it stands out against the `font-normal` comment text.",
+  "useCases": [
+    "Emphasis",
+    "Visual hierarchy"
+  ],
+  "questions": {
+    "basic": [
+      "What Tailwind class corresponds to standard `<b>` bold text (weight 700)?"
+    ],
+    "intermediate": [
+      "If you apply `font-black` (weight 900) but your imported web font doesn't support that weight, what happens?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Standard bold?",
+      "answer": "`font-bold`"
+    },
+    {
+      "question": "Unsupported weight?",
+      "answer": "The browser will try to 'fake' it by mathematically smudging/thickening the font, which usually looks terrible. Always ensure you import the correct weights from Google Fonts."
+    }
+  ],
+  "codeExample": "<p class=\"font-light\">Elegant, thin, minimalist text.</p>\n<p class=\"font-normal\">Standard reading weight (400).</p>\n<p class=\"font-medium\">Slightly emphasized (500), great for buttons.</p>\n<p class=\"font-bold\">Strong emphasis (700).</p>\n<p class=\"font-black\">The absolute thickest available weight (900).</p>"
+}

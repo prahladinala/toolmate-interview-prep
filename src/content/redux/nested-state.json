@@ -1,0 +1,30 @@
+{
+  "id": "nested-state",
+  "title": "Managing Nested State",
+  "difficulty": "Intermediate",
+  "definition": "The challenge of updating deeply nested properties within immutable state objects, and the patterns used to overcome it.",
+  "simpleExplanation": "If your state has an object inside an object inside an object, changing the deepest object without mutating the original state requires insane amounts of confusing `...spread` operators. Redux Toolkit solves this natively.",
+  "realWorldExample": "Trying to change `state.settings.theme.colors.primary = 'red'` in a plain Redux reducer without mutating.",
+  "useCases": [
+    "Writing clean reducers"
+  ],
+  "questions": {
+    "basic": [
+      "Why is updating nested state difficult in plain React/Redux?"
+    ],
+    "intermediate": [
+      "How does Immer solve the nested state problem?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why difficult?",
+      "answer": "Because JavaScript objects are passed by reference. You cannot just change the nested property directly. You must use the spread operator (`...`) to create a shallow copy of EVERY level of nesting down to the specific property."
+    },
+    {
+      "question": "How does Immer solve it?",
+      "answer": "Immer (built into RTK) allows you to write mutating syntax (`state.a.b.c = 'red'`). Under the hood, Immer acts like a proxy, tracking your mutations and generating the perfect, massive immutable spread object for you."
+    }
+  ],
+  "codeExample": "// ❌ LEGACY WAY (Mind-numbing spread operators)\nfunction plainReducer(state, action) {\n  return {\n    ...state,\n    settings: {\n      ...state.settings,\n      theme: {\n        ...state.settings.theme,\n        colors: {\n          ...state.settings.theme.colors,\n          primary: 'red'\n        }\n      }\n    }\n  };\n}\n\n// ✅ MODERN RTK WAY (Thanks to Immer!)\nconst slice = createSlice({\n  name: 'app',\n  initialState, // Assume same nested state\n  reducers: {\n    changeColor: (state) => {\n      // Just write it like normal JS! Immer handles the rest.\n      state.settings.theme.colors.primary = 'red';\n    }\n  }\n});"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "map",
+  "title": "Map Deep Dive",
+  "difficulty": "Intermediate",
+  "definition": "The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.",
+  "simpleExplanation": "Standard objects can only have Strings or Symbols as keys. A Map is a super-charged object where the key can be absolutely anything—even another object or an array. It also makes it incredibly easy to see how many items are inside (`map.size`).",
+  "realWorldExample": "You want to attach some metadata (like 'last Login time') to a massive User Object you received from an API, but you don't want to modify the actual object itself. You can use a Map, using the actual User Object as the key!",
+  "useCases": [
+    "Dictionaries where keys are unknown or not strings",
+    "Caching/Memoization systems"
+  ],
+  "questions": {
+    "basic": [
+      "How is a Map different from a standard Object?"
+    ],
+    "intermediate": [
+      "How do you iterate over a Map?"
+    ],
+    "advanced": [
+      "How does Map check for key equality?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How is a Map different from an Object?",
+      "answer": "1. Keys can be any type (not just strings). 2. Map maintains insertion order. 3. Map has a built-in `.size` property. 4. Map is explicitly designed to be frequently updated (added/removed), offering better performance in dictionaries than Objects."
+    },
+    {
+      "question": "How does Map check for key equality?",
+      "answer": "It uses an algorithm called 'SameValueZero'. It works exactly like strict equality `===`, except it considers `NaN` to equal `NaN` (so you can use `NaN` as a key)."
+    }
+  ],
+  "codeExample": "const userMap = new Map();\nconst userObj = { id: 1, name: 'Alice' };\n\n// 1. Using an OBJECT as the key!\nuserMap.set(userObj, { lastLogin: Date.now(), role: 'admin' });\n\n// 2. Retrieving data\nconsole.log(userMap.get(userObj).role); // 'admin'\n\n// 3. Size is built-in\nconsole.log(userMap.size); // 1\n\n// 4. Easily iterable\nfor (const [key, value] of userMap) {\n  console.log(`User ${key.name} logged in at ${value.lastLogin}`);\n}"
+}

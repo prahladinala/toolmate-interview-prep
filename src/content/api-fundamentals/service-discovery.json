@@ -1,0 +1,32 @@
+{
+  "id": "service-discovery",
+  "title": "Service Discovery",
+  "difficulty": "Advanced",
+  "definition": "A mechanism in microservice architectures that allows services to automatically find each other and communicate dynamically without hardcoding IP addresses.",
+  "simpleExplanation": "In a cloud environment, servers crash and restart constantly, changing their IP addresses. If Service A needs to talk to Service B, it cannot hardcode `192.168.1.5`, because tomorrow Service B might be `192.168.1.9`. Service Discovery is an internal phonebook. Service A asks the phonebook 'What is B's current IP?', and the phonebook answers.",
+  "realWorldExample": "Using Kubernetes (K8s) or HashiCorp Consul. When the 'Payments' service spins up a new server, it registers its IP with Consul. When the 'Cart' service needs to charge a card, it asks Consul for the current address of 'Payments'.",
+  "useCases": [
+    "Cloud-native applications",
+    "Auto-scaling environments",
+    "Docker Swarm / Kubernetes"
+  ],
+  "questions": {
+    "basic": [
+      "Why is hardcoding IP addresses a terrible idea in modern Cloud architecture?"
+    ],
+    "intermediate": [
+      "What is the difference between Client-Side and Server-Side Service Discovery?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why terrible idea?",
+      "answer": "Because modern cloud auto-scaling dynamically destroys and creates servers based on traffic. IP addresses are completely ephemeral (temporary)."
+    },
+    {
+      "question": "Client vs Server Side?",
+      "answer": "Client-Side: The microservice directly queries the Service Registry (phonebook), gets the IP, and makes the call itself. Server-Side: The microservice sends the request to a Load Balancer. The Load Balancer queries the phonebook and forwards the request."
+    }
+  ],
+  "codeExample": "/* \n  Conceptual Flow of Service Discovery\n*/\n\n// 1. [PAYMENT SERVICE] Boots up.\n//    Sends message to [REGISTRY]: \"I am alive. My IP is 10.0.5.22\"\n\n// 2. [CART SERVICE] needs to process a payment.\n//    Sends message to [REGISTRY]: \"Where is the Payment Service?\"\n//    [REGISTRY] replies: \"10.0.5.22\"\n\n// 3. [CART SERVICE] directly makes HTTP POST to http://10.0.5.22/charge\n\n// 4. If the Payment server crashes, [REGISTRY] removes it from the phonebook automatically."
+}

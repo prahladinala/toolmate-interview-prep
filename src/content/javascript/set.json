@@ -1,0 +1,34 @@
+{
+  "id": "set",
+  "title": "Set Deep Dive",
+  "difficulty": "Intermediate",
+  "definition": "The Set object lets you store unique values of any type, whether primitive values or object references.",
+  "simpleExplanation": "A Set is exactly like an Array, but it has a built-in bouncer that refuses to let duplicates in. If you try to add the number 5, and 5 is already in the Set, the Set just silently ignores you.",
+  "realWorldExample": "You have an array of 1,000 tags added to posts, and you want to extract just the unique tags to create a filter menu. `const uniqueTags = [...new Set(allTags)]`.",
+  "useCases": [
+    "Removing duplicates from arrays",
+    "Fast O(1) lookups to check if an item exists"
+  ],
+  "questions": {
+    "basic": [
+      "How do you remove duplicate numbers from an array using a Set?"
+    ],
+    "intermediate": [
+      "Why is `set.has(val)` faster than `array.includes(val)`?"
+    ],
+    "advanced": [
+      "If you add two identical objects to a Set, will it reject the second one?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why is set.has() faster?",
+      "answer": "`array.includes` is an O(N) operation. It has to loop through every single item in the array to find what you want. A Set is backed by a hash table. Checking if an item exists is an O(1) operation—instant, no matter how big the Set is."
+    },
+    {
+      "question": "Will it reject two identical objects?",
+      "answer": "No! `{a: 1}` and `{a: 1}` are two different objects pointing to two different memory locations. Since Sets check equality by reference (not by shape), it sees them as completely unique items and allows both."
+    }
+  ],
+  "codeExample": "const duplicateNumbers = [1, 1, 2, 3, 3, 4, 5, 5];\n\n// 1. Array deduplication trick\nconst uniqueArray = [...new Set(duplicateNumbers)];\nconsole.log(uniqueArray); // [1, 2, 3, 4, 5]\n\n// 2. High performance lookups\nconst blockedIPs = new Set(['192.168.1.1', '10.0.0.5']);\n\n// Instant O(1) lookup. Much faster than arrays!\nif (blockedIPs.has('192.168.1.1')) {\n  console.log('Access Denied');\n}"
+}

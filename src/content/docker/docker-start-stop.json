@@ -1,0 +1,30 @@
+{
+  "id": "docker-start-stop",
+  "title": "docker start / stop",
+  "difficulty": "Beginner",
+  "definition": "CLI commands used to manage the execution state of an existing container without destroying or recreating it.",
+  "simpleExplanation": "The power button on a TV. `docker stop` turns the TV off (but the TV is still in your living room). `docker start` turns the TV back on.",
+  "realWorldExample": "You are running a massive database container locally. When you are done working for the day, you type `docker stop mydb` to save battery power on your laptop. The next morning, you type `docker start mydb` and pick up exactly where you left off.",
+  "useCases": [
+    "Daily workflow",
+    "Conserving system resources"
+  ],
+  "questions": {
+    "basic": [
+      "If you `docker stop` a container, do you lose the data inside its database?"
+    ],
+    "intermediate": [
+      "What is the difference between `docker stop` and `docker kill`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Lose data?",
+      "answer": "No. The container simply halts. When you start it again, the data is still there (unless you delete the container entirely)."
+    },
+    {
+      "question": "Stop vs Kill?",
+      "answer": "`docker stop` sends a polite 'Please shut down' signal (SIGTERM), giving the application 10 seconds to save its work and close gracefully. `docker kill` pulls the power cord from the wall instantly (SIGKILL), forcefully crashing the process."
+    }
+  ]
+}

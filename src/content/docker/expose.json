@@ -1,0 +1,23 @@
+{
+  "id": "expose",
+  "title": "EXPOSE",
+  "difficulty": "Beginner",
+  "definition": "An instruction that functions as a type of documentation, informing Docker that the container listens on specific network ports at runtime.",
+  "simpleExplanation": "Putting a sign on the door that says 'I am a web server inside here, I will be listening on Port 80.' It doesn't actually open the door, it just tells humans and automated tools what to expect.",
+  "realWorldExample": "A Node.js backend runs on port 3000. You write `EXPOSE 3000` in the Dockerfile. When another developer looks at your file, they immediately know they need to map port 3000 when running it.",
+  "useCases": [
+    "Documentation",
+    "Inter-container communication hints"
+  ],
+  "questions": {
+    "basic": [
+      "Does the `EXPOSE 80` command actually publish the port to the public internet so you can view it in your browser?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it publish the port?",
+      "answer": "NO. This is a massive misconception. `EXPOSE` does absolutely nothing mechanically. It does not open the firewall or map the port to your laptop. To actually publish the port, the user must use the `-p` flag (e.g., `-p 8080:80`) when running the `docker run` command."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "generic-components",
+  "title": "React: Generic Components",
+  "difficulty": "Advanced",
+  "definition": "Creating React components that use TypeScript Generics `<T>` to dynamically determine the type of their props based on the data passed in.",
+  "simpleExplanation": "Imagine building a `<Table>` component. Sometimes you pass an array of `Users`, sometimes an array of `Products`. If you hardcode the Table to expect Users, it breaks for Products. If you use a Generic Component, the Table adapts its internal types perfectly to whatever Array you hand it.",
+  "realWorldExample": "A `<SelectDropdown>` component. If you pass an array of `User` objects to the `options` prop, the `onChange` callback will automatically know it should return a `User` object.",
+  "useCases": [
+    "Tables",
+    "Dropdowns",
+    "Lists",
+    "Form wrappers"
+  ],
+  "questions": {
+    "basic": [
+      "How do you declare a Generic on an arrow function component?"
+    ],
+    "intermediate": [
+      "Why do you need a comma `<T,>` when writing generic arrow functions in `.tsx` files?"
+    ],
+    "advanced": [
+      "Can a generic component extend a base type requirement?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why the trailing comma <T,> in .tsx files?",
+      "answer": "Because TSX files compile JSX tags. If you write `const Comp = <T>() => {}`, the compiler gets confused and thinks `<T>` is the start of an HTML tag like `<div>`! Adding the comma `<T,>` breaks the ambiguity and proves it's a TypeScript generic."
+    },
+    {
+      "question": "Can it extend a base type?",
+      "answer": "Yes! Just like generic functions, you can constrain it. `<T extends { id: number }>` ensures that whatever data is passed into your Table component at least has an ID for React keys."
+    }
+  ],
+  "codeExample": "import React from 'react';\n\n// Define Generic Props\ninterface ListProps<T> {\n  items: T[];\n  // The render function takes one item of type T and returns a React Node\n  renderItem: (item: T) => React.ReactNode;\n}\n\n// Generic Function Component\n// T is captured from the 'items' array passed by the user\nexport function List<T>(props: ListProps<T>) {\n  return (\n    <ul>\n      {props.items.map((item, index) => (\n        <li key={index}>{props.renderItem(item)}</li>\n      ))}\n    </ul>\n  );\n}\n\n// USAGE:\n// The compiler sees we passed an array of Strings.\n// Therefore, 'item' in the renderItem function is 100% typed as a string!\n/* \n<List \n  items={[\"Apple\", \"Banana\", \"Cherry\"]} \n  renderItem={(item) => <strong>{item.toUpperCase()}</strong>} \n/> \n*/"
+}

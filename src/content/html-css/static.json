@@ -1,0 +1,30 @@
+{
+  "id": "static",
+  "title": "Static",
+  "difficulty": "Beginner",
+  "definition": "The default positioning behavior of all HTML elements. Elements render in order, as they appear in the document flow.",
+  "simpleExplanation": "It means 'Follow the normal rules of gravity'. The first paragraph sits at the top. The second paragraph sits directly below it. You cannot use coordinates (like `top: 50px` or `left: 20px`) to move a static element.",
+  "realWorldExample": "90% of the elements on a standard webpage (paragraphs, images, standard divs) are statically positioned.",
+  "useCases": [
+    "Default document flow"
+  ],
+  "questions": {
+    "basic": [
+      "If an element is `position: static`, what happens if you apply `top: 50px` to it?"
+    ],
+    "intermediate": [
+      "Does a static element have a `z-index`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What happens?",
+      "answer": "Absolutely nothing. Static elements completely ignore `top`, `bottom`, `left`, `right`, and `z-index` properties."
+    },
+    {
+      "question": "z-index?",
+      "answer": "No. To use `z-index` (layering things on top of each other), the element must have a position other than static (like relative, absolute, or fixed)."
+    }
+  ],
+  "codeExample": "<style>\n  .box {\n    width: 100px;\n    height: 100px;\n    color: white;\n    padding: 10px;\n    margin-bottom: 10px;\n  }\n\n  .static-1 {\n    background: red;\n  }\n\n  .static-2 {\n    background: blue;\n    /* These coordinates are completely ignored because the position is static! */\n    top: 50px;\n    left: 100px;\n  }\n</style>\n\n<!-- They stack perfectly vertically, governed by the normal document flow -->\n<div class=\"box static-1\">Box 1</div>\n<div class=\"box static-2\">\n  Box 2<br><br>\n  (Ignoring Top/Left coordinates)\n</div>"
+}

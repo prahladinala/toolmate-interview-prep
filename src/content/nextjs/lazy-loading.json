@@ -1,0 +1,31 @@
+{
+  "id": "lazy-loading",
+  "title": "Lazy Loading",
+  "difficulty": "Beginner",
+  "definition": "The general concept of delaying the loading of non-critical resources (like images, iframes, or JS components) until the user actually needs them.",
+  "simpleExplanation": "If an article has 100 high-resolution photos, it is insane to force the user to download all 100 before they even start reading the first paragraph. Lazy loading tells the browser to only download the photos that are currently visible on the screen.",
+  "realWorldExample": "A YouTube clone where the video thumbnails at the bottom of the page aren't actually loaded until the user scrolls down to look at them.",
+  "useCases": [
+    "Image heavy sites",
+    "Performance optimization"
+  ],
+  "questions": {
+    "basic": [
+      "Does the Next.js `<Image>` component lazy load images by default?"
+    ],
+    "intermediate": [
+      "If an image is at the very top of the page (above the fold), should you lazy load it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Lazy load by default?",
+      "answer": "Yes! The `<Image>` component applies native browser lazy loading out of the box with zero configuration."
+    },
+    {
+      "question": "Above the fold?",
+      "answer": "NO! You should NEVER lazy load the main 'Hero' image at the top of the page. Lazy loading inherently delays the image request slightly. You want the top image to load instantly. You must add the `priority` prop to it."
+    }
+  ],
+  "codeExample": "import Image from 'next/image';\n\nexport default function Article() {\n  return (\n    <main>\n      {/* \n        CRITICAL: The image at the top of the screen MUST have 'priority'. \n        This disables lazy loading and forces the browser to fetch it instantly.\n      */}\n      <Image \n        src=\"/hero-banner.jpg\" \n        priority \n        alt=\"Hero\"\n        width={1000} height={500} \n      />\n\n      <p>Lots of text...</p>\n      <p>Lots of text...</p>\n      <p>Lots of text...</p>\n\n      {/* \n        Way down here, we let Next.js do its default lazy loading behavior.\n        This image won't download until the user scrolls down to it.\n      */}\n      <Image \n        src=\"/footer-illustration.jpg\" \n        alt=\"Illustration\"\n        width={400} height={400} \n      />\n    </main>\n  );\n}"
+}

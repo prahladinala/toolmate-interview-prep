@@ -1,0 +1,31 @@
+{
+  "id": "tag-invalidation",
+  "title": "Tag Invalidation",
+  "difficulty": "Advanced",
+  "definition": "The automated system RTK Query uses to know exactly WHEN to delete stale cache data and refetch it from the server. Queries 'provide' tags, and Mutations 'invalidate' tags.",
+  "simpleExplanation": "You fetch a list of Posts. RTK Query labels that data with a sticky note: `['Post']`. Then, you submit a Mutation to DELETE a post. You tell the Mutation: 'When you succeed, tear up the `['Post']` sticky note'. RTK Query sees the note torn up, realizes its cache is outdated, and automatically fetches the fresh list of Posts in the background.",
+  "realWorldExample": "Without Tag Invalidation, if you delete an item from a list, the item will disappear from the server, but your screen will still show it because it's stuck in the cache. Tags fix this automatically.",
+  "useCases": [
+    "Keeping the UI perfectly synced with the database",
+    "Automated refetching"
+  ],
+  "questions": {
+    "basic": [
+      "Which endpoints `provideTags`: Queries or Mutations?"
+    ],
+    "intermediate": [
+      "What happens immediately after a Mutation invalidates a Tag?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which provides?",
+      "answer": "Queries `providesTags` (They label the data they fetched). Mutations `invalidatesTags` (They destroy the label when they change data)."
+    },
+    {
+      "question": "What happens?",
+      "answer": "Any active Queries on the screen that provided that specific Tag will immediately and automatically trigger a background refetch to get the fresh data from the server."
+    }
+  ],
+  "codeExample": "endpoints: (builder) => ({\n  // 1. The Query fetches the list, and slaps a 'Post' label on the cache\n  getPosts: builder.query({\n    query: () => '/posts',\n    providesTags: ['Post'],\n  }),\n  \n  // 2. The Mutation adds a new post.\n  addPost: builder.mutation({\n    query: (body) => ({ url: '/posts', method: 'POST', body }),\n    // 3. When this succeeds, it destroys the 'Post' label.\n    // RTK Query immediately forces getPosts() to run again to get the new list!\n    invalidatesTags: ['Post'],\n  }),\n})"
+}

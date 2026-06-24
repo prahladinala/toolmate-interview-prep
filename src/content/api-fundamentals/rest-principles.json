@@ -1,0 +1,31 @@
+{
+  "id": "rest-principles",
+  "title": "REST Principles",
+  "difficulty": "Intermediate",
+  "definition": "The six guiding constraints established by Roy Fielding that define a true RESTful system: Client-Server, Stateless, Cacheable, Uniform Interface, Layered System, and Code on Demand (optional).",
+  "simpleExplanation": "To call your API 'RESTful', you must follow the rules. \n1. Client and Server must be separate.\n2. Server must not memorize client sessions (Stateless).\n3. Responses must declare if they can be cached.\n4. Endpoints must be uniform and predictable.\n5. The client shouldn't know if it's talking to the real server or a proxy (Layered).",
+  "realWorldExample": "A mobile app (Client) talking to a Node.js API (Server). Because the API is Stateless, if the Node server crashes and restarts, the mobile app doesn't break, because the next request it sends contains the Auth Token anyway.",
+  "useCases": [
+    "System Architecture",
+    "API Design Reviews"
+  ],
+  "questions": {
+    "basic": [
+      "Which REST constraint dictates that the client UI and the backend database must be completely separate entities?"
+    ],
+    "intermediate": [
+      "What is the 'Uniform Interface' constraint?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which constraint?",
+      "answer": "The Client-Server architecture constraint."
+    },
+    {
+      "question": "Uniform Interface?",
+      "answer": "It means things must look the same everywhere. If you fetch `/users`, you get an array of users. If you fetch `/posts`, you get an array of posts. You use standard HTTP verbs. You don't invent custom actions."
+    }
+  ],
+  "codeExample": "/* \n  Focus on the 'Stateless' Principle \n*/\n\n// ❌ Stateful (Violates REST)\n// Request 1: POST /login (Server saves 'isLoggedIn = true' in its memory)\n// Request 2: GET /account (Server checks its memory. Yes, they are logged in!)\n// *If Server crashes between Request 1 & 2, Request 2 fails.*\n\n// ✅ Stateless (True REST)\n// Request 1: POST /login (Server returns a JWT token to the client, saves nothing)\n// Request 2: GET /account + Header: \"Authorization: Bearer <Token>\"\n// (The server verifies the token math. No memory needed. Infinitely scalable.)"
+}

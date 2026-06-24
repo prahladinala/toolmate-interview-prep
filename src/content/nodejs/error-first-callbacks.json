@@ -1,0 +1,34 @@
+{
+  "id": "error-first-callbacks",
+  "title": "Error-First Callbacks",
+  "difficulty": "Beginner",
+  "definition": "A strict Node.js convention where the first argument of any asynchronous callback function is always reserved for an Error object (or null if successful), and subsequent arguments hold the actual data.",
+  "simpleExplanation": "Imagine sending a scout to check if a bridge is safe. The scout returns with two boxes: 'Bad News' and 'Good News'. The Node.js rule is you MUST open the 'Bad News' box first. If there's an error inside, you stop. If it's empty (`null`), you are safely allowed to open the 'Good News' box.",
+  "realWorldExample": "Almost every built-in Node.js module uses this pattern: `fs.readFile('file.txt', (err, data) => { if (err) throw err; console.log(data); });`.",
+  "useCases": [
+    "Interacting with legacy Node.js APIs",
+    "Writing libraries that follow standard Node conventions"
+  ],
+  "questions": {
+    "basic": [
+      "What is the first parameter of an error-first callback?"
+    ],
+    "intermediate": [
+      "Why did Node adopt this standard?"
+    ],
+    "advanced": [
+      "How do you convert an Error-First callback API into a modern Promise API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why did Node adopt this?",
+      "answer": "Because standard `try/catch` blocks DO NOT WORK on asynchronous callbacks. If the callback crashed 5 seconds in the future, the `try` block was already long gone. Forcing the error into the callback arguments was the only way to reliably catch async errors."
+    },
+    {
+      "question": "How do you convert it to Promises?",
+      "answer": "You can wrap it manually in `new Promise()`, but Node provides a built-in utility: `util.promisify(function)`. It magically converts any error-first callback function into an `async/await` compatible Promise function!"
+    }
+  ],
+  "codeExample": "const fs = require('fs');\nconst util = require('util');\n\nconsole.log(\"Attempting to read file...\");\n\n// 1. The classic Error-First Callback\n// arg 1: error, arg 2: data\nfs.readFile('does-not-exist.txt', 'utf-8', (error, data) => {\n  // YOU MUST CHECK THE ERROR FIRST!\n  if (error) {\n    console.log(\"Callback Caught an Error! File missing.\");\n    return;\n  }\n  \n  // If we reach here, we know it's safe to use the data\n  console.log(data);\n});\n\n// 2. Modernizing it using util.promisify\nconst readFilePromise = util.promisify(fs.readFile);\n\nasync function readModern() {\n  try {\n    // Now we can use async/await!\n    const data = await readFilePromise('does-not-exist.txt', 'utf-8');\n  } catch (err) {\n    console.log(\"Promisify Caught an Error too!\");\n  }\n}\nreadModern();"
+}

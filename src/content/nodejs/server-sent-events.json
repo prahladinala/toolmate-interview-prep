@@ -1,0 +1,32 @@
+{
+  "id": "server-sent-events",
+  "title": "Server Sent Events (SSE)",
+  "difficulty": "Intermediate",
+  "definition": "A standard describing how servers can initiate data transmission towards clients once an initial client connection has been established. It is built on top of standard HTTP.",
+  "simpleExplanation": "WebSockets are a two-way phone call. Server Sent Events (SSE) is a radio broadcast. The client tunes in (connects via HTTP), and then strictly LISTENS. The server continuously pushes updates down the line, but the client cannot talk back over that same line.",
+  "realWorldExample": "A Live Sports Scoreboard or a Twitter Feed. The user doesn't need to send data to the server at 60 frames per second; they just need to watch the score update live. SSE is perfect for this, and much easier to setup than full WebSockets.",
+  "useCases": [
+    "Live feeds/timelines",
+    "Push notifications",
+    "Real-time dashboards"
+  ],
+  "questions": {
+    "basic": [
+      "Are Server Sent Events bidirectional (two-way)?"
+    ],
+    "intermediate": [
+      "What protocol does SSE use?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Bidirectional?",
+      "answer": "No. SSE is strictly unidirectional (Server -> Client only)."
+    },
+    {
+      "question": "What protocol?",
+      "answer": "Standard HTTP! Unlike WebSockets which require a special `ws://` protocol upgrade, SSE works over standard `http://`. This makes it vastly easier to configure through firewalls and load balancers."
+    }
+  ],
+  "codeExample": "// --- EXPRESS BACKEND (SSE) ---\n// const express = require('express');\n// const app = express();\n\n// app.get('/stream', (req, res) => {\n//   // 1. Set specific SSE Headers\n//   res.writeHead(200, {\n//     'Content-Type': 'text/event-stream',\n//     'Cache-Control': 'no-cache',\n//     'Connection': 'keep-alive'\n//   });\n\n//   // 2. Continuously push data every 2 seconds\n//   const intervalId = setInterval(() => {\n//     const data = JSON.stringify({ stockPrice: Math.random() * 100 });\n//     // SSE MUST be formatted with 'data: ' and end with two newlines '\\n\\n'\n//     res.write(`data: ${data}\\n\\n`);\n//   }, 2000);\n\n//   // 3. Cleanup if the user closes the tab\n//   req.on('close', () => clearInterval(intervalId));\n// });\n\n// --- FRONTEND JAVASCRIPT ---\n// const eventSource = new EventSource('/stream');\n// eventSource.onmessage = (event) => {\n//   console.log(\"New Update:\", JSON.parse(event.data));\n// };\n\nconsole.log(\"If you only need to push data ONE-WAY (server to client), SSE is much simpler and more robust than WebSockets.\");"
+}

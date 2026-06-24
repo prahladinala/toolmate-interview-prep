@@ -1,0 +1,31 @@
+{
+  "id": "git-internals",
+  "title": "Git Internals",
+  "difficulty": "Advanced",
+  "definition": "The underlying architecture of Git. At its core, Git is not a version control system, but a 'content-addressable filesystem'—a simple key-value data store.",
+  "simpleExplanation": "Git doesn't store your files as 'files'. When you save code, Git compresses it, calculates a unique SHA-1 math hash (like `a1b2...`), and drops it into a bucket. Every branch, commit, and file is just a text pointer pointing to one of these hashes.",
+  "realWorldExample": "If you rename a file from `index.html` to `home.html` without changing the code inside, Git is so smart it doesn't create a new file. It just points both names at the exact same bucket of code.",
+  "useCases": [
+    "Understanding deep Git logic",
+    "Recovering from catastrophic repo corruption"
+  ],
+  "questions": {
+    "basic": [
+      "What algorithm does Git use to generate the 40-character hashes?"
+    ],
+    "intermediate": [
+      "If you look inside the `.git/objects` folder, what will you see?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Algorithm?",
+      "answer": "SHA-1 (Secure Hash Algorithm 1)."
+    },
+    {
+      "question": "What is in .git/objects?",
+      "answer": "Folders named with 2 characters (e.g., `a1`), containing files with 38 characters. These are the encrypted key-value buckets storing every piece of code you've ever written."
+    }
+  ],
+  "codeExample": "# You can actually ask Git to read the raw database!\n\n# Step 1: Hash an arbitrary piece of text and store it in Git's brain\n$ echo \"Hello World\" | git hash-object -w --stdin\n# Output: 557db03de997c86a4a028e1ebd3a1ceb225be238\n\n# Step 2: Use the 'cat-file' command to pull the data back out of the hash!\n$ git cat-file -p 557db03de997c86a4a028e1ebd3a1ceb225be238\n# Output: Hello World"
+}

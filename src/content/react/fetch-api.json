@@ -1,0 +1,44 @@
+{
+  "id": "fetch-api",
+  "title": "Fetch API",
+  "difficulty": "Beginner",
+  "definition": "The native browser API for making HTTP requests to servers to retrieve or save data.",
+  "simpleExplanation": "Fetch is like a mail carrier built right into the browser. You give it an address (URL), and it goes out to the internet, picks up the package (JSON data), and brings it back to your React component.",
+  "realWorldExample": "Fetching a list of users from `https://jsonplaceholder.typicode.com/users` when a component mounts, and storing that array in a `useState` hook to map over and display.",
+  "useCases": [
+    "Retrieving data from a backend REST API",
+    "Sending form data via POST requests"
+  ],
+  "questions": {
+    "basic": [
+      "Is Fetch specific to React?",
+      "Does `fetch()` return data immediately?"
+    ],
+    "intermediate": [
+      "Why do you have to call `.json()` on a fetch response?",
+      "Does `fetch` throw an error if the server returns a 404 or 500?"
+    ],
+    "advanced": [
+      "How do you abort a fetch request if a component unmounts?",
+      "Why does React 18 Strict Mode cause fetch in `useEffect` to run twice?"
+    ],
+    "trick": [
+      "If the user's internet disconnects, does fetch throw an error or return a status code?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does fetch throw an error on a 404 or 500?",
+      "answer": "No! Fetch only throws a rejected Promise if there is a network failure (like the user losing internet). If the server receives the request and replies with `404 Not Found`, fetch considers that a SUCCESSFUL network request. You must manually check `if (!res.ok) throw new Error(\"Bad status\");`."
+    },
+    {
+      "question": "Why do you have to call .json()?",
+      "answer": "The initial fetch Promise resolves as soon as the HTTP headers are received. The actual body of the response might take longer to download. Calling `.json()` returns a SECOND Promise that reads the incoming stream to completion and parses it into JavaScript objects."
+    },
+    {
+      "question": "Is fetch specific to React?",
+      "answer": "No, it is a standard Web API built into all modern browsers. React simply uses it."
+    }
+  ],
+  "codeExample": "import React, { useState, useEffect } from \"react\";\n\nexport default function FetchDemo() {\n  const [data, setData] = useState([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    fetch(\"https://jsonplaceholder.typicode.com/users\")\n      .then(res => {\n        if (!res.ok) throw new Error(\"Server responded with \" + res.status);\n        return res.json(); // Returns another promise!\n      })\n      .then(json => {\n        setData(json);\n        setLoading(false);\n      })\n      .catch(err => {\n        setError(err.message);\n        setLoading(false);\n      });\n  }, []);\n\n  if (loading) return <div>Loading...</div>;\n  if (error) return <div className=\"text-red-500\">Error: {error}</div>;\n\n  return (\n    <ul className=\"p-4 border\">\n      {data.map(user => <li key={user.id}>{user.name}</li>)}\n    </ul>\n  );\n}"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "request-response",
+  "title": "Request & Response Lifecycle",
+  "difficulty": "Intermediate",
+  "definition": "The end-to-end journey of a network call, from the client establishing a connection, to the server parsing the request, executing business logic, and terminating the connection by sending a response.",
+  "simpleExplanation": "A conversation. \n1. Client calls the server: 'Hello, here is my cookie (Headers) and here is a photo (Body).'\n2. Server parses the data.\n3. Server talks to the database.\n4. Server replies: 'Here is status code 201 (Headers) and a success message (Body).' \n5. The server hangs up the phone (ends the connection).",
+  "realWorldExample": "If your code forgets to call `response.end()` (or `res.send()` in Express), the server literally never hangs up the phone. The user's browser will show a spinning loading wheel forever until it eventually times out.",
+  "useCases": [
+    "Debugging infinite loading spinners",
+    "Parsing JSON bodies"
+  ],
+  "questions": {
+    "basic": [
+      "What happens if you never call `.end()` on a response?"
+    ],
+    "intermediate": [
+      "Can you send headers AFTER you have already sent the body?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Never call end()?",
+      "answer": "The client's browser will hang infinitely waiting for the server to finish."
+    },
+    {
+      "question": "Headers after body?",
+      "answer": "No! Headers are the envelope; the body is the letter. You cannot write on the envelope after you have already mailed the letter. Node will throw an 'ERR_HTTP_HEADERS_SENT' crash if you try to `res.writeHead` after `res.write`."
+    }
+  ],
+  "codeExample": "const http = require('http');\n\nconst server = http.createServer((req, res) => {\n  // --- THE REQUEST (req) ---\n  console.log(\"Method:\", req.method);\n  console.log(\"Headers:\", req.headers['user-agent']);\n  \n  // To read POST body data in raw Node, you must use Streams!\n  let body = '';\n  req.on('data', chunk => { body += chunk; });\n  req.on('end', () => {\n    console.log(\"Body Received:\", body);\n    \n    // --- THE RESPONSE (res) ---\n    // 1. Send the envelope (Headers + Status)\n    res.writeHead(200, { 'Content-Type': 'text/plain' });\n    \n    // 2. Put the letter inside (Body)\n    res.write('Message received loud and clear.');\n    \n    // 3. Mail it! (Hang up the connection)\n    res.end();\n  });\n});\n\nconsole.log(\"Express hides all this stream logic behind 'req.body'!\");"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "what-is-github-actions",
+  "title": "What are GitHub Actions?",
+  "difficulty": "Intermediate",
+  "definition": "A continuous integration and continuous delivery (CI/CD) platform built directly into GitHub. It allows you to automate your build, test, and deployment pipeline.",
+  "simpleExplanation": "Robots that work for you for free. You write a script that says: 'Every time someone opens a Pull Request, boot up a Linux computer, install my code, and run my automated tests. If the tests fail, block the Pull Request.'",
+  "realWorldExample": "Automatically publishing an npm package. You write an Action so that whenever you create a new Release tag (v2.0.0) on GitHub, the robot automatically builds the code and publishes it to npmjs.com without you typing a single command.",
+  "useCases": [
+    "Automated Testing",
+    "Automated Deployments",
+    "Running Linters"
+  ],
+  "questions": {
+    "basic": [
+      "Are GitHub Actions free to use?"
+    ],
+    "intermediate": [
+      "What format are GitHub Actions workflow files written in?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Are they free?",
+      "answer": "Yes! GitHub gives you thousands of free computing minutes every month for public and private repositories."
+    },
+    {
+      "question": "What format?",
+      "answer": "YAML (`.yml` or `.yaml`)."
+    }
+  ],
+  "codeExample": "# This file lives in: .github/workflows/test.yml\n\nname: Run Tests\n\n# TRIGGER: When does this robot run?\non: [push, pull_request] \n\n# JOBS: What does the robot do?\njobs:\n  test:\n    runs-on: ubuntu-latest # Boot up a Linux server\n    \n    steps:\n    - name: Download my code\n      uses: actions/checkout@v3\n      \n    - name: Install Node.js\n      uses: actions/setup-node@v3\n      with:\n        node-version: 18\n        \n    - name: Install dependencies and Run tests\n      run: |\n        npm install\n        npm test"
+}

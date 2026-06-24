@@ -1,0 +1,32 @@
+{
+  "id": "basic-auth",
+  "title": "Basic Authentication",
+  "difficulty": "Beginner",
+  "definition": "The simplest form of HTTP authentication where the client sends the raw username and password combined into a single Base64 encoded string within the HTTP Header.",
+  "simpleExplanation": "You take `username:password`, mash them together, scramble the text slightly (Base64), and send it to the server on every single request. The server unscrambles it and checks the database.",
+  "realWorldExample": "Often used for internal company tools, simple admin dashboards, or older legacy APIs where complex token systems are overkill.",
+  "useCases": [
+    "Simple APIs",
+    "Legacy systems",
+    "Quick prototyping"
+  ],
+  "questions": {
+    "basic": [
+      "Does Base64 encoding encrypt the password so hackers can't read it??"
+    ],
+    "intermediate": [
+      "Because Basic Auth sends the actual password on every single request, what protocol is absolutely mandatory to prevent immediate hacking?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does Base64 encrypt?",
+      "answer": "NO! Base64 is NOT encryption, it is just encoding (like translating English to French). Anyone who intercepts the network request can instantly decode it and read the plaintext password."
+    },
+    {
+      "question": "What is mandatory?",
+      "answer": "HTTPS (SSL/TLS). Because the password is sent in plaintext on every request, HTTPS is required to encrypt the entire network tunnel, keeping the password safe from network sniffers."
+    }
+  ],
+  "codeExample": "/* \n  How Basic Auth works under the hood \n*/\n\n// 1. You have credentials:\nconst username = \"admin\";\nconst password = \"supersecret\";\n\n// 2. You combine them with a colon:\nconst combined = \"admin:supersecret\";\n\n// 3. You Base64 encode the string:\n// (In JS, btoa() does this)\nconst encoded = btoa(combined); // Yields: \"YWRtaW46c3VwZXJzZWNyZXQ=\"\n\n// 4. You attach it to the HTTP Request Header:\nfetch('https://api.com/data', {\n  headers: {\n    'Authorization': `Basic YWRtaW46c3VwZXJzZWNyZXQ=`\n  }\n});"
+}

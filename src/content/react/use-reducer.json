@@ -1,0 +1,45 @@
+{
+  "id": "use-reducer",
+  "title": "State Management (useReducer)",
+  "difficulty": "Intermediate",
+  "definition": "The `useReducer` hook is an alternative to `useState`. It is usually preferable when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. It uses the Redux pattern of dispatching 'actions' to a 'reducer' function.",
+  "simpleExplanation": "Imagine managing a bank account. You don't just say 'Set my balance to $500' (`useState`). Instead, you go to the teller (the Reducer) and hand them an instruction slip (the Action) that says 'DEPOSIT $100'. The teller looks at the slip, checks the rules, and updates the vault safely. `useReducer` centralizes all the complex rules for how state can change into one single function.",
+  "realWorldExample": "Managing a complex Shopping Cart. Instead of having separate `useState` calls for items, total price, and discount codes, you use a single reducer that handles actions like 'ADD_ITEM', 'REMOVE_ITEM', and 'APPLY_DISCOUNT'.",
+  "useCases": [
+    "Managing complex state objects or arrays",
+    "When next state depends heavily on previous state",
+    "Moving heavy business logic out of the component and into a separate function"
+  ],
+  "questions": {
+    "basic": [
+      "What arguments does `useReducer` take?",
+      "What does the `dispatch` function do?"
+    ],
+    "intermediate": [
+      "When should you choose `useReducer` over `useState`?",
+      "What is an 'action' object usually composed of?"
+    ],
+    "advanced": [
+      "Why must a reducer function be 'pure'?",
+      "How does `useReducer` help avoid passing callbacks deeply through components?"
+    ],
+    "trick": [
+      "Can a reducer function trigger an API call (side effect)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is an 'action' object usually composed of?",
+      "answer": "By convention, an action is an object with a `type` property (a string describing what happened, like 'INCREMENT') and an optional `payload` property (data needed to complete the action, like the amount to increment by)."
+    },
+    {
+      "question": "How does useReducer help avoid passing callbacks deeply?",
+      "answer": "Instead of passing 5 different state-updating functions down through props (e.g., `onAdd`, `onRemove`, `onEdit`), you can just pass the single `dispatch` function down. Any child can dispatch any action."
+    },
+    {
+      "question": "Can a reducer function trigger an API call?",
+      "answer": "NO! Reducer functions must be 100% pure. They take state and an action, and return new state. They must never fetch data, mutate arguments, or interact with the DOM. Side effects belong in `useEffect` or event handlers."
+    }
+  ],
+  "codeExample": "import React, { useReducer } from 'react';\n\n// 1. The Reducer Function (Pure, outside the component!)\nfunction accountReducer(state, action) {\n  switch (action.type) {\n    case 'DEPOSIT':\n      return { balance: state.balance + action.payload };\n    case 'WITHDRAW':\n      return { balance: state.balance - action.payload };\n    default:\n      throw new Error('Unknown action type');\n  }\n}\n\nexport default function BankAccount() {\n  // 2. Initialize useReducer\n  const [state, dispatch] = useReducer(accountReducer, { balance: 0 });\n\n  return (\n    <div>\n      <h2>Account Balance: ${state.balance}</h2>\n      \n      {/* 3. Dispatch Actions */}\n      <button onClick={() => dispatch({ type: 'DEPOSIT', payload: 100 })}>\n        Deposit $100\n      </button>\n      \n      <button onClick={() => dispatch({ type: 'WITHDRAW', payload: 50 })}>\n        Withdraw $50\n      </button>\n    </div>\n  );\n}"
+}

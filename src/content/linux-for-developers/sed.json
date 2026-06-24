@@ -1,0 +1,31 @@
+{
+  "id": "sed",
+  "title": "sed",
+  "difficulty": "Advanced",
+  "definition": "Stream Editor. A powerful utility that parses and transforms text. It is most commonly used for finding and replacing text across massive files or data streams without opening them in an editor.",
+  "simpleExplanation": "The ultimate 'Find and Replace' tool. You can tell it 'Go into this 10,000 line file, find every instance of the word Apple, and change it to Orange instantly'.",
+  "realWorldExample": "You are deploying code and need to change the database IP from '127.0.0.1' to '192.168.1.5' inside a config file. You script it: `sed -i 's/127.0.0.1/192.168.1.5/g' config.txt`. The file is updated instantly.",
+  "useCases": [
+    "Automated text replacement",
+    "Data sanitization",
+    "CI/CD scripting"
+  ],
+  "questions": {
+    "basic": [
+      "In the `sed` command `s/old/new/g`, what does the 's' stand for?"
+    ],
+    "intermediate": [
+      "What does the `-i` flag do in a `sed` command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is 's'?",
+      "answer": "Substitute."
+    },
+    {
+      "question": "What does -i do?",
+      "answer": "In-place editing. By default, `sed` only prints the changed text to the screen without actually modifying the file. The `-i` flag tells `sed` to permanently save the changes directly into the original file."
+    }
+  ]
+}

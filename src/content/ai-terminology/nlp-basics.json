@@ -1,0 +1,31 @@
+{
+  "id": "nlp-basics",
+  "title": "What is NLP?",
+  "difficulty": "Beginner",
+  "definition": "Natural Language Processing. A branch of AI that gives computers the ability to understand, interpret, and generate human language in a valuable way.",
+  "simpleExplanation": "Teaching computers to speak English (or Spanish, or Mandarin) instead of just speaking in 1s and 0s. It bridges the gap between human communication and computer understanding.",
+  "realWorldExample": "When you type 'pizza places near me' into Google, NLP is what understands you are hungry and looking for a restaurant, rather than looking for Wikipedia articles about the history of pizza.",
+  "useCases": [
+    "Search engines",
+    "Chatbots",
+    "Spell checkers"
+  ],
+  "questions": {
+    "basic": [
+      "What does NLP stand for?"
+    ],
+    "intermediate": [
+      "What is the difference between Natural Language Understanding (NLU) and Natural Language Generation (NLG)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does it stand for?",
+      "answer": "Natural Language Processing."
+    },
+    {
+      "question": "NLU vs NLG?",
+      "answer": "They are the two halves of NLP. NLU is the computer *reading* what you typed and figuring out your intent. NLG is the computer *writing* a response back to you in fluent human language (like ChatGPT)."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "partial-prerendering",
+  "title": "Partial Prerendering (PPR)",
+  "difficulty": "Advanced",
+  "definition": "An experimental Next.js architecture that combines the ultra-fast instant loading of Static Site Generation (SSG) with fully dynamic Server-Side Rendering (SSR) on the exact same page.",
+  "simpleExplanation": "Historically, a page had to be 100% Static or 100% Dynamic. If you added a dynamic 'Shopping Cart' icon to a static 'Blog', the whole page became slow. PPR fixes this. The server instantly sends a static HTML shell (the blog), leaving a 'hole' for the shopping cart, which is streamed in dynamically milliseconds later.",
+  "realWorldExample": "An E-commerce product page. The product image, title, and description are served instantly as a static cache. The 'Add to Cart' button (which needs to check live inventory) is dynamically rendered and popped into the page.",
+  "useCases": [
+    "E-commerce",
+    "Personalized static pages"
+  ],
+  "questions": {
+    "basic": [
+      "In Partial Prerendering, does the static shell of the page wait for the dynamic parts to finish loading?"
+    ],
+    "intermediate": [
+      "How do you define the 'boundary' between the static shell and the dynamic content in PPR?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it wait?",
+      "answer": "No! That is the genius of PPR. The static shell is sent instantly from a CDN edge network, resulting in zero wait time for the user."
+    },
+    {
+      "question": "How to define boundary?",
+      "answer": "By wrapping the dynamic components in a React `<Suspense>` boundary. Next.js knows everything outside Suspense is static, and everything inside is dynamic."
+    }
+  ],
+  "codeExample": "/* \n  Note: PPR is currently an experimental feature in Next.js 14+\n  Requires 'experimental: { ppr: true }' in next.config.js\n*/\nimport { Suspense } from 'react';\nimport { StaticProductDetails } from './components';\nimport { DynamicCartStatus } from './components'; // Relies on cookies/DB\n\nexport default function ProductPage() {\n  return (\n    <main>\n      {/* ⚡ INSTANT: This is pre-rendered at build time and served from CDN */}\n      <StaticProductDetails />\n      \n      {/* \n        🕳️ THE HOLE: Suspense tells PPR this part is dynamic.\n        The fallback is served instantly with the static shell. \n        The actual Cart is generated dynamically on the server and streamed in.\n      */}\n      <Suspense fallback={<div className=\"w-10 h-10 animate-pulse bg-gray-200\" />}>\n        <DynamicCartStatus />\n      </Suspense>\n    </main>\n  );\n}"
+}

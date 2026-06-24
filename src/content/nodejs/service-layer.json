@@ -1,0 +1,31 @@
+{
+  "id": "service-layer",
+  "title": "Service Layer Pattern",
+  "difficulty": "Advanced",
+  "definition": "An architectural pattern that defines an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response in each operation.",
+  "simpleExplanation": "If the Controller is the Waiter, and the Repository is the Chef, the Service Layer is the Restaurant Manager. The Waiter shouldn't be making complex business decisions (like checking if a user has enough funds, calculating tax, and applying discounts). The Waiter (Controller) should just pass the request to the Manager (Service). The Service does all the heavy business logic, calls the Chef (Repository), and gives the final result back to the Waiter.",
+  "realWorldExample": "A 'Checkout' route. The Controller extracts the UserID and Cart from the HTTP request. It passes them to `CheckoutService.processOrder()`. The Service validates inventory, charges the Stripe API, sends an email via SendGrid, and tells the Repository to save the order. The Controller just replies '200 OK'.",
+  "useCases": [
+    "Keeping Controllers 'skinny'",
+    "Reusing complex logic across different routes or cron jobs"
+  ],
+  "questions": {
+    "basic": [
+      "Should business logic (like calculating taxes) live in the Controller or the Service Layer?"
+    ],
+    "intermediate": [
+      "Why do we want 'Skinny Controllers' and 'Fat Services'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where does business logic live?",
+      "answer": "In the Service Layer."
+    },
+    {
+      "question": "Skinny Controllers?",
+      "answer": "Controllers should only handle HTTP concerns (parsing `req.body`, checking headers, sending `res.status`). If you put business logic in a Controller, you can't reuse it. By putting it in a Service, you can call that exact same logic from an HTTP route, a WebSocket event, or a nightly Cron Job!"
+    }
+  ],
+  "codeExample": "// --- THE SERVICE (Heavy Business Logic) ---\nclass PaymentService {\n  static async processRefund(userId, amount) {\n    // 1. Business Rule: Check if amount is valid\n    if (amount <= 0) throw new Error(\"Invalid amount\");\n    \n    // 2. Call external APIs (Stripe)\n    console.log(`Contacting Stripe to refund $${amount}...`);\n    \n    // 3. Database Updates\n    console.log(`Updating User ${userId} balance in database...`);\n    \n    return \"Refund Complete\";\n  }\n}\n\n// --- THE CONTROLLER (Skinny & HTTP Focused) ---\nconst handleRefundRoute = async (req, res) => {\n  try {\n    const { userId, amount } = req.body; // Extract HTTP data\n    \n    // Pass to Service\n    const result = await PaymentService.processRefund(userId, amount);\n    \n    res.status(200).json({ message: result }); // Send HTTP response\n  } catch (error) {\n    res.status(400).json({ error: error.message });\n  }\n};\n\nconsole.log(\"The Service Layer makes your core business logic completely independent of Express.js.\");"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "readonly-properties",
+  "title": "Readonly Properties",
+  "difficulty": "Intermediate",
+  "definition": "The `readonly` modifier makes an object property or an entire array immutable in TypeScript, preventing reassignment after initialization.",
+  "simpleExplanation": "If an object is a museum exhibit, `readonly` is the 'Do Not Touch' glass case around a specific artifact. You can look at it, but the compiler will throw an error if you try to change its value.",
+  "realWorldExample": "Database IDs. When you fetch a user from the DB, their `id` shouldn't change. `type User = { readonly id: number; name: string }`.",
+  "useCases": [
+    "Preventing accidental mutation",
+    "Redux state definitions",
+    "Functional programming patterns"
+  ],
+  "questions": {
+    "basic": [
+      "How do you make a property readonly?"
+    ],
+    "intermediate": [
+      "Is `readonly` enforced at runtime in the browser?"
+    ],
+    "advanced": [
+      "What is the difference between `readonly string[]` and `ReadonlyArray<string>`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it enforced at runtime?",
+      "answer": "No. Like almost all TypeScript features, it is erased during compilation. It only prevents you from mutating it IN YOUR CODE EDITOR. If a 3rd party script mutates the object at runtime, the browser won't stop it."
+    },
+    {
+      "question": "Difference between readonly [] and ReadonlyArray?",
+      "answer": "There is no difference, they are just different syntaxes for the exact same thing. A Readonly array removes mutating methods like `.push()`, `.pop()`, and `.splice()`."
+    }
+  ],
+  "codeExample": "interface Configuration {\n  readonly apiKey: string;\n  theme: string;\n}\n\nconst myConfig: Configuration = {\n  apiKey: \"12345-ABCDE\",\n  theme: \"dark\"\n};\n\nmyConfig.theme = \"light\"; // Allowed\n// myConfig.apiKey = \"999\"; // ERROR: Cannot assign to 'apiKey' because it is a read-only property.\n\n// Readonly Arrays\nconst strictList: readonly number[] = [1, 2, 3];\n// strictList.push(4); // ERROR: Property 'push' does not exist on type 'readonly number[]'."
+}

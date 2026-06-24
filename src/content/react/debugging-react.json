@@ -1,0 +1,33 @@
+{
+  "id": "debugging-react",
+  "title": "Debugging Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions that provide broken code and ask you to spot the bug and fix it.",
+  "simpleExplanation": "The interviewer shows you a piece of code that causes an infinite loop, a memory leak, or a stale closure, and asks you to explain why it's broken.",
+  "realWorldExample": "A classic stale closure bug where `setInterval` inside a `useEffect` keeps logging the old state value.",
+  "useCases": [
+    "Live Coding Interviews"
+  ],
+  "questions": {
+    "basic": [
+      "Why am I getting a 'Cannot update a component while rendering a different component' warning?"
+    ],
+    "intermediate": [
+      "Spot the bug: `useEffect(() => { const timer = setInterval(() => console.log(count), 1000); }, []);`"
+    ],
+    "advanced": [
+      "Why is my React app showing a blank white screen with no console errors in production?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Spot the bug in the setInterval code.",
+      "answer": "This is a Stale Closure. Because the dependency array is empty `[]`, the effect only runs once. At that time, `count` was `0`. The interval function will forever log `0` because it closed over the initial render's variables. To fix this, you must add `count` to the dependency array, AND return a cleanup function `() => clearInterval(timer)` to prevent memory leaks."
+    },
+    {
+      "question": "Cannot update a component while rendering a different component?",
+      "answer": "This happens when you call a state updater function (like `setCount`) directly in the body of a functional component, rather than inside an event handler (`onClick`) or a `useEffect`. It causes an immediate re-render."
+    }
+  ],
+  "codeExample": "// BUGGY CODE:\n// <button onClick={setCount(count + 1)}>Increment</button>\n\n// FIXED CODE:\n// <button onClick={() => setCount(count + 1)}>Increment</button>"
+}

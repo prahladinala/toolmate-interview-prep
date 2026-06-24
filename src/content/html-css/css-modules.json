@@ -1,0 +1,31 @@
+{
+  "id": "css-modules",
+  "title": "CSS Modules",
+  "difficulty": "Advanced",
+  "definition": "A CSS file in which all class names and animation names are scoped locally by default.",
+  "simpleExplanation": "The ultimate solution to CSS conflicts in React/Next.js. If you write `.button { color: red; }` in a CSS Module, the compiler automatically renames your class to something insane like `.Button_button__3xyz`. Because the name is random, it is impossible for it to conflict with another button on your site.",
+  "realWorldExample": "Used natively in Next.js. You create a file named `Button.module.css`, and import it directly into your React component. You get the power of vanilla CSS with the safety of scoped styles.",
+  "useCases": [
+    "React/Next.js applications",
+    "Preventing global CSS bleed"
+  ],
+  "questions": {
+    "basic": [
+      "What problem do CSS Modules solve perfectly?"
+    ],
+    "intermediate": [
+      "Do you write regular CSS syntax inside a CSS Module file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What problem?",
+      "answer": "Global Scope. In standard CSS, every class is global. If two developers create a `.card` class in different files, the browser merges them, breaking the design. CSS Modules scope the class to the exact file it was imported into."
+    },
+    {
+      "question": "Syntax?",
+      "answer": "Yes! Unlike Styled Components or Tailwind, a CSS Module is literally just a standard `.css` file. The magic happens during the JavaScript build step (Webpack/Vite)."
+    }
+  ],
+  "codeExample": "/* \n  Note: This is a conceptual example of how CSS Modules work in React.\n  It requires a build step to function.\n*/\n\n/* File: Card.module.css */\n/*\n.container {\n  background: white;\n  border-radius: 8px;\n}\n.title {\n  color: blue;\n}\n*/\n\n/* File: Card.jsx */\n/*\nimport styles from './Card.module.css';\n\nexport default function Card() {\n  // The bundler turns 'styles.container' into an ugly, unique string!\n  return (\n    <div className={styles.container}>\n      <h2 className={styles.title}>Hello World</h2>\n    </div>\n  );\n}\n*/\n\n/* HTML Output in the Browser: */\n<div class=\"Card_container__2x8z9\">\n  <h2 class=\"Card_title__9a2b1\">Hello World</h2>\n</div>"
+}

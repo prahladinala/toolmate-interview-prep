@@ -1,0 +1,31 @@
+{
+  "id": "fetch-base-query",
+  "title": "fetchBaseQuery()",
+  "difficulty": "Intermediate",
+  "definition": "A lightweight wrapper around the native browser `fetch` API provided by RTK Query. It aims to simplify requests by providing sensible defaults like automatically parsing JSON.",
+  "simpleExplanation": "It's RTK Query's built-in version of Axios. Instead of having to manually write `fetch().then(res => res.json())` a hundred times, `fetchBaseQuery` handles the JSON parsing and error throwing for you.",
+  "realWorldExample": "Using `fetchBaseQuery` to automatically attach a Bearer Token (JWT) to the `Authorization` header of every single outgoing API request.",
+  "useCases": [
+    "Setting base URLs",
+    "Injecting authorization headers globally"
+  ],
+  "questions": {
+    "basic": [
+      "Does `fetchBaseQuery` automatically convert JSON responses into JavaScript objects?"
+    ],
+    "intermediate": [
+      "How do you attach a JWT token from your Redux store to every request using `fetchBaseQuery`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auto convert JSON?",
+      "answer": "Yes! Just like Axios, it parses the JSON automatically so you don't have to."
+    },
+    {
+      "question": "Attach JWT?",
+      "answer": "You use the `prepareHeaders` callback. You can call `getState()` inside of it to grab the token from your Redux Auth slice, and append it to the headers."
+    }
+  ],
+  "codeExample": "const baseQuery = fetchBaseQuery({\n  baseUrl: 'https://api.myproject.com/',\n  \n  // This function runs before EVERY request!\n  prepareHeaders: (headers, { getState }) => {\n    // Grab the token from the Redux store\n    const token = getState().auth.token;\n\n    // If we have a token, attach it to the request\n    if (token) {\n      headers.set('authorization', `Bearer ${token}`);\n    }\n    \n    return headers;\n  },\n});"
+}

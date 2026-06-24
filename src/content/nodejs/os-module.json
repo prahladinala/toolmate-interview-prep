@@ -1,0 +1,35 @@
+{
+  "id": "os-module",
+  "title": "OS Module",
+  "difficulty": "Beginner",
+  "definition": "A core module that provides operating system-related utility methods and properties. It allows Node.js to ask the computer about its hardware and OS.",
+  "simpleExplanation": "It's the dashboard for your server's hardware. It lets your code peek outside of Node.js to check how much RAM the server has left, how many CPU cores it possesses, and whether it is running Windows, Linux, or Mac.",
+  "realWorldExample": "Writing a health-check API endpoint `/health` that returns the server's free memory and CPU uptime to a monitoring dashboard like Datadog.",
+  "useCases": [
+    "Server monitoring",
+    "Spawning CPU Clusters",
+    "Cross-platform logic adjustments"
+  ],
+  "questions": {
+    "basic": [
+      "How do you find out if the code is running on Windows or Mac?"
+    ],
+    "intermediate": [
+      "Why would you need to use `os.cpus().length`?"
+    ],
+    "advanced": [
+      "How do you get the server's total memory in Gigabytes?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How do you find the OS?",
+      "answer": "Use `os.platform()`. It returns strings like `'win32'` (Windows), `'darwin'` (Mac), or `'linux'`."
+    },
+    {
+      "question": "Why use os.cpus().length?",
+      "answer": "Because Node is single-threaded, it only uses 1 CPU core natively. If you have an 8-core server, you are wasting 7 cores! You read `os.cpus().length` to automatically spin up 8 identical Node processes (Clustering) to maximize server hardware."
+    }
+  ],
+  "codeExample": "const os = require('os');\n\nconsole.log(\"--- System Diagnostics ---\");\n\n// OS Information\nconsole.log(`OS Platform: ${os.platform()}`);\nconsole.log(`OS Architecture: ${os.arch()}`);\nconsole.log(`System Uptime: ${Math.round(os.uptime() / 3600)} hours`);\n\n// CPU Information\nconst cores = os.cpus();\nconsole.log(`CPU Cores: ${cores.length}`);\nconsole.log(`CPU Model: ${cores[0].model}`);\n\n// Memory Information (Returned in Bytes, converting to Gigabytes)\nconst totalMemGB = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);\nconst freeMemGB = (os.freemem() / 1024 / 1024 / 1024).toFixed(2);\n\nconsole.log(`Total RAM: ${totalMemGB} GB`);\nconsole.log(`Free RAM: ${freeMemGB} GB`);"
+}

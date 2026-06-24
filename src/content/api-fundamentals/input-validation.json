@@ -1,0 +1,32 @@
+{
+  "id": "input-validation",
+  "title": "Input Validation",
+  "difficulty": "Beginner",
+  "definition": "The process of verifying that the data sent by a client to an API exactly matches the expected format, type, and constraints before the API processes it.",
+  "simpleExplanation": "Never trust the client. If your API expects an `age` parameter, and the client sends `\"age\": \"potato\"`, your database might crash. Input validation checks the data at the front door and rejects the 'potato' immediately.",
+  "realWorldExample": "Using libraries like Zod or Joi to ensure that an incoming POST request contains a validly formatted email address, a password longer than 8 characters, and an age greater than 18.",
+  "useCases": [
+    "Data integrity",
+    "Preventing SQL injection",
+    "Providing helpful errors"
+  ],
+  "questions": {
+    "basic": [
+      "If your frontend React app already validates that the password is 8 characters long, do you still need to validate it on the backend API?"
+    ],
+    "intermediate": [
+      "What HTTP Status code should an API return if input validation fails?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Validate on backend?",
+      "answer": "ABSOLUTELY YES. Frontend validation is only for User Experience. Hackers can easily bypass the frontend and send raw HTTP requests directly to your API via Postman. The backend must ALWAYS validate everything independently."
+    },
+    {
+      "question": "Which status code?",
+      "answer": "`400 Bad Request`. It is the client's fault for sending improperly formatted data."
+    }
+  ],
+  "codeExample": "// Validating an API request using the Zod library\n\nimport { z } from \"zod\";\n\n// 1. Define the strict schema rules\nconst UserSchema = z.object({\n  email: z.string().email(),\n  age: z.number().min(18),\n  password: z.string().min(8)\n});\n\napp.post('/api/users', (req, res) => {\n  // 2. Test the incoming data against the schema\n  const validation = UserSchema.safeParse(req.body);\n  \n  if (!validation.success) {\n    // 3. Return a 400 error with the specific field errors\n    return res.status(400).json({\n      error: \"Invalid Input\",\n      details: validation.error.format()\n    });\n  }\n  \n  // 4. Data is 100% safe and typed. Save to DB.\n  db.users.create(validation.data);\n});"
+}

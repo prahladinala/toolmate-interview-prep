@@ -1,0 +1,30 @@
+{
+  "id": "upstream-branch",
+  "title": "Upstream Branches",
+  "difficulty": "Intermediate",
+  "definition": "A remote branch that your local branch is tracking. It allows Git to know which specific remote branch to push to or pull from when you use short commands.",
+  "simpleExplanation": "It's a permanent tether between your laptop and GitHub. If your local `dev` branch is 'tracking' the upstream `origin/dev` branch, Git constantly monitors the tether. It will tell you 'You are 2 commits behind the server' when you type `git status`.",
+  "realWorldExample": "You type `git pull` without specifying a branch name. Git looks at the upstream tether, realizes you are on `dev`, and automatically pulls from `origin/dev`.",
+  "useCases": [
+    "Streamlining daily workflow commands"
+  ],
+  "questions": {
+    "basic": [
+      "How do you see which upstream branch your local branch is tracking?"
+    ],
+    "intermediate": [
+      "What error do you get if you try to `git push` a brand new branch without an upstream?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to see it?",
+      "answer": "Run `git branch -vv`. It lists all branches and the upstream remote they are tethered to."
+    },
+    {
+      "question": "What error?",
+      "answer": "fatal: The current branch has no upstream branch. To push the current branch and set the remote as upstream, use: `git push --set-upstream origin branch-name`."
+    }
+  ],
+  "codeExample": "# Create a new branch\n$ git checkout -b feature-xyz\n\n# Try to push it simply (THIS WILL FAIL!)\n$ git push\n# fatal: The current branch feature-xyz has no upstream branch.\n\n# Do it correctly by setting the upstream link (-u)\n$ git push -u origin feature-xyz\n\n# Now the tether is established! Tomorrow, you can just type:\n$ git push"
+}

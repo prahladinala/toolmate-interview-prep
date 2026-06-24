@@ -1,0 +1,31 @@
+{
+  "id": "type-annotations",
+  "title": "Type Annotations",
+  "difficulty": "Beginner",
+  "definition": "Explicitly declaring the type of a variable, function parameter, or return value using the `: Type` syntax.",
+  "simpleExplanation": "While Type Inference is TS automatically guessing the type, Type Annotations are you explicitly carving the type into stone so the compiler knows exactly what your intent is.",
+  "realWorldExample": "Explicitly typing function parameters: `function logMessage(msg: string)` because without it, TS doesn't know what you plan to pass in.",
+  "useCases": [
+    "Function parameters",
+    "Function return types",
+    "Uninitialized variables"
+  ],
+  "questions": {
+    "basic": [
+      "How do you annotate a function parameter?"
+    ],
+    "intermediate": [
+      "Why should you annotate function return types?"
+    ],
+    "advanced": [
+      "What is contextual typing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why annotate return types?",
+      "answer": "While TS can infer return types, annotating them `function getNum(): number` prevents you from accidentally returning the wrong type (like returning a string or undefined) later when you modify the function body."
+    }
+  ],
+  "codeExample": "// Annotating parameters and return types\nfunction calculateTax(amount: number, taxRate: number): number {\n  return amount * taxRate;\n}\n\n// Annotating an uninitialized variable\nlet userToken: string;\n\n// Sometime later...\nuserToken = \"jwt_12345\";"
+}

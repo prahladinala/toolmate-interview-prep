@@ -1,0 +1,30 @@
+{
+  "id": "installation",
+  "title": "Installation & Setup",
+  "difficulty": "Beginner",
+  "definition": "The process of integrating Tailwind CSS into modern build tools (like Vite, Next.js, or Webpack) via PostCSS.",
+  "simpleExplanation": "You can't just link to a Tailwind CSS file in your HTML like Bootstrap. Tailwind is a compiler. You install it via npm, configure it to watch your HTML/JS files, and it generates a custom CSS file containing only the classes you actually used.",
+  "realWorldExample": "Running `npm install -D tailwindcss postcss autoprefixer`, initializing the config file, and adding the `@tailwind` directives to your main `index.css`.",
+  "useCases": [
+    "Project bootstrapping"
+  ],
+  "questions": {
+    "basic": [
+      "Can you use Tailwind without Node.js or npm?"
+    ],
+    "intermediate": [
+      "What is PostCSS and why does Tailwind use it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Without Node.js?",
+      "answer": "Yes, using the Tailwind Play CDN via a `<script>` tag, but this is strictly for testing and prototyping. It is way too slow for production."
+    },
+    {
+      "question": "What is PostCSS?",
+      "answer": "PostCSS is a tool for transforming CSS with JavaScript plugins. Tailwind is fundamentally just a giant PostCSS plugin that reads your HTML and generates CSS on the fly."
+    }
+  ],
+  "codeExample": "// 1. Install via npm\n// npm install -D tailwindcss postcss autoprefixer\n// npx tailwindcss init -p\n\n// 2. Add Tailwind directives to your global CSS file (e.g., src/index.css)\n@tailwind base;       /* Injects CSS resets (Preflight) */\n@tailwind components; /* Injects custom component classes */\n@tailwind utilities;  /* Injects all the utility classes you used in your HTML */"
+}

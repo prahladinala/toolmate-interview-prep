@@ -1,0 +1,35 @@
+{
+  "id": "fs-module",
+  "title": "File System (fs) Module",
+  "difficulty": "Beginner",
+  "definition": "A core Node.js module used to interact with the hard drive. It provides functions to create, read, update, delete, and rename files and directories.",
+  "simpleExplanation": "It's your application's hands. It allows Node to reach out of the code, grab a text file off your desktop, read what's inside, write a new line to it, and save it. It has three versions of its tools: Callbacks (old), Synchronous (blocking), and Promises (modern).",
+  "realWorldExample": "Writing a script that opens a massive `.csv` file full of user data, converts it to JSON, and saves the new JSON file back to the hard drive.",
+  "useCases": [
+    "Reading config files",
+    "Saving user uploads",
+    "Generating dynamic logs"
+  ],
+  "questions": {
+    "basic": [
+      "How do you import the promise-based version of the fs module?"
+    ],
+    "intermediate": [
+      "Why should you avoid using `fs.readFileSync()` in a web server route?"
+    ],
+    "advanced": [
+      "How do you read a file that is too large to fit in RAM?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to import the promise version?",
+      "answer": "`const fs = require('fs/promises');` or `import fs from 'fs/promises';`."
+    },
+    {
+      "question": "Why avoid readFileSync in servers?",
+      "answer": "Because it is Synchronous! If 1,000 users hit your server, and the server does `readFileSync`, the entire Node.js application completely freezes and stops responding to EVERYONE until that file is finished reading. Always use the async/promise versions."
+    }
+  ],
+  "codeExample": "const fs = require('fs/promises');\n\nasync function manageFiles() {\n  try {\n    // 1. Write to a file (creates it if it doesn't exist)\n    await fs.writeFile('example.txt', 'Hello, Node.js!');\n    console.log(\"File created successfully.\");\n\n    // 2. Append data to the file\n    await fs.appendFile('example.txt', '\\nAdding a second line.');\n\n    // 3. Read the file (MUST provide 'utf-8', otherwise it returns a raw Buffer)\n    const data = await fs.readFile('example.txt', 'utf-8');\n    console.log(\"\\n--- FILE CONTENT ---\");\n    console.log(data);\n    console.log(\"--------------------\\n\");\n\n    // 4. Delete the file to clean up\n    // await fs.unlink('example.txt');\n    \n  } catch (err) {\n    console.error(\"An error occurred:\", err);\n  }\n}\n\nmanageFiles();"
+}

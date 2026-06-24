@@ -1,0 +1,31 @@
+{
+  "id": "virtual-machines",
+  "title": "Virtual Machines (EC2 / Compute Engine)",
+  "difficulty": "Beginner",
+  "definition": "The foundational IaaS compute service. It provides a raw, resizable, fully customizable virtual server in the cloud where the user has full Root/Admin access to install anything.",
+  "simpleExplanation": "Renting a blank computer in the cloud. You choose the CPU, RAM, and Windows/Linux. Then you log in and do whatever you want.",
+  "realWorldExample": "AWS EC2, Azure Virtual Machines, GCP Compute Engine. A company needs to run a highly specific, legacy Windows application that requires custom registry tweaks. They spin up an Azure VM, log in via Remote Desktop, and install it manually.",
+  "useCases": [
+    "Legacy migrations",
+    "Custom software hosting",
+    "Full control requirements"
+  ],
+  "questions": {
+    "basic": [
+      "Are Virtual Machines considered IaaS, PaaS, or SaaS?"
+    ],
+    "intermediate": [
+      "Why do companies try to migrate away from Virtual Machines toward Containers or Serverless if possible?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "IaaS, PaaS, SaaS?",
+      "answer": "IaaS (Infrastructure as a Service)."
+    },
+    {
+      "question": "Why migrate away?",
+      "answer": "Because VMs are heavy, slow to boot (minutes), waste resources, and require massive management overhead (like manually installing monthly OS security patches)."
+    }
+  ]
+}

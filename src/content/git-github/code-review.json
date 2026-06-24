@@ -1,0 +1,32 @@
+{
+  "id": "code-review",
+  "title": "Code Reviews",
+  "difficulty": "Intermediate",
+  "definition": "The systematic examination of computer source code intended to find mistakes overlooked in the initial development phase, improving the overall quality of software.",
+  "simpleExplanation": "Before your code is allowed into the sacred `main` branch, another human must read it. They look for typos, logic errors, security flaws, and messy code. It's not about being mean, it's about catching bugs before they hit the customers.",
+  "realWorldExample": "You open a PR. Your senior developer reviews it and notices you left a `console.log(userPassword)` in the code. They request a change, saving the company from a massive security breach.",
+  "useCases": [
+    "Ensuring code quality",
+    "Mentoring junior developers",
+    "Sharing knowledge across the team"
+  ],
+  "questions": {
+    "basic": [
+      "On GitHub, how do you see exactly what lines of code were changed in a PR?"
+    ],
+    "intermediate": [
+      "What is the psychological best practice for leaving a code review comment?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "See changed lines?",
+      "answer": "Click on the 'Files changed' tab in the PR. It shows a visual 'Diff' (red lines for deleted code, green lines for added code)."
+    },
+    {
+      "question": "Psychological best practice?",
+      "answer": "Critique the code, not the coder. Say 'This function might be slow if the array is large', rather than 'Why did you write this terrible function?'. Ask questions rather than giving demands."
+    }
+  ],
+  "codeExample": "/* \n  What a Code Review looks like on GitHub:\n  \n  File: src/auth.js\n  \n  @@ -15,5 +15,6 @@\n  - function login(user) {\n  + async function login(user) {\n  +   const token = await db.getToken(user.id);\n      return true;\n    }\n    \n  [Comment from SeniorDev]: \n  \"Hey! Since we made this async, should we wrap it in a try/catch \n  block in case the database is down?\"\n*/"
+}

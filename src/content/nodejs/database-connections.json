@@ -1,0 +1,31 @@
+{
+  "id": "database-connections",
+  "title": "Database Connections",
+  "difficulty": "Advanced",
+  "definition": "The methodology and lifecycle of establishing a secure, persistent connection between a Node.js runtime and an external Database server.",
+  "simpleExplanation": "Connecting to a database is expensive. It takes time to authenticate and establish a secure tunnel. If you open a new connection every time a user requests a page, your server will be extremely slow and eventually crash the database. Instead, you open a connection ONCE when the server boots up, and share that tunnel for all requests.",
+  "realWorldExample": "Using a Connection Pool. Instead of opening 1 tunnel, you open 10 tunnels on boot. When 50 users hit the site, Node passes their requests through whichever of the 10 tunnels is currently free, maximizing throughput without overwhelming the database.",
+  "useCases": [
+    "Server bootstrapping",
+    "Preventing database connection limits"
+  ],
+  "questions": {
+    "basic": [
+      "Should you connect to the database inside your Express route (`app.get`)?"
+    ],
+    "intermediate": [
+      "What is a Connection Pool?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Connect inside the route?",
+      "answer": "Absolutely NEVER. You will create a new connection for every single page refresh, quickly hitting the database's max connection limit (e.g., 100) and crashing the entire system."
+    },
+    {
+      "question": "What is a Connection Pool?",
+      "answer": "A cache of database connections maintained so that the connections can be reused when future requests to the database are required. Connection pools drastically improve application performance."
+    }
+  ],
+  "codeExample": "// HOW TO CONNECT CORRECTLY\n\n// const mongoose = require('mongoose');\n// const express = require('express');\n// const app = express();\n\n// 1. Establish the connection ONCE at the very top of your app (or in a separate file)\n/*\nmongoose.connect(process.env.MONGO_URI, {\n  maxPoolSize: 10, // Maintain up to 10 socket connections\n})\n.then(() => {\n  console.log(\"Database Connected Successfully!\");\n  \n  // 2. Only start listening for HTTP traffic AFTER the DB is ready!\n  app.listen(3000, () => console.log(\"Server running\"));\n})\n.catch(err => console.error(\"DB Connection Failed:\", err));\n*/\n\nconsole.log(\"Always connect to the DB once on startup, and reuse that connection!\");"
+}

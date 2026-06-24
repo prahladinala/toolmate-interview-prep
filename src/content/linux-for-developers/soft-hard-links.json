@@ -1,0 +1,30 @@
+{
+  "id": "soft-hard-links",
+  "title": "Soft vs Hard Links",
+  "difficulty": "Advanced",
+  "definition": "Methods of creating shortcuts to files in Linux. A Soft Link (symlink) points to a file's name. A Hard Link points directly to the file's underlying inode.",
+  "simpleExplanation": "Soft Link: A desktop shortcut. If you delete the original file, the shortcut breaks. Hard Link: Giving a file two different names. If you delete the first name, the data is perfectly safe under the second name.",
+  "realWorldExample": "You use `ln -s /var/www/html /home/bob/website` to create a Soft Link. Bob can now easily edit the website from his home folder. If someone deletes the `/var/www/html` folder, Bob's link turns red and says 'Broken'.",
+  "useCases": [
+    "Organizing configurations",
+    "Managing multiple version installations (e.g., python -> python3.9)"
+  ],
+  "questions": {
+    "basic": [
+      "Which type of link can point to a directory (folder): Soft Links or Hard Links?"
+    ],
+    "intermediate": [
+      "If you create a Hard Link to a 1GB file, does it consume 2GB of hard drive space total?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Point to directory?",
+      "answer": "Only Soft Links (symlinks) can point to directories. Hard linking directories is forbidden by the OS to prevent infinite recursive loops."
+    },
+    {
+      "question": "Does it double the space?",
+      "answer": "No. It still only takes 1GB. A Hard Link simply creates a second 'name' that points to the exact same physical data (inode) on the disk. It doesn't duplicate the data."
+    }
+  ]
+}

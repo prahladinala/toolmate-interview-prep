@@ -1,0 +1,31 @@
+{
+  "id": "grid-container",
+  "title": "Grid Container",
+  "difficulty": "Intermediate",
+  "definition": "By setting `display: grid` on an element, it becomes a grid container. It provides a 2-Dimensional layout system, allowing you to define explicit rows and columns.",
+  "simpleExplanation": "Flexbox is 1-Dimensional (great for a single row of buttons). CSS Grid is 2-Dimensional (great for the entire layout of a webpage). You set `display: grid`, and then you literally draw a map of columns and rows, and tell your elements which 'cell' they should sit in.",
+  "realWorldExample": "Building a standard web app layout: Header spans the top, Sidebar on the left, Main content in the middle, and Footer at the bottom. Grid handles this beautifully in 5 lines of code.",
+  "useCases": [
+    "Complex full-page layouts",
+    "Photo galleries with varied image sizes"
+  ],
+  "questions": {
+    "basic": [
+      "What property turns a div into a Grid Container?"
+    ],
+    "intermediate": [
+      "What is a 'fractional unit' (`fr`) in CSS Grid?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What property?",
+      "answer": "`display: grid;`"
+    },
+    {
+      "question": "What is 'fr'?",
+      "answer": "It stands for 'fraction of available space'. If you define columns as `1fr 1fr`, it creates two perfectly equal columns that dynamically split the screen 50/50."
+    }
+  ],
+  "codeExample": "<style>\n  .grid-container {\n    /* 1. Turn on Grid */\n    display: grid;\n    \n    /* 2. Define the Columns (3 columns of exactly equal width) */\n    grid-template-columns: 1fr 1fr 1fr;\n    \n    /* 3. Add a gap between the grid cells */\n    gap: 10px;\n    \n    background: #e5e5e5;\n    padding: 10px;\n  }\n\n  .cell {\n    background: #8b5cf6;\n    color: white;\n    padding: 30px;\n    text-align: center;\n    font-size: 20px;\n  }\n</style>\n\n<p>Notice how perfect the 3 columns are, without using any floats or weird widths!</p>\n\n<div class=\"grid-container\">\n  <div class=\"cell\">1</div>\n  <div class=\"cell\">2</div>\n  <div class=\"cell\">3</div>\n  <div class=\"cell\">4</div>\n  <div class=\"cell\">5</div>\n  <div class=\"cell\">6</div>\n</div>"
+}

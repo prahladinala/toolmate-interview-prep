@@ -1,0 +1,34 @@
+{
+  "id": "truthy-falsy",
+  "title": "Truthy & Falsy Values",
+  "difficulty": "Beginner",
+  "definition": "In JavaScript, every value has an inherent boolean 'truthiness'. When evaluated in a boolean context (like an `if` statement), values are coerced to either `true` or `false`.",
+  "simpleExplanation": "Imagine a nightclub bouncer asking 'Are you a real value?'. Almost everyone gets in (Truthy). But there is a strict blacklist of exactly 6 values that are rejected at the door (Falsy).",
+  "realWorldExample": "Checking if an array exists before mapping it: `if (users) { users.map(...) }` instead of checking `if (users !== undefined && users !== null)`.",
+  "useCases": [
+    "Short-circuit evaluation",
+    "Simplified if-statements"
+  ],
+  "questions": {
+    "basic": [
+      "What are the 6 falsy values in JavaScript?"
+    ],
+    "intermediate": [
+      "Is an empty array `[]` truthy or falsy?"
+    ],
+    "advanced": [
+      "What is `document.all` and why is it falsy?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What are the 6 falsy values?",
+      "answer": "`false`, `0`, `\"\"` (empty string), `null`, `undefined`, and `NaN`. (Technically `0n` BigInt and `document.all` are also falsy)."
+    },
+    {
+      "question": "Is an empty array truthy or falsy?",
+      "answer": "It is Truthy! In JavaScript, ALL objects and arrays are truthy, even if they are empty. To check if an array is empty, you must check its length: `if (arr.length > 0)`."
+    }
+  ],
+  "codeExample": "const falsyValues = [false, 0, \"\", null, undefined, NaN];\n\nfalsyValues.forEach(val => {\n  if (!val) console.log(`${val} is Falsy`);\n});\n\n// TRICKY:\nif ([]) console.log(\"Empty array is Truthy!\");\nif ({}) console.log(\"Empty object is Truthy!\");"
+}

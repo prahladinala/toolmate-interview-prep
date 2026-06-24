@@ -1,0 +1,32 @@
+{
+  "id": "request-response-express",
+  "title": "Request & Response Objects",
+  "difficulty": "Beginner",
+  "definition": "The enhanced objects provided by Express representing the HTTP request (`req`) and the HTTP response (`res`). Express adds powerful utility methods on top of the raw Node.js objects.",
+  "simpleExplanation": "Express takes the raw, difficult-to-use Node.js `req` and `res` objects and gives them superpowers. Instead of manually turning objects into JSON strings and configuring headers, you just write `res.json(user)`. Express does all the heavy lifting instantly.",
+  "realWorldExample": "Using `req.ip` to find the user's IP address to block a hacker, or using `res.download('report.pdf')` which automatically prompts the user's browser to download a file with one line of code.",
+  "useCases": [
+    "Reading client data",
+    "Formatting JSON responses",
+    "Setting cookies"
+  ],
+  "questions": {
+    "basic": [
+      "What Express method sends a JSON response?"
+    ],
+    "intermediate": [
+      "Where does data from an HTML form POST request live in the `req` object?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What method sends JSON?",
+      "answer": "`res.json({ data: 'hello' })`."
+    },
+    {
+      "question": "Where does POST data live?",
+      "answer": "In `req.body`. (Note: you must use the `app.use(express.json())` middleware for this object to be populated, otherwise it will be undefined!)."
+    }
+  ],
+  "codeExample": "/* --- POWERFUL EXPRESS UTILITIES --- */\n\n// REQUEST (req) superpowers:\n// req.body       -> The parsed JSON payload from the client\n// req.cookies    -> An object of cookies sent by the browser\n// req.ip         -> The client's IP address\n// req.get('host') -> Easily read a specific header\n\n// RESPONSE (res) superpowers:\n// res.json({ id: 1 }) -> Automatically stringifies and sets JSON headers\n// res.status(404)     -> Chains nicely: res.status(404).json(...)\n// res.redirect('/login') -> Instantly redirects the browser\n// res.download('/files/report.pdf') -> Prompts a file download\n// res.cookie('token', '1234') -> Sets a cookie in the browser\n\nconsole.log(\"Express removes 90% of the boilerplate required to format HTTP communications.\");"
+}

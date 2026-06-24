@@ -1,0 +1,31 @@
+{
+  "id": "memoized-selectors",
+  "title": "Memoized Selectors",
+  "difficulty": "Advanced",
+  "definition": "Selectors that cache their previous inputs and outputs. If the state hasn't changed, they return the cached result instantly instead of recalculating the derived state.",
+  "simpleExplanation": "If your selector sorts an array of 10,000 users alphabetically, that takes processing power. If the user clicks a button that changes the 'Dark Mode' theme, the component re-renders and the selector runs again, sorting the 10,000 users again for no reason. A memoized selector remembers the sorted list, and says 'The users didn't change, here is the cached list instantly.'",
+  "realWorldExample": "Using the `createSelector` utility from the `Reselect` library (which is built into RTK) to prevent expensive map/filter/reduce operations from freezing the UI.",
+  "useCases": [
+    "Performance optimization",
+    "Expensive derived state calculations"
+  ],
+  "questions": {
+    "basic": [
+      "What RTK function is used to create a memoized selector?"
+    ],
+    "intermediate": [
+      "If a memoized selector returns a new array using `.map()`, will it cause unnecessary re-renders?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which function?",
+      "answer": "`createSelector()`"
+    },
+    {
+      "question": "Unnecessary re-renders?",
+      "answer": "Without memoization, yes. `.map()` creates a brand new array reference every time it runs, causing React to think the data changed. Memoization fixes this by returning the EXACT SAME array reference from the cache."
+    }
+  ],
+  "codeExample": "import { createSelector } from '@reduxjs/toolkit';\n\n// 1. Basic input selectors (Not memoized, just grabs the raw data)\nconst selectUsers = state => state.users.data;\nconst selectSearchTerm = state => state.users.searchTerm;\n\n// 2. Memoized Selector (Heavy lifting!)\n// It only recalculates IF 'selectUsers' or 'selectSearchTerm' change!\nexport const selectFilteredUsers = createSelector(\n  [selectUsers, selectSearchTerm], // Input selectors\n  (users, searchTerm) => {         // Output function (Does the math)\n    console.log('Calculating filtered users! (This is skipped if cached)');\n    return users.filter(user => user.name.includes(searchTerm));\n  }\n);"
+}

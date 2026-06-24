@@ -1,0 +1,31 @@
+{
+  "id": "transfer-learning",
+  "title": "Transfer Learning",
+  "difficulty": "Intermediate",
+  "definition": "A machine learning technique where a model developed for one task is reused as the starting point for a model on a second, related task, drastically reducing training time.",
+  "simpleExplanation": "If you already know how to play the acoustic guitar, you don't need to start from zero to learn the electric guitar. You transfer your knowledge. AI does the same thing.",
+  "realWorldExample": "Google trains an AI to recognize 1,000 different objects (cars, dogs, trees) taking weeks of supercomputer time. You want an AI to recognize specific types of medical tumors. You download Google's model, keep the 'vision' parts, and just tweak the final layer to recognize tumors. It takes 10 minutes on a laptop.",
+  "useCases": [
+    "Computer Vision",
+    "NLP",
+    "Rapid prototyping"
+  ],
+  "questions": {
+    "basic": [
+      "Does Transfer Learning require more or less data than training a model from scratch?"
+    ],
+    "intermediate": [
+      "How does Transfer Learning relate to Fine-Tuning?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "More or less data?",
+      "answer": "Significantly less. Because the model already learned the basics of the world, you only need a tiny dataset to teach it the final specific task."
+    },
+    {
+      "question": "Relation to Fine-Tuning?",
+      "answer": "Fine-Tuning is the *action* you perform to achieve Transfer Learning. You take a pre-trained model and 'fine-tune' it, thus 'transferring' its knowledge to your new task."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "geolocation",
+  "title": "Geolocation API",
+  "difficulty": "Intermediate",
+  "definition": "An HTML5 API that allows the user to provide their geographical location to web applications.",
+  "simpleExplanation": "It's the browser feature that pops up a prompt saying 'This website wants to know your location. Allow or Block?'. If allowed, it gives the website your precise latitude and longitude.",
+  "realWorldExample": "Opening Google Maps in your browser and clicking 'Find Me', or Uber's web app automatically placing the pin at your current location.",
+  "useCases": [
+    "Finding nearby stores",
+    "Location-based weather apps",
+    "Delivery tracking"
+  ],
+  "questions": {
+    "basic": [
+      "Can a website get your location secretly??"
+    ],
+    "intermediate": [
+      "What protocol is strictly required to use the Geolocation API?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Secretly?",
+      "answer": "Absolutely not. The browser will always intercept the request and force the user to explicitly click 'Allow' before any data is handed to the website."
+    },
+    {
+      "question": "Required protocol?",
+      "answer": "HTTPS. For security reasons, modern browsers will block the Geolocation API if your website is running on standard unencrypted HTTP."
+    }
+  ],
+  "codeExample": "<button onclick=\"getLocation()\" style=\"padding: 10px; background: blue; color: white;\">\n  Get My Coordinates\n</button>\n\n<p id=\"demo\" style=\"font-weight: bold; margin-top: 20px;\"></p>\n\n<script>\n  const x = document.getElementById(\"demo\");\n\n  function getLocation() {\n    // 1. Check if the browser even supports it\n    if (navigator.geolocation) {\n      x.innerHTML = \"Asking for permission...\";\n      // 2. Ask the user for location\n      navigator.geolocation.getCurrentPosition(showPosition, showError);\n    } else { \n      x.innerHTML = \"Geolocation is not supported by this browser.\";\n    }\n  }\n\n  // 3. Success Callback\n  function showPosition(position) {\n    x.innerHTML = `Latitude: ${position.coords.latitude} <br> \n                   Longitude: ${position.coords.longitude}`;\n  }\n\n  // 4. Error Callback\n  function showError(error) {\n    switch(error.code) {\n      case error.PERMISSION_DENIED:\n        x.innerHTML = \"User denied the request for Geolocation.\"\n        break;\n      case error.POSITION_UNAVAILABLE:\n        x.innerHTML = \"Location information is unavailable.\"\n        break;\n      case error.TIMEOUT:\n        x.innerHTML = \"The request to get user location timed out.\"\n        break;\n    }\n  }\n</script>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "git-stash",
+  "title": "git stash",
+  "difficulty": "Intermediate",
+  "definition": "Temporarily shelves (or stashes) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later.",
+  "simpleExplanation": "The panic button. You are halfway through coding a feature when your boss yells 'EMERGENCY BUG ON MAIN BRANCH!'. You can't commit your feature because it's half-broken. You run `git stash`. Git scoops up all your messy desk papers and shoves them in a drawer, leaving you with a perfectly clean desk to fix the bug. Later, you run `git stash pop` to pull the papers back out of the drawer.",
+  "realWorldExample": "Switching branches when you have dirty, uncommitted files in your Working Directory.",
+  "useCases": [
+    "Context switching safely",
+    "Cleaning the working directory without losing work"
+  ],
+  "questions": {
+    "basic": [
+      "What command puts your stashed files back into your Working Directory?"
+    ],
+    "intermediate": [
+      "Does `git stash` save brand new, untracked files?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Command to restore?",
+      "answer": "`git stash pop`"
+    },
+    {
+      "question": "Untracked files?",
+      "answer": "By default, NO. If you created a brand new file, `git stash` will leave it sitting there. You must use `git stash -u` (include untracked) to stash everything."
+    }
+  ],
+  "codeExample": "# 1. You are coding, but need to switch branches urgently.\n$ git stash\n# Output: Saved working directory and index state WIP on main\n\n# 2. Your working directory is now clean! Switch branches safely.\n$ git checkout hotfix-branch\n\n# ... fix the bug, commit it ...\n\n# 3. Switch back to your feature branch.\n$ git checkout main\n\n# 4. Pull your messy code back out of the drawer!\n$ git stash pop"
+}

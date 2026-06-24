@@ -1,0 +1,38 @@
+{
+  "id": "beginner-react-questions",
+  "title": "Beginner React Questions",
+  "difficulty": "Beginner",
+  "definition": "A collection of the most common entry-level React interview questions.",
+  "simpleExplanation": "These questions test if you actually know what React is, how it differs from vanilla JavaScript, and if you understand the absolute basics of JSX, state, and props.",
+  "realWorldExample": "If you are applying for a Junior React Developer role, expect 80% of your technical questions to come from this list.",
+  "useCases": [
+    "Junior Developer Interviews",
+    "Basic technical screening"
+  ],
+  "questions": {
+    "basic": [
+      "What is React and why did you choose it over Angular or Vue?"
+    ],
+    "intermediate": [
+      "What is the Virtual DOM and how does it work?"
+    ],
+    "advanced": [
+      "What is JSX and how does the browser read it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is React?",
+      "answer": "React is an open-source JavaScript library developed by Facebook for building user interfaces. It is declarative, component-based, and uses a Virtual DOM to optimize rendering performance."
+    },
+    {
+      "question": "What is the Virtual DOM?",
+      "answer": "The Virtual DOM is a lightweight JavaScript object representation of the real DOM. When state changes, React updates the Virtual DOM, compares it to the previous version (Diffing), and calculates the minimum number of changes needed to update the real DOM (Reconciliation)."
+    },
+    {
+      "question": "What is JSX?",
+      "answer": "JSX stands for JavaScript XML. It is a syntax extension for React that allows you to write HTML-like code inside JavaScript files. Browsers cannot read JSX, so it must be compiled into standard `React.createElement` calls using a tool like Babel."
+    }
+  ],
+  "codeExample": "// Typical beginner question: \"Write a simple Counter component\"\nimport { useState } from 'react';\n\nexport default function Counter() {\n  const [count, setCount] = useState(0);\n  return (\n    <button onClick={() => setCount(c => c + 1)}>\n      Count: {count}\n    </button>\n  );\n}"
+}

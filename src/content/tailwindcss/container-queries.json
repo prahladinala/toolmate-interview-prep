@@ -1,0 +1,32 @@
+{
+  "id": "container-queries",
+  "title": "Container Queries",
+  "difficulty": "Advanced",
+  "definition": "A revolutionary CSS feature (available in Tailwind via an official plugin) that allows elements to change their layout based on the size of their PARENT container, rather than the size of the entire browser window.",
+  "simpleExplanation": "Standard media queries (`md:`) look at the Browser Width. If the browser is 1000px wide, the card is horizontal. But what if you put that card inside a tiny 300px sidebar? It will stay horizontal and break the layout. Container Queries (`@md:`) look at the Parent Width. The card is smart enough to realize it is inside a tiny sidebar, and switches to a vertical layout.",
+  "realWorldExample": "Building a `<ProductCard>` component that looks like a vertical poster when placed in a grid, but morphs into a horizontal banner when placed inside a wide page header.",
+  "useCases": [
+    "Ultra-reusable components",
+    "Micro-frontends",
+    "Complex dashboard layouts"
+  ],
+  "questions": {
+    "basic": [
+      "Are container queries built into Tailwind core, or do they require an official plugin?"
+    ],
+    "intermediate": [
+      "What class MUST you place on a parent element to establish it as a container that its children can query?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Core or plugin?",
+      "answer": "They require the official `@tailwindcss/container-queries` plugin."
+    },
+    {
+      "question": "Class on parent?",
+      "answer": "The `@container` class. The children can then use `@sm:`, `@md:`, etc., to query that parent's size."
+    }
+  ],
+  "codeExample": "<!-- \n  1. The parent MUST have the '@container' class to be queryable.\n-->\n<div class=\"@container w-full max-w-sm resize-x overflow-hidden border\">\n  \n  <!-- \n    2. The children use '@' prefixes instead of standard responsive prefixes.\n    - Default (Small parent): Stack vertically (flex-col)\n    - @md (Medium parent): Switch to side-by-side (flex-row)\n    This responds to the DIV's width, NOT the window's width!\n  -->\n  <div class=\"flex flex-col @md:flex-row gap-4 p-4\">\n    <img src=\"poster.jpg\" class=\"w-full @md:w-1/3\" />\n    <div>\n      <h2 class=\"text-lg @md:text-2xl font-bold\">Card Title</h2>\n      <p>Card content that adapts perfectly.</p>\n    </div>\n  </div>\n\n</div>"
+}

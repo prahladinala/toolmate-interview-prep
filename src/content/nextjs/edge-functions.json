@@ -1,0 +1,32 @@
+{
+  "id": "edge-functions",
+  "title": "Edge Functions",
+  "difficulty": "Advanced",
+  "definition": "Serverless functions that explicitly execute on the Edge Runtime network, providing lower latency and faster cold boots than traditional Serverless functions.",
+  "simpleExplanation": "A traditional serverless function takes ~1 second to wake up (Cold Start) and lives in one city. An Edge function wakes up in 10 milliseconds and lives in every city on Earth.",
+  "realWorldExample": "Building an API that serves dynamic pricing data. Because it runs on the Edge, a user in India and a user in Brazil both get the API response in under 50ms, because the function executes in a data center blocks from their house.",
+  "useCases": [
+    "Personalization APIs",
+    "Bot protection",
+    "Header manipulation"
+  ],
+  "questions": {
+    "basic": [
+      "Which is faster to wake up from sleep: A traditional Serverless function or an Edge function?"
+    ],
+    "intermediate": [
+      "Why can't you easily connect an Edge function directly to a standard PostgreSQL database?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is faster?",
+      "answer": "An Edge function. It has virtually zero cold start time."
+    },
+    {
+      "question": "Why not direct to DB?",
+      "answer": "Most standard database drivers (like `pg` for Postgres) require native Node.js TCP socket connections, which do not exist in the lightweight Edge runtime. You must use HTTP-based connections (like Prisma Accelerate or REST APIs) to talk to a DB from the Edge."
+    }
+  ],
+  "codeExample": "/* \n  Comparing Architectures:\n  \n  1. Node.js Server (AWS EC2)\n     - Location: 1 City (e.g. New York)\n     - Speed: Slow for global users\n     - Capabilities: Full OS access, heavy tasks\n     \n  2. Serverless Function (AWS Lambda)\n     - Location: 1 City (e.g. New York)\n     - Speed: Has \"Cold Starts\" (1-3s delay)\n     - Capabilities: Good for API routes, database connections\n     \n  3. Edge Function (Vercel Edge)\n     - Location: 35+ Cities Globally (Everywhere)\n     - Speed: 0ms Cold Start. Instant execution.\n     - Capabilities: Limited. Web APIs only. No direct DB sockets.\n*/"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "compose-file",
+  "title": "docker-compose.yml",
+  "difficulty": "Intermediate",
+  "definition": "The declarative YAML configuration file used by Docker Compose. It dictates exactly how the services, networks, and volumes should be built and interconnected.",
+  "simpleExplanation": "The master blueprint for the entire application stack. It specifies that the Web service needs port 80, the Database service needs a volume, and that the Web service cannot start until the Database is fully booted.",
+  "realWorldExample": "A file that outlines:\n```yaml\nservices:\n  db:\n    image: postgres:15\n  api:\n    build: .\n    ports: [\"3000:3000\"]\n    depends_on: [\"db\"]\n```",
+  "useCases": [
+    "Infrastructure as Code",
+    "Onboarding developers"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default filename Docker Compose looks for when you run `docker-compose up`?"
+    ],
+    "intermediate": [
+      "What does the `depends_on` keyword actually do in a compose file?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default filename?",
+      "answer": "`docker-compose.yml` or `compose.yaml`."
+    },
+    {
+      "question": "What does depends_on do?",
+      "answer": "It controls the startup order. If the `api` service depends on `db`, Compose guarantees that the Database container will be sent the 'Start' command before the API container. (Note: It does not wait for the DB to be *ready* for traffic, only that the container started)."
+    }
+  ]
+}

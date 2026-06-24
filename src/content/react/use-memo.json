@@ -1,0 +1,44 @@
+{
+  "id": "use-memo",
+  "title": "useMemo",
+  "difficulty": "Advanced",
+  "definition": "`useMemo` is a React Hook that lets you cache the result of a calculation between re-renders. It prevents expensive operations from running on every single render.",
+  "simpleExplanation": "Imagine you have to do really hard math (like calculating the square root of 10 million numbers). Doing it takes 5 seconds. If you do it once, you should write the answer on a sticky note (`useMemo`). The next time someone asks, instead of doing the math again, you just read the sticky note. You only throw away the note and recalculate if the numbers you were asked to calculate actually change.",
+  "realWorldExample": "If you have a massive array of 10,000 users and you want to filter them to only show 'Active' users, you wrap that filtering logic in `useMemo`. If the user types in an unrelated 'Dark Mode' toggle (causing a re-render), React won't needlessly re-filter the 10,000 users.",
+  "useCases": [
+    "Preventing expensive, CPU-heavy calculations from running on every render",
+    "Keeping an object or array reference stable so it doesn't trigger unnecessary `useEffect` runs"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary purpose of `useMemo`?",
+      "What two arguments does `useMemo` take?"
+    ],
+    "intermediate": [
+      "Why shouldn't you wrap EVERY variable in your app with `useMemo`?",
+      "What happens if you leave the dependency array empty `[]` in `useMemo`?"
+    ],
+    "advanced": [
+      "Does `useMemo` prevent a component from re-rendering?",
+      "Can React randomly throw away the `useMemo` cache?"
+    ],
+    "trick": [
+      "Is it safe to run a side effect (like fetching data) inside `useMemo`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why shouldn't you wrap everything in useMemo?",
+      "answer": "Performance overhead! Creating the cache and checking the dependency array on every render takes CPU time. If the calculation is fast (like `a + b`), the overhead of checking the cache is actually slower than just doing the math."
+    },
+    {
+      "question": "Can React randomly throw away the cache?",
+      "answer": "Yes. React's documentation explicitly states that `useMemo` is for performance optimization, not a semantic guarantee. In the future, React may choose to clear the cache to free up memory for offscreen components. Your code must still work even if useMemo recalculates unexpectedly."
+    },
+    {
+      "question": "Is it safe to run a side effect inside useMemo?",
+      "answer": "NO! The function passed to `useMemo` runs DURING rendering. Rendering should be pure. Side effects (like fetching data or manually mutating the DOM) belong strictly in `useEffect`."
+    }
+  ],
+  "codeExample": "import React, { useState, useMemo } from 'react';\n\nexport default function ExpensiveComponent() {\n  const [count, setCount] = useState(0);\n  const [text, setText] = useState('');\n\n  // useMemo: Only recalculates when 'count' changes.\n  // Typing in the text input will NOT trigger this expensive loop!\n  const expensiveResult = useMemo(() => {\n    console.log(\"Running expensive calculation...\");\n    let sum = 0;\n    // Simulating a very heavy computation\n    for (let i = 0; i < 100000000; i++) {\n      sum += count;\n    }\n    return sum;\n  }, [count]);\n\n  return (\n    <div>\n      <h2>Count: {count}</h2>\n      <h2>Expensive Math Result: {expensiveResult}</h2>\n      \n      <button onClick={() => setCount(c => c + 1)}>Increment Count</button>\n      \n      <br /><br />\n      {/* Typing here causes re-renders, but useMemo protects the math! */}\n      <input \n        type=\"text\" \n        value={text} \n        onChange={(e) => setText(e.target.value)} \n        placeholder=\"Type here...\"\n      />\n    </div>\n  );\n}"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "extending-interfaces",
+  "title": "Extending Interfaces",
+  "difficulty": "Intermediate",
+  "definition": "The `extends` keyword allows one interface to inherit all the properties of another interface, promoting reusability and DRY (Don't Repeat Yourself) code.",
+  "simpleExplanation": "Imagine you have a basic 'Vehicle' blueprint (has wheels, has color). You want to build a 'Car' blueprint. Instead of rewriting 'wheels' and 'color', you tell the Car blueprint to 'extend' the Vehicle blueprint, automatically copying its requirements, and then you just add 'doors'.",
+  "realWorldExample": "A base `APIResponse` interface with `{ status: number, message: string }`, extended by a `UserResponse` interface that adds `{ data: User }`.",
+  "useCases": [
+    "Component props inheritance in React",
+    "Building complex hierarchical data models"
+  ],
+  "questions": {
+    "basic": [
+      "What keyword is used to inherit from an interface?"
+    ],
+    "intermediate": [
+      "Can an interface extend multiple interfaces at once?"
+    ],
+    "advanced": [
+      "What happens if you extend an interface and redefine a property with a different type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it extend multiple interfaces?",
+      "answer": "Yes! Unlike Classes in JS which can only extend one parent, an interface can extend multiple parents: `interface Square extends Shape, PenStroke { }`."
+    },
+    {
+      "question": "What happens if you redefine a property type?",
+      "answer": "If the new type is a NARROWER version of the old type (e.g., old was `string | number`, new is `string`), it works. If the new type is completely incompatible (old was `number`, new is `string`), TypeScript will throw a compile error."
+    }
+  ],
+  "codeExample": "// Base Interface\ninterface Animal {\n  name: string;\n  age: number;\n}\n\n// Inherits 'name' and 'age', adds 'breed'\ninterface Dog extends Animal {\n  breed: string;\n}\n\nconst myDog: Dog = {\n  name: \"Rex\",\n  age: 3,\n  breed: \"German Shepherd\"\n};\n\n// Extending Multiple Interfaces\ninterface CanSwim { swimSpeed: number; }\ninterface CanFly { flySpeed: number; }\n\ninterface Duck extends CanSwim, CanFly {\n  quackVolume: number;\n}"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "jsx-rendering",
+  "title": "JSX & Conditional Rendering",
+  "difficulty": "Beginner",
+  "definition": "JSX is a syntax extension for JavaScript that looks similar to XML/HTML. Conditional rendering in React works the same way conditions work in JavaScript using if statements, ternary operators, or logical && operators to render different UI based on state.",
+  "simpleExplanation": "JSX lets us write HTML directly inside our JavaScript! It makes building UIs incredibly visual. Since it's still JavaScript under the hood, we can inject logic right into the HTML. If we want to show a 'Login' button when a user is signed out, and a 'Profile' button when they are signed in, we just use a simple JS 'if/else' condition right inside the UI code.",
+  "realWorldExample": "When fetching data, you show a `<Spinner />` if `isLoading === true`. Once the data arrives, the condition changes, and you render the `<DataList />` instead.",
+  "useCases": [
+    "Writing declarative UI components",
+    "Toggling UI elements (modals, dropdowns) based on state",
+    "Rendering lists of data using `.map()` inside JSX"
+  ],
+  "questions": {
+    "basic": [
+      "What is JSX?",
+      "Why do you need to use `className` instead of `class` in JSX?"
+    ],
+    "intermediate": [
+      "What is the difference between `&&` and the ternary operator `? :` for conditional rendering?",
+      "Why must React components return a single parent element (or Fragment)?"
+    ],
+    "advanced": [
+      "How does Babel transform JSX under the hood?",
+      "Can you use an `if` statement directly inside a JSX expression block `{}`?"
+    ],
+    "trick": [
+      "If you conditionally render `0 && <Component />`, what does React actually render to the screen?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why do you use `className` instead of `class`?",
+      "answer": "Because JSX is compiled to JavaScript, and `class` is a reserved keyword in JavaScript (used for ES6 Classes). React uses `className` to avoid syntax errors."
+    },
+    {
+      "question": "Why must components return a single parent?",
+      "answer": "Because JSX transforms into `React.createElement()` function calls. A function can only return one value. Wrapping everything in a `<Fragment>` or `<div>` ensures one value is returned."
+    },
+    {
+      "question": "If you conditionally render `0 && <Component />`, what happens?",
+      "answer": "React renders the number `0` to the screen! In JavaScript, `0` is falsy, so the `&&` short-circuits and returns `0`. To fix this, always use boolean checks like `count > 0 && <Component />`."
+    }
+  ],
+  "codeExample": "import React, { useState } from 'react';\n\nexport default function UserStatus() {\n  const [isLoggedIn, setIsLoggedIn] = useState(false);\n  const messages = ['Update 1', 'Update 2'];\n\n  return (\n    <>\n      {/* 1. Ternary Operator (If / Else) */}\n      {isLoggedIn ? (\n        <h1>Welcome back, User!</h1>\n      ) : (\n        <h1>Please sign in.</h1>\n      )}\n\n      {/* 2. Logical && Operator (If True, Do This) */}\n      {/* Danger: Don't do `messages.length &&`, always use boolean comparisons */}\n      {isLoggedIn && messages.length > 0 && (\n        <p>You have {messages.length} unread messages.</p>\n      )}\n\n      {/* A simple JSX button with an event listener */}\n      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>\n        Toggle Login State\n      </button>\n    </>\n  );\n}"
+}

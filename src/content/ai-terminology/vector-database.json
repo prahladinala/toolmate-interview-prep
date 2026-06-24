@@ -1,0 +1,30 @@
+{
+  "id": "vector-database",
+  "title": "Vector Database",
+  "difficulty": "Advanced",
+  "definition": "A specialized database designed to store, manage, and search high-dimensional mathematical vectors (embeddings) instead of traditional rows and columns.",
+  "simpleExplanation": "A map of concepts. Instead of an Excel sheet, it's a 3D universe where similar ideas float near each other. You throw a new question into the universe, and the database instantly returns the 5 documents floating closest to it.",
+  "realWorldExample": "Pinecone, Weaviate, or ChromaDB. When you upload 1,000 PDFs to a RAG system, they are converted into vectors and stored in a Vector Database for lightning-fast semantic search.",
+  "useCases": [
+    "RAG infrastructure",
+    "Recommendation engines"
+  ],
+  "questions": {
+    "basic": [
+      "Can a traditional SQL database easily perform fast semantic similarity searches?"
+    ],
+    "intermediate": [
+      "What mathematical operation do Vector Databases use to find the 'closest' document?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can SQL do it?",
+      "answer": "Historically, no. SQL is built for exact text matches and numbers. (However, modern SQL databases like PostgreSQL have added plugins like `pgvector` to support it)."
+    },
+    {
+      "question": "Which math operation?",
+      "answer": "Cosine Similarity (or sometimes Euclidean Distance). It calculates the mathematical angle between two vectors to determine how similar they are."
+    }
+  ]
+}

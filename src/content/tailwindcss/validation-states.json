@@ -1,0 +1,30 @@
+{
+  "id": "validation-states",
+  "title": "Validation States",
+  "difficulty": "Intermediate",
+  "definition": "Using Tailwind classes to visually communicate to the user whether their form input is valid (green), invalid (red), or required.",
+  "simpleExplanation": "If the user types a bad password, the input border should turn red and a red error message should appear. You can control this dynamically in React, or you can use pure CSS HTML5 validation states like `invalid:border-red-500`.",
+  "realWorldExample": "An email input field that naturally has a gray border, but instantly turns red the moment the user types something that isn't an email address.",
+  "useCases": [
+    "Form validation feedback"
+  ],
+  "questions": {
+    "basic": [
+      "What variant prefix applies styles only when a form input contains an error?"
+    ],
+    "intermediate": [
+      "Does `invalid:border-red-500` require JavaScript to work?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Error prefix?",
+      "answer": "`invalid:` (e.g., `invalid:border-red-500`)."
+    },
+    {
+      "question": "Requires JavaScript?",
+      "answer": "No! It relies on native HTML5 validation. If you put `type=\"email\"` on the input, the browser knows if it's a real email. Tailwind's `invalid:` class reads that browser state instantly without JS."
+    }
+  ],
+  "codeExample": "<!-- Pure HTML/CSS Validation (Zero JS!) -->\n<!-- \n  1. The input requires an email.\n  2. If the user types 'hello' (not an email), the browser marks it 'invalid'.\n  3. Tailwind sees 'invalid' and instantly turns the border and text Red!\n-->\n<input \n  type=\"email\" \n  required\n  class=\"peer border border-gray-300 rounded px-4 py-2 \n         focus:outline-none focus:ring-2 focus:ring-blue-500\n         invalid:border-red-500 invalid:text-red-600 focus:invalid:ring-red-500\"\n/>\n\n<!-- A hidden error message that only shows up when the input is invalid! -->\n<p class=\"mt-2 hidden peer-invalid:block text-sm text-red-600\">\n  Please provide a valid email address.\n</p>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "flex-wrap",
+  "title": "flex-wrap",
+  "difficulty": "Intermediate",
+  "definition": "A flexbox container property that specifies whether flex items are forced onto one line or can wrap onto multiple lines.",
+  "simpleExplanation": "By default, Flexbox is stubborn. If you put 10 boxes into a container, it will squeeze and crush them until they fit on a single line. Setting `flex-wrap: wrap` tells the browser: 'If there isn't enough room, it's okay, drop the extra boxes down to a new row'.",
+  "realWorldExample": "An image gallery. You want 4 images per row on a Desktop, but on a Mobile phone, they should automatically wrap to form 1 image per row.",
+  "useCases": [
+    "Grid-like photo galleries",
+    "Responsive lists of cards that stack on mobile"
+  ],
+  "questions": {
+    "basic": [
+      "What is the default value of `flex-wrap`?"
+    ],
+    "intermediate": [
+      "If items wrap to a second line, how do you control the vertical space between the two lines?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Default value?",
+      "answer": "`nowrap`. Items will shrink infinitely to stay on one line."
+    },
+    {
+      "question": "Space between lines?",
+      "answer": "You can use `gap: 20px;` on the flex container, which creates a grid-like gutter between both columns AND rows."
+    }
+  ],
+  "codeExample": "<style>\n  .container {\n    display: flex;\n    background: #333;\n    padding: 10px;\n    gap: 10px; /* Spaces out items AND wrapped lines */\n    \n    /* MAGIC HAPPENS HERE */\n    flex-wrap: wrap;\n  }\n\n  .card {\n    background: #f59e0b;\n    color: white;\n    font-weight: bold;\n    padding: 20px;\n    text-align: center;\n    \n    /* We want cards to be EXACTLY 150px wide. \n       If the screen is smaller than 150px, they will wrap to a new line! */\n    flex-basis: 150px;\n    flex-grow: 1; /* Makes them fill out the row neatly */\n  }\n</style>\n\n<p>Resize your browser window slowly. Watch the orange boxes drop to a new line when they run out of room!</p>\n\n<div class=\"container\">\n  <div class=\"card\">Card 1</div>\n  <div class=\"card\">Card 2</div>\n  <div class=\"card\">Card 3</div>\n  <div class=\"card\">Card 4</div>\n  <div class=\"card\">Card 5</div>\n</div>"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "user-session",
+  "title": "User Session Management",
+  "difficulty": "Intermediate",
+  "definition": "Managing the lifecycle of a user's session, including silent token refreshes, session timeouts, and re-hydrating the Redux state on app boot.",
+  "simpleExplanation": "Access tokens usually expire after 15 minutes for security. Before they expire, your app needs to silently ask the server for a new token in the background using a 'Refresh Token', update the Redux state, and keep the user logged in without interrupting their work.",
+  "realWorldExample": "If you leave Netflix open on a tab for 3 days, when you come back, Netflix's background code has already silently refreshed your session. You don't have to log in again.",
+  "useCases": [
+    "JWT Refresh Token flows",
+    "Idle timeout logouts"
+  ],
+  "questions": {
+    "basic": [
+      "Why do Access Tokens expire so quickly (e.g., 15 minutes)?"
+    ],
+    "intermediate": [
+      "How do you intercept an expired token error in RTK Query to trigger a silent refresh?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Why expire quickly?",
+      "answer": "If a hacker steals an Access Token, it becomes useless after 15 minutes. The hacker does NOT have the Refresh Token (which is usually kept securely in an HttpOnly cookie)."
+    },
+    {
+      "question": "How to intercept?",
+      "answer": "You write a custom `baseQuery` wrapper in RTK Query. If any API request returns a `401 Unauthorized`, the wrapper pauses the request, calls the `/refresh` endpoint, gets a new token, updates Redux, and then retries the original request automatically."
+    }
+  ],
+  "codeExample": "// Handling App Boot (Re-hydrating the session)\n\nfunction App() {\n  const dispatch = useDispatch();\n  const [isLoading, setIsLoading] = useState(true);\n\n  useEffect(() => {\n    // On boot, silently ask the server if we have a valid cookie session\n    async function checkSession() {\n      try {\n        const user = await api.fetch('/me');\n        dispatch(setCredentials({ user }));\n      } catch {\n        // Not logged in. Do nothing.\n      } finally {\n        setIsLoading(false); // Stop showing the loading screen\n      }\n    }\n    checkSession();\n  }, []);\n\n  if (isLoading) return <SplashScreen />;\n  return <Router />;\n}"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "links",
+  "title": "Links & Navigation",
+  "difficulty": "Beginner",
+  "definition": "The `<a>` (Anchor) element is used to create hyperlinks to web pages, files, email addresses, or locations in the same page.",
+  "simpleExplanation": "The tag that makes the web a 'Web'. It connects pages together. You wrap text or images in an `<a>` tag, provide a destination URL in the `href` attribute, and it becomes clickable.",
+  "realWorldExample": "The navigation bar at the top of a website is just a list of `<a>` tags styled with CSS to look like buttons.",
+  "useCases": [
+    "Navigating between pages",
+    "Downloading files",
+    "Opening email clients"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute is required on an `<a>` tag to make it work?"
+    ],
+    "intermediate": [
+      "How do you make a link open in a new tab?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Required attribute?",
+      "answer": "The `href` (Hypertext Reference) attribute. Example: `<a href=\"https://google.com\">`."
+    },
+    {
+      "question": "How to open in a new tab?",
+      "answer": "Use the `target=\"_blank\"` attribute."
+    }
+  ],
+  "codeExample": "<!-- 1. Absolute Link (Going to a different website) -->\n<a href=\"https://wikipedia.org\">Go to Wikipedia</a>\n<br><br>\n\n<!-- 2. Relative Link (Going to a page on your OWN website) -->\n<a href=\"/about.html\">Read our About Page</a>\n<br><br>\n\n<!-- 3. Opening in a New Tab -->\n<a href=\"https://google.com\" target=\"_blank\">Google (Opens in new tab)</a>\n<br><br>\n\n<!-- 4. Email Link -->\n<a href=\"mailto:hello@example.com\">Send us an email</a>\n<br><br>\n\n<!-- 5. Anchor Link (Jumping to a specific section on the SAME page) -->\n<a href=\"#bottom-section\">Jump to the bottom of this page</a>\n\n<div style=\"height: 800px; background: #eee; margin: 20px 0; padding: 10px;\">\n  (Scroll down or click the link above...)\n</div>\n\n<h2 id=\"bottom-section\">You reached the bottom!</h2>"
+}

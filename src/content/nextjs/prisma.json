@@ -1,0 +1,32 @@
+{
+  "id": "prisma",
+  "title": "Prisma ORM",
+  "difficulty": "Intermediate",
+  "definition": "A next-generation Object-Relational Mapper (ORM) for Node.js and TypeScript, used heavily in the Next.js ecosystem to interact with databases securely.",
+  "simpleExplanation": "Instead of writing complex, messy raw SQL strings like `SELECT * FROM users WHERE age > 18`, Prisma lets you write clean, auto-completed JavaScript code like `prisma.user.findMany({ where: { age: { gt: 18 } } })`.",
+  "realWorldExample": "Using Prisma to define a `User` model, push that schema to a PostgreSQL database to create the actual tables, and then using the generated Prisma Client inside a Next.js Server Component to fetch the users.",
+  "useCases": [
+    "Database management",
+    "Type-safe SQL queries",
+    "Schema migrations"
+  ],
+  "questions": {
+    "basic": [
+      "What file extension is used for the main Prisma configuration file where you define your database schema?"
+    ],
+    "intermediate": [
+      "Why does Next.js 14 pair incredibly well with Prisma compared to older React architectures?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "File extension?",
+      "answer": "`.prisma` (usually named `schema.prisma`)."
+    },
+    {
+      "question": "Why pairs well?",
+      "answer": "Because of Server Components. You can literally import the Prisma Client directly into a React component file and query the database right next to your HTML output. No need to build an entire backend API."
+    }
+  ],
+  "codeExample": "// 1. schema.prisma (Defines the database)\n// model User {\n//   id    Int     @id @default(autoincrement())\n//   email String  @unique\n//   name  String?\n// }\n\n// 2. Next.js Server Component (app/users/page.tsx)\nimport { PrismaClient } from '@prisma/client';\nconst prisma = new PrismaClient();\n\nexport default async function UsersList() {\n  // Type-safe, auto-completing database query!\n  const users = await prisma.user.findMany({\n    where: {\n      name: { contains: 'John' }\n    }\n  });\n\n  return (\n    <ul>\n      {users.map(u => <li key={u.id}>{u.name} - {u.email}</li>)}\n    </ul>\n  );\n}"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "lazy-loading-slices",
+  "title": "Lazy Loaded Reducers",
+  "difficulty": "Advanced",
+  "definition": "The exact implementation technique for dynamically adding Redux slices to a store at runtime.",
+  "simpleExplanation": "Creating a custom `injectReducer` function on your store object that takes a string (the slice name) and a function (the reducer), and rebuilds the global state tree.",
+  "realWorldExample": "Writing a Higher Order Component (HOC) called `withReducer(key, reducer)` that wraps around a React Page. When the Page mounts, it injects the reducer. When the Page unmounts, it leaves the data in the store as a cache.",
+  "useCases": [
+    "Advanced performance tuning"
+  ],
+  "questions": {
+    "basic": [
+      "If you inject a 'dashboard' reducer dynamically, will it delete the existing 'auth' reducer data?"
+    ],
+    "intermediate": [
+      "Why do you need to keep a dictionary of 'asyncReducers' when dynamically injecting?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Delete existing data?",
+      "answer": "No, if done correctly. `combineReducers` merges the new reducer with the existing ones, preserving the existing state."
+    },
+    {
+      "question": "Why asyncReducers dictionary?",
+      "answer": "Because `combineReducers` requires an object containing ALL current reducers. You have to keep a running list of `staticReducers` (core) and `asyncReducers` (injected), combine them together, and pass them to `replaceReducer`."
+    }
+  ],
+  "codeExample": "// A simplified implementation of a dynamically injectable store\n\nfunction configureAppStore(initialState) {\n  const store = configureStore({\n    reducer: createReducer(), // Start with core reducers\n    preloadedState: initialState\n  });\n\n  // Add a dictionary to keep track of injected reducers\n  store.asyncReducers = {};\n\n  // Add an injection method to the store object\n  store.injectReducer = (key, asyncReducer) => {\n    store.asyncReducers[key] = asyncReducer;\n    // Rebuild the root reducer and replace it\n    store.replaceReducer(createReducer(store.asyncReducers));\n  };\n\n  return store;\n}"
+}

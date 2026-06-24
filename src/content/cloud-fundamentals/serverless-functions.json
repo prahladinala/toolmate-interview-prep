@@ -1,0 +1,31 @@
+{
+  "id": "serverless-functions",
+  "title": "Serverless Functions (Lambda / Cloud Functions)",
+  "difficulty": "Intermediate",
+  "definition": "An event-driven, fully managed compute service where the user only writes code (functions). The cloud provider automatically provisions the servers to run the code, and bills only for the exact milliseconds the code executes.",
+  "simpleExplanation": "Vending machine code. You put your code in the cloud. It sits there doing nothing, costing $0. When a user clicks a button, the cloud spins up a server for 1 second, runs your code, deletes the server, and charges you a fraction of a penny.",
+  "realWorldExample": "AWS Lambda, Azure Functions, GCP Cloud Functions. Whenever a user uploads an image to an S3 bucket, a Lambda function is instantly triggered to resize the image to a thumbnail, then shuts down immediately.",
+  "useCases": [
+    "Event-driven architectures",
+    "Micro-tasks",
+    "API backends"
+  ],
+  "questions": {
+    "basic": [
+      "In a Serverless architecture, do you still have to install Linux updates?"
+    ],
+    "intermediate": [
+      "What is a 'Cold Start' in Serverless computing?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Install Linux updates?",
+      "answer": "No. The term 'Serverless' means you manage zero servers. The cloud provider handles all OS patches and infrastructure."
+    },
+    {
+      "question": "What is a Cold Start?",
+      "answer": "The slight delay (usually 1-3 seconds) that happens the very first time a function is triggered after being asleep for a while, because the cloud provider has to find a physical server and load your code into memory."
+    }
+  ]
+}

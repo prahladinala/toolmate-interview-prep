@@ -1,0 +1,45 @@
+{
+  "id": "mutations",
+  "title": "Mutations (React Query)",
+  "difficulty": "Advanced",
+  "definition": "In TanStack Query, a Mutation is used to create/update/delete data (POST, PUT, DELETE), whereas a Query is used to read data (GET).",
+  "simpleExplanation": "If a Query is asking the librarian for a book to read, a Mutation is handing the librarian a brand new book to add to the shelf. Because the shelf has changed, you need to tell the librarian to update their catalog (Query Invalidation).",
+  "realWorldExample": "When a user submits a \"Create Post\" form, you use `useMutation()`. On success, you tell TanStack Query to invalidate the `[\"posts\"]` query key. TanStack Query will automatically trigger a background fetch for the new list of posts, updating the UI seamlessly.",
+  "useCases": [
+    "Submitting forms",
+    "Liking a post or deleting an item",
+    "Tracking the loading state of a POST request"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between `useQuery` and `useMutation`?",
+      "Does a mutation run automatically when the component mounts?"
+    ],
+    "intermediate": [
+      "How do you trigger a mutation?",
+      "What does `queryClient.invalidateQueries` do?"
+    ],
+    "advanced": [
+      "What is the difference between `mutate` and `mutateAsync`?",
+      "How do you implement an Optimistic Update during a mutation?"
+    ],
+    "trick": [
+      "If a mutation fails, does it automatically retry like a query does?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does a mutation run automatically?",
+      "answer": "No. Queries run automatically when the component mounts. Mutations return a `mutate` function that you must manually call (e.g., inside an `onSubmit` handler)."
+    },
+    {
+      "question": "What does invalidateQueries do?",
+      "answer": "It marks a specific query cache (like `[\"todos\"]`) as \"stale\" and immediately triggers a background refetch. This is the standard way to ensure the UI updates after you add or delete an item."
+    },
+    {
+      "question": "Does a mutation automatically retry on failure?",
+      "answer": "No. By default, `useQuery` will retry failing GET requests 3 times because reading data is safe. Mutations (POST/DELETE) default to 0 retries because repeating a POST request could result in duplicate charges or duplicate data in the database."
+    }
+  ],
+  "codeExample": "/* \n// Conceptual Example - Requires @tanstack/react-query\nimport { useMutation, useQueryClient } from \"@tanstack/react-query\";\n\nconst addPost = async (newPost) => {\n  const res = await fetch(\"/posts\", {\n    method: \"POST\",\n    body: JSON.stringify(newPost)\n  });\n  return res.json();\n};\n\nexport default function CreatePostForm() {\n  const queryClient = useQueryClient();\n\n  // Setup the mutation\n  const mutation = useMutation({\n    mutationFn: addPost,\n    onSuccess: () => {\n      // Tell React Query that the \"posts\" data on the server has changed.\n      // It will automatically refetch the \"posts\" query in the background!\n      queryClient.invalidateQueries({ queryKey: [\"posts\"] });\n      alert(\"Post created!\");\n    }\n  });\n\n  const handleSubmit = () => {\n    // Execute the mutation\n    mutation.mutate({ title: \"My New Post\" });\n  };\n\n  return (\n    <div>\n      <button onClick={handleSubmit} disabled={mutation.isPending}>\n        {mutation.isPending ? \"Saving...\" : \"Create Post\"}\n      </button>\n      {mutation.isError && <p>Error: {mutation.error.message}</p>}\n    </div>\n  );\n}\n*/\nconsole.log(\"Mutations handle the write operations, Queries handle the reads.\");"
+}

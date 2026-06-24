@@ -1,0 +1,30 @@
+{
+  "id": "groups",
+  "title": "Groups",
+  "difficulty": "Beginner",
+  "definition": "A command that prints the names of all the groups the current user (or a specified user) is a member of.",
+  "simpleExplanation": "Checking which teams you are on. If you can't access the 'finance' folder, you run this command to see if you are actually in the 'finance' team.",
+  "realWorldExample": "You try to run a Docker command but get Permission Denied. You type `groups` and notice 'docker' is not in the list. You realize you forgot to add yourself to the Docker group.",
+  "useCases": [
+    "Troubleshooting access issues",
+    "Verifying usermod commands"
+  ],
+  "questions": {
+    "basic": [
+      "If you type `groups` by itself with no arguments, whose groups does it show?"
+    ],
+    "intermediate": [
+      "After you add yourself to a new group using `usermod`, you type `groups` and the new group isn't there. Why?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Whose groups?",
+      "answer": "It shows the groups for the currently logged-in user."
+    },
+    {
+      "question": "Why isn't the new group there?",
+      "answer": "Group memberships are evaluated at login. You must fully log out of the terminal and log back in (or run `newgrp <groupname>`) for the new group membership to take effect."
+    }
+  ]
+}

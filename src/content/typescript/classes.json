@@ -1,0 +1,34 @@
+{
+  "id": "classes",
+  "title": "Classes",
+  "difficulty": "Beginner",
+  "definition": "TypeScript adds powerful static typing, access modifiers, and type-checking capabilities to standard ES6 JavaScript Classes.",
+  "simpleExplanation": "A Class in JavaScript is a factory for creating objects. TypeScript turns that factory into a high-security facility. It ensures every worker (property) is accounted for, makes sure people can't enter restricted areas (private properties), and ensures the final product exactly matches the blueprint.",
+  "realWorldExample": "Building an API service layer: `class UserService { fetchUser() { ... } }`.",
+  "useCases": [
+    "Object-oriented architecture",
+    "Encapsulating state and behavior together"
+  ],
+  "questions": {
+    "basic": [
+      "Do you need to declare class properties before using them in the constructor in TS?"
+    ],
+    "intermediate": [
+      "What is Parameter Properties shorthand?"
+    ],
+    "advanced": [
+      "What does `strictPropertyInitialization` do in tsconfig?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do you need to declare properties first?",
+      "answer": "Yes! In vanilla JS, you can just do `this.name = name` in the constructor. In TS, you MUST declare `name: string;` at the top of the class body before using it in the constructor (unless using shorthand)."
+    },
+    {
+      "question": "What is strictPropertyInitialization?",
+      "answer": "If this flag is true, TS throws an error if you declare a class property (like `name: string;`) but forget to actually assign it a value inside the `constructor()`. It prevents undefined bugs."
+    }
+  ],
+  "codeExample": "class Player {\n  // 1. MUST declare types here first!\n  name: string;\n  score: number;\n\n  constructor(playerName: string) {\n    this.name = playerName;\n    this.score = 0; // Initialization required by TS\n  }\n\n  addScore(points: number): void {\n    this.score += points;\n  }\n}\n\nconst p1 = new Player(\"Alice\");\np1.addScore(10);\n\n// Parameter Properties Shorthand (Extremely popular!)\n// By adding 'public' or 'private' to the constructor argument, \n// TS automatically declares AND assigns the property behind the scenes!\nclass FastPlayer {\n  constructor(public name: string, public score: number = 0) {}\n}"
+}

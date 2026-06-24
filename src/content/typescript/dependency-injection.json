@@ -1,0 +1,34 @@
+{
+  "id": "dependency-injection",
+  "title": "Dependency Injection (DI)",
+  "difficulty": "Advanced",
+  "definition": "A design pattern in which a class receives its dependencies from external sources rather than creating them itself.",
+  "simpleExplanation": "Imagine a `Car` class. A bad Car builds its own engine inside its constructor (`this.engine = new V8Engine()`). Now that Car is permanently stuck with a V8 engine. Dependency Injection says: 'Don't build the engine. Ask for the engine in the constructor arguments.' (`constructor(engine: IEngine)`). Now you can easily pass in an ElectricEngine or a V8Engine.",
+  "realWorldExample": "Angular and NestJS are built entirely around DI. When you ask for a `DatabaseService` in a controller's constructor, the framework automatically finds it and injects it for you (Inversion of Control).",
+  "useCases": [
+    "Highly testable architectures",
+    "Large scale frameworks (Angular/NestJS)"
+  ],
+  "questions": {
+    "basic": [
+      "What is a 'Dependency' in programming?"
+    ],
+    "intermediate": [
+      "How does DI make unit testing easier?"
+    ],
+    "advanced": [
+      "What is an IoC (Inversion of Control) Container?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How does DI make unit testing easier?",
+      "answer": "If a `PaymentProcessor` creates its own `StripeAPI` inside it, you cannot test it without actually charging a credit card. If it uses DI (`constructor(api: IPaymentApi)`), you can pass a `MockPaymentApi` during tests that always returns 'Success' without hitting the internet."
+    },
+    {
+      "question": "What is an IoC Container?",
+      "answer": "It is a framework feature. Instead of you manually writing `new Engine()`, passing it to `new Car()`, and passing that to `new App()`, the IoC Container acts as a smart registry. You just say 'I need an App', and the container automatically builds the entire dependency tree and wires it together."
+    }
+  ],
+  "codeExample": "// The interface contract\ninterface Logger {\n  log(msg: string): void;\n}\n\n// Concrete dependencies\nclass ConsoleLogger implements Logger {\n  log(msg: string) { console.log(\"[CONSOLE]: \" + msg); }\n}\nclass FileLogger implements Logger {\n  log(msg: string) { /* writes to file */ }\n}\n\n// --- BAD WAY (Tightly Coupled) ---\nclass BadService {\n  private logger = new ConsoleLogger(); // Hardcoded!\n  doWork() { this.logger.log(\"Work done\"); }\n}\n\n// --- GOOD WAY (Dependency Injection) ---\nclass GoodService {\n  // It asks for ANY logger that matches the interface\n  constructor(private logger: Logger) {}\n  \n  doWork() { this.logger.log(\"Work done\"); }\n}\n\n// Now we control the dependencies from the outside!\nconst testService = new GoodService(new ConsoleLogger());\nconst prodService = new GoodService(new FileLogger());"
+}

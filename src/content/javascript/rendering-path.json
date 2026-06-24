@@ -1,0 +1,45 @@
+{
+  "id": "rendering-path",
+  "title": "Repaint vs. Reflow",
+  "difficulty": "Expert",
+  "definition": "The Critical Rendering Path is the sequence of steps the browser goes through to convert HTML, CSS, and JS into pixels on the screen. Reflow (or Layout) occurs when the geometry of elements changes. Repaint occurs when appearance changes without altering the layout.",
+  "simpleExplanation": "Imagine building a house. Reflow is like knocking down a wall to make a room bigger; it forces you to recalculate the size of the whole house and move furniture around. It's expensive and slow! Repaint is like painting the wall blue. You don't have to move the furniture, you just change the color. It's much faster.",
+  "realWorldExample": "If you animate the `width` or `left` properties of a button using JavaScript or CSS, the browser has to do a Reflow for every frame, making your computer fan spin up and causing lag. If you animate `transform: translateX()` instead, the browser just uses the GPU to slide the image over (bypassing reflow entirely).",
+  "useCases": [
+    "Optimizing CSS animations for 60fps performance",
+    "Writing performant DOM manipulation code",
+    "Avoiding 'Layout Thrashing' in JavaScript"
+  ],
+  "questions": {
+    "basic": [
+      "What is a Reflow (Layout)?",
+      "What is a Repaint?"
+    ],
+    "intermediate": [
+      "Which is more performance-intensive: Reflow or Repaint?",
+      "What CSS properties trigger a Reflow vs a Repaint?"
+    ],
+    "advanced": [
+      "What is 'Layout Thrashing'?",
+      "Which CSS properties should you use for high-performance animations (hardware acceleration)?"
+    ],
+    "trick": [
+      "Does changing `display: none` to `display: block` trigger a Reflow or Repaint?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which is more performance-intensive?",
+      "answer": "Reflow is significantly more intensive. A Reflow on a single element can trigger a chain reaction, forcing all of its children, ancestors, and sibling elements to recalculate their positions."
+    },
+    {
+      "question": "What is Layout Thrashing?",
+      "answer": "It occurs when JavaScript repeatedly writes to the DOM and then reads from it (like checking `element.offsetWidth`) in a loop. The browser is forced to immediately calculate the layout (Reflow) on every single loop iteration instead of batching the changes."
+    },
+    {
+      "question": "Which CSS properties should be used for 60fps animations?",
+      "answer": "You should only animate `transform` (translate, scale, rotate) and `opacity`. These properties can be handed off to the GPU (Hardware Acceleration) and bypass both the Layout and Paint steps entirely."
+    }
+  ],
+  "codeExample": "// --- Example of Layout Thrashing (BAD) ---\n// const elements = document.querySelectorAll('.box');\n// elements.forEach(el => {\n//   // Read width (forces layout), then Write width (invalidates layout)\n//   const width = el.offsetWidth;\n//   el.style.width = width + 10 + 'px'; \n// });\n\n\n// --- Optimized Example (GOOD) ---\n// const elements = document.querySelectorAll('.box');\n// const widths = [];\n\n// // 1. Batch all Reads first\n// elements.forEach(el => widths.push(el.offsetWidth));\n\n// // 2. Batch all Writes second\n// elements.forEach((el, index) => {\n//   el.style.width = widths[index] + 10 + 'px';\n// });\n\nconsole.log(\"Optimizing the DOM is critical for senior frontend roles!\");"
+}

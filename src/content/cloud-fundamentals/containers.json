@@ -1,0 +1,30 @@
+{
+  "id": "containers",
+  "title": "Managed Containers (ECS / Container Apps)",
+  "difficulty": "Intermediate",
+  "definition": "Cloud services that allow you to easily run Docker containers without managing the underlying virtual machines. They bridge the gap between raw VMs and Serverless Functions.",
+  "simpleExplanation": "You hand a Docker container to AWS and say 'Just keep this running for me, I don't care how.' AWS finds a spot on their massive cluster and runs it.",
+  "realWorldExample": "AWS ECS (Fargate), Azure Container Apps, GCP Cloud Run. A developer builds a custom Docker container. Instead of installing Kubernetes (which is immensely complex), they upload the container to Cloud Run, which instantly gives them a public URL and auto-scales it.",
+  "useCases": [
+    "Microservices deployment",
+    "Container hosting without K8s complexity"
+  ],
+  "questions": {
+    "basic": [
+      "If you use AWS Fargate, do you have to pick which EC2 Virtual Machine your container runs on?"
+    ],
+    "intermediate": [
+      "Why choose Managed Containers over Serverless Functions (Lambda)?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Pick EC2 machine?",
+      "answer": "No. Fargate is 'Serverless compute for containers'. AWS completely abstracts the underlying EC2 instances away from you."
+    },
+    {
+      "question": "Containers vs Lambda?",
+      "answer": "Lambdas have strict execution time limits (max 15 minutes) and are built for tiny, event-driven tasks. Containers can run infinitely 24/7, making them better for traditional, always-on web APIs."
+    }
+  ]
+}

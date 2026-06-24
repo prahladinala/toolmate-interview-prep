@@ -1,0 +1,31 @@
+{
+  "id": "custom-events",
+  "title": "Custom Events",
+  "difficulty": "Intermediate",
+  "definition": "Extending the `EventEmitter` class to create custom objects that possess built-in event broadcasting capabilities.",
+  "simpleExplanation": "Instead of creating a standalone 'radio station' (a raw EventEmitter), you make your own custom class INHERIT the radio station's powers. Now, your `UserDatabase` class doesn't just save users; it can natively broadcast `db.emit('userSaved')` directly from within its own methods.",
+  "realWorldExample": "Creating a `ChatRoom` class that extends `EventEmitter`. When a user types a message, the class calls `this.emit('message', text)`, and all connected WebSocket clients instantly receive it.",
+  "useCases": [
+    "Building complex system architectures",
+    "Creating libraries like Socket.io"
+  ],
+  "questions": {
+    "basic": [
+      "How do you make a class an EventEmitter?"
+    ],
+    "intermediate": [
+      "Why do we call `super()` inside the constructor?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "How to make a class an EventEmitter?",
+      "answer": "By using the ES6 `extends` keyword: `class MyClass extends EventEmitter {}`."
+    },
+    {
+      "question": "Why call super()?",
+      "answer": "Because `MyClass` inherits from `EventEmitter`, calling `super()` executes the `EventEmitter`'s hidden constructor, properly initializing the hidden memory objects needed to store event listeners."
+    }
+  ],
+  "codeExample": "const EventEmitter = require('events');\n\n// 1. Extend the EventEmitter class\nclass CoffeeMachine extends EventEmitter {\n  constructor() {\n    super(); // MUST call super() to initialize the Emitter!\n    this.waterLevel = 100;\n  }\n\n  makeCoffee() {\n    if (this.waterLevel < 20) {\n      // 2. Emit events internally using 'this'\n      this.emit('error', 'Not enough water!');\n      return;\n    }\n    \n    this.waterLevel -= 20;\n    console.log(\"Brewing coffee...\");\n    \n    // Simulate a 1 second brew time\n    setTimeout(() => {\n      this.emit('ready', 'Latte');\n    }, 1000);\n  }\n}\n\n// 3. Usage\nconst myMachine = new CoffeeMachine();\n\nmyMachine.on('ready', (type) => console.log(`DING! Your ${type} is ready!`));\nmyMachine.on('error', (err) => console.error(`BEEP BEEP! ${err}`));\n\nmyMachine.makeCoffee();"
+}

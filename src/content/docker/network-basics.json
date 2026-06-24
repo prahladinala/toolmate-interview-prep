@@ -1,0 +1,30 @@
+{
+  "id": "network-basics",
+  "title": "Docker Networking Basics",
+  "difficulty": "Beginner",
+  "definition": "The subsystem that allows isolated Docker containers to communicate with each other, with the host machine, and with the outside internet, without compromising their security isolation.",
+  "simpleExplanation": "Plugging ethernet cables into the boxes. Without networking, a container is completely deaf and blind. With networking, containers can talk to the database, and humans can talk to the web server.",
+  "realWorldExample": "You spin up a WordPress container and a MySQL container. Out of the box, they cannot see each other. You must attach both of them to a virtual 'Docker Network' so WordPress can send data to the database.",
+  "useCases": [
+    "Microservices communication",
+    "External access"
+  ],
+  "questions": {
+    "basic": [
+      "By default, if you start a container, can it access the public internet (e.g., to download a file)?"
+    ],
+    "intermediate": [
+      "By default, can two completely random containers talk to each other by their container names?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Can it access the internet?",
+      "answer": "Yes. The default bridge network automatically sets up outbound internet access."
+    },
+    {
+      "question": "Can they talk by name?",
+      "answer": "No. On the default `bridge` network, they can only talk via IP address (which changes constantly). To communicate by human-readable names, you must create a Custom Bridge Network."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "api-calls-redux",
+  "title": "API Calls with Redux",
+  "difficulty": "Intermediate",
+  "definition": "The architectural pattern of keeping API communication logic out of React components and encapsulating it entirely within Redux Thunks or RTK Query.",
+  "simpleExplanation": "Don't write `fetch()` or `axios.get()` directly inside your React `useEffect`. It makes the components messy and hard to test. Move the `fetch()` into a Redux Thunk. Your React component should just look like `useEffect(() => { dispatch(fetchData()) })`.",
+  "realWorldExample": "A Dashboard component that just dispatches `fetchDashboardMetrics()`. It doesn't know or care what URL is being hit, what tokens are being sent, or how the data is parsed. It just dispatches the action and waits for the Redux state to update.",
+  "useCases": [
+    "Separation of Concerns",
+    "Clean React components"
+  ],
+  "questions": {
+    "basic": [
+      "Should you put `axios` calls inside your React components or inside Redux Thunks?"
+    ],
+    "intermediate": [
+      "What is the modern RTK alternative to writing manual Thunks for API calls?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Where to put axios?",
+      "answer": "Inside Redux Thunks (or RTK Query). Components should only dispatch actions and read state."
+    },
+    {
+      "question": "Modern alternative?",
+      "answer": "RTK Query. It is a powerful data fetching and caching tool built directly into Redux Toolkit that eliminates the need to write Thunks completely."
+    }
+  ],
+  "codeExample": "// ❌ BAD: Component is bloated with API logic\nfunction BadComponent() {\n  useEffect(() => {\n    axios.get('https://api.example.com/data')\n      .then(res => dispatch(setData(res.data)));\n  }, []);\n}\n\n// ✅ GOOD: Component is clean and dumb. Redux handles the API.\nfunction GoodComponent() {\n  const dispatch = useDispatch();\n  const { data, status } = useSelector(state => state.appData);\n\n  useEffect(() => {\n    dispatch(fetchAppData()); // The Thunk handles everything!\n  }, []);\n\n  if (status === 'loading') return <Spinner />;\n  return <div>{data}</div>;\n}"
+}

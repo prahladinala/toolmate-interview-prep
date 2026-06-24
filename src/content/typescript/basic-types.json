@@ -1,0 +1,29 @@
+{
+  "id": "basic-types",
+  "title": "Basic Types",
+  "difficulty": "Beginner",
+  "definition": "The primitive building blocks of the TypeScript type system: `string`, `number`, `boolean`, `null`, `undefined`, and `symbol`.",
+  "simpleExplanation": "These are the fundamental labels you attach to your variables to tell TypeScript exactly what kind of data is allowed to live inside them.",
+  "realWorldExample": "Declaring a user profile: `let username: string = 'Alice'; let age: number = 25; let isActive: boolean = true;`",
+  "useCases": [
+    "Annotating primitive variables"
+  ],
+  "questions": {
+    "basic": [
+      "What are the three most common primitive types in TS?"
+    ],
+    "intermediate": [
+      "Should you use `Number` or `number` when typing?"
+    ],
+    "advanced": [
+      "What is the `bigint` type?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Should you use Number or number?",
+      "answer": "ALWAYS use lowercase `number`, `string`, and `boolean`. The uppercase versions refer to the JavaScript wrapper objects, which you almost never want to use as types."
+    }
+  ],
+  "codeExample": "const firstName: string = \"Alice\";\nconst age: number = 30;\nconst isDeveloper: boolean = true;\n\n// Arrays of basic types\nconst scores: number[] = [95, 80, 100];\nconst names: Array<string> = [\"Alice\", \"Bob\"]; // Alternative syntax"
+}

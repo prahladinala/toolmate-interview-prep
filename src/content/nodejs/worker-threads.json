@@ -1,0 +1,31 @@
+{
+  "id": "worker-threads",
+  "title": "Worker Threads",
+  "difficulty": "Advanced",
+  "definition": "A built-in module that enables the creation of true multi-threaded Node.js applications. Unlike clusters (which create entirely new processes), worker threads share memory and are much lighter.",
+  "simpleExplanation": "If Clustering is cloning the entire restaurant (new building, new manager, new kitchen), Worker Threads are just hiring extra chefs for the existing kitchen. Because they are in the same kitchen, the chefs can share the same ingredients (shared memory) without having to mail them to each other.",
+  "realWorldExample": "An app that resizes uploaded images. Image resizing requires heavy math (CPU intensive). If the main Event Loop does the math, the server freezes for everyone else. Instead, the main loop tosses the image to a background Worker Thread. The background thread does the math, and returns the result when it's done.",
+  "useCases": [
+    "CPU-intensive calculations (Image processing, video encoding, cryptography)",
+    "Preventing Event Loop blockage"
+  ],
+  "questions": {
+    "basic": [
+      "Are Worker Threads used for speeding up Database queries (I/O)?"
+    ],
+    "intermediate": [
+      "How do Worker Threads communicate with the main thread?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Are they used for I/O?",
+      "answer": "No. Node's built-in asynchronous I/O is already perfectly optimized for databases and network requests. Worker threads are STRICTLY for CPU-intensive tasks (heavy math) that would otherwise block the Event Loop."
+    },
+    {
+      "question": "How do they communicate?",
+      "answer": "Via a messaging system (Events). The main thread calls `worker.postMessage(data)`, and the worker listens via `parentPort.on('message')`."
+    }
+  ],
+  "codeExample": "const { Worker, isMainThread, parentPort } = require('worker_threads');\n\nif (isMainThread) {\n  // --- MAIN THREAD (The Manager) ---\n  console.log(\"Main: I have a heavy math job.\");\n  \n  // 1. Create the worker (pointing it at this same file)\n  const worker = new Worker(__filename);\n  \n  // 2. Listen for the result\n  worker.on('message', (result) => {\n    console.log(`Main: The worker finished! Result: ${result}`);\n  });\n\n  // 3. Send data to the worker to start\n  worker.postMessage(1000000000);\n  \n  console.log(\"Main: I am completely unblocked and can handle HTTP requests while the worker does the math!\");\n\n} else {\n  // --- BACKGROUND WORKER (The Chef) ---\n  // 4. Listen for instructions from the Main thread\n  parentPort.on('message', (limit) => {\n    \n    // 5. Do the heavy math (This would freeze a normal Node app!)\n    let count = 0;\n    for (let i = 0; i < limit; i++) {\n      count++;\n    }\n    \n    // 6. Send the result back to Main\n    parentPort.postMessage(count);\n  });\n}"
+}

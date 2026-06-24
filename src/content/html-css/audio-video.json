@@ -1,0 +1,32 @@
+{
+  "id": "audio-video",
+  "title": "Audio & Video",
+  "difficulty": "Beginner",
+  "definition": "HTML5 introduced native `<audio>` and `<video>` elements to embed media files without needing third-party plugins like Flash.",
+  "simpleExplanation": "Before HTML5, playing a video required clunky, insecure plugins. Now, you just use the `<video>` tag, point the `src` to an MP4 file, and add the `controls` attribute. The browser handles everything else.",
+  "realWorldExample": "The standard video player on most modern websites that aren't using a complex custom player (like YouTube does).",
+  "useCases": [
+    "Embedding background videos",
+    "Creating podcast players",
+    "Self-hosting media"
+  ],
+  "questions": {
+    "basic": [
+      "What attribute adds the play/pause button to a video element?"
+    ],
+    "intermediate": [
+      "Why should you provide multiple `<source>` tags for a single video?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What attribute?",
+      "answer": "The `controls` attribute."
+    },
+    {
+      "question": "Why multiple sources?",
+      "answer": "Different browsers support different video formats. By providing an MP4 and a WebM version, the browser will automatically pick the first one it knows how to play."
+    }
+  ],
+  "codeExample": "<h2>Native Audio Player</h2>\n<!-- 'controls' shows the play button. -->\n<!-- 'autoplay' and 'muted' can force the media to play immediately. -->\n<audio controls>\n  <source src=\"https://www.w3schools.com/html/horse.ogg\" type=\"audio/ogg\">\n  <source src=\"https://www.w3schools.com/html/horse.mp3\" type=\"audio/mpeg\">\n  Your browser does not support the audio element.\n</audio>\n\n<hr>\n\n<h2>Native Video Player</h2>\n<video width=\"400\" controls poster=\"https://placehold.co/400x200\">\n  <source src=\"https://www.w3schools.com/html/mov_bbb.mp4\" type=\"video/mp4\">\n  <source src=\"https://www.w3schools.com/html/mov_bbb.ogg\" type=\"video/ogg\">\n  Your browser does not support HTML video.\n</video>\n<p><em>(The 'poster' attribute acts as a thumbnail before the video plays!)</em></p>"
+}

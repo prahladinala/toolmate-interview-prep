@@ -1,0 +1,31 @@
+{
+  "id": "lvm",
+  "title": "Logical Volume Manager (LVM)",
+  "difficulty": "Advanced",
+  "definition": "A storage virtualization system that provides a higher-level view of disk storage. It allows administrators to resize, span, and manage disk partitions dynamically without taking the system offline.",
+  "simpleExplanation": "Liquid hard drives. Instead of a hard drive being a rigid physical box, LVM pools multiple hard drives together into a massive 'water tank' of storage, and you can dynamically scoop out 'volumes' of any size.",
+  "realWorldExample": "A database server's `/data` partition fills up. Without LVM, you have to buy a new server, copy data, and endure 5 hours of downtime. With LVM, you plug a new hard drive in, add it to the LVM pool, and type `lvextend`. The partition instantly grows by 1TB with zero downtime.",
+  "useCases": [
+    "Enterprise storage management",
+    "Zero-downtime volume resizing",
+    "Creating snapshot backups"
+  ],
+  "questions": {
+    "basic": [
+      "Is LVM a file system (like ext4 or NTFS)?"
+    ],
+    "intermediate": [
+      "What are the three core layers of LVM architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Is it a filesystem?",
+      "answer": "No. It is a block storage manager. You still have to format an LVM volume with a file system like ext4 before you can put files on it."
+    },
+    {
+      "question": "Three layers?",
+      "answer": "1) Physical Volumes (the actual hard drives). 2) Volume Groups (the massive pool combining the drives). 3) Logical Volumes (the virtual partitions sliced out of the pool for the OS to use)."
+    }
+  ]
+}

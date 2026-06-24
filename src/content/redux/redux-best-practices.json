@@ -1,0 +1,31 @@
+{
+  "id": "redux-best-practices",
+  "title": "Redux Best Practices",
+  "difficulty": "Beginner",
+  "definition": "The official Style Guide provided by the Redux maintainers, detailing essential rules and highly recommended patterns.",
+  "simpleExplanation": "The 10 Commandments of Redux. Break them, and your app will be slow, buggy, and hard to read. Follow them, and Redux will feel like a superpower.",
+  "realWorldExample": "Rule #1: Do NOT mutate state. Rule #2: Reducers must not have side effects. Rule #3: Do NOT put non-serializable values (like Promises or Functions) in the store.",
+  "useCases": [
+    "Code reviews",
+    "Onboarding new developers"
+  ],
+  "questions": {
+    "basic": [
+      "Can you put a React component (like `<MyIcon />`) into the Redux state tree?"
+    ],
+    "intermediate": [
+      "Why does the Style Guide recommend modeling Actions as 'Events' rather than 'Setters'?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "React component in Redux?",
+      "answer": "NEVER. A component is a complex JavaScript object/function. It is not serializable. It will break Redux DevTools and time-travel debugging. Only store pure data (strings, booleans, arrays, plain objects)."
+    },
+    {
+      "question": "Events vs Setters?",
+      "answer": "Instead of `setUserName('John')`, dispatch `userLoggedIn({ name: 'John' })`. Redux is an event-sourcing system. Actions should describe WHAT happened, not HOW the state should change. Multiple reducers might want to listen to the `userLoggedIn` event!"
+    }
+  ],
+  "codeExample": "/*\n  ESSENTIAL REDUX RULES (Do not break these):\n  1. State must be immutable.\n  2. Reducers must be pure.\n  3. State must be serializable (No Maps, Sets, Promises, or Functions).\n\n  STRONGLY RECOMMENDED:\n  1. Use Redux Toolkit exclusively.\n  2. Use Immer for writing immutable updates.\n  3. Group code by Feature folders (Ducks pattern).\n  4. Evaluate selectors using shallowEqual or Reselect.\n  5. Keep state as flat (normalized) as possible.\n*/"
+}

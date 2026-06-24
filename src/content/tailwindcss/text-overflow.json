@@ -1,0 +1,32 @@
+{
+  "id": "text-overflow",
+  "title": "Text Overflow",
+  "difficulty": "Intermediate",
+  "definition": "Utilities for controlling how hidden overflow content is signaled to users.",
+  "simpleExplanation": "If you have a massive paragraph, but only a tiny box to put it in, `truncate` is a magic class that stops the text from wrapping, cuts it off at the edge of the box, and automatically adds `...` to the end.",
+  "realWorldExample": "A list of emails in an inbox. You only want to show one single line of the email subject. If it's too long, you want it to gracefully fade out with an ellipsis (`...`) instead of breaking the layout.",
+  "useCases": [
+    "Inboxes",
+    "Tables",
+    "Navigation menus"
+  ],
+  "questions": {
+    "basic": [
+      "What single magic Tailwind class prevents text from wrapping, hides the overflow, and adds an ellipsis (...)?"
+    ],
+    "intermediate": [
+      "What CSS properties does the `truncate` class apply under the hood?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Magic class?",
+      "answer": "`truncate`"
+    },
+    {
+      "question": "Under the hood?",
+      "answer": "It applies three properties at once: `overflow: hidden;`, `white-space: nowrap;`, and `text-overflow: ellipsis;`."
+    }
+  ],
+  "codeExample": "<!-- \n  Without truncate, this text would wrap to a second line \n  and ruin the height of the card.\n  With truncate, it becomes: \"This incredibly long emai...\"\n-->\n<div class=\"w-48 bg-white border p-2\">\n  <p class=\"font-bold\">John Doe</p>\n  <p class=\"truncate text-gray-500\">\n    This incredibly long email subject line will never ruin my UI layout.\n  </p>\n</div>\n\n<!-- Line Clamping (Advanced) -->\n<!-- line-clamp-3 allows EXACTLY 3 lines of text, then adds the '...' -->\n<p class=\"line-clamp-3\">\n  Line 1...\n  Line 2...\n  Line 3... (Any more text gets chopped off here!)\n</p>"
+}

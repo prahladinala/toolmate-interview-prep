@@ -1,0 +1,31 @@
+{
+  "id": "fixed",
+  "title": "Fixed",
+  "difficulty": "Intermediate",
+  "definition": "Removes the element from the normal document flow and positions it relative to the viewport (the browser window). It stays in the exact same place even when the page is scrolled.",
+  "simpleExplanation": "Imagine putting a sticker directly onto your computer monitor. Even if you scroll the website up and down, the sticker never moves because it is stuck to the glass of the screen, not the webpage.",
+  "realWorldExample": "A persistent navigation bar at the top of a website that follows you as you scroll down. A 'Chat with Support' bubble permanently stuck in the bottom-right corner.",
+  "useCases": [
+    "Sticky headers/footers",
+    "Floating Action Buttons (FABs)"
+  ],
+  "questions": {
+    "basic": [
+      "Does a `fixed` element care about parent containers?"
+    ],
+    "intermediate": [
+      "Why does content sometimes hide underneath a fixed header?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does it care about parents?",
+      "answer": "No. Unlike `absolute`, `fixed` completely ignores parent containers. `bottom: 0` always means the bottom of the user's browser window."
+    },
+    {
+      "question": "Content hiding?",
+      "answer": "Because `fixed` removes the header from the document flow, the browser acts like the header doesn't exist, and pushes all the website text up to the very top of the page. You usually have to add `padding-top` to the `<body>` to push the text back down below the fixed header."
+    }
+  ],
+  "codeExample": "<style>\n  /* This chat button will always stay in the bottom right corner */\n  .chat-bubble {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n    \n    background: #2563eb;\n    color: white;\n    padding: 15px 25px;\n    border-radius: 30px;\n    box-shadow: 0 4px 10px rgba(0,0,0,0.3);\n    cursor: pointer;\n    z-index: 1000;\n  }\n</style>\n\n<!-- A super tall div so we can scroll -->\n<div style=\"height: 800px; padding: 20px; background: linear-gradient(#f8fafc, #94a3b8);\">\n  <h1>Scroll Down!</h1>\n  <p>Notice how the blue chat button completely ignores the scrolling.</p>\n  <p>It is pinned to the camera viewport, not the document.</p>\n</div>\n\n<div class=\"chat-bubble\">\n  💬 Chat with us\n</div>"
+}

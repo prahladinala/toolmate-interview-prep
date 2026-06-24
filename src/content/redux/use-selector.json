@@ -1,0 +1,31 @@
+{
+  "id": "use-selector",
+  "title": "useSelector()",
+  "difficulty": "Beginner",
+  "definition": "A React hook that allows you to extract data from the Redux store state. The hook takes a selector function as an argument, which receives the entire Redux state and returns the specific piece of data you need.",
+  "simpleExplanation": "The 'Reader'. If your component needs to know the user's name from the Redux store, you use `useSelector`. The magical part is that if the user's name changes in the store, `useSelector` forces your component to instantly re-render with the new name.",
+  "realWorldExample": "A Navbar component using `useSelector((state) => state.cart.totalItems)` to display a little red badge showing how many items are in the shopping cart.",
+  "useCases": [
+    "Reading data from Redux",
+    "Subscribing to state changes"
+  ],
+  "questions": {
+    "basic": [
+      "If `state.user` changes, will a component using `useSelector(state => state.cart)` re-render?"
+    ],
+    "intermediate": [
+      "Why should you select the smallest possible piece of state?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Will it re-render?",
+      "answer": "No! `useSelector` is highly optimized. It only triggers a re-render if the EXACT piece of data you selected (`state.cart`) changes. Since only `user` changed, the cart component stays perfectly still."
+    },
+    {
+      "question": "Why select smallest?",
+      "answer": "If you do `const state = useSelector(state => state)`, your component will re-render every single time ANY data in the entire app changes, causing massive performance issues."
+    }
+  ],
+  "codeExample": "import { useSelector } from 'react-redux';\n\nfunction UserProfile() {\n  // Pass a function that takes the whole state, and returns just what you need\n  const username = useSelector((state) => state.auth.username);\n  const theme = useSelector((state) => state.ui.theme);\n\n  return (\n    <div className={`theme-${theme}`}>\n      <h1>Welcome back, {username}!</h1>\n    </div>\n  );\n}"
+}

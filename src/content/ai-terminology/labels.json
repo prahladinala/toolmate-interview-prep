@@ -1,0 +1,30 @@
+{
+  "id": "labels",
+  "title": "Labels",
+  "difficulty": "Beginner",
+  "definition": "The final output, category, or answer that a Supervised Machine Learning model is trying to predict. It is the known 'truth' attached to the training data.",
+  "simpleExplanation": "The answer key on a flashcard. The front of the flashcard has the picture (the Features). The back of the flashcard says 'Dog' (the Label).",
+  "realWorldExample": "In medical imaging AI, doctors look at 10,000 X-Rays (Features) and manually tag them with 'Cancer' or 'No Cancer' (Labels). The AI studies this dataset to learn how to predict the label itself.",
+  "useCases": [
+    "Supervised Learning",
+    "Data annotation"
+  ],
+  "questions": {
+    "basic": [
+      "Do Unsupervised Learning models use Labels?"
+    ],
+    "intermediate": [
+      "What is a 'Data Labeling' farm?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Do unsupervised use labels?",
+      "answer": "No. By definition, unsupervised learning relies on unlabeled data, forcing the algorithm to find its own groupings."
+    },
+    {
+      "question": "Data Labeling farm?",
+      "answer": "Because AI needs millions of labeled examples to learn, tech companies often hire thousands of human workers (often in developing countries) to sit at computers all day manually drawing boxes around stop signs and pedestrians in videos. These are the 'Labels' fed to self-driving cars."
+    }
+  ]
+}

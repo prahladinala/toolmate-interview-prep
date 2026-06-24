@@ -1,0 +1,31 @@
+{
+  "id": "nextjs-lifecycle",
+  "title": "Request Lifecycle",
+  "difficulty": "Advanced",
+  "definition": "The chronological sequence of events that occurs from the moment a user types a URL into their browser until the fully interactive React page is rendered on their screen.",
+  "simpleExplanation": "1. User requests a page. 2. Next.js Middleware intercepts the request (checks authentication). 3. The Server fetches data and renders HTML. 4. The HTML is sent to the browser (user sees the page instantly). 5. React 'Hydrates' the page (makes buttons clickable).",
+  "realWorldExample": "Debugging why a user sees a brief flash of an un-styled page before the interactivity loads (Understanding the gap between HTML delivery and React Hydration).",
+  "useCases": [
+    "Performance debugging",
+    "Architectural understanding"
+  ],
+  "questions": {
+    "basic": [
+      "What is 'Hydration' in Next.js?"
+    ],
+    "intermediate": [
+      "In the App Router, do Server Components ever get hydrated on the client browser?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is Hydration?",
+      "answer": "The process where React attaches JavaScript event listeners (like `onClick`) to the static HTML that was initially sent by the server, bringing the page 'to life'."
+    },
+    {
+      "question": "Do Server Components hydrate?",
+      "answer": "No! Server Components never send any JavaScript to the browser. They remain pure, static HTML. Only Client Components (marked with `\"use client\"`) go through the hydration process in the browser."
+    }
+  ],
+  "codeExample": "// A visual representation of the lifecycle:\n\n// 1. [SERVER]: Request hits Server\n// 2. [SERVER]: middleware.ts runs (Checks auth cookie)\n// 3. [SERVER]: Server Component fetches DB data\n// 4. [SERVER]: Server renders pure HTML\n\n// ⬇️ --- NETWORK BOUNDARY (HTML sent over wire) --- ⬇️\n\n// 5. [BROWSER]: Browser instantly paints HTML (User sees UI immediately!)\n// 6. [BROWSER]: Next.js downloads the tiny JS bundle for Client Components\n// 7. [BROWSER]: React Hydrates Client Components (Buttons become clickable)"
+}

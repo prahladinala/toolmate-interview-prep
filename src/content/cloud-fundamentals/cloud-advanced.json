@@ -1,0 +1,30 @@
+{
+  "id": "cloud-advanced",
+  "title": "Advanced Questions",
+  "difficulty": "Advanced",
+  "definition": "Deep-dive questions assessing knowledge of distributed systems, serverless architectures, container orchestration, and disaster recovery.",
+  "simpleExplanation": "Proving you can build architectures that handle millions of users without crashing.",
+  "realWorldExample": "Question: 'Walk me through how you would architect a Serverless, event-driven image processing pipeline using SQS, Lambda, and S3.'",
+  "useCases": [
+    "Senior Cloud Architect roles",
+    "SRE interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the Shared Responsibility Model?"
+    ],
+    "intermediate": [
+      "Why is it critical to decouple microservices using a Message Queue like SQS?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Shared Responsibility Model?",
+      "answer": "The doctrine that the Cloud Provider is responsible for the physical security of the hardware and data center, while the Customer is responsible for the security of their data, application code, and firewall rules."
+    },
+    {
+      "question": "Why decouple with queues?",
+      "answer": "If Service A calls Service B directly (synchronously), and Service B crashes, Service A crashes too. If Service A puts a message in a Queue, and Service B crashes, the message safely waits in the queue until Service B recovers. It prevents cascading failures."
+    }
+  ]
+}

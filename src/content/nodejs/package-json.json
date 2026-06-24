@@ -1,0 +1,39 @@
+{
+  "id": "package-json",
+  "title": "package.json",
+  "difficulty": "Beginner",
+  "definition": "The heart of any Node.js project. It is a JSON file that holds metadata about the project, manages dependencies (libraries), and defines runnable scripts.",
+  "simpleExplanation": "It's the recipe and instruction manual for your application. If you give your code to a friend, they don't have your downloaded libraries. They look at the `package.json` recipe, run `npm install`, and NPM automatically downloads all the exact ingredients needed to run your app.",
+  "realWorldExample": "Running `npm run dev`. Node looks in the `package.json` under the `\"scripts\"` object, finds the `\"dev\"` key, and executes the complex terminal command tied to it (like `nodemon src/index.js`).",
+  "useCases": [
+    "Dependency management",
+    "Automating terminal tasks via scripts",
+    "Publishing packages to NPM"
+  ],
+  "questions": {
+    "basic": [
+      "What command generates a new `package.json` file?"
+    ],
+    "intermediate": [
+      "What is the difference between `dependencies` and `devDependencies`?"
+    ],
+    "advanced": [
+      "What do the `^` (caret) and `~` (tilde) symbols mean in front of version numbers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What command generates it?",
+      "answer": "`npm init` (interactive) or `npm init -y` (skips questions and uses defaults)."
+    },
+    {
+      "question": "dependencies vs devDependencies?",
+      "answer": "`dependencies` are libraries your app REQUIRES to run in production (like Express or Mongoose). `devDependencies` are tools only needed while coding (like Jest, TypeScript, or Nodemon). Production servers skip installing devDependencies to save space."
+    },
+    {
+      "question": "What do ^ and ~ mean?",
+      "answer": "Semantic Versioning. `^1.4.2` tells NPM: 'It is safe to auto-update to any 1.X.X version (minor updates), but NEVER 2.0.0 (breaking change)'. `~1.4.2` is stricter: 'Only update to 1.4.X (bug fixes only)'."
+    }
+  ],
+  "codeExample": "{\n  \"name\": \"my-awesome-app\",\n  \"version\": \"1.0.0\",\n  \"description\": \"A sample Node.js API\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",     // Enables ES Modules!\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"dev\": \"nodemon index.js\",  // Auto-restarts server on file save\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.2\",\n    \"mongoose\": \"^7.0.3\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^2.0.22\",\n    \"jest\": \"^29.5.0\"\n  }\n}"
+}

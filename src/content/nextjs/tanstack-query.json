@@ -1,0 +1,32 @@
+{
+  "id": "tanstack-query",
+  "title": "TanStack Query",
+  "difficulty": "Intermediate",
+  "definition": "Formerly known as React Query. The industry standard library for fetching, caching, synchronizing and updating SERVER state in React applications.",
+  "simpleExplanation": "If you are fetching data in a Client Component (like an infinite scrolling feed), standard `fetch` is a nightmare. TanStack query handles loading states, error states, automatic retries, and background refetching perfectly.",
+  "realWorldExample": "A live sports scoreboard. TanStack query fetches the score, and automatically pings the server every 5 seconds in the background to silently update the UI without the user refreshing the page.",
+  "useCases": [
+    "Client-side data fetching",
+    "Infinite scrolling",
+    "Real-time UI sync"
+  ],
+  "questions": {
+    "basic": [
+      "What is the primary React hook provided by TanStack Query to fetch data?"
+    ],
+    "intermediate": [
+      "If Next.js has built-in fetching on the Server, why would you ever need TanStack Query?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which hook?",
+      "answer": "`useQuery`"
+    },
+    {
+      "question": "Why need it?",
+      "answer": "Next.js server fetching is great for the *initial* page load. But if you need data to update *after* the page loads (like a user clicking a 'Load More Comments' button), you must fetch that data from the client. TanStack query makes client-fetching robust."
+    }
+  ],
+  "codeExample": "'use client';\nimport { useQuery } from '@tanstack/react-query';\n\n// A standard fetch function\nconst fetchUser = async (id) => {\n  const res = await fetch(`/api/users/${id}`);\n  return res.json();\n};\n\nexport function UserProfile({ userId }) {\n  // TanStack Query handles all the complexity!\n  const { data, isLoading, isError } = useQuery({\n    queryKey: ['user', userId], // The cache key\n    queryFn: () => fetchUser(userId),\n    refetchInterval: 5000, // MAGIC: Refetch in background every 5s!\n  });\n\n  if (isLoading) return <p>Loading spinner...</p>;\n  if (isError) return <p>Error loading user!</p>;\n\n  return <div>Welcome, {data.name}</div>;\n}"
+}

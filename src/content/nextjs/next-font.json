@@ -1,0 +1,32 @@
+{
+  "id": "next-font",
+  "title": "next/font",
+  "difficulty": "Intermediate",
+  "definition": "A built-in Next.js system that automatically optimizes web fonts (like Google Fonts or local custom fonts) and entirely removes layout shifts.",
+  "simpleExplanation": "Historically, you pasted a Google Fonts link into your HTML. The browser loaded your text in a generic ugly font, then downloaded the Google Font, and then violently swapped the fonts, causing the whole page to jitter. `next/font` downloads the font file *at build time* and serves it locally, guaranteeing zero jitter.",
+  "realWorldExample": "Implementing the 'Inter' or 'Roboto' font globally across your entire Next.js application with 3 lines of code and zero privacy issues (since the browser never talks to Google's servers).",
+  "useCases": [
+    "Typography",
+    "Performance optimization",
+    "GDPR compliance"
+  ],
+  "questions": {
+    "basic": [
+      "Does `next/font/google` make an HTTP request to Google's servers every time a user visits your site?"
+    ],
+    "intermediate": [
+      "What is Cumulative Layout Shift (CLS), and how does `next/font` prevent it?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "HTTP request to Google?",
+      "answer": "No! Next.js downloads the font file to your own server during the `npm run build` step. The user's browser only talks to your server, ensuring extreme speed and perfect privacy."
+    },
+    {
+      "question": "Prevent CLS?",
+      "answer": "CLS is when the page jumps around while loading. `next/font` uses a CSS property called `size-adjust` to mathematically force the temporary fallback font to be the EXACT same physical dimensions as the final font, making the swap completely invisible."
+    }
+  ],
+  "codeExample": "// app/layout.tsx\nimport { Inter } from 'next/font/google';\n\n// 1. Configure the font. \n// subsets optimize the file size by only including specific alphabets (like Latin).\nconst inter = Inter({\n  subsets: ['latin'],\n  display: 'swap', \n});\n\nexport default function RootLayout({ children }) {\n  return (\n    <html lang=\"en\">\n      {/* 2. Apply the magic generated className to the body */}\n      <body className={inter.className}>\n        {children}\n      </body>\n    </html>\n  );\n}"
+}

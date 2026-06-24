@@ -1,0 +1,30 @@
+{
+  "id": "nodejs-debugging",
+  "title": "Debugging Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions designed to test a developer's ability to track down and fix bugs, memory leaks, or crashes in a Node.js environment.",
+  "simpleExplanation": "How do you find the needle in the haystack when your app crashes in production with no error message?",
+  "realWorldExample": "Knowing how to use the `--inspect` flag, understanding stack traces, and knowing the difference between `process.on('uncaughtException')` and `unhandledRejection`.",
+  "useCases": [
+    "Troubleshooting production outages"
+  ],
+  "questions": {
+    "basic": [
+      "What is an `UnhandledPromiseRejection`?"
+    ],
+    "intermediate": [
+      "How do you catch synchronous crashes globally so the app doesn't die immediately?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "UnhandledPromiseRejection?",
+      "answer": "It happens when an asynchronous Promise fails (rejects), but you forgot to attach a `.catch()` block or use a `try/catch` with async/await. In modern Node, this will completely crash your server."
+    },
+    {
+      "question": "Catch crashes globally?",
+      "answer": "By listening to the `process.on('uncaughtException')` event. Note: It is best practice to log the error and STILL gracefully shut down the app, because the app is now in an unpredictable state."
+    }
+  ],
+  "codeExample": "// --- THE SAFETY NETS ---\n\n// 1. Catching Synchronous Crashes (e.g., throwing a raw Error)\nprocess.on('uncaughtException', (err) => {\n  console.error(\"[FATAL]: Uncaught Exception detected:\", err.message);\n  // Always exit gracefully after this!\n  // process.exit(1);\n});\n\n// 2. Catching Asynchronous Crashes (e.g., failed DB calls without a catch block)\nprocess.on('unhandledRejection', (reason, promise) => {\n  console.error(\"[FATAL]: Unhandled Promise Rejection:\", reason);\n  // process.exit(1);\n});\n\n// Let's trigger one!\nsetTimeout(() => {\n  // We forgot the try/catch block!\n  Promise.reject(\"Database Connection Timeout\");\n}, 1000);\n\nconsole.log(\"Without the safety net, the setTimeout error would violently crash the process.\");"
+}

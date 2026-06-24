@@ -1,0 +1,30 @@
+{
+  "id": "custom-spacing",
+  "title": "Custom Spacing",
+  "difficulty": "Intermediate",
+  "definition": "Extending Tailwind's default numerical spacing scale to include specific, non-standard measurements required by a design team.",
+  "simpleExplanation": "Tailwind's scale goes like `p-4` (1rem), `p-5` (1.25rem). If your designer is obsessed with a massive 500px gap for a specific hero section, you don't write inline styles. You add `'hero': '500px'` to the spacing config, and now you can use `mt-hero` or `h-hero`.",
+  "realWorldExample": "Adding a `13` to the spacing scale because you specifically need exactly `3.25rem` for a highly specific card layout.",
+  "useCases": [
+    "Pixel-perfect Figma translations"
+  ],
+  "questions": {
+    "basic": [
+      "If you add `'custom': '200px'` to `theme.extend.spacing`, which classes are generated?"
+    ],
+    "intermediate": [
+      "Why shouldn't you just use arbitrary values (like `w-[200px]`) instead of extending the config?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Generated classes?",
+      "answer": "Hundreds! `w-custom`, `h-custom`, `m-custom`, `p-custom`, `gap-custom`, `top-custom`, etc."
+    },
+    {
+      "question": "Arbitrary vs Config?",
+      "answer": "Arbitrary values (`w-[200px]`) are great for one-off tweaks. But if you use 200px in 15 different files, you should put it in the config so that if the designer changes it to 210px, you only have to update it in one single place."
+    }
+  ],
+  "codeExample": "module.exports = {\n  theme: {\n    extend: {\n      spacing: {\n        '13': '3.25rem',\n        '15': '3.75rem',\n        'massive': '40rem', // Generates w-massive, h-massive, mt-massive\n      }\n    }\n  }\n}"
+}

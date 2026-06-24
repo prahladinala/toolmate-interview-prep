@@ -1,0 +1,30 @@
+{
+  "id": "docker-run",
+  "title": "docker run",
+  "difficulty": "Beginner",
+  "definition": "The most common Docker CLI command. It creates a brand new container from a specified image and immediately starts it.",
+  "simpleExplanation": "The magic button to start an app. It tells Docker: 'Take this blueprint, build a box from it, and turn the box on.'",
+  "realWorldExample": "Typing `docker run -p 8080:80 nginx`. Docker instantly spins up a live NGINX web server on your computer, accessible on port 8080.",
+  "useCases": [
+    "Starting applications",
+    "Testing images"
+  ],
+  "questions": {
+    "basic": [
+      "What does the `-d` flag do when using `docker run`?"
+    ],
+    "intermediate": [
+      "What is the difference between `docker create` and `docker run`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What does -d do?",
+      "answer": "Detached mode. It starts the container running silently in the background, giving you your terminal prompt back. (Without it, the container's logs take over your screen)."
+    },
+    {
+      "question": "Create vs Run?",
+      "answer": "`docker create` prepares the container but leaves it dormant (Stopped). `docker run` creates the container AND instantly starts it. (`docker run` = `create` + `start`)."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "event-loop-deep",
+  "title": "Event Loop Deep Dive",
+  "difficulty": "Advanced",
+  "definition": "A highly granular look at the Node.js Event Loop phases: Timers, Pending Callbacks, Idle/Prepare, Poll, Check, and Close Callbacks.",
+  "simpleExplanation": "The browser Event Loop is fairly simple. The Node.js Event Loop is a giant factory with 6 different conveyor belts (phases). The manager (Event Loop) walks to belt 1, processes everything, walks to belt 2, processes everything, and repeats the circle. `setTimeout` goes on belt 1. File reading goes on belt 4. `setImmediate` goes on belt 5.",
+  "realWorldExample": "Understanding why `setImmediate` might fire BEFORE a `setTimeout(cb, 0)` depending on whether they were called from the global script or inside an I/O callback.",
+  "useCases": [
+    "Node.js server optimization",
+    "Predicting complex async execution order"
+  ],
+  "questions": {
+    "basic": [
+      "What are the main phases of the Node.js Event Loop?"
+    ],
+    "intermediate": [
+      "What is the difference between `process.nextTick()` and `setImmediate()`?"
+    ],
+    "advanced": [
+      "If you call `setTimeout(cb, 0)` and `setImmediate(cb)` in the main module, which runs first?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "process.nextTick vs setImmediate?",
+      "answer": "`process.nextTick` is NOT part of the Event Loop phases. It is a special microtask queue that fires IMMEDIATELY after the current operation completes, regardless of the Event Loop phase. `setImmediate` is an actual Event Loop phase (the Check phase) that runs after I/O events."
+    },
+    {
+      "question": "Which runs first in the main module?",
+      "answer": "It is NON-DETERMINISTIC! The performance of the machine dictates it. `setTimeout` has a minimum delay of 1ms. If the Node startup takes more than 1ms to reach the timers phase, the timer fires first. If it reaches it in 0.5ms, it skips the timer phase, hits the Check phase, and `setImmediate` fires first. (If placed inside an I/O callback like `fs.readFile`, `setImmediate` ALWAYS fires first)."
+    }
+  ],
+  "codeExample": "const fs = require('fs');\n\n// 1. Drains first, before the Event Loop even continues\nprocess.nextTick(() => console.log('nextTick 1'));\n\n// 2. Microtask, drains after nextTick\nPromise.resolve().then(() => console.log('Promise 1'));\n\n// 3. Timers phase\nsetTimeout(() => console.log('setTimeout 1'), 0);\n\n// 4. Check phase\nsetImmediate(() => console.log('setImmediate 1'));\n\n// Output order (Usually):\n// nextTick 1\n// Promise 1\n// setTimeout 1 (Non-deterministic vs immediate in main module)\n// setImmediate 1"
+}

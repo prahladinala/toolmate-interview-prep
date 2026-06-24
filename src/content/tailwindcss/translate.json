@@ -1,0 +1,32 @@
+{
+  "id": "translate",
+  "title": "Translate",
+  "difficulty": "Intermediate",
+  "definition": "Transform utilities used to move an element up, down, left, or right relative to its original starting position.",
+  "simpleExplanation": "Nudging things. `translate-y-4` pushes the element downwards by 1rem (16px). `-translate-y-4` pulls it upwards by 1rem. This is the secret to all 'sliding' animations.",
+  "realWorldExample": "A Mobile Navigation Drawer that is hidden completely off the left side of the screen (`-translate-x-full`). When the menu button is clicked, JS removes that class and it slides onto the screen.",
+  "useCases": [
+    "Off-canvas menus",
+    "Toasts/Notifications",
+    "Parallax effects"
+  ],
+  "questions": {
+    "basic": [
+      "What class physically lifts a card up towards the top of the screen by a small amount on hover?"
+    ],
+    "intermediate": [
+      "What does `-translate-x-full` specifically do?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Lifts up?",
+      "answer": "`-translate-y-1` or `-translate-y-2` (Negative Y goes UP in CSS)."
+    },
+    {
+      "question": "translate-x-full?",
+      "answer": "It translates the element exactly 100% of its OWN width to the left. If the box is 300px wide, it moves it 300px to the left, perfectly hiding it off-screen."
+    }
+  ],
+  "codeExample": "<!-- A Card that lifts off the page on hover -->\n<div class=\"bg-white p-6 shadow hover:shadow-xl hover:-translate-y-2 transition-all duration-300\">\n  Hover me to lift up!\n</div>\n\n<!-- The Off-Canvas Sidebar (React Example) -->\n<!-- Uses full-width translation to hide and show -->\n<aside \n  class={`fixed inset-y-0 left-0 w-64 bg-gray-900 text-white transform transition-transform duration-300 ease-in-out\n         ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}\n>\n  Menu Links\n</aside>"
+}

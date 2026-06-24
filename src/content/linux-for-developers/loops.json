@@ -1,0 +1,30 @@
+{
+  "id": "loops",
+  "title": "Loops",
+  "difficulty": "Intermediate",
+  "definition": "Control structures (`for`, `while`) in Bash used to repeatedly execute a block of commands multiple times, either for every item in a list or until a condition is met.",
+  "simpleExplanation": "The automated repetitive worker. Instead of typing `rm` 50 times to delete 50 files, you tell a loop 'For every file in this folder, delete it'.",
+  "realWorldExample": "A DevOps script needs to restart 3 different servers.\n`for SERVER in web1 web2 db1; do`\n`  ssh root@$SERVER 'systemctl restart app'`\n`done`",
+  "useCases": [
+    "Batch processing files",
+    "Pinging multiple IP addresses"
+  ],
+  "questions": {
+    "basic": [
+      "What two words define the beginning and end of the block of commands inside a `for` loop?"
+    ],
+    "intermediate": [
+      "When would you choose a `while` loop over a `for` loop in a Bash script?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Beginning and end words?",
+      "answer": "`do` and `done`."
+    },
+    {
+      "question": "While vs For?",
+      "answer": "A `for` loop is used when you have a specific, finite list of items (like 5 file names). A `while` loop is used when you don't know how many times it will run (e.g., 'While the server is still turned off, sleep for 5 seconds and check again')."
+    }
+  ]
+}

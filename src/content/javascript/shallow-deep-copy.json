@@ -1,0 +1,34 @@
+{
+  "id": "shallow-deep-copy",
+  "title": "Shallow vs Deep Copy",
+  "difficulty": "Intermediate",
+  "definition": "A Shallow Copy duplicates the top level of an object, but nested objects are still passed by reference. A Deep Copy creates a completely independent clone of the object and all its nested properties.",
+  "simpleExplanation": "Shallow copy is taking a photo of a family. You get a new photo, but the people in it are the same people. If the real dad dyes his hair red, the photo dad doesn't change, but wait... in JS memory, they DO change! Deep copy is literally cloning the entire family in a lab so you have two completely separate sets of humans.",
+  "realWorldExample": "Using the spread operator `{ ...user }` (Shallow) to update state in React. Using `structuredClone(user)` (Deep) to create a backup of a massive nested form state before the user edits it.",
+  "useCases": [
+    "Immutability in React/Redux",
+    "Data backups"
+  ],
+  "questions": {
+    "basic": [
+      "Is the Spread Operator `...` a shallow or deep copy?"
+    ],
+    "intermediate": [
+      "What is wrong with using `JSON.parse(JSON.stringify(obj))` for deep cloning?"
+    ],
+    "advanced": [
+      "What is `structuredClone()`?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is wrong with JSON.parse(JSON.stringify)?",
+      "answer": "It is a hack that loses data. It cannot clone Functions, Dates, undefined, Symbols, or Maps/Sets. If your object contains a `Date` object, the JSON clone will turn it into a string."
+    },
+    {
+      "question": "What is structuredClone()?",
+      "answer": "Introduced recently in all modern browsers, `structuredClone()` is the native, official way to deep clone objects in JavaScript. It correctly handles Dates, Sets, Maps, and circular references."
+    }
+  ],
+  "codeExample": "const original = { name: 'Alice', address: { city: 'Paris' } };\n\n// 1. SHALLOW COPY (Nested object is shared!)\nconst shallow = { ...original };\nshallow.address.city = 'London';\nconsole.log(original.address.city); // 'London' (Original was mutated!)\n\n// 2. DEEP COPY (Modern native way)\nconst deep = structuredClone(original);\ndeep.address.city = 'Tokyo';\nconsole.log(original.address.city); // 'London' (Original is safe!)"
+}

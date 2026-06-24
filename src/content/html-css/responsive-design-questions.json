@@ -1,0 +1,30 @@
+{
+  "id": "responsive-design-questions",
+  "title": "Responsive Design Questions",
+  "difficulty": "Intermediate",
+  "definition": "Questions focusing on Mobile-First architecture, Media Queries, and fluid units.",
+  "simpleExplanation": "Interviewers want to know if you can build a website that looks good on an iPhone, an iPad, and a 4K TV, without writing messy code.",
+  "realWorldExample": "Explaining why you used `em` or `rem` instead of `px` for font sizes.",
+  "useCases": [
+    "Front-End Architecture interviews"
+  ],
+  "questions": {
+    "basic": [
+      "What is the purpose of the `<meta name=\"viewport\">` tag?"
+    ],
+    "intermediate": [
+      "Explain 'Mobile-First' design."
+    ]
+  },
+  "answers": [
+    {
+      "question": "Purpose of viewport meta tag?",
+      "answer": "Without it, mobile browsers will assume your site is a desktop site and zoom way out to fit it all on the screen, making the text unreadably tiny. The viewport tag tells the browser to set the width to the device's physical width."
+    },
+    {
+      "question": "Mobile-First?",
+      "answer": "It means writing your default CSS rules for small mobile screens. Then, you use `@media (min-width: 768px)` queries to ADD complexity (like multi-column layouts) as the screen gets wider. It's better for performance because phones don't have to process complex desktop CSS."
+    }
+  ],
+  "codeExample": "/* \n  Q: What is the difference between EM and REM units?\n\n  A: Both are relative units used primarily for Typography.\n  \n     REM (Root EM) is relative to the font-size of the root <html> element \n     (which is usually 16px). If you write `2rem`, it is ALWAYS 32px everywhere \n     on the page.\n     \n     EM is relative to the font-size of its DIRECT PARENT. If a parent is 20px, \n     and you set a child to `2em`, the child is 40px. If you nest multiple `em` \n     elements inside each other, the math compounds and spirals out of control \n     very quickly.\n     \n     Best Practice: Use `rem` for typography so it scales with the user's browser \n     accessibility settings, and avoid `em` unless you are building a highly \n     specific modular component.\n*/"
+}

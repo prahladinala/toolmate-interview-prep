@@ -1,0 +1,30 @@
+{
+  "id": "configure-store",
+  "title": "configureStore()",
+  "difficulty": "Beginner",
+  "definition": "An RTK function that wraps `createStore` to provide simplified configuration options and good defaults. It automatically adds the thunk middleware and sets up the Redux DevTools Extension.",
+  "simpleExplanation": "The magic function that sets up your entire Redux app. In the old days, setting up the store, devtools, and middleware took 20 lines of confusing code. `configureStore()` does it all automatically in 3 lines.",
+  "realWorldExample": "Creating the `store.js` file at the very root of your project, passing in all your feature slices, and exporting the final store.",
+  "useCases": [
+    "Store initialization"
+  ],
+  "questions": {
+    "basic": [
+      "Does `configureStore` automatically enable the Redux DevTools browser extension?"
+    ],
+    "intermediate": [
+      "How does `configureStore` handle multiple reducers?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auto enable DevTools?",
+      "answer": "Yes! You don't have to write any messy configuration code. If the extension is installed in your browser, it just works automatically."
+    },
+    {
+      "question": "Multiple reducers?",
+      "answer": "It calls `combineReducers` automatically. You just pass it an object of slice reducers, and it glues them together for you."
+    }
+  ],
+  "codeExample": "import { configureStore } from '@reduxjs/toolkit';\nimport userReducer from '../features/user/userSlice';\nimport cartReducer from '../features/cart/cartSlice';\n\n// RTK handles combineReducers, Thunk middleware, and DevTools automatically!\nexport const store = configureStore({\n  reducer: {\n    user: userReducer,\n    cart: cartReducer,\n  },\n});\n\n// (Optional but highly recommended) Export types for TypeScript\n// export type RootState = ReturnType<typeof store.getState>;\n// export type AppDispatch = typeof store.dispatch;"
+}

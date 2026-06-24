@@ -1,0 +1,31 @@
+{
+  "id": "auth-overview",
+  "title": "Authentication Concepts",
+  "difficulty": "Beginner",
+  "definition": "The foundational concepts of verifying WHO a user is (Authentication) and WHAT they are allowed to do (Authorization) in a web application.",
+  "simpleExplanation": "Authentication is checking a user's ID card at the front door to see if they are actually John Doe. Authorization is checking if John Doe's ID card has the 'VIP' stamp allowing him into the VIP lounge.",
+  "realWorldExample": "Logging in with Google (Authentication), and then the system checking if your account is an 'Admin' before showing you the 'Delete Database' button (Authorization).",
+  "useCases": [
+    "Securing applications",
+    "User management"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between Authentication and Authorization?"
+    ],
+    "intermediate": [
+      "Why are cookies generally preferred over `localStorage` for storing authentication tokens in Next.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Auth vs Auth?",
+      "answer": "Authentication proves Identity (Who you are). Authorization proves Permissions (What you can do)."
+    },
+    {
+      "question": "Cookies vs localStorage?",
+      "answer": "`localStorage` is strictly client-side; the server cannot read it. In Next.js, the server MUST know who the user is to render Server Components securely. Cookies are automatically sent to the server on every request, making Server-Side Rendering possible."
+    }
+  ],
+  "codeExample": "/*\n  The Authentication Flow in Next.js:\n  \n  1. User enters credentials in a Client Component.\n  2. Credentials sent to an API Route or Server Action.\n  3. Server validates credentials against the Database.\n  4. Server generates a secure Token (JWT or Session ID).\n  5. Server sends token back inside a securely encrypted HTTP-Only Cookie.\n  6. On all future page loads, Next.js Server Components read that Cookie to identify the user before rendering HTML.\n*/"
+}

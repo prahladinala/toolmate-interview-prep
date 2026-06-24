@@ -1,0 +1,31 @@
+{
+  "id": "docker-volumes",
+  "title": "Docker Volumes",
+  "difficulty": "Intermediate",
+  "definition": "The absolute preferred, Docker-native mechanism for persisting data. Volumes are entirely managed by Docker, stored in a secure part of the Linux host filesystem (`/var/lib/docker/volumes/`), and are fully isolated from other host applications.",
+  "simpleExplanation": "A magical, secure USB drive created by Docker. You ask Docker for a volume named 'my-data'. Docker hides it safely deep in the system files. You plug 'my-data' into your container.",
+  "realWorldExample": "Creating a volume with `docker volume create db-data`. Then running `docker run -v db-data:/var/lib/mysql mysql`. The database thinks it's writing to its own internal folder, but the data is safely accumulating in the Docker Volume.",
+  "useCases": [
+    "Database storage",
+    "Cross-container data sharing",
+    "Cloud backups"
+  ],
+  "questions": {
+    "basic": [
+      "If you delete the container using a Docker Volume, does the Volume get deleted too?"
+    ],
+    "intermediate": [
+      "What is a major advantage of Docker Volumes over Bind Mounts regarding cloud backups?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Does volume get deleted?",
+      "answer": "No. Volumes are completely independent of the container lifecycle. You must explicitly delete them using `docker volume rm`."
+    },
+    {
+      "question": "Advantage over Bind Mounts?",
+      "answer": "Volumes are fully managed by Docker and use 'Volume Drivers'. This means you can install a plugin to instantly push the Volume data to an AWS S3 bucket or Google Cloud Storage, something Bind Mounts cannot easily do."
+    }
+  ]
+}

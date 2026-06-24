@@ -1,0 +1,30 @@
+{
+  "id": "volume-management",
+  "title": "Volume Management",
+  "difficulty": "Beginner",
+  "definition": "The set of CLI commands (`docker volume ...`) used to create, inspect, list, and delete Docker Volumes.",
+  "simpleExplanation": "Housekeeping for your external hard drives. Over time, you accumulate dozens of abandoned volumes taking up gigabytes of space, and you have to clean them out.",
+  "realWorldExample": "A server runs out of disk space. The admin runs `docker volume ls` and sees 50 old database volumes. They run `docker volume prune` to instantly delete all volumes not currently attached to a running container.",
+  "useCases": [
+    "Disk cleanup",
+    "Storage auditing"
+  ],
+  "questions": {
+    "basic": [
+      "What command deletes all unused, unattached Docker Volumes to free up disk space?"
+    ],
+    "intermediate": [
+      "Can you easily rename a Docker Volume using a built-in CLI command?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Which command?",
+      "answer": "`docker volume prune`."
+    },
+    {
+      "question": "Can you rename?",
+      "answer": "No. Docker does not natively support renaming volumes. You must create a new volume with the desired name, manually copy the data over using a temporary container, and delete the old volume."
+    }
+  ]
+}

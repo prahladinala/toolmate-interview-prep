@@ -1,0 +1,45 @@
+{
+  "id": "modules",
+  "title": "JS Modules",
+  "difficulty": "Intermediate",
+  "definition": "Modules are small, independent, reusable pieces of code. JavaScript supports ES6 Modules natively, allowing you to `export` variables, functions, or classes from one file and `import` them into another.",
+  "simpleExplanation": "Imagine you are building a Lego castle. Instead of having all 5,000 pieces in one massive pile (a single huge JS file), you put the roof pieces in one bag, the wall pieces in another, and the knights in another. When you need knights, you just `import` the knight bag. It keeps your code organized and prevents pieces from getting mixed up.",
+  "realWorldExample": "In React, every component (like a Button or a Navbar) is usually written in its own file (Module). Then, the main App file imports them. This makes the code readable and easy to collaborate on.",
+  "useCases": [
+    "Splitting large codebases into manageable files",
+    "Encapsulating private logic (variables not exported stay private to the file)",
+    "Reusing utility functions across multiple projects"
+  ],
+  "questions": {
+    "basic": [
+      "What is the difference between default export and named export?",
+      "How do you import a default export?"
+    ],
+    "intermediate": [
+      "Can a module have both named exports and a default export?",
+      "What happens if you try to modify an imported variable?"
+    ],
+    "advanced": [
+      "What is the difference between ES Modules (ESM) and CommonJS (CJS)?",
+      "How does dynamic import() work and why is it useful?"
+    ],
+    "trick": [
+      "Does importing the same module twice execute the module code twice?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What is the difference between default and named exports?",
+      "answer": "A file can have multiple 'named' exports (exported with `export const x`), which must be imported using their exact name in curly braces: `import { x }`. A file can only have ONE 'default' export, which can be imported without curly braces and named anything: `import MyThing`."
+    },
+    {
+      "question": "What happens if you try to modify an imported variable?",
+      "answer": "Imported bindings are read-only. If you try to reassign an imported variable (e.g., `import { count } ... count = 5`), it will throw a TypeError. However, if you import an object, you can mutate its properties."
+    },
+    {
+      "question": "Does importing the same module twice execute the module code twice?",
+      "answer": "No. Modules are evaluated exactly once. Subsequent imports of the same module just return the cached exports. This makes them great for creating singletons."
+    }
+  ],
+  "codeExample": "// --- mathUtils.js (The Module) ---\n// Named exports\nexport const PI = 3.14159;\n\nexport function add(a, b) {\n  return a + b;\n}\n\n// Default export (only one per file)\nexport default class Calculator {\n  multiply(a, b) {\n    return a * b;\n  }\n}\n\n// --- main.js (The Consumer) ---\n// Importing a default export (no braces, name it whatever)\nimport MyCalc from './mathUtils.js';\n\n// Importing named exports (must use braces and exact name)\nimport { PI, add } from './mathUtils.js';\n\n// You can also rename named exports on import\nimport { add as sum } from './mathUtils.js';\n\nconst calc = new MyCalc();\nconsole.log(calc.multiply(2, 5)); // 10\nconsole.log(PI); // 3.14159\nconsole.log(sum(5, 5)); // 10"
+}

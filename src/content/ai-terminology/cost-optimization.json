@@ -1,0 +1,30 @@
+{
+  "id": "cost-optimization",
+  "title": "Cost Optimization",
+  "difficulty": "Intermediate",
+  "definition": "The architectural strategies used to reduce the massive cloud computing and API bills associated with running Generative AI at scale in a production environment.",
+  "simpleExplanation": "Using a sledgehammer to crack a nut is expensive. You don't need GPT-4 to read an email and say 'Yes' or 'No'. You can use a tiny, cheap model for easy tasks, and save the expensive GPT-4 for writing complex code.",
+  "realWorldExample": "Prompt Truncation (deleting useless words from the prompt to save tokens), LLM Routing (sending simple queries to Claude Haiku for $0.25, and complex queries to Claude Opus for $15.00), and Caching.",
+  "useCases": [
+    "Enterprise architecture",
+    "Startup runway management"
+  ],
+  "questions": {
+    "basic": [
+      "If you remove 1,000 unnecessary words from your System Prompt, will it save you money?"
+    ],
+    "intermediate": [
+      "What is 'Model Routing' in LLM Architecture?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "Remove words to save money?",
+      "answer": "Yes. Every single token in the System Prompt is billed to you *every single time* a user sends a chat message. Keeping prompts concise is the #1 cost optimization technique."
+    },
+    {
+      "question": "Model Routing?",
+      "answer": "A gateway script that reads the user's prompt and decides how hard the task is. Easy tasks are routed to a fast, cheap open-source model. Hard math/coding tasks are routed to an expensive proprietary model. This saves massive amounts of money."
+    }
+  ]
+}

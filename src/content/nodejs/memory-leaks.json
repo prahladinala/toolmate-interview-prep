@@ -1,0 +1,31 @@
+{
+  "id": "memory-leaks",
+  "title": "Memory Leaks",
+  "difficulty": "Advanced",
+  "definition": "A situation where a computer program incorrectly manages memory allocations, failing to release memory that is no longer needed. Over time, the program consumes all available RAM and crashes.",
+  "simpleExplanation": "Imagine eating a banana and leaving the peel on the floor. Then another, and another. Eventually, your house is so full of banana peels you can't move. In JavaScript, 'Garbage Collection' usually cleans up the peels automatically. But if you accidentally glue a peel to the floor (by keeping an active reference to it, like pushing it into a global array that never clears), the Garbage Collector can't pick it up. Your server's RAM fills up over a few days until it crashes with a `FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory`.",
+  "realWorldExample": "Creating a global array `const requestLogs = []`. In every Express route, you push `req` data into it, but you never write logic to empty the array. After a week of heavy traffic, the array holds 10 million objects, consuming 2GB of RAM, and the server dies.",
+  "useCases": [
+    "Performance debugging",
+    "Ensuring long-term server stability"
+  ],
+  "questions": {
+    "basic": [
+      "What automatic system usually cleans up memory in Node.js?"
+    ],
+    "intermediate": [
+      "What is a common cause of memory leaks in Node.js?"
+    ]
+  },
+  "answers": [
+    {
+      "question": "What automatic system?",
+      "answer": "The V8 Garbage Collector."
+    },
+    {
+      "question": "Common causes?",
+      "answer": "1. Unintended global variables. \n2. Uncleared `setInterval` timers. \n3. Event Listeners that are continuously added (`.on()`) but never removed (`.removeListener()`). \n4. Closures holding onto large objects unnecessarily."
+    }
+  ],
+  "codeExample": "// --- HOW TO CAUSE A LEAK ---\nconst leakedArray = [];\n\nfunction handleRequest(userObj) {\n  // The intent was just to log it, but we accidentally save it to a global array permanently.\n  leakedArray.push(userObj);\n  console.log(`Processed user ${userObj.name}`);\n}\n\n// Simulate 10,000 requests over time\nfor(let i=0; i<10000; i++) {\n  handleRequest({ name: \"User\" + i, data: new Array(1000).fill(\"Heavy Data\") });\n}\n\n// The V8 Garbage Collector comes by. \n// It says: \"Can I delete these user objects?\"\n// The system says: \"NO! The global 'leakedArray' is still using them!\"\n// The RAM usage climbs and climbs until the server crashes.\n\nconsole.log(`Leak size: ${leakedArray.length} items permanently stuck in RAM.`);"
+}
