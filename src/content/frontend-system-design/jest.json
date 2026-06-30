@@ -1,0 +1,27 @@
+{
+  "title": "Jest",
+  "difficulty": "Beginner",
+  "definition": "Jest is a delightful JavaScript Testing Framework with a focus on simplicity. It provides an assertion library, test runner, and mocking capabilities.",
+  "simpleExplanation": "The tool that runs all your tests and tells you if they passed or failed with a green checkmark or red X.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Jest?"
+    ],
+    "intermediate": [
+      "How does Jest impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Jest across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Jest be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Jest.",
+      "answer": "Jest is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

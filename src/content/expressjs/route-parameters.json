@@ -1,0 +1,35 @@
+{
+  "title": "Route Parameters",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// URL: /users/123/books/456\napp.get('/users/:userId/books/:bookId', (req, res) => {\n  const { userId, bookId } = req.params;\n  res.json({\n    message: `Fetching book ${bookId} for user ${userId}`,\n    userId: userId,\n    bookId: bookId\n  });\n});",
+  "definition": "Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the `req.params` object, with the name of the route parameter specified in the path as their respective keys.",
+  "simpleExplanation": "Route parameters are named URL segments that are used to capture the values specified at their position in the URL.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Route Parameters in Express.js?",
+      "How do you initialize Route Parameters?"
+    ],
+    "intermediate": [
+      "How does Route Parameters integrate with other middleware components?",
+      "Can you explain a common use case for Route Parameters?"
+    ],
+    "advanced": [
+      "What are the performance implications of Route Parameters in a high-traffic production application?",
+      "How would you debug issues related to Route Parameters?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Route Parameters without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Route Parameters in your own words.",
+      "answer": "Route parameters are named URL segments that are used to capture the values specified at their position in the URL."
+    },
+    {
+      "question": "When should you avoid using Route Parameters?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

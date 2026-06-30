@@ -1,0 +1,34 @@
+{
+  "title": "Compositing",
+  "difficulty": "Expert",
+  "definition": "Compositing is the final step where the browser takes the individual painted layers and draws them onto the screen in the correct order (handling z-index, transforms, and opacity).",
+  "simpleExplanation": "Think of compositing like creating an animation using clear plastic sheets (cels). You paint the background on one sheet, the character on another, and stack them to create the final image.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Compositing?",
+      "Why is Compositing important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Compositing impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Compositing."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Compositing?",
+      "What are the security implications of Compositing?"
+    ],
+    "trick": [
+      "Can Compositing be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Compositing.",
+      "answer": "Compositing is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Compositing?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

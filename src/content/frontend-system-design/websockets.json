@@ -1,0 +1,35 @@
+{
+  "title": "WebSockets",
+  "difficulty": "Advanced",
+  "definition": "WebSockets provide full-duplex, persistent, bidirectional communication channels over a single TCP connection. Unlike HTTP polling, WebSockets allow servers to push data to clients instantly.",
+  "simpleExplanation": "HTTP is a walkie-talkie (only one speaks at a time). WebSockets are a telephone call (both can speak and listen simultaneously until someone hangs up).",
+  "codeExample": "// Client-side WebSocket\nconst socket = new WebSocket('wss://api.example.com/chat');\n\nsocket.onopen = () => {\n  console.log('Connected to server!');\n  socket.send(JSON.stringify({ type: 'login', user: 'Alice' }));\n};\n\nsocket.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log('Message from server:', data);\n};",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of WebSockets?",
+      "Why is WebSockets important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does WebSockets impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to WebSockets."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize WebSockets?",
+      "What are the security implications of WebSockets?"
+    ],
+    "trick": [
+      "Can WebSockets be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define WebSockets.",
+      "answer": "WebSockets is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for WebSockets?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

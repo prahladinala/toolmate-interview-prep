@@ -1,0 +1,16 @@
+{
+  "title": "Prefix Sum",
+  "difficulty": "Expert",
+  "definition": "An array `P` where `P[i]` is the sum of all elements from index `0` to `i`. It allows calculating the sum of any subarray `[L, R]` in O(1) time using the formula `P[R] - P[L-1]`.",
+  "simpleExplanation": "Pre-calculating a running total so that if someone asks 'what is the sum from day 5 to day 10', you just take 'Total at day 10' minus 'Total at day 4'.",
+  "answers": [
+    {
+      "question": "**Basic:** Calculate Prefix Sum Array",
+      "answer": "```javascript\nfunction buildPrefixSum(nums) {\n  const prefix = new Array(nums.length);\n  prefix[0] = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    prefix[i] = prefix[i - 1] + nums[i];\n  }\n  return prefix;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Range Sum Query - Immutable",
+      "answer": "```javascript\nclass NumArray {\n  constructor(nums) {\n    this.prefix = [0];\n    for (let num of nums) {\n      this.prefix.push(this.prefix[this.prefix.length - 1] + num);\n    }\n  }\n  sumRange(left, right) {\n    return this.prefix[right + 1] - this.prefix[left];\n  }\n}\n```\nO(1) time per query after O(N) setup."
+    }
+  ]
+}

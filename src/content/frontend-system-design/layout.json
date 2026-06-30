@@ -1,0 +1,35 @@
+{
+  "title": "Layout (Reflow)",
+  "difficulty": "Expert",
+  "definition": "Layout (also called Reflow) is the process where the browser calculates the exact geometric position and size of every node in the Render Tree based on the viewport size.",
+  "simpleExplanation": "Layout is the browser doing the math to figure out exactly how many pixels wide and tall every box should be, and exactly what X/Y coordinates they sit at.",
+  "terminalOutput": "WARNING: Triggering Layout/Reflow is EXPENSIVE!\n\nAvoid querying properties like:\n- element.offsetWidth\n- element.scrollTop\n- window.getComputedStyle()\n...inside loops, as it forces Synchronous Layout Thrashing.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Layout and Reflow?",
+      "Why is Layout and Reflow important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Layout and Reflow impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Layout and Reflow."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Layout and Reflow?",
+      "What are the security implications of Layout and Reflow?"
+    ],
+    "trick": [
+      "Can Layout and Reflow be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Layout and Reflow.",
+      "answer": "Layout and Reflow is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Layout and Reflow?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

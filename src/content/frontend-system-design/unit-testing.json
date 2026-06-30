@@ -1,0 +1,27 @@
+{
+  "title": "Unit Testing",
+  "difficulty": "Beginner",
+  "definition": "Testing individual, isolated units of code (like a single utility function or a pure React component) to verify they work as expected. Typically done using Jest or Vitest.",
+  "simpleExplanation": "Testing the steering wheel to make sure it turns left and right, before putting it in the car.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Unit Testing?"
+    ],
+    "intermediate": [
+      "How does Unit Testing impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Unit Testing across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Unit Testing be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Unit Testing.",
+      "answer": "Unit Testing is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

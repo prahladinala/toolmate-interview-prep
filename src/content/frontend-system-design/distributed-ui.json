@@ -1,0 +1,27 @@
+{
+  "title": "Distributed UI Architecture",
+  "difficulty": "Expert",
+  "definition": "Distributed UI involves serving UI components from a centralized registry or CDN, allowing remote applications to dynamically fetch and execute UI components at runtime. Often paired with Server-Driven UI.",
+  "simpleExplanation": "The server doesn't just send data to the app; it actually sends the blueprint telling the app what buttons and inputs to draw.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Distributed UI?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Distributed UI?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Distributed UI for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Distributed UI if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Distributed UI.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

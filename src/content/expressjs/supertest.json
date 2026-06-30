@@ -1,0 +1,35 @@
+{
+  "title": "Supertest",
+  "codeExample": "const request = require('supertest');\nconst app = require('../app'); // Import your Express app\n\ndescribe('GET /users', () => {\n  it('responds with json and 200 status', async () => {\n    const response = await request(app)\n      .get('/users')\n      .set('Accept', 'application/json');\n      \n    expect(response.status).toBe(200);\n    expect(response.body.data).toBeInstanceOf(Array);\n  });\n});",
+  "definition": "Supertest is a library built specifically for testing Node.js HTTP servers. You pass your `app` object into Supertest, and it allows you to chain requests and assertions cleanly.",
+  "simpleExplanation": "Supertest is a library built specifically for testing Node.js HTTP servers.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Supertest in Express.js?",
+      "How do you initialize Supertest?"
+    ],
+    "intermediate": [
+      "How does Supertest integrate with other middleware components?",
+      "Can you explain a common use case for Supertest?"
+    ],
+    "advanced": [
+      "What are the performance implications of Supertest in a high-traffic production application?",
+      "How would you debug issues related to Supertest?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Supertest without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Supertest in your own words.",
+      "answer": "Supertest is a library built specifically for testing Node.js HTTP servers."
+    },
+    {
+      "question": "When should you avoid using Supertest?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

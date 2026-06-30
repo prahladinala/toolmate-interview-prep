@@ -1,0 +1,35 @@
+{
+  "title": "Microtasks",
+  "difficulty": "Expert",
+  "definition": "The Microtask Queue contains callbacks from Promises (`.then/catch/finally`) and `queueMicrotask()`. It has the highest priority. The event loop will completely drain the entire Microtask Queue before moving to Macrotasks or rendering.",
+  "simpleExplanation": "Microtasks are emergencies. If a doctor (Event Loop) finishes seeing a patient, they will check for emergencies (Microtasks) and treat ALL of them before calling the next regular patient in the waiting room.",
+  "codeExample": "console.log('1. Script start');\n\nsetTimeout(() => {\n  console.log('4. setTimeout (Macrotask)');\n}, 0);\n\nPromise.resolve().then(() => {\n  console.log('3. Promise (Microtask)');\n});\n\nconsole.log('2. Script end');\n// Output: 1, 2, 3, 4",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Microtask Queue?",
+      "Why is Microtask Queue important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Microtask Queue impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Microtask Queue."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Microtask Queue?",
+      "What are the security implications of Microtask Queue?"
+    ],
+    "trick": [
+      "Can Microtask Queue be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Microtask Queue.",
+      "answer": "Microtask Queue is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Microtask Queue?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

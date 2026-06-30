@@ -1,0 +1,27 @@
+{
+  "title": "Error Tracking",
+  "difficulty": "Intermediate",
+  "definition": "Automatically capturing unhandled promise rejections and JS runtime errors (e.g., `TypeError: undefined is not a function`), grabbing the stack trace, and alerting the engineering team.",
+  "simpleExplanation": "When your app crashes on a customer's phone in Japan, you instantly get an alert in Slack with the exact line of code that caused the crash.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Error Tracking?"
+    ],
+    "intermediate": [
+      "How does Error Tracking impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Error Tracking across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Error Tracking be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Error Tracking.",
+      "answer": "Error Tracking is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

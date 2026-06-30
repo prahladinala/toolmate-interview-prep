@@ -1,0 +1,35 @@
+{
+  "title": "GET Method",
+  "codeExample": "app.get('/api/weather', (req, res) => {\n  const city = req.query.city || 'New York';\n  \n  // In a real app, you'd fetch from a DB or 3rd party API\n  res.json({\n    city: city,\n    temperature: 72,\n    condition: 'Sunny'\n  });\n});",
+  "definition": "The GET method is used to retrieve data from a server at the specified resource. GET requests should NEVER modify data on the server; they should be strictly read-only and idempotent. Data is passed via URL path or Query Parameters, never in the Body.",
+  "simpleExplanation": "The GET method is used to retrieve data from a server at the specified resource.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of GET Method in Express.js?",
+      "How do you initialize GET Method?"
+    ],
+    "intermediate": [
+      "How does GET Method integrate with other middleware components?",
+      "Can you explain a common use case for GET Method?"
+    ],
+    "advanced": [
+      "What are the performance implications of GET Method in a high-traffic production application?",
+      "How would you debug issues related to GET Method?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as GET Method without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define GET Method in your own words.",
+      "answer": "The GET method is used to retrieve data from a server at the specified resource."
+    },
+    {
+      "question": "When should you avoid using GET Method?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

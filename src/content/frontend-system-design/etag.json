@@ -1,0 +1,29 @@
+{
+  "title": "ETag & Cache Validation",
+  "difficulty": "Advanced",
+  "definition": "An ETag (Entity Tag) is an HTTP header containing a unique hash of a file's contents. When a cached file expires, the browser sends the ETag back to the server (`If-None-Match`). If the file hasn't changed, the server returns a 304 Not Modified, saving massive bandwidth.",
+  "simpleExplanation": "The browser asks: 'Hey, I have a file with the fingerprint 12345. Is it still the newest version?' The server says: 'Yes, don't redownload it.'",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant B as Browser\n  participant S as Server\n  Note over B: Cache expired for style.css\n  B->>S: GET /style.css\n  B->>S: Header: If-None-Match: \"xyz123\"\n  Note over S: Compares ETag\n  S-->>B: HTTP 304 Not Modified\n  Note over B: Uses local cached file",
+  "questions": {
+    "basic": [
+      "How does ETag fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of ETag?"
+    ],
+    "advanced": [
+      "How does ETag scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where ETag is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define ETag.",
+      "answer": "ETag is essential for complex frontend applications."
+    }
+  ]
+}

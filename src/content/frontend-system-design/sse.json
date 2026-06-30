@@ -1,0 +1,63 @@
+{
+  "title": "Server Sent Events (SSE)",
+  "difficulty": "Intermediate",
+  "definition": "Server-Sent Events (SSE) is a standard allowing a browser to receive automatic updates from a server via HTTP connection. Unlike WebSockets, SSE is unidirectional (Server -> Client only).",
+  "simpleExplanation": "SSE is like subscribing to a newsletter. You tell the server you want updates, and the server continuously sends you messages without you having to ask again.",
+  "tableData": {
+    "headers": [
+      "Feature",
+      "WebSockets",
+      "Server Sent Events (SSE)"
+    ],
+    "rows": [
+      [
+        "Direction",
+        "Bidirectional (Full Duplex)",
+        "Unidirectional (Server to Client)"
+      ],
+      [
+        "Protocol",
+        "ws:// or wss://",
+        "Standard HTTP/HTTPS"
+      ],
+      [
+        "Data Format",
+        "Binary or Text",
+        "Text only (UTF-8)"
+      ],
+      [
+        "Use Case",
+        "Multiplayer Games, Chat",
+        "Stock tickers, News feeds"
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Server Sent Events?",
+      "Why is Server Sent Events important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Server Sent Events impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Server Sent Events."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Server Sent Events?",
+      "What are the security implications of Server Sent Events?"
+    ],
+    "trick": [
+      "Can Server Sent Events be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Server Sent Events.",
+      "answer": "Server Sent Events is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Server Sent Events?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Express Router",
+  "codeExample": "// userRoutes.js\nconst express = require('express');\nconst router = express.Router();\n\nrouter.get('/', (req, res) => res.send('Get all users'));\nrouter.post('/', (req, res) => res.send('Create user'));\n\nmodule.exports = router;\n\n// --- In server.js ---\n// const userRoutes = require('./userRoutes');\n// app.use('/api/users', userRoutes);",
+  "definition": "As your application grows, defining all routes in `server.js` becomes unmanageable. The `express.Router` class helps you create modular, mountable route handlers. A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a 'mini-app'.",
+  "simpleExplanation": "As your application grows, defining all routes in `server.js` becomes unmanageable.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Express Router in Express.js?",
+      "How do you initialize Express Router?"
+    ],
+    "intermediate": [
+      "How does Express Router integrate with other middleware components?",
+      "Can you explain a common use case for Express Router?"
+    ],
+    "advanced": [
+      "What are the performance implications of Express Router in a high-traffic production application?",
+      "How would you debug issues related to Express Router?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Express Router without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Express Router in your own words.",
+      "answer": "As your application grows, defining all routes in `server.js` becomes unmanageable."
+    },
+    {
+      "question": "When should you avoid using Express Router?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

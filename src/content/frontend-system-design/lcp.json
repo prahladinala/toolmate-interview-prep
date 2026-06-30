@@ -1,0 +1,27 @@
+{
+  "title": "Largest Contentful Paint",
+  "difficulty": "Advanced",
+  "definition": "LCP measures the time it takes to render the largest image or text block visible within the viewport. It marks the point in the page load timeline when the page's main content has likely loaded.",
+  "simpleExplanation": "How long does it take for the giant hero image or the main headline to actually appear on the screen?",
+  "questions": {
+    "basic": [
+      "How does Largest Contentful Paint fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Largest Contentful Paint?"
+    ],
+    "advanced": [
+      "How does Largest Contentful Paint scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Largest Contentful Paint is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Largest Contentful Paint.",
+      "answer": "Largest Contentful Paint is essential for complex frontend applications."
+    }
+  ]
+}

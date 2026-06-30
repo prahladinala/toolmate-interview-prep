@@ -1,0 +1,35 @@
+{
+  "title": "MongoDB Integration",
+  "terminalOutput": "$ npm install mongodb\n\nadded 10 packages in 1s",
+  "definition": "MongoDB is a NoSQL, document-oriented database that pairs perfectly with Express.js because it natively stores data in JSON-like BSON format, matching JavaScript's object paradigm perfectly.",
+  "simpleExplanation": "MongoDB is a NoSQL, document-oriented database that pairs perfectly with Express.js because it natively stores data in JSON-like BSON format, matching JavaScript's object paradigm perfectly.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of MongoDB Integration in Express.js?",
+      "How do you initialize MongoDB Integration?"
+    ],
+    "intermediate": [
+      "How does MongoDB Integration integrate with other middleware components?",
+      "Can you explain a common use case for MongoDB Integration?"
+    ],
+    "advanced": [
+      "What are the performance implications of MongoDB Integration in a high-traffic production application?",
+      "How would you debug issues related to MongoDB Integration?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as MongoDB Integration without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define MongoDB Integration in your own words.",
+      "answer": "MongoDB is a NoSQL, document-oriented database that pairs perfectly with Express.js because it natively stores data in JSON-like BSON format, matching JavaScript's object paradigm perfectly."
+    },
+    {
+      "question": "When should you avoid using MongoDB Integration?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

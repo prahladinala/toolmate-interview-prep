@@ -1,0 +1,35 @@
+{
+  "title": "Caching",
+  "codeExample": "// Example using a simple memory cache or Redis\napp.get('/api/stats', async (req, res) => {\n  // 1. Check if data is in Redis\n  const cachedStats = await redis.get('app_stats');\n  if (cachedStats) return res.json(JSON.parse(cachedStats));\n\n  // 2. If not, do the heavy DB query\n  const stats = await Database.calculateHeavyStats();\n\n  // 3. Save to Redis for 1 hour, then send to client\n  await redis.setex('app_stats', 3600, JSON.stringify(stats));\n  res.json(stats);\n});",
+  "definition": "Caching stores the result of an expensive database query or API call in memory (like Redis) so that subsequent requests for the exact same data can be served instantly without hitting the database again.",
+  "simpleExplanation": "Caching stores the result of an expensive database query or API call in memory (like Redis) so that subsequent requests for the exact same data can be served instantly without hitting the database again.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Caching in Express.js?",
+      "How do you initialize Caching?"
+    ],
+    "intermediate": [
+      "How does Caching integrate with other middleware components?",
+      "Can you explain a common use case for Caching?"
+    ],
+    "advanced": [
+      "What are the performance implications of Caching in a high-traffic production application?",
+      "How would you debug issues related to Caching?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Caching without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Caching in your own words.",
+      "answer": "Caching stores the result of an expensive database query or API call in memory (like Redis) so that subsequent requests for the exact same data can be served instantly without hitting the database again."
+    },
+    {
+      "question": "When should you avoid using Caching?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

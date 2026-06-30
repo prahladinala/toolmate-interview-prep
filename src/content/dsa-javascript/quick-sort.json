@@ -1,0 +1,12 @@
+{
+  "title": "Quick Sort",
+  "difficulty": "Advanced",
+  "definition": "A Divide and Conquer algorithm that picks an element as a 'pivot' and partitions the array around the pivot (smaller elements before, larger after). Average O(N log N) time and O(log N) space. Unstable.",
+  "simpleExplanation": "Picking a random person in the room, telling everyone shorter than them to go left, everyone taller to go right. Then doing it again for the left and right groups.",
+  "answers": [
+    {
+      "question": "**Advanced:** Quick Sort Implementation",
+      "answer": "```javascript\nfunction quickSort(arr, left = 0, right = arr.length - 1) {\n  if (left < right) {\n    let pivotIndex = partition(arr, left, right);\n    quickSort(arr, left, pivotIndex - 1);\n    quickSort(arr, pivotIndex + 1, right);\n  }\n  return arr;\n}\n\nfunction partition(arr, left, right) {\n  let pivot = arr[right];\n  let i = left;\n  for (let j = left; j < right; j++) {\n    if (arr[j] < pivot) {\n      [arr[i], arr[j]] = [arr[j], arr[i]];\n      i++;\n    }\n  }\n  [arr[i], arr[right]] = [arr[right], arr[i]];\n  return i;\n}\n```"
+    }
+  ]
+}

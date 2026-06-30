@@ -1,0 +1,27 @@
+{
+  "title": "Integration Testing",
+  "difficulty": "Intermediate",
+  "definition": "Testing how multiple units work together. In React, this means testing a complex component alongside its child components and context providers, typically using React Testing Library.",
+  "simpleExplanation": "Attaching the steering wheel to the wheels and testing if turning the wheel actually makes the tires turn.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Integration Testing?"
+    ],
+    "intermediate": [
+      "How does Integration Testing impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Integration Testing across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Integration Testing be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Integration Testing.",
+      "answer": "Integration Testing is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

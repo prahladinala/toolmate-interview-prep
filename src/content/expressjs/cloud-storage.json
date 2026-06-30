@@ -1,0 +1,35 @@
+{
+  "title": "Cloud File Storage",
+  "terminalOutput": "$ npm install aws-sdk multer-s3\n\n// You use multer-s3 to stream the file directly from the user's browser \n// into the S3 bucket without ever saving it to your server's local hard drive.",
+  "definition": "Storing user-uploaded files directly on your Node.js server (like the EC2 instance) is an anti-pattern because if the server scales or crashes, the files are lost. Instead, you should upload files directly to cloud storage like AWS S3 or Google Cloud Storage.",
+  "simpleExplanation": "Storing user-uploaded files directly on your Node.js server (like the EC2 instance) is an anti-pattern because if the server scales or crashes, the files are lost.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Cloud File Storage in Express.js?",
+      "How do you initialize Cloud File Storage?"
+    ],
+    "intermediate": [
+      "How does Cloud File Storage integrate with other middleware components?",
+      "Can you explain a common use case for Cloud File Storage?"
+    ],
+    "advanced": [
+      "What are the performance implications of Cloud File Storage in a high-traffic production application?",
+      "How would you debug issues related to Cloud File Storage?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Cloud File Storage without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cloud File Storage in your own words.",
+      "answer": "Storing user-uploaded files directly on your Node.js server (like the EC2 instance) is an anti-pattern because if the server scales or crashes, the files are lost."
+    },
+    {
+      "question": "When should you avoid using Cloud File Storage?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

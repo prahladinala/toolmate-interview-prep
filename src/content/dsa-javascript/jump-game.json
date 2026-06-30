@@ -1,0 +1,12 @@
+{
+  "title": "Jump Game",
+  "difficulty": "Expert",
+  "definition": "Given an array of maximum jump lengths, determine if you can reach the last index. The greedy approach tracks the `farthest` index reachable. If at any point `i > farthest`, you are stuck.",
+  "simpleExplanation": "At every stepping stone, look to see how far you could possibly jump. If you reach a stone where your maximum jump distance is 0, you lose.",
+  "answers": [
+    {
+      "question": "**Expert:** Jump Game",
+      "answer": "```javascript\nfunction canJump(nums) {\n  let farthest = 0;\n  for (let i = 0; i < nums.length; i++) {\n    if (i > farthest) return false;\n    farthest = Math.max(farthest, i + nums[i]);\n    if (farthest >= nums.length - 1) return true;\n  }\n  return true;\n}\n```\nO(N) Time, O(1) Space."
+    }
+  ]
+}

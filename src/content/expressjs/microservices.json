@@ -1,0 +1,36 @@
+{
+  "title": "Microservices Architecture",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Client --> API_Gateway[API Gateway (Express)]\n  API_Gateway --> Auth[Auth Service (Express)]\n  API_Gateway --> Billing[Billing Service (Express)]\n  API_Gateway --> Inventory[Inventory Service (Express)]\n  \n  Auth --> DB1[(User DB)]\n  Billing --> DB2[(Billing DB)]\n  Inventory --> DB3[(Inventory DB)]",
+  "definition": "Instead of building a massive monolithic Express app, you can build multiple smaller Express apps (microservices) that each handle a single domain (e.g., Auth Service, Billing Service, Product Service). They communicate with each other over HTTP or via Message Brokers.",
+  "simpleExplanation": "Instead of building a massive monolithic Express app, you can build multiple smaller Express apps (microservices) that each handle a single domain (e.g., Auth Service, Billing Service, Product Service).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Microservices Architecture in Express.js?",
+      "How do you initialize Microservices Architecture?"
+    ],
+    "intermediate": [
+      "How does Microservices Architecture integrate with other middleware components?",
+      "Can you explain a common use case for Microservices Architecture?"
+    ],
+    "advanced": [
+      "What are the performance implications of Microservices Architecture in a high-traffic production application?",
+      "How would you debug issues related to Microservices Architecture?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Microservices Architecture without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Microservices Architecture in your own words.",
+      "answer": "Instead of building a massive monolithic Express app, you can build multiple smaller Express apps (microservices) that each handle a single domain (e.g., Auth Service, Billing Service, Product Service)."
+    },
+    {
+      "question": "When should you avoid using Microservices Architecture?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

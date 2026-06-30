@@ -1,0 +1,34 @@
+{
+  "title": "gRPC Web",
+  "difficulty": "Expert",
+  "definition": "gRPC is a high-performance RPC framework built on HTTP/2 using Protocol Buffers (protobufs). gRPC-Web allows browser clients to communicate directly with gRPC backend services using binary data instead of heavy JSON.",
+  "simpleExplanation": "JSON is a heavy, slow, text-based language. Protobufs are a super-compressed binary language that computers can read infinitely faster.",
+  "questions": {
+    "basic": [
+      "What is the core concept of gRPC?",
+      "What are the pros and cons of gRPC?"
+    ],
+    "intermediate": [
+      "How does gRPC impact SEO and initial page load times?",
+      "When would you NOT choose to use gRPC?"
+    ],
+    "advanced": [
+      "How does gRPC fit into a heavily scaled microservices architecture?",
+      "What are the security implications of gRPC?"
+    ],
+    "trick": [
+      "Can you combine gRPC with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define gRPC.",
+      "answer": "gRPC is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of gRPC?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

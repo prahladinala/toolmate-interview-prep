@@ -1,0 +1,36 @@
+{
+  "title": "Server Side Rendering (SSR)",
+  "difficulty": "Intermediate",
+  "definition": "SSR is the process of rendering a client-side application (like React) into fully populated HTML on the server on every request. When the client receives it, the browser downloads the JS bundle and 'hydrates' the HTML to make it interactive.",
+  "simpleExplanation": "Instead of sending the browser an empty box and instructions on how to build the toy, the server builds the toy, paints it, and ships it fully ready to play with.",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant B as Browser\n  participant S as Node Server\n  B->>S: GET /dashboard\n  Note over S: Fetches DB data\n  Note over S: Renders React to HTML String\n  S-->>B: Fully Populated HTML\n  Note over B: User sees UI instantly (FCP)\n  B->>S: GET bundle.js\n  S-->>B: bundle.js\n  Note over B: React Hydration (App becomes interactive)",
+  "questions": {
+    "basic": [
+      "What is the core concept of Server Side Rendering?",
+      "What are the pros and cons of Server Side Rendering?"
+    ],
+    "intermediate": [
+      "How does Server Side Rendering impact SEO and initial page load times?",
+      "When would you NOT choose to use Server Side Rendering?"
+    ],
+    "advanced": [
+      "How does Server Side Rendering fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Server Side Rendering?"
+    ],
+    "trick": [
+      "Can you combine Server Side Rendering with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Server Side Rendering.",
+      "answer": "Server Side Rendering is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Server Side Rendering?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

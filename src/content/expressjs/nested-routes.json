@@ -1,0 +1,35 @@
+{
+  "title": "Nested Routes",
+  "codeExample": "// postRoutes.js\nconst express = require('express');\n// mergeParams allows access to userId from the parent router\nconst router = express.Router({ mergeParams: true });\n\nrouter.get('/:postId', (req, res) => {\n  res.send(`Getting post ${req.params.postId} for user ${req.params.userId}`);\n});\n\nmodule.exports = router;\n\n// --- In userRoutes.js ---\n// router.use('/:userId/posts', postRoutes);",
+  "definition": "You can nest routers inside other routers. To access parameters from the parent router inside the child router, you must initialize the child router with `mergeParams: true`. This is incredibly useful for structuring RESTful endpoints like `/users/:userId/posts/:postId`.",
+  "simpleExplanation": "You can nest routers inside other routers.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Nested Routes in Express.js?",
+      "How do you initialize Nested Routes?"
+    ],
+    "intermediate": [
+      "How does Nested Routes integrate with other middleware components?",
+      "Can you explain a common use case for Nested Routes?"
+    ],
+    "advanced": [
+      "What are the performance implications of Nested Routes in a high-traffic production application?",
+      "How would you debug issues related to Nested Routes?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Nested Routes without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Nested Routes in your own words.",
+      "answer": "You can nest routers inside other routers."
+    },
+    {
+      "question": "When should you avoid using Nested Routes?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

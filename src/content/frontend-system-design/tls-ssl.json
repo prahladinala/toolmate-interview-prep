@@ -1,0 +1,36 @@
+{
+  "title": "TLS/SSL Handshake",
+  "difficulty": "Advanced",
+  "definition": "Transport Layer Security (TLS) is a cryptographic protocol designed to provide communications security over a computer network. The TLS handshake negotiates encryption algorithms, authenticates the server via certificates, and establishes cryptographic keys.",
+  "simpleExplanation": "Before talking securely, the browser and server meet in secret to verify ID cards (certificates) and agree on a secret code language (symmetric keys) that only they understand.",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant Client\n  participant Server\n  Note over Client,Server: TCP Handshake already complete\n  Client->>Server: 1. ClientHello (Supported Ciphers)\n  Server-->>Client: 2. ServerHello (Chosen Cipher, Certificate)\n  Note over Client: Validates Certificate against CA\n  Client->>Server: 3. Key Exchange (Pre-Master Secret encrypted with Server Public Key)\n  Server-->>Client: 4. Server Finished\n  Client->>Server: 5. Client Finished\n  Note over Client,Server: Secure Symmetric Encryption Begins",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of TLS Handshake?",
+      "Why is TLS Handshake important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does TLS Handshake impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to TLS Handshake."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize TLS Handshake?",
+      "What are the security implications of TLS Handshake?"
+    ],
+    "trick": [
+      "Can TLS Handshake be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define TLS Handshake.",
+      "answer": "TLS Handshake is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for TLS Handshake?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

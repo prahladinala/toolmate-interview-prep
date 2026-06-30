@@ -1,0 +1,34 @@
+{
+  "title": "Call Stack",
+  "difficulty": "Advanced",
+  "definition": "The Call Stack is a LIFO (Last In, First Out) data structure used to store execution contexts created during code execution. When a function executes, it is pushed onto the stack. When it returns, it is popped off.",
+  "simpleExplanation": "The Call Stack is a stack of plates. You put plates (functions) on top of each other. You must take the top plate off before you can reach the bottom one.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Call Stack?",
+      "Why is Call Stack important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Call Stack impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Call Stack."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Call Stack?",
+      "What are the security implications of Call Stack?"
+    ],
+    "trick": [
+      "Can Call Stack be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Call Stack.",
+      "answer": "Call Stack is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Call Stack?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

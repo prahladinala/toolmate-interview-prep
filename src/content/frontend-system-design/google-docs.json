@@ -1,0 +1,29 @@
+{
+  "title": "Design Google Docs",
+  "difficulty": "Expert",
+  "definition": "Google Docs requires extreme expertise in DOM manipulation (often utilizing `<canvas>` or `contenteditable`), and Operational Transformation (OT) or CRDT algorithms over WebSockets to sync cursor positions and text edits simultaneously across users.",
+  "simpleExplanation": "A word processor where 50 people can type on the exact same line at the exact same time without the text getting jumbled or crashing the server.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Google Docs?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Google Docs?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Google Docs for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Google Docs if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Google Docs.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  ClientA[User A] -->|WebSocket| OT[OT/CRDT Server]\n  ClientB[User B] -->|WebSocket| OT\n  OT -->|Resolves Conflicts| Redis[(Redis Cache)]\n  OT -->|Broadcasts State| ClientA\n  OT -->|Broadcasts State| ClientB"
+}

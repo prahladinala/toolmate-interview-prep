@@ -1,0 +1,34 @@
+{
+  "title": "Design Systems",
+  "difficulty": "Intermediate",
+  "definition": "A Design System is a collection of reusable components, guided by clear standards (colors, typography, spacing), that can be assembled together to build any number of applications, ensuring visual consistency.",
+  "simpleExplanation": "It's a Lego set created by your designers. Developers are only allowed to build the website using these specific Lego pieces, preventing rogue colors or weird button sizes.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Design Systems?",
+      "What are the pros and cons of Design Systems?"
+    ],
+    "intermediate": [
+      "How does Design Systems impact SEO and initial page load times?",
+      "When would you NOT choose to use Design Systems?"
+    ],
+    "advanced": [
+      "How does Design Systems fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Design Systems?"
+    ],
+    "trick": [
+      "Can you combine Design Systems with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Design Systems.",
+      "answer": "Design Systems is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Design Systems?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

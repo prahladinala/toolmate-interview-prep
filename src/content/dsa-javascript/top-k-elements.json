@@ -1,0 +1,12 @@
+{
+  "title": "Top K Elements",
+  "difficulty": "Expert",
+  "definition": "A classic interview pattern. To find the 'K largest elements' in an array of size N, maintain a Min-Heap of size K. This achieves O(N log K) time, which is better than O(N log N) sorting.",
+  "simpleExplanation": "Instead of sorting a list of 1 million people to find the top 5 tallest, just keep a running list of the current top 5, and replace the shortest one whenever a taller person walks by.",
+  "answers": [
+    {
+      "question": "**Advanced:** Top K Frequent Elements (using MinHeap logic)",
+      "answer": "```javascript\nfunction topKFrequent(nums, k) {\n  const map = new Map();\n  for (let num of nums) map.set(num, (map.get(num) || 0) + 1);\n  \n  // JS doesn't have a built in PQ, so we can use Bucket Sort for O(N)\n  const bucket = Array.from({length: nums.length + 1}, () => []);\n  for (let [num, freq] of map) {\n    bucket[freq].push(num);\n  }\n  \n  const res = [];\n  for (let i = bucket.length - 1; i >= 0 && res.length < k; i--) {\n    if (bucket[i].length > 0) res.push(...bucket[i]);\n  }\n  return res;\n}\n```"
+    }
+  ]
+}

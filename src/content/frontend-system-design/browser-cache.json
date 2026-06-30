@@ -1,0 +1,27 @@
+{
+  "title": "Browser Caching",
+  "difficulty": "Beginner",
+  "definition": "Browser caching stores copies of static web resources (HTML, CSS, JS, Images) on the user's local hard drive to avoid re-downloading them on subsequent visits.",
+  "simpleExplanation": "The browser keeps a copy of the website's logo on your hard drive so you don't have to download it 100 times a day.",
+  "questions": {
+    "basic": [
+      "How does Browser Cache fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Browser Cache?"
+    ],
+    "advanced": [
+      "How does Browser Cache scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Browser Cache is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Browser Cache.",
+      "answer": "Browser Cache is essential for complex frontend applications."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Custom Middleware",
+  "codeExample": "const requireRole = (role) => {\n  // Middleware function returning another function (closure)\n  return (req, res, next) => {\n    const userRole = req.headers['x-role']; // Mocking role extraction\n    \n    if (userRole === role) {\n      next(); // Authorized, proceed to route\n    } else {\n      res.status(403).json({ error: 'Forbidden. Incorrect Role.' });\n    }\n  };\n};\n\n// app.delete('/users/:id', requireRole('admin'), deleteHandler);",
+  "definition": "Writing your own custom middleware is incredibly common. It allows you to modularize reusable logic that needs to run before your route handlers. A custom middleware is just a function that accepts `req`, `res`, and `next`.",
+  "simpleExplanation": "Writing your own custom middleware is incredibly common.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Custom Middleware in Express.js?",
+      "How do you initialize Custom Middleware?"
+    ],
+    "intermediate": [
+      "How does Custom Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Custom Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Custom Middleware in a high-traffic production application?",
+      "How would you debug issues related to Custom Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Custom Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Custom Middleware in your own words.",
+      "answer": "Writing your own custom middleware is incredibly common."
+    },
+    {
+      "question": "When should you avoid using Custom Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

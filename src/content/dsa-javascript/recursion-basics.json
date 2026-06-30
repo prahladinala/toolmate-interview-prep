@@ -1,0 +1,28 @@
+{
+  "title": "Recursion Basics",
+  "difficulty": "Beginner",
+  "definition": "A function that calls itself. Requires a Base Case (to stop calling itself) and a Recursive Step (moving toward the base case).",
+  "simpleExplanation": "A Russian Nesting Doll. You keep opening dolls until you find the tiniest solid doll (the base case).",
+  "answers": [
+    {
+      "question": "**Basic:** Implement the fundamental class or structure for Recursion.",
+      "answer": "```javascript\nclass Recursion {\n  constructor() {\n    this.data = [];\n  }\n  // Basic operations...\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a common traversal/searching problem using Recursion.",
+      "answer": "```javascript\n// Time: O(N), Space: O(N)\nfunction intermediate1(input) {\n  let result = null;\n  // process input...\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Handle edge cases like empty inputs or circular references in Recursion.",
+      "answer": "```javascript\n// Edge case handling\nfunction intermediate2(head) {\n  if (!head || !head.next) return head;\n  // Fast/slow pointer or similar logic\n  return head;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Optimize time or space complexity using advanced patterns for Recursion.",
+      "answer": "```javascript\n// Optimized approach\nfunction advanced(input) {\n  // Implement O(1) space or O(log N) time if possible\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex multi-data-structure problem heavily relying on Recursion.",
+      "answer": "```javascript\n// E.g. LRU Cache combining Hash Map and Doubly Linked List\nclass LRUCache {\n  constructor(capacity) { this.capacity = capacity; }\n  get(key) { return -1; }\n  put(key, value) { }\n}\n```"
+    }
+  ]
+}

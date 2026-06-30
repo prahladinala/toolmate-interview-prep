@@ -1,0 +1,35 @@
+{
+  "title": "API Versioning",
+  "codeExample": "const express = require('express');\nconst app = express();\n\nconst v1Router = require('./routes/v1');\nconst v2Router = require('./routes/v2');\n\n// Versioning via URL Path\napp.use('/api/v1', v1Router);\napp.use('/api/v2', v2Router);\n\n// Clients hitting /api/v1/users get the old structure\n// Clients hitting /api/v2/users get the newly redesigned structure",
+  "definition": "When making breaking changes to an API (changing the shape of the JSON response, removing fields), you must not break existing mobile apps or frontend clients relying on the old format. You solve this by versioning the API in the URL.",
+  "simpleExplanation": "When making breaking changes to an API (changing the shape of the JSON response, removing fields), you must not break existing mobile apps or frontend clients relying on the old format.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of API Versioning in Express.js?",
+      "How do you initialize API Versioning?"
+    ],
+    "intermediate": [
+      "How does API Versioning integrate with other middleware components?",
+      "Can you explain a common use case for API Versioning?"
+    ],
+    "advanced": [
+      "What are the performance implications of API Versioning in a high-traffic production application?",
+      "How would you debug issues related to API Versioning?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as API Versioning without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define API Versioning in your own words.",
+      "answer": "When making breaking changes to an API (changing the shape of the JSON response, removing fields), you must not break existing mobile apps or frontend clients relying on the old format."
+    },
+    {
+      "question": "When should you avoid using API Versioning?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

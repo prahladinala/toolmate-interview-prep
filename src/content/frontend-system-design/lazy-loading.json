@@ -1,0 +1,28 @@
+{
+  "title": "Lazy Loading",
+  "difficulty": "Intermediate",
+  "definition": "Lazy loading is the practice of delaying the initialization or downloading of resources (images, JS chunks) until they are actually needed (e.g., scrolled into the viewport).",
+  "simpleExplanation": "Don't download the pictures at the very bottom of the page until the user actually scrolls down there.",
+  "codeExample": "/* Native HTML Image Lazy Loading */\n<img src=\"heavy-hero.jpg\" loading=\"lazy\" alt=\"Hero Image\" />\n\n/* React Component Lazy Loading */\nconst HeavyChart = React.lazy(() => import('./HeavyChart'));",
+  "questions": {
+    "basic": [
+      "How does Lazy Loading fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Lazy Loading?"
+    ],
+    "advanced": [
+      "How does Lazy Loading scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Lazy Loading is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Lazy Loading.",
+      "answer": "Lazy Loading is essential for complex frontend applications."
+    }
+  ]
+}

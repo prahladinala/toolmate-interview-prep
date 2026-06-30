@@ -1,0 +1,16 @@
+{
+  "title": "Cycle Detection",
+  "difficulty": "Advanced",
+  "definition": "Floyd's Tortoise and Hare algorithm uses two pointers moving at different speeds to detect if a Linked List loops infinitely. It detects a cycle in O(N) time and O(1) space.",
+  "simpleExplanation": "If two runners are on a circular track and one runs twice as fast as the other, the fast runner will eventually lap the slow runner.",
+  "answers": [
+    {
+      "question": "**Basic:** Linked List Cycle (Floyd's Tortoise & Hare)",
+      "answer": "```javascript\nfunction hasCycle(head) {\n  let slow = head, fast = head;\n  while (fast !== null && fast.next !== null) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (slow === fast) return true;\n  }\n  return false;\n}\n```\nO(N) Time, O(1) Space."
+    },
+    {
+      "question": "**Advanced:** Find Cycle Starting Node",
+      "answer": "```javascript\nfunction detectCycle(head) {\n  let slow = head, fast = head;\n  while (fast !== null && fast.next !== null) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (slow === fast) {\n      let pointer = head;\n      while (pointer !== slow) {\n        pointer = pointer.next;\n        slow = slow.next;\n      }\n      return pointer;\n    }\n  }\n  return null;\n}\n```"
+    }
+  ]
+}

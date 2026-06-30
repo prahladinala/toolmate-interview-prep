@@ -1,0 +1,12 @@
+{
+  "title": "Merge Intervals",
+  "difficulty": "Advanced",
+  "definition": "Given an array of intervals, sort them by start time. Then iterate: if the current interval's start time is less than or equal to the previous interval's end time, merge them by updating the end time.",
+  "simpleExplanation": "If you are busy from 1pm to 3pm, and your friend is busy from 2pm to 4pm, your combined busy schedule is simply 1pm to 4pm.",
+  "answers": [
+    {
+      "question": "**Advanced:** Merge Intervals",
+      "answer": "```javascript\nfunction merge(intervals) {\n  if (intervals.length === 0) return [];\n  intervals.sort((a, b) => a[0] - b[0]);\n  const res = [intervals[0]];\n  for (let i = 1; i < intervals.length; i++) {\n    const last = res[res.length - 1];\n    if (intervals[i][0] <= last[1]) {\n      last[1] = Math.max(last[1], intervals[i][1]);\n    } else {\n      res.push(intervals[i]);\n    }\n  }\n  return res;\n}\n```\nO(N log N) Time, O(N) Space."
+    }
+  ]
+}

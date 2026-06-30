@@ -1,0 +1,36 @@
+{
+  "title": "Load Balancing",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Client1 --> LB[Load Balancer / Nginx]\n  Client2 --> LB\n  Client3 --> LB\n  LB -->|Routes to| S1[Express Server 1]\n  LB -->|Routes to| S2[Express Server 2]\n  LB -->|Routes to| S3[Express Server 3]",
+  "definition": "When a single server cannot handle the incoming traffic, you deploy your Express app to multiple separate servers. A Load Balancer (like Nginx, AWS ALB, or HAProxy) sits in front of them and routes incoming client requests to the least busy server.",
+  "simpleExplanation": "When a single server cannot handle the incoming traffic, you deploy your Express app to multiple separate servers.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Load Balancing in Express.js?",
+      "How do you initialize Load Balancing?"
+    ],
+    "intermediate": [
+      "How does Load Balancing integrate with other middleware components?",
+      "Can you explain a common use case for Load Balancing?"
+    ],
+    "advanced": [
+      "What are the performance implications of Load Balancing in a high-traffic production application?",
+      "How would you debug issues related to Load Balancing?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Load Balancing without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Load Balancing in your own words.",
+      "answer": "When a single server cannot handle the incoming traffic, you deploy your Express app to multiple separate servers."
+    },
+    {
+      "question": "When should you avoid using Load Balancing?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

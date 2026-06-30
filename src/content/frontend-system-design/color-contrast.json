@@ -1,0 +1,27 @@
+{
+  "title": "Color Contrast",
+  "difficulty": "Beginner",
+  "definition": "The difference in light between font (or anything in the foreground) and its background. WCAG AA requires a contrast ratio of at least 4.5:1 for normal text.",
+  "simpleExplanation": "Don't put light gray text on a white background, because users with poor vision or users outside in the sun won't be able to read it.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Color Contrast?"
+    ],
+    "intermediate": [
+      "How does Color Contrast impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Color Contrast across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Color Contrast be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Color Contrast.",
+      "answer": "Color Contrast is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

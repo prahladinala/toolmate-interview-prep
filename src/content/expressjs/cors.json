@@ -1,0 +1,35 @@
+{
+  "title": "CORS",
+  "codeExample": "const cors = require('cors');\nconst express = require('express');\nconst app = express();\n\n// Allow all origins (Development)\napp.use(cors());\n\n// Allow specific origins (Production)\napp.use(cors({\n  origin: 'https://my-frontend.com',\n  methods: ['GET', 'POST'],\n  credentials: true // Allow cookies to be sent\n}));",
+  "definition": "Cross-Origin Resource Sharing (CORS) is a browser security feature that restricts cross-origin HTTP requests. If your React app is on `localhost:3000` and your Express API is on `localhost:5000`, the browser will block requests unless Express explicitly sends CORS headers.",
+  "simpleExplanation": "Cross-Origin Resource Sharing (CORS) is a browser security feature that restricts cross-origin HTTP requests.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of CORS in Express.js?",
+      "How do you initialize CORS?"
+    ],
+    "intermediate": [
+      "How does CORS integrate with other middleware components?",
+      "Can you explain a common use case for CORS?"
+    ],
+    "advanced": [
+      "What are the performance implications of CORS in a high-traffic production application?",
+      "How would you debug issues related to CORS?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as CORS without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CORS in your own words.",
+      "answer": "Cross-Origin Resource Sharing (CORS) is a browser security feature that restricts cross-origin HTTP requests."
+    },
+    {
+      "question": "When should you avoid using CORS?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

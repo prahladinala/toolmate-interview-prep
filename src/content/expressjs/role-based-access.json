@@ -1,0 +1,35 @@
+{
+  "title": "Role-Based Authorization",
+  "codeExample": "// Middleware factory function\nconst restrictTo = (...roles) => {\n  return (req, res, next) => {\n    // req.user was attached by the JWT middleware previously\n    if (!roles.includes(req.user.role)) {\n      return res.status(403).json({\n        error: 'You do not have permission to perform this action'\n      });\n    }\n    next();\n  };\n};\n\n// Only admins or lead-guides can delete tours\napp.delete('/tours/:id', protect, restrictTo('admin', 'lead-guide'), deleteTour);",
+  "definition": "Authorization happens *after* Authentication. While auth verifies WHO you are, authorization verifies WHAT you are allowed to do. Role-Based Access Control (RBAC) involves checking a user's role (admin, user, editor) before granting access to a specific route.",
+  "simpleExplanation": "Authorization happens *after* Authentication.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Role-Based Authorization in Express.js?",
+      "How do you initialize Role-Based Authorization?"
+    ],
+    "intermediate": [
+      "How does Role-Based Authorization integrate with other middleware components?",
+      "Can you explain a common use case for Role-Based Authorization?"
+    ],
+    "advanced": [
+      "What are the performance implications of Role-Based Authorization in a high-traffic production application?",
+      "How would you debug issues related to Role-Based Authorization?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Role-Based Authorization without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Role-Based Authorization in your own words.",
+      "answer": "Authorization happens *after* Authentication."
+    },
+    {
+      "question": "When should you avoid using Role-Based Authorization?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Module Federation",
+  "difficulty": "Expert",
+  "definition": "Webpack 5 Module Federation allows a JavaScript application to dynamically load code from another independent application at runtime. It is the modern standard for implementing Micro Frontends.",
+  "simpleExplanation": "Instead of downloading the entire website code at once, your website can instantly 'borrow' code from another server right exactly when it needs it.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Module Federation?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Module Federation?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Module Federation for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Module Federation if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Module Federation.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

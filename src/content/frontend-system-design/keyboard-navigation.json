@@ -1,0 +1,27 @@
+{
+  "title": "Keyboard Navigation",
+  "difficulty": "Intermediate",
+  "definition": "Ensuring an application is fully operable using only a keyboard. This involves managing `tabindex`, maintaining logical focus order, and implementing visible focus indicators.",
+  "simpleExplanation": "You must be able to use the entire website using only the 'Tab', 'Enter', and 'Arrow' keys, without ever touching a mouse.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Keyboard Navigation?"
+    ],
+    "intermediate": [
+      "How does Keyboard Navigation impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Keyboard Navigation across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Keyboard Navigation be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Keyboard Navigation.",
+      "answer": "Keyboard Navigation is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

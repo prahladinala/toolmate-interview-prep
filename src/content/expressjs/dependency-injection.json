@@ -1,0 +1,35 @@
+{
+  "title": "Dependency Injection",
+  "codeExample": "// Controller File\nconst makeUserController = (UserDbModel) => {\n  return async (req, res) => {\n    const user = await UserDbModel.findById(req.params.id);\n    res.json(user);\n  };\n};\n\n// Route File\n// We inject the REAL model here.\n// In a test file, we inject a FAKE model.\nconst User = require('../models/User');\napp.get('/users/:id', makeUserController(User));",
+  "definition": "Dependency Injection (DI) is a design pattern used to implement Inversion of Control, allowing the creation of dependent objects outside of a class and passing them in. In Express, passing database models or external services into your route controllers makes them infinitely easier to mock and unit test.",
+  "simpleExplanation": "Dependency Injection (DI) is a design pattern used to implement Inversion of Control, allowing the creation of dependent objects outside of a class and passing them in.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Dependency Injection in Express.js?",
+      "How do you initialize Dependency Injection?"
+    ],
+    "intermediate": [
+      "How does Dependency Injection integrate with other middleware components?",
+      "Can you explain a common use case for Dependency Injection?"
+    ],
+    "advanced": [
+      "What are the performance implications of Dependency Injection in a high-traffic production application?",
+      "How would you debug issues related to Dependency Injection?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Dependency Injection without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Dependency Injection in your own words.",
+      "answer": "Dependency Injection (DI) is a design pattern used to implement Inversion of Control, allowing the creation of dependent objects outside of a class and passing them in."
+    },
+    {
+      "question": "When should you avoid using Dependency Injection?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

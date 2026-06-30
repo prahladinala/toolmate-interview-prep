@@ -1,0 +1,29 @@
+{
+  "title": "Micro Frontends",
+  "difficulty": "Expert",
+  "definition": "Micro Frontends decouple a massive frontend monolith into independent deployable units. This allows independent teams to use different frameworks (React, Vue) within the same page without blocking each other's deployments.",
+  "simpleExplanation": "A website where the header is built by the React team, the footer is built by the Vue team, and they are stitched together perfectly when you visit the URL.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Shell[App Shell / Container]\n  Shell --> TeamA[\"Team A: Header/Nav (React)\"]\n  Shell --> TeamB[\"Team B: Product Grid (Vue)\"]\n  Shell --> TeamC[\"Team C: Checkout Cart (React)\"]",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Micro Frontends?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Micro Frontends?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Micro Frontends for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Micro Frontends if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Micro Frontends.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

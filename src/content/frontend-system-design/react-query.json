@@ -1,0 +1,27 @@
+{
+  "title": "TanStack Query",
+  "difficulty": "Intermediate",
+  "definition": "TanStack (React) Query is a powerful asynchronous state management library. It abstracts away data fetching, caching, synchronization, background updates, and error handling for Server State.",
+  "simpleExplanation": "Instead of manually writing `useEffect` fetches and saving data to `useState`, React Query handles the fetching, caching, loading spinners, and automatic background refreshing for you.",
+  "questions": {
+    "basic": [
+      "How does TanStack Query fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of TanStack Query?"
+    ],
+    "advanced": [
+      "How does TanStack Query scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where TanStack Query is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define TanStack Query.",
+      "answer": "TanStack Query is essential for complex frontend applications."
+    }
+  ]
+}

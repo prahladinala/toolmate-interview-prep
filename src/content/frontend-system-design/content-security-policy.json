@@ -1,0 +1,35 @@
+{
+  "title": "Content Security Policy (CSP)",
+  "difficulty": "Expert",
+  "definition": "CSP is an HTTP header that allows site administrators to declare exactly which dynamic resources are allowed to load and execute. It is the ultimate defense-in-depth against XSS.",
+  "simpleExplanation": "A VIP guest list at the club door. Even if a hacker successfully injects an evil script into the page, the browser checks the CSP guest list, sees the script isn't on it, and refuses to run it.",
+  "terminalOutput": "Content-Security-Policy: default-src 'self'; img-src https://*; child-src 'none';",
+  "questions": {
+    "basic": [
+      "What is the core concept of Content Security Policy?",
+      "What are the pros and cons of Content Security Policy?"
+    ],
+    "intermediate": [
+      "How does Content Security Policy impact SEO and initial page load times?",
+      "When would you NOT choose to use Content Security Policy?"
+    ],
+    "advanced": [
+      "How does Content Security Policy fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Content Security Policy?"
+    ],
+    "trick": [
+      "Can you combine Content Security Policy with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Content Security Policy.",
+      "answer": "Content Security Policy is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Content Security Policy?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

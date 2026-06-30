@@ -1,0 +1,35 @@
+{
+  "title": "Mocking APIs",
+  "codeExample": "const nock = require('nock');\nconst request = require('supertest');\nconst app = require('../app');\n\n// Intercept outgoing request to Stripe\nnock('https://api.stripe.com')\n  .post('/v1/charges')\n  .reply(200, { id: 'ch_123', status: 'succeeded' });\n\n// Run Supertest against your Express app\n// Your app will 'think' it successfully charged a card via Stripe!",
+  "definition": "During testing, you don't want your Express server hitting real third-party APIs (like Stripe for payments or Twilio for SMS) because it costs money and slows down tests. You use mocking libraries to intercept those outgoing HTTP requests and return fake data.",
+  "simpleExplanation": "During testing, you don't want your Express server hitting real third-party APIs (like Stripe for payments or Twilio for SMS) because it costs money and slows down tests.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Mocking APIs in Express.js?",
+      "How do you initialize Mocking APIs?"
+    ],
+    "intermediate": [
+      "How does Mocking APIs integrate with other middleware components?",
+      "Can you explain a common use case for Mocking APIs?"
+    ],
+    "advanced": [
+      "What are the performance implications of Mocking APIs in a high-traffic production application?",
+      "How would you debug issues related to Mocking APIs?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Mocking APIs without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Mocking APIs in your own words.",
+      "answer": "During testing, you don't want your Express server hitting real third-party APIs (like Stripe for payments or Twilio for SMS) because it costs money and slows down tests."
+    },
+    {
+      "question": "When should you avoid using Mocking APIs?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

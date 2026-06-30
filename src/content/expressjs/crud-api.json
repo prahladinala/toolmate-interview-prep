@@ -1,0 +1,35 @@
+{
+  "title": "CRUD APIs",
+  "codeExample": "// Assuming a 'Tour' model exists\n\n// Create\napp.post('/tours', createTour);\n\n// Read All\napp.get('/tours', getAllTours);\n\n// Read One\napp.get('/tours/:id', getTour);\n\n// Update\napp.patch('/tours/:id', updateTour);\n\n// Delete\napp.delete('/tours/:id', deleteTour);",
+  "definition": "CRUD stands for Create, Read, Update, and Delete. These are the four basic operations of persistent storage. In Express, you map these operations directly to HTTP Methods and Route Handlers to build a standard API.",
+  "simpleExplanation": "CRUD stands for Create, Read, Update, and Delete.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of CRUD APIs in Express.js?",
+      "How do you initialize CRUD APIs?"
+    ],
+    "intermediate": [
+      "How does CRUD APIs integrate with other middleware components?",
+      "Can you explain a common use case for CRUD APIs?"
+    ],
+    "advanced": [
+      "What are the performance implications of CRUD APIs in a high-traffic production application?",
+      "How would you debug issues related to CRUD APIs?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as CRUD APIs without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CRUD APIs in your own words.",
+      "answer": "CRUD stands for Create, Read, Update, and Delete."
+    },
+    {
+      "question": "When should you avoid using CRUD APIs?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

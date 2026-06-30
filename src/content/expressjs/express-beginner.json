@@ -1,0 +1,35 @@
+{
+  "title": "Beginner Questions",
+  "terminalOutput": "# Example Answer for #2:\n`req.params` extracts data directly from the URL path defined in the route (e.g., /users/:id).\n`req.query` extracts optional data appended to the URL after a question mark (e.g., /users?sort=asc).",
+  "definition": "Beginner interviews focus on the core fundamentals of what Express is, how routing works, and basic middleware concepts.\n\n### Sample Questions\n1. **What is Express.js and why do we use it?**\n2. **What is the difference between `req.params` and `req.query`?**\n3. **Explain how `app.get()` and `app.post()` differ.**\n4. **What does the `next()` function do?**\n5. **How do you serve static files like images in Express?**",
+  "simpleExplanation": "Beginner interviews focus on the core fundamentals of what Express is, how routing works, and basic middleware concepts.\n\n### Sample Questions\n1.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Beginner Questions in Express.js?",
+      "How do you initialize Beginner Questions?"
+    ],
+    "intermediate": [
+      "How does Beginner Questions integrate with other middleware components?",
+      "Can you explain a common use case for Beginner Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Beginner Questions in a high-traffic production application?",
+      "How would you debug issues related to Beginner Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Beginner Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Beginner Questions in your own words.",
+      "answer": "Beginner interviews focus on the core fundamentals of what Express is, how routing works, and basic middleware concepts.\n\n### Sample Questions\n1."
+    },
+    {
+      "question": "When should you avoid using Beginner Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Browser Architecture",
+  "difficulty": "Advanced",
+  "definition": "Modern browsers are highly complex, multi-process operating systems. They typically consist of a Browser Process (UI, Network, Storage), multiple Renderer Processes (one per tab, sandboxed), a GPU Process, and Plugin Processes.",
+  "simpleExplanation": "Chrome runs every tab as a separate mini-program (process) so that if one tab crashes or contains a virus, it doesn't crash your whole computer or steal data from other tabs.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  BP[Browser Process] -->|IPC| RP1[Renderer Process Tab 1]\n  BP -->|IPC| RP2[Renderer Process Tab 2]\n  BP --> GP[GPU Process]\n  BP --> NP[Network Process]\n  RP1 --> JS[V8 JS Engine]\n  RP1 --> Blink[Blink Render Engine]",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Browser Architecture?",
+      "Why is Browser Architecture important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Browser Architecture impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Browser Architecture."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Browser Architecture?",
+      "What are the security implications of Browser Architecture?"
+    ],
+    "trick": [
+      "Can Browser Architecture be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Browser Architecture.",
+      "answer": "Browser Architecture is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Browser Architecture?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

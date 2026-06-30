@@ -1,0 +1,28 @@
+{
+  "title": "ARIA",
+  "difficulty": "Advanced",
+  "definition": "Accessible Rich Internet Applications (ARIA) is a set of attributes that define ways to make web content and web applications more accessible. ARIA is strictly meant to bridge gaps where native semantic HTML falls short.",
+  "simpleExplanation": "A set of special tags you add to complex custom UI components (like a custom dropdown) to explicitly tell screen readers exactly what the component is and what state it is in.",
+  "terminalOutput": "First Rule of ARIA:\nNo ARIA is better than bad ARIA.\nAlways prefer native semantic HTML elements over ARIA attributes whenever possible.",
+  "questions": {
+    "basic": [
+      "What is the core concept of ARIA?"
+    ],
+    "intermediate": [
+      "How does ARIA impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale ARIA across a large enterprise application?"
+    ],
+    "trick": [
+      "Can ARIA be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define ARIA.",
+      "answer": "ARIA is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

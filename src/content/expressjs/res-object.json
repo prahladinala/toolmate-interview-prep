@@ -1,0 +1,63 @@
+{
+  "title": "Response Object (res)",
+  "tableData": {
+    "title": "Common Response Methods",
+    "headers": [
+      "Method",
+      "Description"
+    ],
+    "rows": [
+      [
+        "`res.send()`",
+        "Sends an HTTP response of various types (String, Object, Buffer)."
+      ],
+      [
+        "`res.json()`",
+        "Sends a JSON response (automatically sets Content-Type header)."
+      ],
+      [
+        "`res.status(code)`",
+        "Sets the HTTP status code (can be chained)."
+      ],
+      [
+        "`res.redirect(url)`",
+        "Redirects the client to a different URL."
+      ],
+      [
+        "`res.sendFile(path)`",
+        "Sends a static file to the client."
+      ]
+    ]
+  },
+  "definition": "The `res` object represents the HTTP response that an Express app sends when it gets an HTTP request. It is an enhanced version of Node's core `http.ServerResponse` object, providing useful chainable methods like `status()`, `json()`, and `send()`.",
+  "simpleExplanation": "The `res` object represents the HTTP response that an Express app sends when it gets an HTTP request.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Response Object (res) in Express.js?",
+      "How do you initialize Response Object (res)?"
+    ],
+    "intermediate": [
+      "How does Response Object (res) integrate with other middleware components?",
+      "Can you explain a common use case for Response Object (res)?"
+    ],
+    "advanced": [
+      "What are the performance implications of Response Object (res) in a high-traffic production application?",
+      "How would you debug issues related to Response Object (res)?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Response Object (res) without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Response Object (res) in your own words.",
+      "answer": "The `res` object represents the HTTP response that an Express app sends when it gets an HTTP request."
+    },
+    {
+      "question": "When should you avoid using Response Object (res)?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

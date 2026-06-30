@@ -1,0 +1,35 @@
+{
+  "title": "Node Cluster Mode",
+  "codeExample": "const cluster = require('cluster');\nconst os = require('os');\nconst express = require('express');\n\nif (cluster.isPrimary) {\n  // Spin up a worker for every CPU core\n  const numCPUs = os.cpus().length;\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n} else {\n  // Workers run the Express app\n  const app = express();\n  app.listen(3000);\n  console.log(`Worker ${process.pid} started`);\n}",
+  "definition": "Node.js runs in a single thread. If you deploy your Express app to a server with 8 CPU cores, Node will only use 1 core. The `cluster` module allows you to spin up multiple instances of your Express app, distributing incoming requests across all available CPU cores.",
+  "simpleExplanation": "Node.js runs in a single thread.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Node Cluster Mode in Express.js?",
+      "How do you initialize Node Cluster Mode?"
+    ],
+    "intermediate": [
+      "How does Node Cluster Mode integrate with other middleware components?",
+      "Can you explain a common use case for Node Cluster Mode?"
+    ],
+    "advanced": [
+      "What are the performance implications of Node Cluster Mode in a high-traffic production application?",
+      "How would you debug issues related to Node Cluster Mode?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Node Cluster Mode without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Node Cluster Mode in your own words.",
+      "answer": "Node.js runs in a single thread."
+    },
+    {
+      "question": "When should you avoid using Node Cluster Mode?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Error Handling Middleware",
+  "codeExample": "app.get('/broken', (req, res) => {\n  throw new Error('BROKEN'); // Express catches this synchronously\n});\n\n// Error Handling Middleware MUST have 4 arguments\napp.use((err, req, res, next) => {\n  console.error(err.stack);\n  res.status(500).json({ \n    error: 'Something broke!',\n    message: err.message \n  });\n});",
+  "definition": "Error-handling middleware functions are defined in the same way as other middleware functions, except they have four arguments instead of three: `(err, req, res, next)`. You define error-handling middleware at the very bottom of your middleware stack, below all `app.use()` and routes.",
+  "simpleExplanation": "Error-handling middleware functions are defined in the same way as other middleware functions, except they have four arguments instead of three: `(err, req, res, next)`.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Error Handling Middleware in Express.js?",
+      "How do you initialize Error Handling Middleware?"
+    ],
+    "intermediate": [
+      "How does Error Handling Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Error Handling Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Error Handling Middleware in a high-traffic production application?",
+      "How would you debug issues related to Error Handling Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Error Handling Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Error Handling Middleware in your own words.",
+      "answer": "Error-handling middleware functions are defined in the same way as other middleware functions, except they have four arguments instead of three: `(err, req, res, next)`."
+    },
+    {
+      "question": "When should you avoid using Error Handling Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

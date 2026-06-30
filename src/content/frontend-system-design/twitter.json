@@ -1,0 +1,29 @@
+{
+  "title": "Design Twitter/X Feed",
+  "difficulty": "Expert",
+  "definition": "Designing a social feed requires list virtualization (for scrolling thousands of tweets without lag), optimistic UI updates (for liking/retweeting instantly), and Server-Sent Events (SSE) or polling to alert users of 'New Tweets'.",
+  "simpleExplanation": "A constantly updating list of text and images that never slows down the browser, even if you scroll down for 3 hours straight.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Twitter Feed?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Twitter Feed?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Twitter Feed for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Twitter Feed if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Twitter Feed.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Client -->|GET /feed| API[API Gateway]\n  API --> Fanout[Fanout Service]\n  Fanout --> Cache[(Redis Timeline Cache)]\n  Client -->|New Tweet| WriteAPI[Write API]\n  WriteAPI --> Queue[Kafka Queue]\n  Queue --> Fanout"
+}

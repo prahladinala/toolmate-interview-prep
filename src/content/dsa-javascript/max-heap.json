@@ -1,0 +1,28 @@
+{
+  "title": "Max Heap",
+  "difficulty": "Advanced",
+  "definition": "A complete binary tree where the parent is always greater than or equal to its children. The absolute largest element is always at the Root.",
+  "simpleExplanation": "A leaderboard where the player with the highest score is always automatically pinned to the top.",
+  "answers": [
+    {
+      "question": "**Basic:** Define the core structure for Max Heap.",
+      "answer": "```javascript\nclass Node {\n  constructor(val) {\n    this.val = val;\n    // Child pointers...\n  }\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Perform a basic recursive traversal of Max Heap.",
+      "answer": "```javascript\nfunction traverse(root) {\n  if (!root) return;\n  // Pre-order, In-order, or Post-order logic\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Implement level-order or iterative logic for Max Heap.",
+      "answer": "```javascript\n// BFS using a Queue\nfunction bfs(root) {\n  if (!root) return [];\n  const queue = [root];\n  while(queue.length) {\n    const node = queue.shift();\n    if (node.left) queue.push(node.left);\n    if (node.right) queue.push(node.right);\n  }\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Solve a structural modification problem on Max Heap.",
+      "answer": "```javascript\n// Modify the structure in-place\nfunction modify(root) {\n  // E.g. Invert Binary Tree\n  if (!root) return null;\n  [root.left, root.right] = [modify(root.right), modify(root.left)];\n  return root;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex path-finding or graph traversal problem within Max Heap.",
+      "answer": "```javascript\n// Advanced Graph/Tree algorithm (e.g. Dijkstra or LCA)\nfunction advancedAlgorithm(graph, start) {\n  // Implementation details requiring O(V+E) or O(log N) optimizations\n}\n```"
+    }
+  ]
+}

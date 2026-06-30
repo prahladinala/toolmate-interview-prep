@@ -1,0 +1,27 @@
+{
+  "title": "Cumulative Layout Shift",
+  "difficulty": "Advanced",
+  "definition": "CLS measures visual stability. It calculates a score based on how much elements unexpectedly shift around on the screen during the lifespan of the page, usually caused by images loading without explicit dimensions.",
+  "simpleExplanation": "You go to tap a button, but a massive ad suddenly loads at the top of the page, pushing the button down, and you accidentally tap the wrong link. That's a terrible CLS.",
+  "questions": {
+    "basic": [
+      "How does Cumulative Layout Shift fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Cumulative Layout Shift?"
+    ],
+    "advanced": [
+      "How does Cumulative Layout Shift scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Cumulative Layout Shift is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cumulative Layout Shift.",
+      "answer": "Cumulative Layout Shift is essential for complex frontend applications."
+    }
+  ]
+}

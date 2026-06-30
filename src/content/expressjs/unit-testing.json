@@ -1,0 +1,35 @@
+{
+  "title": "Unit Testing",
+  "codeExample": "const authMiddleware = require('./auth');\n\n// Simple Jest Unit Test\ntest('returns 401 if no token provided', () => {\n  // Mock req, res, next\n  const req = { headers: {} };\n  const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };\n  const next = jest.fn();\n\n  authMiddleware(req, res, next);\n\n  expect(res.status).toHaveBeenCalledWith(401);\n  expect(res.json).toHaveBeenCalledWith({ error: 'No token' });\n});",
+  "definition": "Unit testing involves testing individual, isolated pieces of code (like a single middleware function or a utility math function). You mock out the `req` and `res` objects to ensure the function behaves correctly without needing to spin up the actual Express server.",
+  "simpleExplanation": "Unit testing involves testing individual, isolated pieces of code (like a single middleware function or a utility math function).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Unit Testing in Express.js?",
+      "How do you initialize Unit Testing?"
+    ],
+    "intermediate": [
+      "How does Unit Testing integrate with other middleware components?",
+      "Can you explain a common use case for Unit Testing?"
+    ],
+    "advanced": [
+      "What are the performance implications of Unit Testing in a high-traffic production application?",
+      "How would you debug issues related to Unit Testing?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Unit Testing without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Unit Testing in your own words.",
+      "answer": "Unit testing involves testing individual, isolated pieces of code (like a single middleware function or a utility math function)."
+    },
+    {
+      "question": "When should you avoid using Unit Testing?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

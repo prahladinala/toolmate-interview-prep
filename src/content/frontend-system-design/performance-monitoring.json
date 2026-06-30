@@ -1,0 +1,27 @@
+{
+  "title": "Performance Monitoring",
+  "difficulty": "Expert",
+  "definition": "Continuously tracking frontend metrics (API latency, render times, memory leaks) in production. Tools like Datadog or Sentry APM visualize these metrics on dashboards and trigger alerts if performance degrades.",
+  "simpleExplanation": "A dashboard full of graphs that flashes red if your API suddenly starts taking 5 seconds to load.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Performance Monitoring?"
+    ],
+    "intermediate": [
+      "How does Performance Monitoring impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Performance Monitoring across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Performance Monitoring be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Performance Monitoring.",
+      "answer": "Performance Monitoring is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

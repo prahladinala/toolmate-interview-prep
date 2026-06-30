@@ -1,0 +1,35 @@
+{
+  "title": "req.params",
+  "codeExample": "// GET /dictionary/apple/definition\napp.get('/dictionary/:word/definition', (req, res) => {\n  // Destructuring for clean code\n  const { word } = req.params;\n  \n  res.json({ \n    word: word,\n    definition: 'A fruit.'\n  });\n});",
+  "definition": "An object containing properties mapped to the named route 'parameters'. For example, if you have the route `/user/:name`, then the 'name' property is available as `req.params.name`. This object defaults to `{}`.",
+  "simpleExplanation": "An object containing properties mapped to the named route 'parameters'.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of req.params in Express.js?",
+      "How do you initialize req.params?"
+    ],
+    "intermediate": [
+      "How does req.params integrate with other middleware components?",
+      "Can you explain a common use case for req.params?"
+    ],
+    "advanced": [
+      "What are the performance implications of req.params in a high-traffic production application?",
+      "How would you debug issues related to req.params?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as req.params without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define req.params in your own words.",
+      "answer": "An object containing properties mapped to the named route 'parameters'."
+    },
+    {
+      "question": "When should you avoid using req.params?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

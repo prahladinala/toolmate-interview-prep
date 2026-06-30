@@ -1,0 +1,28 @@
+{
+  "title": "Sentry",
+  "difficulty": "Advanced",
+  "definition": "Sentry is a leading error tracking and performance monitoring platform. It hooks into the global error handlers of the browser (`window.onerror`) and automatically uploads rich context, source maps, and breadcrumbs.",
+  "simpleExplanation": "The industry standard tool for catching bugs in production.",
+  "terminalOutput": "// Sentry Initialization in React\nimport * as Sentry from \"@sentry/react\";\n\nSentry.init({\n  dsn: \"https://examplePublicKey@o0.ingest.sentry.io/0\",\n  integrations: [new Sentry.BrowserTracing()],\n  tracesSampleRate: 1.0, // Capture 100% of transactions for performance monitoring\n});",
+  "questions": {
+    "basic": [
+      "What is the core concept of Sentry?"
+    ],
+    "intermediate": [
+      "How does Sentry impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Sentry across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Sentry be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Sentry.",
+      "answer": "Sentry is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

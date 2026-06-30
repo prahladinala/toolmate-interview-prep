@@ -1,0 +1,34 @@
+{
+  "title": "Real-time Data Synchronization",
+  "difficulty": "Expert",
+  "definition": "In complex applications like Figma or Google Docs, real-time sync requires Operational Transformation (OT) or Conflict-Free Replicated Data Types (CRDTs) to handle conflicts when multiple users edit the exact same element simultaneously.",
+  "simpleExplanation": "If you and your friend both try to delete the same word in Google Docs at the exact same millisecond, algorithms (CRDTs) run complex math to ensure both screens end up looking the exact same without crashing.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Real-time Sync?",
+      "What are the pros and cons of Real-time Sync?"
+    ],
+    "intermediate": [
+      "How does Real-time Sync impact SEO and initial page load times?",
+      "When would you NOT choose to use Real-time Sync?"
+    ],
+    "advanced": [
+      "How does Real-time Sync fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Real-time Sync?"
+    ],
+    "trick": [
+      "Can you combine Real-time Sync with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Real-time Sync.",
+      "answer": "Real-time Sync is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Real-time Sync?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Express vs Node.js",
+  "tableData": {
+    "title": "Node.js vs Express",
+    "headers": [
+      "Feature",
+      "Node.js (Raw)",
+      "Express.js"
+    ],
+    "rows": [
+      [
+        "Routing",
+        "Complex `if/else` statements manually checking `req.url`.",
+        "Clean `app.get()`, `app.post()` methods."
+      ],
+      [
+        "Payload Parsing",
+        "Requires manual buffer concatenation.",
+        "Simple `app.use(express.json())` middleware."
+      ],
+      [
+        "Learning Curve",
+        "Steeper, requires understanding raw streams and HTTP internals.",
+        "Very beginner friendly."
+      ],
+      [
+        "Opinionation",
+        "None.",
+        "Minimal. Provides utilities but no rigid structure."
+      ]
+    ]
+  },
+  "definition": "Node.js is the underlying runtime environment that allows JavaScript to run on a server. Express is a framework built *on top* of Node.js to make writing servers easier. You don't *need* Express to build a Node API, but doing it with raw Node requires writing a lot of messy boilerplate code just to handle simple things like URL routing or JSON parsing.",
+  "simpleExplanation": "Node.js is the underlying runtime environment that allows JavaScript to run on a server.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Express vs Node.js in Express.js?",
+      "How do you initialize Express vs Node.js?"
+    ],
+    "intermediate": [
+      "How does Express vs Node.js integrate with other middleware components?",
+      "Can you explain a common use case for Express vs Node.js?"
+    ],
+    "advanced": [
+      "What are the performance implications of Express vs Node.js in a high-traffic production application?",
+      "How would you debug issues related to Express vs Node.js?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Express vs Node.js without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Express vs Node.js in your own words.",
+      "answer": "Node.js is the underlying runtime environment that allows JavaScript to run on a server."
+    },
+    {
+      "question": "When should you avoid using Express vs Node.js?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

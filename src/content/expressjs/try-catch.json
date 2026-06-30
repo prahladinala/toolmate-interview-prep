@@ -1,0 +1,35 @@
+{
+  "title": "Async Error Handling",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// Native async error handling\napp.get('/api/users', async (req, res, next) => {\n  try {\n    const users = await Database.fetchUsers(); // If this throws\n    res.json(users);\n  } catch (err) {\n    next(err); // Pass it manually to the error handler\n  }\n});",
+  "definition": "Express 4.x does NOT automatically catch errors inside asynchronous functions (Promises or async/await). You must either manually catch them and pass them to `next(err)`, or use a wrapper package like `express-async-handler`.",
+  "simpleExplanation": "Express 4.x does NOT automatically catch errors inside asynchronous functions (Promises or async/await).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Async Error Handling in Express.js?",
+      "How do you initialize Async Error Handling?"
+    ],
+    "intermediate": [
+      "How does Async Error Handling integrate with other middleware components?",
+      "Can you explain a common use case for Async Error Handling?"
+    ],
+    "advanced": [
+      "What are the performance implications of Async Error Handling in a high-traffic production application?",
+      "How would you debug issues related to Async Error Handling?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Async Error Handling without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Async Error Handling in your own words.",
+      "answer": "Express 4.x does NOT automatically catch errors inside asynchronous functions (Promises or async/await)."
+    },
+    {
+      "question": "When should you avoid using Async Error Handling?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

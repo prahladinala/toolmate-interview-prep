@@ -1,0 +1,16 @@
+{
+  "title": "Reverse Linked List",
+  "difficulty": "Advanced",
+  "definition": "The most famous linked list interview question. Involves using three pointers (`prev`, `curr`, `next`) to iteratively flip the direction of the `next` pointers in O(N) time and O(1) space.",
+  "simpleExplanation": "Walking through the scavenger hunt and explicitly rewriting every clue to point backward instead of forward.",
+  "answers": [
+    {
+      "question": "**Basic:** Reverse Iteratively",
+      "answer": "```javascript\nfunction reverseList(head) {\n  let prev = null;\n  let curr = head;\n  while (curr !== null) {\n    let nextTemp = curr.next;\n    curr.next = prev;\n    prev = curr;\n    curr = nextTemp;\n  }\n  return prev;\n}\n```\nO(N) Time, O(1) Space."
+    },
+    {
+      "question": "**Advanced:** Reverse Recursively",
+      "answer": "```javascript\nfunction reverseListRecursive(head) {\n  if (head === null || head.next === null) return head;\n  let p = reverseListRecursive(head.next);\n  head.next.next = head;\n  head.next = null;\n  return p;\n}\n```\nO(N) Time, O(N) Space."
+    }
+  ]
+}

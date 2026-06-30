@@ -1,0 +1,28 @@
+{
+  "title": "Segment Tree",
+  "difficulty": "Expert",
+  "definition": "A binary tree used for storing intervals or segments. It allows querying array intervals (like 'Sum of elements from index 2 to 7') and updating array elements both in O(log N) time.",
+  "simpleExplanation": "A pre-calculated spreadsheet that lets you instantly find out the total sales between any two dates, even if the daily sales numbers keep changing.",
+  "answers": [
+    {
+      "question": "**Basic:** Describe the fundamental approach for Segment Tree.",
+      "answer": "```javascript\nfunction basicDP(n) {\n  // Implement the recursive base cases\n  return n;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Add Memoization (Top-Down) to Segment Tree to prevent redundant calculations.",
+      "answer": "```javascript\nfunction memoizedDP(n, memo = {}) {\n  if (n in memo) return memo[n];\n  // Computation...\n  memo[n] = result;\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Convert Segment Tree into a Tabulation (Bottom-Up) approach.",
+      "answer": "```javascript\nfunction tabulatedDP(n) {\n  const dp = new Array(n + 1).fill(0);\n  dp[0] = 0;\n  // Bottom-up computation loop...\n  return dp[n];\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Solve a 2D matrix or multi-state problem using Segment Tree.",
+      "answer": "```javascript\nfunction advancedDP(matrix) {\n  // 2D DP array\n  const dp = Array.from({length: m}, () => new Array(n).fill(0));\n  return dp[m-1][n-1];\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Optimize the space complexity of Segment Tree from O(N) to O(1) or O(N^2) to O(N).",
+      "answer": "```javascript\nfunction expertDP(n) {\n  // Instead of an entire array, just keep the last 2 variables\n  let prev = 0, curr = 1;\n  // Iterate and swap\n  return curr;\n}\n```"
+    }
+  ]
+}

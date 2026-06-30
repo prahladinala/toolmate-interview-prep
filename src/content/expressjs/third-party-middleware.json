@@ -1,0 +1,35 @@
+{
+  "title": "Third Party Middleware",
+  "terminalOutput": "$ npm install cors helmet morgan\n\n// Example Usage in Code:\n// const cors = require('cors');\n// const helmet = require('helmet');\n// const morgan = require('morgan');\n//\n// app.use(helmet());\n// app.use(cors());\n// app.use(morgan('dev'));",
+  "definition": "Express has a massive ecosystem of third-party middleware packages that you can install via npm. These packages solve common problems like parsing JSON bodies, securing HTTP headers, allowing Cross-Origin requests, and handling file uploads.",
+  "simpleExplanation": "Express has a massive ecosystem of third-party middleware packages that you can install via npm.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Third Party Middleware in Express.js?",
+      "How do you initialize Third Party Middleware?"
+    ],
+    "intermediate": [
+      "How does Third Party Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Third Party Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Third Party Middleware in a high-traffic production application?",
+      "How would you debug issues related to Third Party Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Third Party Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Third Party Middleware in your own words.",
+      "answer": "Express has a massive ecosystem of third-party middleware packages that you can install via npm."
+    },
+    {
+      "question": "When should you avoid using Third Party Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Topological Sort",
+  "difficulty": "Expert",
+  "definition": "An algorithm that orders a Directed Acyclic Graph (DAG) linearly such that for every directed edge u -> v, vertex u comes before v. Classic algorithm is Kahn's (In-degree calculation).",
+  "simpleExplanation": "Figuring out the exact order you must take college classes in, given that some classes are prerequisites for others.",
+  "answers": [
+    {
+      "question": "**Expert:** Course Schedule (Kahn's Algorithm)",
+      "answer": "```javascript\nfunction canFinish(numCourses, prerequisites) {\n  const adj = Array.from({length: numCourses}, () => []);\n  const inDegree = new Array(numCourses).fill(0);\n  for (let [crs, pre] of prerequisites) {\n    adj[pre].push(crs);\n    inDegree[crs]++;\n  }\n  const queue = [];\n  for (let i = 0; i < numCourses; i++) {\n    if (inDegree[i] === 0) queue.push(i);\n  }\n  let completed = 0;\n  while (queue.length > 0) {\n    const curr = queue.shift();\n    completed++;\n    for (let neighbor of adj[curr]) {\n      inDegree[neighbor]--;\n      if (inDegree[neighbor] === 0) queue.push(neighbor);\n    }\n  }\n  return completed === numCourses;\n}\n```"
+    }
+  ]
+}

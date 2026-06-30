@@ -1,0 +1,27 @@
+{
+  "title": "Server State",
+  "difficulty": "Advanced",
+  "definition": "Server state refers to asynchronous data fetched from an API. It is fundamentally different from client state because it is persisted remotely, can be modified by other users without your knowledge, and requires caching, background fetching, and mutation synchronization.",
+  "simpleExplanation": "A live copy of a remote database. If someone else buys the last pair of shoes, your screen needs to update automatically to show 'Out of Stock'.",
+  "questions": {
+    "basic": [
+      "How does Server State fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Server State?"
+    ],
+    "advanced": [
+      "How does Server State scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Server State is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Server State.",
+      "answer": "Server State is essential for complex frontend applications."
+    }
+  ]
+}

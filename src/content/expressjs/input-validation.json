@@ -1,0 +1,35 @@
+{
+  "title": "Input Validation",
+  "codeExample": "const { body, validationResult } = require('express-validator');\n\napp.post('/register', [\n  // Validation Middleware Array\n  body('email').isEmail().withMessage('Must be a valid email'),\n  body('password').isLength({ min: 6 }).withMessage('Password must be 6+ chars')\n], (req, res) => {\n  // Check for errors\n  const errors = validationResult(req);\n  if (!errors.isEmpty()) {\n    return res.status(400).json({ errors: errors.array() });\n  }\n  \n  res.send('User passes validation!');\n});",
+  "definition": "Never trust client data. Input validation ensures that the `req.body` contains the exact fields, data types, and constraints you expect before hitting the database. You can use libraries like `Joi`, `Zod`, or `express-validator`.",
+  "simpleExplanation": "Never trust client data.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Input Validation in Express.js?",
+      "How do you initialize Input Validation?"
+    ],
+    "intermediate": [
+      "How does Input Validation integrate with other middleware components?",
+      "Can you explain a common use case for Input Validation?"
+    ],
+    "advanced": [
+      "What are the performance implications of Input Validation in a high-traffic production application?",
+      "How would you debug issues related to Input Validation?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Input Validation without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Input Validation in your own words.",
+      "answer": "Never trust client data."
+    },
+    {
+      "question": "When should you avoid using Input Validation?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

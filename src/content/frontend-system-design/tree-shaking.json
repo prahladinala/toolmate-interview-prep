@@ -1,0 +1,27 @@
+{
+  "title": "Tree Shaking",
+  "difficulty": "Advanced",
+  "definition": "Tree shaking is a dead-code elimination step performed by bundlers like Webpack or Vite. It statically analyzes ES Modules (`import`/`export`) and entirely removes unused code from the final bundle.",
+  "simpleExplanation": "If you import a giant math library but only use the `add()` function, tree shaking deletes all the other unused functions so they don't bloat your app.",
+  "questions": {
+    "basic": [
+      "How does Tree Shaking fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Tree Shaking?"
+    ],
+    "advanced": [
+      "How does Tree Shaking scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Tree Shaking is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Tree Shaking.",
+      "answer": "Tree Shaking is essential for complex frontend applications."
+    }
+  ]
+}

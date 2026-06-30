@@ -1,0 +1,36 @@
+{
+  "title": "Critical Rendering Path",
+  "difficulty": "Expert",
+  "definition": "The Critical Rendering Path (CRP) is the sequence of steps the browser goes through to convert HTML, CSS, and JS into actual pixels on the screen. Optimizing CRP is the foundation of frontend performance.",
+  "simpleExplanation": "CRP is the exact recipe the browser follows: Read HTML -> Build DOM -> Read CSS -> Build CSSOM -> Combine into Render Tree -> Calculate Layout -> Paint Pixels.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  HTML[HTML] --> DOM[DOM Tree]\n  CSS[CSS] --> CSSOM[CSSOM Tree]\n  DOM --> RT[Render Tree]\n  CSSOM --> RT\n  RT --> Layout[Layout / Reflow]\n  Layout --> Paint[Paint]\n  Paint --> Comp[Composite]",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Critical Rendering Path?",
+      "Why is Critical Rendering Path important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Critical Rendering Path impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Critical Rendering Path."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Critical Rendering Path?",
+      "What are the security implications of Critical Rendering Path?"
+    ],
+    "trick": [
+      "Can Critical Rendering Path be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Critical Rendering Path.",
+      "answer": "Critical Rendering Path is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Critical Rendering Path?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

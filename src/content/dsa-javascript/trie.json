@@ -1,0 +1,12 @@
+{
+  "title": "Trie (Prefix Tree)",
+  "difficulty": "Expert",
+  "definition": "A specialized tree used for searching strings. Every node represents a character. Perfect for Autocomplete features. Time complexity for insert/search is O(M) where M is word length.",
+  "simpleExplanation": "The data structure powering your phone's autocorrect and word suggestion keyboard.",
+  "answers": [
+    {
+      "question": "**Expert:** Implement Trie (Prefix Tree)",
+      "answer": "```javascript\nclass TrieNode {\n  constructor() {\n    this.children = {};\n    this.isEnd = false;\n  }\n}\nclass Trie {\n  constructor() { this.root = new TrieNode(); }\n  insert(word) {\n    let node = this.root;\n    for (let char of word) {\n      if (!node.children[char]) node.children[char] = new TrieNode();\n      node = node.children[char];\n    }\n    node.isEnd = true;\n  }\n  search(word) {\n    let node = this.root;\n    for (let char of word) {\n      if (!node.children[char]) return false;\n      node = node.children[char];\n    }\n    return node.isEnd;\n  }\n}\n```"
+    }
+  ]
+}

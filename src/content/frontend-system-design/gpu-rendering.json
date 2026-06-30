@@ -1,0 +1,35 @@
+{
+  "title": "GPU Rendering",
+  "difficulty": "Expert",
+  "definition": "Hardware Acceleration offloads specific rendering tasks (like 3D transforms, opacity changes, and WebGL) from the CPU to the Graphics Processing Unit (GPU), resulting in buttery smooth 60fps animations.",
+  "simpleExplanation": "The CPU is a smart professor who can do complex math slowly. The GPU is a massive army of factory workers who can paint millions of pixels simultaneously.",
+  "codeExample": "/* Triggering Hardware Acceleration (GPU layer creation) */\n.animated-box {\n  /* Using transform instead of left/top avoids Layout and Paint entirely! */\n  transform: translate3d(100px, 0, 0);\n  \n  /* Opacity is also strictly a Compositor-only operation */\n  opacity: 0.5;\n  \n  /* WILL-CHANGE hints the browser to create a GPU layer early */\n  will-change: transform, opacity;\n}",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of GPU Rendering?",
+      "Why is GPU Rendering important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does GPU Rendering impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to GPU Rendering."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize GPU Rendering?",
+      "What are the security implications of GPU Rendering?"
+    ],
+    "trick": [
+      "Can GPU Rendering be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define GPU Rendering.",
+      "answer": "GPU Rendering is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for GPU Rendering?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

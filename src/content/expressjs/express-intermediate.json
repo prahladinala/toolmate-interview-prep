@@ -1,0 +1,35 @@
+{
+  "title": "Intermediate Questions",
+  "terminalOutput": "# Example Answer for #2:\nStandard middleware has 3 arguments: `(req, res, next)`. \nError Handling middleware MUST have 4 arguments: `(err, req, res, next)`. Express specifically looks for the function signature with 4 parameters to designate it as the error catcher.",
+  "definition": "Intermediate interviews test your ability to structure applications, handle errors, and integrate with databases.\n\n### Sample Questions\n1. **Explain the execution order of Middleware.**\n2. **How does an Error Handling middleware differ from a standard middleware?**\n3. **What is the purpose of `express.Router`?**\n4. **How do you handle async errors in Express route handlers?**\n5. **Explain the concept of CORS and how to configure it.**",
+  "simpleExplanation": "Intermediate interviews test your ability to structure applications, handle errors, and integrate with databases.\n\n### Sample Questions\n1.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Intermediate Questions in Express.js?",
+      "How do you initialize Intermediate Questions?"
+    ],
+    "intermediate": [
+      "How does Intermediate Questions integrate with other middleware components?",
+      "Can you explain a common use case for Intermediate Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Intermediate Questions in a high-traffic production application?",
+      "How would you debug issues related to Intermediate Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Intermediate Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Intermediate Questions in your own words.",
+      "answer": "Intermediate interviews test your ability to structure applications, handle errors, and integrate with databases.\n\n### Sample Questions\n1."
+    },
+    {
+      "question": "When should you avoid using Intermediate Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

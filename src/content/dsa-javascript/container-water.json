@@ -1,0 +1,12 @@
+{
+  "title": "Container With Most Water",
+  "difficulty": "Advanced",
+  "definition": "A classic optimization problem. To maximize the area between two lines, place pointers at the edges. Since area is limited by the shorter line, always move the pointer pointing to the shorter line inward.",
+  "simpleExplanation": "To hold the most water, you need the widest container with the tallest walls. Start as wide as possible, and only give up width if you think you can find a significantly taller wall.",
+  "answers": [
+    {
+      "question": "**Advanced:** Container With Most Water",
+      "answer": "```javascript\nfunction maxArea(height) {\n  let maxWater = 0, left = 0, right = height.length - 1;\n  while (left < right) {\n    const width = right - left;\n    const h = Math.min(height[left], height[right]);\n    maxWater = Math.max(maxWater, width * h);\n    if (height[left] < height[right]) left++;\n    else right--;\n  }\n  return maxWater;\n}\n```\nO(N) Time, O(1) Space."
+    }
+  ]
+}

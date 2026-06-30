@@ -1,0 +1,35 @@
+{
+  "title": "Sorting",
+  "codeExample": "app.get('/api/tours', async (req, res) => {\n  let query = Tour.find();\n\n  if (req.query.sort) {\n    // Client sends: ?sort=price,-ratingsAverage\n    // Mongoose expects: query.sort('price -ratingsAverage')\n    const sortBy = req.query.sort.split(',').join(' ');\n    query = query.sort(sortBy);\n  } else {\n    // Default sorting by newest first\n    query = query.sort('-createdAt');\n  }\n\n  const tours = await query;\n  res.json({ data: tours });\n});",
+  "definition": "Clients often need to sort data by price, date, or popularity. You can accept a `sort` query parameter, format it, and append it to your database query.",
+  "simpleExplanation": "Clients often need to sort data by price, date, or popularity.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Sorting in Express.js?",
+      "How do you initialize Sorting?"
+    ],
+    "intermediate": [
+      "How does Sorting integrate with other middleware components?",
+      "Can you explain a common use case for Sorting?"
+    ],
+    "advanced": [
+      "What are the performance implications of Sorting in a high-traffic production application?",
+      "How would you debug issues related to Sorting?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Sorting without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Sorting in your own words.",
+      "answer": "Clients often need to sort data by price, date, or popularity."
+    },
+    {
+      "question": "When should you avoid using Sorting?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

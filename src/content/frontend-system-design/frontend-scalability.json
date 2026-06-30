@@ -1,0 +1,27 @@
+{
+  "title": "Scaling Large Frontends",
+  "difficulty": "Expert",
+  "definition": "Scaling a massive frontend codebase involves implementing Monorepos (Turborepo/Nx), strict Design Systems, automated E2E testing, feature flags, CI/CD pipelines, and rigorous Bundle Analysis.",
+  "simpleExplanation": "Managing a codebase worked on by 500 developers. You need extreme rules, automated robots checking the code, and a shared library of parts so nobody breaks the website.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Scaling Frontends?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Scaling Frontends?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Scaling Frontends for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Scaling Frontends if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Scaling Frontends.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

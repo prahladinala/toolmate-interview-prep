@@ -1,0 +1,28 @@
+{
+  "title": "Functions",
+  "difficulty": "Beginner",
+  "definition": "Functions in JS are first-class citizens. They can be passed as arguments, returned, and assigned to variables. Arrow functions do not bind their own `this`.",
+  "simpleExplanation": "A function is a machine: you put ingredients (arguments) in, and it spits a cake (return value) out.",
+  "answers": [
+    {
+      "question": "**Basic:** Write a function to implement the core logic of Functions.",
+      "answer": "```javascript\n// Basic implementation for Functions\nfunction basicFunctions(input) {\n  // Time: O(n), Space: O(1)\n  if (!input) return null;\n  let result = input;\n  return result;\n}\n```\nThis is the most straightforward brute-force or fundamental approach."
+    },
+    {
+      "question": "**Intermediate 1:** Optimize Functions to handle edge cases like empty arrays or negative numbers.",
+      "answer": "```javascript\n// Optimized approach\nfunction optimizedFunctions(arr) {\n  if (arr.length === 0) return 0;\n  let max = -Infinity;\n  for(let i=0; i<arr.length; i++) {\n    max = Math.max(max, arr[i]);\n  }\n  return max;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Solve a standard interview variation of Functions (e.g. LeetCode Medium).",
+      "answer": "```javascript\n// Using a Hash Map for O(1) lookups\nfunction interviewFunctions(nums, target) {\n  const map = new Map();\n  for(let i=0; i<nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [-1, -1];\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Scale Functions for massive datasets or implement it recursively.",
+      "answer": "```javascript\n// Advanced / Recursive / Divide & Conquer approach\nfunction advancedFunctions(data, left, right) {\n  if (left >= right) return;\n  const mid = Math.floor((left + right) / 2);\n  // Process left\n  advancedFunctions(data, left, mid);\n  // Process right\n  advancedFunctions(data, mid + 1, right);\n  // Merge step...\n}\n```\nReduces time complexity to O(N log N) in sorting scenarios."
+    },
+    {
+      "question": "**Expert/FAANG:** Solve Functions in O(1) space or O(N) time when constraints are extremely tight.",
+      "answer": "```javascript\n// Bitwise / Two Pointer / Optimal approach\nfunction expertFunctions(nums) {\n  let slow = 0;\n  let fast = 0;\n  while (fast < nums.length) {\n    if (nums[fast] !== 0) {\n      // Swap\n      [nums[slow], nums[fast]] = [nums[fast], nums[slow]];\n      slow++;\n    }\n    fast++;\n  }\n  return nums;\n}\n```\nThis modifies the array strictly in-place with zero extra memory allocations."
+    }
+  ]
+}

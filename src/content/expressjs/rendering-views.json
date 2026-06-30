@@ -1,0 +1,35 @@
+{
+  "title": "Rendering Views",
+  "codeExample": "app.set('views', './views'); // Directory where templates live\napp.set('view engine', 'ejs'); // Specify the engine\n\napp.get('/dashboard', (req, res) => {\n  // Looks for './views/dashboard.ejs'\n  res.render('dashboard', {\n    username: 'Admin',\n    activeUsers: 42\n  });\n});",
+  "definition": "To render a view, you use `res.render(view, [locals], callback)`. It evaluates the view file using the configured templating engine, injects the `locals` object as variables, and sends the resulting HTML string to the client.",
+  "simpleExplanation": "To render a view, you use `res.render(view, [locals], callback)`.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Rendering Views in Express.js?",
+      "How do you initialize Rendering Views?"
+    ],
+    "intermediate": [
+      "How does Rendering Views integrate with other middleware components?",
+      "Can you explain a common use case for Rendering Views?"
+    ],
+    "advanced": [
+      "What are the performance implications of Rendering Views in a high-traffic production application?",
+      "How would you debug issues related to Rendering Views?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Rendering Views without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Rendering Views in your own words.",
+      "answer": "To render a view, you use `res.render(view, [locals], callback)`."
+    },
+    {
+      "question": "When should you avoid using Rendering Views?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

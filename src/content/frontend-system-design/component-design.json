@@ -1,0 +1,27 @@
+{
+  "title": "Reusable Components",
+  "difficulty": "Intermediate",
+  "definition": "Low Level Design (LLD) focuses on creating reusable, accessible, and highly generic UI components. This involves mastering the Inversion of Control pattern, passing props effectively, and managing internal vs external state.",
+  "simpleExplanation": "Building Lego pieces that can be used by any team, anywhere, without them having to rewrite the code.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Component Design?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Component Design?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Component Design for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Component Design if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Component Design.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

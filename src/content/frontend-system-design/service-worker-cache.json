@@ -1,0 +1,27 @@
+{
+  "title": "Service Worker Cache",
+  "difficulty": "Expert",
+  "definition": "Service Workers provide programmable caching via the Cache API. They act as a network proxy sitting between the browser and the internet, allowing you to intercept network requests and serve cached responses even when offline.",
+  "simpleExplanation": "A mini-server running inside your browser. If your internet cuts out, it intercepts the request and serves up a saved version of the website.",
+  "questions": {
+    "basic": [
+      "How does Service Worker Cache fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Service Worker Cache?"
+    ],
+    "advanced": [
+      "How does Service Worker Cache scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Service Worker Cache is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Service Worker Cache.",
+      "answer": "Service Worker Cache is essential for complex frontend applications."
+    }
+  ]
+}

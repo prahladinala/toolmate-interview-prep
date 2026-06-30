@@ -1,0 +1,29 @@
+{
+  "title": "Design Netflix Frontend",
+  "difficulty": "Expert",
+  "definition": "Netflix heavily utilizes a BFF (Backend-For-Frontend) architecture to aggregate data from hundreds of microservices into a single GraphQL response tailored exactly for a Smart TV vs a Mobile Device.",
+  "simpleExplanation": "A UI that looks perfectly tailored for a tiny phone and a massive TV, fetching data through a 'middleman' server that gathers all the movie data and compresses it into one neat package.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Netflix Frontend?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Netflix Frontend?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Netflix Frontend for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Netflix Frontend if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Netflix Frontend.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  TV[Smart TV] --> BFF_TV[TV BFF Layer]\n  Mobile[Mobile App] --> BFF_Mobile[Mobile BFF Layer]\n  BFF_TV --> Metadata[Metadata Service]\n  BFF_Mobile --> Metadata\n  BFF_TV --> Recs[Recommendation Engine]"
+}

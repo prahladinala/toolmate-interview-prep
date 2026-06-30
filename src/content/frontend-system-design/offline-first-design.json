@@ -1,0 +1,27 @@
+{
+  "title": "Offline First Architecture",
+  "difficulty": "Expert",
+  "definition": "Offline-First means building the application to assume there is no network connection by default. The app writes to a local database (like RxDB or PouchDB) instantly, and that local database syncs with the remote server completely asynchronously.",
+  "simpleExplanation": "The app never waits for the internet. It saves everything locally immediately (so it feels infinitely fast), and then the app deals with uploading it to the cloud later.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Offline First Design?"
+    ],
+    "intermediate": [
+      "How does Offline First Design impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Offline First Design across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Offline First Design be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Offline First Design.",
+      "answer": "Offline First Design is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

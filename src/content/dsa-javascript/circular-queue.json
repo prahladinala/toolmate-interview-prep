@@ -1,0 +1,28 @@
+{
+  "title": "Circular Queue",
+  "difficulty": "Intermediate",
+  "definition": "A fixed-size queue implementation using an array where the end of the queue connects back to the beginning via modulo arithmetic, avoiding memory reallocation.",
+  "simpleExplanation": "A Ferris Wheel. Once all the seats are full, new passengers can only get on if someone else gets off.",
+  "answers": [
+    {
+      "question": "**Basic:** Implement the fundamental class or structure for Circular Queue.",
+      "answer": "```javascript\nclass CircularQueue {\n  constructor() {\n    this.data = [];\n  }\n  // Basic operations...\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a common traversal/searching problem using Circular Queue.",
+      "answer": "```javascript\n// Time: O(N), Space: O(N)\nfunction intermediate1(input) {\n  let result = null;\n  // process input...\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Handle edge cases like empty inputs or circular references in Circular Queue.",
+      "answer": "```javascript\n// Edge case handling\nfunction intermediate2(head) {\n  if (!head || !head.next) return head;\n  // Fast/slow pointer or similar logic\n  return head;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Optimize time or space complexity using advanced patterns for Circular Queue.",
+      "answer": "```javascript\n// Optimized approach\nfunction advanced(input) {\n  // Implement O(1) space or O(log N) time if possible\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex multi-data-structure problem heavily relying on Circular Queue.",
+      "answer": "```javascript\n// E.g. LRU Cache combining Hash Map and Doubly Linked List\nclass LRUCache {\n  constructor(capacity) { this.capacity = capacity; }\n  get(key) { return -1; }\n  put(key, value) { }\n}\n```"
+    }
+  ]
+}

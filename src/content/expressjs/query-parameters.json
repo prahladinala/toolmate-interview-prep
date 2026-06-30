@@ -1,0 +1,35 @@
+{
+  "title": "Query Parameters",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// URL: /api/products?category=shoes&sort=price_desc\napp.get('/api/products', (req, res) => {\n  const { category, sort } = req.query;\n  \n  res.json({\n    action: 'Filtering products',\n    filters: {\n      category: category || 'all',\n      sortBy: sort || 'newest'\n    }\n  });\n});",
+  "definition": "Unlike route parameters which are part of the URL path itself, query parameters are appended to the end of the URL after a `?` symbol (e.g., `/search?keyword=express&sort=asc`). They are typically used for optional data like filtering, sorting, or pagination. Express automatically parses these and places them in the `req.query` object.",
+  "simpleExplanation": "Unlike route parameters which are part of the URL path itself, query parameters are appended to the end of the URL after a `?` symbol (e.g., `/search?keyword=express&sort=asc`).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Query Parameters in Express.js?",
+      "How do you initialize Query Parameters?"
+    ],
+    "intermediate": [
+      "How does Query Parameters integrate with other middleware components?",
+      "Can you explain a common use case for Query Parameters?"
+    ],
+    "advanced": [
+      "What are the performance implications of Query Parameters in a high-traffic production application?",
+      "How would you debug issues related to Query Parameters?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Query Parameters without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Query Parameters in your own words.",
+      "answer": "Unlike route parameters which are part of the URL path itself, query parameters are appended to the end of the URL after a `?` symbol (e.g., `/search?keyword=express&sort=asc`)."
+    },
+    {
+      "question": "When should you avoid using Query Parameters?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

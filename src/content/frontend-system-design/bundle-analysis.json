@@ -1,0 +1,28 @@
+{
+  "title": "Bundle Analysis",
+  "difficulty": "Expert",
+  "definition": "Bundle analysis involves using tools to visualize the contents of your compiled JavaScript. It identifies massive third-party dependencies (like moment.js or lodash) that are bloating your performance.",
+  "simpleExplanation": "An X-ray machine for your code that shows you exactly which library is making your website slow.",
+  "terminalOutput": "$ npm install --save-dev webpack-bundle-analyzer\n\n// Generates an interactive treemap visualization of every module in your bundle.",
+  "questions": {
+    "basic": [
+      "How does Bundle Analysis fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Bundle Analysis?"
+    ],
+    "advanced": [
+      "How does Bundle Analysis scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Bundle Analysis is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Bundle Analysis.",
+      "answer": "Bundle Analysis is essential for complex frontend applications."
+    }
+  ]
+}

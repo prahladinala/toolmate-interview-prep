@@ -1,0 +1,27 @@
+{
+  "title": "Code Splitting",
+  "difficulty": "Advanced",
+  "definition": "Code splitting breaks a massive monolithic JavaScript bundle into smaller, logical chunks. These chunks are then loaded on demand (e.g., route-based splitting).",
+  "simpleExplanation": "If a user visits the Homepage, do not force them to download the 5MB JavaScript code that runs the Admin Dashboard.",
+  "questions": {
+    "basic": [
+      "How does Code Splitting fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Code Splitting?"
+    ],
+    "advanced": [
+      "How does Code Splitting scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Code Splitting is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Code Splitting.",
+      "answer": "Code Splitting is essential for complex frontend applications."
+    }
+  ]
+}

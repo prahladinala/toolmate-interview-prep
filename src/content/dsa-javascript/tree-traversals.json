@@ -1,0 +1,16 @@
+{
+  "title": "DFS Traversals",
+  "difficulty": "Intermediate",
+  "definition": "Depth-First Search goes deep into a tree before going wide. The three variations are Pre-Order (Root, Left, Right), In-Order (Left, Root, Right), and Post-Order (Left, Right, Root).",
+  "simpleExplanation": "Walking through a maze by always keeping your hand on the left wall until you hit a dead end, then backing up.",
+  "answers": [
+    {
+      "question": "**Basic:** Inorder Traversal (Recursive)",
+      "answer": "```javascript\nfunction inorderTraversal(root) {\n  const res = [];\n  function dfs(node) {\n    if (!node) return;\n    dfs(node.left);\n    res.push(node.val);\n    dfs(node.right);\n  }\n  dfs(root);\n  return res;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Inorder Traversal (Iterative)",
+      "answer": "```javascript\nfunction inorderTraversalIterative(root) {\n  const res = [], stack = [];\n  let curr = root;\n  while (curr !== null || stack.length > 0) {\n    while (curr !== null) {\n      stack.push(curr);\n      curr = curr.left;\n    }\n    curr = stack.pop();\n    res.push(curr.val);\n    curr = curr.right;\n  }\n  return res;\n}\n```"
+    }
+  ]
+}

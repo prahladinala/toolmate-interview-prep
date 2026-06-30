@@ -1,0 +1,35 @@
+{
+  "title": "Application Middleware",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// This middleware runs for EVERY incoming request\napp.use((req, res, next) => {\n  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);\n  next();\n});\n\n// Runs for ALL requests starting with /api\napp.use('/api', (req, res, next) => {\n  console.log('API Hit');\n  next();\n});",
+  "definition": "Bind application-level middleware to an instance of the app object by using `app.use()` and `app.METHOD()`. Application middleware is executed for EVERY request that hits the server, regardless of the route (unless a specific path is provided to `app.use`).",
+  "simpleExplanation": "Bind application-level middleware to an instance of the app object by using `app.use()` and `app.METHOD()`.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Application Middleware in Express.js?",
+      "How do you initialize Application Middleware?"
+    ],
+    "intermediate": [
+      "How does Application Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Application Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Application Middleware in a high-traffic production application?",
+      "How would you debug issues related to Application Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Application Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Application Middleware in your own words.",
+      "answer": "Bind application-level middleware to an instance of the app object by using `app.use()` and `app.METHOD()`."
+    },
+    {
+      "question": "When should you avoid using Application Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Singly Linked List",
+  "difficulty": "Intermediate",
+  "definition": "A linear data structure where elements (nodes) are not stored contiguously in memory. Each node points to the next node. Insertion at the head is O(1).",
+  "simpleExplanation": "A scavenger hunt. Clue 1 tells you where Clue 2 is hidden. You can't find Clue 3 without reading Clue 2 first.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  Head((Head)) --> N1[Node: 5]\n  N1 --> N2[Node: 10]\n  N2 --> N3[Node: 15]\n  N3 --> Null[Null]",
+  "answers": [
+    {
+      "question": "**Basic:** Implement a Singly Linked List Node",
+      "answer": "```javascript\nclass ListNode {\n  constructor(val = 0, next = null) {\n    this.val = val;\n    this.next = next;\n  }\n}\n```"
+    },
+    {
+      "question": "**Intermediate:** Delete Node given only access to that Node",
+      "answer": "```javascript\n// LeetCode 237\nfunction deleteNode(node) {\n  node.val = node.next.val;\n  node.next = node.next.next;\n}\n```"
+    }
+  ]
+}

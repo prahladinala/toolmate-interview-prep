@@ -1,0 +1,35 @@
+{
+  "title": "res.status()",
+  "codeExample": "app.post('/api/items', (req, res) => {\n  const { name } = req.body;\n  \n  if (!name) {\n    // Chaining status and json\n    return res.status(400).json({ error: 'Name is required' });\n  }\n  \n  // 201 means 'Created'\n  res.status(201).json({ message: 'Item saved successfully' });\n});",
+  "definition": "Sets the HTTP status for the response. It is a chainable alias of Node's `response.statusCode`. Standard REST practices require sending appropriate status codes (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Server Error).",
+  "simpleExplanation": "Sets the HTTP status for the response.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of res.status() in Express.js?",
+      "How do you initialize res.status()?"
+    ],
+    "intermediate": [
+      "How does res.status() integrate with other middleware components?",
+      "Can you explain a common use case for res.status()?"
+    ],
+    "advanced": [
+      "What are the performance implications of res.status() in a high-traffic production application?",
+      "How would you debug issues related to res.status()?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as res.status() without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define res.status() in your own words.",
+      "answer": "Sets the HTTP status for the response."
+    },
+    {
+      "question": "When should you avoid using res.status()?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

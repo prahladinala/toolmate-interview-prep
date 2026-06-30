@@ -1,0 +1,35 @@
+{
+  "title": "Why Use Express?",
+  "terminalOutput": "$ npm install express\n\nadded 57 packages, and audited 58 packages in 2s\nfound 0 vulnerabilities",
+  "definition": "Express is the most popular Node.js framework for several reasons. It simplifies the process of creating APIs and web servers drastically compared to raw Node.js. It offers a massive ecosystem of plugins (middleware) for almost any functionality you can think of (authentication, logging, payload parsing). Because it is unopinionated, it doesn't force a specific file structure or ORM on you, giving you the ultimate freedom to architect your app as you see fit.",
+  "simpleExplanation": "Express is the most popular Node.js framework for several reasons.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Why Use Express? in Express.js?",
+      "How do you initialize Why Use Express??"
+    ],
+    "intermediate": [
+      "How does Why Use Express? integrate with other middleware components?",
+      "Can you explain a common use case for Why Use Express??"
+    ],
+    "advanced": [
+      "What are the performance implications of Why Use Express? in a high-traffic production application?",
+      "How would you debug issues related to Why Use Express??"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Why Use Express? without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Why Use Express? in your own words.",
+      "answer": "Express is the most popular Node.js framework for several reasons."
+    },
+    {
+      "question": "When should you avoid using Why Use Express??",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

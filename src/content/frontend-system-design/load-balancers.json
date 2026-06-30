@@ -1,0 +1,36 @@
+{
+  "title": "Load Balancers",
+  "difficulty": "Intermediate",
+  "definition": "Load balancers efficiently distribute incoming network traffic across a group of backend servers. They ensure high availability and reliability by routing requests only to healthy servers.",
+  "simpleExplanation": "A load balancer is the traffic cop standing in front of 10 restaurants. He directs new customers to the restaurant with the shortest line.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  C1[Client 1] --> LB{Load Balancer}\n  C2[Client 2] --> LB\n  C3[Client 3] --> LB\n  LB -->|Round Robin| S1[Server A]\n  LB -->|Round Robin| S2[Server B]\n  LB -->|Round Robin| S3[Server C]",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Load Balancers?",
+      "Why is Load Balancers important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Load Balancers impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Load Balancers."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Load Balancers?",
+      "What are the security implications of Load Balancers?"
+    ],
+    "trick": [
+      "Can Load Balancers be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Load Balancers.",
+      "answer": "Load Balancers is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Load Balancers?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

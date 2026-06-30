@@ -1,0 +1,12 @@
+{
+  "title": "Longest Substring Problems",
+  "difficulty": "Advanced",
+  "definition": "Classic sliding window problems requiring a Hash Set/Map to track character occurrences. Example: 'Longest Substring Without Repeating Characters'. As the `right` pointer encounters a duplicate, the `left` pointer advances until the duplicate is removed.",
+  "simpleExplanation": "Reading a word letter by letter, keeping a list of letters you've seen. The exact second you read a letter you've already seen, you cut the word.",
+  "answers": [
+    {
+      "question": "**Advanced:** Longest Substring Without Repeating Characters",
+      "answer": "```javascript\nfunction lengthOfLongestSubstring(s) {\n  let maxLen = 0, left = 0;\n  const set = new Set();\n  for (let right = 0; right < s.length; right++) {\n    while (set.has(s[right])) {\n      set.delete(s[left]);\n      left++;\n    }\n    set.add(s[right]);\n    maxLen = Math.max(maxLen, right - left + 1);\n  }\n  return maxLen;\n}\n```\nO(N) Time, O(min(N, M)) Space."
+    }
+  ]
+}

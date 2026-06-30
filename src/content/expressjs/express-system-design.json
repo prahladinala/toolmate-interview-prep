@@ -1,0 +1,34 @@
+{
+  "title": "Backend Design Questions",
+  "definition": "System design questions evaluate your ability to architect a complete backend system utilizing Express.\n\n### Scenario\n*\"Design the backend for a URL Shortener like Bitly.\"*\n\n**Key Components to Discuss:**\n1. **API Endpoints:** `POST /api/shorten` (accepts long URL, returns short URL) and `GET /:shortId` (redirects to long URL).\n2. **Database:** MongoDB or PostgreSQL to store the `{ shortId, originalUrl, clicks }` mapping.\n3. **Algorithm:** Base62 encoding to generate unique short IDs.\n4. **Caching:** Use Redis to cache the most frequently accessed `shortId` -> `originalUrl` mappings so you don't hit the database on every redirect.\n5. **Analytics:** Publish a message to a queue (Kafka/RabbitMQ) every time a link is clicked to process analytics asynchronously without slowing down the redirect.",
+  "simpleExplanation": "System design questions evaluate your ability to architect a complete backend system utilizing Express.\n\n### Scenario\n*\"Design the backend for a URL Shortener like Bitly.\"*\n\n**Key Components to Discuss:**\n1.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Backend Design Questions in Express.js?",
+      "How do you initialize Backend Design Questions?"
+    ],
+    "intermediate": [
+      "How does Backend Design Questions integrate with other middleware components?",
+      "Can you explain a common use case for Backend Design Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Backend Design Questions in a high-traffic production application?",
+      "How would you debug issues related to Backend Design Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Backend Design Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Backend Design Questions in your own words.",
+      "answer": "System design questions evaluate your ability to architect a complete backend system utilizing Express.\n\n### Scenario\n*\"Design the backend for a URL Shortener like Bitly.\"*\n\n**Key Components to Discuss:**\n1."
+    },
+    {
+      "question": "When should you avoid using Backend Design Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Polling",
+  "difficulty": "Beginner",
+  "definition": "Short Polling is the client making repetitive HTTP requests to the server at fixed intervals (e.g., every 5 seconds) to check for new data.",
+  "simpleExplanation": "Kids in the back seat constantly asking 'Are we there yet? Are we there yet? Are we there yet?'",
+  "questions": {
+    "basic": [
+      "What is the core concept of Polling?",
+      "What are the pros and cons of Polling?"
+    ],
+    "intermediate": [
+      "How does Polling impact SEO and initial page load times?",
+      "When would you NOT choose to use Polling?"
+    ],
+    "advanced": [
+      "How does Polling fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Polling?"
+    ],
+    "trick": [
+      "Can you combine Polling with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Polling.",
+      "answer": "Polling is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Polling?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

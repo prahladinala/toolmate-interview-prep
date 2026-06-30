@@ -1,0 +1,34 @@
+{
+  "title": "Rendering Engine",
+  "difficulty": "Advanced",
+  "definition": "The rendering engine (e.g., Blink for Chrome, WebKit for Safari) is responsible for taking HTML, CSS, and JavaScript and turning it into the pixels drawn on your screen.",
+  "simpleExplanation": "The rendering engine is the factory that reads your code blueprints and actually builds the visible house on the screen.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Rendering Engine?",
+      "Why is Rendering Engine important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Rendering Engine impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Rendering Engine."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Rendering Engine?",
+      "What are the security implications of Rendering Engine?"
+    ],
+    "trick": [
+      "Can Rendering Engine be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Rendering Engine.",
+      "answer": "Rendering Engine is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Rendering Engine?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

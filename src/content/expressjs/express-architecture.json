@@ -1,0 +1,36 @@
+{
+  "title": "Express Architecture",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  Req[Incoming HTTP Request] --> M1[Middleware: Logger]\n  M1 --> M2[Middleware: Auth Check]\n  M2 --> M3[Middleware: JSON Parser]\n  M3 --> Route[Route Handler: app.get('/users')]\n  Route --> Res[HTTP Response]",
+  "definition": "Express architecture is fundamentally based on two core concepts: **Routing** and **Middleware**. When a request enters an Express application, it passes through a pipeline of middleware functions in the exact order they were defined. Once the middleware pipeline finishes (e.g., logging the request, authenticating the user, parsing the JSON), it reaches the Route Handler, which formulates the final response and sends it back to the client.",
+  "simpleExplanation": "Express architecture is fundamentally based on two core concepts: **Routing** and **Middleware**.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Express Architecture in Express.js?",
+      "How do you initialize Express Architecture?"
+    ],
+    "intermediate": [
+      "How does Express Architecture integrate with other middleware components?",
+      "Can you explain a common use case for Express Architecture?"
+    ],
+    "advanced": [
+      "What are the performance implications of Express Architecture in a high-traffic production application?",
+      "How would you debug issues related to Express Architecture?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Express Architecture without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Express Architecture in your own words.",
+      "answer": "Express architecture is fundamentally based on two core concepts: **Routing** and **Middleware**."
+    },
+    {
+      "question": "When should you avoid using Express Architecture?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

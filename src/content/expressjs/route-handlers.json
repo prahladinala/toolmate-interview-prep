@@ -1,0 +1,35 @@
+{
+  "title": "Route Handlers",
+  "codeExample": "const express = require('express');\nconst app = express();\n\nconst checkAuth = (req, res, next) => {\n  // Pretend we check a token here\n  console.log('Checking Auth...');\n  next(); // Passes control to the next handler\n};\n\nconst sendData = (req, res) => {\n  res.json({ data: 'Secret Data unlocked!' });\n};\n\n// Array of handlers\napp.get('/secret', [checkAuth, sendData]);",
+  "definition": "You can provide multiple callback functions that behave like middleware to handle a request. The only exception is that these callbacks might invoke `next('route')` to bypass the remaining route callbacks. You can use this mechanism to impose pre-conditions on a route, then pass control to subsequent functions if there's no reason to proceed with the current route.",
+  "simpleExplanation": "You can provide multiple callback functions that behave like middleware to handle a request.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Route Handlers in Express.js?",
+      "How do you initialize Route Handlers?"
+    ],
+    "intermediate": [
+      "How does Route Handlers integrate with other middleware components?",
+      "Can you explain a common use case for Route Handlers?"
+    ],
+    "advanced": [
+      "What are the performance implications of Route Handlers in a high-traffic production application?",
+      "How would you debug issues related to Route Handlers?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Route Handlers without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Route Handlers in your own words.",
+      "answer": "You can provide multiple callback functions that behave like middleware to handle a request."
+    },
+    {
+      "question": "When should you avoid using Route Handlers?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

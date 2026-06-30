@@ -1,0 +1,12 @@
+{
+  "title": "Stack",
+  "difficulty": "Beginner",
+  "definition": "A Last-In, First-Out (LIFO) data structure. In JS, arrays can act as stacks using `push()` and `pop()`. Used for managing function invocations, undo/redo, and bracket matching.",
+  "simpleExplanation": "A stack of plates. You can only add a plate to the top, and you can only remove a plate from the top.",
+  "answers": [
+    {
+      "question": "**Basic:** Valid Parentheses",
+      "answer": "```javascript\nfunction isValid(s) {\n  const stack = [];\n  const pairs = { '(': ')', '{': '}', '[': ']' };\n  for (let char of s) {\n    if (pairs[char]) stack.push(char);\n    else if (pairs[stack.pop()] !== char) return false;\n  }\n  return stack.length === 0;\n}\n```\nO(N) Time, O(N) Space."
+    }
+  ]
+}

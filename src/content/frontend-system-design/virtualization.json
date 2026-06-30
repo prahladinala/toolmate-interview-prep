@@ -1,0 +1,27 @@
+{
+  "title": "List Virtualization",
+  "difficulty": "Expert",
+  "definition": "List virtualization (or windowing) is the technique of rendering only the DOM elements currently visible in the viewport, completely unmounting the elements scrolled out of view. This maintains 60fps even with 100,000 items.",
+  "simpleExplanation": "If you have a list of 10,000 users, don't draw 10,000 HTML elements. Only draw the 20 that fit on the screen, and rapidly swap the text inside them as the user scrolls.",
+  "questions": {
+    "basic": [
+      "How does List Virtualization fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of List Virtualization?"
+    ],
+    "advanced": [
+      "How does List Virtualization scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where List Virtualization is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define List Virtualization.",
+      "answer": "List Virtualization is essential for complex frontend applications."
+    }
+  ]
+}

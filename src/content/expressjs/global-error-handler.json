@@ -1,0 +1,36 @@
+{
+  "title": "Global Error Handler",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Route1[Route A fails] -->|next(err)| Global[Global Error Handler]\n  Route2[Route B fails] -->|next(err)| Global\n  DB[DB Error] -->|next(err)| Global\n  Global -->|Log to File| Console\n  Global -->|Consistent JSON| Client[Client Browser]",
+  "definition": "A Global Error Handler is a single `app.use((err, req, res, next))` middleware placed at the end of `server.js` that centralizes all API error responses into one consistent JSON format. It intercepts all `next(err)` calls from anywhere in the application.",
+  "simpleExplanation": "A Global Error Handler is a single `app.use((err, req, res, next))` middleware placed at the end of `server.js` that centralizes all API error responses into one consistent JSON format.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Global Error Handler in Express.js?",
+      "How do you initialize Global Error Handler?"
+    ],
+    "intermediate": [
+      "How does Global Error Handler integrate with other middleware components?",
+      "Can you explain a common use case for Global Error Handler?"
+    ],
+    "advanced": [
+      "What are the performance implications of Global Error Handler in a high-traffic production application?",
+      "How would you debug issues related to Global Error Handler?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Global Error Handler without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Global Error Handler in your own words.",
+      "answer": "A Global Error Handler is a single `app.use((err, req, res, next))` middleware placed at the end of `server.js` that centralizes all API error responses into one consistent JSON format."
+    },
+    {
+      "question": "When should you avoid using Global Error Handler?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

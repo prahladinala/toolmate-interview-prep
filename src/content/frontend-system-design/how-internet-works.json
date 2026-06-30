@@ -1,0 +1,36 @@
+{
+  "title": "How the Internet Works",
+  "difficulty": "Beginner",
+  "definition": "The internet is a global network of interconnected computers communicating via standardized protocols (TCP/IP). When a user types a URL, a massive sequence of hardware routing, DNS lookups, and TCP handshakes occurs before any data is sent.",
+  "simpleExplanation": "Imagine the internet as a massive global postal service. Computers are houses, IP addresses are the street addresses, and packets are the letters being delivered by routers (mail trucks).",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  Client[Browser] -->|Types URL| DNS[DNS Server]\n  DNS -->|Returns IP: 192.0.2.1| Client\n  Client -->|HTTP GET Request| Router1((Router))\n  Router1 --> Router2((ISP Router))\n  Router2 --> Server[Web Server]\n  Server -->|HTTP 200 OK + HTML| Client",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of How the Internet Works?",
+      "Why is How the Internet Works important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does How the Internet Works impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to How the Internet Works."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize How the Internet Works?",
+      "What are the security implications of How the Internet Works?"
+    ],
+    "trick": [
+      "Can How the Internet Works be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define How the Internet Works.",
+      "answer": "How the Internet Works is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for How the Internet Works?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

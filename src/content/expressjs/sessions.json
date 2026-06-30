@@ -1,0 +1,35 @@
+{
+  "title": "Session Authentication",
+  "codeExample": "const session = require('express-session');\n\napp.use(session({\n  secret: 'super-secret-key',\n  resave: false,\n  saveUninitialized: false,\n  cookie: { secure: false } // Set to true in production with HTTPS\n}));\n\napp.post('/login', (req, res) => {\n  if(req.body.username === 'admin') {\n    req.session.userId = 1; // Store user in session\n    res.send('Logged in!');\n  }\n});",
+  "definition": "Session-based authentication stores user state (like their user ID) in the server's memory or database. The server sends the client a 'Session ID' cookie. The client sends this cookie back on every request, allowing the server to look up who is logged in.",
+  "simpleExplanation": "Session-based authentication stores user state (like their user ID) in the server's memory or database.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Session Authentication in Express.js?",
+      "How do you initialize Session Authentication?"
+    ],
+    "intermediate": [
+      "How does Session Authentication integrate with other middleware components?",
+      "Can you explain a common use case for Session Authentication?"
+    ],
+    "advanced": [
+      "What are the performance implications of Session Authentication in a high-traffic production application?",
+      "How would you debug issues related to Session Authentication?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Session Authentication without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Session Authentication in your own words.",
+      "answer": "Session-based authentication stores user state (like their user ID) in the server's memory or database."
+    },
+    {
+      "question": "When should you avoid using Session Authentication?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

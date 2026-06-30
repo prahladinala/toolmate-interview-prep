@@ -1,0 +1,35 @@
+{
+  "title": "PATCH Method",
+  "codeExample": "app.patch('/api/users/:id', (req, res) => {\n  const userId = req.params.id;\n  const partialUpdate = req.body;\n  \n  // E.g. payload: { \"email\": \"new@email.com\" }\n  // Only updates the email, leaves name, password, etc. untouched.\n  \n  res.json({\n    message: `User ${userId} partially updated`\n  });\n});",
+  "definition": "The PATCH method is used to apply partial modifications to a resource. Unlike PUT, which completely replaces the resource, PATCH only updates the specific fields you provide in the request body, leaving the rest of the existing data untouched.",
+  "simpleExplanation": "The PATCH method is used to apply partial modifications to a resource.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of PATCH Method in Express.js?",
+      "How do you initialize PATCH Method?"
+    ],
+    "intermediate": [
+      "How does PATCH Method integrate with other middleware components?",
+      "Can you explain a common use case for PATCH Method?"
+    ],
+    "advanced": [
+      "What are the performance implications of PATCH Method in a high-traffic production application?",
+      "How would you debug issues related to PATCH Method?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as PATCH Method without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define PATCH Method in your own words.",
+      "answer": "The PATCH method is used to apply partial modifications to a resource."
+    },
+    {
+      "question": "When should you avoid using PATCH Method?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

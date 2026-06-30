@@ -1,0 +1,35 @@
+{
+  "title": "XSS Protection",
+  "terminalOutput": "$ npm install xss-clean\n\n// Usage:\n// const xss = require('xss-clean');\n// app.use(xss());",
+  "definition": "Cross-Site Scripting (XSS) occurs when an attacker injects malicious JavaScript into your database, which is later served to other users. To prevent this, you must sanitize user input. In Express, you can use `xss-clean` to strip out HTML tags from incoming requests.",
+  "simpleExplanation": "Cross-Site Scripting (XSS) occurs when an attacker injects malicious JavaScript into your database, which is later served to other users.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of XSS Protection in Express.js?",
+      "How do you initialize XSS Protection?"
+    ],
+    "intermediate": [
+      "How does XSS Protection integrate with other middleware components?",
+      "Can you explain a common use case for XSS Protection?"
+    ],
+    "advanced": [
+      "What are the performance implications of XSS Protection in a high-traffic production application?",
+      "How would you debug issues related to XSS Protection?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as XSS Protection without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define XSS Protection in your own words.",
+      "answer": "Cross-Site Scripting (XSS) occurs when an attacker injects malicious JavaScript into your database, which is later served to other users."
+    },
+    {
+      "question": "When should you avoid using XSS Protection?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "id": "dsa-javascript",
+  "title": "Data Structures & Algorithms using JavaScript",
+  "description": "Master DSA using JavaScript from fundamentals to advanced interview-level problem solving. Learn complexity analysis, data structures, algorithms, patterns, and system-level problem solving.",
+  "icon": "javascript",
+  "categories": [
+    {
+      "id": "foundations",
+      "title": "Programming Foundations",
+      "topics": [
+        { "id": "javascript-basics", "title": "JavaScript Basics for DSA" },
+        { "id": "variables-datatypes", "title": "Variables & Data Types" },
+        { "id": "functions", "title": "Functions" },
+        { "id": "loops", "title": "Loops" },
+        { "id": "arrays-strings", "title": "Arrays & Strings" },
+        { "id": "objects", "title": "Objects & Maps" }
+      ]
+    },
+    {
+      "id": "complexity-analysis",
+      "title": "Time & Space Complexity",
+      "topics": [
+        { "id": "big-o", "title": "Big O Notation" },
+        { "id": "big-theta", "title": "Big Theta" },
+        { "id": "big-omega", "title": "Big Omega" },
+        { "id": "time-complexity", "title": "Time Complexity Analysis" },
+        { "id": "space-complexity", "title": "Space Complexity Analysis" },
+        { "id": "complexity-comparison", "title": "Comparing Algorithm Efficiency" }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "topics": [
+        { "id": "array-basics", "title": "Array Operations" },
+        { "id": "traversal", "title": "Traversal" },
+        { "id": "insertion-deletion", "title": "Insertion & Deletion" },
+        { "id": "two-sum", "title": "Two Sum Pattern" },
+        { "id": "subarray-problems", "title": "Subarray Problems" },
+        { "id": "kadane", "title": "Kadane's Algorithm" },
+        { "id": "prefix-sum", "title": "Prefix Sum" }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "topics": [
+        { "id": "string-manipulation", "title": "String Manipulation" },
+        { "id": "anagrams", "title": "Anagram Problems" },
+        { "id": "palindrome", "title": "Palindrome Problems" },
+        { "id": "substring", "title": "Substring Problems" },
+        { "id": "pattern-matching", "title": "Pattern Matching" }
+      ]
+    },
+    {
+      "id": "hashing",
+      "title": "Hashing",
+      "topics": [
+        { "id": "hashmap", "title": "HashMap (Map)" },
+        { "id": "hashset", "title": "HashSet (Set)" },
+        { "id": "frequency-counter", "title": "Frequency Counter Pattern" },
+        { "id": "lookup-optimization", "title": "Optimized Lookup Problems" }
+      ]
+    },
+    {
+      "id": "linked-lists",
+      "title": "Linked Lists",
+      "topics": [
+        { "id": "singly-linked-list", "title": "Singly Linked List" },
+        { "id": "doubly-linked-list", "title": "Doubly Linked List" },
+        { "id": "reverse-linked-list", "title": "Reverse Linked List" },
+        { "id": "cycle-detection", "title": "Cycle Detection" },
+        { "id": "merge-lists", "title": "Merge Lists" }
+      ]
+    },
+    {
+      "id": "stacks-queues",
+      "title": "Stacks & Queues",
+      "topics": [
+        { "id": "stack", "title": "Stack" },
+        { "id": "queue", "title": "Queue" },
+        { "id": "priority-queue", "title": "Priority Queue" },
+        { "id": "monotonic-stack", "title": "Monotonic Stack" },
+        { "id": "circular-queue", "title": "Circular Queue" }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion & Backtracking",
+      "topics": [
+        { "id": "recursion-basics", "title": "Recursion Basics" },
+        { "id": "call-stack", "title": "Recursion Call Stack" },
+        { "id": "backtracking", "title": "Backtracking" },
+        { "id": "subsets", "title": "Generate Subsets" },
+        { "id": "permutations", "title": "Generate Permutations" },
+        { "id": "n-queens", "title": "N Queens Problem" }
+      ]
+    },
+    {
+      "id": "trees",
+      "title": "Trees",
+      "topics": [
+        { "id": "tree-basics", "title": "Tree Basics" },
+        { "id": "binary-tree", "title": "Binary Tree" },
+        { "id": "binary-search-tree", "title": "Binary Search Tree" },
+        { "id": "tree-traversals", "title": "DFS Traversals" },
+        { "id": "level-order", "title": "BFS Traversal" },
+        { "id": "tree-height", "title": "Tree Height & Depth" },
+        { "id": "lowest-common-ancestor", "title": "Lowest Common Ancestor" }
+      ]
+    },
+    {
+      "id": "heaps",
+      "title": "Heap & Priority Queue",
+      "topics": [
+        { "id": "min-heap", "title": "Min Heap" },
+        { "id": "max-heap", "title": "Max Heap" },
+        { "id": "heap-operations", "title": "Heap Operations" },
+        { "id": "top-k-elements", "title": "Top K Elements" }
+      ]
+    },
+    {
+      "id": "graphs",
+      "title": "Graphs",
+      "topics": [
+        { "id": "graph-basics", "title": "Graph Representation" },
+        { "id": "dfs", "title": "Depth First Search" },
+        { "id": "bfs", "title": "Breadth First Search" },
+        { "id": "cycle-detection-graph", "title": "Cycle Detection" },
+        { "id": "topological-sort", "title": "Topological Sort" },
+        { "id": "union-find", "title": "Disjoint Set Union" }
+      ]
+    },
+    {
+      "id": "sorting-searching",
+      "title": "Sorting & Searching",
+      "topics": [
+        { "id": "binary-search", "title": "Binary Search" },
+        { "id": "bubble-sort", "title": "Bubble Sort" },
+        { "id": "selection-sort", "title": "Selection Sort" },
+        { "id": "insertion-sort", "title": "Insertion Sort" },
+        { "id": "merge-sort", "title": "Merge Sort" },
+        { "id": "quick-sort", "title": "Quick Sort" },
+        { "id": "heap-sort", "title": "Heap Sort" }
+      ]
+    },
+    {
+      "id": "sliding-window",
+      "title": "Sliding Window Pattern",
+      "topics": [
+        { "id": "fixed-window", "title": "Fixed Size Window" },
+        { "id": "dynamic-window", "title": "Variable Size Window" },
+        { "id": "longest-substring", "title": "Longest Substring Problems" }
+      ]
+    },
+    {
+      "id": "two-pointers",
+      "title": "Two Pointers Pattern",
+      "topics": [
+        { "id": "two-sum-sorted", "title": "Two Sum Sorted" },
+        { "id": "container-water", "title": "Container With Most Water" },
+        { "id": "remove-duplicates", "title": "Remove Duplicates" }
+      ]
+    },
+    {
+      "id": "greedy",
+      "title": "Greedy Algorithms",
+      "topics": [
+        { "id": "activity-selection", "title": "Activity Selection" },
+        { "id": "interval-merging", "title": "Merge Intervals" },
+        { "id": "jump-game", "title": "Jump Game" }
+      ]
+    },
+    {
+      "id": "dynamic-programming",
+      "title": "Dynamic Programming",
+      "topics": [
+        { "id": "dp-basics", "title": "DP Fundamentals" },
+        { "id": "memoization", "title": "Memoization" },
+        { "id": "tabulation", "title": "Tabulation" },
+        { "id": "fibonacci-dp", "title": "Fibonacci DP" },
+        { "id": "knapsack", "title": "Knapsack Problem" },
+        { "id": "longest-common-subsequence", "title": "LCS" },
+        { "id": "longest-increasing-subsequence", "title": "LIS" }
+      ]
+    },
+    {
+      "id": "advanced-algorithms",
+      "title": "Advanced Algorithms",
+      "topics": [
+        { "id": "dijkstra", "title": "Dijkstra Algorithm" },
+        { "id": "bellman-ford", "title": "Bellman Ford" },
+        { "id": "floyd-warshall", "title": "Floyd Warshall" },
+        { "id": "kruskal", "title": "Kruskal Algorithm" },
+        { "id": "prim", "title": "Prim Algorithm" },
+        { "id": "trie", "title": "Trie" },
+        { "id": "segment-tree", "title": "Segment Tree" }
+      ]
+    },
+    {
+      "id": "interview-patterns",
+      "title": "Coding Interview Patterns",
+      "topics": [
+        { "id": "sliding-window-pattern", "title": "Sliding Window" },
+        { "id": "two-pointer-pattern", "title": "Two Pointers" },
+        { "id": "fast-slow-pointer", "title": "Fast & Slow Pointer" },
+        { "id": "merge-intervals", "title": "Merge Intervals" },
+        { "id": "cyclic-sort", "title": "Cyclic Sort" },
+        { "id": "top-k-pattern", "title": "Top K Elements" },
+        { "id": "binary-search-pattern", "title": "Binary Search Pattern" },
+        { "id": "backtracking-pattern", "title": "Backtracking Pattern" }
+      ]
+    },
+    {
+      "id": "leetcode-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "easy-problems", "title": "Easy Problems" },
+        { "id": "medium-problems", "title": "Medium Problems" },
+        { "id": "hard-problems", "title": "Hard Problems" },
+        { "id": "faang-patterns", "title": "FAANG Patterns" },
+        { "id": "mock-interviews", "title": "Mock Interviews" }
+      ]
+    }
+  ]
+}

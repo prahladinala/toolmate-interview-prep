@@ -1,0 +1,35 @@
+{
+  "title": "Filtering",
+  "codeExample": "app.get('/api/products', async (req, res) => {\n  // 1. Build a copy of req.query\n  const queryObj = { ...req.query };\n  \n  // 2. Exclude special fields (like page, sort, limit)\n  const excludedFields = ['page', 'sort', 'limit'];\n  excludedFields.forEach(el => delete queryObj[el]);\n\n  // 3. Execute query (e.g. { category: 'shoes', price: 50 })\n  const products = await Product.find(queryObj);\n  \n  res.json({ data: products });\n});",
+  "definition": "Filtering allows clients to specify exact criteria for the data they want. In Express, you extract these filters from `req.query` and pass them into your database query engine.",
+  "simpleExplanation": "Filtering allows clients to specify exact criteria for the data they want.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Filtering in Express.js?",
+      "How do you initialize Filtering?"
+    ],
+    "intermediate": [
+      "How does Filtering integrate with other middleware components?",
+      "Can you explain a common use case for Filtering?"
+    ],
+    "advanced": [
+      "What are the performance implications of Filtering in a high-traffic production application?",
+      "How would you debug issues related to Filtering?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Filtering without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Filtering in your own words.",
+      "answer": "Filtering allows clients to specify exact criteria for the data they want."
+    },
+    {
+      "question": "When should you avoid using Filtering?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

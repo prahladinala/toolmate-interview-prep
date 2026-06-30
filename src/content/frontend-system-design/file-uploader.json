@@ -1,0 +1,29 @@
+{
+  "title": "Design File Uploader",
+  "difficulty": "Expert",
+  "definition": "A File Uploader involves Drag & Drop APIs, chunking large files (e.g., 5GB videos) to resume failed uploads, calculating upload progress, generating image previews via `URL.createObjectURL`, and handling CORS.",
+  "simpleExplanation": "A box you can drag a massive video into. It breaks the video into 100 tiny pieces and uploads them one by one, so if your internet drops on piece 99, you don't have to start over.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for File Uploader Component?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in File Uploader Component?"
+    ],
+    "advanced": [
+      "How do you scale and optimize File Uploader Component for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to File Uploader Component if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define File Uploader Component.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant U as User File\n  participant C as Chunker\n  participant A as API\n  U->>C: Select 1GB Video\n  Note over C: Split into 10MB chunks\n  C->>A: Upload Chunk 1\n  A-->>C: Ack 1\n  C->>A: Upload Chunk 2\n  Note over A: Connection Fails!\n  C->>A: Retry Chunk 2\n  A-->>C: Ack 2"
+}

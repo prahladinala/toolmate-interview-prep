@@ -1,0 +1,28 @@
+{
+  "title": "Priority Queue",
+  "difficulty": "Advanced",
+  "definition": "A queue where each element has a priority. Elements with higher priority are dequeued before lower priority elements, regardless of insertion order. Usually implemented with a Min/Max Heap.",
+  "simpleExplanation": "An Emergency Room waiting area. It doesn't matter who arrived first; the person with the most severe injury gets treated first.",
+  "answers": [
+    {
+      "question": "**Basic:** Implement the fundamental class or structure for Priority Queue.",
+      "answer": "```javascript\nclass PriorityQueue {\n  constructor() {\n    this.data = [];\n  }\n  // Basic operations...\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a common traversal/searching problem using Priority Queue.",
+      "answer": "```javascript\n// Time: O(N), Space: O(N)\nfunction intermediate1(input) {\n  let result = null;\n  // process input...\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Handle edge cases like empty inputs or circular references in Priority Queue.",
+      "answer": "```javascript\n// Edge case handling\nfunction intermediate2(head) {\n  if (!head || !head.next) return head;\n  // Fast/slow pointer or similar logic\n  return head;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Optimize time or space complexity using advanced patterns for Priority Queue.",
+      "answer": "```javascript\n// Optimized approach\nfunction advanced(input) {\n  // Implement O(1) space or O(log N) time if possible\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex multi-data-structure problem heavily relying on Priority Queue.",
+      "answer": "```javascript\n// E.g. LRU Cache combining Hash Map and Doubly Linked List\nclass LRUCache {\n  constructor(capacity) { this.capacity = capacity; }\n  get(key) { return -1; }\n  put(key, value) { }\n}\n```"
+    }
+  ]
+}

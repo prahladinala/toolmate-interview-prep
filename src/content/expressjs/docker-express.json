@@ -1,0 +1,35 @@
+{
+  "title": "Dockerizing Express Apps",
+  "codeExample": "FROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install --production\nCOPY . .\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]",
+  "definition": "Dockerizing your Express app ensures that it runs exactly the same way on your laptop, your coworker's laptop, and the production server. You define the environment (Node version, dependencies) in a `Dockerfile`.",
+  "simpleExplanation": "Dockerizing your Express app ensures that it runs exactly the same way on your laptop, your coworker's laptop, and the production server.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Dockerizing Express Apps in Express.js?",
+      "How do you initialize Dockerizing Express Apps?"
+    ],
+    "intermediate": [
+      "How does Dockerizing Express Apps integrate with other middleware components?",
+      "Can you explain a common use case for Dockerizing Express Apps?"
+    ],
+    "advanced": [
+      "What are the performance implications of Dockerizing Express Apps in a high-traffic production application?",
+      "How would you debug issues related to Dockerizing Express Apps?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Dockerizing Express Apps without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Dockerizing Express Apps in your own words.",
+      "answer": "Dockerizing your Express app ensures that it runs exactly the same way on your laptop, your coworker's laptop, and the production server."
+    },
+    {
+      "question": "When should you avoid using Dockerizing Express Apps?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

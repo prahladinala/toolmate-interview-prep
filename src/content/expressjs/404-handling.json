@@ -1,0 +1,35 @@
+{
+  "title": "404 Route Handling",
+  "codeExample": "app.get('/', (req, res) => res.send('Home'));\napp.get('/about', (req, res) => res.send('About'));\n\n// 404 Handler - Catch-all for undefined routes\napp.all('*', (req, res, next) => {\n  res.status(404).json({\n    status: 'fail',\n    message: `Can't find ${req.originalUrl} on this server!`\n  });\n});\n\n// Global Error handler goes here...",
+  "definition": "Handling 404s in Express is simple: you just add a normal middleware function at the very end of your routing rules, right BEFORE your global error handler. If a request makes it past all your valid routes without being matched or responded to, it must be a 404.",
+  "simpleExplanation": "Handling 404s in Express is simple: you just add a normal middleware function at the very end of your routing rules, right BEFORE your global error handler.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of 404 Route Handling in Express.js?",
+      "How do you initialize 404 Route Handling?"
+    ],
+    "intermediate": [
+      "How does 404 Route Handling integrate with other middleware components?",
+      "Can you explain a common use case for 404 Route Handling?"
+    ],
+    "advanced": [
+      "What are the performance implications of 404 Route Handling in a high-traffic production application?",
+      "How would you debug issues related to 404 Route Handling?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as 404 Route Handling without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define 404 Route Handling in your own words.",
+      "answer": "Handling 404s in Express is simple: you just add a normal middleware function at the very end of your routing rules, right BEFORE your global error handler."
+    },
+    {
+      "question": "When should you avoid using 404 Route Handling?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

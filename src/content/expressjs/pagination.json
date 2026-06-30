@@ -1,0 +1,35 @@
+{
+  "title": "Pagination",
+  "codeExample": "app.get('/api/users', async (req, res) => {\n  const page = parseInt(req.query.page) || 1;\n  const limit = parseInt(req.query.limit) || 10;\n  const skip = (page - 1) * limit;\n\n  // In MongoDB/Mongoose:\n  const users = await User.find().skip(skip).limit(limit);\n  \n  res.json({ results: users.length, data: users });\n});",
+  "definition": "When your database has millions of records, you cannot return them all in a single API call. Pagination limits the number of results per request. It is typically controlled via `page` and `limit` query parameters.",
+  "simpleExplanation": "When your database has millions of records, you cannot return them all in a single API call.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Pagination in Express.js?",
+      "How do you initialize Pagination?"
+    ],
+    "intermediate": [
+      "How does Pagination integrate with other middleware components?",
+      "Can you explain a common use case for Pagination?"
+    ],
+    "advanced": [
+      "What are the performance implications of Pagination in a high-traffic production application?",
+      "How would you debug issues related to Pagination?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Pagination without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Pagination in your own words.",
+      "answer": "When your database has millions of records, you cannot return them all in a single API call."
+    },
+    {
+      "question": "When should you avoid using Pagination?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

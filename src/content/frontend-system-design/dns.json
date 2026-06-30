@@ -1,0 +1,36 @@
+{
+  "title": "DNS Resolution",
+  "difficulty": "Beginner",
+  "definition": "The Domain Name System (DNS) translates human-readable domain names (like google.com) into machine-readable IP addresses (like 142.250.190.46). It is highly distributed and hierarchical.",
+  "simpleExplanation": "DNS is the phonebook of the internet. You look up a name ('Google'), and DNS gives you the phone number ('IP Address') so your computer can connect.",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant B as Browser\n  participant OS as OS Cache\n  participant ISP as ISP Resolver\n  participant Root as Root Server\n  participant TLD as TLD Server\n  participant Auth as Authoritative Server\n  B->>OS: Check cache for 'google.com'\n  OS-->>B: Miss\n  B->>ISP: What is 'google.com'?\n  ISP->>Root: Where is '.com'?\n  Root-->>ISP: Go to TLD Server\n  ISP->>TLD: Where is 'google.com'?\n  TLD-->>ISP: Go to Auth Server\n  ISP->>Auth: What is 'google.com' IP?\n  Auth-->>ISP: 142.250.190.46\n  ISP-->>B: 142.250.190.46",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of DNS Resolution?",
+      "Why is DNS Resolution important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does DNS Resolution impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to DNS Resolution."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize DNS Resolution?",
+      "What are the security implications of DNS Resolution?"
+    ],
+    "trick": [
+      "Can DNS Resolution be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define DNS Resolution.",
+      "answer": "DNS Resolution is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for DNS Resolution?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

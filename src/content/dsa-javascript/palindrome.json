@@ -1,0 +1,16 @@
+{
+  "title": "Palindrome Problems",
+  "difficulty": "Intermediate",
+  "definition": "A string that reads the same forwards and backwards. Solved optimally using a Two Pointer approach (start and end moving inwards) in O(N) time and O(1) space.",
+  "simpleExplanation": "Checking if 'racecar' is spelled the exact same way backwards.",
+  "answers": [
+    {
+      "question": "**Basic:** Valid Palindrome (Two Pointers)",
+      "answer": "```javascript\nfunction isPalindrome(s) {\n  s = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();\n  let left = 0, right = s.length - 1;\n  while (left < right) {\n    if (s[left] !== s[right]) return false;\n    left++; right--;\n  }\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Longest Palindromic Substring",
+      "answer": "```javascript\nfunction longestPalindrome(s) {\n  let maxStr = '';\n  function expand(l, r) {\n    while (l >= 0 && r < s.length && s[l] === s[r]) { l--; r++; }\n    return s.slice(l + 1, r);\n  }\n  for (let i = 0; i < s.length; i++) {\n    let odd = expand(i, i);\n    let even = expand(i, i + 1);\n    if (odd.length > maxStr.length) maxStr = odd;\n    if (even.length > maxStr.length) maxStr = even;\n  }\n  return maxStr;\n}\n```"
+    }
+  ]
+}

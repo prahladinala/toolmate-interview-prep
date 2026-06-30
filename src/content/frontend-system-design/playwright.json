@@ -1,0 +1,27 @@
+{
+  "title": "Playwright",
+  "difficulty": "Advanced",
+  "definition": "Playwright is a framework for Web Testing and Automation by Microsoft. It allows testing Chromium, WebKit, and Firefox with a single API, offering auto-waiting, trace viewers, and network interception.",
+  "simpleExplanation": "A robot browser that clicks through your app exactly like a human user would, and takes screenshots if something breaks.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Playwright?"
+    ],
+    "intermediate": [
+      "How does Playwright impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Playwright across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Playwright be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Playwright.",
+      "answer": "Playwright is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "OAuth & OpenID Connect",
+  "difficulty": "Expert",
+  "definition": "OAuth 2.0 is an authorization framework allowing third-party apps to obtain limited access to an HTTP service. OpenID Connect is an authentication layer built on top of OAuth 2.0.",
+  "simpleExplanation": "'Log in with Google'. You don't give the website your Google password. You give them a temporary VIP pass that only lets them read your email address.",
+  "questions": {
+    "basic": [
+      "What is the core concept of OAuth?",
+      "What are the pros and cons of OAuth?"
+    ],
+    "intermediate": [
+      "How does OAuth impact SEO and initial page load times?",
+      "When would you NOT choose to use OAuth?"
+    ],
+    "advanced": [
+      "How does OAuth fit into a heavily scaled microservices architecture?",
+      "What are the security implications of OAuth?"
+    ],
+    "trick": [
+      "Can you combine OAuth with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define OAuth.",
+      "answer": "OAuth is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of OAuth?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

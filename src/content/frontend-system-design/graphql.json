@@ -1,0 +1,35 @@
+{
+  "title": "GraphQL",
+  "difficulty": "Advanced",
+  "definition": "GraphQL is a query language for your API. Instead of multiple endpoints, there is only one (`/graphql`). The client explicitly requests exactly the shape of the data it needs, solving the over-fetching and under-fetching problems of REST.",
+  "simpleExplanation": "Instead of ordering off a fixed menu, GraphQL is a buffet where you tell the chef exactly what you want on your plate: 'I want a user, but ONLY their first name and their top 3 friends'.",
+  "codeExample": "/* GraphQL Query Example */\nquery GetUserProfile {\n  user(id: \"123\") {\n    name\n    email\n    posts(limit: 5) {\n      title\n      likes\n    }\n  }\n}",
+  "questions": {
+    "basic": [
+      "What is the core concept of GraphQL?",
+      "What are the pros and cons of GraphQL?"
+    ],
+    "intermediate": [
+      "How does GraphQL impact SEO and initial page load times?",
+      "When would you NOT choose to use GraphQL?"
+    ],
+    "advanced": [
+      "How does GraphQL fit into a heavily scaled microservices architecture?",
+      "What are the security implications of GraphQL?"
+    ],
+    "trick": [
+      "Can you combine GraphQL with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define GraphQL.",
+      "answer": "GraphQL is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of GraphQL?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

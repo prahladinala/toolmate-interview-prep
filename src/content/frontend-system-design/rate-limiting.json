@@ -1,0 +1,34 @@
+{
+  "title": "Rate Limiting Concepts",
+  "difficulty": "Beginner",
+  "definition": "While usually a backend concern, frontend applications must gracefully handle HTTP 429 Too Many Requests responses, implementing exponential backoff and retry logic in their fetch wrappers.",
+  "simpleExplanation": "If you rapidly smash the 'Submit' button 50 times, the server blocks you. The frontend needs to realize it got blocked and show a 'Please wait 60 seconds' timer instead of crashing.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Rate Limiting?",
+      "What are the pros and cons of Rate Limiting?"
+    ],
+    "intermediate": [
+      "How does Rate Limiting impact SEO and initial page load times?",
+      "When would you NOT choose to use Rate Limiting?"
+    ],
+    "advanced": [
+      "How does Rate Limiting fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Rate Limiting?"
+    ],
+    "trick": [
+      "Can you combine Rate Limiting with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Rate Limiting.",
+      "answer": "Rate Limiting is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Rate Limiting?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

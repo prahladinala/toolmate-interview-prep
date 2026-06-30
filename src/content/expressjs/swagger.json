@@ -1,0 +1,35 @@
+{
+  "title": "Swagger/OpenAPI",
+  "terminalOutput": "$ npm install swagger-ui-express swagger-jsdoc\n\n// This will spin up an interactive UI at /api-docs\n// allowing frontend developers to test your endpoints visually.",
+  "definition": "Swagger (OpenAPI) is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services. You can use packages like `swagger-ui-express` to automatically generate a beautiful, interactive documentation page directly from your Express code.",
+  "simpleExplanation": "Swagger (OpenAPI) is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Swagger/OpenAPI in Express.js?",
+      "How do you initialize Swagger/OpenAPI?"
+    ],
+    "intermediate": [
+      "How does Swagger/OpenAPI integrate with other middleware components?",
+      "Can you explain a common use case for Swagger/OpenAPI?"
+    ],
+    "advanced": [
+      "What are the performance implications of Swagger/OpenAPI in a high-traffic production application?",
+      "How would you debug issues related to Swagger/OpenAPI?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Swagger/OpenAPI without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Swagger/OpenAPI in your own words.",
+      "answer": "Swagger (OpenAPI) is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services."
+    },
+    {
+      "question": "When should you avoid using Swagger/OpenAPI?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

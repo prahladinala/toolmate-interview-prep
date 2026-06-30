@@ -1,0 +1,29 @@
+{
+  "title": "Edge Rendering",
+  "difficulty": "Expert",
+  "definition": "Edge Rendering moves Server-Side Rendering (SSR) from a centralized server (e.g., in Virginia) to CDN edge nodes located physically close to the user (e.g., in Tokyo). This drastically reduces Time to First Byte (TTFB).",
+  "simpleExplanation": "Instead of flying to New York to get a custom-made pizza, there is a master chef living in your local neighborhood who makes it just as fast.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Edge Rendering?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Edge Rendering?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Edge Rendering for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Edge Rendering if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Edge Rendering.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  User[User in Tokyo] -->|Requests Page| Edge[CDN Edge Node in Tokyo]\n  Edge -->|Renders React HTML| User\n  Edge -.->|Fetch Data| Origin[Origin DB in Virginia]"
+}

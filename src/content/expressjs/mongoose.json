@@ -1,0 +1,35 @@
+{
+  "title": "Mongoose ODM",
+  "codeExample": "const mongoose = require('mongoose');\n\n// Schema\nconst userSchema = new mongoose.Schema({\n  name: { type: String, required: true },\n  email: { type: String, unique: true },\n  age: Number\n});\n\n// Model\nconst User = mongoose.model('User', userSchema);\n\n// Express Route\napp.post('/users', async (req, res) => {\n  const newUser = await User.create(req.body);\n  res.status(201).json(newUser);\n});",
+  "definition": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It provides a straight-forward, schema-based solution to model your application data, handling validation, query building, and business logic.",
+  "simpleExplanation": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Mongoose ODM in Express.js?",
+      "How do you initialize Mongoose ODM?"
+    ],
+    "intermediate": [
+      "How does Mongoose ODM integrate with other middleware components?",
+      "Can you explain a common use case for Mongoose ODM?"
+    ],
+    "advanced": [
+      "What are the performance implications of Mongoose ODM in a high-traffic production application?",
+      "How would you debug issues related to Mongoose ODM?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Mongoose ODM without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Mongoose ODM in your own words.",
+      "answer": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js."
+    },
+    {
+      "question": "When should you avoid using Mongoose ODM?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

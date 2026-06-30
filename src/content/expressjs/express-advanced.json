@@ -1,0 +1,35 @@
+{
+  "title": "Advanced Questions",
+  "terminalOutput": "# Example Answer for #1:\nScaling involves vertically scaling the server, utilizing Node Cluster mode to fork processes across all CPU cores, horizontally scaling across multiple servers using a Load Balancer like Nginx, implementing Redis caching for heavy queries, and utilizing a CDN for static assets.",
+  "definition": "Advanced interviews focus on performance, security, and complex architectural patterns.\n\n### Sample Questions\n1. **How would you scale an Express application to handle millions of requests?**\n2. **Explain how JWT authentication works statelessly.**\n3. **What is Dependency Injection and how do you implement it in Express?**\n4. **How do you prevent XSS and CSRF attacks in an Express API?**\n5. **Explain the Node.js Event Loop and how blocking it affects an Express server.**",
+  "simpleExplanation": "Advanced interviews focus on performance, security, and complex architectural patterns.\n\n### Sample Questions\n1.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Advanced Questions in Express.js?",
+      "How do you initialize Advanced Questions?"
+    ],
+    "intermediate": [
+      "How does Advanced Questions integrate with other middleware components?",
+      "Can you explain a common use case for Advanced Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Advanced Questions in a high-traffic production application?",
+      "How would you debug issues related to Advanced Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Advanced Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Advanced Questions in your own words.",
+      "answer": "Advanced interviews focus on performance, security, and complex architectural patterns.\n\n### Sample Questions\n1."
+    },
+    {
+      "question": "When should you avoid using Advanced Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

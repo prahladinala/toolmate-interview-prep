@@ -1,0 +1,27 @@
+{
+  "title": "IndexedDB",
+  "difficulty": "Expert",
+  "definition": "IndexedDB is a low-level, asynchronous, transactional NoSQL database built into the browser. It can store massive amounts of structured data, including Files and Blobs.",
+  "simpleExplanation": "An actual, heavy-duty database inside your browser capable of storing gigabytes of offline application data.",
+  "questions": {
+    "basic": [
+      "How does IndexedDB fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of IndexedDB?"
+    ],
+    "advanced": [
+      "How does IndexedDB scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where IndexedDB is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define IndexedDB.",
+      "answer": "IndexedDB is essential for complex frontend applications."
+    }
+  ]
+}

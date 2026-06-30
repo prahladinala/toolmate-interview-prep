@@ -4,6 +4,7 @@ import { RetroBadge } from "@/components/retro/retro-badge";
 import { CodePlayground } from "@/components/learn/CodePlayground";
 import { CompleteTopicButton } from "@/components/learn/CompleteTopicButton";
 import { FlashCard } from "@/components/learn/FlashCard";
+import { CodeProblems } from "@/components/learn/CodeProblems";
 import { MermaidDiagram } from "@/components/learn/MermaidDiagram";
 import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2, Network, Table, Terminal } from "lucide-react";
 
@@ -29,6 +30,8 @@ export default async function TopicPage({
   if (currentIndex !== -1 && currentIndex < allTopics.length - 1) {
     nextTopicId = allTopics[currentIndex + 1].id;
   }
+
+  // Force Next.js Turbopack invalidation
 
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-12 pb-32">
@@ -64,27 +67,33 @@ export default async function TopicPage({
       </section>
 
       {/* Real World & Use Cases */}
-      <section className="grid md:grid-cols-2 gap-8">
-        <div>
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Briefcase className="text-secondary" /> Real World Example
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            {topicContent.realWorldExample}
-          </p>
-        </div>
-        <div>
-          <h2 className="text-xl font-bold mb-4">Common Use Cases</h2>
-          <ul className="space-y-2">
-            {topicContent.useCases.map((useCase, i) => (
-              <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                <span className="text-primary font-bold mt-1">•</span>
-                <span>{useCase}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {(topicContent.realWorldExample || (topicContent.useCases && topicContent.useCases.length > 0)) && (
+        <section className="grid md:grid-cols-2 gap-8">
+          {topicContent.realWorldExample && (
+            <div>
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Briefcase className="text-secondary" /> Real World Example
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {topicContent.realWorldExample}
+              </p>
+            </div>
+          )}
+          {topicContent.useCases && topicContent.useCases.length > 0 && (
+            <div>
+              <h2 className="text-xl font-bold mb-4">Common Use Cases</h2>
+              <ul className="space-y-2">
+                {topicContent.useCases.map((useCase, i) => (
+                  <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                    <span className="text-primary font-bold mt-1">•</span>
+                    <span>{useCase}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Visual Data / Tables */}
       {topicContent.tableData && (
@@ -162,39 +171,49 @@ export default async function TopicPage({
       )}
 
       {/* Interview Questions */}
-      <section className="space-y-6 pt-8 border-t-2 border-border">
-        <h2 className="text-3xl font-black mb-6 flex items-center gap-2">
-          <HelpCircle className="text-destructive" /> Interview Questions
-        </h2>
-        
-        <div className="space-y-8">
-          {Object.entries(topicContent.questions).map(([level, questions]) => {
-            if (!questions || questions.length === 0) return null;
-            return (
-              <div key={level}>
-                <h3 className="text-lg font-bold capitalize mb-3 text-muted-foreground">{level}</h3>
-                <ul className="space-y-3">
-                  {questions.map((q, i) => (
-                    <li key={i} className="p-4 bg-muted border-2 border-border rounded-lg font-medium">
-                      {q}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          })}
-        </div>
-      </section>
+      {topicContent.questions && Object.keys(topicContent.questions).length > 0 && (
+        <section className="space-y-6 pt-8 border-t-2 border-border">
+          <h2 className="text-3xl font-black mb-6 flex items-center gap-2">
+            <HelpCircle className="text-destructive" /> Interview Questions
+          </h2>
+          
+          <div className="space-y-8">
+            {Object.entries(topicContent.questions).map(([level, questions]) => {
+              if (!questions || questions.length === 0) return null;
+              return (
+                <div key={level}>
+                  <h3 className="text-lg font-bold capitalize mb-3 text-muted-foreground">{level}</h3>
+                  <ul className="space-y-3">
+                    {questions.map((q, i) => (
+                      <li key={i} className="p-4 bg-muted border-2 border-border rounded-lg font-medium">
+                        {q}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
 
-      {/* Quick Answers / Flash Cards Section */}
-      <section className="space-y-6 pt-8 border-t-2 border-border">
-        <h2 className="text-3xl font-black mb-6">Flash Cards</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {topicContent.answers.map((item, i) => (
-            <FlashCard key={i} question={item.question} answer={item.answer} />
-          ))}
-        </div>
-      </section>
+      {/* Quick Answers / Flash Cards / Code Problems Section */}
+      {topicContent.answers && topicContent.answers.length > 0 && (
+        <section className="space-y-6 pt-8 border-t-2 border-border">
+          {topicContent.answers.some(item => item.answer.includes('```javascript') || item.answer.includes('```js')) ? (
+            <CodeProblems problems={topicContent.answers} />
+          ) : (
+            <>
+              <h2 className="text-3xl font-black mb-6">Flash Cards</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {topicContent.answers.map((item, i) => (
+                  <FlashCard key={i} question={item.question} answer={item.answer} />
+                ))}
+              </div>
+            </>
+          )}
+        </section>
+      )}
 
       {/* Action Footer */}
       <div className="pt-12 flex justify-center">

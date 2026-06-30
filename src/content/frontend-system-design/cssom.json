@@ -1,0 +1,34 @@
+{
+  "title": "CSSOM Construction",
+  "difficulty": "Advanced",
+  "definition": "The CSS Object Model (CSSOM) is a tree structure representing the CSS rules applied to the DOM. Unlike HTML, CSS is render-blocking because the browser cannot draw the page until it knows all the styling rules.",
+  "simpleExplanation": "If the DOM is the skeleton of the house, the CSSOM is the paint job and interior design plan.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of CSSOM Construction?",
+      "Why is CSSOM Construction important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does CSSOM Construction impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to CSSOM Construction."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize CSSOM Construction?",
+      "What are the security implications of CSSOM Construction?"
+    ],
+    "trick": [
+      "Can CSSOM Construction be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CSSOM Construction.",
+      "answer": "CSSOM Construction is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for CSSOM Construction?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "id": "frontend-system-design",
+  "title": "Frontend System Design",
+  "description": "Master Frontend System Design from browser internals to scalable enterprise architectures, performance optimization, security, accessibility, observability, and real-world application design.",
+  "icon": "frontend-system-design",
+  "categories": [
+    {
+      "id": "internet-fundamentals",
+      "title": "Internet & Networking Fundamentals",
+      "topics": [
+        { "id": "how-internet-works", "title": "How the Internet Works" },
+        { "id": "dns", "title": "DNS Resolution" },
+        { "id": "http-vs-https", "title": "HTTP vs HTTPS" },
+        { "id": "tcp-ip", "title": "TCP/IP Basics" },
+        { "id": "tls-ssl", "title": "TLS/SSL Handshake" },
+        { "id": "cdn", "title": "Content Delivery Networks (CDN)" },
+        { "id": "load-balancers", "title": "Load Balancers" },
+        { "id": "websockets", "title": "WebSockets" },
+        { "id": "sse", "title": "Server Sent Events" }
+      ]
+    },
+    {
+      "id": "browser-internals",
+      "title": "Browser Internals",
+      "topics": [
+        { "id": "browser-architecture", "title": "Browser Architecture" },
+        { "id": "rendering-engine", "title": "Rendering Engine" },
+        { "id": "critical-rendering-path", "title": "Critical Rendering Path" },
+        { "id": "dom", "title": "DOM Construction" },
+        { "id": "cssom", "title": "CSSOM Construction" },
+        { "id": "layout", "title": "Layout (Reflow)" },
+        { "id": "paint", "title": "Paint" },
+        { "id": "compositing", "title": "Compositing" },
+        { "id": "gpu-rendering", "title": "GPU Rendering" }
+      ]
+    },
+    {
+      "id": "javascript-runtime",
+      "title": "JavaScript Runtime",
+      "topics": [
+        { "id": "event-loop", "title": "Event Loop" },
+        { "id": "call-stack", "title": "Call Stack" },
+        { "id": "microtask-queue", "title": "Microtasks" },
+        { "id": "macrotask-queue", "title": "Macrotasks" },
+        { "id": "web-apis", "title": "Browser Web APIs" },
+        { "id": "memory-management", "title": "Memory Management" },
+        { "id": "garbage-collection", "title": "Garbage Collection" }
+      ]
+    },
+    {
+      "id": "frontend-architecture",
+      "title": "Frontend Architecture",
+      "topics": [
+        { "id": "spa-vs-mpa", "title": "SPA vs MPA" },
+        { "id": "ssr", "title": "Server Side Rendering" },
+        { "id": "csr", "title": "Client Side Rendering" },
+        { "id": "ssg", "title": "Static Site Generation" },
+        { "id": "isr", "title": "Incremental Static Regeneration" },
+        { "id": "microfrontends", "title": "Micro Frontends" },
+        { "id": "monorepo", "title": "Monorepo Architecture" },
+        { "id": "design-systems", "title": "Design Systems" }
+      ]
+    },
+    {
+      "id": "communication-patterns",
+      "title": "Client Server Communication",
+      "topics": [
+        { "id": "rest-api", "title": "REST APIs" },
+        { "id": "graphql", "title": "GraphQL" },
+        { "id": "grpc", "title": "gRPC Web" },
+        { "id": "polling", "title": "Polling" },
+        { "id": "long-polling", "title": "Long Polling" },
+        { "id": "websocket-design", "title": "WebSocket Communication" },
+        { "id": "realtime-updates", "title": "Real-time Data Synchronization" }
+      ]
+    },
+    {
+      "id": "frontend-security",
+      "title": "Frontend Security",
+      "topics": [
+        { "id": "xss", "title": "Cross Site Scripting (XSS)" },
+        { "id": "csrf", "title": "Cross Site Request Forgery (CSRF)" },
+        { "id": "cors", "title": "CORS" },
+        { "id": "jwt-security", "title": "JWT Security" },
+        { "id": "oauth", "title": "OAuth & OpenID Connect" },
+        { "id": "cookie-security", "title": "Cookie Security" },
+        { "id": "content-security-policy", "title": "Content Security Policy" },
+        { "id": "rate-limiting", "title": "Rate Limiting Concepts" }
+      ]
+    },
+    {
+      "id": "state-management",
+      "title": "State Management",
+      "topics": [
+        { "id": "local-state", "title": "Local State" },
+        { "id": "global-state", "title": "Global State" },
+        { "id": "server-state", "title": "Server State" },
+        { "id": "redux-architecture", "title": "Redux Architecture" },
+        { "id": "react-query", "title": "TanStack Query" },
+        { "id": "zustand", "title": "Zustand" },
+        { "id": "state-normalization", "title": "State Normalization" }
+      ]
+    },
+    {
+      "id": "database-caching",
+      "title": "Caching & Data Layer",
+      "topics": [
+        { "id": "browser-cache", "title": "Browser Caching" },
+        { "id": "http-cache", "title": "HTTP Caching" },
+        { "id": "etag", "title": "ETag & Cache Validation" },
+        { "id": "service-worker-cache", "title": "Service Worker Cache" },
+        { "id": "cdn-cache", "title": "CDN Caching" },
+        { "id": "local-storage", "title": "Local Storage" },
+        { "id": "session-storage", "title": "Session Storage" },
+        { "id": "indexeddb", "title": "IndexedDB" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Engineering",
+      "topics": [
+        { "id": "web-vitals", "title": "Core Web Vitals" },
+        { "id": "lcp", "title": "Largest Contentful Paint" },
+        { "id": "cls", "title": "Cumulative Layout Shift" },
+        { "id": "inp", "title": "Interaction to Next Paint" },
+        { "id": "lazy-loading", "title": "Lazy Loading" },
+        { "id": "code-splitting", "title": "Code Splitting" },
+        { "id": "tree-shaking", "title": "Tree Shaking" },
+        { "id": "bundle-analysis", "title": "Bundle Analysis" },
+        { "id": "virtualization", "title": "List Virtualization" }
+      ]
+    },
+    {
+      "id": "offline-support",
+      "title": "Offline First Applications",
+      "topics": [
+        { "id": "service-workers", "title": "Service Workers" },
+        { "id": "pwa", "title": "Progressive Web Apps" },
+        { "id": "background-sync", "title": "Background Sync" },
+        { "id": "offline-storage", "title": "Offline Storage Strategies" },
+        { "id": "offline-first-design", "title": "Offline First Architecture" }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility (A11y)",
+      "topics": [
+        { "id": "wcag", "title": "WCAG Guidelines" },
+        { "id": "semantic-html", "title": "Semantic HTML" },
+        { "id": "aria", "title": "ARIA" },
+        { "id": "keyboard-navigation", "title": "Keyboard Navigation" },
+        { "id": "screen-readers", "title": "Screen Readers" },
+        { "id": "color-contrast", "title": "Color Contrast" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Frontend Testing",
+      "topics": [
+        { "id": "unit-testing", "title": "Unit Testing" },
+        { "id": "integration-testing", "title": "Integration Testing" },
+        { "id": "e2e-testing", "title": "End to End Testing" },
+        { "id": "jest", "title": "Jest" },
+        { "id": "rtl", "title": "React Testing Library" },
+        { "id": "playwright", "title": "Playwright" },
+        { "id": "cypress", "title": "Cypress" }
+      ]
+    },
+    {
+      "id": "logging-monitoring",
+      "title": "Observability",
+      "topics": [
+        { "id": "frontend-logging", "title": "Frontend Logging" },
+        { "id": "error-tracking", "title": "Error Tracking" },
+        { "id": "sentry", "title": "Sentry" },
+        { "id": "analytics", "title": "Analytics" },
+        { "id": "rum", "title": "Real User Monitoring" },
+        { "id": "performance-monitoring", "title": "Performance Monitoring" }
+      ]
+    },
+    {
+      "id": "lld",
+      "title": "Frontend Low Level Design",
+      "topics": [
+        { "id": "component-design", "title": "Reusable Components" },
+        { "id": "accordion", "title": "Design Accordion" },
+        { "id": "modal", "title": "Design Modal" },
+        { "id": "datatable", "title": "Design Data Table" },
+        { "id": "autocomplete", "title": "Design Autocomplete" },
+        { "id": "file-uploader", "title": "Design File Uploader" }
+      ]
+    },
+    {
+      "id": "hld",
+      "title": "Frontend High Level Design",
+      "topics": [
+        { "id": "youtube", "title": "Design YouTube Frontend" },
+        { "id": "whatsapp", "title": "Design WhatsApp Web" },
+        { "id": "google-docs", "title": "Design Google Docs" },
+        { "id": "twitter", "title": "Design Twitter/X Feed" },
+        { "id": "netflix", "title": "Design Netflix Frontend" },
+        { "id": "amazon", "title": "Design Amazon Product Page" }
+      ]
+    },
+    {
+      "id": "advanced-system-design",
+      "title": "Advanced Frontend System Design",
+      "topics": [
+        { "id": "microfrontends", "title": "Micro Frontends" },
+        { "id": "federation", "title": "Module Federation" },
+        { "id": "edge-rendering", "title": "Edge Rendering" },
+        { "id": "streaming-ssr", "title": "Streaming SSR" },
+        { "id": "distributed-ui", "title": "Distributed UI Architecture" },
+        { "id": "frontend-scalability", "title": "Scaling Large Frontends" }
+      ]
+    }
+  ]
+}

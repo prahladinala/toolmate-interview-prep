@@ -1,0 +1,27 @@
+{
+  "title": "Cypress",
+  "difficulty": "Advanced",
+  "definition": "Cypress is a next-generation front end testing tool built for the modern web, executing directly in the browser. It is famous for its incredible developer experience and time-travel debugging.",
+  "simpleExplanation": "A powerful testing suite that runs your app and your tests in the exact same browser window, allowing you to pause time and see exactly what went wrong.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Cypress?"
+    ],
+    "intermediate": [
+      "How does Cypress impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Cypress across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Cypress be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cypress.",
+      "answer": "Cypress is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

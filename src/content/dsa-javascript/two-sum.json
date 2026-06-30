@@ -1,0 +1,28 @@
+{
+  "title": "Two Sum Pattern",
+  "difficulty": "Intermediate",
+  "definition": "The most famous algorithmic pattern. Given an array, find two numbers that add up to a target. Solved in O(N) time and O(N) space using a Hash Map to store `target - current_value`.",
+  "simpleExplanation": "Instead of checking every possible pair of numbers, you write down what number you need to hit the target. If you see that number later, you win.",
+  "answers": [
+    {
+      "question": "**Basic:** Write the Brute Force O(N^2) solution for Two Sum.",
+      "answer": "```javascript\nfunction twoSumBruteForce(nums, target) {\n  for(let i=0; i<nums.length; i++) {\n    for(let j=i+1; j<nums.length; j++) {\n      if (nums[i] + nums[j] === target) return [i, j];\n    }\n  }\n  return [];\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Write the optimal O(N) Time, O(N) Space Hash Map solution.",
+      "answer": "```javascript\nfunction twoSumOptimal(nums, target) {\n  const map = new Map(); // value -> index\n  for(let i=0; i<nums.length; i++) {\n    const needed = target - nums[i];\n    if (map.has(needed)) {\n      return [map.get(needed), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [];\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** What if the array is already sorted? Solve in O(N) Time, O(1) Space.",
+      "answer": "```javascript\nfunction twoSumSorted(nums, target) {\n  let left = 0;\n  let right = nums.length - 1;\n  while (left < right) {\n    const sum = nums[left] + nums[right];\n    if (sum === target) return [left, right];\n    if (sum > target) right--;\n    else left++;\n  }\n  return [];\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Two Sum III - Data structure design. Implement `add(num)` and `find(target)`.",
+      "answer": "```javascript\nclass TwoSum {\n  constructor() { this.map = new Map(); }\n  add(number) {\n    this.map.set(number, (this.map.get(number) || 0) + 1);\n  }\n  find(value) {\n    for (let [num, count] of this.map) {\n      const needed = value - num;\n      if (needed === num) {\n        if (count > 1) return true;\n      } else if (this.map.has(needed)) {\n        return true;\n      }\n    }\n    return false;\n  }\n}\n```"
+    },
+    {
+      "question": "**Expert:** 3Sum. Find all unique triplets that sum to 0.",
+      "answer": "```javascript\nfunction threeSum(nums) {\n  nums.sort((a,b) => a-b);\n  const res = [];\n  for(let i=0; i<nums.length - 2; i++) {\n    if (i > 0 && nums[i] === nums[i-1]) continue; // Skip duplicates\n    let l = i+1, r = nums.length-1;\n    while(l < r) {\n      const sum = nums[i] + nums[l] + nums[r];\n      if (sum === 0) {\n        res.push([nums[i], nums[l], nums[r]]);\n        while(nums[l] === nums[l+1]) l++;\n        while(nums[r] === nums[r-1]) r--;\n        l++; r--;\n      } else if (sum < 0) l++;\n      else r--;\n    }\n  }\n  return res;\n}\n```"
+    }
+  ]
+}

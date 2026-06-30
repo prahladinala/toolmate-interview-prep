@@ -1,0 +1,36 @@
+{
+  "title": "Cross Site Request Forgery (CSRF)",
+  "difficulty": "Advanced",
+  "definition": "CSRF forces a logged-in user's browser to send a forged HTTP request, including their session cookies, to a vulnerable web application, executing an unwanted action (like transferring money).",
+  "simpleExplanation": "You are logged into your bank. You click a funny picture on a hacker's website, but hidden in the code is a request that tells your bank to wire money. Because you are logged in, your browser automatically attaches your cookie, and the bank approves the transfer.",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant User\n  participant EvilSite as Evil.com\n  participant Bank\n  Note over User,Bank: User is logged into Bank (has Cookie)\n  User->>EvilSite: Visits site\n  EvilSite-->>User: Returns HTML with hidden <img src='bank.com/transfer?amt=500'>\n  Note over User: Browser automatically attempts to load image\n  User->>Bank: GET /transfer?amt=500 (Browser auto-attaches Cookie!)\n  Note over Bank: Validates cookie, transfers money",
+  "questions": {
+    "basic": [
+      "What is the core concept of CSRF?",
+      "What are the pros and cons of CSRF?"
+    ],
+    "intermediate": [
+      "How does CSRF impact SEO and initial page load times?",
+      "When would you NOT choose to use CSRF?"
+    ],
+    "advanced": [
+      "How does CSRF fit into a heavily scaled microservices architecture?",
+      "What are the security implications of CSRF?"
+    ],
+    "trick": [
+      "Can you combine CSRF with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CSRF.",
+      "answer": "CSRF is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of CSRF?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

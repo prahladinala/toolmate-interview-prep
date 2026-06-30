@@ -1,0 +1,28 @@
+{
+  "title": "Heap Operations",
+  "difficulty": "Advanced",
+  "definition": "Heaps are stored as Flat Arrays. To insert: push to the end and 'Bubble Up' (O(log N)). To extract: swap root with the end, pop the end, and 'Bubble Down' (O(log N)).",
+  "simpleExplanation": "When a new VIP arrives, they enter at the back of the line, and keep swapping places with the person in front of them until they reach the correct spot.",
+  "answers": [
+    {
+      "question": "**Basic:** Define the core structure for Heap Operations.",
+      "answer": "```javascript\nclass Node {\n  constructor(val) {\n    this.val = val;\n    // Child pointers...\n  }\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Perform a basic recursive traversal of Heap Operations.",
+      "answer": "```javascript\nfunction traverse(root) {\n  if (!root) return;\n  // Pre-order, In-order, or Post-order logic\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Implement level-order or iterative logic for Heap Operations.",
+      "answer": "```javascript\n// BFS using a Queue\nfunction bfs(root) {\n  if (!root) return [];\n  const queue = [root];\n  while(queue.length) {\n    const node = queue.shift();\n    if (node.left) queue.push(node.left);\n    if (node.right) queue.push(node.right);\n  }\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Solve a structural modification problem on Heap Operations.",
+      "answer": "```javascript\n// Modify the structure in-place\nfunction modify(root) {\n  // E.g. Invert Binary Tree\n  if (!root) return null;\n  [root.left, root.right] = [modify(root.right), modify(root.left)];\n  return root;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex path-finding or graph traversal problem within Heap Operations.",
+      "answer": "```javascript\n// Advanced Graph/Tree algorithm (e.g. Dijkstra or LCA)\nfunction advancedAlgorithm(graph, start) {\n  // Implementation details requiring O(V+E) or O(log N) optimizations\n}\n```"
+    }
+  ]
+}

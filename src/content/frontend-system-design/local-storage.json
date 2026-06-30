@@ -1,0 +1,27 @@
+{
+  "title": "Local Storage",
+  "difficulty": "Beginner",
+  "definition": "LocalStorage provides 5-10MB of persistent, synchronous key-value string storage in the browser. It survives tab closures and browser restarts. It is vulnerable to XSS.",
+  "simpleExplanation": "A permanent digital notebook in your browser. But remember, anything written here can be read by ANY script running on the page.",
+  "questions": {
+    "basic": [
+      "How does Local Storage fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Local Storage?"
+    ],
+    "advanced": [
+      "How does Local Storage scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Local Storage is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Local Storage.",
+      "answer": "Local Storage is essential for complex frontend applications."
+    }
+  ]
+}

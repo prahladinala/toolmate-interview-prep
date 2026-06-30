@@ -1,0 +1,29 @@
+{
+  "title": "Streaming SSR",
+  "difficulty": "Expert",
+  "definition": "Instead of waiting for an entire React app to render to HTML on the server before sending it, Streaming SSR sends the HTML in chunks over a persistent HTTP connection. The user sees the header instantly while the heavy body content is still generating.",
+  "simpleExplanation": "Like watching a YouTube video while it's still downloading. The server sends you the top half of the webpage instantly while it's still calculating the bottom half.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Streaming SSR?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Streaming SSR?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Streaming SSR for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Streaming SSR if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Streaming SSR.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant C as Client\n  participant S as Node Server\n  C->>S: GET /\n  S-->>C: HTML chunk 1 (Header)\n  Note over S: Server fetches heavy DB data\n  S-->>C: HTML chunk 2 (Main Content)\n  S-->>C: HTML chunk 3 (Footer)\n  Note over C: Connection closed"
+}

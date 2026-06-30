@@ -1,0 +1,36 @@
+{
+  "title": "Request Response Lifecycle",
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant Client\n  participant Express\n  participant DB\n  Client->>Express: 1. HTTP Request (req)\n  Express->>Express: 2. Parse req, run Middleware\n  Express->>DB: 3. Query Database\n  DB-->>Express: 4. DB Results\n  Express->>Express: 5. Construct Response (res)\n  Express-->>Client: 6. HTTP Response",
+  "definition": "The Request-Response cycle is the journey of data from the moment a user clicks a button to the moment data appears on their screen. In Express, this involves the client sending an HTTP Request over the network, Express receiving it and packaging it into the `req` object, passing it through middleware, hitting the route controller, interacting with the database, packaging the data into the `res` object, and sending it back over the network.",
+  "simpleExplanation": "The Request-Response cycle is the journey of data from the moment a user clicks a button to the moment data appears on their screen.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Request Response Lifecycle in Express.js?",
+      "How do you initialize Request Response Lifecycle?"
+    ],
+    "intermediate": [
+      "How does Request Response Lifecycle integrate with other middleware components?",
+      "Can you explain a common use case for Request Response Lifecycle?"
+    ],
+    "advanced": [
+      "What are the performance implications of Request Response Lifecycle in a high-traffic production application?",
+      "How would you debug issues related to Request Response Lifecycle?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Request Response Lifecycle without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Request Response Lifecycle in your own words.",
+      "answer": "The Request-Response cycle is the journey of data from the moment a user clicks a button to the moment data appears on their screen."
+    },
+    {
+      "question": "When should you avoid using Request Response Lifecycle?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

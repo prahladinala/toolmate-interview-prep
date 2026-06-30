@@ -1,0 +1,27 @@
+{
+  "title": "Real User Monitoring (RUM)",
+  "difficulty": "Expert",
+  "definition": "RUM is a form of passive performance monitoring that captures and analyzes every transaction of every user of a website. It tracks the ACTUAL Core Web Vitals experienced by real users on varying devices and network conditions.",
+  "simpleExplanation": "Instead of testing your website's speed on your ultra-fast Macbook, RUM tells you exactly how slow your website is loading for a user on a 3G phone in rural India.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Real User Monitoring?"
+    ],
+    "intermediate": [
+      "How does Real User Monitoring impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Real User Monitoring across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Real User Monitoring be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Real User Monitoring.",
+      "answer": "Real User Monitoring is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

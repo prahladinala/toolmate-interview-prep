@@ -1,0 +1,35 @@
+{
+  "title": "DELETE Method",
+  "codeExample": "app.delete('/api/posts/:id', (req, res) => {\n  const postId = req.params.id;\n  \n  // Delete logic from database...\n  \n  // 204 No Content is commonly used for successful deletes\n  // meaning the operation succeeded but there is no data to return\n  res.status(204).send();\n});",
+  "definition": "The DELETE method deletes the specified resource. It usually targets a specific ID via route parameters.",
+  "simpleExplanation": "The DELETE method deletes the specified resource.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of DELETE Method in Express.js?",
+      "How do you initialize DELETE Method?"
+    ],
+    "intermediate": [
+      "How does DELETE Method integrate with other middleware components?",
+      "Can you explain a common use case for DELETE Method?"
+    ],
+    "advanced": [
+      "What are the performance implications of DELETE Method in a high-traffic production application?",
+      "How would you debug issues related to DELETE Method?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as DELETE Method without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define DELETE Method in your own words.",
+      "answer": "The DELETE method deletes the specified resource."
+    },
+    {
+      "question": "When should you avoid using DELETE Method?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

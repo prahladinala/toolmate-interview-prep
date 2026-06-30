@@ -1,0 +1,29 @@
+{
+  "title": "Design Autocomplete",
+  "difficulty": "Advanced",
+  "definition": "An Autocomplete Search requires debouncing user input to prevent API spam, caching previous queries, handling race conditions (aborting outdated fetch requests), and complex keyboard navigation (up/down arrows).",
+  "simpleExplanation": "The Google search bar. It predicts what you are typing and fetches results instantly, but has to be careful not to crash the server if you type 100 letters a second.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Autocomplete Component?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Autocomplete Component?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Autocomplete Component for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Autocomplete Component if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Autocomplete Component.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "sequenceDiagram\n  participant U as User\n  participant I as Input\n  participant D as Debouncer\n  participant A as API\n  U->>I: Types \"A\"\n  I->>D: Reset Timer\n  U->>I: Types \"Ap\"\n  I->>D: Reset Timer\n  D-->>A: Timer expires! Fetch \"Ap\"\n  A-->>I: Returns results"
+}

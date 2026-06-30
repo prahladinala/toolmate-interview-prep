@@ -1,0 +1,50 @@
+{
+  "title": "Content Delivery Networks (CDN)",
+  "difficulty": "Intermediate",
+  "definition": "A CDN is a geographically distributed group of servers that work together to provide fast delivery of Internet content. By caching static assets (HTML, CSS, JS, Images) at edge nodes close to users, CDNs drastically reduce latency and server load.",
+  "simpleExplanation": "Instead of shipping a pizza from New York to Tokyo, a CDN builds a pizza shop in Tokyo so the customer gets it fresh and fast.",
+  "tableData": {
+    "headers": [
+      "Strategy",
+      "Description"
+    ],
+    "rows": [
+      [
+        "Push CDN",
+        "You upload content directly to the CDN. Best for large, static files."
+      ],
+      [
+        "Pull CDN",
+        "CDN fetches from your origin server on the first request and caches it. Best for web traffic."
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Content Delivery Networks?",
+      "Why is Content Delivery Networks important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Content Delivery Networks impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Content Delivery Networks."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Content Delivery Networks?",
+      "What are the security implications of Content Delivery Networks?"
+    ],
+    "trick": [
+      "Can Content Delivery Networks be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Content Delivery Networks.",
+      "answer": "Content Delivery Networks is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Content Delivery Networks?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

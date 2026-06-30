@@ -1,0 +1,16 @@
+{
+  "title": "Binary Search Tree",
+  "difficulty": "Intermediate",
+  "definition": "A Binary Tree where the left child is strictly smaller than the parent, and the right child is strictly greater. This allows O(log N) lookup, insertion, and deletion.",
+  "simpleExplanation": "A guessing game where every time you guess a number, you are told if the real answer is higher or lower, instantly eliminating half of the remaining options.",
+  "answers": [
+    {
+      "question": "**Basic:** Validate Binary Search Tree",
+      "answer": "```javascript\nfunction isValidBST(root, min = -Infinity, max = Infinity) {\n  if (!root) return true;\n  if (root.val <= min || root.val >= max) return false;\n  return isValidBST(root.left, min, root.val) && \n         isValidBST(root.right, root.val, max);\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Insert into a BST",
+      "answer": "```javascript\nfunction insertIntoBST(root, val) {\n  if (!root) return new TreeNode(val);\n  if (val > root.val) root.right = insertIntoBST(root.right, val);\n  else root.left = insertIntoBST(root.left, val);\n  return root;\n}\n```"
+    }
+  ]
+}

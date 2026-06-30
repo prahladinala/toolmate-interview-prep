@@ -1,0 +1,63 @@
+{
+  "title": "SPA vs MPA",
+  "difficulty": "Beginner",
+  "definition": "Single Page Applications (SPAs) load a single HTML document and rewrite it dynamically using JS (like React). Multi Page Applications (MPAs) request a completely new HTML document from the server for every route change (like classic PHP/Django).",
+  "simpleExplanation": "An SPA is like a restaurant where the waiter brings you an empty plate, and the chef comes out and cooks everything right at your table. An MPA is where the waiter brings you a completely new, fully cooked plate of food every time you ask for a bite.",
+  "tableData": {
+    "headers": [
+      "Feature",
+      "SPA (React/Vue)",
+      "MPA (PHP/Django)"
+    ],
+    "rows": [
+      [
+        "Initial Load",
+        "Slow (must download huge JS bundle)",
+        "Fast (just downloading HTML)"
+      ],
+      [
+        "Subsequent Navigation",
+        "Instant (no full page reload)",
+        "Slow (full page refresh)"
+      ],
+      [
+        "SEO",
+        "Requires extra configuration (SSR/SSG)",
+        "Excellent out of the box"
+      ],
+      [
+        "State Management",
+        "Complex (Redux/Zustand)",
+        "Simple (State lives on server)"
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "What is the core concept of SPA vs MPA?",
+      "What are the pros and cons of SPA vs MPA?"
+    ],
+    "intermediate": [
+      "How does SPA vs MPA impact SEO and initial page load times?",
+      "When would you NOT choose to use SPA vs MPA?"
+    ],
+    "advanced": [
+      "How does SPA vs MPA fit into a heavily scaled microservices architecture?",
+      "What are the security implications of SPA vs MPA?"
+    ],
+    "trick": [
+      "Can you combine SPA vs MPA with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define SPA vs MPA.",
+      "answer": "SPA vs MPA is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of SPA vs MPA?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

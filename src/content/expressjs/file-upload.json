@@ -1,0 +1,35 @@
+{
+  "title": "File Upload Handling",
+  "codeExample": "const multer = require('multer');\n\nconst multerStorage = multer.diskStorage({\n  destination: (req, file, cb) => cb(null, 'public/images'),\n  filename: (req, file, cb) => {\n    const ext = file.mimetype.split('/')[1];\n    cb(null, `user-${req.user.id}-${Date.now()}.${ext}`);\n  }\n});\n\nconst multerFilter = (req, file, cb) => {\n  if (file.mimetype.startsWith('image')) {\n    cb(null, true);\n  } else {\n    cb(new Error('Not an image! Please upload only images.'), false);\n  }\n};\n\nconst upload = multer({ storage: multerStorage, fileFilter: multerFilter });",
+  "definition": "When handling file uploads, you often need to control the filename, file type, and file size to prevent malicious uploads (like `.exe` or `.sh` files) and save storage space. Multer allows you to configure a `storage` engine and a `fileFilter`.",
+  "simpleExplanation": "When handling file uploads, you often need to control the filename, file type, and file size to prevent malicious uploads (like `.exe` or `.sh` files) and save storage space.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of File Upload Handling in Express.js?",
+      "How do you initialize File Upload Handling?"
+    ],
+    "intermediate": [
+      "How does File Upload Handling integrate with other middleware components?",
+      "Can you explain a common use case for File Upload Handling?"
+    ],
+    "advanced": [
+      "What are the performance implications of File Upload Handling in a high-traffic production application?",
+      "How would you debug issues related to File Upload Handling?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as File Upload Handling without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define File Upload Handling in your own words.",
+      "answer": "When handling file uploads, you often need to control the filename, file type, and file size to prevent malicious uploads (like `.exe` or `.sh` files) and save storage space."
+    },
+    {
+      "question": "When should you avoid using File Upload Handling?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

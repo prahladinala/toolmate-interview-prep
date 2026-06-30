@@ -1,0 +1,27 @@
+{
+  "title": "Background Sync",
+  "difficulty": "Expert",
+  "definition": "Background Sync is a web API that defers actions until the user has stable connectivity. If a user sends a chat message while offline, the service worker saves the action and automatically sends it the moment the connection is restored, even if the user closed the tab.",
+  "simpleExplanation": "You hit 'Send' while in a tunnel. You close the app. The second your phone gets a signal, the app secretly sends the message in the background.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Background Sync?"
+    ],
+    "intermediate": [
+      "How does Background Sync impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Background Sync across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Background Sync be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Background Sync.",
+      "answer": "Background Sync is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

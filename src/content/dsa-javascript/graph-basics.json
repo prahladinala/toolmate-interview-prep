@@ -1,0 +1,30 @@
+{
+  "title": "Graph Representation",
+  "difficulty": "Intermediate",
+  "definition": "Graphs consist of Vertices (nodes) and Edges (connections). They are typically represented in JS using an Adjacency List (an object/map where keys are vertices and values are arrays of neighbors).",
+  "simpleExplanation": "A map of cities (Vertices) connected by highways (Edges).",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  A((A)) --- B((B))\n  A --- C((C))\n  B --- D((D))\n  C --- D\n  D --- E((E))",
+  "answers": [
+    {
+      "question": "**Basic:** Define the core structure for Graph Basics.",
+      "answer": "```javascript\nclass Node {\n  constructor(val) {\n    this.val = val;\n    // Child pointers...\n  }\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Perform a basic recursive traversal of Graph Basics.",
+      "answer": "```javascript\nfunction traverse(root) {\n  if (!root) return;\n  // Pre-order, In-order, or Post-order logic\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Implement level-order or iterative logic for Graph Basics.",
+      "answer": "```javascript\n// BFS using a Queue\nfunction bfs(root) {\n  if (!root) return [];\n  const queue = [root];\n  while(queue.length) {\n    const node = queue.shift();\n    if (node.left) queue.push(node.left);\n    if (node.right) queue.push(node.right);\n  }\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Solve a structural modification problem on Graph Basics.",
+      "answer": "```javascript\n// Modify the structure in-place\nfunction modify(root) {\n  // E.g. Invert Binary Tree\n  if (!root) return null;\n  [root.left, root.right] = [modify(root.right), modify(root.left)];\n  return root;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex path-finding or graph traversal problem within Graph Basics.",
+      "answer": "```javascript\n// Advanced Graph/Tree algorithm (e.g. Dijkstra or LCA)\nfunction advancedAlgorithm(graph, start) {\n  // Implementation details requiring O(V+E) or O(log N) optimizations\n}\n```"
+    }
+  ]
+}

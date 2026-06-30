@@ -1,0 +1,12 @@
+{
+  "title": "Knapsack Problem",
+  "difficulty": "Expert",
+  "definition": "Given weights and values of N items, put these items in a knapsack of capacity W to get the maximum total value. A classic 0/1 (include or exclude) DP problem.",
+  "simpleExplanation": "You are a burglar with a backpack that can only hold 50 pounds. Which items do you steal to get the absolute maximum amount of money?",
+  "answers": [
+    {
+      "question": "**Expert:** 0/1 Knapsack Problem",
+      "answer": "```javascript\nfunction knapsack(weights, values, capacity) {\n  const n = weights.length;\n  const dp = Array.from({length: n + 1}, () => new Array(capacity + 1).fill(0));\n  \n  for (let i = 1; i <= n; i++) {\n    for (let w = 1; w <= capacity; w++) {\n      if (weights[i-1] <= w) {\n        dp[i][w] = Math.max(dp[i-1][w], values[i-1] + dp[i-1][w - weights[i-1]]);\n      } else {\n        dp[i][w] = dp[i-1][w];\n      }\n    }\n  }\n  return dp[n][capacity];\n}\n```"
+    }
+  ]
+}

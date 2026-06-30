@@ -1,0 +1,35 @@
+{
+  "title": "Basic Routing",
+  "codeExample": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  res.send('Homepage - GET');\n});\n\napp.post('/login', (req, res) => {\n  res.send('Login endpoint - POST');\n});\n\napp.delete('/user', (req, res) => {\n  res.send('Delete User endpoint - DELETE');\n});",
+  "definition": "Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, etc.). Each route can have one or more handler functions, which are executed when the route is matched.",
+  "simpleExplanation": "Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, etc.).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Basic Routing in Express.js?",
+      "How do you initialize Basic Routing?"
+    ],
+    "intermediate": [
+      "How does Basic Routing integrate with other middleware components?",
+      "Can you explain a common use case for Basic Routing?"
+    ],
+    "advanced": [
+      "What are the performance implications of Basic Routing in a high-traffic production application?",
+      "How would you debug issues related to Basic Routing?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Basic Routing without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Basic Routing in your own words.",
+      "answer": "Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, etc.)."
+    },
+    {
+      "question": "When should you avoid using Basic Routing?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

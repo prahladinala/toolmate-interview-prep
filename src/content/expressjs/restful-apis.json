@@ -1,0 +1,69 @@
+{
+  "title": "RESTful API Design",
+  "tableData": {
+    "title": "Standard RESTful Endpoint Design (Resource: Users)",
+    "headers": [
+      "Method",
+      "Endpoint",
+      "Action Performed"
+    ],
+    "rows": [
+      [
+        "GET",
+        "`/users`",
+        "Retrieve a list of all users."
+      ],
+      [
+        "GET",
+        "`/users/:id`",
+        "Retrieve a specific single user by ID."
+      ],
+      [
+        "POST",
+        "`/users`",
+        "Create a brand new user."
+      ],
+      [
+        "PUT / PATCH",
+        "`/users/:id`",
+        "Update a specific existing user."
+      ],
+      [
+        "DELETE",
+        "`/users/:id`",
+        "Delete a specific user."
+      ]
+    ]
+  },
+  "definition": "REST (Representational State Transfer) is an architectural style for designing networked applications. A RESTful API uses HTTP methods explicitly and uses noun-based, pluralized URIs (endpoints) to identify resources.",
+  "simpleExplanation": "REST (Representational State Transfer) is an architectural style for designing networked applications.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of RESTful API Design in Express.js?",
+      "How do you initialize RESTful API Design?"
+    ],
+    "intermediate": [
+      "How does RESTful API Design integrate with other middleware components?",
+      "Can you explain a common use case for RESTful API Design?"
+    ],
+    "advanced": [
+      "What are the performance implications of RESTful API Design in a high-traffic production application?",
+      "How would you debug issues related to RESTful API Design?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as RESTful API Design without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define RESTful API Design in your own words.",
+      "answer": "REST (Representational State Transfer) is an architectural style for designing networked applications."
+    },
+    {
+      "question": "When should you avoid using RESTful API Design?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

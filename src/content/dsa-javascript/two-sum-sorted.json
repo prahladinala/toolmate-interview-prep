@@ -1,0 +1,28 @@
+{
+  "title": "Two Sum Sorted",
+  "difficulty": "Intermediate",
+  "definition": "If an array is strictly sorted, Two Sum can be solved in O(1) space by placing one pointer at `index 0` and one at `index N-1`. If `sum < target`, increment left. If `sum > target`, decrement right.",
+  "simpleExplanation": "Since it's sorted, if your guess is too low, move the left finger to the right to get a bigger number. If it's too high, move the right finger to the left to get a smaller number.",
+  "answers": [
+    {
+      "question": "**Basic:** Identify the core logic required to implement Two Sum Sorted.",
+      "answer": "```javascript\nfunction basicAlgorithm(arr) {\n  // Implementation basics\n  return arr;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a standard problem using Two Sum Sorted in O(N log N) or O(N) time.",
+      "answer": "```javascript\nfunction intermediate1(nums) {\n  // Using the pattern efficiently\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Adapt Two Sum Sorted to handle strings or distinct objects instead of numbers.",
+      "answer": "```javascript\nfunction intermediate2(str) {\n  // Adaptation logic\n  return str.length;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Use Two Sum Sorted to solve a complex sub-array or sub-string problem (e.g. Longest non-repeating).",
+      "answer": "```javascript\nfunction advancedPattern(data) {\n  let left = 0, right = 0, max = 0;\n  // Sliding window / two pointer expansion\n  return max;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Optimize Two Sum Sorted to achieve strictly O(1) space constraints while maintaining linear time.",
+      "answer": "```javascript\nfunction expert(arr) {\n  // In-place modification magic\n  return arr;\n}\n```"
+    }
+  ]
+}

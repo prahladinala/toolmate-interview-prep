@@ -1,0 +1,35 @@
+{
+  "title": "SQL Database Integration",
+  "terminalOutput": "$ npm install prisma --save-dev\n$ npx prisma init\n\n✔ Your Prisma schema was created at prisma/schema.prisma",
+  "definition": "Express connects easily to SQL databases (PostgreSQL, MySQL, SQLite) using ORMs like Sequelize or Prisma. These tools map your JavaScript objects directly to relational database tables.",
+  "simpleExplanation": "Express connects easily to SQL databases (PostgreSQL, MySQL, SQLite) using ORMs like Sequelize or Prisma.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of SQL Database Integration in Express.js?",
+      "How do you initialize SQL Database Integration?"
+    ],
+    "intermediate": [
+      "How does SQL Database Integration integrate with other middleware components?",
+      "Can you explain a common use case for SQL Database Integration?"
+    ],
+    "advanced": [
+      "What are the performance implications of SQL Database Integration in a high-traffic production application?",
+      "How would you debug issues related to SQL Database Integration?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as SQL Database Integration without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define SQL Database Integration in your own words.",
+      "answer": "Express connects easily to SQL databases (PostgreSQL, MySQL, SQLite) using ORMs like Sequelize or Prisma."
+    },
+    {
+      "question": "When should you avoid using SQL Database Integration?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

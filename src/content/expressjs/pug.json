@@ -1,0 +1,35 @@
+{
+  "title": "Pug (formerly Jade)",
+  "codeExample": "app.set('view engine', 'pug');\n\napp.get('/', (req, res) => {\n  res.render('index', { title: 'Hey', message: 'Hello there!' });\n});\n\n// views/index.pug\n/*\nhtml\n  head\n    title= title\n  body\n    h1= message\n*/",
+  "definition": "Pug is a robust, elegant, feature rich template engine for Node.js. It radically alters HTML syntax, entirely removing closing tags and angle brackets in favor of whitespace-sensitive indentation.",
+  "simpleExplanation": "Pug is a robust, elegant, feature rich template engine for Node.js.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Pug (formerly Jade) in Express.js?",
+      "How do you initialize Pug (formerly Jade)?"
+    ],
+    "intermediate": [
+      "How does Pug (formerly Jade) integrate with other middleware components?",
+      "Can you explain a common use case for Pug (formerly Jade)?"
+    ],
+    "advanced": [
+      "What are the performance implications of Pug (formerly Jade) in a high-traffic production application?",
+      "How would you debug issues related to Pug (formerly Jade)?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Pug (formerly Jade) without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Pug (formerly Jade) in your own words.",
+      "answer": "Pug is a robust, elegant, feature rich template engine for Node.js."
+    },
+    {
+      "question": "When should you avoid using Pug (formerly Jade)?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

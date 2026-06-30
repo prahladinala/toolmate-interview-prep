@@ -1,0 +1,35 @@
+{
+  "title": "Multer",
+  "codeExample": "const multer = require('multer');\nconst express = require('express');\nconst app = express();\n\n// Configure storage destination\nconst upload = multer({ dest: 'uploads/' });\n\n// 'avatar' is the name of the file input field in the HTML form\napp.post('/profile', upload.single('avatar'), (req, res) => {\n  // req.file is the 'avatar' file\n  // req.body will hold the text fields, if there were any\n  res.send('File successfully uploaded!');\n});",
+  "definition": "Multer is a Node.js middleware for handling `multipart/form-data`, which is primarily used for uploading files. It adds a `body` object and a `file` or `files` object to the `req` object. The `body` object contains the values of the text fields of the form, while the `file` object contains the files uploaded via the form.",
+  "simpleExplanation": "Multer is a Node.js middleware for handling `multipart/form-data`, which is primarily used for uploading files.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Multer in Express.js?",
+      "How do you initialize Multer?"
+    ],
+    "intermediate": [
+      "How does Multer integrate with other middleware components?",
+      "Can you explain a common use case for Multer?"
+    ],
+    "advanced": [
+      "What are the performance implications of Multer in a high-traffic production application?",
+      "How would you debug issues related to Multer?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Multer without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Multer in your own words.",
+      "answer": "Multer is a Node.js middleware for handling `multipart/form-data`, which is primarily used for uploading files."
+    },
+    {
+      "question": "When should you avoid using Multer?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

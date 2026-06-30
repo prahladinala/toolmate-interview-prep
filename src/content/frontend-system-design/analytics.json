@@ -1,0 +1,27 @@
+{
+  "title": "Analytics",
+  "difficulty": "Intermediate",
+  "definition": "Tracking user behavior (page views, button clicks, time on page, conversion rates) to make data-driven product decisions. Tools include Google Analytics, Mixpanel, and Amplitude.",
+  "simpleExplanation": "Tracking how many people clicked the 'Buy Now' button vs how many people abandoned their cart.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Analytics?"
+    ],
+    "intermediate": [
+      "How does Analytics impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Analytics across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Analytics be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Analytics.",
+      "answer": "Analytics is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

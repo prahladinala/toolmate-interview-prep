@@ -1,0 +1,27 @@
+{
+  "title": "HTTP Caching",
+  "difficulty": "Advanced",
+  "definition": "HTTP caching is governed by Cache-Control headers sent by the server. Directives like `max-age`, `no-cache`, and `immutable` explicitly tell the browser and intermediate CDNs exactly how long a resource is valid.",
+  "simpleExplanation": "The server attaches an expiration date to files. 'This CSS file is good for 1 year. Do not ask me for it again until then.'",
+  "questions": {
+    "basic": [
+      "How does HTTP Caching fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of HTTP Caching?"
+    ],
+    "advanced": [
+      "How does HTTP Caching scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where HTTP Caching is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define HTTP Caching.",
+      "answer": "HTTP Caching is essential for complex frontend applications."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Rate Limiting",
+  "codeExample": "const rateLimit = require('express-rate-limit');\n\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100, // Limit each IP to 100 requests per window\n  message: 'Too many requests from this IP, please try again later.'\n});\n\n// Apply to all requests\napp.use(limiter);\n\n// Or apply specifically to login\napp.use('/api/login', limiter);",
+  "definition": "Rate limiting restricts the number of requests a user can make to your API within a certain timeframe. This protects your Express server against brute-force attacks (like password guessing) and Denial of Service (DoS) attacks.",
+  "simpleExplanation": "Rate limiting restricts the number of requests a user can make to your API within a certain timeframe.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Rate Limiting in Express.js?",
+      "How do you initialize Rate Limiting?"
+    ],
+    "intermediate": [
+      "How does Rate Limiting integrate with other middleware components?",
+      "Can you explain a common use case for Rate Limiting?"
+    ],
+    "advanced": [
+      "What are the performance implications of Rate Limiting in a high-traffic production application?",
+      "How would you debug issues related to Rate Limiting?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Rate Limiting without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Rate Limiting in your own words.",
+      "answer": "Rate limiting restricts the number of requests a user can make to your API within a certain timeframe."
+    },
+    {
+      "question": "When should you avoid using Rate Limiting?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

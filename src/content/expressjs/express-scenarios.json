@@ -1,0 +1,34 @@
+{
+  "title": "Scenario-Based Questions",
+  "definition": "Scenario questions require you to think critically about how you would solve a specific problem using Express.\n\n### Scenario\n*\"You are building an API endpoint for users to upload high-resolution profile pictures. How do you architect this to ensure the server doesn't crash?\"*\n\n**Expected Answer:**\n1. Use a package like `multer` to handle the `multipart/form-data`.\n2. Do NOT save the files to the local Express server disk, as it will fill up quickly and is not scalable.\n3. Validate the file type and limit the file size in the middleware.\n4. Stream the upload directly to a cloud storage provider like AWS S3 using `multer-s3`.\n5. Save only the S3 URL string to the database.",
+  "simpleExplanation": "Scenario questions require you to think critically about how you would solve a specific problem using Express.\n\n### Scenario\n*\"You are building an API endpoint for users to upload high-resolution profile pictures.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Scenario-Based Questions in Express.js?",
+      "How do you initialize Scenario-Based Questions?"
+    ],
+    "intermediate": [
+      "How does Scenario-Based Questions integrate with other middleware components?",
+      "Can you explain a common use case for Scenario-Based Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Scenario-Based Questions in a high-traffic production application?",
+      "How would you debug issues related to Scenario-Based Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Scenario-Based Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Scenario-Based Questions in your own words.",
+      "answer": "Scenario questions require you to think critically about how you would solve a specific problem using Express.\n\n### Scenario\n*\"You are building an API endpoint for users to upload high-resolution profile pictures."
+    },
+    {
+      "question": "When should you avoid using Scenario-Based Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "What is Express.js?",
+  "codeExample": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  res.send('Hello World!');\n});\n\napp.listen(3000, () => {\n  console.log('Express running on port 3000');\n});",
+  "definition": "Express.js is a fast, unopinionated, minimalist web framework for Node.js. It provides a robust set of features to develop web and mobile applications, acting as a thin layer on top of Node.js's built-in HTTP server capabilities. By hiding the complex low-level details of raw Node.js HTTP servers, Express makes it incredibly easy to define routes, parse payloads, and handle HTTP requests and responses.",
+  "simpleExplanation": "Express.js is a fast, unopinionated, minimalist web framework for Node.js.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of What is Express.js? in Express.js?",
+      "How do you initialize What is Express.js??"
+    ],
+    "intermediate": [
+      "How does What is Express.js? integrate with other middleware components?",
+      "Can you explain a common use case for What is Express.js??"
+    ],
+    "advanced": [
+      "What are the performance implications of What is Express.js? in a high-traffic production application?",
+      "How would you debug issues related to What is Express.js??"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as What is Express.js? without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define What is Express.js? in your own words.",
+      "answer": "Express.js is a fast, unopinionated, minimalist web framework for Node.js."
+    },
+    {
+      "question": "When should you avoid using What is Express.js??",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Interaction to Next Paint",
+  "difficulty": "Advanced",
+  "definition": "INP measures the latency of all click, tap, and keyboard interactions throughout the lifespan of a page. It indicates how quickly the page responds to user input.",
+  "simpleExplanation": "When you click 'Add to Cart', does the button immediately show a spinner, or does the entire page freeze for 2 seconds while JavaScript does heavy math?",
+  "questions": {
+    "basic": [
+      "How does Interaction to Next Paint fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Interaction to Next Paint?"
+    ],
+    "advanced": [
+      "How does Interaction to Next Paint scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Interaction to Next Paint is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Interaction to Next Paint.",
+      "answer": "Interaction to Next Paint is essential for complex frontend applications."
+    }
+  ]
+}

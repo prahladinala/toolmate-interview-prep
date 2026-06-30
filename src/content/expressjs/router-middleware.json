@@ -1,0 +1,35 @@
+{
+  "title": "Router Middleware",
+  "codeExample": "const express = require('express');\nconst router = express.Router();\n\n// Router-level middleware\nrouter.use((req, res, next) => {\n  console.log('Time:', Date.now());\n  next();\n});\n\nrouter.get('/profile', (req, res) => {\n  res.send('User Profile');\n});\n\nmodule.exports = router;",
+  "definition": "Router-level middleware works in exactly the same way as application-level middleware, except it is bound to an instance of `express.Router()` instead of `express()`. This is useful for applying specific middleware (like Auth checks) only to a specific group of routes.",
+  "simpleExplanation": "Router-level middleware works in exactly the same way as application-level middleware, except it is bound to an instance of `express.Router()` instead of `express()`.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Router Middleware in Express.js?",
+      "How do you initialize Router Middleware?"
+    ],
+    "intermediate": [
+      "How does Router Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Router Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Router Middleware in a high-traffic production application?",
+      "How would you debug issues related to Router Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Router Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Router Middleware in your own words.",
+      "answer": "Router-level middleware works in exactly the same way as application-level middleware, except it is bound to an instance of `express.Router()` instead of `express()`."
+    },
+    {
+      "question": "When should you avoid using Router Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

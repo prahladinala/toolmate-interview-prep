@@ -1,0 +1,35 @@
+{
+  "title": "Serving Static Files",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// Everything inside the 'public' folder is now exposed to the web\napp.use(express.static('public'));\n\n// If you have a file at: /public/images/logo.png\n// You can access it in the browser at: http://localhost:3000/images/logo.png\n// Note: Express does not include the 'public' folder in the URL path.",
+  "definition": "To serve static files such as images, CSS files, and JavaScript files, use the `express.static` built-in middleware function in Express. You simply pass the name of the directory that contains the static assets.",
+  "simpleExplanation": "To serve static files such as images, CSS files, and JavaScript files, use the `express.static` built-in middleware function in Express.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Serving Static Files in Express.js?",
+      "How do you initialize Serving Static Files?"
+    ],
+    "intermediate": [
+      "How does Serving Static Files integrate with other middleware components?",
+      "Can you explain a common use case for Serving Static Files?"
+    ],
+    "advanced": [
+      "What are the performance implications of Serving Static Files in a high-traffic production application?",
+      "How would you debug issues related to Serving Static Files?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Serving Static Files without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Serving Static Files in your own words.",
+      "answer": "To serve static files such as images, CSS files, and JavaScript files, use the `express.static` built-in middleware function in Express."
+    },
+    {
+      "question": "When should you avoid using Serving Static Files?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

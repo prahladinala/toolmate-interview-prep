@@ -1,0 +1,35 @@
+{
+  "title": "JWT Authentication",
+  "codeExample": "const jwt = require('jsonwebtoken');\n\nconst protect = (req, res, next) => {\n  const token = req.headers.authorization?.split(' ')[1];\n  \n  if (!token) return res.status(401).json({ error: 'No token' });\n\n  try {\n    // Verify signature\n    const decoded = jwt.verify(token, 'SECRET_KEY');\n    req.user = decoded; // { id: 1 }\n    next();\n  } catch (err) {\n    res.status(401).json({ error: 'Invalid token' });\n  }\n};",
+  "definition": "JSON Web Tokens (JWT) are a stateless authentication mechanism. Instead of storing sessions in a database, the server cryptographically signs a JSON payload containing the user's ID and sends it to the client. The client sends it back via the `Authorization` header on future requests.",
+  "simpleExplanation": "JSON Web Tokens (JWT) are a stateless authentication mechanism.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of JWT Authentication in Express.js?",
+      "How do you initialize JWT Authentication?"
+    ],
+    "intermediate": [
+      "How does JWT Authentication integrate with other middleware components?",
+      "Can you explain a common use case for JWT Authentication?"
+    ],
+    "advanced": [
+      "What are the performance implications of JWT Authentication in a high-traffic production application?",
+      "How would you debug issues related to JWT Authentication?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as JWT Authentication without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define JWT Authentication in your own words.",
+      "answer": "JSON Web Tokens (JWT) are a stateless authentication mechanism."
+    },
+    {
+      "question": "When should you avoid using JWT Authentication?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

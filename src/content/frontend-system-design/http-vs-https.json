@@ -1,0 +1,63 @@
+{
+  "title": "HTTP vs HTTPS",
+  "difficulty": "Beginner",
+  "definition": "HTTP is the foundational protocol for transferring data on the web, operating at the application layer. HTTPS is the secure version, encrypting all communication using TLS/SSL to prevent eavesdropping and man-in-the-middle (MITM) attacks.",
+  "simpleExplanation": "HTTP sends your passwords in plain text where anyone on public Wi-Fi can read them. HTTPS scrambles your passwords into an unreadable mess, and only the destination server has the key to unscramble them.",
+  "tableData": {
+    "headers": [
+      "Feature",
+      "HTTP",
+      "HTTPS"
+    ],
+    "rows": [
+      [
+        "Port",
+        "80",
+        "443"
+      ],
+      [
+        "Security",
+        "Plain Text",
+        "Encrypted (TLS/SSL)"
+      ],
+      [
+        "Performance",
+        "Slightly faster (no handshake)",
+        "Requires extra RTTs for TLS handshake"
+      ],
+      [
+        "SEO",
+        "Penalized by Google",
+        "Boosted by search engines"
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of HTTP vs HTTPS?",
+      "Why is HTTP vs HTTPS important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does HTTP vs HTTPS impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to HTTP vs HTTPS."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize HTTP vs HTTPS?",
+      "What are the security implications of HTTP vs HTTPS?"
+    ],
+    "trick": [
+      "Can HTTP vs HTTPS be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define HTTP vs HTTPS.",
+      "answer": "HTTP vs HTTPS is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for HTTP vs HTTPS?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

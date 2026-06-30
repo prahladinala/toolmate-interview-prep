@@ -1,0 +1,12 @@
+{
+  "title": "Dijkstra Algorithm",
+  "difficulty": "Expert",
+  "definition": "Finds the shortest path from a source node to all other nodes in a weighted graph with NON-NEGATIVE edge weights. Uses a Min-Priority Queue for O(E log V) time.",
+  "simpleExplanation": "Google Maps figuring out the absolute fastest way to get from your house to the grocery store, considering traffic and speed limits.",
+  "answers": [
+    {
+      "question": "**Expert:** Dijkstra's Algorithm (Adjacency List)",
+      "answer": "```javascript\nfunction dijkstra(n, edges, src) {\n  const adj = Array.from({length: n}, () => []);\n  for (let [u, v, w] of edges) {\n    adj[u].push([v, w]);\n  }\n  const dist = new Array(n).fill(Infinity);\n  dist[src] = 0;\n  // Basic Array PQ (O(V^2)). Real PQ required for O(E log V)\n  const pq = [[0, src]]; \n  \n  while (pq.length > 0) {\n    pq.sort((a,b) => a[0] - b[0]);\n    const [currDist, u] = pq.shift();\n    if (currDist > dist[u]) continue;\n    for (let [v, weight] of adj[u]) {\n      if (dist[u] + weight < dist[v]) {\n        dist[v] = dist[u] + weight;\n        pq.push([dist[v], v]);\n      }\n    }\n  }\n  return dist;\n}\n```"
+    }
+  ]
+}

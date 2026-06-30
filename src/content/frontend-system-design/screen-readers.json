@@ -1,0 +1,27 @@
+{
+  "title": "Screen Readers",
+  "difficulty": "Advanced",
+  "definition": "Software programs that allow blind or visually impaired users to read the text that is displayed on the computer screen via a speech synthesizer or braille display. Popular ones include VoiceOver (Mac), NVDA, and JAWS.",
+  "simpleExplanation": "A robot voice that reads the website out loud to the user. It relies entirely on your Semantic HTML to understand what is important.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Screen Readers?"
+    ],
+    "intermediate": [
+      "How does Screen Readers impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Screen Readers across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Screen Readers be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Screen Readers.",
+      "answer": "Screen Readers is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

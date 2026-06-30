@@ -1,0 +1,35 @@
+{
+  "title": "Garbage Collection",
+  "difficulty": "Expert",
+  "definition": "Garbage Collection is an automated process in the V8 engine that frees up memory. It uses the 'Mark and Sweep' algorithm: it starts at the roots (global object), marks all reachable objects, and 'sweeps' (deletes) any objects that were not marked.",
+  "simpleExplanation": "The Garbage Collector is a janitor who walks through your house holding a string attached to you. Any furniture the string can't reach is thrown in the trash.",
+  "terminalOutput": "Memory Leak Common Causes:\n1. Accidental Global Variables\n2. Forgotten setIntervals\n3. Closures holding onto large objects\n4. Detached DOM Elements (DOM nodes removed from document but still referenced in JS)",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Garbage Collection?",
+      "Why is Garbage Collection important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Garbage Collection impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Garbage Collection."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Garbage Collection?",
+      "What are the security implications of Garbage Collection?"
+    ],
+    "trick": [
+      "Can Garbage Collection be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Garbage Collection.",
+      "answer": "Garbage Collection is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Garbage Collection?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

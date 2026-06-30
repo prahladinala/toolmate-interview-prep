@@ -1,0 +1,35 @@
+{
+  "title": "POST Method",
+  "codeExample": "app.post('/api/orders', (req, res) => {\n  const orderData = req.body;\n  \n  // Save to Database logic here...\n  \n  res.status(201).json({\n    success: true,\n    orderId: Math.floor(Math.random() * 10000),\n    data: orderData\n  });\n});",
+  "definition": "The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server. It is primarily used for creating brand new records in a database. Data is passed securely inside the Request Body.",
+  "simpleExplanation": "The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of POST Method in Express.js?",
+      "How do you initialize POST Method?"
+    ],
+    "intermediate": [
+      "How does POST Method integrate with other middleware components?",
+      "Can you explain a common use case for POST Method?"
+    ],
+    "advanced": [
+      "What are the performance implications of POST Method in a high-traffic production application?",
+      "How would you debug issues related to POST Method?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as POST Method without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define POST Method in your own words.",
+      "answer": "The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server."
+    },
+    {
+      "question": "When should you avoid using POST Method?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

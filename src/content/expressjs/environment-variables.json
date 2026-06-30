@@ -1,0 +1,35 @@
+{
+  "title": "Environment Variables",
+  "codeExample": "require('dotenv').config();\nconst express = require('express');\nconst mongoose = require('mongoose');\n\n// Access variables without hardcoding them\nconst dbPassword = process.env.DATABASE_PASSWORD;\nconst port = process.env.PORT || 3000;\n\nmongoose.connect(`mongodb+srv://admin:${dbPassword}@cluster.mongodb.net/`);\n\napp.listen(port);",
+  "definition": "Never hardcode passwords, API keys, or database URIs into your code. Environment variables allow you to configure these sensitive values externally. In Node.js, these are accessed via `process.env`. The `dotenv` package is commonly used in development.",
+  "simpleExplanation": "Never hardcode passwords, API keys, or database URIs into your code.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Environment Variables in Express.js?",
+      "How do you initialize Environment Variables?"
+    ],
+    "intermediate": [
+      "How does Environment Variables integrate with other middleware components?",
+      "Can you explain a common use case for Environment Variables?"
+    ],
+    "advanced": [
+      "What are the performance implications of Environment Variables in a high-traffic production application?",
+      "How would you debug issues related to Environment Variables?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Environment Variables without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Environment Variables in your own words.",
+      "answer": "Never hardcode passwords, API keys, or database URIs into your code."
+    },
+    {
+      "question": "When should you avoid using Environment Variables?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Client Side Rendering (CSR)",
+  "difficulty": "Beginner",
+  "definition": "CSR means the server sends a barebones HTML file (`<div id='root'></div>`) and a massive JavaScript bundle. The browser must download the JS, parse it, execute it, fetch data, and THEN render the UI. This is how standard create-react-app works.",
+  "simpleExplanation": "The server sends you a blank canvas and a giant box of Lego pieces, and tells your browser to build the entire house from scratch.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Client Side Rendering?",
+      "What are the pros and cons of Client Side Rendering?"
+    ],
+    "intermediate": [
+      "How does Client Side Rendering impact SEO and initial page load times?",
+      "When would you NOT choose to use Client Side Rendering?"
+    ],
+    "advanced": [
+      "How does Client Side Rendering fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Client Side Rendering?"
+    ],
+    "trick": [
+      "Can you combine Client Side Rendering with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Client Side Rendering.",
+      "answer": "Client Side Rendering is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Client Side Rendering?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Local State",
+  "difficulty": "Beginner",
+  "definition": "Local state refers to data that is only needed by one specific component (and perhaps its immediate children). In React, this is managed via `useState` or `useReducer`.",
+  "simpleExplanation": "Information only you need to know. Like the fact that you currently have a dropdown menu open.",
+  "questions": {
+    "basic": [
+      "How does Local State fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Local State?"
+    ],
+    "advanced": [
+      "How does Local State scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Local State is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Local State.",
+      "answer": "Local State is essential for complex frontend applications."
+    }
+  ]
+}

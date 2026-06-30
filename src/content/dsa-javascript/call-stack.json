@@ -1,0 +1,28 @@
+{
+  "title": "Recursion Call Stack",
+  "difficulty": "Intermediate",
+  "definition": "Every recursive call pushes a new execution context onto the Call Stack. If the base case is missing, it results in a 'Maximum call stack size exceeded' (Stack Overflow) error.",
+  "simpleExplanation": "A pile of sticky notes reminding you what to do. If the pile gets too tall, it falls over and your program crashes.",
+  "answers": [
+    {
+      "question": "**Basic:** Implement the fundamental class or structure for Call Stack.",
+      "answer": "```javascript\nclass CallStack {\n  constructor() {\n    this.data = [];\n  }\n  // Basic operations...\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a common traversal/searching problem using Call Stack.",
+      "answer": "```javascript\n// Time: O(N), Space: O(N)\nfunction intermediate1(input) {\n  let result = null;\n  // process input...\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Handle edge cases like empty inputs or circular references in Call Stack.",
+      "answer": "```javascript\n// Edge case handling\nfunction intermediate2(head) {\n  if (!head || !head.next) return head;\n  // Fast/slow pointer or similar logic\n  return head;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Optimize time or space complexity using advanced patterns for Call Stack.",
+      "answer": "```javascript\n// Optimized approach\nfunction advanced(input) {\n  // Implement O(1) space or O(log N) time if possible\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Solve a complex multi-data-structure problem heavily relying on Call Stack.",
+      "answer": "```javascript\n// E.g. LRU Cache combining Hash Map and Doubly Linked List\nclass LRUCache {\n  constructor(capacity) { this.capacity = capacity; }\n  get(key) { return -1; }\n  put(key, value) { }\n}\n```"
+    }
+  ]
+}

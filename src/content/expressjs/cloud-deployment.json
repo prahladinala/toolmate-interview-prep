@@ -1,0 +1,59 @@
+{
+  "title": "Cloud Deployment",
+  "tableData": {
+    "title": "Express Deployment Options",
+    "headers": [
+      "Platform Type",
+      "Examples",
+      "Pros / Cons"
+    ],
+    "rows": [
+      [
+        "PaaS",
+        "Render, Heroku, Railway",
+        "Easiest to deploy (git push). More expensive at scale."
+      ],
+      [
+        "IaaS",
+        "AWS EC2, DigitalOcean",
+        "Cheapest and highly customizable. You must manage Linux/Nginx manually."
+      ],
+      [
+        "Serverless",
+        "AWS Lambda, Vercel",
+        "Infinite scaling, pay-per-request. Vulnerable to cold-starts."
+      ]
+    ]
+  },
+  "definition": "Express apps can be deployed to Platform as a Service (PaaS) providers like Heroku or Render for extreme simplicity, or to Infrastructure as a Service (IaaS) like AWS EC2 or DigitalOcean Droplets for maximum control. Serverless platforms (AWS Lambda, Vercel) can also run Express, but with some cold-start caveats.",
+  "simpleExplanation": "Express apps can be deployed to Platform as a Service (PaaS) providers like Heroku or Render for extreme simplicity, or to Infrastructure as a Service (IaaS) like AWS EC2 or DigitalOcean Droplets for maximum control.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Cloud Deployment in Express.js?",
+      "How do you initialize Cloud Deployment?"
+    ],
+    "intermediate": [
+      "How does Cloud Deployment integrate with other middleware components?",
+      "Can you explain a common use case for Cloud Deployment?"
+    ],
+    "advanced": [
+      "What are the performance implications of Cloud Deployment in a high-traffic production application?",
+      "How would you debug issues related to Cloud Deployment?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Cloud Deployment without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cloud Deployment in your own words.",
+      "answer": "Express apps can be deployed to Platform as a Service (PaaS) providers like Heroku or Render for extreme simplicity, or to Infrastructure as a Service (IaaS) like AWS EC2 or DigitalOcean Droplets for maximum control."
+    },
+    {
+      "question": "When should you avoid using Cloud Deployment?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

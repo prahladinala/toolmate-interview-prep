@@ -1,0 +1,36 @@
+{
+  "title": "Event Loop",
+  "difficulty": "Expert",
+  "definition": "The Event Loop is the mechanism that allows Node.js and browsers to perform non-blocking I/O operations despite JavaScript being single-threaded. It constantly monitors the Call Stack and the Task Queues, pushing tasks to the stack when it is empty.",
+  "simpleExplanation": "The Event Loop is a bouncer at a club. He constantly checks if the dance floor (Call Stack) is empty. If it is, he lets the next person from the VIP line (Microtasks) in. If the VIP line is empty, he lets one person from the regular line (Macrotasks) in.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  CS[Call Stack] -->|Empty?| Check{Check Queues}\n  Check -->|Yes| MQ[Microtask Queue]\n  MQ -->|Drain all| CS\n  Check -->|Empty| MacQ[Macrotask Queue]\n  MacQ -->|Take 1 Task| CS",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Event Loop?",
+      "Why is Event Loop important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Event Loop impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Event Loop."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Event Loop?",
+      "What are the security implications of Event Loop?"
+    ],
+    "trick": [
+      "Can Event Loop be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Event Loop.",
+      "answer": "Event Loop is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Event Loop?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "PM2 Process Manager",
+  "terminalOutput": "$ npm install pm2 -g\n$ pm2 start server.js --name \"my-api\"\n\n// PM2 will now run the app in the background and auto-restart it on failure.",
+  "definition": "If an Express app crashes in production due to a bug, the server dies and users get 502 errors. PM2 is a production process manager that keeps your app alive forever by automatically restarting it if it crashes. It also handles cluster mode effortlessly.",
+  "simpleExplanation": "If an Express app crashes in production due to a bug, the server dies and users get 502 errors.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of PM2 Process Manager in Express.js?",
+      "How do you initialize PM2 Process Manager?"
+    ],
+    "intermediate": [
+      "How does PM2 Process Manager integrate with other middleware components?",
+      "Can you explain a common use case for PM2 Process Manager?"
+    ],
+    "advanced": [
+      "What are the performance implications of PM2 Process Manager in a high-traffic production application?",
+      "How would you debug issues related to PM2 Process Manager?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as PM2 Process Manager without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define PM2 Process Manager in your own words.",
+      "answer": "If an Express app crashes in production due to a bug, the server dies and users get 502 errors."
+    },
+    {
+      "question": "When should you avoid using PM2 Process Manager?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

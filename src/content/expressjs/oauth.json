@@ -1,0 +1,35 @@
+{
+  "title": "OAuth Authentication",
+  "terminalOutput": "$ npm install passport passport-google-oauth20\n\nadded 15 packages in 3s",
+  "definition": "OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords (e.g., 'Log in with Google'). In Express, this is usually implemented via Passport.js.",
+  "simpleExplanation": "OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords (e.g., 'Log in with Google').",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of OAuth Authentication in Express.js?",
+      "How do you initialize OAuth Authentication?"
+    ],
+    "intermediate": [
+      "How does OAuth Authentication integrate with other middleware components?",
+      "Can you explain a common use case for OAuth Authentication?"
+    ],
+    "advanced": [
+      "What are the performance implications of OAuth Authentication in a high-traffic production application?",
+      "How would you debug issues related to OAuth Authentication?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as OAuth Authentication without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define OAuth Authentication in your own words.",
+      "answer": "OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords (e.g., 'Log in with Google')."
+    },
+    {
+      "question": "When should you avoid using OAuth Authentication?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

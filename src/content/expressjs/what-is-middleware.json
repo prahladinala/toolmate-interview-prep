@@ -1,0 +1,59 @@
+{
+  "title": "What is Middleware?",
+  "tableData": {
+    "title": "Capabilities of Middleware",
+    "headers": [
+      "Action",
+      "Example Scenario"
+    ],
+    "rows": [
+      [
+        "Execute code",
+        "Logging the time every request comes in."
+      ],
+      [
+        "Modify objects",
+        "Parsing a JWT and attaching the `user` to `req.user`."
+      ],
+      [
+        "End cycle",
+        "Sending a 401 Unauthorized response if a user is not logged in."
+      ],
+      [
+        "Pass control",
+        "Calling `next()` so the actual route handler can do its job."
+      ]
+    ]
+  },
+  "definition": "Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the `next` function in the application's request-response cycle. Middleware can execute any code, make changes to the req/res objects, end the response cycle, or call `next()` to pass control to the next middleware in line.",
+  "simpleExplanation": "Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the `next` function in the application's request-response cycle.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of What is Middleware? in Express.js?",
+      "How do you initialize What is Middleware??"
+    ],
+    "intermediate": [
+      "How does What is Middleware? integrate with other middleware components?",
+      "Can you explain a common use case for What is Middleware??"
+    ],
+    "advanced": [
+      "What are the performance implications of What is Middleware? in a high-traffic production application?",
+      "How would you debug issues related to What is Middleware??"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as What is Middleware? without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define What is Middleware? in your own words.",
+      "answer": "Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the `next` function in the application's request-response cycle."
+    },
+    {
+      "question": "When should you avoid using What is Middleware??",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

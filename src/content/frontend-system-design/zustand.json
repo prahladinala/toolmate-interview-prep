@@ -1,0 +1,27 @@
+{
+  "title": "Zustand",
+  "difficulty": "Intermediate",
+  "definition": "Zustand is a small, fast, and scalable bearbones state-management solution using simplified flux principles. It solves the boilerplate problems of Redux while maintaining global state predictability.",
+  "simpleExplanation": "Redux but without the massive headaches, boilerplate, and confusing reducers.",
+  "questions": {
+    "basic": [
+      "How does Zustand fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Zustand?"
+    ],
+    "advanced": [
+      "How does Zustand scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Zustand is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Zustand.",
+      "answer": "Zustand is essential for complex frontend applications."
+    }
+  ]
+}

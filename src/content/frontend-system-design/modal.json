@@ -1,0 +1,29 @@
+{
+  "title": "Design Modal",
+  "difficulty": "Advanced",
+  "definition": "A robust Modal requires React Portals to escape `overflow: hidden` containers, Focus Trapping (so keyboard users can't tab outside the modal), escaping via the `Esc` key, and preventing background body scrolling.",
+  "simpleExplanation": "A popup window that forces you to interact with it. Building a good one is surprisingly difficult because you have to trap the user's keyboard focus inside it.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Modal Component?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Modal Component?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Modal Component for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Modal Component if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Modal Component.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "stateDiagram-v2\n  [*] --> Hidden\n  Hidden --> Visible : Trigger Click\n  Visible --> FocusTrap : Manage Focus\n  FocusTrap --> Hidden : Esc Key\n  FocusTrap --> Hidden : Click Overlay"
+}

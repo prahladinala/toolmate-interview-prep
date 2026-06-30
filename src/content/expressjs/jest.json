@@ -1,0 +1,35 @@
+{
+  "title": "Jest",
+  "terminalOutput": "$ npm install --save-dev jest\n\n// Package.json\n\"scripts\": {\n  \"test\": \"jest --watchAll\"\n}",
+  "definition": "Jest is a delightful JavaScript Testing Framework maintained by Meta. It works perfectly with Node.js and Express to run your test suites, providing assertions (`expect`), mocking (`jest.fn()`), and code coverage reports out of the box.",
+  "simpleExplanation": "Jest is a delightful JavaScript Testing Framework maintained by Meta.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Jest in Express.js?",
+      "How do you initialize Jest?"
+    ],
+    "intermediate": [
+      "How does Jest integrate with other middleware components?",
+      "Can you explain a common use case for Jest?"
+    ],
+    "advanced": [
+      "What are the performance implications of Jest in a high-traffic production application?",
+      "How would you debug issues related to Jest?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Jest without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Jest in your own words.",
+      "answer": "Jest is a delightful JavaScript Testing Framework maintained by Meta."
+    },
+    {
+      "question": "When should you avoid using Jest?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

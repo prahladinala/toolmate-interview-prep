@@ -1,0 +1,12 @@
+{
+  "title": "Breadth First Search",
+  "difficulty": "Intermediate",
+  "definition": "An algorithm that explores a graph layer by layer, expanding equally in all directions. It guarantees finding the shortest path in an unweighted graph. Requires a Queue and a 'visited' Set.",
+  "simpleExplanation": "Throwing a rock in a pond and watching the ripples expand outward evenly in a circle.",
+  "answers": [
+    {
+      "question": "**Advanced:** Rotting Oranges",
+      "answer": "```javascript\nfunction orangesRotting(grid) {\n  const queue = [];\n  let fresh = 0, mins = 0;\n  for(let r=0; r<grid.length; r++) {\n    for(let c=0; c<grid[0].length; c++) {\n      if(grid[r][c] === 2) queue.push([r, c]);\n      if(grid[r][c] === 1) fresh++;\n    }\n  }\n  const dirs = [[1,0],[-1,0],[0,1],[0,-1]];\n  while(queue.length > 0 && fresh > 0) {\n    let size = queue.length;\n    for(let i=0; i<size; i++) {\n      const [r, c] = queue.shift();\n      for(let [dr, dc] of dirs) {\n        let nr = r+dr, nc = c+dc;\n        if(nr>=0 && nr<grid.length && nc>=0 && nc<grid[0].length && grid[nr][nc] === 1) {\n          grid[nr][nc] = 2;\n          fresh--;\n          queue.push([nr, nc]);\n        }\n      }\n    }\n    mins++;\n  }\n  return fresh === 0 ? mins : -1;\n}\n```"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Cookie Security",
+  "difficulty": "Intermediate",
+  "definition": "Cookies can be secured via flags: `HttpOnly` (prevents `document.cookie` access via JS), `Secure` (forces HTTPS transmission), and `SameSite` (prevents cross-origin sending to mitigate CSRF).",
+  "simpleExplanation": "Adding security locks to your cookies so hackers can't read them via scripts or hijack them during cross-site requests.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Cookie Security?",
+      "What are the pros and cons of Cookie Security?"
+    ],
+    "intermediate": [
+      "How does Cookie Security impact SEO and initial page load times?",
+      "When would you NOT choose to use Cookie Security?"
+    ],
+    "advanced": [
+      "How does Cookie Security fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Cookie Security?"
+    ],
+    "trick": [
+      "Can you combine Cookie Security with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cookie Security.",
+      "answer": "Cookie Security is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Cookie Security?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

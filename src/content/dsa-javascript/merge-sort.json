@@ -1,0 +1,12 @@
+{
+  "title": "Merge Sort",
+  "difficulty": "Advanced",
+  "definition": "A Divide and Conquer algorithm that recursively divides the array into halves until they contain 1 element, then merges those sorted halves back together. Highly stable, strictly O(N log N) time, but requires O(N) space.",
+  "simpleExplanation": "Splitting a giant messy stack of papers in half over and over until you just have single pieces of paper, then combining them back together two at a time in order.",
+  "answers": [
+    {
+      "question": "**Advanced:** Merge Sort Implementation",
+      "answer": "```javascript\nfunction mergeSort(arr) {\n  if (arr.length <= 1) return arr;\n  const mid = Math.floor(arr.length / 2);\n  const left = mergeSort(arr.slice(0, mid));\n  const right = mergeSort(arr.slice(mid));\n  return merge(left, right);\n}\n\nfunction merge(left, right) {\n  let res = [], i = 0, j = 0;\n  while(i < left.length && j < right.length) {\n    if (left[i] < right[j]) res.push(left[i++]);\n    else res.push(right[j++]);\n  }\n  return [...res, ...left.slice(i), ...right.slice(j)];\n}\n```"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Lowest Common Ancestor",
+  "difficulty": "Advanced",
+  "definition": "Finding the lowest node in T that has both nodes p and q as descendants. In a BST, this is O(log N). In a generic binary tree, it requires O(N) DFS.",
+  "simpleExplanation": "Finding the closest shared relative (e.g. a shared Grandfather) between two distant cousins.",
+  "answers": [
+    {
+      "question": "**Advanced:** LCA of Binary Tree",
+      "answer": "```javascript\nfunction lowestCommonAncestor(root, p, q) {\n  if (!root || root === p || root === q) return root;\n  let left = lowestCommonAncestor(root.left, p, q);\n  let right = lowestCommonAncestor(root.right, p, q);\n  if (left && right) return root;\n  return left ? left : right;\n}\n```"
+    }
+  ]
+}

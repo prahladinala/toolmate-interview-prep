@@ -1,0 +1,35 @@
+{
+  "title": "Cookies",
+  "codeExample": "const cookieParser = require('cookie-parser');\napp.use(cookieParser());\n\napp.get('/set-cookie', (req, res) => {\n  res.cookie('theme', 'dark', { \n    maxAge: 900000, \n    httpOnly: true // Cannot be accessed via JS (XSS protection)\n  });\n  res.send('Cookie has been set');\n});\n\napp.get('/get-cookie', (req, res) => {\n  res.send(`Your theme is: ${req.cookies.theme}`);\n});",
+  "definition": "Cookies are small pieces of data stored on the user's browser. In Express, you use `cookie-parser` to read incoming cookies, and `res.cookie()` to send cookies back. Cookies are critical for storing Session IDs or JWTs.",
+  "simpleExplanation": "Cookies are small pieces of data stored on the user's browser.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Cookies in Express.js?",
+      "How do you initialize Cookies?"
+    ],
+    "intermediate": [
+      "How does Cookies integrate with other middleware components?",
+      "Can you explain a common use case for Cookies?"
+    ],
+    "advanced": [
+      "What are the performance implications of Cookies in a high-traffic production application?",
+      "How would you debug issues related to Cookies?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Cookies without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Cookies in your own words.",
+      "answer": "Cookies are small pieces of data stored on the user's browser."
+    },
+    {
+      "question": "When should you avoid using Cookies?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

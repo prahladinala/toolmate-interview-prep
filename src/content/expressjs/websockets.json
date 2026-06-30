@@ -1,0 +1,35 @@
+{
+  "title": "WebSockets with Express",
+  "codeExample": "const express = require('express');\nconst http = require('http');\nconst { Server } = require('socket.io');\n\nconst app = express();\nconst server = http.createServer(app); // Bind Express to raw HTTP server\nconst io = new Server(server);\n\nio.on('connection', (socket) => {\n  console.log('A user connected');\n  socket.on('chat message', (msg) => {\n    io.emit('chat message', msg); // Broadcast to everyone\n  });\n});\n\nserver.listen(3000);",
+  "definition": "Express is built strictly for HTTP request-response cycles, which are stateless and close immediately. If you need real-time, bi-directional communication (like a chat app), you need WebSockets. You can easily integrate Socket.io with your existing Express HTTP server.",
+  "simpleExplanation": "Express is built strictly for HTTP request-response cycles, which are stateless and close immediately.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of WebSockets with Express in Express.js?",
+      "How do you initialize WebSockets with Express?"
+    ],
+    "intermediate": [
+      "How does WebSockets with Express integrate with other middleware components?",
+      "Can you explain a common use case for WebSockets with Express?"
+    ],
+    "advanced": [
+      "What are the performance implications of WebSockets with Express in a high-traffic production application?",
+      "How would you debug issues related to WebSockets with Express?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as WebSockets with Express without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define WebSockets with Express in your own words.",
+      "answer": "Express is built strictly for HTTP request-response cycles, which are stateless and close immediately."
+    },
+    {
+      "question": "When should you avoid using WebSockets with Express?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

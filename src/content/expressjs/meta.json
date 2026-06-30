@@ -1,0 +1,202 @@
+{
+  "id": "expressjs",
+  "title": "Express.js",
+  "description": "Master Express.js from fundamentals to advanced backend development. Learn routing, middleware, authentication, security, APIs, performance optimization, and production-ready application architecture.",
+  "icon": "express",
+  "categories": [
+    {
+      "id": "express-fundamentals",
+      "title": "Express Fundamentals",
+      "topics": [
+        { "id": "what-is-express", "title": "What is Express.js?" },
+        { "id": "why-express", "title": "Why Use Express?" },
+        { "id": "express-vs-node", "title": "Express vs Node.js" },
+        { "id": "express-architecture", "title": "Express Architecture" },
+        { "id": "creating-server", "title": "Creating an Express Server" },
+        { "id": "request-response-cycle", "title": "Request Response Lifecycle" }
+      ]
+    },
+    {
+      "id": "routing",
+      "title": "Routing",
+      "topics": [
+        { "id": "basic-routing", "title": "Basic Routing" },
+        { "id": "route-parameters", "title": "Route Parameters" },
+        { "id": "query-parameters", "title": "Query Parameters" },
+        { "id": "route-handlers", "title": "Route Handlers" },
+        { "id": "router-module", "title": "Express Router" },
+        { "id": "nested-routes", "title": "Nested Routes" }
+      ]
+    },
+    {
+      "id": "middleware",
+      "title": "Middleware",
+      "topics": [
+        { "id": "what-is-middleware", "title": "What is Middleware?" },
+        { "id": "application-middleware", "title": "Application Middleware" },
+        { "id": "router-middleware", "title": "Router Middleware" },
+        { "id": "third-party-middleware", "title": "Third Party Middleware" },
+        { "id": "custom-middleware", "title": "Custom Middleware" },
+        { "id": "middleware-order", "title": "Middleware Execution Order" },
+        { "id": "next-function", "title": "next() Function" }
+      ]
+    },
+    {
+      "id": "request-response",
+      "title": "Request & Response Objects",
+      "topics": [
+        { "id": "req-object", "title": "Request Object" },
+        { "id": "res-object", "title": "Response Object" },
+        { "id": "req-params", "title": "req.params" },
+        { "id": "req-query", "title": "req.query" },
+        { "id": "req-body", "title": "req.body" },
+        { "id": "res-json", "title": "res.json()" },
+        { "id": "res-status", "title": "res.status()" }
+      ]
+    },
+    {
+      "id": "http-methods",
+      "title": "HTTP Methods",
+      "topics": [
+        { "id": "get-method", "title": "GET" },
+        { "id": "post-method", "title": "POST" },
+        { "id": "put-method", "title": "PUT" },
+        { "id": "patch-method", "title": "PATCH" },
+        { "id": "delete-method", "title": "DELETE" },
+        { "id": "restful-apis", "title": "RESTful API Design" }
+      ]
+    },
+    {
+      "id": "error-handling",
+      "title": "Error Handling",
+      "topics": [
+        { "id": "error-middleware", "title": "Error Handling Middleware" },
+        { "id": "try-catch", "title": "Async Error Handling" },
+        { "id": "custom-errors", "title": "Custom Error Classes" },
+        { "id": "global-error-handler", "title": "Global Error Handler" },
+        { "id": "404-handling", "title": "404 Route Handling" }
+      ]
+    },
+    {
+      "id": "templating-engines",
+      "title": "Template Engines",
+      "topics": [
+        { "id": "ejs", "title": "EJS" },
+        { "id": "handlebars", "title": "Handlebars" },
+        { "id": "pug", "title": "Pug" },
+        { "id": "rendering-views", "title": "Rendering Views" }
+      ]
+    },
+    {
+      "id": "database-integration",
+      "title": "Database Integration",
+      "topics": [
+        { "id": "mongodb-express", "title": "MongoDB Integration" },
+        { "id": "mongoose", "title": "Mongoose ODM" },
+        { "id": "sql-databases", "title": "SQL Database Integration" },
+        { "id": "connection-pooling", "title": "Database Connections" }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentication & Authorization",
+      "topics": [
+        { "id": "sessions", "title": "Session Authentication" },
+        { "id": "cookies", "title": "Cookies" },
+        { "id": "jwt-auth", "title": "JWT Authentication" },
+        { "id": "oauth", "title": "OAuth Authentication" },
+        { "id": "role-based-access", "title": "Role-Based Authorization" }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "topics": [
+        { "id": "cors", "title": "CORS" },
+        { "id": "helmet", "title": "Helmet.js" },
+        { "id": "rate-limiting", "title": "Rate Limiting" },
+        { "id": "input-validation", "title": "Input Validation" },
+        { "id": "xss-protection", "title": "XSS Protection" },
+        { "id": "csrf-protection", "title": "CSRF Protection" }
+      ]
+    },
+    {
+      "id": "file-handling",
+      "title": "File Uploads & Static Files",
+      "topics": [
+        { "id": "multer", "title": "Multer" },
+        { "id": "file-upload", "title": "File Upload Handling" },
+        { "id": "static-files", "title": "Serving Static Files" },
+        { "id": "cloud-storage", "title": "Cloud File Storage" }
+      ]
+    },
+    {
+      "id": "api-development",
+      "title": "API Development",
+      "topics": [
+        { "id": "crud-api", "title": "CRUD APIs" },
+        { "id": "pagination", "title": "Pagination" },
+        { "id": "filtering", "title": "Filtering" },
+        { "id": "sorting", "title": "Sorting" },
+        { "id": "api-versioning", "title": "API Versioning" },
+        { "id": "swagger", "title": "Swagger/OpenAPI" }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Testing",
+      "topics": [
+        { "id": "unit-testing", "title": "Unit Testing" },
+        { "id": "integration-testing", "title": "Integration Testing" },
+        { "id": "jest", "title": "Jest" },
+        { "id": "supertest", "title": "Supertest" },
+        { "id": "mocking", "title": "Mocking APIs" }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance Optimization",
+      "topics": [
+        { "id": "compression", "title": "Compression Middleware" },
+        { "id": "caching", "title": "Caching" },
+        { "id": "cluster-mode", "title": "Node Cluster Mode" },
+        { "id": "load-balancing", "title": "Load Balancing" },
+        { "id": "performance-monitoring", "title": "Performance Monitoring" }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment & Production",
+      "topics": [
+        { "id": "environment-variables", "title": "Environment Variables" },
+        { "id": "pm2", "title": "PM2" },
+        { "id": "docker-express", "title": "Dockerizing Express Apps" },
+        { "id": "reverse-proxy", "title": "Nginx Reverse Proxy" },
+        { "id": "cloud-deployment", "title": "Cloud Deployment" }
+      ]
+    },
+    {
+      "id": "advanced-express",
+      "title": "Advanced Express",
+      "topics": [
+        { "id": "websockets", "title": "WebSockets with Express" },
+        { "id": "microservices", "title": "Microservices Architecture" },
+        { "id": "event-driven", "title": "Event-Driven Systems" },
+        { "id": "dependency-injection", "title": "Dependency Injection" },
+        { "id": "express-best-practices", "title": "Express Best Practices" }
+      ]
+    },
+    {
+      "id": "interview-preparation",
+      "title": "Interview Preparation",
+      "topics": [
+        { "id": "express-beginner", "title": "Beginner Questions" },
+        { "id": "express-intermediate", "title": "Intermediate Questions" },
+        { "id": "express-advanced", "title": "Advanced Questions" },
+        { "id": "express-scenarios", "title": "Scenario-Based Questions" },
+        { "id": "express-debugging", "title": "Troubleshooting Questions" },
+        { "id": "express-system-design", "title": "Backend Design Questions" }
+      ]
+    }
+  ]
+}

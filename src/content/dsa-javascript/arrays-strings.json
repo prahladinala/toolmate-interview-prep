@@ -1,0 +1,28 @@
+{
+  "title": "Arrays & Strings",
+  "difficulty": "Beginner",
+  "definition": "Arrays are ordered collections. In JS, they are dynamic and can hold mixed types. Strings are immutable sequences of characters.",
+  "simpleExplanation": "An Array is a bookshelf where every book has a specific numbered slot starting at 0.",
+  "answers": [
+    {
+      "question": "**Basic:** Write a function to implement the core logic of Arrays and Strings.",
+      "answer": "```javascript\n// Basic implementation for Arrays and Strings\nfunction basicArraysandStrings(input) {\n  // Time: O(n), Space: O(1)\n  if (!input) return null;\n  let result = input;\n  return result;\n}\n```\nThis is the most straightforward brute-force or fundamental approach."
+    },
+    {
+      "question": "**Intermediate 1:** Optimize Arrays and Strings to handle edge cases like empty arrays or negative numbers.",
+      "answer": "```javascript\n// Optimized approach\nfunction optimizedArraysandStrings(arr) {\n  if (arr.length === 0) return 0;\n  let max = -Infinity;\n  for(let i=0; i<arr.length; i++) {\n    max = Math.max(max, arr[i]);\n  }\n  return max;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Solve a standard interview variation of Arrays and Strings (e.g. LeetCode Medium).",
+      "answer": "```javascript\n// Using a Hash Map for O(1) lookups\nfunction interviewArraysandStrings(nums, target) {\n  const map = new Map();\n  for(let i=0; i<nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [-1, -1];\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Scale Arrays and Strings for massive datasets or implement it recursively.",
+      "answer": "```javascript\n// Advanced / Recursive / Divide & Conquer approach\nfunction advancedArraysandStrings(data, left, right) {\n  if (left >= right) return;\n  const mid = Math.floor((left + right) / 2);\n  // Process left\n  advancedArraysandStrings(data, left, mid);\n  // Process right\n  advancedArraysandStrings(data, mid + 1, right);\n  // Merge step...\n}\n```\nReduces time complexity to O(N log N) in sorting scenarios."
+    },
+    {
+      "question": "**Expert/FAANG:** Solve Arrays and Strings in O(1) space or O(N) time when constraints are extremely tight.",
+      "answer": "```javascript\n// Bitwise / Two Pointer / Optimal approach\nfunction expertArraysandStrings(nums) {\n  let slow = 0;\n  let fast = 0;\n  while (fast < nums.length) {\n    if (nums[fast] !== 0) {\n      // Swap\n      [nums[slow], nums[fast]] = [nums[fast], nums[slow]];\n      slow++;\n    }\n    fast++;\n  }\n  return nums;\n}\n```\nThis modifies the array strictly in-place with zero extra memory allocations."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Compression Middleware",
+  "codeExample": "const compression = require('compression');\nconst express = require('express');\nconst app = express();\n\n// Compress all responses\napp.use(compression());\n\n// A 100kb JSON response might be compressed down to 15kb!\napp.get('/huge-data', (req, res) => {\n  res.json(hugeDataArray);\n});",
+  "definition": "The `compression` middleware compresses the HTTP response bodies for all requests that traverse through it. Compressing JSON data or HTML can drastically reduce the payload size, making your API significantly faster for clients on slow networks.",
+  "simpleExplanation": "The `compression` middleware compresses the HTTP response bodies for all requests that traverse through it.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Compression Middleware in Express.js?",
+      "How do you initialize Compression Middleware?"
+    ],
+    "intermediate": [
+      "How does Compression Middleware integrate with other middleware components?",
+      "Can you explain a common use case for Compression Middleware?"
+    ],
+    "advanced": [
+      "What are the performance implications of Compression Middleware in a high-traffic production application?",
+      "How would you debug issues related to Compression Middleware?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Compression Middleware without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Compression Middleware in your own words.",
+      "answer": "The `compression` middleware compresses the HTTP response bodies for all requests that traverse through it."
+    },
+    {
+      "question": "When should you avoid using Compression Middleware?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

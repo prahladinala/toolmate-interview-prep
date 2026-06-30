@@ -1,0 +1,35 @@
+{
+  "title": "Request Object (req)",
+  "codeExample": "app.get('/info', (req, res) => {\n  console.log('URL:', req.url);\n  console.log('Method:', req.method);\n  console.log('Headers:', req.headers);\n  console.log('IP Address:', req.ip);\n  \n  res.send('Check server console for Request info');\n});",
+  "definition": "The `req` object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and more. It is an enhanced version of Node's core `http.IncomingMessage` object.",
+  "simpleExplanation": "The `req` object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and more.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Request Object (req) in Express.js?",
+      "How do you initialize Request Object (req)?"
+    ],
+    "intermediate": [
+      "How does Request Object (req) integrate with other middleware components?",
+      "Can you explain a common use case for Request Object (req)?"
+    ],
+    "advanced": [
+      "What are the performance implications of Request Object (req) in a high-traffic production application?",
+      "How would you debug issues related to Request Object (req)?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Request Object (req) without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Request Object (req) in your own words.",
+      "answer": "The `req` object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and more."
+    },
+    {
+      "question": "When should you avoid using Request Object (req)?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "State Normalization",
+  "difficulty": "Expert",
+  "definition": "Normalization is the process of flattening deeply nested JSON responses into relational dictionaries (using IDs as keys). This ensures data consistency (a user object only exists in one place in memory) and prevents excessive re-renders.",
+  "simpleExplanation": "Instead of a User having an array of embedded Post objects, the User just has an array of Post IDs. You look up the actual Post data in a separate 'Posts' dictionary.",
+  "questions": {
+    "basic": [
+      "How does State Normalization fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of State Normalization?"
+    ],
+    "advanced": [
+      "How does State Normalization scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where State Normalization is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define State Normalization.",
+      "answer": "State Normalization is essential for complex frontend applications."
+    }
+  ]
+}

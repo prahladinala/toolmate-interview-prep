@@ -1,0 +1,35 @@
+{
+  "title": "PUT Method",
+  "codeExample": "app.put('/api/users/:id', (req, res) => {\n  const userId = req.params.id;\n  const updatedUser = req.body;\n  \n  // Completely replaces the user record with the new payload\n  \n  res.json({\n    message: `User ${userId} fully updated`,\n    user: updatedUser\n  });\n});",
+  "definition": "The PUT method replaces all current representations of the target resource with the request payload. It is used to perform a complete overwrite/update of an existing resource. If you only provide half the data in a PUT request, the other half is technically supposed to be wiped out.",
+  "simpleExplanation": "The PUT method replaces all current representations of the target resource with the request payload.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of PUT Method in Express.js?",
+      "How do you initialize PUT Method?"
+    ],
+    "intermediate": [
+      "How does PUT Method integrate with other middleware components?",
+      "Can you explain a common use case for PUT Method?"
+    ],
+    "advanced": [
+      "What are the performance implications of PUT Method in a high-traffic production application?",
+      "How would you debug issues related to PUT Method?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as PUT Method without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define PUT Method in your own words.",
+      "answer": "The PUT method replaces all current representations of the target resource with the request payload."
+    },
+    {
+      "question": "When should you avoid using PUT Method?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

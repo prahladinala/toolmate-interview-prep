@@ -1,0 +1,35 @@
+{
+  "title": "Helmet.js",
+  "terminalOutput": "$ npm install helmet\n\n// Usage:\n// const helmet = require('helmet');\n// app.use(helmet());",
+  "definition": "Helmet helps secure your Express apps by setting various HTTP headers. It mitigates common web vulnerabilities like Clickjacking, XSS attacks, and MIME-sniffing by wrapping 15 smaller middleware functions.",
+  "simpleExplanation": "Helmet helps secure your Express apps by setting various HTTP headers.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Helmet.js in Express.js?",
+      "How do you initialize Helmet.js?"
+    ],
+    "intermediate": [
+      "How does Helmet.js integrate with other middleware components?",
+      "Can you explain a common use case for Helmet.js?"
+    ],
+    "advanced": [
+      "What are the performance implications of Helmet.js in a high-traffic production application?",
+      "How would you debug issues related to Helmet.js?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Helmet.js without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Helmet.js in your own words.",
+      "answer": "Helmet helps secure your Express apps by setting various HTTP headers."
+    },
+    {
+      "question": "When should you avoid using Helmet.js?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

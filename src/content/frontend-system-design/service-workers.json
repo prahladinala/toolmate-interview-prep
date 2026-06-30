@@ -1,0 +1,27 @@
+{
+  "title": "Service Workers",
+  "difficulty": "Advanced",
+  "definition": "A Service Worker is a type of web worker. It is a JavaScript file that runs separately from the main browser thread, intercepting network requests, caching or retrieving resources, and delivering push messages.",
+  "simpleExplanation": "A middleman between your website and the internet. If the internet dies, the middleman instantly hands the website a saved copy of the data.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Service Workers?"
+    ],
+    "intermediate": [
+      "How does Service Workers impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Service Workers across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Service Workers be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Service Workers.",
+      "answer": "Service Workers is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

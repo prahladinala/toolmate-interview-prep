@@ -1,0 +1,35 @@
+{
+  "title": "Database Connections",
+  "codeExample": "const mongoose = require('mongoose');\nconst express = require('express');\nconst app = express();\n\n// Connect ONCE when the server boots\nmongoose.connect('mongodb://localhost:27017/myapp')\n  .then(() => {\n    console.log('DB connection successful!');\n    // Only start accepting web requests after DB is ready\n    app.listen(3000, () => console.log('Server running'));\n  })\n  .catch(err => console.error('DB connection error', err));",
+  "definition": "When connecting to a database, you should never establish a new connection on every single HTTP request. Instead, establish a persistent connection when the server boots up, or use a Connection Pool to reuse existing TCP connections for better performance.",
+  "simpleExplanation": "When connecting to a database, you should never establish a new connection on every single HTTP request.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Database Connections in Express.js?",
+      "How do you initialize Database Connections?"
+    ],
+    "intermediate": [
+      "How does Database Connections integrate with other middleware components?",
+      "Can you explain a common use case for Database Connections?"
+    ],
+    "advanced": [
+      "What are the performance implications of Database Connections in a high-traffic production application?",
+      "How would you debug issues related to Database Connections?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Database Connections without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Database Connections in your own words.",
+      "answer": "When connecting to a database, you should never establish a new connection on every single HTTP request."
+    },
+    {
+      "question": "When should you avoid using Database Connections?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

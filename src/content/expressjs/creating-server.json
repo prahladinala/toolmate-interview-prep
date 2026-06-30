@@ -1,0 +1,35 @@
+{
+  "title": "Creating an Express Server",
+  "codeExample": "const express = require('express');\nconst app = express();\nconst PORT = 3000;\n\n// Basic Route\napp.get('/status', (req, res) => {\n  res.json({ status: 'Server is running', port: PORT });\n});\n\n// Boot the server\napp.listen(PORT, () => {\n  console.log(`Server listening at http://localhost:${PORT}`);\n});",
+  "definition": "Creating an Express server involves importing the `express` module, initializing an `app` object, defining at least one route, and telling the app to `listen` on a specific network port. The `app.listen()` function binds and listens for connections on the specified host and port. It is essentially a wrapper around Node's core `http.Server.listen()` method.",
+  "simpleExplanation": "Creating an Express server involves importing the `express` module, initializing an `app` object, defining at least one route, and telling the app to `listen` on a specific network port.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Creating an Express Server in Express.js?",
+      "How do you initialize Creating an Express Server?"
+    ],
+    "intermediate": [
+      "How does Creating an Express Server integrate with other middleware components?",
+      "Can you explain a common use case for Creating an Express Server?"
+    ],
+    "advanced": [
+      "What are the performance implications of Creating an Express Server in a high-traffic production application?",
+      "How would you debug issues related to Creating an Express Server?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Creating an Express Server without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Creating an Express Server in your own words.",
+      "answer": "Creating an Express server involves importing the `express` module, initializing an `app` object, defining at least one route, and telling the app to `listen` on a specific network port."
+    },
+    {
+      "question": "When should you avoid using Creating an Express Server?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

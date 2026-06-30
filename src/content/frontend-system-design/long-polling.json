@@ -1,0 +1,34 @@
+{
+  "title": "Long Polling",
+  "difficulty": "Intermediate",
+  "definition": "In Long Polling, the client makes a request, but the server intentionally holds the connection open until it actually has new data to send. Once sent, the client immediately opens a new long-polling connection.",
+  "simpleExplanation": "Asking 'Are we there yet?' but the parents don't answer until 3 hours later when they finally arrive.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Long Polling?",
+      "What are the pros and cons of Long Polling?"
+    ],
+    "intermediate": [
+      "How does Long Polling impact SEO and initial page load times?",
+      "When would you NOT choose to use Long Polling?"
+    ],
+    "advanced": [
+      "How does Long Polling fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Long Polling?"
+    ],
+    "trick": [
+      "Can you combine Long Polling with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Long Polling.",
+      "answer": "Long Polling is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Long Polling?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

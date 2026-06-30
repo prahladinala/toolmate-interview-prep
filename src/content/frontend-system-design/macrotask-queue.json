@@ -1,0 +1,34 @@
+{
+  "title": "Macrotasks",
+  "difficulty": "Advanced",
+  "definition": "The Macrotask Queue (or just Task Queue) handles DOM events, `setTimeout`, `setInterval`, network requests, and I/O. The Event Loop only processes ONE macrotask per cycle, pausing to allow browser rendering between tasks.",
+  "simpleExplanation": "Macrotasks are regular chores. You do one chore (like fetching data), then check if the house needs painting (rendering), then do the next chore (like a setTimeout).",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Macrotask Queue?",
+      "Why is Macrotask Queue important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Macrotask Queue impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Macrotask Queue."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Macrotask Queue?",
+      "What are the security implications of Macrotask Queue?"
+    ],
+    "trick": [
+      "Can Macrotask Queue be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Macrotask Queue.",
+      "answer": "Macrotask Queue is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Macrotask Queue?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

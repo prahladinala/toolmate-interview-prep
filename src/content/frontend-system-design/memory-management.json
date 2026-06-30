@@ -1,0 +1,34 @@
+{
+  "title": "Memory Management",
+  "difficulty": "Advanced",
+  "definition": "Memory management involves allocating memory for variables and objects, and releasing it when it's no longer needed. In JS, primitive values are stored on the Stack, while objects/arrays are dynamically allocated on the Heap.",
+  "simpleExplanation": "The Stack is a perfectly organized filing cabinet for small, predictable data (numbers, strings). The Heap is a messy warehouse for large, complex data (objects, arrays).",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Memory Management?",
+      "Why is Memory Management important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Memory Management impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Memory Management."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Memory Management?",
+      "What are the security implications of Memory Management?"
+    ],
+    "trick": [
+      "Can Memory Management be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Memory Management.",
+      "answer": "Memory Management is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Memory Management?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

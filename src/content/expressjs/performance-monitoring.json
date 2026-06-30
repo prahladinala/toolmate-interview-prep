@@ -1,0 +1,35 @@
+{
+  "title": "Performance Monitoring",
+  "terminalOutput": "$ npm install @sentry/node\n\n// Sentry tracks every error and unhandled promise rejection\n// in your Express app and sends it to a cloud dashboard.",
+  "definition": "Monitoring involves tracking response times, memory usage, CPU spikes, and error rates in production. Tools like New Relic, Datadog, or Sentry integrate seamlessly with Express via middleware to provide real-time dashboards.",
+  "simpleExplanation": "Monitoring involves tracking response times, memory usage, CPU spikes, and error rates in production.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Performance Monitoring in Express.js?",
+      "How do you initialize Performance Monitoring?"
+    ],
+    "intermediate": [
+      "How does Performance Monitoring integrate with other middleware components?",
+      "Can you explain a common use case for Performance Monitoring?"
+    ],
+    "advanced": [
+      "What are the performance implications of Performance Monitoring in a high-traffic production application?",
+      "How would you debug issues related to Performance Monitoring?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Performance Monitoring without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Performance Monitoring in your own words.",
+      "answer": "Monitoring involves tracking response times, memory usage, CPU spikes, and error rates in production."
+    },
+    {
+      "question": "When should you avoid using Performance Monitoring?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

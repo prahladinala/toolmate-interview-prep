@@ -1,0 +1,29 @@
+{
+  "title": "Design WhatsApp Web",
+  "difficulty": "Expert",
+  "definition": "WhatsApp Web requires robust WebSocket architecture for real-time messaging, local IndexedDB storage for offline viewing and caching massive chat histories, and End-to-End Encryption (Web Crypto API).",
+  "simpleExplanation": "A chat app that must instantly receive messages, store them permanently on your local hard drive, and encrypt them so nobody else can read them.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for WhatsApp Web?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in WhatsApp Web?"
+    ],
+    "advanced": [
+      "How do you scale and optimize WhatsApp Web for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to WhatsApp Web if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define WhatsApp Web.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  ClientA[User A Phone] -->|WebSocket| WSGateway[WS Gateway]\n  WSGateway --> PubSub[Pub/Sub Redis]\n  PubSub --> WSGateway2[WS Gateway]\n  WSGateway2 -->|WebSocket| ClientB[User B Phone]\n  ClientA -->|Offline Sync| Sync[Sync Service]\n  Sync --> DB[(Cassandra DB)]"
+}

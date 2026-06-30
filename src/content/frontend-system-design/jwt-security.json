@@ -1,0 +1,35 @@
+{
+  "title": "JWT Security",
+  "difficulty": "Advanced",
+  "definition": "JSON Web Tokens are stateless authentication tokens. Storing them in localStorage makes them completely vulnerable to XSS. They must be stored in `HttpOnly`, `Secure`, `SameSite` cookies.",
+  "simpleExplanation": "If you leave your house key (JWT) on the welcome mat (localStorage), anyone can steal it. Put it in a locked mailbox (HttpOnly Cookie) that only the mailman (the browser) can access.",
+  "terminalOutput": "// SECURE COOKIE CONFIGURATION (Node.js)\nres.cookie('token', jwtToken, {\n  httpOnly: true,  // Prevents JS access (Beats XSS)\n  secure: true,    // Only sent over HTTPS\n  sameSite: 'strict', // Prevents sending cross-site (Beats CSRF)\n  maxAge: 3600000\n});",
+  "questions": {
+    "basic": [
+      "What is the core concept of JWT Security?",
+      "What are the pros and cons of JWT Security?"
+    ],
+    "intermediate": [
+      "How does JWT Security impact SEO and initial page load times?",
+      "When would you NOT choose to use JWT Security?"
+    ],
+    "advanced": [
+      "How does JWT Security fit into a heavily scaled microservices architecture?",
+      "What are the security implications of JWT Security?"
+    ],
+    "trick": [
+      "Can you combine JWT Security with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define JWT Security.",
+      "answer": "JWT Security is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of JWT Security?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

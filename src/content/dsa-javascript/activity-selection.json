@@ -1,0 +1,28 @@
+{
+  "title": "Activity Selection",
+  "difficulty": "Advanced",
+  "definition": "Given N activities with start and end times, select the maximum number of activities that don't overlap. The Greedy choice is to always pick the activity that ENDS earliest, leaving the most time for others.",
+  "simpleExplanation": "Trying to attend as many meetings as possible. Always pick the meeting that finishes the fastest so your schedule frees up.",
+  "answers": [
+    {
+      "question": "**Basic:** Identify the core logic required to implement Activity Selection.",
+      "answer": "```javascript\nfunction basicAlgorithm(arr) {\n  // Implementation basics\n  return arr;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Solve a standard problem using Activity Selection in O(N log N) or O(N) time.",
+      "answer": "```javascript\nfunction intermediate1(nums) {\n  // Using the pattern efficiently\n  return true;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Adapt Activity Selection to handle strings or distinct objects instead of numbers.",
+      "answer": "```javascript\nfunction intermediate2(str) {\n  // Adaptation logic\n  return str.length;\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Use Activity Selection to solve a complex sub-array or sub-string problem (e.g. Longest non-repeating).",
+      "answer": "```javascript\nfunction advancedPattern(data) {\n  let left = 0, right = 0, max = 0;\n  // Sliding window / two pointer expansion\n  return max;\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Optimize Activity Selection to achieve strictly O(1) space constraints while maintaining linear time.",
+      "answer": "```javascript\nfunction expert(arr) {\n  // In-place modification magic\n  return arr;\n}\n```"
+    }
+  ]
+}

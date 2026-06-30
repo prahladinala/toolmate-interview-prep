@@ -1,0 +1,27 @@
+{
+  "title": "Offline Storage Strategies",
+  "difficulty": "Advanced",
+  "definition": "Storing data for offline use primarily relies on IndexedDB for JSON/structured data, and the Cache API for static assets (HTML/CSS/JS). LocalStorage is blocked inside Service Workers because it is synchronous.",
+  "simpleExplanation": "You need massive filing cabinets (IndexedDB) and a warehouse for pictures (Cache API) to hold all the data the user might need if their internet drops.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Offline Storage?"
+    ],
+    "intermediate": [
+      "How does Offline Storage impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Offline Storage across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Offline Storage be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Offline Storage.",
+      "answer": "Offline Storage is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

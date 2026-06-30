@@ -1,0 +1,34 @@
+{
+  "title": "WebSocket Communication",
+  "difficulty": "Advanced",
+  "definition": "WebSockets upgrade an HTTP connection into a persistent TCP connection, allowing real-time, bidirectional, event-driven communication.",
+  "simpleExplanation": "A dedicated phone line between the browser and the server that stays open 24/7.",
+  "questions": {
+    "basic": [
+      "What is the core concept of WebSockets?",
+      "What are the pros and cons of WebSockets?"
+    ],
+    "intermediate": [
+      "How does WebSockets impact SEO and initial page load times?",
+      "When would you NOT choose to use WebSockets?"
+    ],
+    "advanced": [
+      "How does WebSockets fit into a heavily scaled microservices architecture?",
+      "What are the security implications of WebSockets?"
+    ],
+    "trick": [
+      "Can you combine WebSockets with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define WebSockets.",
+      "answer": "WebSockets is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of WebSockets?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

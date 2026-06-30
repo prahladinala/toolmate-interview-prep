@@ -1,0 +1,34 @@
+{
+  "title": "Paint",
+  "difficulty": "Advanced",
+  "definition": "Painting is the process of filling in pixels. It involves drawing text, colors, images, borders, and shadows. Painting is typically done on multiple 'layers'.",
+  "simpleExplanation": "Painting is taking a digital paintbrush and coloring in the boxes that were calculated during the Layout phase.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Paint Phase?",
+      "Why is Paint Phase important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Paint Phase impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Paint Phase."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Paint Phase?",
+      "What are the security implications of Paint Phase?"
+    ],
+    "trick": [
+      "Can Paint Phase be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Paint Phase.",
+      "answer": "Paint Phase is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Paint Phase?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

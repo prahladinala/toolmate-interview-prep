@@ -1,0 +1,29 @@
+{
+  "title": "Design Accordion",
+  "difficulty": "Intermediate",
+  "definition": "Designing an Accordion requires managing active panel state, ensuring ARIA attributes (`aria-expanded`, `aria-controls`) toggle correctly, and implementing smooth CSS transitions for dynamic height.",
+  "simpleExplanation": "A list of questions where clicking one expands it to show the answer, pushing the others down.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Accordion Component?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Accordion Component?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Accordion Component for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Accordion Component if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Accordion Component.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "stateDiagram-v2\n  [*] --> Collapsed\n  Collapsed --> Expanded : Click Header\n  Expanded --> Collapsed : Click Header\n  Expanded --> Collapsed : Click Other Panel"
+}

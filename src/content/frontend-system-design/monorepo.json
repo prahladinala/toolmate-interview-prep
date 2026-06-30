@@ -1,0 +1,34 @@
+{
+  "title": "Monorepo Architecture",
+  "difficulty": "Advanced",
+  "definition": "A Monorepo is a single Git repository containing multiple distinct projects (e.g., frontend, backend, shared UI library) with well-defined relationships. Tools like Nx or Turborepo manage dependencies and heavily cache builds.",
+  "simpleExplanation": "Putting all your company's code into one giant folder so that when you update a button color, you instantly see it update in both the customer app and the admin app.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Monorepos?",
+      "What are the pros and cons of Monorepos?"
+    ],
+    "intermediate": [
+      "How does Monorepos impact SEO and initial page load times?",
+      "When would you NOT choose to use Monorepos?"
+    ],
+    "advanced": [
+      "How does Monorepos fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Monorepos?"
+    ],
+    "trick": [
+      "Can you combine Monorepos with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Monorepos.",
+      "answer": "Monorepos is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Monorepos?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Progressive Web Apps",
+  "difficulty": "Intermediate",
+  "definition": "PWAs are web applications that use modern web APIs (like Service Workers and Web App Manifests) to provide an installable, app-like experience (offline capabilities, push notifications) on desktop and mobile devices.",
+  "simpleExplanation": "A website that you can 'Install' to your phone's home screen, and it works perfectly even when you're on airplane mode.",
+  "questions": {
+    "basic": [
+      "What is the core concept of PWAs?"
+    ],
+    "intermediate": [
+      "How does PWAs impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale PWAs across a large enterprise application?"
+    ],
+    "trick": [
+      "Can PWAs be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define PWAs.",
+      "answer": "PWAs is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

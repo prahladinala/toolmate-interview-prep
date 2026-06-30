@@ -1,0 +1,51 @@
+{
+  "title": "Core Web Vitals",
+  "difficulty": "Intermediate",
+  "definition": "Core Web Vitals are an initiative by Google providing unified metrics to measure user experience on the web. They primarily focus on loading speed (LCP), interactivity (INP), and visual stability (CLS).",
+  "simpleExplanation": "Google's official report card for your website. If you fail, Google pushes your site down in the search rankings.",
+  "tableData": {
+    "headers": [
+      "Metric",
+      "Measures",
+      "Good Score"
+    ],
+    "rows": [
+      [
+        "LCP",
+        "Loading Performance",
+        "< 2.5 seconds"
+      ],
+      [
+        "INP",
+        "Interactivity / Responsiveness",
+        "< 200 ms"
+      ],
+      [
+        "CLS",
+        "Visual Stability",
+        "< 0.1"
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "How does Core Web Vitals fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Core Web Vitals?"
+    ],
+    "advanced": [
+      "How does Core Web Vitals scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Core Web Vitals is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Core Web Vitals.",
+      "answer": "Core Web Vitals is essential for complex frontend applications."
+    }
+  ]
+}

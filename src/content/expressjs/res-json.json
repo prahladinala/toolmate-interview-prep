@@ -1,0 +1,35 @@
+{
+  "title": "res.json()",
+  "codeExample": "app.get('/api/users', (req, res) => {\n  const users = [\n    { id: 1, name: 'Alice' },\n    { id: 2, name: 'Bob' }\n  ];\n  \n  // Automatically sets Content-Type: application/json\n  // Automatically serializes array to JSON string\n  res.json(users);\n});",
+  "definition": "Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using `JSON.stringify()`. It's the standard method used when building REST APIs.",
+  "simpleExplanation": "Sends a JSON response.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of res.json() in Express.js?",
+      "How do you initialize res.json()?"
+    ],
+    "intermediate": [
+      "How does res.json() integrate with other middleware components?",
+      "Can you explain a common use case for res.json()?"
+    ],
+    "advanced": [
+      "What are the performance implications of res.json() in a high-traffic production application?",
+      "How would you debug issues related to res.json()?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as res.json() without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define res.json() in your own words.",
+      "answer": "Sends a JSON response."
+    },
+    {
+      "question": "When should you avoid using res.json()?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

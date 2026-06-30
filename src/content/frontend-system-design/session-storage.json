@@ -1,0 +1,27 @@
+{
+  "title": "Session Storage",
+  "difficulty": "Beginner",
+  "definition": "SessionStorage is identical to LocalStorage, except it is cleared the moment the specific browser tab is closed.",
+  "simpleExplanation": "A digital notebook that gets thrown in the trash the exact second you close the tab.",
+  "questions": {
+    "basic": [
+      "How does Session Storage fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Session Storage?"
+    ],
+    "advanced": [
+      "How does Session Storage scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Session Storage is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Session Storage.",
+      "answer": "Session Storage is essential for complex frontend applications."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Bellman Ford",
+  "difficulty": "Expert",
+  "definition": "Finds shortest paths in graphs that MAY contain negative edge weights. If you run it V times and it still updates, it detects a Negative Weight Cycle.",
+  "simpleExplanation": "Like Google Maps, but if you drive down a certain road, you actually get paid money (negative weight). It makes sure you don't just drive in an infinite circle to get infinitely rich.",
+  "answers": [
+    {
+      "question": "**Basic:** Describe the fundamental approach for Bellman Ford.",
+      "answer": "```javascript\nfunction basicDP(n) {\n  // Implement the recursive base cases\n  return n;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 1:** Add Memoization (Top-Down) to Bellman Ford to prevent redundant calculations.",
+      "answer": "```javascript\nfunction memoizedDP(n, memo = {}) {\n  if (n in memo) return memo[n];\n  // Computation...\n  memo[n] = result;\n  return result;\n}\n```"
+    },
+    {
+      "question": "**Intermediate 2:** Convert Bellman Ford into a Tabulation (Bottom-Up) approach.",
+      "answer": "```javascript\nfunction tabulatedDP(n) {\n  const dp = new Array(n + 1).fill(0);\n  dp[0] = 0;\n  // Bottom-up computation loop...\n  return dp[n];\n}\n```"
+    },
+    {
+      "question": "**Advanced:** Solve a 2D matrix or multi-state problem using Bellman Ford.",
+      "answer": "```javascript\nfunction advancedDP(matrix) {\n  // 2D DP array\n  const dp = Array.from({length: m}, () => new Array(n).fill(0));\n  return dp[m-1][n-1];\n}\n```"
+    },
+    {
+      "question": "**Expert/FAANG:** Optimize the space complexity of Bellman Ford from O(N) to O(1) or O(N^2) to O(N).",
+      "answer": "```javascript\nfunction expertDP(n) {\n  // Instead of an entire array, just keep the last 2 variables\n  let prev = 0, curr = 1;\n  // Iterate and swap\n  return curr;\n}\n```"
+    }
+  ]
+}

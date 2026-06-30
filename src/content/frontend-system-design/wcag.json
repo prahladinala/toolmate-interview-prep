@@ -1,0 +1,27 @@
+{
+  "title": "WCAG Guidelines",
+  "difficulty": "Beginner",
+  "definition": "The Web Content Accessibility Guidelines (WCAG) are international standards defining how to make web content more accessible to people with disabilities. They are organized around 4 principles: Perceivable, Operable, Understandable, Robust (POUR).",
+  "simpleExplanation": "The rulebook that ensures blind, deaf, or motor-impaired users can successfully use your website without being blocked.",
+  "questions": {
+    "basic": [
+      "What is the core concept of WCAG?"
+    ],
+    "intermediate": [
+      "How does WCAG impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale WCAG across a large enterprise application?"
+    ],
+    "trick": [
+      "Can WCAG be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define WCAG.",
+      "answer": "WCAG is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

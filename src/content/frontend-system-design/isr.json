@@ -1,0 +1,34 @@
+{
+  "title": "Incremental Static Regeneration",
+  "difficulty": "Advanced",
+  "definition": "ISR allows you to create or update static pages after you've built your site. You define a revalidation time (e.g., 60 seconds). When a request comes in after 60s, the CDN serves the stale page but triggers a background rebuild of that specific page.",
+  "simpleExplanation": "It's SSG, but with an expiration timer. Once the timer expires, the next user gets the old page, but it secretly tells the server to bake a fresh page for everyone who comes after them.",
+  "questions": {
+    "basic": [
+      "What is the core concept of ISR?",
+      "What are the pros and cons of ISR?"
+    ],
+    "intermediate": [
+      "How does ISR impact SEO and initial page load times?",
+      "When would you NOT choose to use ISR?"
+    ],
+    "advanced": [
+      "How does ISR fit into a heavily scaled microservices architecture?",
+      "What are the security implications of ISR?"
+    ],
+    "trick": [
+      "Can you combine ISR with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define ISR.",
+      "answer": "ISR is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of ISR?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

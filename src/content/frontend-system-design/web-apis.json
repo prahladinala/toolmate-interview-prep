@@ -1,0 +1,34 @@
+{
+  "title": "Browser Web APIs",
+  "difficulty": "Intermediate",
+  "definition": "Web APIs are threads provided by the browser environment (not the JS engine itself) that handle asynchronous operations like `fetch`, `setTimeout`, and DOM events outside the main JS thread.",
+  "simpleExplanation": "JavaScript is a manager who delegates slow tasks (like fetching a file) to his assistants (Web APIs). When the assistant finishes, they put the result in the Task Queue for the manager to look at later.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of Browser Web APIs?",
+      "Why is Browser Web APIs important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does Browser Web APIs impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to Browser Web APIs."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize Browser Web APIs?",
+      "What are the security implications of Browser Web APIs?"
+    ],
+    "trick": [
+      "Can Browser Web APIs be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Browser Web APIs.",
+      "answer": "Browser Web APIs is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for Browser Web APIs?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

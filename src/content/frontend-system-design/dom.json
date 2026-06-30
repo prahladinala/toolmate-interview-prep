@@ -1,0 +1,34 @@
+{
+  "title": "DOM Construction",
+  "difficulty": "Intermediate",
+  "definition": "The Document Object Model (DOM) is an object-oriented representation of the web page. The browser parses HTML bytes into characters, characters into tokens, tokens into nodes, and nodes into the DOM tree.",
+  "simpleExplanation": "The DOM is a family tree of your HTML. The <html> tag is the grandparent, <body> is the parent, and <div> tags are the children.",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of DOM Construction?",
+      "Why is DOM Construction important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does DOM Construction impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to DOM Construction."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize DOM Construction?",
+      "What are the security implications of DOM Construction?"
+    ],
+    "trick": [
+      "Can DOM Construction be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define DOM Construction.",
+      "answer": "DOM Construction is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for DOM Construction?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

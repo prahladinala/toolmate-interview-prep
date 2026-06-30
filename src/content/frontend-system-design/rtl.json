@@ -1,0 +1,27 @@
+{
+  "title": "React Testing Library",
+  "difficulty": "Intermediate",
+  "definition": "RTL is a lightweight solution for testing React components. Its primary guiding principle is: 'The more your tests resemble the way your software is used, the more confidence they can give you.'",
+  "simpleExplanation": "Instead of testing the internal state variables of a component, RTL forces you to test what the user actually sees on the screen (like finding a button by its text).",
+  "questions": {
+    "basic": [
+      "What is the core concept of RTL?"
+    ],
+    "intermediate": [
+      "How does RTL impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale RTL across a large enterprise application?"
+    ],
+    "trick": [
+      "Can RTL be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define RTL.",
+      "answer": "RTL is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

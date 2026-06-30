@@ -1,0 +1,34 @@
+{
+  "title": "Troubleshooting Questions",
+  "definition": "Debugging questions test your ability to fix broken code or identify why an application is behaving unexpectedly.\n\n### Scenario\n*\"A user complains that their request is hanging indefinitely and eventually timing out, but the server hasn't crashed. What is the most likely cause?\"*\n\n**Expected Answer:**\nA middleware function or route handler is likely missing a call to `next()`, `res.send()`, or `res.json()`. In Express, if you do not explicitly end the request-response cycle or pass control to the next middleware, the request will hang in limbo forever until the browser times out.",
+  "simpleExplanation": "Debugging questions test your ability to fix broken code or identify why an application is behaving unexpectedly.\n\n### Scenario\n*\"A user complains that their request is hanging indefinitely and eventually timing out, but the server hasn't crashed.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Troubleshooting Questions in Express.js?",
+      "How do you initialize Troubleshooting Questions?"
+    ],
+    "intermediate": [
+      "How does Troubleshooting Questions integrate with other middleware components?",
+      "Can you explain a common use case for Troubleshooting Questions?"
+    ],
+    "advanced": [
+      "What are the performance implications of Troubleshooting Questions in a high-traffic production application?",
+      "How would you debug issues related to Troubleshooting Questions?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Troubleshooting Questions without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Troubleshooting Questions in your own words.",
+      "answer": "Debugging questions test your ability to fix broken code or identify why an application is behaving unexpectedly.\n\n### Scenario\n*\"A user complains that their request is hanging indefinitely and eventually timing out, but the server hasn't crashed."
+    },
+    {
+      "question": "When should you avoid using Troubleshooting Questions?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Global State",
+  "difficulty": "Intermediate",
+  "definition": "Global state refers to data that needs to be accessed and updated by many different components across the entire application, avoiding prop drilling.",
+  "simpleExplanation": "Information everyone in the house needs to know, like 'Is the user logged in?' or 'What is the current dark mode theme?'",
+  "questions": {
+    "basic": [
+      "How does Global State fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Global State?"
+    ],
+    "advanced": [
+      "How does Global State scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Global State is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Global State.",
+      "answer": "Global State is essential for complex frontend applications."
+    }
+  ]
+}

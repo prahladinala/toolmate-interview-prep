@@ -1,0 +1,29 @@
+{
+  "title": "Design Amazon Product Page",
+  "difficulty": "Expert",
+  "definition": "An Amazon product page requires extreme SEO optimization (Server Side Rendering), Micro Frontends (one team builds the Reviews section, one builds the Buy Box), and extreme caching strategies.",
+  "simpleExplanation": "A single page where 5 different engineering teams are displaying 5 different widgets simultaneously, but it must load in under 1 second so you don't leave and buy the item somewhere else.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Amazon Product Page?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Amazon Product Page?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Amazon Product Page for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Amazon Product Page if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Amazon Product Page.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Client --> Edge[CDN Edge Node]\n  Edge --> Aggregator[Page Aggregator / SSR]\n  Aggregator --> Cart[Cart Microservice]\n  Aggregator --> Reviews[Reviews Microservice]\n  Aggregator --> Inventory[Inventory Service]"
+}

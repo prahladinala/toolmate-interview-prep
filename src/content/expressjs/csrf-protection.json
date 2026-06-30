@@ -1,0 +1,35 @@
+{
+  "title": "CSRF Protection",
+  "terminalOutput": "$ npm install csurf\n\n// Usage with Cookie-Parser is required to validate tokens",
+  "definition": "Cross-Site Request Forgery (CSRF) tricks a logged-in user's browser into sending a forged request to your API. To prevent this, APIs that rely on Cookies for authentication must implement anti-CSRF tokens.",
+  "simpleExplanation": "Cross-Site Request Forgery (CSRF) tricks a logged-in user's browser into sending a forged request to your API.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of CSRF Protection in Express.js?",
+      "How do you initialize CSRF Protection?"
+    ],
+    "intermediate": [
+      "How does CSRF Protection integrate with other middleware components?",
+      "Can you explain a common use case for CSRF Protection?"
+    ],
+    "advanced": [
+      "What are the performance implications of CSRF Protection in a high-traffic production application?",
+      "How would you debug issues related to CSRF Protection?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as CSRF Protection without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CSRF Protection in your own words.",
+      "answer": "Cross-Site Request Forgery (CSRF) tricks a logged-in user's browser into sending a forged request to your API."
+    },
+    {
+      "question": "When should you avoid using CSRF Protection?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

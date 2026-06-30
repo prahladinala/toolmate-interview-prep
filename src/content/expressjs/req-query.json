@@ -1,0 +1,35 @@
+{
+  "title": "req.query",
+  "codeExample": "// GET /search?q=tacos&limit=10\napp.get('/search', (req, res) => {\n  const searchTerm = req.query.q;\n  const limit = parseInt(req.query.limit, 10) || 20;\n  \n  res.json({\n    searchingFor: searchTerm,\n    maxResults: limit\n  });\n});",
+  "definition": "An object containing a property for each query string parameter in the route. If there is no query string, it is the empty object `{}`. Express automatically parses the query string for you.",
+  "simpleExplanation": "An object containing a property for each query string parameter in the route.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of req.query in Express.js?",
+      "How do you initialize req.query?"
+    ],
+    "intermediate": [
+      "How does req.query integrate with other middleware components?",
+      "Can you explain a common use case for req.query?"
+    ],
+    "advanced": [
+      "What are the performance implications of req.query in a high-traffic production application?",
+      "How would you debug issues related to req.query?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as req.query without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define req.query in your own words.",
+      "answer": "An object containing a property for each query string parameter in the route."
+    },
+    {
+      "question": "When should you avoid using req.query?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

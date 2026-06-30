@@ -1,0 +1,28 @@
+{
+  "title": "End to End Testing",
+  "difficulty": "Advanced",
+  "definition": "E2E testing involves spinning up a real automated browser, navigating to the URL, clicking real buttons, and interacting with the real database to ensure the entire flow (Client -> Server -> DB) works. Tools include Cypress and Playwright.",
+  "simpleExplanation": "Putting a crash test dummy in the fully built car, turning the key, and driving it into a wall to see if the airbags deploy.",
+  "codeExample": "/* Playwright E2E Test */\ntest('user can login', async ({ page }) => {\n  await page.goto('https://myapp.com/login');\n  await page.fill('input[name=\"email\"]', 'user@test.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.click('button[type=\"submit\"]');\n  await expect(page.locator('.dashboard')).toBeVisible();\n});",
+  "questions": {
+    "basic": [
+      "What is the core concept of E2E Testing?"
+    ],
+    "intermediate": [
+      "How does E2E Testing impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale E2E Testing across a large enterprise application?"
+    ],
+    "trick": [
+      "Can E2E Testing be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define E2E Testing.",
+      "answer": "E2E Testing is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

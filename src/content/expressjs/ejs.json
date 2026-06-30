@@ -1,0 +1,35 @@
+{
+  "title": "EJS (Embedded JavaScript)",
+  "codeExample": "// Setup\napp.set('view engine', 'ejs');\n\n// Route\napp.get('/profile', (req, res) => {\n  res.render('profile', { \n    user: 'Alice', \n    hobbies: ['Reading', 'Gaming'] \n  });\n});\n\n// views/profile.ejs file:\n/*\n<h1>Welcome <%= user %></h1>\n<ul>\n  <% hobbies.forEach(function(hobby){ %>\n    <li><%= hobby %></li>\n  <% }); %>\n</ul>\n*/",
+  "definition": "EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. It retains the exact syntax of HTML while allowing you to inject variables using `<%= variable %>` or run loops using `<% for(...) %>`.",
+  "simpleExplanation": "EJS is a simple templating language that lets you generate HTML markup with plain JavaScript.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of EJS (Embedded JavaScript) in Express.js?",
+      "How do you initialize EJS (Embedded JavaScript)?"
+    ],
+    "intermediate": [
+      "How does EJS (Embedded JavaScript) integrate with other middleware components?",
+      "Can you explain a common use case for EJS (Embedded JavaScript)?"
+    ],
+    "advanced": [
+      "What are the performance implications of EJS (Embedded JavaScript) in a high-traffic production application?",
+      "How would you debug issues related to EJS (Embedded JavaScript)?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as EJS (Embedded JavaScript) without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define EJS (Embedded JavaScript) in your own words.",
+      "answer": "EJS is a simple templating language that lets you generate HTML markup with plain JavaScript."
+    },
+    {
+      "question": "When should you avoid using EJS (Embedded JavaScript)?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Middleware Execution Order",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Start[Incoming Request] --> M1[app.use(express.json)]\n  M1 --> M2[app.use(cors)]\n  M2 --> Route[app.get('/api/data')]\n  Route --> End[res.send()]\n  Route -.-> M3[app.use(ErrorHandler)]\n  \n  style Route fill:#4285f4,stroke:#fff,color:#fff\n  style M3 fill:#ea4335,stroke:#fff,color:#fff",
+  "definition": "In Express, the order in which you define your middleware matters immensely. Middleware functions are executed sequentially in the exact top-to-bottom order they are declared in your code. If you place a logger middleware *after* a route handler that sends a response, the logger will never run.",
+  "simpleExplanation": "In Express, the order in which you define your middleware matters immensely.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Middleware Execution Order in Express.js?",
+      "How do you initialize Middleware Execution Order?"
+    ],
+    "intermediate": [
+      "How does Middleware Execution Order integrate with other middleware components?",
+      "Can you explain a common use case for Middleware Execution Order?"
+    ],
+    "advanced": [
+      "What are the performance implications of Middleware Execution Order in a high-traffic production application?",
+      "How would you debug issues related to Middleware Execution Order?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Middleware Execution Order without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Middleware Execution Order in your own words.",
+      "answer": "In Express, the order in which you define your middleware matters immensely."
+    },
+    {
+      "question": "When should you avoid using Middleware Execution Order?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

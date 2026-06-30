@@ -1,0 +1,35 @@
+{
+  "title": "Custom Error Classes",
+  "codeExample": "class AppError extends Error {\n  constructor(message, statusCode) {\n    super(message);\n    this.statusCode = statusCode;\n    this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';\n    this.isOperational = true;\n    Error.captureStackTrace(this, this.constructor);\n  }\n}\n\napp.get('/secret', (req, res, next) => {\n  next(new AppError('You do not have permission', 403));\n});",
+  "definition": "To make error handling professional, you should extend Node's built-in `Error` class to create custom operational errors (like `AppError`). This allows you to attach an HTTP status code or an 'isOperational' flag directly to the error object before throwing it.",
+  "simpleExplanation": "To make error handling professional, you should extend Node's built-in `Error` class to create custom operational errors (like `AppError`).",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Custom Error Classes in Express.js?",
+      "How do you initialize Custom Error Classes?"
+    ],
+    "intermediate": [
+      "How does Custom Error Classes integrate with other middleware components?",
+      "Can you explain a common use case for Custom Error Classes?"
+    ],
+    "advanced": [
+      "What are the performance implications of Custom Error Classes in a high-traffic production application?",
+      "How would you debug issues related to Custom Error Classes?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Custom Error Classes without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Custom Error Classes in your own words.",
+      "answer": "To make error handling professional, you should extend Node's built-in `Error` class to create custom operational errors (like `AppError`)."
+    },
+    {
+      "question": "When should you avoid using Custom Error Classes?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

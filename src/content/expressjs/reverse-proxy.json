@@ -1,0 +1,35 @@
+{
+  "title": "Nginx Reverse Proxy",
+  "terminalOutput": "# Nginx Configuration Example\nserver {\n    listen 80;\n    server_name myapp.com;\n\n    location / {\n        proxy_pass http://localhost:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n    }\n}",
+  "definition": "In production, it is highly recommended to run Express behind a reverse proxy like Nginx. Nginx handles SSL termination (HTTPS), serves static files 10x faster than Express, handles load balancing, and forwards standard HTTP requests to Express running on a local port.",
+  "simpleExplanation": "In production, it is highly recommended to run Express behind a reverse proxy like Nginx.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Nginx Reverse Proxy in Express.js?",
+      "How do you initialize Nginx Reverse Proxy?"
+    ],
+    "intermediate": [
+      "How does Nginx Reverse Proxy integrate with other middleware components?",
+      "Can you explain a common use case for Nginx Reverse Proxy?"
+    ],
+    "advanced": [
+      "What are the performance implications of Nginx Reverse Proxy in a high-traffic production application?",
+      "How would you debug issues related to Nginx Reverse Proxy?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Nginx Reverse Proxy without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Nginx Reverse Proxy in your own words.",
+      "answer": "In production, it is highly recommended to run Express behind a reverse proxy like Nginx."
+    },
+    {
+      "question": "When should you avoid using Nginx Reverse Proxy?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

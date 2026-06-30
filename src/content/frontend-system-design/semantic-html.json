@@ -1,0 +1,28 @@
+{
+  "title": "Semantic HTML",
+  "difficulty": "Beginner",
+  "definition": "Semantic HTML involves using HTML markup to reinforce the semantics (meaning) of the information in web pages, rather than merely defining its presentation (e.g., using `<nav>` instead of `<div class='nav'>`).",
+  "simpleExplanation": "Using the correct tags so screen readers understand that this text is a 'Button' and that text is the 'Main Heading', rather than just styling everything as a generic box (div).",
+  "codeExample": "<!-- BAD: Unsemantic -->\n<div class=\"button\" onclick=\"submit()\">Click Me</div>\n\n<!-- GOOD: Semantic (Screen readers announce it as a button, and it gets Keyboard focus automatically) -->\n<button type=\"submit\">Click Me</button>",
+  "questions": {
+    "basic": [
+      "What is the core concept of Semantic HTML?"
+    ],
+    "intermediate": [
+      "How does Semantic HTML impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Semantic HTML across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Semantic HTML be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Semantic HTML.",
+      "answer": "Semantic HTML is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

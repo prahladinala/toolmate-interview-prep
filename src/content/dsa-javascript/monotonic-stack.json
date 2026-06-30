@@ -1,0 +1,12 @@
+{
+  "title": "Monotonic Stack",
+  "difficulty": "Expert",
+  "definition": "A stack whose elements are strictly increasing or strictly decreasing. Used to solve problems finding the 'Next Greater Element' in O(N) time.",
+  "simpleExplanation": "A stack where you kick out any small numbers if a bigger number comes along, ensuring the stack only contains numbers getting larger.",
+  "answers": [
+    {
+      "question": "**Advanced:** Daily Temperatures (Next Greater Element)",
+      "answer": "```javascript\nfunction dailyTemperatures(temps) {\n  const res = new Array(temps.length).fill(0);\n  const stack = []; // stores indices\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length > 0 && temps[i] > temps[stack[stack.length - 1]]) {\n      const prevIndex = stack.pop();\n      res[prevIndex] = i - prevIndex;\n    }\n    stack.push(i);\n  }\n  return res;\n}\n```"
+    }
+  ]
+}

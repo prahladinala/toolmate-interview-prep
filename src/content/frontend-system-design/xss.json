@@ -1,0 +1,54 @@
+{
+  "title": "Cross Site Scripting (XSS)",
+  "difficulty": "Advanced",
+  "definition": "XSS occurs when an attacker injects malicious executable JavaScript into a trusted website. When a victim visits the page, their browser executes the script, which can steal session cookies or perform unauthorized actions.",
+  "simpleExplanation": "Someone writes a script in a public comment box. When you read the comment, the script secretly steals your login cookie and sends it to a hacker.",
+  "tableData": {
+    "headers": [
+      "XSS Type",
+      "Description"
+    ],
+    "rows": [
+      [
+        "Stored XSS",
+        "Malicious payload is saved in the database (e.g. comment section) and served to all users."
+      ],
+      [
+        "Reflected XSS",
+        "Payload is in the URL query string and reflected back on the page by the server."
+      ],
+      [
+        "DOM-based XSS",
+        "Client-side JS parses the URL and injects the payload into the DOM unsafely (e.g. using innerHTML)."
+      ]
+    ]
+  },
+  "questions": {
+    "basic": [
+      "What is the core concept of XSS?",
+      "What are the pros and cons of XSS?"
+    ],
+    "intermediate": [
+      "How does XSS impact SEO and initial page load times?",
+      "When would you NOT choose to use XSS?"
+    ],
+    "advanced": [
+      "How does XSS fit into a heavily scaled microservices architecture?",
+      "What are the security implications of XSS?"
+    ],
+    "trick": [
+      "Can you combine XSS with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define XSS.",
+      "answer": "XSS is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of XSS?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "next() Function",
+  "codeExample": "app.use((req, res, next) => {\n  console.log('Middleware 1');\n  // If we forget to call next() here, the request hangs forever!\n  next(); \n});\n\napp.use((req, res, next) => {\n  console.log('Middleware 2');\n  next();\n});\n\napp.get('/', (req, res) => {\n  res.send('Done!');\n});",
+  "definition": "The `next()` function is the mechanism that passes control from one middleware function to the next in the stack. If a middleware function does not end the request-response cycle (by calling `res.send`, `res.json`, etc.), it **must** call `next()`. If it doesn't, the request will hang indefinitely and the client will eventually time out.",
+  "simpleExplanation": "The `next()` function is the mechanism that passes control from one middleware function to the next in the stack.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of next() Function in Express.js?",
+      "How do you initialize next() Function?"
+    ],
+    "intermediate": [
+      "How does next() Function integrate with other middleware components?",
+      "Can you explain a common use case for next() Function?"
+    ],
+    "advanced": [
+      "What are the performance implications of next() Function in a high-traffic production application?",
+      "How would you debug issues related to next() Function?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as next() Function without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define next() Function in your own words.",
+      "answer": "The `next()` function is the mechanism that passes control from one middleware function to the next in the stack."
+    },
+    {
+      "question": "When should you avoid using next() Function?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

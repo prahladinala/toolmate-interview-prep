@@ -1,0 +1,35 @@
+{
+  "title": "req.body",
+  "codeExample": "const express = require('express');\nconst app = express();\n\n// REQUIRED to parse JSON payloads\napp.use(express.json());\n\n// POST {\"username\": \"john\", \"password\": \"123\"}\napp.post('/register', (req, res) => {\n  const { username, password } = req.body;\n  \n  if(!username || !password) {\n    return res.status(400).json({ error: 'Missing fields' });\n  }\n  \n  res.status(201).json({ message: `User ${username} created!` });\n});",
+  "definition": "Contains key-value pairs of data submitted in the request body. By default, it is `undefined`, and is populated when you use body-parsing middleware such as `express.json()` or `express.urlencoded()`.",
+  "simpleExplanation": "Contains key-value pairs of data submitted in the request body.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of req.body in Express.js?",
+      "How do you initialize req.body?"
+    ],
+    "intermediate": [
+      "How does req.body integrate with other middleware components?",
+      "Can you explain a common use case for req.body?"
+    ],
+    "advanced": [
+      "What are the performance implications of req.body in a high-traffic production application?",
+      "How would you debug issues related to req.body?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as req.body without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define req.body in your own words.",
+      "answer": "Contains key-value pairs of data submitted in the request body."
+    },
+    {
+      "question": "When should you avoid using req.body?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Merge Lists",
+  "difficulty": "Advanced",
+  "definition": "Merging two or more sorted linked lists. 'Merge Two Sorted Lists' is O(N). 'Merge K Sorted Lists' is O(N log K) using a Priority Queue/Min-Heap or Divide & Conquer.",
+  "simpleExplanation": "Taking two sorted stacks of playing cards and combining them into one perfectly sorted master stack.",
+  "answers": [
+    {
+      "question": "**Basic:** Merge Two Sorted Lists",
+      "answer": "```javascript\nfunction mergeTwoLists(l1, l2) {\n  let dummy = new ListNode(0);\n  let current = dummy;\n  while (l1 !== null && l2 !== null) {\n    if (l1.val < l2.val) {\n      current.next = l1;\n      l1 = l1.next;\n    } else {\n      current.next = l2;\n      l2 = l2.next;\n    }\n    current = current.next;\n  }\n  current.next = l1 || l2;\n  return dummy.next;\n}\n```"
+    }
+  ]
+}

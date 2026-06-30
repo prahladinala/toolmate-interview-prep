@@ -1,0 +1,29 @@
+{
+  "title": "Design YouTube Frontend",
+  "difficulty": "Expert",
+  "definition": "Designing YouTube requires a focus on Video Streaming (HLS/DASH protocols), Infinite Scrolling for the feed, Lazy Loading thumbnails, heavy CDN utilization, and WebSockets for real-time live stream chat.",
+  "simpleExplanation": "A system that buffers video chunks so playback never pauses, lazy-loads millions of thumbnails, and handles a chat room with 100,000 people typing at once.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Client[Browser] -->|HLS Stream| Edge[Edge Video CDN]\n  Client -->|Infinite Scroll| API[API Gateway]\n  API --> Search[Search Service]\n  API --> Recs[Recommendation Engine]\n  Client -->|WebSocket| Chat[Live Chat Service]",
+  "questions": {
+    "basic": [
+      "What are the core requirements for YouTube Frontend?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in YouTube Frontend?"
+    ],
+    "advanced": [
+      "How do you scale and optimize YouTube Frontend for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to YouTube Frontend if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define YouTube Frontend.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ]
+}

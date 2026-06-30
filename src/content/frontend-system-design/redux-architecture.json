@@ -1,0 +1,29 @@
+{
+  "title": "Redux Architecture",
+  "difficulty": "Advanced",
+  "definition": "Redux is a predictable state container based on the Flux architecture. It enforces a strict unidirectional data flow: Actions are dispatched, intercepted by Middleware, and processed by pure Reducer functions to generate a new immutable State.",
+  "simpleExplanation": "Redux is a highly strict bank. You cannot reach into the vault and take money directly. You must fill out an Action slip, hand it to the teller (Reducer), and the teller gives you a brand new vault (State) with the updated amount.",
+  "diagramType": "mermaid",
+  "diagramContent": "graph LR\n  UI[React View] -->|Dispatches| A[Action]\n  A --> M[Middleware (Thunk/Saga)]\n  M --> R[Reducer]\n  R -->|Generates New| S[(Store / State)]\n  S -->|Triggers Re-render| UI",
+  "questions": {
+    "basic": [
+      "How does Redux Architecture fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of Redux Architecture?"
+    ],
+    "advanced": [
+      "How does Redux Architecture scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where Redux Architecture is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Redux Architecture.",
+      "answer": "Redux Architecture is essential for complex frontend applications."
+    }
+  ]
+}

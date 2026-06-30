@@ -1,0 +1,35 @@
+{
+  "title": "Event-Driven Systems",
+  "codeExample": "const amqp = require('amqplib');\n\napp.post('/api/video-upload', async (req, res) => {\n  const videoData = req.body;\n  \n  // 1. Connect to RabbitMQ\n  const connection = await amqp.connect('amqp://localhost');\n  const channel = await connection.createChannel();\n  \n  // 2. Publish to queue for a background worker to compress\n  channel.sendToQueue('video_compression', Buffer.from(JSON.stringify(videoData)));\n  \n  // 3. Immediately respond to client while background worker does the heavy lifting\n  res.status(202).json({ message: 'Video upload processing started.' });\n});",
+  "definition": "In advanced architectures, Express APIs often act as producers in an Event-Driven architecture. Instead of waiting for a long database process to finish, Express accepts the request, publishes an event to a Message Broker (like RabbitMQ or Kafka), and immediately returns a 202 Accepted response.",
+  "simpleExplanation": "In advanced architectures, Express APIs often act as producers in an Event-Driven architecture.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Event-Driven Systems in Express.js?",
+      "How do you initialize Event-Driven Systems?"
+    ],
+    "intermediate": [
+      "How does Event-Driven Systems integrate with other middleware components?",
+      "Can you explain a common use case for Event-Driven Systems?"
+    ],
+    "advanced": [
+      "What are the performance implications of Event-Driven Systems in a high-traffic production application?",
+      "How would you debug issues related to Event-Driven Systems?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Event-Driven Systems without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Event-Driven Systems in your own words.",
+      "answer": "In advanced architectures, Express APIs often act as producers in an Event-Driven architecture."
+    },
+    {
+      "question": "When should you avoid using Event-Driven Systems?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

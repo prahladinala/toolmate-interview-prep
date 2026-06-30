@@ -1,0 +1,27 @@
+{
+  "title": "Frontend Logging",
+  "difficulty": "Beginner",
+  "definition": "The practice of recording events, errors, and user interactions that happen in the browser and sending them to a centralized remote server. Unlike backend logging, `console.log` on the frontend is useless for production tracking.",
+  "simpleExplanation": "Since you can't see the user's screen, the browser secretly sends a diary entry to your server every time the user clicks a button or gets an error.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Frontend Logging?"
+    ],
+    "intermediate": [
+      "How does Frontend Logging impact the overall user experience?"
+    ],
+    "advanced": [
+      "How do you scale Frontend Logging across a large enterprise application?"
+    ],
+    "trick": [
+      "Can Frontend Logging be fully automated?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Frontend Logging.",
+      "answer": "Frontend Logging is a key non-functional requirement for robust frontend systems."
+    }
+  ]
+}

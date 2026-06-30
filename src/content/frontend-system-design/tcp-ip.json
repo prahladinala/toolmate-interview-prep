@@ -1,0 +1,35 @@
+{
+  "title": "TCP/IP Basics",
+  "difficulty": "Intermediate",
+  "definition": "TCP (Transmission Control Protocol) and IP (Internet Protocol) form the backbone of web communication. IP handles routing packets to the correct destination, while TCP ensures reliable, ordered, and error-checked delivery of a stream of bytes.",
+  "simpleExplanation": "IP is the mail truck delivering a box. TCP is the shipping manager who numbers every item in the box, checks for broken items upon delivery, and requests replacements for anything missing.",
+  "terminalOutput": "TCP 3-Way Handshake:\n1. Client -> Server: SYN (Synchronize)\n2. Server -> Client: SYN-ACK (Acknowledge)\n3. Client -> Server: ACK (Acknowledge)\n\nConnection Established!",
+  "questions": {
+    "basic": [
+      "Can you explain the basic concept of TCP/IP?",
+      "Why is TCP/IP important in frontend system design?"
+    ],
+    "intermediate": [
+      "How does TCP/IP impact perceived performance and user experience?",
+      "Describe a scenario where you had to debug an issue related to TCP/IP."
+    ],
+    "advanced": [
+      "In a highly scaled enterprise system, how do you optimize TCP/IP?",
+      "What are the security implications of TCP/IP?"
+    ],
+    "trick": [
+      "Can TCP/IP be entirely bypassed or disabled? What happens if it is?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define TCP/IP.",
+      "answer": "TCP/IP is a core mechanism in frontend architectures."
+    },
+    {
+      "question": "What is the main bottleneck for TCP/IP?",
+      "answer": "Usually network latency or CPU-bound synchronous tasks blocking the main thread."
+    }
+  ]
+}

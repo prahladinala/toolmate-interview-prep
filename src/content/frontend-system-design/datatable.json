@@ -1,0 +1,29 @@
+{
+  "title": "Design Data Table",
+  "difficulty": "Expert",
+  "definition": "A complex Data Table requires client/server pagination, multi-column sorting, filtering, virtualization (for 10k+ rows), and responsive design (collapsing columns on mobile).",
+  "simpleExplanation": "An Excel spreadsheet in the browser. It gets extremely complicated when you have 100,000 rows and want to sort them instantly without freezing the browser.",
+  "questions": {
+    "basic": [
+      "What are the core requirements for Data Table Component?"
+    ],
+    "intermediate": [
+      "How do you handle edge cases and accessibility in Data Table Component?"
+    ],
+    "advanced": [
+      "How do you scale and optimize Data Table Component for millions of concurrent users?"
+    ],
+    "trick": [
+      "What happens to Data Table Component if JavaScript is disabled?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Data Table Component.",
+      "answer": "A complex system design problem requiring deep architectural knowledge."
+    }
+  ],
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  UI[Data Table UI] --> State[Sort & Filter State]\n  State --> Virtualizer[Windowing/Virtualization]\n  Virtualizer --> DOM[Render 20 DOM Nodes]\n  State --> Fetch[API Fetch with params]"
+}

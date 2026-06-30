@@ -1,0 +1,12 @@
+{
+  "title": "Remove Duplicates",
+  "difficulty": "Intermediate",
+  "definition": "Removing duplicates from a sorted array in-place requires a 'slow' pointer (tracking where the next unique element should go) and a 'fast' pointer (scanning for new unique elements).",
+  "simpleExplanation": "Having an empty box. Every time you see a new unique toy on the assembly line, you put it in the box. If you see the same toy 5 times, you ignore it.",
+  "answers": [
+    {
+      "question": "**Basic:** Remove Duplicates from Sorted Array",
+      "answer": "```javascript\nfunction removeDuplicates(nums) {\n  if (nums.length === 0) return 0;\n  let slow = 0;\n  for (let fast = 1; fast < nums.length; fast++) {\n    if (nums[fast] !== nums[slow]) {\n      slow++;\n      nums[slow] = nums[fast];\n    }\n  }\n  return slow + 1;\n}\n```\nO(N) Time, O(1) Space."
+    }
+  ]
+}

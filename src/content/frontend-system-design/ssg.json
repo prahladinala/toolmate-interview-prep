@@ -1,0 +1,34 @@
+{
+  "title": "Static Site Generation (SSG)",
+  "difficulty": "Intermediate",
+  "definition": "SSG renders your React application to static HTML files at build time (when you run `npm run build`), rather than on every request. These files are then uploaded to a CDN for incredibly fast delivery.",
+  "simpleExplanation": "The chef cooks 1,000 pizzas in the morning, puts them in the display case, and hands them to customers instantly as they walk in, rather than cooking them to order.",
+  "questions": {
+    "basic": [
+      "What is the core concept of Static Site Generation?",
+      "What are the pros and cons of Static Site Generation?"
+    ],
+    "intermediate": [
+      "How does Static Site Generation impact SEO and initial page load times?",
+      "When would you NOT choose to use Static Site Generation?"
+    ],
+    "advanced": [
+      "How does Static Site Generation fit into a heavily scaled microservices architecture?",
+      "What are the security implications of Static Site Generation?"
+    ],
+    "trick": [
+      "Can you combine Static Site Generation with other rendering strategies on the same page?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Static Site Generation.",
+      "answer": "Static Site Generation is a critical architectural pattern in frontend design."
+    },
+    {
+      "question": "What is the main tradeoff of Static Site Generation?",
+      "answer": "Usually a tradeoff between Server CPU usage, TTFB (Time to First Byte), and Client CPU usage."
+    }
+  ]
+}

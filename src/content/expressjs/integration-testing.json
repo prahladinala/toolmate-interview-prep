@@ -1,0 +1,36 @@
+{
+  "title": "Integration Testing",
+  "diagramType": "mermaid",
+  "diagramContent": "graph TD\n  Test[Jest Test Suite] -->|HTTP GET /users| Server[Express App in Memory]\n  Server -->|Query| DB[(Test Database)]\n  DB -->|Data| Server\n  Server -->|200 OK + JSON| Test\n  Test --> Assert[expect(res.statusCode).toBe(200)]",
+  "definition": "Integration testing involves spinning up the actual Express server and sending real HTTP requests to the endpoints to ensure the Router, Middleware, and Controllers all work together seamlessly. This is typically done using `Supertest`.",
+  "simpleExplanation": "Integration testing involves spinning up the actual Express server and sending real HTTP requests to the endpoints to ensure the Router, Middleware, and Controllers all work together seamlessly.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Integration Testing in Express.js?",
+      "How do you initialize Integration Testing?"
+    ],
+    "intermediate": [
+      "How does Integration Testing integrate with other middleware components?",
+      "Can you explain a common use case for Integration Testing?"
+    ],
+    "advanced": [
+      "What are the performance implications of Integration Testing in a high-traffic production application?",
+      "How would you debug issues related to Integration Testing?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Integration Testing without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Integration Testing in your own words.",
+      "answer": "Integration testing involves spinning up the actual Express server and sending real HTTP requests to the endpoints to ensure the Router, Middleware, and Controllers all work together seamlessly."
+    },
+    {
+      "question": "When should you avoid using Integration Testing?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}

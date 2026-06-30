@@ -1,0 +1,27 @@
+{
+  "title": "CDN Caching",
+  "difficulty": "Intermediate",
+  "definition": "CDNs sit between the user and the origin server. They cache responses closer to the user geographically. CDN caching is controlled via `s-maxage` or edge-specific rules.",
+  "simpleExplanation": "A massive global hard drive that stores your website so people in Australia don't have to wait for the data to travel from your server in New York.",
+  "questions": {
+    "basic": [
+      "How does CDN Caching fundamentally work?"
+    ],
+    "intermediate": [
+      "What are the performance implications of CDN Caching?"
+    ],
+    "advanced": [
+      "How does CDN Caching scale in an enterprise architecture?"
+    ],
+    "trick": [
+      "Are there scenarios where CDN Caching is an anti-pattern?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define CDN Caching.",
+      "answer": "CDN Caching is essential for complex frontend applications."
+    }
+  ]
+}

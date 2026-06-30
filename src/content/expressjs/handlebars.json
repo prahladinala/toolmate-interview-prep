@@ -1,0 +1,35 @@
+{
+  "title": "Handlebars.js",
+  "codeExample": "const { engine } = require('express-handlebars');\n\n// Setup\napp.engine('handlebars', engine());\napp.set('view engine', 'handlebars');\n\napp.get('/', (req, res) => {\n  res.render('home', { title: 'Home Page' });\n});\n\n// views/home.handlebars\n// <h1>{{title}}</h1>",
+  "definition": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration. It enforces logic-less templates, meaning you use simple tags like `{{name}}` rather than writing complex JavaScript inside the HTML.",
+  "simpleExplanation": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.",
+  "difficulty": "Beginner",
+  "questions": {
+    "basic": [
+      "What is the primary purpose of Handlebars.js in Express.js?",
+      "How do you initialize Handlebars.js?"
+    ],
+    "intermediate": [
+      "How does Handlebars.js integrate with other middleware components?",
+      "Can you explain a common use case for Handlebars.js?"
+    ],
+    "advanced": [
+      "What are the performance implications of Handlebars.js in a high-traffic production application?",
+      "How would you debug issues related to Handlebars.js?"
+    ],
+    "trick": [
+      "Is it possible to achieve the same result as Handlebars.js without using Express?"
+    ],
+    "hr": []
+  },
+  "answers": [
+    {
+      "question": "Define Handlebars.js in your own words.",
+      "answer": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration."
+    },
+    {
+      "question": "When should you avoid using Handlebars.js?",
+      "answer": "It depends on the specific architectural requirements and performance bottlenecks of your application. Overusing it can sometimes lead to tightly coupled code."
+    }
+  ]
+}
