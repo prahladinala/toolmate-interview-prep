@@ -238,6 +238,120 @@ export default function QuizPracticePage() {
             </div>
           </div>
 
+          {/* MORE PROFESSIONAL CERTIFICATION PACKS */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-black flex items-center gap-2">
+                <Award size={20} className="text-primary" /> Professional Certification Packs
+              </h3>
+              <span className="text-xs font-bold text-muted-foreground">
+                Proctored • Delta Analytics
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* AWS */}
+              <div className="p-5 rounded-2xl border-2 border-border bg-card hover:bg-muted/30 transition-all flex flex-col justify-between space-y-4 retro-shadow-sm">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <RetroBadge variant="secondary" className="text-[11px] font-black">
+                      Cloud Architecture
+                    </RetroBadge>
+                    <span className="text-[11px] font-mono font-bold text-muted-foreground">
+                      72% Pass Mark
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-black text-foreground">
+                    AWS Solutions Architect & Cloud Practitioner
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                    EC2, S3 IA/Glacier, RDS Multi-AZ, DynamoDB Global Tables, VPC NAT Gateways, and Well-Architected Framework.
+                  </p>
+                </div>
+                <Link href="/practice/quiz/aws">
+                  <RetroButton size="sm" className="w-full font-bold flex items-center justify-center gap-1.5">
+                    Start AWS Exam <ArrowRight size={14} />
+                  </RetroButton>
+                </Link>
+              </div>
+
+              {/* Meta */}
+              <div className="p-5 rounded-2xl border-2 border-border bg-card hover:bg-muted/30 transition-all flex flex-col justify-between space-y-4 retro-shadow-sm">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <RetroBadge variant="accent" className="text-[11px] font-black">
+                      Meta Certification
+                    </RetroBadge>
+                    <span className="text-[11px] font-mono font-bold text-muted-foreground">
+                      75% Pass Mark
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-black text-foreground">
+                    Meta Certified Front-End Developer
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                    React 19 Concurrency, WCAG 2.1 accessibility live regions, INP performance, closures, and XSS/CSRF defenses.
+                  </p>
+                </div>
+                <Link href="/practice/quiz/meta-frontend">
+                  <RetroButton size="sm" className="w-full font-bold flex items-center justify-center gap-1.5">
+                    Start Meta Exam <ArrowRight size={14} />
+                  </RetroButton>
+                </Link>
+              </div>
+
+              {/* System Design */}
+              <div className="p-5 rounded-2xl border-2 border-border bg-card hover:bg-muted/30 transition-all flex flex-col justify-between space-y-4 retro-shadow-sm">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <RetroBadge variant="secondary" className="text-[11px] font-black">
+                      Scalability & Infra
+                    </RetroBadge>
+                    <span className="text-[11px] font-mono font-bold text-muted-foreground">
+                      70% Pass Mark
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-black text-foreground">
+                    System Design & Microservices Architect
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                    CAP theorem, Consistent Hashing, Cache Stampede mitigations, Saga transactions, and reverse proxies.
+                  </p>
+                </div>
+                <Link href="/practice/quiz/system-design">
+                  <RetroButton size="sm" className="w-full font-bold flex items-center justify-center gap-1.5">
+                    Start Architecture Exam <ArrowRight size={14} />
+                  </RetroButton>
+                </Link>
+              </div>
+
+              {/* Web Performance */}
+              <div className="p-5 rounded-2xl border-2 border-border bg-card hover:bg-muted/30 transition-all flex flex-col justify-between space-y-4 retro-shadow-sm">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <RetroBadge variant="outline" className="text-[11px] font-black">
+                      Core Web Vitals
+                    </RetroBadge>
+                    <span className="text-[11px] font-mono font-bold text-muted-foreground">
+                      70% Pass Mark
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-black text-foreground">
+                    Web Performance & Core Web Vitals Specialist
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                    LCP, INP, CLS layout stability, preload vs prefetch, critical rendering paths, and AVIF compression.
+                  </p>
+                </div>
+                <Link href="/practice/quiz/web-performance">
+                  <RetroButton size="sm" className="w-full font-bold flex items-center justify-center gap-1.5">
+                    Start Performance Exam <ArrowRight size={14} />
+                  </RetroButton>
+                </Link>
+              </div>
+            </div>
+          </div>
+
           {/* GENERAL TECH QUICK QUIZ BUILDER */}
           <RetroCard>
             <RetroCardHeader>

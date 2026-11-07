@@ -40,10 +40,19 @@ export function Sidebar({ techStack }: { techStack: TechStack }) {
         w-64 shrink-0
       `}>
         <div className="p-6">
-          <h2 className="text-xl font-black mb-6 flex items-center gap-2">
+          <h2 className="text-xl font-black mb-3 flex items-center gap-2">
             <span>{techStack.icon === 'javascript' ? '💛' : techStack.icon === 'react' ? '⚛️' : '💻'}</span>
             {techStack.title}
           </h2>
+
+          <div className="mb-6">
+            <Link
+              href={`/learn/${techStack.id}/cheatsheet`}
+              className="inline-flex items-center gap-1.5 text-xs font-black px-2.5 py-1.5 rounded-lg border-2 border-border bg-amber-400 text-black retro-shadow-sm hover:bg-amber-300 transition-all w-full justify-center"
+            >
+              <span>📄 Printable Cheat Sheet</span>
+            </Link>
+          </div>
 
           <div className="space-y-4">
             {techStack.categories.map((category) => (

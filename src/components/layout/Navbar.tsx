@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useUserStore } from "@/store/useUserStore"
 import { SearchDialog } from "@/components/search/SearchDialog"
-import { Flame, Star, Trophy, Search, Sparkles, BookOpen, Clock, BrainCircuit, Layers, Award } from "lucide-react"
+import { Flame, Star, Trophy, Search, Sparkles, BookOpen, Clock, BrainCircuit, Layers, Award, Code2 } from "lucide-react"
 
 export function Navbar() {
   const { xp, streak, recordVisit, reviewQueue } = useUserStore()
@@ -70,6 +70,17 @@ export function Navbar() {
               >
                 <Award size={14} className="text-amber-500" />
                 <span>Jutro Exam</span>
+              </Link>
+              <Link
+                href="/practice/playground"
+                className={`px-3 py-1.5 rounded-lg border-2 transition-all flex items-center gap-1.5 ${
+                  pathname.startsWith("/practice/playground")
+                    ? "bg-accent/40 border-border retro-shadow-sm text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                <Code2 size={14} className="text-primary" />
+                <span>Playground</span>
               </Link>
               <Link
                 href="/practice/review"
