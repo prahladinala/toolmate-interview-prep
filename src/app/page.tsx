@@ -44,7 +44,7 @@ export default async function Home() {
               <div className="absolute inset-0 bg-secondary border-4 border-border retro-shadow rounded-2xl rotate-3"></div>
               <div className="absolute inset-0 bg-card border-4 border-border retro-shadow rounded-2xl -rotate-3 flex flex-col items-center justify-center p-8 text-center">
                 <div className="text-8xl mb-6">🧑‍💻</div>
-                <h3 className="text-2xl font-bold mb-2">Daily Streak!</h3>
+                <div className="text-2xl font-bold mb-2">Daily Streak!</div>
                 <div className="text-primary font-black text-4xl">+100 XP</div>
               </div>
             </div>
@@ -56,10 +56,10 @@ export default async function Home() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { label: "Questions", value: "500+" },
-                { label: "Topics", value: "100+" },
-                { label: "Learning Paths", value: "10+" },
-                { label: "Mock Interviews", value: "50+" },
+                { label: "Curated Topics", value: "1,600+" },
+                { label: "Technologies", value: "17" },
+                { label: "On-Device AI", value: "Gemini" },
+                { label: "Spaced Retention", value: "SM-2" },
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col space-y-2">
                   <span className="text-4xl md:text-5xl font-black">{stat.value}</span>
@@ -70,16 +70,81 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Practice Modes Showcase */}
+        <section className="container mx-auto px-4 py-16">
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/practice/quiz" className="block group">
+              <RetroCard className="h-full group-hover:-translate-y-2 transition-transform">
+                <RetroCardHeader>
+                  <RetroBadge variant="secondary" className="text-xs mb-2 w-fit">
+                    Interactive Mode
+                  </RetroBadge>
+                  <RetroCardTitle className="text-2xl font-black">Technical Quiz</RetroCardTitle>
+                </RetroCardHeader>
+                <RetroCardContent>
+                  <p className="text-muted-foreground font-medium mb-4">
+                    Fast multiple-choice assessments with immediate feedback across all 17 technologies.
+                  </p>
+                  <span className="text-primary font-black text-sm flex items-center gap-1 group-hover:underline">
+                    Take a Quiz →
+                  </span>
+                </RetroCardContent>
+              </RetroCard>
+            </Link>
+
+            <Link href="/practice/review" className="block group">
+              <RetroCard className="h-full group-hover:-translate-y-2 transition-transform">
+                <RetroCardHeader>
+                  <RetroBadge variant="default" className="text-xs mb-2 w-fit">
+                    Memory Retention
+                  </RetroBadge>
+                  <RetroCardTitle className="text-2xl font-black">Spaced Review (SM-2)</RetroCardTitle>
+                </RetroCardHeader>
+                <RetroCardContent>
+                  <p className="text-muted-foreground font-medium mb-4">
+                    Review topics right before you forget them using the scientifically proven SuperMemo algorithm.
+                  </p>
+                  <span className="text-primary font-black text-sm flex items-center gap-1 group-hover:underline">
+                    Open Review Queue →
+                  </span>
+                </RetroCardContent>
+              </RetroCard>
+            </Link>
+
+            <Link href="/practice/mock" className="block group">
+              <RetroCard className="h-full group-hover:-translate-y-2 transition-transform">
+                <RetroCardHeader>
+                  <RetroBadge variant="accent" className="text-xs mb-2 w-fit">
+                    Timed Screen
+                  </RetroBadge>
+                  <RetroCardTitle className="text-2xl font-black">Mock Interview Room</RetroCardTitle>
+                </RetroCardHeader>
+                <RetroCardContent>
+                  <p className="text-muted-foreground font-medium mb-4">
+                    15-minute simulated technical interview with AI-powered candidate evaluation and scoring.
+                  </p>
+                  <span className="text-primary font-black text-sm flex items-center gap-1 group-hover:underline">
+                    Start Mock Screen →
+                  </span>
+                </RetroCardContent>
+              </RetroCard>
+            </Link>
+          </div>
+        </section>
+
         {/* Tech Stack Grid */}
-        <section id="explore" className="container mx-auto px-4 py-24 space-y-12">
+        <section id="explore" className="container mx-auto px-4 py-16 space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-black">Choose Your Path</h2>
             <p className="text-xl font-medium text-muted-foreground">From fundamentals to advanced architecture.</p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {techStacks.map((stack) => (
-              <Link key={stack.id} href={`/learn/${stack.id}`} className="block group">
+            {techStacks.map((stack) => {
+              const firstTopicId = stack.categories?.[0]?.topics?.[0]?.id;
+              const linkHref = firstTopicId ? `/learn/${stack.id}/${firstTopicId}` : `/learn/${stack.id}`;
+              return (
+              <Link key={stack.id} href={linkHref} className="block group">
                 <RetroCard className="h-full transition-transform group-hover:-translate-y-2 group-hover:-translate-x-2 group-active:translate-y-0 group-active:translate-x-0">
                   <RetroCardHeader>
                     <div className="w-12 h-12 rounded-lg border-2 border-border bg-primary/20 flex items-center justify-center text-2xl mb-4">
@@ -96,7 +161,8 @@ export default async function Home() {
                   </RetroCardContent>
                 </RetroCard>
               </Link>
-            ))}
+              );
+            })}
             
             {/* Empty state if no other stacks are found */}
             {techStacks.length === 1 && (

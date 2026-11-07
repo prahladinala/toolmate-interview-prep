@@ -1,12 +1,68 @@
 import { getTechStackMeta, getTopicContent } from "@/lib/content";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { RetroBadge } from "@/components/retro/retro-badge";
-import { CodePlayground } from "@/components/learn/CodePlayground";
 import { CompleteTopicButton } from "@/components/learn/CompleteTopicButton";
 import { FlashCard } from "@/components/learn/FlashCard";
 import { CodeProblems } from "@/components/learn/CodeProblems";
-import { MermaidDiagram } from "@/components/learn/MermaidDiagram";
+import { TopicToolbar } from "@/components/learn/TopicToolbar";
 import { HelpCircle, BookOpen, Briefcase, Lightbulb, Code2, Network, Table, Terminal } from "lucide-react";
+
+// Dynamic imports to code-split Sandpack, Monaco, and Mermaid
+const CodePlayground = dynamic(
+  () => import("@/components/learn/CodePlayground").then((mod) => mod.CodePlayground),
+  {
+    loading: () => (
+      <div className="h-64 border-2 border-border rounded-xl bg-muted/40 animate-pulse flex items-center justify-center font-bold text-muted-foreground">
+        Loading Code Playground...
+      </div>
+    ),
+  }
+);
+
+const MermaidDiagram = dynamic(
+  () => import("@/components/learn/MermaidDiagram").then((mod) => mod.MermaidDiagram),
+  {
+    loading: () => (
+      <div className="h-48 border-2 border-border rounded-xl bg-muted/40 animate-pulse flex items-center justify-center font-bold text-muted-foreground">
+        Rendering Architecture Diagram...
+      </div>
+    ),
+  }
+);
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tech: string; topic: string }>;
+}): Promise<Metadata> {
+  const { tech, topic } = await params;
+  const topicContent = await getTopicContent(tech, topic);
+
+  if (!topicContent) {
+    return {};
+  }
+
+  return {
+    title: topicContent.title,
+    description: topicContent.simpleExplanation.slice(0, 150),
+    alternates: {
+      canonical: `/learn/${tech}/${topic}`,
+    },
+    openGraph: {
+      title: `${topicContent.title} | ToolMate Interview Prep`,
+      description: topicContent.simpleExplanation.slice(0, 150),
+      url: `https://interview.toolmate.co.in/learn/${tech}/${topic}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: topicContent.title,
+      description: topicContent.simpleExplanation.slice(0, 150),
+    }
+  };
+}
 
 export default async function TopicPage({
   params,
@@ -23,6 +79,50 @@ export default async function TopicPage({
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": topicContent.title,
+    "description": topicContent.simpleExplanation.slice(0, 150),
+    "author": {
+      "@type": "Organization",
+      "name": "ToolMate"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ToolMate",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://interview.toolmate.co.in/favicon.ico"
+      }
+    }
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://interview.toolmate.co.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": techStack.title,
+        "item": `https://interview.toolmate.co.in/learn/${tech}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": topicContent.title,
+        "item": `https://interview.toolmate.co.in/learn/${tech}/${topic}`
+      }
+    ]
+  };
+
   // Find next topic ID
   let nextTopicId: string | undefined;
   const allTopics = techStack.categories.flatMap((cat) => cat.topics);
@@ -34,8 +134,17 @@ export default async function TopicPage({
   // Force Next.js Turbopack invalidation
 
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-12 pb-32">
-      {/* Header */}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-12 pb-32">
+        {/* Header */}
       <header className="space-y-4">
         <div className="flex items-center gap-2">
           <RetroBadge variant="outline" className="text-muted-foreground bg-muted">
@@ -46,6 +155,9 @@ export default async function TopicPage({
         </div>
         <h1 className="text-4xl md:text-5xl font-black">{topicContent.title}</h1>
       </header>
+
+      {/* AI, Bookmarks & Notes Action Toolbar */}
+      <TopicToolbar topic={topicContent} techId={tech} />
 
       {/* Definition & Explanation */}
       <section className="space-y-8">
@@ -223,6 +335,7 @@ export default async function TopicPage({
           nextTopicId={nextTopicId} 
         />
       </div>
-    </div>
+      </div>
+    </>
   );
 }
